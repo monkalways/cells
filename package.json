@@ -34,5 +34,11 @@
     "report-name": "ESLint Violations",
     "error-statistics-name": "ESLint Error Count",
     "warning-statistics-name": "ESLint Warning Count"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
