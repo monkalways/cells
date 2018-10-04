@@ -12,7 +12,6 @@
     - [git](#git)
     - [node.js](#nodejs)
   - [Checkout Code](#checkout-code)
-  - [Run the Application for the First Time](#run-the-application-for-the-first-time)
   - [IDE](#ide)
     - [Debugger for Chrome Extension](#debugger-for-chrome-extension)
     - [ESLint Extension](#eslint-extension)
@@ -111,75 +110,14 @@ Create a local directory, and clone the remote `git` repository to local reposit
 If you prefer to use command lines, here's an example.
 
 ```cmd
-mkdir EPS.RMS.DetaineeManagement.Map
-cd EPS.RMS.DetaineeManagement.Map
-git clone http://teamsystem:8080/tfs/EPROS/EPS.RMS.DetaineeManagement.Map/_git/git-repo .
+$ mkdir EPS.RMS.DetaineeManagement.Cells
+$ cd EPS.RMS.DetaineeManagement.Cells
+$ git clone http://teamsystem:8080/tfs/EPROS/EPS.RMS.DetaineeManagement.Cells/_git/git-repo .
+$ git checkout feature/x42
+$ npm start
 ```
 
 You will get prompted for user name and password to access the `git` repository for the first time.
-
-### Run the Application for the First Time
-
-When you run the application for the first time in the project folder, you may run into the following error.
-
-```sh
-$ npm start
-
-> source@0.1.0 start <YOUR_PROJECT_FOLDER>
-> react-scripts start
-
-module.js:549
-    throw err;
-    ^
-
-Error: Cannot find module 'upath'
-    at Function.Module._resolveFilename (module.js:547:15)
-    at Function.Module._load (module.js:474:25)
-    at Module.require (module.js:596:17)
-    at require (internal/module.js:11:18)
-    at Object.<anonymous> (C:\workspaces\EPROS\DMU\git-repo1\node_modules\chokidar\index.js:13:13)
-    at Module._compile (module.js:652:30)
-    at Object.Module._extensions..js (module.js:663:10)
-    at Module.load (module.js:565:32)
-    at tryModuleLoad (module.js:505:12)
-    at Function.Module._load (module.js:497:3)
-npm ERR! code ELIFECYCLE
-npm ERR! errno 1
-npm ERR! source@0.1.0 start: `react-scripts start`
-npm ERR! Exit status 1
-npm ERR!
-npm ERR! Failed at the source@0.1.0 start script.
-npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
-
-npm ERR! A complete log of this run can be found in:
-npm ERR!     C:\Users\<USER_NAME>\AppData\Roaming\npm-cache\_logs\<TIMESTAMP>.log
-```
-
-This error is due to an issue with the `upath` package when the `node_modules` folder is checked into `git`. To fix the issue, run the following:
-
-```sh
-npm install --no-save upath@1.1.0
-git reset --hard
-```
-
-Then run `npm start` again, the application should be started successfully this time.
-
-```sh
-$ npm start
-
-> source@0.1.0 start <YOUR_PROJECT_FOLDER>
-> react-scripts start
-
-Compiled successfully!
-
-You can now view source in the browser.
-
-  Local:            http://localhost:3000/
-  On Your Network:  http://10.0.112.134:3000/
-
-Note that the development build is not optimized.
-To create a production build, use npm run build.
-```
 
 ### IDE
 
@@ -251,8 +189,8 @@ Althought not required for development, here's a list of other `VS Code Extensio
 
 ### Coding Style Guide
 
-See the [Coding Style Guide](/React-Application-Coding-Style-Guide) page for details.
+See the [Coding Style Guide](http://teamsystem:8080/tfs/EPROS/EPS.RMS.DetaineeManagement.Map/_wiki/wikis/EPS.RMS.DetaineeManagement.Map.wiki?wikiVersion=GBwikiMaster&pagePath=%2FReact%20Application%20Coding%20Style%20Guide) page for details.
 
 ### Reference Project Structure
 
-See the [Reference Project Structure](/React%2DRedux-Application-Reference-Project-Structure) page for details.
+See the [Reference Project Structure](http://teamsystem:8080/tfs/EPROS/EPS.RMS.DetaineeManagement.Map/_wiki/wikis/EPS.RMS.DetaineeManagement.Map.wiki?wikiVersion=GBwikiMaster&pagePath=%2FReact%252DRedux%20Application%20Reference%20Project%20Structure) page for details.
