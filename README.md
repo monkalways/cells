@@ -94,7 +94,7 @@ If you aren’t satisfied with the build tool and configuration choices, talk to
 3. Setup HTTP(S) proxy and cafile for NPM to be able to connect NPM registry. Remember to replace user name and password below with your domain account. The EPSORCA.crt is included in the `certificate` folder of the project folder. (See the section about [Checkout Code](#checkout-code) to get the project folder.)
    ```
    npm config set proxy http://epsvc%5C[USER_NAME]:[PASSWORD]@proxy.police.edmonton.ab.ca:8080
-   npm config set https.proxy http://epsvc%5C[USER_NAME]:[PASSWORD]@proxy.police.edmonton.ab.ca:8080
+   npm config set https-proxy http://epsvc%5C[USER_NAME]:[PASSWORD]@proxy.police.edmonton.ab.ca:8080
    npm config set cafile [PATH_TO_EPSORCA.crt]
    npm config set strict-ssl false
    ```
