@@ -1,0 +1,5 @@
+{
+  "prettier.eslintIntegration": true,
+  "editor.tabSize": 2, // be consistent with prettier configuration
+  "editor.formatOnSave": true // auto format code after saving file
+}

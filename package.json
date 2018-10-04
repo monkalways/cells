@@ -1,0 +1,38 @@
+{
+  "name": "git-repo2",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-scripts": "2.0.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "test:ci": "react-scripts test --env=jsdom --coverage --testResultsProcessor=jest-teamcity-reporter",
+    "eject": "react-scripts eject",
+    "lint": "eslint --ext .js --ext .jsx src/**",
+    "lint:ci": "eslint --ext .js --ext .jsx src/** --format .\\node_modules\\eslint-teamcity\\index.js"
+  },
+  "devDependencies": {
+    "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.0",
+    "eslint-teamcity": "^2.1.0",
+    "jest": "^23.6.0",
+    "jest-matchers": "^20.0.3",
+    "jest-teamcity-reporter": "^0.9.0"
+  },
+  "eslint-teamcity": {
+    "reporter": "inspections",
+    "report-name": "ESLint Violations",
+    "error-statistics-name": "ESLint Error Count",
+    "warning-statistics-name": "ESLint Warning Count"
+  }
+}
