@@ -4,4 +4,4 @@ build/*
 **/*.css
 **/*.test.js
 **/*.svg
-registerServiceWorker.js
+serviceWorker.js
