@@ -1,0 +1,1 @@
+export { default as CellManagement } from './CellManagementContainer';

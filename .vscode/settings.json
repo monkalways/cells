@@ -2,5 +2,6 @@
   "prettier.eslintIntegration": true,
   "editor.tabSize": 2, // be consistent with prettier configuration
   "editor.formatOnSave": true,
-  "git.ignoreLimitWarning": true // auto format code after saving file
+  "git.ignoreLimitWarning": true, // auto format code after saving file
+  "editor.snippetSuggestions": "top"
 }

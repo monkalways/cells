@@ -1,0 +1,1 @@
+export { default as TapToBegin } from './tapToBeginContainer';
