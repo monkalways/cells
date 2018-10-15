@@ -4,7 +4,7 @@ import types from './types';
 /* CellManagement State shape
 {
     cellInfo: {},
-    detainees: []
+    cellDetainees: []
 }
 */
 

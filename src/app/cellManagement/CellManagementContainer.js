@@ -1,27 +1,28 @@
 import { connect } from "react-redux";
-import { operations as cellOperations } from './duck';
-import { operations as welfareOperations } from 'app/welfareManagement/duck';
+import { operations, selectors } from './duck';
+import * as FromWelfareManagement from 'app/welfareManagement/duck';
+import * as FromSessionManagement from 'app/sessionManagement/duck';
 import CellManagementComponent from './CellManagementComponent';
 
 const mapDispatchToProps = (dispatch) => {
   const getCellInfo = (cellName) => {
-    dispatch(cellOperations.getCellInfo(cellName));
+    dispatch(operations.getCellInfo(cellName));
   };
 
   const getCellDetainees = (cellName) => {
-    dispatch(cellOperations.getCellDetainees(cellName));
+    dispatch(operations.getCellDetainees(cellName));
   };
 
   const saveCellWelfare = (cellWelfareData) => {
-    dispatch(welfareOperations.saveCellWelfare(cellWelfareData));
+    dispatch(FromWelfareManagement.operations.saveCellWelfare(cellWelfareData));
   };
 
   const resetCellWelfare = () => {
-    dispatch(welfareOperations.resetCellWelfare());
+    dispatch(FromWelfareManagement.operations.resetCellWelfare());
   };
 
   const deleteCellWelfareData = () => {
-    dispatch(welfareOperations.deleteCellWelfareData());
+    dispatch(FromWelfareManagement.operations.deleteCellWelfareData());
   };
 
   return {
@@ -35,13 +36,13 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticated: state.sessionManagementData.session.isAuthenticated,
-    cell: state.cellManagementData.cellInfo,
-    cellDetainees: state.cellManagementData.cellDetainees,
-    isMeal: state.welfareManagementData.welfareFlagData.isMeal,
-    isMedication: state.welfareManagementData.welfareFlagData.isMedication,
-    isCellCheck: state.welfareManagementData.welfareFlagData.isCellCheck,
-    cellWelfareData: state.welfareManagementData.cellWelfareData,
+    isAuthenticated: FromSessionManagement.selectors.getAuthenticationFlag(state),
+    cell: selectors.getCellInfo(state),
+    cellDetainees: selectors.getCellDetainees(state),
+    isMeal: FromWelfareManagement.selectors.getMealFlag(state),
+    isMedication: FromWelfareManagement.selectors.getMedicationFlag(state),
+    isCellCheck: FromWelfareManagement.selectors.getCellCheckFlag(state),
+    cellWelfareData: FromWelfareManagement.selectors.getCellWelfareData(state),
   }
 };
 
