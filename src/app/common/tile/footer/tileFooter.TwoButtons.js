@@ -1,18 +1,15 @@
-import React from "react";
-import { connect } from "react-redux";
-import { operations } from 'app/welfareManagement/duck';
-import * as constants from 'app/constants';
-import Avatar from "@material-ui/core/Avatar";
-import CardActions from "@material-ui/core/CardActions";
-import ToggleButton from "@material-ui/lab/ToggleButton";
-import ToggleButtonGroup from "@material-ui/lab/ToggleButton";
+import React from 'react';
+import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+import Avatar from '@material-ui/core/Avatar';
+import CardActions from '@material-ui/core/CardActions';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import { operations, selectors } from '../../../WelfareManagement/duck';
+import wellnessVisual from '../../../../images/WellnessVisual.png';
+import wellnessVerbal from '../../../../images/WellnessVerbal.png';
 
 const styles = {
-  // content: {
-  //   padding: 0,
-  //   margin: 0,
-  //   height: 43,
-  // },
   button: {
     width: 40,
     height: 40,
@@ -20,58 +17,97 @@ const styles = {
     margin: 0,
   },
   buttonsGroup: {
-    width: "100%",
-    backgroundColor: "transparent",
-    display: "flex",
-    justifyContent: "space-around",
-    margin: 0
-  }
-}
+    width: 190,
+    backgroundColor: 'transparent',
+    display: 'flex',
+    justifyContent: 'space-around',
+    marginTop: 1,
+  },
+};
 
 class TileFooterTwoButtons extends React.PureComponent {
+  handleWelfareAction = (event, detentionLogValue) => {
+    const { editDetaineeWelfareData, detainee, detentionLogType } = this.props;
 
-  handleWelfareAction = (detentionLogAction) => {
-    this.props.editDetaineeWelfareData({
-      id: this.props.detainee.id,
-      arrestId: this.props.detainee.arrestId,
-      detentionLogType: constants.LOG_TYPE_WELFARE_ISCELLCHECK,
-      detentionLogAction,
-      // userCardNumber: "",
-      // userName: ""
+    editDetaineeWelfareData({
+      id: detainee.id,
+      arrestId: detainee.arrestId,
+      detentionLogType,
+      detentionLogAction: detentionLogValue,
     });
   };
 
   render() {
-    const { isCellCheck } = this.props;
+    const {
+      isCellCheck,
+      detainee,
+      cellWelfareData,
+      detentionLogType,
+    } = this.props;
+
     if (!isCellCheck) {
       return <noscript />;
     }
 
-    const { detainee } = this.props;
-    if (detainee.location !== "") { //detainee is away, not in cell
+    if (detainee.location !== '') {
+      // detainee is away, not in cell
       return <CardActions style={styles.content} />;
     }
 
-    const { cellWelfareData } = this.props;
-
-    const detentionLogAction = cellWelfareData.length === 0 ? "" :
-      cellWelfareData.filter(d => d.arrestId === detainee.arrestId &&
-        d.detentionLogType === constants.LOG_TYPE_WELFARE_ISCELLCHECK)[0].detentionLogAction;
+    const detentionLogValue = cellWelfareData.length === 0
+      ? null
+      : cellWelfareData.filter((d) => d.arrestId === detainee.arrestId
+              && d.detentionLogType === detentionLogType)[0].detentionLogAction;
 
     return (
       <CardActions>
-        <ToggleButtonGroup value={detentionLogAction} exclusive onChange={this.handleWelfareAction} style={styles.buttonsGroup}>
+        <ToggleButtonGroup
+          value={detentionLogValue}
+          exclusive
+          onChange={this.handleWelfareAction}
+          style={styles.buttonsGroup}
+        >
           <ToggleButton value="Visual" style={styles.button}>
-            <Avatar src={require("images/WellnessVisual.png")} />
+            <Avatar src={wellnessVisual} />
           </ToggleButton>
           <ToggleButton value="Verbal" style={styles.button}>
-            <Avatar src={require("images/WellnessVerbal.png")} />
+            <Avatar src={wellnessVerbal} />
           </ToggleButton>
         </ToggleButtonGroup>
       </CardActions>
     );
   }
 }
+
+TileFooterTwoButtons.propTypes = {
+  isCellCheck: PropTypes.bool.isRequired,
+  detainee: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    arrestId: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    division: PropTypes.arrayOf(PropTypes.string).isRequired,
+    detentionUnitName: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    intakePhotoResourceUri: PropTypes.string.isRequired,
+    gender: PropTypes.string.isRequired,
+    withCaution: PropTypes.bool.isRequired,
+    cautionsArray: PropTypes.arrayOf(PropTypes.string).isRequired,
+    mustBeKeptAlone: PropTypes.bool.isRequired,
+    isSuicidal: PropTypes.bool.isRequired,
+    isContagious: PropTypes.bool.isRequired,
+    hasWarning: PropTypes.bool.isRequired,
+    isUnderMedication: PropTypes.bool.isRequired,
+  }).isRequired,
+  cellWelfareData: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    arrestId: PropTypes.string.isRequired,
+    detentionLogType: PropTypes.string.isRequired,
+    detentionLogAction: PropTypes.string,
+  })).isRequired,
+  editDetaineeWelfareData: PropTypes.func.isRequired,
+  detentionLogType: PropTypes.string.isRequired,
+};
 
 const mapDispatchToProps = (dispatch) => {
   const editDetaineeWelfareData = (detaineeWelfareData) => {
@@ -81,11 +117,13 @@ const mapDispatchToProps = (dispatch) => {
   return { editDetaineeWelfareData };
 };
 
-const mapStateToProps = (state) => {
-  return {
-    isCellCheck: state.welfareManagementData.welfareFlagData.isCellCheck,
-    cellWelfareData: state.welfareManagementData.cellWelfareData
-  }
-}
+const mapStateToProps = (state) => ({
+  isCellCheck: selectors.getCellCheckFlag(state),
+  cellWelfareData: selectors.getCellWelfareData(state),
+  detentionLogType: selectors.getDetentionLogType(state),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(TileFooterTwoButtons);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(TileFooterTwoButtons);

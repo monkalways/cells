@@ -1,5 +1,6 @@
 import types from './types';
 
+/* set Welfare Flags */
 const setIsMeal = () => ({
   type: types.SET_ISMEAL,
 });
@@ -16,25 +17,26 @@ const resetCellWelfare = () => ({
   type: types.RESET_CELL_WELFARE,
 });
 
+/* Welfare Management Data */
 const createDetaineeWelfareData = (detaineeWelfareData) => ({
   type: types.CREATE_DETAINEE_WELFARE_DATA,
   payload: {
-    detaineeWelfareData
-  }
+    detaineeWelfareData,
+  },
 });
 
 const editDetaineeWelfareData = (detaineeWelfareData) => ({
   type: types.EDIT_DETAINEE_WELFARE_DATA,
   payload: {
-    detaineeWelfareData
-  }
+    detaineeWelfareData,
+  },
 });
 
 const deleteDetaineeWelfareData = (detaineeWelfareData) => ({
   type: types.DELETE_DETAINEE_WELFARE_DATA,
   payload: {
-    detaineeWelfareData
-  }
+    detaineeWelfareData,
+  },
 });
 
 const deleteCellWelfareData = () => ({

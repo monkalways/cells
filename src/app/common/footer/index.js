@@ -1,1 +1,3 @@
-export { default as Footer } from './FooterContainer';
+import FooterContainer from './FooterContainer';
+
+export default FooterContainer;

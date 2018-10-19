@@ -11,7 +11,7 @@ import types from './types';
 const cellInfoReducer = (state = {}, action) => {
   switch (action.type) {
     case types.GET_CELL_INFO_SUCCESS:
-      return action.payload.cellInfo
+      return action.payload.cellInfo;
     case types.GET_CELL_INFO_FAILURE:
       return state;
     default:

@@ -1,7 +1,7 @@
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
+import * as FromWelfareManagement from '../WelfareManagement/duck';
+import * as FromSessionManagement from '../SessionManagement/duck';
 import { operations, selectors } from './duck';
-import * as FromWelfareManagement from 'app/welfareManagement/duck';
-import * as FromSessionManagement from 'app/sessionManagement/duck';
 import CellManagementComponent from './CellManagementComponent';
 
 const mapDispatchToProps = (dispatch) => {
@@ -30,22 +30,23 @@ const mapDispatchToProps = (dispatch) => {
     getCellDetainees,
     saveCellWelfare,
     resetCellWelfare,
-    deleteCellWelfareData
+    deleteCellWelfareData,
   };
 };
 
-const mapStateToProps = (state) => {
-  return {
-    isAuthenticated: FromSessionManagement.selectors.getAuthenticationFlag(state),
-    cell: selectors.getCellInfo(state),
-    cellDetainees: selectors.getCellDetainees(state),
-    isMeal: FromWelfareManagement.selectors.getMealFlag(state),
-    isMedication: FromWelfareManagement.selectors.getMedicationFlag(state),
-    isCellCheck: FromWelfareManagement.selectors.getCellCheckFlag(state),
-    cellWelfareData: FromWelfareManagement.selectors.getCellWelfareData(state),
-  }
-};
+const mapStateToProps = (state) => ({
+  isAuthenticated: FromSessionManagement.selectors.getAuthenticationFlag(state),
+  cell: selectors.getCellInfo(state),
+  cellDetainees: selectors.getCellDetainees(state),
+  isMeal: FromWelfareManagement.selectors.getMealFlag(state),
+  isMedication: FromWelfareManagement.selectors.getMedicationFlag(state),
+  isCellCheck: FromWelfareManagement.selectors.getCellCheckFlag(state),
+  cellWelfareData: FromWelfareManagement.selectors.getCellWelfareData(state),
+});
 
-const CellManagementContainer = connect(mapStateToProps, mapDispatchToProps)(CellManagementComponent);
+const CellManagementContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(CellManagementComponent);
 
 export default CellManagementContainer;

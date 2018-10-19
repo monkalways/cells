@@ -1,15 +1,18 @@
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import FooterComponent from './FooterComponent';
+import * as FromWelfareManagement from '../../WelfareManagement/duck';
+import * as FromSessionManagement from '../../SessionManagement/duck';
 
-const mapStateToProps = (state) => {
-  return {
-    isAuthenticated: state.sessionManagementData.session.isAuthenticated,
-    isMeal: state.welfareManagementData.welfareFlagData.isMeal,
-    isMedication: state.welfareManagementData.welfareFlagData.isMedication,
-    isCellCheck: state.welfareManagementData.welfareFlagData.isCellCheck,
-  }
-};
+const mapStateToProps = (state) => ({
+  isAuthenticated: FromSessionManagement.selectors.getAuthenticationFlag(state),
+  isMeal: FromWelfareManagement.selectors.getMealFlag(state),
+  isMedication: FromWelfareManagement.selectors.getMedicationFlag(state),
+  isCellCheck: FromWelfareManagement.selectors.getCellCheckFlag(state),
+});
 
-const FooterContainer = connect(mapStateToProps, null)(FooterComponent);
+const FooterContainer = connect(
+  mapStateToProps,
+  null,
+)(FooterComponent);
 
 export default FooterContainer;

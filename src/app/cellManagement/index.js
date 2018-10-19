@@ -1,1 +1,3 @@
-export { default as CellManagement } from './CellManagementContainer';
+import CellManagementContainer from './CellManagementContainer';
+
+export default CellManagementContainer;

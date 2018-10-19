@@ -1,7 +1,7 @@
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { operations } from '../../SessionManagement/duck';
 import HeaderComponent from './HeaderComponent';
-import { operations } from 'app/sessionManagement/duck';
 
 const mapDispatchToProps = (dispatch) => {
   const logout = () => {
@@ -11,13 +11,14 @@ const mapDispatchToProps = (dispatch) => {
   return { logout };
 };
 
-const mapStateToProps = (state) => {
-  return {
-    isAuthenticated: state.sessionManagementData.session.isAuthenticated,
-    redirectLogout: state.sessionManagementData.session.redirectLogout,
-  }
-}
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.sessionManagementData.session.isAuthenticated,
+  redirectLogout: state.sessionManagementData.session.redirectLogout,
+});
 
-const HeaderContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(HeaderComponent));
+const HeaderContainer = withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(HeaderComponent));
 
 export default HeaderContainer;

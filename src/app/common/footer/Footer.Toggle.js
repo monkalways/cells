@@ -1,16 +1,17 @@
-import React from "react";
-import { connect } from "react-redux";
-import { withStyles } from "@material-ui/core/styles";
-import Switch from "@material-ui/core/Switch";
-import { operations } from "app/welfareManagement/duck";
-import * as constants from "app/constants";
+import React from 'react';
+import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
+import Switch from '@material-ui/core/Switch';
+import { operations, selectors } from '../../WelfareManagement/duck';
+import * as constants from '../../constants';
 
 const switchStyles = (primaryColor, secondaryColor) => ({
   ctrlSwitchBase: {
     color: primaryColor,
-    "&$ctrlChecked": {
+    '&$ctrlChecked': {
       color: secondaryColor,
-      "& + $ctrlBar": {
+      '& + $ctrlBar': {
         backgroundColor: secondaryColor,
       },
     },
@@ -24,23 +25,34 @@ const switchStyles = (primaryColor, secondaryColor) => ({
     marginLeft: -18,
   },
   ctrlChecked: {
-    transform: "translateX(45px)"
+    transform: 'translateX(45px)',
   },
   ctrlIcon: {
     width: 38,
     height: 38,
-    marginLeft: 10
-  }
+    marginLeft: 10,
+  },
 });
 
 class FooterToggle extends React.PureComponent {
-  state = { checkedToggle: false }
+  state = { checkedToggle: false };
+
+  style = () => {
+    const { primaryColor, secondaryColor } = this.props;
+    return switchStyles(primaryColor, secondaryColor);
+  };
 
   handleChange = (event) => {
-    const { isCellCheck, isMeal, isMedication } = this.props;
+    const {
+      isCellCheck,
+      isMeal,
+      isMedication,
+      cellWelfareData,
+      editDetaineeWelfareData,
+    } = this.props;
 
     this.setState({
-      checkedToggle: event.target.checked
+      checkedToggle: event.target.checked,
     });
 
     let detentionLogType;
@@ -50,29 +62,35 @@ class FooterToggle extends React.PureComponent {
 
     let detentionLogAction;
     if (isMeal || isMedication) {
-      detentionLogAction = !event.target.checked ? constants.WELFARE_ACTION_ACCEPT : constants.WELFARE_ACTION_NOTAPPLICABLE;
+      detentionLogAction = !event.target.checked
+        ? constants.WELFARE_ACTION_ACCEPT
+        : constants.WELFARE_ACTION_NOTAPPLICABLE;
     }
     if (isCellCheck) {
-      detentionLogAction = !event.target.checked ? constants.WELFARE_ACTION_VISUAL : constants.WELFARE_ACTION_VERBAL;
+      detentionLogAction = !event.target.checked
+        ? constants.WELFARE_ACTION_VISUAL
+        : constants.WELFARE_ACTION_VERBAL;
     }
 
-    this.props.cellWelfareData.forEach(d => {
+    cellWelfareData.forEach((d) => {
       const detaineeWelfareData = {
         id: d.id,
         arrestId: d.arrestId,
         detentionLogType,
         detentionLogAction,
-        userCardNumber: "",
-        userName: ""
+        userCardNumber: '',
+        userName: '',
       };
-      this.props.editDetaineeWelfareData(detaineeWelfareData);
+      editDetaineeWelfareData(detaineeWelfareData);
     });
-  }
-
-  style = switchStyles(this.props.primaryColor, this.props.secondaryColor);
+  };
 
   divObject = (props) => {
-    const { classes, checked, onChange } = props;
+    const {
+      classes,
+      checked,
+      onChange,
+    } = props; /* eslint react/prop-types: 0 */
     return (
       <Switch
         checked={checked}
@@ -84,9 +102,10 @@ class FooterToggle extends React.PureComponent {
           checked: classes.ctrlChecked,
           bar: classes.ctrlBar,
           icon: classes.ctrlIcon,
-        }} />
+        }}
+      />
     );
-  }
+  };
 
   render() {
     const { isCellCheck } = this.props;
@@ -94,43 +113,79 @@ class FooterToggle extends React.PureComponent {
 
     const Styled = withStyles(this.style)(this.divObject);
 
-    let leftLabel = "Accept";
-    let rightLabel = "N/A";
+    let leftLabel = 'Accept';
+    let rightLabel = 'N/A';
 
     if (isCellCheck) {
-      leftLabel = "Visual";
-      rightLabel = "Verbal";
+      leftLabel = 'Visual';
+      rightLabel = 'Verbal';
     }
 
     return (
-      <div style={{ display: "flex", flexDirection: "column", alignContent: "center", width: "18%" }}>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignContent: 'center',
+          width: '18%',
+        }}
+      >
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <span style={{ fontSize: 14, fontWeight: 600 }}>{leftLabel}</span>
           <span style={{ fontSize: 14, fontWeight: 600 }}>{rightLabel}</span>
         </div>
-        <div style={{ textAlign: "left" }}><Styled checked={checkedToggle} onChange={this.handleChange} /></div>
+        <div style={{ textAlign: 'left' }}>
+          <Styled checked={checkedToggle} onChange={this.handleChange} />
+        </div>
       </div>
     );
   }
 }
 
+/* FooterToggle.divObject.propTypes = {
+  classes: PropTypes.shape({
+    ctrlSwitchBase: PropTypes.object.isRequired,
+    ctrlChecked: PropTypes.object.isRequired,
+    ctrlBar: PropTypes.object.isRequired,
+    ctrlIcon: PropTypes.object.isRequired,
+  }).isRequired,
+  checked: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+ */
+FooterToggle.propTypes = {
+  isMeal: PropTypes.bool.isRequired,
+  isMedication: PropTypes.bool.isRequired,
+  isCellCheck: PropTypes.bool.isRequired,
+  cellWelfareData: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    arrestId: PropTypes.string.isRequired,
+    detentionLogType: PropTypes.string.isRequired,
+    detentionLogAction: PropTypes.string,
+  })).isRequired,
+  editDetaineeWelfareData: PropTypes.func.isRequired,
+  primaryColor: PropTypes.string.isRequired,
+  secondaryColor: PropTypes.string.isRequired,
+};
+
 const mapDispatchToProps = (dispatch) => {
   const editDetaineeWelfareData = (detaineeWelfareData) => {
     dispatch(operations.editDetaineeWelfareData(detaineeWelfareData));
-  }
+  };
 
   return {
     editDetaineeWelfareData,
   };
 };
 
-const mapStateToProps = (state) => {
-  return {
-    isMeal: state.welfareManagementData.welfareFlagData.isMeal,
-    isMedication: state.welfareManagementData.welfareFlagData.isMedication,
-    isCellCheck: state.welfareManagementData.welfareFlagData.isCellCheck,
-    cellWelfareData: state.welfareManagementData.cellWelfareData,
-  }
-}
+const mapStateToProps = (state) => ({
+  isMeal: selectors.getMealFlag(state),
+  isMedication: selectors.getMedicationFlag(state),
+  isCellCheck: selectors.getCellCheckFlag(state),
+  cellWelfareData: selectors.getCellWelfareData(state),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(FooterToggle);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(FooterToggle);
