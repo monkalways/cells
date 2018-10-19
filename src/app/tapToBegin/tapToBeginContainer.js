@@ -1,7 +1,7 @@
-import { connect } from "react-redux";
-import { operations as welfareOperations } from 'app/welfareManagement/duck';
-import { operations as sessionOperations } from 'app/sessionManagement/duck';
-import TapToBeginComponent from 'app/tapToBegin/tapToBeginComponent';
+import { connect } from 'react-redux';
+import { operations as welfareOperations } from '../WelfareManagement/duck';
+import { operations as sessionOperations } from '../SessionManagement/duck';
+import TapToBeginComponent from './TapToBeginComponent';
 
 const mapDispatchToProps = (dispatch) => {
   const resetCellWelfare = () => {
@@ -16,9 +16,12 @@ const mapDispatchToProps = (dispatch) => {
   //   dispatch(operations.storeStartLocation(startLocation));
   // };
 
-  return { resetCellWelfare, resetRedirectLogout,/* storeStartLocation */ };
+  return { resetCellWelfare, resetRedirectLogout /* storeStartLocation */ };
 };
 
-const TapToBeginContainer = connect(null, mapDispatchToProps)(TapToBeginComponent);
+const TapToBeginContainer = connect(
+  null,
+  mapDispatchToProps,
+)(TapToBeginComponent);
 
 export default TapToBeginContainer;

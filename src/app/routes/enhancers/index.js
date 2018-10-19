@@ -1,1 +1,3 @@
-export { default as RequiresAuth } from './requiresAuthentication'  
+import requiresAuth from './requiresAuthentication';
+
+export default requiresAuth;

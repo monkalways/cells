@@ -10,6 +10,7 @@
     "connected-react-router": "^4.5.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
+    "history": "^4.7.2",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
@@ -39,7 +40,6 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.0",
     "eslint-teamcity": "^2.1.0",
-    "history": "^4.7.2",
     "jest": "^23.6.0",
     "jest-matchers": "^20.0.3",
     "jest-teamcity-reporter": "^0.9.0"

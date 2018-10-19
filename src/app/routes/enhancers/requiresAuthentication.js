@@ -1,55 +1,60 @@
-import React from "react";
-import PropTypes from 'prop-types';
+import React from 'react';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-import { operations } from "app/sessionManagement/duck";
+import { operations, selectors } from '../../SessionManagement/duck';
 
 export default function requiresAuth(WrappedComponent) {
   class AuthenticatedComponent extends React.Component {
-    state = { cardSerialNumber: [] }
-
-    // static propTypes = {
-    //   isAuthenticated: PropTypes.bool.isRequired,
-    //   dispatch: PropTypes.func.isRequired
-    // };
+    state = { cardSerialNumber: [] };
 
     componentDidMount() {
-      document.querySelector("body").addEventListener("keypress", this.cardReadAndAuth);
+      document
+        .querySelector('body')
+        .addEventListener('keypress', this.cardReadAndAuth);
     }
 
-    // componentDidUpdate() {
-    //   this._checkAndRedirect();
-    // }
-
     componentWillUnmount() {
-      document.querySelector("body").removeEventListener("keypress", this.cardReadAndAuth);
+      document
+        .querySelector('body')
+        .removeEventListener('keypress', this.cardReadAndAuth);
     }
 
     cardReadAndAuth = (e) => {
-      if (this.props.isAuthenticated) return;
+      const { isAuthenticated, dispatch, userAuthentication } = this.props;
+
+      if (isAuthenticated) return;
 
       e.preventDefault();
       e.stopPropagation();
 
-      if (WrappedComponent === "DetaineeProfileContainer") {
-        this.props.dispatch(push('/'));
+      if (WrappedComponent === 'DetaineeProfileContainer') {
+        dispatch(push('/'));
       }
 
       this.setState(
-        prevState => ({ cardSerialNumber: [...prevState.cardSerialNumber, e.key] }),
+        (prevState) => ({
+          cardSerialNumber: [...prevState.cardSerialNumber, e.key],
+        }),
         () => {
-          if (this.state.cardSerialNumber.length === 16) {
-            const cardSerialNumber = this.state.cardSerialNumber.join("");
-            this.props.userAuthentication(cardSerialNumber);
+          const { cardSerialNumber } = this.state;
+          if (cardSerialNumber.length === 16) {
+            const stringCardSerialNumber = cardSerialNumber.join('');
+            userAuthentication(stringCardSerialNumber);
           }
-        }
+        },
       );
-    }
+    };
 
     render() {
       return <WrappedComponent {...this.props} />;
     }
   }
+
+  AuthenticatedComponent.propTypes = {
+    isAuthenticated: PropTypes.bool.isRequired,
+    userAuthentication: PropTypes.func.isRequired,
+  };
 
   const mapDispatchToProps = (dispatch) => {
     const userAuthentication = (cardSerialNumber) => {
@@ -59,11 +64,12 @@ export default function requiresAuth(WrappedComponent) {
     return { userAuthentication };
   };
 
-  const mapStateToProps = (state) => {
-    return {
-      isAuthenticated: state.sessionManagementData.session.isAuthenticated
-    };
-  };
+  const mapStateToProps = (state) => ({
+    isAuthenticated: selectors.getAuthenticationFlag(state),
+  });
 
-  return connect(mapStateToProps, mapDispatchToProps)(AuthenticatedComponent);
+  return connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(AuthenticatedComponent);
 }

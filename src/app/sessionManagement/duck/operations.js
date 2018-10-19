@@ -1,7 +1,7 @@
 import actions from './actions';
 import services from './services';
 
-const userAuthentication = (cardSerialNumber) => async dispatch => {
+const userAuthentication = (cardSerialNumber) => async (dispatch) => {
   try {
     const data = await services.userAuthentication(cardSerialNumber);
     dispatch(actions.userAuthenticationSuccess(data));
@@ -10,16 +10,16 @@ const userAuthentication = (cardSerialNumber) => async dispatch => {
   }
 };
 
-const logout = () => dispatch => {
+const logout = () => (dispatch) => {
   dispatch(actions.userLogout());
 };
 
-const resetRedirectLogout = () => dispatch => {
+const resetRedirectLogout = () => (dispatch) => {
   dispatch(actions.resetLogoutRedirect());
 };
 
 export default {
   userAuthentication,
   logout,
-  resetRedirectLogout
+  resetRedirectLogout,
 };

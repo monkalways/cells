@@ -1,1 +1,3 @@
-export { default as TapToBegin } from './tapToBeginContainer';
+import TapToBeginContainer from './TapToBeginContainer';
+
+export default TapToBeginContainer;

@@ -22,5 +22,5 @@ export default {
   userAuthenticationSuccess,
   userAuthenticationFailure,
   userLogout,
-  resetLogoutRedirect
+  resetLogoutRedirect,
 };

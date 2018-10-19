@@ -1,16 +1,14 @@
 import { combineReducers } from 'redux';
-import cellManagementReducer from 'app/cellManagement/duck';
-import activityRoomManagementReducer from 'app/activityRoomManagement/duck';
-import detaineeProfileReducer from 'app/detaineeProfile/duck';
-import welfareManagementReducer from 'app/welfareManagement/duck';
-import sessionManagementReducer from 'app/sessionManagement/duck';
+import cellManagementReducer from './app/CellManagement/duck';
+// import detaineeProfileReducer from './app/DetaineeProfile/duck';
+import welfareManagementReducer from './app/WelfareManagement/duck';
+import sessionManagementReducer from './app/SessionManagement/duck';
 
 const rootReducer = combineReducers({
   cellManagementData: cellManagementReducer,
-  activityRoomManagementData: activityRoomManagementReducer,
-  detaineeProfileData: detaineeProfileReducer,
+  // detaineeProfileData: detaineeProfileReducer,
   welfareManagementData: welfareManagementReducer,
-  sessionManagementData: sessionManagementReducer
+  sessionManagementData: sessionManagementReducer,
 });
 
 export default rootReducer;

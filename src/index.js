@@ -7,7 +7,6 @@ import './index.css';
 import App from './app/App';
 import configureStore from './store';
 
-//const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const history = createBrowserHistory();
 
 const reduxStore = configureStore(history, window.initialReduxState);
@@ -18,6 +17,5 @@ const RootHtml = () => (
       <App />
     </ConnectedRouter>
   </Provider>
-)
+);
 ReactDOM.render(<RootHtml />, document.getElementById('root'));
-

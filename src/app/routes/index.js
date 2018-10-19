@@ -1,36 +1,36 @@
-import { TapToBegin } from '../tapToBegin';
-import { CellManagement } from '../cellManagement';
-import { RequiresAuth } from './enhancers';
+import TapToBeginContainer from '../TapToBegin';
+import CellManagementContainer from '../CellManagement';
+import requiresAuth from './enhancers';
 
 const routes = [
   {
     path: '/',
-    component: TapToBegin,
+    component: TapToBeginContainer,
     exact: true,
   },
   {
     path: '/dmu-cell/:cellName',
-    component: RequiresAuth(TapToBegin),
+    component: requiresAuth(TapToBeginContainer),
     exact: true,
   },
   {
     path: '/dmu-room/:usage',
-    component: RequiresAuth(TapToBegin),
+    component: requiresAuth(TapToBeginContainer),
     exact: true,
   },
   {
     path: '/cellManagement/:cellName',
-    component: RequiresAuth(CellManagement),
+    component: requiresAuth(CellManagementContainer),
     exact: true,
   },
   // {
   //   path: '/roomManagement/:usage',
-  //   component: RequiresAuth(ActivityRoomManagement),
+  //   component: requiresAuth(ActivityRoomManagement),
   //   exact: true,
   // },
   // {
   //   path: '/detaineeProfile/:id',
-  //   component: RequiresAuth(DetaineeProfile),
+  //   component: requiresAuth(DetaineeProfile),
   //   exact: true,
   // }
 ];
