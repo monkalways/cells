@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import CardMedia from '@material-ui/core/CardMedia';
 import maleGenericImage from '../../../../images/maleGenericImage1.png';
 import femaleGenericImage from '../../../../images/femaleGenericImage1.png';
-import unknownGender from '../../../../images/UnknownGender.jpg';
+import unknownGender from '../../../../images/UnknownGender.png';
 
 const styles = {
   cardMedia: {
