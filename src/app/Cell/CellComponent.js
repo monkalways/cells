@@ -18,7 +18,13 @@ const propTypes = {
     }).isRequired,
   }).isRequired,
   initialize: PropTypes.func.isRequired,
-  cellDetails: PropTypes.shape({}),
+  cellDetails: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    genderLabel: PropTypes.string.isRequired,
+    occupancy: PropTypes.number.isRequired,
+    occupancyCount: PropTypes.number.isRequired,
+    cellStatus: PropTypes.string.isRequired,
+  }),
 };
 
 const defaultProps = {
@@ -39,13 +45,12 @@ class CellComponent extends Component {
   };
 
   render() {
-    const { cellDetails, match } = this.props;
+    const { cellDetails } = this.props;
     return (
       <React.Fragment>
         {cellDetails && (
           <Layout>
-            <Header cell={cellDetails} onLogout={this.handleLogout} />
-            <Typography variant="h4">{match.params.name}</Typography>
+            <Header cellDetails={cellDetails} onLogout={this.handleLogout} />
           </Layout>
         )}
       </React.Fragment>

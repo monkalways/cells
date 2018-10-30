@@ -4,7 +4,7 @@ import { Grid, Typography, withStyles } from '@material-ui/core';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  cell: PropTypes.shape({
+  cellDetails: PropTypes.shape({
     name: PropTypes.string.isRequired,
     genderLabel: PropTypes.string.isRequired,
     occupancy: PropTypes.number.isRequired,
@@ -13,7 +13,7 @@ const propTypes = {
   }).isRequired,
 };
 
-const HeaderContent = ({ classes, cell }) => (
+const HeaderContent = ({ classes, cellDetails }) => (
   <Grid container justify="center" className={classes.grid}>
     <Grid container alignItems="center" justify="center">
       <Grid item sm={5}>
@@ -21,7 +21,7 @@ const HeaderContent = ({ classes, cell }) => (
           Cell:
         </Typography>
         <Typography variant="h4" className={classes.headerContent}>
-          {cell.name}
+          {cellDetails.name}
         </Typography>
       </Grid>
       <Grid item sm={7}>
@@ -29,7 +29,7 @@ const HeaderContent = ({ classes, cell }) => (
           Designation:
         </Typography>
         <Typography variant="h6" className={classes.headerContent}>
-          {cell.genderLabel}
+          {cellDetails.genderLabel}
         </Typography>
       </Grid>
       <Grid item sm={5}>
@@ -37,7 +37,7 @@ const HeaderContent = ({ classes, cell }) => (
           Occupancy:
         </Typography>
         <Typography variant="h6" className={classes.headerContent}>
-          {cell.occupancyCount}/{cell.occupancy}
+          {cellDetails.occupancyCount}/{cellDetails.occupancy}
         </Typography>
       </Grid>
       <Grid item sm={7}>
@@ -45,7 +45,7 @@ const HeaderContent = ({ classes, cell }) => (
           Cell Status:
         </Typography>
         <Typography variant="h6" className={classes.headerContent}>
-          {cell.cellStatus}
+          {cellDetails.cellStatus}
         </Typography>
       </Grid>
     </Grid>

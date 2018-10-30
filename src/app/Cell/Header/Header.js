@@ -10,7 +10,7 @@ import HeaderContent from './HeaderContent';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  cell: PropTypes.shape({
+  cellDetails: PropTypes.shape({
     name: PropTypes.string.isRequired,
     genderLabel: PropTypes.string.isRequired,
     occupancy: PropTypes.number.isRequired,
@@ -20,7 +20,7 @@ const propTypes = {
   onLogout: PropTypes.func.isRequired,
 };
 
-const Header = ({ classes, cell, onLogout }) => (
+const Header = ({ classes, cellDetails, onLogout }) => (
   <div className={classes.root}>
     <AppBar position="static" className={classes.appBar}>
       <Toolbar>
@@ -31,7 +31,7 @@ const Header = ({ classes, cell, onLogout }) => (
         >
           <img src={logoIcon} alt="EPS Logo" width={70} />
         </IconButton>
-        <HeaderContent cell={cell} />
+        <HeaderContent cellDetails={cellDetails} />
         <IconButton
           className={classes.logoutButton}
           color="inherit"
