@@ -1,5 +1,5 @@
 import TapToBeginPage from '../TapToBeginPage';
-import Cells from '../Cells';
+import Cell from '../Cell';
 
 const routes = [
   {
@@ -9,7 +9,7 @@ const routes = [
   },
   {
     path: '/cells/:name/overview',
-    component: Cells,
+    component: Cell,
     exact: true,
   },
 ];

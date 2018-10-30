@@ -6,13 +6,15 @@ import { LAYOUT } from '../../constants';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  children: PropTypes.shape({}).isRequired,
+  children: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 const Layout = ({ classes, children }) => (
   <Grid container justify="center">
     <Grid container className={classes.container}>
-      <Grid item>{children}</Grid>
+      <Grid item xs={12}>
+        {children}
+      </Grid>
     </Grid>
   </Grid>
 );
