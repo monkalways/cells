@@ -4,7 +4,7 @@ import { Grid, Typography, withStyles } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import { LAYOUT } from '../constants';
+import constants from '../constants';
 import logo from './EPSlogo.png';
 
 const propTypes = {
@@ -49,10 +49,10 @@ TapToBeginPage.propTypes = propTypes;
 export default compose(
   withStyles((theme) => ({
     container: {
-      height: LAYOUT.height,
+      height: constants.LAYOUT.height,
       background: '#3D89F7', // TODO: set this color in theme config
       [theme.breakpoints.up('lg')]: {
-        width: LAYOUT.width,
+        width: constants.LAYOUT.width,
       },
       cursor: 'pointer',
     },

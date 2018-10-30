@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, withStyles } from '@material-ui/core';
 
-import { LAYOUT } from '../../constants';
+import constants from '../../constants';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -23,9 +23,9 @@ Layout.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   container: {
-    height: LAYOUT.height,
+    height: constants.LAYOUT.height,
     [theme.breakpoints.up('lg')]: {
-      width: LAYOUT.width,
+      width: constants.LAYOUT.width,
     },
   },
 }))(Layout);
