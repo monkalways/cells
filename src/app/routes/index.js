@@ -8,7 +8,7 @@ const routes = [
     exact: true,
   },
   {
-    path: '/cells/:name/overview',
+    path: '/cells/:name/home',
     component: Cell,
     exact: true,
   },

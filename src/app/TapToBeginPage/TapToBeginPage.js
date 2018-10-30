@@ -22,7 +22,7 @@ const propTypes = {
 const TapToBeginPage = ({ classes, history, match }) => {
   const handleClick = () => {
     const { name } = match.params;
-    history.push(`/cells/${name}/overview`);
+    history.push(`/cells/${name}/home`);
   };
   return (
     <Grid container justify="center">
