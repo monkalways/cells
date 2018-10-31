@@ -6,7 +6,10 @@ import constants from '../../constants';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  children: PropTypes.arrayOf(PropTypes.any).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };
 
 const Layout = ({ classes, children }) => (

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
-import { withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
 import Layout from './Layout';
 import Header from './Header';
+import Overview from './Overview';
+import Meal from './Meal';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -25,10 +27,12 @@ const propTypes = {
     occupancyCount: PropTypes.number.isRequired,
     cellStatus: PropTypes.string.isRequired,
   }),
+  cellDetainees: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 const defaultProps = {
   cellDetails: null,
+  cellDetainees: null,
 };
 
 class CellComponent extends Component {
@@ -45,12 +49,25 @@ class CellComponent extends Component {
   };
 
   render() {
-    const { cellDetails } = this.props;
+    const { cellDetails, cellDetainees, match } = this.props;
     return (
       <React.Fragment>
         {cellDetails && (
           <Layout>
             <Header cellDetails={cellDetails} onLogout={this.handleLogout} />
+            {cellDetainees
+              && cellDetainees.length > 0 && (
+                <Switch>
+                  <Route
+                    path={match.url}
+                    render={(props) => (
+                      <Overview {...props} cellDetainees={cellDetainees} />
+                    )}
+                    exact
+                  />
+                  <Route path={`${match.url}/meal`} component={Meal} />
+                </Switch>
+            )}
           </Layout>
         )}
       </React.Fragment>

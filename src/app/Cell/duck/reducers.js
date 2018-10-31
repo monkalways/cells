@@ -12,8 +12,18 @@ const detailsReducer = (state = null, action) => {
   }
 };
 
+const detaineesReducer = (state = [], action) => {
+  switch (action.type) {
+    case types.GET_CELL_DETAINEES_SUCCESS:
+      return [...action.payload];
+    default:
+      return state;
+  }
+};
+
 const cellReducer = combineReducers({
   details: detailsReducer,
+  detainees: detaineesReducer,
 });
 
 export default cellReducer;

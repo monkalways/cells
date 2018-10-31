@@ -1,4 +1,4 @@
-const CELL_DETAILS_URL = 'api/cells/';
+const CELL_URL = 'api/cells/';
 
 const HEADERS = {
   headers: {
@@ -9,6 +9,6 @@ const HEADERS = {
 };
 
 export default {
-  CELL_DETAILS_URL,
+  CELL_URL,
   HEADERS,
 };

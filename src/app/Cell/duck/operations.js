@@ -5,6 +5,7 @@ const getCellDetails = (
   name,
   getCellDetailsService = services.getCellDetails,
   getCellDetailsAction = actions.getCellDetails,
+  // TODO: add global error handler
   // setAppErrorAction = commonActions.setAppError,
 ) => async (dispatch) => {
   try {
@@ -15,6 +16,22 @@ const getCellDetails = (
   }
 };
 
+const getCellDetainees = (
+  name,
+  getCellDetaineesService = services.getCellDetainees,
+  getCellDetaineesAction = actions.getCellDetainees,
+  // TODO: add global error handler
+  // setAppErrorAction = commonActions.setAppError,
+) => async (dispatch) => {
+  try {
+    const payload = await getCellDetaineesService(name);
+    await dispatch(getCellDetaineesAction(payload));
+  } catch (error) {
+    // dispatch(setAppErrorAction());
+  }
+};
+
 export default {
   getCellDetails,
+  getCellDetainees,
 };

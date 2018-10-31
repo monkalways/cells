@@ -10,7 +10,7 @@ const routes = [
   {
     path: '/cells/:name/home',
     component: Cell,
-    exact: true,
+    exact: false,
   },
 ];
 

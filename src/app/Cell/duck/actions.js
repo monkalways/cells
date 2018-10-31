@@ -5,6 +5,12 @@ const getCellDetails = (payload) => ({
   payload,
 });
 
+const getCellDetainees = (payload) => ({
+  type: types.GET_CELL_DETAINEES_SUCCESS,
+  payload,
+});
+
 export default {
   getCellDetails,
+  getCellDetainees,
 };
