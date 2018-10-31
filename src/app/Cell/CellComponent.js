@@ -49,25 +49,29 @@ class CellComponent extends Component {
   };
 
   render() {
-    const { cellDetails, cellDetainees, match } = this.props;
+    const {
+      cellDetails, cellDetainees, match, classes,
+    } = this.props;
     return (
       <React.Fragment>
         {cellDetails && (
           <Layout>
             <Header cellDetails={cellDetails} onLogout={this.handleLogout} />
-            {cellDetainees
-              && cellDetainees.length > 0 && (
-                <Switch>
-                  <Route
-                    path={match.url}
-                    render={(props) => (
-                      <Overview {...props} cellDetainees={cellDetainees} />
-                    )}
-                    exact
-                  />
-                  <Route path={`${match.url}/meal`} component={Meal} />
-                </Switch>
-            )}
+            <div className={classes.body}>
+              {cellDetainees
+                && cellDetainees.length > 0 && (
+                  <Switch>
+                    <Route
+                      path={match.url}
+                      render={(props) => (
+                        <Overview {...props} cellDetainees={cellDetainees} />
+                      )}
+                      exact
+                    />
+                    <Route path={`${match.url}/meal`} component={Meal} />
+                  </Switch>
+              )}
+            </div>
           </Layout>
         )}
       </React.Fragment>
@@ -79,8 +83,10 @@ CellComponent.propTypes = propTypes;
 CellComponent.defaultProps = defaultProps;
 
 export default compose(
-  withStyles(() => ({
-    container: {},
+  withStyles((theme) => ({
+    body: {
+      marginTop: theme.spacing.unit,
+    },
   })),
   withRouter,
 )(CellComponent);

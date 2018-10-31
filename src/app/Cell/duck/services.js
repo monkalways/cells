@@ -64,6 +64,7 @@ const getCellDetainees = async (name) => {
     carePlanSafetyToSelfRiskCode: detainee.carePlanSafetyToSelfRiskCode,
     hasWarning: detainee.hasWarning,
     mustBeKeptAlone: detainee.mustBeKeptAlone,
+    location: detainee.location,
     closed: detainee.closed,
     dob: detainee.dob,
     division: detainee.division,
