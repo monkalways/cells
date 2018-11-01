@@ -7,6 +7,7 @@ import { compose } from 'recompose';
 import Layout from '../common/Layout';
 import Header from './Header';
 import Overview from './Overview';
+import CellCheck from './CellCheck';
 import Meal from './Meal';
 
 const propTypes = {
@@ -62,6 +63,11 @@ class CellComponent extends Component {
                 <Route
                   path={match.url}
                   render={(props) => <Overview cellName={name} {...props} />}
+                  exact
+                />
+                <Route
+                  path={`${match.url}/cell-check`}
+                  render={(props) => <CellCheck cellName={name} {...props} />}
                   exact
                 />
                 <Route path={`${match.url}/meal`} component={Meal} />

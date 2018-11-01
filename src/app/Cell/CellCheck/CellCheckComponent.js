@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, withStyles } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
-import CellDetaineeCard from '../CellDetaineeCard';
+import CellDetaineeGrid from '../CellDetaineeGrid';
+import CellCheckCellDetaineeCard from './CellCheckCellDetaineeCard';
 import CellCheckFooter from './CellCheckFooter';
 
 const propTypes = {
-  classes: PropTypes.shape({}).isRequired,
   cellDetainees: PropTypes.arrayOf(PropTypes.shape({})),
   isAuthenticated: PropTypes.bool.isRequired,
   getCellDetainees: PropTypes.func.isRequired,
@@ -17,28 +17,28 @@ const defaultProps = {
   cellDetainees: [],
 };
 
-class OverviewComponent extends Component {
+class CellCheckComponent extends Component {
   componentDidMount() {
     const { cellName, getCellDetainees } = this.props;
     getCellDetainees(cellName);
   }
 
   render() {
-    const { classes, cellDetainees, isAuthenticated } = this.props;
+    const { cellDetainees, isAuthenticated } = this.props;
     return (
       <React.Fragment>
         {cellDetainees.length > 0 ? (
           <React.Fragment>
-            <Grid container className={classes.container} spacing={8}>
+            <CellDetaineeGrid>
               {cellDetainees.map((cellDetainee) => (
                 <Grid key={cellDetainee.id} item sm={4}>
-                  <CellDetaineeCard
+                  <CellCheckCellDetaineeCard
                     cellDetainee={cellDetainee}
                     isAuthenticated={isAuthenticated}
                   />
                 </Grid>
               ))}
-            </Grid>
+            </CellDetaineeGrid>
             <CellCheckFooter />
           </React.Fragment>
         ) : (
@@ -49,17 +49,7 @@ class OverviewComponent extends Component {
   }
 }
 
-OverviewComponent.propTypes = propTypes;
-OverviewComponent.defaultProps = defaultProps;
+CellCheckComponent.propTypes = propTypes;
+CellCheckComponent.defaultProps = defaultProps;
 
-export default withStyles((theme) => ({
-  container: {
-    height: theme.spacing.unit * 97,
-    overflowY: 'auto',
-    marginLeft: 0,
-    marginRight: 0,
-    marginBottom: theme.spacing.unit * 0.4,
-    backgroundColor: '#A8C6FA', // TODO: move color to theme
-    width: '100%',
-  },
-}))(OverviewComponent);
+export default CellCheckComponent;
