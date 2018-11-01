@@ -12,9 +12,12 @@ const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   cellDetails: PropTypes.shape({}).isRequired,
   onLogout: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
-const Header = ({ classes, cellDetails, onLogout }) => (
+const Header = ({
+  classes, cellDetails, onLogout, isAuthenticated,
+}) => (
   <div className={classes.root}>
     <AppBar position="static" className={classes.appBar}>
       <Toolbar>
@@ -26,14 +29,16 @@ const Header = ({ classes, cellDetails, onLogout }) => (
           <img src={logoIcon} alt="EPS Logo" width={70} />
         </IconButton>
         <HeaderContent cellDetails={cellDetails} />
-        <IconButton
-          className={classes.logoutButton}
-          color="inherit"
-          aria-label="Menu"
-          onClick={onLogout}
-        >
-          <CloseIcon className={classes.logoutIcon} />
-        </IconButton>
+        {isAuthenticated && (
+          <IconButton
+            className={classes.logoutButton}
+            color="inherit"
+            aria-label="Menu"
+            onClick={onLogout}
+          >
+            <CloseIcon className={classes.logoutIcon} />
+          </IconButton>
+        )}
       </Toolbar>
     </AppBar>
   </div>

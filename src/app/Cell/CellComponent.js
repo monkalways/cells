@@ -22,6 +22,7 @@ const propTypes = {
   cellDetails: PropTypes.shape({}),
   getCellDetails: PropTypes.func.isRequired,
   logOut: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 const defaultProps = {
@@ -43,13 +44,19 @@ class CellComponent extends Component {
   };
 
   render() {
-    const { cellDetails, match, classes } = this.props;
+    const {
+      cellDetails, match, classes, isAuthenticated,
+    } = this.props;
     const { name } = match.params;
     return (
       <React.Fragment>
         {cellDetails && (
           <Layout>
-            <Header cellDetails={cellDetails} onLogout={this.handleLogout} />
+            <Header
+              cellDetails={cellDetails}
+              onLogout={this.handleLogout}
+              isAuthenticated={isAuthenticated}
+            />
             <div className={classes.body}>
               <Switch>
                 <Route
