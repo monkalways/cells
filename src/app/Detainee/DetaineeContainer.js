@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
-import { operations, selectors } from './duck';
+// import { connect } from 'react-redux';
+// import { operations, selectors } from './duck';
 import DetaineeComponent from './DetaineeComponent';
 
 // export const mapStateToProps = (
@@ -10,7 +10,7 @@ import DetaineeComponent from './DetaineeComponent';
 // });
 
 // export const mapDispatchToProps = (dispatch) => ({
-//   // eslint-disable-next-line max-len
+// eslint-disable-next-line max-len
 //   getCellDetails: (name, getCellDetails = operations.getCellDetails) => dispatch(getCellDetails(name)),
 // });
 

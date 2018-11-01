@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
-import { Route, Switch, withRouter } from 'react-router-dom';
+// import { Route, Switch, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
 // import Layout from './Layout';
@@ -40,24 +41,24 @@ const defaultProps = {
 class DetaineeComponent extends Component {
   componentDidMount() {
     // const { match, getDetainee } = this.props;
-    const { match } = this.props;
-    const { id } = match.params;
+    // const { match } = this.props;
+    // const { id } = match.params;
     // getDetainee(name);
-    console.log(match.params);
-    console.log(id);
+    // console.log(match.params);
+    // console.log(id);
   }
 
   handleLogout = () => {
-    const { history, match } = this.props;
-    const { id } = match.params;
+    // const { history, match } = this.props;
+    // const { id } = match.params;
     // Make sure this logs out to the correct page
     // Look at the 'from' parameter in the URL to determine this
     // history.push(`/cells/${name}`);
   };
 
   render() {
-    const { detainee, match, classes } = this.props;
-    const { name } = match.params;
+    // const { detainee, match, classes } = this.props;
+    // const { name } = match.params;
     return (
       <React.Fragment>
         Detainee
