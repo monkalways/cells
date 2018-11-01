@@ -63,7 +63,7 @@ OverviewComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   container: {
-    height: theme.spacing.unit * 105,
+    height: theme.spacing.unit * 97,
     overflowY: 'auto',
     marginLeft: 0,
     marginRight: 0,
