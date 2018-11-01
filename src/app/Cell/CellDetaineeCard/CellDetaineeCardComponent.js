@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, withStyles } from '@material-ui/core';
+import { Card, CardMedia, withStyles } from '@material-ui/core';
 
 import CellDetaineeCardHeader from './CellDetaineeCardHeader';
 import CellDetaineeCardFooter from './CellDetaineeCardFooter';
-import detaineeImage from './detainee.png';
+import detaineeImage from './detainee.PNG';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -22,9 +22,11 @@ const CellDetaineeCardComponent = ({ classes, cellDetainee }) => {
   return (
     <Card className={classes.card}>
       <CellDetaineeCardHeader cellDetainee={cellDetainee} />
-
-      <img className={classes.media} src={getDetaineeImage()} alt="detainee" />
-
+      <CardMedia
+        className={classes.media}
+        image={getDetaineeImage()}
+        title={`${cellDetainee.firstName} ${cellDetainee.lastName}`}
+      />
       <CellDetaineeCardFooter cellDetainee={cellDetainee} />
     </Card>
   );
@@ -38,9 +40,7 @@ export default withStyles((theme) => ({
     backgroundColor: '#EBEBEB',
   },
   media: {
-    height: 168,
-    display: 'block',
-    backgroundSize: 'cover',
-    margin: 'auto',
+    height: 0,
+    paddingTop: '66.25%', // 16:9
   },
 }))(CellDetaineeCardComponent);
