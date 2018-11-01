@@ -19,14 +19,9 @@ const propTypes = {
       name: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  cellDetails: PropTypes.shape({}),
   getCellDetails: PropTypes.func.isRequired,
-  cellDetails: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    genderLabel: PropTypes.string.isRequired,
-    occupancy: PropTypes.number.isRequired,
-    occupancyCount: PropTypes.number.isRequired,
-    cellStatus: PropTypes.string.isRequired,
-  }),
+  logOut: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
@@ -41,9 +36,10 @@ class CellComponent extends Component {
   }
 
   handleLogout = () => {
-    const { history, match } = this.props;
+    const { history, match, logOut } = this.props;
     const { name } = match.params;
     history.push(`/cells/${name}`);
+    logOut();
   };
 
   render() {
