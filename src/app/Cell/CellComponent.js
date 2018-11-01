@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import Layout from './Layout';
+import Layout from '../common/Layout';
 import Header from './Header';
 import Overview from './Overview';
 import Meal from './Meal';
