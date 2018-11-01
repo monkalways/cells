@@ -51,7 +51,7 @@ class OverviewComponent extends Component {
             />
           </React.Fragment>
         ) : (
-          <div>Loading ...</div>
+          <div>Loading ...</div> // TODO: replace with progress bar
         )}
       </React.Fragment>
     );
