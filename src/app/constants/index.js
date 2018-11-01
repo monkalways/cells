@@ -3,4 +3,12 @@ const LAYOUT = {
   height: 950,
 };
 
-export default { LAYOUT };
+const HEADERS = {
+  headers: {
+    Accept: 'application/json,',
+    'x-work-domain': 'edmonton',
+    authorization: 'Basic Y3BiMTpkZXZlMzMzMw==',
+  },
+};
+
+export default { LAYOUT, HEADERS };

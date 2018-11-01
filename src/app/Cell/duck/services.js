@@ -1,5 +1,6 @@
 import axios from 'axios';
 import constants from '../constants';
+import commonConstants from '../../constants';
 
 const getDesignation = (genderLabel) => {
   if (!genderLabel) return genderLabel;
@@ -24,7 +25,7 @@ const getDesignation = (genderLabel) => {
 const getCellDetails = async (name) => {
   const response = await axios.get(
     `${process.env.REACT_APP_CELL_SERVICE_URL}${constants.CELL_URL}${name}`,
-    constants.HEADERS,
+    commonConstants.HEADERS,
   );
 
   const {
@@ -69,7 +70,7 @@ const getCellDetainees = async (name) => {
     `${process.env.REACT_APP_CELL_SERVICE_URL}${
       constants.CELL_URL
     }${name}/get-cell-detainees`,
-    constants.HEADERS,
+    commonConstants.HEADERS,
   );
 
   return response.data.map((detainee) => ({
