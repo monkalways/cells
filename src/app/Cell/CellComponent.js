@@ -19,7 +19,7 @@ const propTypes = {
       name: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  initialize: PropTypes.func.isRequired,
+  getCellDetails: PropTypes.func.isRequired,
   cellDetails: PropTypes.shape({
     name: PropTypes.string.isRequired,
     genderLabel: PropTypes.string.isRequired,
@@ -27,19 +27,17 @@ const propTypes = {
     occupancyCount: PropTypes.number.isRequired,
     cellStatus: PropTypes.string.isRequired,
   }),
-  cellDetainees: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 const defaultProps = {
   cellDetails: null,
-  cellDetainees: null,
 };
 
 class CellComponent extends Component {
   componentDidMount() {
-    const { match, initialize } = this.props;
+    const { match, getCellDetails } = this.props;
     const { name } = match.params;
-    initialize(name);
+    getCellDetails(name);
   }
 
   handleLogout = () => {
@@ -49,28 +47,22 @@ class CellComponent extends Component {
   };
 
   render() {
-    const {
-      cellDetails, cellDetainees, match, classes,
-    } = this.props;
+    const { cellDetails, match, classes } = this.props;
+    const { name } = match.params;
     return (
       <React.Fragment>
         {cellDetails && (
           <Layout>
             <Header cellDetails={cellDetails} onLogout={this.handleLogout} />
             <div className={classes.body}>
-              {cellDetainees
-                && cellDetainees.length > 0 && (
-                  <Switch>
-                    <Route
-                      path={match.url}
-                      render={(props) => (
-                        <Overview {...props} cellDetainees={cellDetainees} />
-                      )}
-                      exact
-                    />
-                    <Route path={`${match.url}/meal`} component={Meal} />
-                  </Switch>
-              )}
+              <Switch>
+                <Route
+                  path={match.url}
+                  render={(props) => <Overview cellName={name} {...props} />}
+                  exact
+                />
+                <Route path={`${match.url}/meal`} component={Meal} />
+              </Switch>
             </div>
           </Layout>
         )}

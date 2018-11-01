@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Grid, withStyles } from '@material-ui/core';
 
@@ -7,28 +7,68 @@ import OverviewFooter from './OverviewFooter';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  cellDetainees: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  cellDetainees: PropTypes.arrayOf(PropTypes.shape({})),
+  isAuthenticated: PropTypes.bool.isRequired,
+  getCellDetainees: PropTypes.func.isRequired,
+  handleSignIn: PropTypes.func.isRequired,
+  cellName: PropTypes.string.isRequired,
 };
 
-const OverviewComponent = ({ classes, cellDetainees }) => (
-  <React.Fragment>
-    <Grid container className={classes.container} spacing={8}>
-      {cellDetainees.map((cellDetainee) => (
-        <Grid key={cellDetainee.id} item sm={4}>
-          <CellDetaineeCard cellDetainee={cellDetainee} />
-        </Grid>
-      ))}
-    </Grid>
-    <OverviewFooter />
-  </React.Fragment>
-);
+const defaultProps = {
+  cellDetainees: [],
+};
+
+class OverviewComponent extends Component {
+  componentDidMount() {
+    const { cellName, getCellDetainees } = this.props;
+    getCellDetainees(cellName);
+  }
+
+  render() {
+    const {
+      classes,
+      cellDetainees,
+      isAuthenticated,
+      handleSignIn,
+    } = this.props;
+    return (
+      <React.Fragment>
+        {cellDetainees.length > 0 ? (
+          <React.Fragment>
+            <Grid container className={classes.container} spacing={8}>
+              {cellDetainees.map((cellDetainee) => (
+                <Grid key={cellDetainee.id} item sm={4}>
+                  <CellDetaineeCard
+                    cellDetainee={cellDetainee}
+                    isAuthenticated={isAuthenticated}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+            <OverviewFooter
+              isAuthenticated={isAuthenticated}
+              onSignIn={handleSignIn}
+            />
+          </React.Fragment>
+        ) : (
+          <div>Loading ...</div>
+        )}
+      </React.Fragment>
+    );
+  }
+}
 
 OverviewComponent.propTypes = propTypes;
+OverviewComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   container: {
     height: theme.spacing.unit * 105,
-    overflowY: 'scroll',
-    marginBottom: theme.spacing.unit,
+    overflowY: 'auto',
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: theme.spacing.unit * 0.4,
+    backgroundColor: '#A8C6FA', // TODO: move color to theme
+    width: '100%',
   },
 }))(OverviewComponent);

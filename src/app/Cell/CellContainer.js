@@ -5,21 +5,13 @@ import CellComponent from './CellComponent';
 export const mapStateToProps = (
   state,
   cellDetails = selectors.getCellDetails(state),
-  cellDetainees = selectors.getCellDetainees(state),
 ) => ({
   cellDetails,
-  cellDetainees,
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  initialize: (
-    name,
-    getCellDetails = operations.getCellDetails,
-    getCellDetainees = operations.getCellDetainees,
-  ) => {
-    dispatch(getCellDetails(name));
-    dispatch(getCellDetainees(name));
-  },
+  // eslint-disable-next-line max-len
+  getCellDetails: (name, getCellDetails = operations.getCellDetails) => dispatch(getCellDetails(name)),
 });
 
 export default connect(
