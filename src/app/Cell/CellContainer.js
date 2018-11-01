@@ -1,13 +1,18 @@
 import { connect } from 'react-redux';
 import { operations, selectors } from './duck';
-import { operations as authenticationOperations } from '../Authentication/duck';
+import {
+  operations as authenticationOperations,
+  selectors as authenticationSelectors,
+} from '../Authentication/duck';
 import CellComponent from './CellComponent';
 
 export const mapStateToProps = (
   state,
   cellDetails = selectors.getCellDetails(state),
+  isAuthenticated = authenticationSelectors.isAuthenticated(state),
 ) => ({
   cellDetails,
+  isAuthenticated,
 });
 
 export const mapDispatchToProps = (dispatch) => ({

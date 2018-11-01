@@ -30,6 +30,7 @@ class OverviewComponent extends Component {
       cellDetainees,
       isAuthenticated,
       handleSignIn,
+      cellName,
     } = this.props;
     return (
       <React.Fragment>
@@ -48,6 +49,7 @@ class OverviewComponent extends Component {
             <OverviewFooter
               isAuthenticated={isAuthenticated}
               onSignIn={handleSignIn}
+              cellName={cellName}
             />
           </React.Fragment>
         ) : (
@@ -63,7 +65,7 @@ OverviewComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   container: {
-    height: theme.spacing.unit * 105,
+    height: theme.spacing.unit * 97,
     overflowY: 'auto',
     marginLeft: 0,
     marginRight: 0,

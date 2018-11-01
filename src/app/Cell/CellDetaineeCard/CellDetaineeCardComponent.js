@@ -5,19 +5,31 @@ import { Card, CardMedia, withStyles } from '@material-ui/core';
 import CellDetaineeCardHeader from './CellDetaineeCardHeader';
 import CellDetaineeCardFooter from './CellDetaineeCardFooter';
 import detaineeImage from './detainee.PNG';
+import detaineeAnonymousImage from './detainee-anonymous.PNG';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  cellDetainee: PropTypes.shape({}).isRequired, // TODO: expand detainee properties
+  cellDetainee: PropTypes.shape({
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+  }).isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
-const CellDetaineeCardComponent = ({ classes, cellDetainee }) => {
+const CellDetaineeCardComponent = ({
+  classes,
+  cellDetainee,
+  isAuthenticated,
+}) => {
   const getDetaineeImage = () => {
-    const { intakePhotoResourceUri } = cellDetainee;
-    if (intakePhotoResourceUri) {
-      return intakePhotoResourceUri;
+    if (isAuthenticated) {
+      const { intakePhotoResourceUri } = cellDetainee;
+      if (intakePhotoResourceUri) {
+        return intakePhotoResourceUri;
+      }
+      return detaineeImage;
     }
-    return detaineeImage;
+    return detaineeAnonymousImage;
   };
   return (
     <Card className={classes.card}>
@@ -27,7 +39,10 @@ const CellDetaineeCardComponent = ({ classes, cellDetainee }) => {
         image={getDetaineeImage()}
         title={`${cellDetainee.firstName} ${cellDetainee.lastName}`}
       />
-      <CellDetaineeCardFooter cellDetainee={cellDetainee} />
+      <CellDetaineeCardFooter
+        cellDetainee={cellDetainee}
+        isAuthenticated={isAuthenticated}
+      />
     </Card>
   );
 };

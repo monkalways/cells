@@ -8,12 +8,12 @@ import {
   withStyles,
 } from '@material-ui/core';
 
-import InCellIcon from '../../images/InCell.png';
-import InTransitIcon from '../../images/InTransit.png';
-import BailHearingGeneralIcon from '../../images/BailHearingGeneral.png';
-import FingerprintingIcon from '../../images/Fingerprinting.png';
-import MedicalVisitIcon from '../../images/MedicalVisit.png';
-import PhoneAcceptIcon from '../../images/PhoneAccept.png';
+import InCellIcon from '../../../images/InCell.png';
+import InTransitIcon from '../../../images/InTransit.png';
+import BailHearingGeneralIcon from '../../../images/BailHearingGeneral.png';
+import FingerprintingIcon from '../../../images/Fingerprinting.png';
+import MedicalVisitIcon from '../../../images/MedicalVisit.png';
+import PhoneAcceptIcon from '../../../images/PhoneAccept.png';
 
 const LOCATION_PHONE_ACCEPT = 'phone - in progress';
 const LOCATION_MEDICAL_VISIT = 'medical - in progress';
