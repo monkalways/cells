@@ -30,6 +30,7 @@ class OverviewComponent extends Component {
       cellDetainees,
       isAuthenticated,
       handleSignIn,
+      cellName,
     } = this.props;
     return (
       <React.Fragment>
@@ -48,6 +49,7 @@ class OverviewComponent extends Component {
             <OverviewFooter
               isAuthenticated={isAuthenticated}
               onSignIn={handleSignIn}
+              cellName={cellName}
             />
           </React.Fragment>
         ) : (
