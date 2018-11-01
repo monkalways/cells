@@ -6,7 +6,7 @@ const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   cellDetails: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    genderLabel: PropTypes.string.isRequired,
+    designation: PropTypes.string.isRequired,
     occupancy: PropTypes.number.isRequired,
     occupancyCount: PropTypes.number.isRequired,
     cellStatus: PropTypes.string.isRequired,
@@ -29,7 +29,7 @@ const HeaderContent = ({ classes, cellDetails }) => (
           Designation:
         </Typography>
         <Typography variant="h6" className={classes.headerContent}>
-          {cellDetails.genderLabel}
+          {cellDetails.designation}
         </Typography>
       </Grid>
       <Grid item sm={5}>

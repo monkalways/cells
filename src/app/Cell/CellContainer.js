@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { operations, selectors } from './duck';
+import { operations as authenticationOperations } from '../Authentication/duck';
 import CellComponent from './CellComponent';
 
 export const mapStateToProps = (
@@ -10,8 +11,12 @@ export const mapStateToProps = (
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  // eslint-disable-next-line max-len
-  getCellDetails: (name, getCellDetails = operations.getCellDetails) => dispatch(getCellDetails(name)),
+  getCellDetails: (name, getCellDetails = operations.getCellDetails) => {
+    dispatch(getCellDetails(name));
+  },
+  logOut: (logOut = authenticationOperations.logOut) => {
+    dispatch(logOut());
+  },
 });
 
 export default connect(

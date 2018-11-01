@@ -1,6 +1,26 @@
 import axios from 'axios';
 import constants from '../constants';
 
+const getDesignation = (genderLabel) => {
+  if (!genderLabel) return genderLabel;
+  switch (genderLabel) {
+    case 'FA':
+      return 'Female Adult';
+    case 'FJ':
+      return 'Female Juvenile';
+    case 'FY':
+      return 'Female Youth';
+    case 'MA':
+      return 'Male Adult';
+    case 'MJ':
+      return 'Male Juvenile';
+    case 'MY':
+      return 'Male Youth';
+    default:
+      return genderLabel;
+  }
+};
+
 const getCellDetails = async (name) => {
   const response = await axios.get(
     `${process.env.REACT_APP_CELL_SERVICE_URL}${constants.CELL_URL}${name}`,
@@ -30,6 +50,7 @@ const getCellDetails = async (name) => {
     effectiveToTime,
     genderColor,
     genderLabel,
+    designation: getDesignation(genderLabel),
     id,
     isActivityRoom,
     name,

@@ -5,6 +5,11 @@ const authenticate = (payload) => ({
   payload,
 });
 
+const logOut = () => ({
+  type: types.LOG_OUT,
+});
+
 export default {
   authenticate,
+  logOut,
 };

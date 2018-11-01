@@ -10,13 +10,7 @@ import HeaderContent from './HeaderContent';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  cellDetails: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    genderLabel: PropTypes.string.isRequired,
-    occupancy: PropTypes.number.isRequired,
-    occupancyCount: PropTypes.number.isRequired,
-    cellStatus: PropTypes.string.isRequired,
-  }).isRequired,
+  cellDetails: PropTypes.shape({}).isRequired,
   onLogout: PropTypes.func.isRequired,
 };
 
