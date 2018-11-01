@@ -1,7 +1,8 @@
 import actions from './actions';
 
-const { authenticate } = actions;
+const { authenticate, logOut } = actions;
 
 export default {
   authenticate,
+  logOut,
 };
