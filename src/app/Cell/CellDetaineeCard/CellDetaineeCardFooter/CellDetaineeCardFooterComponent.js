@@ -15,10 +15,23 @@ const CAUTION_PRESENT = 'CautionPresent';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  cellDetainee: PropTypes.shape({}).isRequired, // TODO: expand detainee properties
+  cellDetainee: PropTypes.shape({
+    withCaution: PropTypes.bool.isRequired,
+    mustBeKeptAlone: PropTypes.bool.isRequired,
+    isSuicidal: PropTypes.bool.isRequired,
+    isContagious: PropTypes.bool.isRequired,
+    hasWarning: PropTypes.bool.isRequired,
+    isUnderMedication: PropTypes.bool.isRequired,
+    cautionsArray: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
-const CellDetaineeCardFooterComponent = ({ classes, cellDetainee }) => {
+const CellDetaineeCardFooterComponent = ({
+  classes,
+  cellDetainee,
+  isAuthenticated,
+}) => {
   const renderWarnings = () => {
     const icons = [];
     if (cellDetainee.withCaution) icons.push(CautionPresentIcon);
@@ -59,7 +72,7 @@ const CellDetaineeCardFooterComponent = ({ classes, cellDetainee }) => {
 
   return (
     <CardActions className={classes.actions} disableActionSpacing>
-      {renderWarnings()}
+      {isAuthenticated && renderWarnings()}
     </CardActions>
   );
 };
