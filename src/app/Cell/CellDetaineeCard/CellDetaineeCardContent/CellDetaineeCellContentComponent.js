@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardMedia, withStyles } from '@material-ui/core';
+import { CardMedia, withStyles } from '@material-ui/core';
 
-import CellDetaineeCardHeader from './CellDetaineeCardHeader';
-import CellDetaineeCardFooter from './CellDetaineeCardFooter';
 import detaineeImage from './detainee.PNG';
 import detaineeAnonymousImage from './detainee-anonymous.PNG';
 
@@ -16,7 +14,7 @@ const propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
-const CellDetaineeCardComponent = ({
+const CellDetaineeCardContentComponent = ({
   classes,
   cellDetainee,
   isAuthenticated,
@@ -32,30 +30,19 @@ const CellDetaineeCardComponent = ({
     return detaineeAnonymousImage;
   };
   return (
-    <Card className={classes.card}>
-      <CellDetaineeCardHeader cellDetainee={cellDetainee} />
-      <CardMedia
-        className={classes.media}
-        image={getDetaineeImage()}
-        title={`${cellDetainee.firstName} ${cellDetainee.lastName}`}
-      />
-      <CellDetaineeCardFooter
-        cellDetainee={cellDetainee}
-        isAuthenticated={isAuthenticated}
-      />
-    </Card>
+    <CardMedia
+      className={classes.media}
+      image={getDetaineeImage()}
+      title={`${cellDetainee.firstName} ${cellDetainee.lastName}`}
+    />
   );
 };
 
-CellDetaineeCardComponent.propTypes = propTypes;
+CellDetaineeCardContentComponent.propTypes = propTypes;
 
-export default withStyles((theme) => ({
-  card: {
-    maxWidth: theme.spacing.unit * 50,
-    backgroundColor: '#EBEBEB',
-  },
+export default withStyles(() => ({
   media: {
     height: 0,
     paddingTop: '66.25%', // 16:9
   },
-}))(CellDetaineeCardComponent);
+}))(CellDetaineeCardContentComponent);

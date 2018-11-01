@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Grid } from '@material-ui/core';
+import { Grid, withStyles } from '@material-ui/core';
 
-import CellDetaineeGrid from '../CellDetaineeGrid';
-import OverviewCellDetaineeCard from './OverviewCellDetaineeCard';
-import OverviewFooter from './OverviewFooter';
+import CellDetaineeCard from '../CellDetaineeCard';
+import CellCheckFooter from './CellCheckFooter';
 
 const propTypes = {
+  classes: PropTypes.shape({}).isRequired,
   cellDetainees: PropTypes.arrayOf(PropTypes.shape({})),
   isAuthenticated: PropTypes.bool.isRequired,
   getCellDetainees: PropTypes.func.isRequired,
-  handleSignIn: PropTypes.func.isRequired,
   cellName: PropTypes.string.isRequired,
 };
 
@@ -25,31 +24,22 @@ class OverviewComponent extends Component {
   }
 
   render() {
-    const {
-      cellDetainees,
-      isAuthenticated,
-      handleSignIn,
-      cellName,
-    } = this.props;
+    const { classes, cellDetainees, isAuthenticated } = this.props;
     return (
       <React.Fragment>
         {cellDetainees.length > 0 ? (
           <React.Fragment>
-            <CellDetaineeGrid>
+            <Grid container className={classes.container} spacing={8}>
               {cellDetainees.map((cellDetainee) => (
                 <Grid key={cellDetainee.id} item sm={4}>
-                  <OverviewCellDetaineeCard
+                  <CellDetaineeCard
                     cellDetainee={cellDetainee}
                     isAuthenticated={isAuthenticated}
                   />
                 </Grid>
               ))}
-            </CellDetaineeGrid>
-            <OverviewFooter
-              isAuthenticated={isAuthenticated}
-              onSignIn={handleSignIn}
-              cellName={cellName}
-            />
+            </Grid>
+            <CellCheckFooter />
           </React.Fragment>
         ) : (
           <div>Loading ...</div> // TODO: replace with progress bar
@@ -62,4 +52,14 @@ class OverviewComponent extends Component {
 OverviewComponent.propTypes = propTypes;
 OverviewComponent.defaultProps = defaultProps;
 
-export default OverviewComponent;
+export default withStyles((theme) => ({
+  container: {
+    height: theme.spacing.unit * 97,
+    overflowY: 'auto',
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: theme.spacing.unit * 0.4,
+    backgroundColor: '#A8C6FA', // TODO: move color to theme
+    width: '100%',
+  },
+}))(OverviewComponent);

@@ -4,12 +4,12 @@ import {
   Avatar, CardActions, Typography, withStyles,
 } from '@material-ui/core';
 
-import CautionPresentIcon from '../../../images/CautionPresent.png';
-import ContagiousIcon from '../../../images/Contagious.png';
-import KeepAloneIcon from '../../../images/KeepAlone.png';
-import MedicineAcceptIcon from '../../../images/MedicineAccept.png';
-import OtherWarningIcon from '../../../images/OtherWarning.png';
-import SuicideWarningIcon from '../../../images/SuicideWarning.png';
+import CautionPresentIcon from '../../../../images/CautionPresent.png';
+import ContagiousIcon from '../../../../images/Contagious.png';
+import KeepAloneIcon from '../../../../images/KeepAlone.png';
+import MedicineAcceptIcon from '../../../../images/MedicineAccept.png';
+import OtherWarningIcon from '../../../../images/OtherWarning.png';
+import SuicideWarningIcon from '../../../../images/SuicideWarning.png';
 
 const CAUTION_PRESENT = 'CautionPresent';
 
@@ -27,7 +27,7 @@ const propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
-const CellDetaineeCardFooterComponent = ({
+const OverviewCellDetaineeCardFooterComponent = ({
   classes,
   cellDetainee,
   isAuthenticated,
@@ -77,7 +77,7 @@ const CellDetaineeCardFooterComponent = ({
   );
 };
 
-CellDetaineeCardFooterComponent.propTypes = propTypes;
+OverviewCellDetaineeCardFooterComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   actions: {
@@ -111,4 +111,4 @@ export default withStyles((theme) => ({
     fontWeight: theme.typography.caption.fontWeight,
     fontSize: theme.typography.fontSize * 0.7,
   },
-}))(CellDetaineeCardFooterComponent);
+}))(OverviewCellDetaineeCardFooterComponent);
