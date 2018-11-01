@@ -1,5 +1,6 @@
 import TapToBeginPage from '../TapToBeginPage';
 import Cell from '../Cell';
+import Detainee from '../Detainee';
 
 const routes = [
   {
@@ -10,6 +11,11 @@ const routes = [
   {
     path: '/cells/:name/home',
     component: Cell,
+    exact: false,
+  },
+  {
+    path: '/detainees/:id',
+    component: Detainee,
     exact: false,
   },
 ];
