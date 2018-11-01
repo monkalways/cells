@@ -27,7 +27,7 @@ Layout.propTypes = propTypes;
 export default withStyles((theme) => ({
   container: {
     height: constants.LAYOUT.height,
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('md')]: {
       width: constants.LAYOUT.width,
     },
   },
