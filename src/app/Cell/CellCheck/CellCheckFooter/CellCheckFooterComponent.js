@@ -1,11 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  AppBar, Button, Toolbar, withStyles,
+  AppBar,
+  BottomNavigation,
+  BottomNavigationAction,
+  FormControlLabel,
+  FormGroup,
+  Grid,
+  Radio,
+  RadioGroup,
+  Typography,
+  withStyles,
 } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import SaveIcon from '@material-ui/icons/Save';
-import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
@@ -23,31 +31,47 @@ const OverviewFooterComponent = ({ classes, history }) => {
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.backButton}
-            onClick={handleBackClick}
+        <Grid
+          container
+          justify="center"
+          alignItems="center"
+          className={classes.container}
+        >
+          <BottomNavigation
+            value={-1}
+            showLabels
+            className={classes.navigation}
           >
-            <ArrowBackIcon className={classes.icon} />
-            Back
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            className={classes.saveButton}
-            onClick={handleBackClick}
-          >
-            <SaveIcon className={classes.icon} />
-            Save
-          </Button>
-          <div className={classes.grow} />
-          <div className={classes.search}>
-            <div className={classes.searchIcon} />
-          </div>
-        </Toolbar>
+            <BottomNavigationAction
+              label={<Typography variant="body1">Back</Typography>}
+              onClick={handleBackClick}
+              icon={<ArrowBackIcon className={classes.icon} />}
+            />
+            <BottomNavigationAction
+              label={<Typography variant="body1">Save</Typography>}
+              icon={<SaveIcon className={classes.icon} />}
+            />
+            <BottomNavigationAction />
+            <div>
+              <RadioGroup
+                name="cellCheckRadio"
+                className={classes.group}
+                value="visual"
+              >
+                <FormControlLabel
+                  value="visual"
+                  control={<Radio className={classes.radioButton} />}
+                  label={<Typography variant="body1">Visual - All</Typography>}
+                />
+                <FormControlLabel
+                  value="verbal"
+                  control={<Radio className={classes.radioButton} />}
+                  label={<Typography variant="body1">Verbal - All</Typography>}
+                />
+              </RadioGroup>
+            </div>
+          </BottomNavigation>
+        </Grid>
       </AppBar>
     </div>
   );
@@ -63,38 +87,20 @@ export default compose(
     appBar: {
       backgroundColor: '#A8C6FA', // TODO: move color to theme
     },
-    backButton: {
-      marginLeft: -12,
-      marginRight: 20,
-    },
-    saveButton: {
-      marginLeft: theme.spacing.unit * 24,
+    navigation: {
+      height: '100%',
+      width: '100%',
+      backgroundColor: '#A8C6FA', // TODO: move color to theme
     },
     icon: {
-      marginRight: theme.spacing.unit,
+      fontSize: theme.typography.h3.fontSize,
     },
-    title: {
-      display: 'none',
-      [theme.breakpoints.up('sm')]: {
-        display: 'block',
-      },
+    group: {
+      marginTop: theme.spacing.unit * 0.8,
+      marginLeft: -theme.spacing.unit * 5,
     },
-    grow: {
-      flexGrow: 1,
-    },
-    search: {
-      position: 'relative',
-      borderRadius: theme.shape.borderRadius,
-      backgroundColor: fade(theme.palette.common.white, 0.15),
-      '&:hover': {
-        backgroundColor: fade(theme.palette.common.white, 0.25),
-      },
-      marginLeft: 0,
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing.unit,
-        width: 'auto',
-      },
+    radioButton: {
+      padding: theme.spacing.unit,
     },
   })),
   withRouter,
