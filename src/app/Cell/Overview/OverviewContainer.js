@@ -18,7 +18,10 @@ export const mapStateToProps = (
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  getCellDetainees: (name, getCellDetainees = operations.getCellDetainees) => {
+  getCellDetainees: (
+    name,
+    getCellDetainees = operations.getCellDetaineesForOverview,
+  ) => {
     dispatch(getCellDetainees(name));
   },
   handleSignIn: (

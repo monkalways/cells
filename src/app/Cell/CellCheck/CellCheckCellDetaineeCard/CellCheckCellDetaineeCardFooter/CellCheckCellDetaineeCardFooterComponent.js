@@ -7,15 +7,23 @@ import WellnessVerbalIcon from '../../../../images/WellnessVerbal.png';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
+  visual: PropTypes.bool.isRequired,
+  verbal: PropTypes.bool.isRequired,
+  onVisualClick: PropTypes.func.isRequired,
+  onVerbalClick: PropTypes.func.isRequired,
 };
 
-const CellCheckCellDetaineeCardFooterComponent = ({ classes }) => (
+const CellCheckCellDetaineeCardFooterComponent = ({
+  classes,
+  visual,
+  verbal,
+  onVisualClick,
+  onVerbalClick,
+}) => (
   <CardActions className={classes.actions} disableActionSpacing>
     <IconButton
-      classes={{
-        root: classes.leftButton,
-        disabled: classes.leftButtonDisabled,
-      }}
+      className={visual ? classes.leftButtonSelected : classes.leftButton}
+      onClick={onVisualClick}
     >
       <img
         src={WellnessVisualIcon}
@@ -24,11 +32,8 @@ const CellCheckCellDetaineeCardFooterComponent = ({ classes }) => (
       />
     </IconButton>
     <IconButton
-      classes={{
-        root: classes.rightButton,
-        disabled: classes.rightButtonDisabled,
-      }}
-      disabled
+      className={verbal ? classes.rightButtonSelected : classes.rightButton}
+      onClick={onVerbalClick}
     >
       <img
         src={WellnessVerbalIcon}
@@ -48,19 +53,19 @@ export default withStyles((theme) => ({
   },
   leftButton: {
     margin: theme.spacing.unit,
-  },
-  leftButtonDisabled: {
-    margin: theme.spacing.unit,
     opacity: 0.2,
+  },
+  leftButtonSelected: {
+    margin: theme.spacing.unit,
   },
   rightButton: {
-    marginLeft: theme.spacing.unit * 7,
-    margin: theme.spacing.unit,
-  },
-  rightButtonDisabled: {
-    marginLeft: theme.spacing.unit * 7,
+    marginLeft: theme.spacing.unit * 5,
     margin: theme.spacing.unit,
     opacity: 0.2,
+  },
+  rightButtonSelected: {
+    marginLeft: theme.spacing.unit * 5,
+    margin: theme.spacing.unit,
   },
   img: {
     height: theme.spacing.unit * 6,

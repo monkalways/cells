@@ -10,10 +10,21 @@ import {
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
+  radioButtonValue: PropTypes.string.isRequired,
+  onRadioGroupChange: PropTypes.func.isRequired,
 };
 
-const CellCheckFooterRadioButtonGroup = ({ classes }) => (
-  <RadioGroup name="cellCheckRadio" className={classes.group} value="visual">
+const CellCheckFooterRadioButtonGroup = ({
+  classes,
+  radioButtonValue,
+  onRadioGroupChange,
+}) => (
+  <RadioGroup
+    name="cellCheckRadio"
+    className={classes.group}
+    value={radioButtonValue}
+    onChange={onRadioGroupChange}
+  >
     <FormControlLabel
       value="visual"
       control={<Radio className={classes.radioButton} />}

@@ -20,7 +20,7 @@ const visualCheck = (detainee) => ({
 });
 
 const verbalCheck = (detainee) => ({
-  type: types.VISUAL_CHECK,
+  type: types.VERBAL_CHECK,
   detainee,
 });
 

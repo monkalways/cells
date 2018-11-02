@@ -20,9 +20,16 @@ const propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  radioButtonValue: PropTypes.string.isRequired,
+  onRadioGroupChange: PropTypes.func.isRequired,
 };
 
-const OverviewFooterComponent = ({ classes, history }) => {
+const CellCheckFooterComponent = ({
+  classes,
+  history,
+  radioButtonValue,
+  onRadioGroupChange,
+}) => {
   const handleBackClick = () => {
     history.goBack();
   };
@@ -50,7 +57,10 @@ const OverviewFooterComponent = ({ classes, history }) => {
               icon={<SaveIcon className={classes.icon} />}
             />
             <BottomNavigationAction disabled />
-            <CellCheckFooterRadioButtonGroup />
+            <CellCheckFooterRadioButtonGroup
+              radioButtonValue={radioButtonValue}
+              onRadioGroupChange={onRadioGroupChange}
+            />
           </BottomNavigation>
         </Grid>
       </AppBar>
@@ -58,7 +68,7 @@ const OverviewFooterComponent = ({ classes, history }) => {
   );
 };
 
-OverviewFooterComponent.propTypes = propTypes;
+CellCheckFooterComponent.propTypes = propTypes;
 
 export default compose(
   withStyles((theme) => ({
@@ -78,4 +88,4 @@ export default compose(
     },
   })),
   withRouter,
-)(OverviewFooterComponent);
+)(CellCheckFooterComponent);

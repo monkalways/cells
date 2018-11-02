@@ -13,6 +13,11 @@ const propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   cellName: PropTypes.string.isRequired,
   getCellDetainees: PropTypes.func.isRequired,
+  cellCheck: PropTypes.shape({}).isRequired,
+  visualCheck: PropTypes.func.isRequired,
+  verbalCheck: PropTypes.func.isRequired,
+  visualCheckAll: PropTypes.func.isRequired,
+  verbalCheckAll: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
@@ -25,12 +30,32 @@ class CellCheckComponent extends Component {
     getCellDetainees(cellName);
   }
 
+  getCellCheckRadioButtonValue = (cellDetainees, cellCheck) => {
+    const isAllVisual = cellDetainees.every((detainee) => cellCheck[detainee.id].visual);
+    const isAllVerbal = cellDetainees.every((detainee) => cellCheck[detainee.id].verbal);
+
+    if (isAllVisual) return 'visual';
+    if (isAllVerbal) return 'verbal';
+    return '';
+  };
+
+  handleRadioGroupChange = (event) => {
+    const { visualCheckAll, verbalCheckAll, cellDetainees } = this.props;
+    const { value } = event.target;
+    if (value === 'visual') visualCheckAll(cellDetainees);
+    if (value === 'verbal') verbalCheckAll(cellDetainees);
+  };
+
   render() {
     const {
       cellDetainees,
       isCellDetaineesLoaded,
       isAuthenticated,
+      cellCheck,
+      visualCheck,
+      verbalCheck,
     } = this.props;
+
     return (
       <React.Fragment>
         <CellDetaineeGrid>
@@ -41,6 +66,10 @@ class CellCheckComponent extends Component {
                   <CellCheckCellDetaineeCard
                     cellDetainee={cellDetainee}
                     isAuthenticated={isAuthenticated}
+                    visual={cellCheck[cellDetainee.id].visual}
+                    verbal={cellCheck[cellDetainee.id].verbal}
+                    onVisualClick={() => visualCheck(cellDetainee)}
+                    onVerbalClick={() => verbalCheck(cellDetainee)}
                   />
                 </Grid>
               ))}
@@ -49,7 +78,13 @@ class CellCheckComponent extends Component {
             <Loading />
           )}
         </CellDetaineeGrid>
-        <CellCheckFooter />
+        <CellCheckFooter
+          radioButtonValue={this.getCellCheckRadioButtonValue(
+            cellDetainees,
+            cellCheck,
+          )}
+          onRadioGroupChange={this.handleRadioGroupChange}
+        />
       </React.Fragment>
     );
   }
