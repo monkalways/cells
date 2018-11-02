@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import types from './types';
 
-const defaultDetaineeState = {};
+const defaultDetaineeState = null;
 
 const detaineeReducer = (state = defaultDetaineeState, action) => {
   switch (action.type) {
