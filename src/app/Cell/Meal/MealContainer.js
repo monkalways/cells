@@ -5,7 +5,7 @@ import MealComponent from './MealComponent';
 
 export const mapStateToProps = (
   state,
-  cellDetainees = selectors.getCellDetainees(state),
+  cellDetainees = selectors.getCellDetaineesState(state),
   isAuthenticated = authenticationSelectors.isAuthenticated(state),
 ) => ({
   cellDetainees,
