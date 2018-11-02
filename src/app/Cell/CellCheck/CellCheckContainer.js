@@ -5,24 +5,35 @@ import CellCheckComponent from './CellCheckComponent';
 
 export const mapStateToProps = (
   state,
+  isAuthenticated = authenticationSelectors.isAuthenticatedState(state),
   cellDetainees = selectors.getInCellDetaineesState(state),
   isCellDetaineesLoaded = selectors.isCellDetaineesLoadedState(state),
-  isAuthenticated = authenticationSelectors.isAuthenticatedState(state),
+  cellCheck = selectors.getCellCheckState(state),
 ) => ({
-  cellDetainees,
   isAuthenticated,
+  cellDetainees,
   isCellDetaineesLoaded,
+  cellCheck,
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  getCellDetainees: (name, getCellDetainees = operations.getCellDetainees) => {
-    dispatch(getCellDetainees(name));
+  getCellDetainees: async (
+    name,
+    getCellDetainees = operations.getCellDetaineesForCellCheck,
+  ) => {
+    await dispatch(getCellDetainees(name));
   },
   visualCheck: (detainee, visualCheck = operations.visualCheck) => {
     dispatch(visualCheck(detainee));
   },
   verbalCheck: (detainee, verbalCheck = operations.verbalCheck) => {
     dispatch(verbalCheck(detainee));
+  },
+  visualCheckAll: (detainees, visualCheck = operations.visualCheck) => {
+    detainees.forEach((detainee) => dispatch(visualCheck(detainee)));
+  },
+  verbalCheckAll: (detainees, verbalCheck = operations.verbalCheck) => {
+    detainees.forEach((detainee) => dispatch(verbalCheck(detainee)));
   },
 });
 

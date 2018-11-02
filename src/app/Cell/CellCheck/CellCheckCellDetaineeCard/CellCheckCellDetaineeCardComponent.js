@@ -16,12 +16,20 @@ const propTypes = {
     lastName: PropTypes.string.isRequired,
   }).isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
+  visual: PropTypes.bool.isRequired,
+  verbal: PropTypes.bool.isRequired,
+  onVisualClick: PropTypes.func.isRequired,
+  onVerbalClick: PropTypes.func.isRequired,
 };
 
 const CellCheckCellDetaineeCardComponent = ({
   classes,
   cellDetainee,
   isAuthenticated,
+  visual,
+  verbal,
+  onVisualClick,
+  onVerbalClick,
 }) => (
   <Card className={classes.card}>
     <CellDetaineeCardHeader cellDetainee={cellDetainee} />
@@ -29,7 +37,12 @@ const CellCheckCellDetaineeCardComponent = ({
       cellDetainee={cellDetainee}
       isAuthenticated={isAuthenticated}
     />
-    <CellCheckCellDetaineeCardFooter />
+    <CellCheckCellDetaineeCardFooter
+      visual={visual}
+      verbal={verbal}
+      onVisualClick={onVisualClick}
+      onVerbalClick={onVerbalClick}
+    />
   </Card>
 );
 
