@@ -20,7 +20,8 @@ const propTypes = {
       id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  // getDetainee: PropTypes.func.isRequired,
+  getDetainee: PropTypes.func.isRequired,
+  detainee: PropTypes.shape({}).isRequired,
   // cellDetails: PropTypes.shape({
   //   name: PropTypes.string.isRequired,
   //   genderLabel: PropTypes.string.isRequired,
@@ -41,11 +42,15 @@ const defaultProps = {
 class DetaineeComponent extends Component {
   componentDidMount() {
     // const { match, getDetainee } = this.props;
-    // const { match } = this.props;
-    // const { id } = match.params;
+    const { match } = this.props;
+    const { id } = match.params;
     // getDetainee(name);
     // console.log(match.params);
     // console.log(id);
+
+    const { getDetainee } = this.props;
+    getDetainee(id);
+    // console.log(detainee);
   }
 
   handleLogout = () => {
