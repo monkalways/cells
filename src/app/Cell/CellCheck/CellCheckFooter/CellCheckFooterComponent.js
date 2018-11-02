@@ -4,11 +4,7 @@ import {
   AppBar,
   BottomNavigation,
   BottomNavigationAction,
-  FormControlLabel,
-  FormGroup,
   Grid,
-  Radio,
-  RadioGroup,
   Typography,
   withStyles,
 } from '@material-ui/core';
@@ -16,6 +12,8 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import SaveIcon from '@material-ui/icons/Save';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
+
+import CellCheckFooterRadioButtonGroup from './CellCheckFooterRadioButtonGroup';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -51,25 +49,8 @@ const OverviewFooterComponent = ({ classes, history }) => {
               label={<Typography variant="body1">Save</Typography>}
               icon={<SaveIcon className={classes.icon} />}
             />
-            <BottomNavigationAction />
-            <div>
-              <RadioGroup
-                name="cellCheckRadio"
-                className={classes.group}
-                value="visual"
-              >
-                <FormControlLabel
-                  value="visual"
-                  control={<Radio className={classes.radioButton} />}
-                  label={<Typography variant="body1">Visual - All</Typography>}
-                />
-                <FormControlLabel
-                  value="verbal"
-                  control={<Radio className={classes.radioButton} />}
-                  label={<Typography variant="body1">Verbal - All</Typography>}
-                />
-              </RadioGroup>
-            </div>
+            <BottomNavigationAction disabled />
+            <CellCheckFooterRadioButtonGroup />
           </BottomNavigation>
         </Grid>
       </AppBar>
@@ -94,13 +75,6 @@ export default compose(
     },
     icon: {
       fontSize: theme.typography.h3.fontSize,
-    },
-    group: {
-      marginTop: theme.spacing.unit * 0.8,
-      marginLeft: -theme.spacing.unit * 5,
-    },
-    radioButton: {
-      padding: theme.spacing.unit,
     },
   })),
   withRouter,
