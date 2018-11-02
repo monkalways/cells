@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
-// import { Route, Switch, withRouter } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-
-// import Layout from './Layout';
-// import Header from './Header';
-// import Overview from './Overview';
-// import Meal from './Meal';
+import Layout from '../common/Layout';
+import Header from './Header';
+import DetaineeDetails from './DetaineeDetails';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -21,7 +18,7 @@ const propTypes = {
     }).isRequired,
   }).isRequired,
   getDetainee: PropTypes.func.isRequired,
-  detainee: PropTypes.shape({}).isRequired,
+  detainee: PropTypes.shape({}),
   // cellDetails: PropTypes.shape({
   //   name: PropTypes.string.isRequired,
   //   genderLabel: PropTypes.string.isRequired,
@@ -32,7 +29,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  // cellDetails: null,
+  detainee: null,
 };
 
 // for calls to api: http://localhost:1969/api/detainees/162323004000000603274291/detainee-profile
@@ -50,7 +47,6 @@ class DetaineeComponent extends Component {
 
     const { getDetainee } = this.props;
     getDetainee(id);
-    // console.log(detainee);
   }
 
   handleLogout = () => {
@@ -58,31 +54,29 @@ class DetaineeComponent extends Component {
     // const { id } = match.params;
     // Make sure this logs out to the correct page
     // Look at the 'from' parameter in the URL to determine this
-    // history.push(`/cells/${name}`);
+    const { history } = this.props;
+    const name = 'A1';
+    history.push(`/cells/${name}`);
   };
 
   render() {
-    // const { detainee, match, classes } = this.props;
-    // const { name } = match.params;
+    const { classes, detainee } = this.props;
+    console.log(detainee);
+
     return (
       <React.Fragment>
-        Detainee
-        {/* {match.params} */}
-        {/* {cellDetails && (
+        {detainee && (
           <Layout>
-            <Header cellDetails={cellDetails} onLogout={this.handleLogout} />
+            <Header
+              detainee={detainee}
+              onLogout={this.handleLogout}
+              isAuthenticated
+            />
             <div className={classes.body}>
-              <Switch>
-                <Route
-                  path={match.url}
-                  render={(props) => <Overview cellName={name} {...props} />}
-                  exact
-                />
-                <Route path={`${match.url}/meal`} component={Meal} />
-              </Switch>
+              <DetaineeDetails detainee={detainee} isAuthenticated />
             </div>
           </Layout>
-        )} */}
+        )}
       </React.Fragment>
     );
   }
