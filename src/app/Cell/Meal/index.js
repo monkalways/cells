@@ -1,1 +1,1 @@
-export { default } from './MealComponent';
+export { default } from './MealContainer';

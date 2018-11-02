@@ -9,6 +9,7 @@ import Header from './Header';
 import Overview from './Overview';
 import CellCheck from './CellCheck';
 import Meal from './Meal';
+import Medicine from './Medicine';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -70,7 +71,16 @@ class CellComponent extends Component {
                   render={(props) => <CellCheck cellName={name} {...props} />}
                   exact
                 />
-                <Route path={`${match.url}/meal`} component={Meal} />
+                <Route
+                  path={`${match.url}/meal`}
+                  render={(props) => <Meal cellName={name} {...props} />}
+                  exact
+                />
+                <Route
+                  path={`${match.url}/medicine`}
+                  render={(props) => <Medicine cellName={name} {...props} />}
+                  exact
+                />
               </Switch>
             </div>
           </Layout>

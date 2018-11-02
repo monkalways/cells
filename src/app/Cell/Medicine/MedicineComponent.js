@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 
 import CellDetaineeGrid from '../CellDetaineeGrid';
-import MealCellDetaineeCard from './MealCellDetaineeCard';
-import MealFooter from './MealFooter';
+import MedicineCellDetaineeCard from './MedicineCellDetaineeCard';
+import MedicineFooter from './MedicineFooter';
 
 const propTypes = {
   cellDetainees: PropTypes.arrayOf(PropTypes.shape({})),
@@ -17,7 +17,7 @@ const defaultProps = {
   cellDetainees: [],
 };
 
-class MealComponent extends Component {
+class MedicineComponent extends Component {
   componentDidMount() {
     const { cellName, getCellDetainees } = this.props;
     getCellDetainees(cellName);
@@ -32,14 +32,14 @@ class MealComponent extends Component {
             <CellDetaineeGrid>
               {cellDetainees.map((cellDetainee) => (
                 <Grid key={cellDetainee.id} item sm={4}>
-                  <MealCellDetaineeCard
+                  <MedicineCellDetaineeCard
                     cellDetainee={cellDetainee}
                     isAuthenticated={isAuthenticated}
                   />
                 </Grid>
               ))}
             </CellDetaineeGrid>
-            <MealFooter />
+            <MedicineFooter />
           </React.Fragment>
         ) : (
           <div>Loading ...</div> // TODO: replace with progress bar
@@ -49,7 +49,7 @@ class MealComponent extends Component {
   }
 }
 
-MealComponent.propTypes = propTypes;
-MealComponent.defaultProps = defaultProps;
+MedicineComponent.propTypes = propTypes;
+MedicineComponent.defaultProps = defaultProps;
 
-export default MealComponent;
+export default MedicineComponent;

@@ -9,7 +9,7 @@ const propTypes = {
   classes: PropTypes.shape({}).isRequired,
 };
 
-const OverviewCellDetaineeCardFooterComponent = ({ classes }) => (
+const CellCheckCellDetaineeCardFooterComponent = ({ classes }) => (
   <CardActions className={classes.actions} disableActionSpacing>
     <IconButton
       classes={{
@@ -25,7 +25,7 @@ const OverviewCellDetaineeCardFooterComponent = ({ classes }) => (
     </IconButton>
     <IconButton
       classes={{
-        root: classes.leftButton,
+        root: classes.rightButton,
         disabled: classes.rightButtonDisabled,
       }}
       disabled
@@ -39,7 +39,7 @@ const OverviewCellDetaineeCardFooterComponent = ({ classes }) => (
   </CardActions>
 );
 
-OverviewCellDetaineeCardFooterComponent.propTypes = propTypes;
+CellCheckCellDetaineeCardFooterComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   actions: {
@@ -66,4 +66,4 @@ export default withStyles((theme) => ({
     height: theme.spacing.unit * 6,
     width: theme.spacing.unit * 6,
   },
-}))(OverviewCellDetaineeCardFooterComponent);
+}))(CellCheckCellDetaineeCardFooterComponent);
