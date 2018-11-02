@@ -8,8 +8,8 @@ import OverviewComponent from './OverviewComponent';
 
 export const mapStateToProps = (
   state,
-  cellDetainees = selectors.getCellDetainees(state),
-  isAuthenticated = authenticationSelectors.isAuthenticated(state),
+  cellDetainees = selectors.getCellDetaineesState(state),
+  isAuthenticated = authenticationSelectors.isAuthenticatedState(state),
 ) => ({
   cellDetainees,
   isAuthenticated,

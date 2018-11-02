@@ -20,8 +20,6 @@ const LOCATION_MEDICAL_VISIT = 'medical - in progress';
 const LOCATION_FINGER_PRINTING = 'fingerprinting - in progress';
 const LOCATION_BAIL_HEARING = 'bail hearing - in progress';
 const LOCATION_IN_TRANSIT = 'in transit';
-const LOCATION_REMAND = 'remand';
-const LOCATION_RELEASE = 'release';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -36,8 +34,6 @@ const CellDetaineeCardHeaderComponent = ({ classes, cellDetainee }) => {
     if (location) {
       if (
         location.toLowerCase().includes(LOCATION_IN_TRANSIT)
-        && !location.toLowerCase().includes(LOCATION_REMAND)
-        && !location.toLowerCase().includes(LOCATION_RELEASE)
       ) {
         locationIconSrc = InTransitIcon;
       }

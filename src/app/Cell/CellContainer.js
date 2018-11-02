@@ -8,8 +8,8 @@ import CellComponent from './CellComponent';
 
 export const mapStateToProps = (
   state,
-  cellDetails = selectors.getCellDetails(state),
-  isAuthenticated = authenticationSelectors.isAuthenticated(state),
+  cellDetails = selectors.getCellDetailsState(state),
+  isAuthenticated = authenticationSelectors.isAuthenticatedState(state),
 ) => ({
   cellDetails,
   isAuthenticated,

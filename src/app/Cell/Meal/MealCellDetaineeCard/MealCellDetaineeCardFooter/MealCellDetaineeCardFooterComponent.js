@@ -54,12 +54,10 @@ export default withStyles((theme) => ({
     height: theme.spacing.unit * 9,
   },
   button: {
-    margin: theme.spacing.unit,
-    marginLeft: 0,
+    margin: 0,
   },
   buttonDisabled: {
-    margin: theme.spacing.unit,
-    marginLeft: 0,
+    margin: 0,
     opacity: 0.2,
   },
   img: {
