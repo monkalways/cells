@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // import { Grid } from '@material-ui/core';
+import Loading from '../../common/Loading';
 
 const propTypes = {
   detainee: PropTypes.shape({}),
@@ -10,6 +11,8 @@ const defaultProps = {
   detainee: null,
 };
 
+// Make an action to determine if detainee data has loaded or not
+// Replace "detainee ?" with "isDetaineeDataLoaded ?"
 const DetaineeDetailsComponent = ({ detainee }) => (
   <React.Fragment>
     {detainee ? (
@@ -31,7 +34,7 @@ const DetaineeDetailsComponent = ({ detainee }) => (
             /> */}
       </React.Fragment>
     ) : (
-      <div>Loading ...</div> // TODO: replace with progress bar
+      <Loading />
     )}
   </React.Fragment>
 );
