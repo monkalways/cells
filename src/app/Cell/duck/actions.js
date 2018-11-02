@@ -1,16 +1,33 @@
 import types from './types';
 
-const getCellDetails = (payload) => ({
+const getCellDetailsSuccess = (cellDetails) => ({
   type: types.GET_CELL_DETAILS_SUCCESS,
-  payload,
+  cellDetails,
 });
 
-const getCellDetainees = (payload) => ({
+const getCellDetaineesSuccess = (cellDetainees) => ({
   type: types.GET_CELL_DETAINEES_SUCCESS,
-  payload,
+  cellDetainees,
+});
+
+const getCellDetainees = () => ({
+  type: types.GET_CELL_DETAINEES,
+});
+
+const visualCheck = (detainee) => ({
+  type: types.VISUAL_CHECK,
+  detainee,
+});
+
+const verbalCheck = (detainee) => ({
+  type: types.VISUAL_CHECK,
+  detainee,
 });
 
 export default {
-  getCellDetails,
+  getCellDetailsSuccess,
+  getCellDetaineesSuccess,
   getCellDetainees,
+  visualCheck,
+  verbalCheck,
 };

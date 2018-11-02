@@ -5,9 +5,11 @@ import { Grid } from '@material-ui/core';
 import CellDetaineeGrid from '../CellDetaineeGrid';
 import OverviewCellDetaineeCard from './OverviewCellDetaineeCard';
 import OverviewFooter from './OverviewFooter';
+import Loading from '../../common/Loading';
 
 const propTypes = {
   cellDetainees: PropTypes.arrayOf(PropTypes.shape({})),
+  isCellDetaineesLoaded: PropTypes.bool.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   getCellDetainees: PropTypes.func.isRequired,
   handleSignIn: PropTypes.func.isRequired,
@@ -27,15 +29,16 @@ class OverviewComponent extends Component {
   render() {
     const {
       cellDetainees,
+      isCellDetaineesLoaded,
       isAuthenticated,
       handleSignIn,
       cellName,
     } = this.props;
     return (
       <React.Fragment>
-        {cellDetainees.length > 0 ? (
-          <React.Fragment>
-            <CellDetaineeGrid>
+        <CellDetaineeGrid>
+          {isCellDetaineesLoaded ? (
+            <React.Fragment>
               {cellDetainees.map((cellDetainee) => (
                 <Grid key={cellDetainee.id} item sm={4}>
                   <OverviewCellDetaineeCard
@@ -44,16 +47,16 @@ class OverviewComponent extends Component {
                   />
                 </Grid>
               ))}
-            </CellDetaineeGrid>
-            <OverviewFooter
-              isAuthenticated={isAuthenticated}
-              onSignIn={handleSignIn}
-              cellName={cellName}
-            />
-          </React.Fragment>
-        ) : (
-          <div>Loading ...</div> // TODO: replace with progress bar
-        )}
+            </React.Fragment>
+          ) : (
+            <Loading />
+          )}
+        </CellDetaineeGrid>
+        <OverviewFooter
+          isAuthenticated={isAuthenticated}
+          onSignIn={handleSignIn}
+          cellName={cellName}
+        />
       </React.Fragment>
     );
   }

@@ -5,9 +5,11 @@ import { Grid } from '@material-ui/core';
 import CellDetaineeGrid from '../CellDetaineeGrid';
 import MealCellDetaineeCard from './MealCellDetaineeCard';
 import MealFooter from './MealFooter';
+import Loading from '../../common/Loading';
 
 const propTypes = {
   cellDetainees: PropTypes.arrayOf(PropTypes.shape({})),
+  isCellDetaineesLoaded: PropTypes.bool.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   getCellDetainees: PropTypes.func.isRequired,
   cellName: PropTypes.string.isRequired,
@@ -24,12 +26,16 @@ class MealComponent extends Component {
   }
 
   render() {
-    const { cellDetainees, isAuthenticated } = this.props;
+    const {
+      cellDetainees,
+      isCellDetaineesLoaded,
+      isAuthenticated,
+    } = this.props;
     return (
       <React.Fragment>
-        {cellDetainees.length > 0 ? (
-          <React.Fragment>
-            <CellDetaineeGrid>
+        <CellDetaineeGrid>
+          {isCellDetaineesLoaded ? (
+            <React.Fragment>
               {cellDetainees.map((cellDetainee) => (
                 <Grid key={cellDetainee.id} item sm={4}>
                   <MealCellDetaineeCard
@@ -38,12 +44,12 @@ class MealComponent extends Component {
                   />
                 </Grid>
               ))}
-            </CellDetaineeGrid>
-            <MealFooter />
-          </React.Fragment>
-        ) : (
-          <div>Loading ...</div> // TODO: replace with progress bar
-        )}
+            </React.Fragment>
+          ) : (
+            <Loading />
+          )}
+        </CellDetaineeGrid>
+        <MealFooter />
       </React.Fragment>
     );
   }
