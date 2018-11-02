@@ -15,7 +15,13 @@ const getCellDetaineesState = createSelector(
   (cellDetainees) => cellDetainees,
 );
 
+const getInCellDetaineesState = createSelector(
+  [getCellDetainees],
+  (cellDetainees) => cellDetainees.filter((detainee) => !detainee.location),
+);
+
 export default {
   getCellDetailsState,
   getCellDetaineesState,
+  getInCellDetaineesState,
 };

@@ -6,7 +6,7 @@ import MedicineComponent from './MedicineComponent';
 export const mapStateToProps = (
   state,
   cellDetainees = selectors.getCellDetaineesState(state),
-  isAuthenticated = authenticationSelectors.isAuthenticated(state),
+  isAuthenticated = authenticationSelectors.isAuthenticatedState(state),
 ) => ({
   cellDetainees,
   isAuthenticated,
