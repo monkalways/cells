@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import Layout from '../common/Layout';
 import Header from './Header';
+import Footer from './Footer';
 import DetaineeDetails from './DetaineeDetails';
 
 const propTypes = {
@@ -19,13 +20,6 @@ const propTypes = {
   }).isRequired,
   getDetainee: PropTypes.func.isRequired,
   detainee: PropTypes.shape({}),
-  // cellDetails: PropTypes.shape({
-  //   name: PropTypes.string.isRequired,
-  //   genderLabel: PropTypes.string.isRequired,
-  //   occupancy: PropTypes.number.isRequired,
-  //   occupancyCount: PropTypes.number.isRequired,
-  //   cellStatus: PropTypes.string.isRequired,
-  // }),
 };
 
 const defaultProps = {
@@ -55,8 +49,7 @@ class DetaineeComponent extends Component {
     // Make sure this logs out to the correct page
     // Look at the 'from' parameter in the URL to determine this
     const { history } = this.props;
-    const name = 'A1';
-    history.push(`/cells/${name}`);
+    history.push('/cells/A1/home');
   };
 
   // cellName on DetaineeDetails needs to be replaced
@@ -78,6 +71,7 @@ class DetaineeComponent extends Component {
             <div className={classes.body}>
               <DetaineeDetails detainee={detainee} isAuthenticated />
             </div>
+            <Footer />
           </Layout>
         )}
       </React.Fragment>
