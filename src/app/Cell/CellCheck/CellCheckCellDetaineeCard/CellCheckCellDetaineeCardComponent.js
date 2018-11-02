@@ -7,7 +7,7 @@ import {
   CellDetaineeCardContent,
 } from '../../CellDetaineeCard';
 
-// import CellCheckCellDetaineeCardFooter from './CellCheckCellDetaineeCardFooter';
+import CellCheckCellDetaineeCardFooter from './CellCheckCellDetaineeCardFooter';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -29,6 +29,7 @@ const CellCheckCellDetaineeCardComponent = ({
       cellDetainee={cellDetainee}
       isAuthenticated={isAuthenticated}
     />
+    <CellCheckCellDetaineeCardFooter />
   </Card>
 );
 
