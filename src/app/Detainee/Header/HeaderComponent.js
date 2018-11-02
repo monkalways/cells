@@ -10,13 +10,13 @@ import HeaderContent from './HeaderContent';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  detainee: PropTypes.shape({}).isRequired,
+  cellName: PropTypes.string.isRequired,
   onLogout: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
 const Header = ({
-  classes, detainee, onLogout, isAuthenticated,
+  classes, cellName, onLogout, isAuthenticated,
 }) => (
   <div className={classes.root}>
     <AppBar position="static" className={classes.appBar}>
@@ -28,7 +28,7 @@ const Header = ({
         >
           <img src={logoIcon} alt="EPS Logo" width={70} />
         </IconButton>
-        <HeaderContent detainee={detainee} />
+        <HeaderContent cellName={cellName} />
         {isAuthenticated && (
           <IconButton
             className={classes.logoutButton}

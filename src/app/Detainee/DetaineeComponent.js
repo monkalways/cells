@@ -59,6 +59,9 @@ class DetaineeComponent extends Component {
     history.push(`/cells/${name}`);
   };
 
+  // cellName on DetaineeDetails needs to be replaced
+  // with the query parameter that says which cell we came from
+
   render() {
     const { classes, detainee } = this.props;
     console.log(detainee);
@@ -68,7 +71,7 @@ class DetaineeComponent extends Component {
         {detainee && (
           <Layout>
             <Header
-              detainee={detainee}
+              cellName="A1"
               onLogout={this.handleLogout}
               isAuthenticated
             />
