@@ -5,8 +5,9 @@ import {
   Button,
   BottomNavigation,
   BottomNavigationAction,
-  withStyles,
   Grid,
+  Typography,
+  withStyles,
 } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
@@ -57,7 +58,7 @@ const OverviewFooterComponent = ({
               className={classes.navigation}
             >
               <BottomNavigationAction
-                label="Cell Check"
+                label={<Typography variant="body1">Cell Check</Typography>}
                 onClick={handleCellCheckClick}
                 icon={(
                   <img
@@ -68,7 +69,7 @@ const OverviewFooterComponent = ({
 )}
               />
               <BottomNavigationAction
-                label="Meal"
+                label={<Typography variant="body1">Meal</Typography>}
                 onClick={handleMealClick}
                 icon={(
                   <img
@@ -79,7 +80,7 @@ const OverviewFooterComponent = ({
 )}
               />
               <BottomNavigationAction
-                label="Medicine"
+                label={<Typography variant="body1">Medicine</Typography>}
                 onClick={handleMedicineClick}
                 icon={(
                   <img
@@ -115,9 +116,6 @@ export default compose(
     },
     appBar: {
       backgroundColor: '#A8C6FA', // TODO: move color to theme
-    },
-    container: {
-      height: theme.spacing.unit * 9,
     },
     navigation: {
       height: '100%',
