@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
@@ -30,7 +31,11 @@ class CellCheckComponent extends Component {
     getCellDetainees(cellName);
   }
 
-  getCellCheckRadioButtonValue = (cellDetainees, cellCheck) => {
+  getCellCheckRadioButtonValue = () => {
+    const { isCellDetaineesLoaded, cellDetainees, cellCheck } = this.props;
+    if (!isCellDetaineesLoaded || _.isEmpty(cellCheck)) {
+      return '';
+    }
     const isAllVisual = cellDetainees.every((detainee) => cellCheck[detainee.id].visual);
     const isAllVerbal = cellDetainees.every((detainee) => cellCheck[detainee.id].verbal);
 
@@ -59,7 +64,7 @@ class CellCheckComponent extends Component {
     return (
       <React.Fragment>
         <CellDetaineeGrid>
-          {isCellDetaineesLoaded ? (
+          {isCellDetaineesLoaded && !_.isEmpty(cellCheck) ? (
             <React.Fragment>
               {cellDetainees.map((cellDetainee) => (
                 <Grid key={cellDetainee.id} item sm={4}>
@@ -79,10 +84,7 @@ class CellCheckComponent extends Component {
           )}
         </CellDetaineeGrid>
         <CellCheckFooter
-          radioButtonValue={this.getCellCheckRadioButtonValue(
-            cellDetainees,
-            cellCheck,
-          )}
+          radioButtonValue={this.getCellCheckRadioButtonValue()}
           onRadioGroupChange={this.handleRadioGroupChange}
         />
       </React.Fragment>
