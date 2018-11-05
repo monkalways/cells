@@ -10,13 +10,13 @@ const propTypes = {
   ]).isRequired,
 };
 
-const CellDetaineeGridComponent = ({ classes, children }) => (
+const DetaineeGridComponent = ({ classes, children }) => (
   <Grid container className={classes.container} spacing={8}>
     {children}
   </Grid>
 );
 
-CellDetaineeGridComponent.propTypes = propTypes;
+DetaineeGridComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   container: {
@@ -28,4 +28,4 @@ export default withStyles((theme) => ({
     padding: theme.spacing.unit,
     width: '100%',
   },
-}))(CellDetaineeGridComponent);
+}))(DetaineeGridComponent);
