@@ -21,14 +21,18 @@ const propTypes = {
     push: PropTypes.func.isRequired,
   }).isRequired,
   radioButtonValue: PropTypes.string.isRequired,
+  isSavingCellCheck: PropTypes.bool.isRequired,
   onRadioGroupChange: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
 };
 
 const CellCheckFooterComponent = ({
   classes,
   history,
   radioButtonValue,
+  isSavingCellCheck,
   onRadioGroupChange,
+  onSave,
 }) => {
   const handleBackClick = () => {
     history.goBack();
@@ -49,16 +53,20 @@ const CellCheckFooterComponent = ({
           >
             <BottomNavigationAction
               label={<Typography variant="body1">Back</Typography>}
-              onClick={handleBackClick}
               icon={<ArrowBackIcon className={classes.icon} />}
+              onClick={handleBackClick}
+              disabled={isSavingCellCheck}
             />
             <BottomNavigationAction
               label={<Typography variant="body1">Save</Typography>}
               icon={<SaveIcon className={classes.icon} />}
+              disabled={isSavingCellCheck}
+              onClick={onSave}
             />
             <BottomNavigationAction disabled />
             <CellCheckFooterRadioButtonGroup
               radioButtonValue={radioButtonValue}
+              isSavingCellCheck={isSavingCellCheck}
               onRadioGroupChange={onRadioGroupChange}
             />
           </BottomNavigation>

@@ -34,24 +34,33 @@ const detaineesReducer = (state = detaineesReducerDefaultState, action) => {
   }
 };
 
-const cellCheckReducer = (state = {}, action) => {
+const cellCheckReducerDefaultState = {
+  saving: false,
+  data: {},
+};
+
+const cellCheckReducer = (state = cellCheckReducerDefaultState, action) => {
   switch (action.type) {
     case types.VISUAL_CHECK:
       // eslint-disable-next-line no-param-reassign
-      state[action.detainee.id] = {
+      state.data[action.detainee.id] = {
         detainee: action.detainee,
         visual: true,
         verbal: false,
       };
-      return { ...state };
+      return { ...state, data: { ...state.data } };
     case types.VERBAL_CHECK:
       // eslint-disable-next-line no-param-reassign
-      state[action.detainee.id] = {
+      state.data[action.detainee.id] = {
         detainee: action.detainee,
         visual: false,
         verbal: true,
       };
-      return { ...state };
+      return { ...state, data: { ...state.data } };
+    case types.SAVE_CELL_CHECK:
+      return { ...state, saving: true };
+    case types.SAVE_CELL_CHECK_SUCCESS:
+      return { saving: false, data: [] };
     default:
       return state;
   }

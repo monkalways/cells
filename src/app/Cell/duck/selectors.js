@@ -4,7 +4,8 @@ import { createSelector } from 'reselect';
 const getCellDetails = (state) => state.cell.details;
 const getCellDetainees = (state) => state.cell.detainees.data;
 const isCellDetaineesLoaded = (state) => state.cell.detainees.loaded;
-const getCellCheck = (state) => state.cell.cellCheck;
+const getCellCheck = (state) => state.cell.cellCheck.data;
+const isSavingCellCheck = (state) => state.cell.cellCheck.saving;
 
 // Reselect selectors
 const getCellDetailsState = createSelector(
@@ -32,10 +33,16 @@ const getCellCheckState = createSelector(
   (cellCheck) => cellCheck,
 );
 
+const isSavingCellCheckState = createSelector(
+  [isSavingCellCheck],
+  (saving) => saving,
+);
+
 export default {
   getCellDetailsState,
   getCellDetaineesState,
   getInCellDetaineesState,
   isCellDetaineesLoadedState,
   getCellCheckState,
+  isSavingCellCheckState,
 };

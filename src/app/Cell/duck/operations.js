@@ -1,3 +1,4 @@
+import { push } from 'react-router-redux';
 import actions from './actions';
 import services from './services';
 
@@ -57,10 +58,30 @@ const getCellDetaineesForCellCheck = (
   }
 };
 
+const saveCellCheck = (
+  cellCheck,
+  cellName,
+  saveCellCheckService = services.saveCellCheck,
+  saveCellCheckAction = actions.saveCellCheck,
+  saveCellCheckSuccessAction = actions.saveCellCheckSuccess,
+  // TODO: add global error handler
+  // setAppErrorAction = commonActions.setAppError,
+) => async (dispatch) => {
+  try {
+    await dispatch(saveCellCheckAction());
+    await saveCellCheckService(cellCheck);
+    await dispatch(saveCellCheckSuccessAction());
+    await dispatch(push(`/cells/${cellName}/home/`));
+  } catch (error) {
+    // dispatch(setAppErrorAction());
+  }
+};
+
 export default {
   getCellDetails,
   getCellDetaineesForOverview,
   getCellDetaineesForCellCheck,
   visualCheck,
   verbalCheck,
+  saveCellCheck,
 };

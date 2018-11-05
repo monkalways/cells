@@ -9,11 +9,13 @@ export const mapStateToProps = (
   cellDetainees = selectors.getInCellDetaineesState(state),
   isCellDetaineesLoaded = selectors.isCellDetaineesLoadedState(state),
   cellCheck = selectors.getCellCheckState(state),
+  isSavingCellCheck = selectors.isSavingCellCheckState(state),
 ) => ({
   isAuthenticated,
   cellDetainees,
   isCellDetaineesLoaded,
   cellCheck,
+  isSavingCellCheck,
 });
 
 export const mapDispatchToProps = (dispatch) => ({
@@ -34,6 +36,9 @@ export const mapDispatchToProps = (dispatch) => ({
   },
   verbalCheckAll: (detainees, verbalCheck = operations.verbalCheck) => {
     detainees.forEach((detainee) => dispatch(verbalCheck(detainee)));
+  },
+  onSave: (cellCheck, cellName, saveCellCheck = operations.saveCellCheck) => {
+    dispatch(saveCellCheck(cellCheck, cellName));
   },
 });
 

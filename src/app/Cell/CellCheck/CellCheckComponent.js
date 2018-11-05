@@ -15,10 +15,12 @@ const propTypes = {
   cellName: PropTypes.string.isRequired,
   getCellDetainees: PropTypes.func.isRequired,
   cellCheck: PropTypes.shape({}).isRequired,
+  isSavingCellCheck: PropTypes.bool.isRequired,
   visualCheck: PropTypes.func.isRequired,
   verbalCheck: PropTypes.func.isRequired,
   visualCheckAll: PropTypes.func.isRequired,
   verbalCheckAll: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
@@ -51,12 +53,18 @@ class CellCheckComponent extends Component {
     if (value === 'verbal') verbalCheckAll(cellDetainees);
   };
 
+  handleSave = () => {
+    const { cellCheck, cellName, onSave } = this.props;
+    onSave(cellCheck, cellName);
+  };
+
   render() {
     const {
       cellDetainees,
       isCellDetaineesLoaded,
       isAuthenticated,
       cellCheck,
+      isSavingCellCheck,
       visualCheck,
       verbalCheck,
     } = this.props;
@@ -64,7 +72,9 @@ class CellCheckComponent extends Component {
     return (
       <React.Fragment>
         <CellDetaineeGrid>
-          {isCellDetaineesLoaded && !_.isEmpty(cellCheck) ? (
+          {isCellDetaineesLoaded
+          && !_.isEmpty(cellCheck)
+          && !isSavingCellCheck ? (
             <React.Fragment>
               {cellDetainees.map((cellDetainee) => (
                 <Grid key={cellDetainee.id} item sm={4}>
@@ -79,13 +89,15 @@ class CellCheckComponent extends Component {
                 </Grid>
               ))}
             </React.Fragment>
-          ) : (
-            <Loading />
-          )}
+            ) : (
+              <Loading />
+            )}
         </CellDetaineeGrid>
         <CellCheckFooter
           radioButtonValue={this.getCellCheckRadioButtonValue()}
+          isSavingCellCheck={isSavingCellCheck}
           onRadioGroupChange={this.handleRadioGroupChange}
+          onSave={this.handleSave}
         />
       </React.Fragment>
     );
