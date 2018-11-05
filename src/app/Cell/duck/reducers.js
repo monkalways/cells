@@ -60,7 +60,7 @@ const cellCheckReducer = (state = cellCheckReducerDefaultState, action) => {
     case types.SAVE_CELL_CHECK:
       return { ...state, saving: true };
     case types.SAVE_CELL_CHECK_SUCCESS:
-      return { saving: false, data: [] };
+      return { saving: false, data: {} };
     default:
       return state;
   }
