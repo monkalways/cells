@@ -18,7 +18,7 @@ const defaultProps = {
 // Replace "detainee ?" with "isDetaineeDataLoaded ?"
 const DetaineeDetailsComponent = ({
   classes,
-  detainee,
+  // detainee,
   isDetaineeProfileLoaded,
 }) => (
   <React.Fragment>
