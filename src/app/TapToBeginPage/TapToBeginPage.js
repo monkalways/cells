@@ -51,7 +51,7 @@ export default compose(
     container: {
       height: constants.LAYOUT.height,
       background: '#3D89F7', // TODO: set this color in theme config
-      [theme.breakpoints.up('lg')]: {
+      [theme.breakpoints.up('md')]: {
         width: constants.LAYOUT.width,
       },
       cursor: 'pointer',
