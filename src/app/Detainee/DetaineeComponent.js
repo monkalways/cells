@@ -69,7 +69,7 @@ class DetaineeComponent extends Component {
               isAuthenticated
             />
             <div className={classes.body}>
-              <DetaineeDetails detainee={detainee} isAuthenticated />
+              <DetaineeDetails detainee={detainee} />
             </div>
             <Footer />
           </Layout>
