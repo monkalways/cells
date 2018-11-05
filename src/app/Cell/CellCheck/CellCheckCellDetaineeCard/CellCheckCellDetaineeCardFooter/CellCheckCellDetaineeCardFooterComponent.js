@@ -7,44 +7,60 @@ import WellnessVerbalIcon from '../../../../images/WellnessVerbal.png';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  visual: PropTypes.bool.isRequired,
-  verbal: PropTypes.bool.isRequired,
-  onVisualClick: PropTypes.func.isRequired,
-  onVerbalClick: PropTypes.func.isRequired,
+  cellCheck: PropTypes.shape({
+    visual: PropTypes.bool.isRequired,
+    verbal: PropTypes.bool.isRequired,
+  }),
+  onVisualClick: PropTypes.func,
+  onVerbalClick: PropTypes.func,
+};
+
+const defaultProps = {
+  cellCheck: null,
+  onVisualClick: null,
+  onVerbalClick: null,
 };
 
 const CellCheckCellDetaineeCardFooterComponent = ({
   classes,
-  visual,
-  verbal,
+  cellCheck,
   onVisualClick,
   onVerbalClick,
 }) => (
   <CardActions className={classes.actions} disableActionSpacing>
-    <IconButton
-      className={visual ? classes.leftButtonSelected : classes.leftButton}
-      onClick={onVisualClick}
-    >
-      <img
-        src={WellnessVisualIcon}
-        alt="wellness visual"
-        className={classes.img}
-      />
-    </IconButton>
-    <IconButton
-      className={verbal ? classes.rightButtonSelected : classes.rightButton}
-      onClick={onVerbalClick}
-    >
-      <img
-        src={WellnessVerbalIcon}
-        alt="wellness verbal"
-        className={classes.img}
-      />
-    </IconButton>
+    {cellCheck && (
+      <React.Fragment>
+        <IconButton
+          className={
+            cellCheck.visual ? classes.leftButtonSelected : classes.leftButton
+          }
+          onClick={onVisualClick}
+        >
+          <img
+            src={WellnessVisualIcon}
+            alt="wellness visual"
+            className={classes.img}
+          />
+        </IconButton>
+        <IconButton
+          className={
+            cellCheck.verbal ? classes.rightButtonSelected : classes.rightButton
+          }
+          onClick={onVerbalClick}
+        >
+          <img
+            src={WellnessVerbalIcon}
+            alt="wellness verbal"
+            className={classes.img}
+          />
+        </IconButton>
+      </React.Fragment>
+    )}
   </CardActions>
 );
 
 CellCheckCellDetaineeCardFooterComponent.propTypes = propTypes;
+CellCheckCellDetaineeCardFooterComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   actions: {

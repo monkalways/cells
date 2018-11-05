@@ -16,18 +16,25 @@ const propTypes = {
     lastName: PropTypes.string.isRequired,
   }).isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
-  visual: PropTypes.bool.isRequired,
-  verbal: PropTypes.bool.isRequired,
-  onVisualClick: PropTypes.func.isRequired,
-  onVerbalClick: PropTypes.func.isRequired,
+  cellCheck: PropTypes.shape({
+    visual: PropTypes.bool.isRequired,
+    verbal: PropTypes.bool.isRequired,
+  }),
+  onVisualClick: PropTypes.func,
+  onVerbalClick: PropTypes.func,
+};
+
+const defaultProps = {
+  cellCheck: null,
+  onVisualClick: null,
+  onVerbalClick: null,
 };
 
 const CellCheckCellDetaineeCardComponent = ({
   classes,
   cellDetainee,
   isAuthenticated,
-  visual,
-  verbal,
+  cellCheck,
   onVisualClick,
   onVerbalClick,
 }) => (
@@ -38,8 +45,7 @@ const CellCheckCellDetaineeCardComponent = ({
       isAuthenticated={isAuthenticated}
     />
     <CellCheckCellDetaineeCardFooter
-      visual={visual}
-      verbal={verbal}
+      cellCheck={cellCheck}
       onVisualClick={onVisualClick}
       onVerbalClick={onVerbalClick}
     />
@@ -47,6 +53,7 @@ const CellCheckCellDetaineeCardComponent = ({
 );
 
 CellCheckCellDetaineeCardComponent.propTypes = propTypes;
+CellCheckCellDetaineeCardComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   card: {

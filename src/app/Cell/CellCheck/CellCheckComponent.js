@@ -38,8 +38,12 @@ class CellCheckComponent extends Component {
     if (!isCellDetaineesLoaded || _.isEmpty(cellCheck)) {
       return '';
     }
-    const isAllVisual = cellDetainees.every((detainee) => cellCheck[detainee.id].visual);
-    const isAllVerbal = cellDetainees.every((detainee) => cellCheck[detainee.id].verbal);
+    const isAllVisual = cellDetainees
+      .filter((detainee) => !detainee.location)
+      .every((detainee) => cellCheck[detainee.id].visual);
+    const isAllVerbal = cellDetainees
+      .filter((detainee) => !detainee.location)
+      .every((detainee) => cellCheck[detainee.id].verbal);
 
     if (isAllVisual) return 'visual';
     if (isAllVerbal) return 'verbal';
@@ -49,8 +53,8 @@ class CellCheckComponent extends Component {
   handleRadioGroupChange = (event) => {
     const { visualCheckAll, verbalCheckAll, cellDetainees } = this.props;
     const { value } = event.target;
-    if (value === 'visual') visualCheckAll(cellDetainees);
-    if (value === 'verbal') verbalCheckAll(cellDetainees);
+    if (value === 'visual') visualCheckAll(cellDetainees.filter((detainee) => !detainee.location));
+    if (value === 'verbal') verbalCheckAll(cellDetainees.filter((detainee) => !detainee.location));
   };
 
   handleSave = () => {
@@ -81,8 +85,7 @@ class CellCheckComponent extends Component {
                   <CellCheckCellDetaineeCard
                     cellDetainee={cellDetainee}
                     isAuthenticated={isAuthenticated}
-                    visual={cellCheck[cellDetainee.id].visual}
-                    verbal={cellCheck[cellDetainee.id].verbal}
+                    cellCheck={cellCheck[cellDetainee.id]}
                     onVisualClick={() => visualCheck(cellDetainee)}
                     onVerbalClick={() => verbalCheck(cellDetainee)}
                   />

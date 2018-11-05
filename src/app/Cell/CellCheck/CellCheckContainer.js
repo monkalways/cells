@@ -6,7 +6,7 @@ import CellCheckComponent from './CellCheckComponent';
 export const mapStateToProps = (
   state,
   isAuthenticated = authenticationSelectors.isAuthenticatedState(state),
-  cellDetainees = selectors.getInCellDetaineesState(state),
+  cellDetainees = selectors.getCellDetaineesState(state),
   isCellDetaineesLoaded = selectors.isCellDetaineesLoadedState(state),
   cellCheck = selectors.getCellCheckState(state),
   isSavingCellCheck = selectors.isSavingCellCheckState(state),
