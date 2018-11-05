@@ -1,1 +1,1 @@
-export { default } from './DetaineeDetailsComponent';
+export { default } from './DetaineeDetailsContainer';

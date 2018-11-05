@@ -6,6 +6,7 @@ import Loading from '../../common/Loading';
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   detainee: PropTypes.shape({}),
+  isDetaineeProfileLoaded: PropTypes.bool.isRequired,
 };
 
 const defaultProps = {
@@ -14,9 +15,13 @@ const defaultProps = {
 
 // Make an action to determine if detainee data has loaded or not
 // Replace "detainee ?" with "isDetaineeDataLoaded ?"
-const DetaineeDetailsComponent = ({ classes, detainee }) => (
+const DetaineeDetailsComponent = ({
+  classes,
+  detainee,
+  isDetaineeProfileLoaded,
+}) => (
   <React.Fragment>
-    {detainee ? (
+    {isDetaineeProfileLoaded ? (
       <React.Fragment>
         <Grid container className={classes.container} spacing={8}>
           <Grid
