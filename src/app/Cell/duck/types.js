@@ -6,6 +6,8 @@ const GET_CELL_DETAINEES = 'app/Cells/GET_CELL_DETAINEES';
 // Cell-check actions
 const VISUAL_CHECK = 'app/Cells/VISUAL_CHECK';
 const VERBAL_CHECK = 'app/Cells/VERBAL_CHECK';
+const SAVE_CELL_CHECK = 'app/Cells/SAVE_CELL_CHECK';
+const SAVE_CELL_CHECK_SUCCESS = 'app/Cells/SAVE_CELL_CHECK_SUCCESS';
 
 export default {
   GET_CELL_DETAILS_SUCCESS,
@@ -13,4 +15,6 @@ export default {
   GET_CELL_DETAINEES,
   VISUAL_CHECK,
   VERBAL_CHECK,
+  SAVE_CELL_CHECK,
+  SAVE_CELL_CHECK_SUCCESS,
 };

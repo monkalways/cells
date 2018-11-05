@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import axios from 'axios';
 import constants from '../constants';
 import commonConstants from '../../constants';
@@ -102,7 +103,28 @@ const getCellDetainees = async (name) => {
   }));
 };
 
+const saveCellCheck = async (cellCheck) => {
+  await _.forOwn(cellCheck, async (value) => {
+    const { detainee, visual } = value;
+    await axios.post(
+      `${process.env.REACT_APP_CELL_SERVICE_URL}${
+        constants.DETENTION_LOGS_URL
+      }`,
+      {
+        arrestId: detainee.arrestId,
+        detentionLogType: constants.DETENTION_LOG_DATA_TYPE_CELL_CHECK,
+        detentionLogAction: visual
+          ? constants.DETENTION_LOG_ACTION_TYPE_VISUAL
+          : constants.DETENTION_LOG_ACTION_TYPE_VERBAL,
+        userName: 'cpb1',
+      },
+      commonConstants.HEADERS,
+    );
+  });
+};
+
 export default {
   getCellDetails,
   getCellDetainees,
+  saveCellCheck,
 };

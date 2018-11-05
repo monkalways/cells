@@ -1,3 +1,4 @@
+import { push } from 'connected-react-router';
 import actions from './actions';
 import services from './services';
 
@@ -10,7 +11,7 @@ const getCellDetails = (
 ) => async (dispatch) => {
   try {
     const payload = await getCellDetailsService(name);
-    await dispatch(getCellDetailsSuccessAction(payload));
+    dispatch(getCellDetailsSuccessAction(payload));
   } catch (error) {
     // dispatch(setAppErrorAction());
   }
@@ -25,9 +26,9 @@ const getCellDetaineesForOverview = (
   // setAppErrorAction = commonActions.setAppError,
 ) => async (dispatch) => {
   try {
-    await dispatch(getCellDetaineesAction());
+    dispatch(getCellDetaineesAction());
     const payload = await getCellDetaineesService(name);
-    await dispatch(getCellDetaineesSuccessAction(payload));
+    dispatch(getCellDetaineesSuccessAction(payload));
   } catch (error) {
     // dispatch(setAppErrorAction());
   }
@@ -44,14 +45,33 @@ const getCellDetaineesForCellCheck = (
   // setAppErrorAction = commonActions.setAppError,
 ) => async (dispatch) => {
   try {
-    await dispatch(getCellDetaineesAction());
+    dispatch(getCellDetaineesAction());
     const cellDetainees = await getCellDetaineesService(name);
     if (cellDetainees) {
       cellDetainees.forEach((detainee) => {
         dispatch(visualCheck(detainee));
       });
     }
-    await dispatch(getCellDetaineesSuccessAction(cellDetainees));
+    dispatch(getCellDetaineesSuccessAction(cellDetainees));
+  } catch (error) {
+    // dispatch(setAppErrorAction());
+  }
+};
+
+const saveCellCheck = (
+  cellCheck,
+  cellName,
+  saveCellCheckService = services.saveCellCheck,
+  saveCellCheckAction = actions.saveCellCheck,
+  saveCellCheckSuccessAction = actions.saveCellCheckSuccess,
+  // TODO: add global error handler
+  // setAppErrorAction = commonActions.setAppError,
+) => async (dispatch) => {
+  try {
+    dispatch(saveCellCheckAction());
+    await saveCellCheckService(cellCheck);
+    dispatch(saveCellCheckSuccessAction());
+    dispatch(push(`/cells/${cellName}/home/`));
   } catch (error) {
     // dispatch(setAppErrorAction());
   }
@@ -63,4 +83,5 @@ export default {
   getCellDetaineesForCellCheck,
   visualCheck,
   verbalCheck,
+  saveCellCheck,
 };

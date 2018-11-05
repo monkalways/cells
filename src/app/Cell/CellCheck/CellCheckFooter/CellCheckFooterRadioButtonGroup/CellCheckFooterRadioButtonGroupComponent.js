@@ -11,12 +11,14 @@ import {
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   radioButtonValue: PropTypes.string.isRequired,
+  isSavingCellCheck: PropTypes.bool.isRequired,
   onRadioGroupChange: PropTypes.func.isRequired,
 };
 
 const CellCheckFooterRadioButtonGroup = ({
   classes,
   radioButtonValue,
+  isSavingCellCheck,
   onRadioGroupChange,
 }) => (
   <RadioGroup
@@ -29,11 +31,13 @@ const CellCheckFooterRadioButtonGroup = ({
       value="visual"
       control={<Radio className={classes.radioButton} />}
       label={<Typography variant="body1">Visual - All</Typography>}
+      disabled={isSavingCellCheck}
     />
     <FormControlLabel
       value="verbal"
       control={<Radio className={classes.radioButton} />}
       label={<Typography variant="body1">Verbal - All</Typography>}
+      disabled={isSavingCellCheck}
     />
   </RadioGroup>
 );
