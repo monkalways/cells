@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
-import { withRouter } from 'react-router-dom';
-import { compose } from 'recompose';
 import Layout from '../common/Layout';
 import Header from './Header';
 import Footer from './Footer';
@@ -19,11 +17,6 @@ const propTypes = {
     }).isRequired,
   }).isRequired,
   getDetainee: PropTypes.func.isRequired,
-  detainee: PropTypes.shape({}),
-};
-
-const defaultProps = {
-  detainee: null,
 };
 
 // for calls to api: http://localhost:1969/api/detainees/162323004000000603274291/detainee-profile
@@ -56,37 +49,26 @@ class DetaineeComponent extends Component {
   // with the query parameter that says which cell we came from
 
   render() {
-    const { classes, detainee } = this.props;
-    console.log(detainee);
+    const { classes } = this.props;
 
     return (
       <React.Fragment>
-        {detainee && (
-          <Layout>
-            <Header
-              cellName="A1"
-              onLogout={this.handleLogout}
-              isAuthenticated
-            />
-            <div className={classes.body}>
-              <DetaineeDetails detainee={detainee} />
-            </div>
-            <Footer />
-          </Layout>
-        )}
+        <Layout>
+          <Header cellName="A1" onLogout={this.handleLogout} isAuthenticated />
+          <div className={classes.body}>
+            <DetaineeDetails />
+          </div>
+          <Footer />
+        </Layout>
       </React.Fragment>
     );
   }
 }
 
 DetaineeComponent.propTypes = propTypes;
-DetaineeComponent.defaultProps = defaultProps;
 
-export default compose(
-  withStyles((theme) => ({
-    body: {
-      marginTop: theme.spacing.unit,
-    },
-  })),
-  withRouter,
-)(DetaineeComponent);
+export default withStyles((theme) => ({
+  body: {
+    marginTop: theme.spacing.unit,
+  },
+}))(DetaineeComponent);

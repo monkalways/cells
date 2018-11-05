@@ -1,13 +1,22 @@
 import { combineReducers } from 'redux';
 import types from './types';
 
-const defaultDetaineeState = null;
+const defaultDetaineeState = {
+  data: {},
+  loaded: false,
+};
 
 const detaineeReducer = (state = defaultDetaineeState, action) => {
   switch (action.type) {
+    case types.GET_DETAINEE:
+      return {
+        ...state,
+        loaded: false,
+      };
     case types.GET_DETAINEE_SUCCESS:
       return {
-        ...action.payload,
+        data: action.payload,
+        loaded: true,
       };
     default:
       return state;

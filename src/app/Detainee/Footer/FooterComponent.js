@@ -24,7 +24,6 @@ const FooterComponent = ({ classes, history }) => {
       <AppBar position="static" className={classes.appBar}>
         <Grid
           container
-          justify="left"
           alignItems="center"
           spacing={8}
           className={classes.container}
