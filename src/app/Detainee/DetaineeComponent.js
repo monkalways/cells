@@ -49,7 +49,7 @@ class DetaineeComponent extends Component {
     // Make sure this logs out to the correct page
     // Look at the 'from' parameter in the URL to determine this
     const { history } = this.props;
-    history.push('/cells/A1/home');
+    history.push('/cells/A1');
   };
 
   // cellName on DetaineeDetails needs to be replaced
@@ -69,7 +69,7 @@ class DetaineeComponent extends Component {
               isAuthenticated
             />
             <div className={classes.body}>
-              <DetaineeDetails detainee={detainee} isAuthenticated />
+              <DetaineeDetails detainee={detainee} />
             </div>
             <Footer />
           </Layout>
