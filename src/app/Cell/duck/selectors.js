@@ -8,6 +8,8 @@ const getCellCheck = (state) => state.cell.cellCheck.data;
 const isSavingCellCheck = (state) => state.cell.cellCheck.saving;
 const getMeal = (state) => state.cell.meal.data;
 const isSavingMeal = (state) => state.cell.meal.saving;
+const getMedication = (state) => state.cell.medication.data;
+const isSavingMedication = (state) => state.cell.medication.saving;
 
 // Reselect selectors
 const getCellDetailsState = createSelector(
@@ -35,9 +37,19 @@ const isSavingCellCheckState = createSelector(
   (saving) => saving,
 );
 
+const getMealState = createSelector([getMeal], (meal) => meal);
+
 const isSavingMealState = createSelector([isSavingMeal], (saving) => saving);
 
-const getMealState = createSelector([getMeal], (meal) => meal);
+const getMedicationState = createSelector(
+  [getMedication],
+  (medication) => medication,
+);
+
+const isSavingMedicationState = createSelector(
+  [isSavingMedication],
+  (saving) => saving,
+);
 
 export default {
   getCellDetailsState,
@@ -47,4 +59,6 @@ export default {
   isSavingCellCheckState,
   getMealState,
   isSavingMealState,
+  getMedicationState,
+  isSavingMedicationState,
 };

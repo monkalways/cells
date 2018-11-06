@@ -55,6 +55,29 @@ const saveMealSuccess = () => ({
   type: types.SAVE_MEAL_SUCCESS,
 });
 
+const acceptMedication = (detainee) => ({
+  type: types.ACCEPT_MEDICATION,
+  detainee,
+});
+
+const rejectMedication = (detainee) => ({
+  type: types.REJECT_MEDICATION,
+  detainee,
+});
+
+const notApplicableMedication = (detainee) => ({
+  type: types.NOT_APPLICABLE_MEDICATION,
+  detainee,
+});
+
+const saveMedication = () => ({
+  type: types.SAVE_MEDICATION,
+});
+
+const saveMedicationSuccess = () => ({
+  type: types.SAVE_MEDICATION_SUCCESS,
+});
+
 export default {
   getCellDetailsSuccess,
   getCellDetaineesSuccess,
@@ -68,4 +91,9 @@ export default {
   notApplicableMeal,
   saveMeal,
   saveMealSuccess,
+  acceptMedication,
+  rejectMedication,
+  notApplicableMedication,
+  saveMedication,
+  saveMedicationSuccess,
 };

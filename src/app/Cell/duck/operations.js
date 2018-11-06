@@ -130,6 +130,53 @@ const saveMeal = (
   }
 };
 
+/* MEDICATION */
+
+const { acceptMedication, rejectMedication, notApplicableMedication } = actions;
+
+const getCellDetaineesForMedication = (
+  name,
+  getCellDetaineesService = services.getCellDetainees,
+  getCellDetaineesAction = actions.getCellDetainees,
+  getCellDetaineesSuccessAction = actions.getCellDetaineesSuccess,
+  // TODO: add global error handler
+  // setAppErrorAction = commonActions.setAppError,
+) => async (dispatch) => {
+  try {
+    dispatch(getCellDetaineesAction());
+    const cellDetainees = await getCellDetaineesService(name);
+    if (cellDetainees) {
+      cellDetainees
+        .filter((detainee) => !detainee.location)
+        .forEach((detainee) => {
+          dispatch(acceptMedication(detainee));
+        });
+    }
+    dispatch(getCellDetaineesSuccessAction(cellDetainees));
+  } catch (error) {
+    // dispatch(setAppErrorAction());
+  }
+};
+
+const saveMedication = (
+  medication,
+  cellName,
+  saveMedicationService = services.saveMedication,
+  saveMedicationAction = actions.saveMedication,
+  saveMedicationSuccessAction = actions.saveMedicationSuccess,
+  // TODO: add global error handler
+  // setAppErrorAction = commonActions.setAppError,
+) => async (dispatch) => {
+  try {
+    dispatch(saveMedicationAction());
+    await saveMedicationService(medication);
+    dispatch(saveMedicationSuccessAction());
+    dispatch(push(`/cells/${cellName}/home/`));
+  } catch (error) {
+    // dispatch(setAppErrorAction());
+  }
+};
+
 export default {
   getCellDetails,
   getCellDetaineesForOverview,
@@ -142,4 +189,9 @@ export default {
   notApplicableMeal,
   getCellDetaineesForMeal,
   saveMeal,
+  acceptMedication,
+  rejectMedication,
+  notApplicableMedication,
+  getCellDetaineesForMedication,
+  saveMedication,
 };

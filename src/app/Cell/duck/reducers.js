@@ -109,11 +109,55 @@ const mealReducer = (state = mealReducerDefaultState, action) => {
   }
 };
 
+const medicationReducerDefaultState = {
+  saving: false,
+  data: {},
+};
+
+const medicationReducer = (state = medicationReducerDefaultState, action) => {
+  switch (action.type) {
+    case types.ACCEPT_MEDICATION:
+      // eslint-disable-next-line no-param-reassign
+      state.data[action.detainee.id] = {
+        detainee: action.detainee,
+        accept: true,
+        reject: false,
+        notApplicable: false,
+      };
+      return { ...state, data: { ...state.data } };
+    case types.REJECT_MEDICATION:
+      // eslint-disable-next-line no-param-reassign
+      state.data[action.detainee.id] = {
+        detainee: action.detainee,
+        accept: false,
+        reject: true,
+        notApplicable: false,
+      };
+      return { ...state, data: { ...state.data } };
+    case types.NOT_APPLICABLE_MEDICATION:
+      // eslint-disable-next-line no-param-reassign
+      state.data[action.detainee.id] = {
+        detainee: action.detainee,
+        accept: false,
+        reject: false,
+        notApplicable: true,
+      };
+      return { ...state, data: { ...state.data } };
+    case types.SAVE_MEDICATION:
+      return { ...state, saving: true };
+    case types.SAVE_MEDICATION_SUCCESS:
+      return { saving: false, data: {} };
+    default:
+      return state;
+  }
+};
+
 const cellReducer = combineReducers({
   details: detailsReducer,
   detainees: detaineesReducer,
   cellCheck: cellCheckReducer,
   meal: mealReducer,
+  medication: medicationReducer,
 });
 
 export default cellReducer;

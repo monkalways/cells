@@ -39,8 +39,8 @@ const OverviewFooterComponent = ({
   const handleMealClick = () => {
     history.push(`/cells/${cellName}/home/meal`);
   };
-  const handleMedicineClick = () => {
-    history.push(`/cells/${cellName}/home/medicine`);
+  const handleMedicationClick = () => {
+    history.push(`/cells/${cellName}/home/Medication`);
   };
   return (
     <div className={classes.root}>
@@ -80,12 +80,12 @@ const OverviewFooterComponent = ({
 )}
               />
               <BottomNavigationAction
-                label={<Typography variant="body1">Medicine</Typography>}
-                onClick={handleMedicineClick}
+                label={<Typography variant="body1">Medication</Typography>}
+                onClick={handleMedicationClick}
                 icon={(
                   <img
                     src={MedicineAcceptIcon}
-                    alt="medicine accept"
+                    alt="Medication accept"
                     className={classes.navigationImage}
                   />
 )}
