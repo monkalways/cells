@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Grid, Paper, withStyles } from '@material-ui/core';
 import Loading from '../../common/Loading';
 import DetaineeGrid from '../DetaineeGrid';
+import PersonalInformation from '../PersonalInformation';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -18,7 +19,7 @@ const defaultProps = {
 // Replace "detainee ?" with "isDetaineeDataLoaded ?"
 const DetaineeDetailsComponent = ({
   classes,
-  // detainee,
+  detainee,
   isDetaineeProfileLoaded,
 }) => (
   <React.Fragment>
@@ -38,7 +39,7 @@ const DetaineeDetailsComponent = ({
             spacing={8}
           >
             <Grid item sm={9}>
-              <Paper className={classes.paper}>Personal Information</Paper>
+              <PersonalInformation detainee={detainee} />
             </Grid>
             <Grid item sm={3}>
               <Paper className={classes.paper}>Location</Paper>
