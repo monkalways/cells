@@ -11,14 +11,14 @@ import {
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   radioButtonValue: PropTypes.string.isRequired,
-  isSavingMeal: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool.isRequired,
   onRadioGroupChange: PropTypes.func.isRequired,
 };
 
 const MealFooterRadioButtonGroup = ({
   classes,
   radioButtonValue,
-  isSavingMeal,
+  disabled,
   onRadioGroupChange,
 }) => (
   <RadioGroup
@@ -31,13 +31,13 @@ const MealFooterRadioButtonGroup = ({
       value="accept"
       control={<Radio className={classes.radioButton} />}
       label={<Typography variant="body1">Accepted - All</Typography>}
-      disabled={isSavingMeal}
+      disabled={disabled}
     />
     <FormControlLabel
       value="not-applicable"
       control={<Radio className={classes.radioButton} />}
       label={<Typography variant="body1">N/A - All</Typography>}
-      disabled={isSavingMeal}
+      disabled={disabled}
     />
   </RadioGroup>
 );

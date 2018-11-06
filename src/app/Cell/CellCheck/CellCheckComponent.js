@@ -50,6 +50,19 @@ class CellCheckComponent extends Component {
     return '';
   };
 
+  isSaveDisabled = () => {
+    const { isCellDetaineesLoaded, cellDetainees, cellCheck } = this.props;
+    if (!isCellDetaineesLoaded && !_.isEmpty(cellCheck)) return true;
+
+    if (
+      cellDetainees
+      && cellDetainees.length > 0
+      && cellDetainees.every((detainee) => detainee.location)
+    ) return true;
+
+    return false;
+  };
+
   handleRadioGroupChange = (event) => {
     const { visualCheckAll, verbalCheckAll, cellDetainees } = this.props;
     const { value } = event.target;
@@ -76,9 +89,7 @@ class CellCheckComponent extends Component {
     return (
       <React.Fragment>
         <CellDetaineeGrid>
-          {isCellDetaineesLoaded
-          && !_.isEmpty(cellCheck)
-          && !isSavingCellCheck ? (
+          {isCellDetaineesLoaded && !isSavingCellCheck ? (
             <React.Fragment>
               {cellDetainees.map((cellDetainee) => (
                 <Grid key={cellDetainee.id} item sm={4}>
@@ -92,13 +103,14 @@ class CellCheckComponent extends Component {
                 </Grid>
               ))}
             </React.Fragment>
-            ) : (
-              <Loading />
-            )}
+          ) : (
+            <Loading />
+          )}
         </CellDetaineeGrid>
         <CellCheckFooter
           radioButtonValue={this.getCellCheckRadioButtonValue()}
           isSavingCellCheck={isSavingCellCheck}
+          isSaveDisabled={this.isSaveDisabled()}
           onRadioGroupChange={this.handleRadioGroupChange}
           onSave={this.handleSave}
         />

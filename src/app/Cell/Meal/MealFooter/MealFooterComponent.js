@@ -68,7 +68,7 @@ const MealFooterComponent = ({
             <BottomNavigationAction disabled />
             <MealFooterRadioButtonGroup
               radioButtonValue={radioButtonValue}
-              isSavingMeal={isSavingMeal}
+              disabled={isSaveDisabled || isSavingMeal}
               onRadioGroupChange={onRadioGroupChange}
             />
           </BottomNavigation>

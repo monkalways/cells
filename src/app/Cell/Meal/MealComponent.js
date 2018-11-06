@@ -37,7 +37,7 @@ class MealComponent extends Component {
 
   getMealRadioButtonValue = () => {
     const { isCellDetaineesLoaded, cellDetainees, meal } = this.props;
-    if (!isCellDetaineesLoaded && !_.isEmpty(meal)) {
+    if (!isCellDetaineesLoaded || _.isEmpty(meal)) {
       return '';
     }
     const isAllAccept = cellDetainees

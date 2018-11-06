@@ -22,6 +22,7 @@ const propTypes = {
   }).isRequired,
   radioButtonValue: PropTypes.string.isRequired,
   isSavingCellCheck: PropTypes.bool.isRequired,
+  isSaveDisabled: PropTypes.bool.isRequired,
   onRadioGroupChange: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
 };
@@ -31,6 +32,7 @@ const CellCheckFooterComponent = ({
   history,
   radioButtonValue,
   isSavingCellCheck,
+  isSaveDisabled,
   onRadioGroupChange,
   onSave,
 }) => {
@@ -60,13 +62,13 @@ const CellCheckFooterComponent = ({
             <BottomNavigationAction
               label={<Typography variant="body1">Save</Typography>}
               icon={<SaveIcon className={classes.icon} />}
-              disabled={isSavingCellCheck}
+              disabled={isSaveDisabled || isSavingCellCheck}
               onClick={onSave}
             />
             <BottomNavigationAction disabled />
             <CellCheckFooterRadioButtonGroup
               radioButtonValue={radioButtonValue}
-              isSavingCellCheck={isSavingCellCheck}
+              disabled={isSaveDisabled || isSavingCellCheck}
               onRadioGroupChange={onRadioGroupChange}
             />
           </BottomNavigation>
