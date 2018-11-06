@@ -4,6 +4,7 @@ import { Grid, Paper, withStyles } from '@material-ui/core';
 import Loading from '../../common/Loading';
 import DetaineeGrid from '../DetaineeGrid';
 import PersonalInformation from '../PersonalInformation';
+import Location from '../Location';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -42,7 +43,7 @@ const DetaineeDetailsComponent = ({
               <PersonalInformation detainee={detainee} />
             </Grid>
             <Grid item sm={3}>
-              <Paper className={classes.paper}>Location</Paper>
+              <Location location={detainee.location} />
             </Grid>
           </Grid>
           <Grid
