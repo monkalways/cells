@@ -16,7 +16,7 @@ const propTypes = {
 
 const FooterComponent = ({ classes, history }) => {
   const handleBackButtonClick = () => {
-    history.push('/cells/A1/home');
+    history.goBack();
   };
 
   return (
