@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
@@ -13,6 +14,15 @@ const propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   getCellDetainees: PropTypes.func.isRequired,
   cellName: PropTypes.string.isRequired,
+  meal: PropTypes.shape({}).isRequired,
+  isSavingMeal: PropTypes.bool.isRequired,
+  acceptMeal: PropTypes.func.isRequired,
+  rejectMeal: PropTypes.func.isRequired,
+  notApplicableMeal: PropTypes.func.isRequired,
+  acceptMealAll: PropTypes.func.isRequired,
+  rejectMealAll: PropTypes.func.isRequired,
+  notApplicableMealAll: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
@@ -25,22 +35,83 @@ class MealComponent extends Component {
     getCellDetainees(cellName);
   }
 
+  getMealRadioButtonValue = () => {
+    const { isCellDetaineesLoaded, cellDetainees, meal } = this.props;
+    if (!isCellDetaineesLoaded && !_.isEmpty(meal)) {
+      return '';
+    }
+    const isAllAccept = cellDetainees
+      .filter((detainee) => !detainee.location)
+      .every((detainee) => meal[detainee.id].accept);
+    const isAllReject = cellDetainees
+      .filter((detainee) => !detainee.location)
+      .every((detainee) => meal[detainee.id].reject);
+    const isAllNotApplicable = cellDetainees
+      .filter((detainee) => !detainee.location)
+      .every((detainee) => meal[detainee.id].notApplicable);
+
+    if (isAllAccept) return 'accept';
+    if (isAllReject) return 'reject';
+    if (isAllNotApplicable) return 'not-applicable';
+    return '';
+  };
+
+  isSaveDisabled = () => {
+    const { isCellDetaineesLoaded, cellDetainees, meal } = this.props;
+    if (!isCellDetaineesLoaded && !_.isEmpty(meal)) return true;
+
+    if (
+      cellDetainees
+      && cellDetainees.length > 0
+      && cellDetainees.every((detainee) => detainee.location)
+    ) return true;
+
+    return false;
+  };
+
+  handleRadioGroupChange = (event) => {
+    const {
+      acceptMealAll,
+      rejectMealAll,
+      notApplicableMealAll,
+      cellDetainees,
+    } = this.props;
+    const { value } = event.target;
+    if (value === 'accept') acceptMealAll(cellDetainees.filter((detainee) => !detainee.location));
+    if (value === 'reject') rejectMealAll(cellDetainees.filter((detainee) => !detainee.location));
+    if (value === 'not-applicable') notApplicableMealAll(cellDetainees.filter((detainee) => !detainee.location));
+  };
+
+  handleSave = () => {
+    const { meal, cellName, onSave } = this.props;
+    onSave(meal, cellName);
+  };
+
   render() {
     const {
       cellDetainees,
       isCellDetaineesLoaded,
       isAuthenticated,
+      meal,
+      isSavingMeal,
+      acceptMeal,
+      rejectMeal,
+      notApplicableMeal,
     } = this.props;
     return (
       <React.Fragment>
         <CellDetaineeGrid>
-          {isCellDetaineesLoaded ? (
+          {isCellDetaineesLoaded && !isSavingMeal ? (
             <React.Fragment>
               {cellDetainees.map((cellDetainee) => (
                 <Grid key={cellDetainee.id} item sm={4}>
                   <MealCellDetaineeCard
                     cellDetainee={cellDetainee}
                     isAuthenticated={isAuthenticated}
+                    meal={meal[cellDetainee.id]}
+                    onAcceptClick={() => acceptMeal(cellDetainee)}
+                    onRejectClick={() => rejectMeal(cellDetainee)}
+                    onNotApplicableClick={() => notApplicableMeal(cellDetainee)}
                   />
                 </Grid>
               ))}
@@ -49,7 +120,13 @@ class MealComponent extends Component {
             <Loading />
           )}
         </CellDetaineeGrid>
-        <MealFooter />
+        <MealFooter
+          radioButtonValue={this.getMealRadioButtonValue()}
+          isSavingMeal={isSavingMeal}
+          isSaveDisabled={this.isSaveDisabled()}
+          onRadioGroupChange={this.handleRadioGroupChange}
+          onSave={this.handleSave}
+        />
       </React.Fragment>
     );
   }

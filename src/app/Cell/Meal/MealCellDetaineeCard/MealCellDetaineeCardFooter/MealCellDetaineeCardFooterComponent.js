@@ -8,45 +8,66 @@ import NotApplicableIcon from '../../../../images/NotApplicable.png';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
+  meal: PropTypes.shape({
+    accept: PropTypes.bool.isRequired,
+    reject: PropTypes.bool.isRequired,
+    notApplicable: PropTypes.bool.isRequired,
+  }),
+  onAcceptClick: PropTypes.func.isRequired,
+  onRejectClick: PropTypes.func.isRequired,
+  onNotApplicableClick: PropTypes.func.isRequired,
 };
 
-const MealCellDetaineeCardFooterComponent = ({ classes }) => (
+const defaultProps = {
+  meal: null,
+};
+
+const MealCellDetaineeCardFooterComponent = ({
+  classes,
+  meal,
+  onAcceptClick,
+  onRejectClick,
+  onNotApplicableClick,
+}) => (
   <CardActions className={classes.actions} disableActionSpacing>
-    <IconButton
-      classes={{
-        root: classes.button,
-        disabled: classes.buttonDisabled,
-      }}
-    >
-      <img src={MealAcceptIcon} alt="meal accept" className={classes.img} />
-    </IconButton>
-    <IconButton
-      classes={{
-        root: classes.button,
-        disabled: classes.buttonDisabled,
-      }}
-      disabled
-    >
-      <img src={MealDeclineIcon} alt="meal decline" className={classes.img} />
-    </IconButton>
-    <IconButton
-      classes={{
-        root: classes.button,
-        disabled: classes.buttonDisabled,
-      }}
-      disabled
-    >
-      <img
-        src={NotApplicableIcon}
-        alt="not applicable"
-        className={classes.img}
-        disabled
-      />
-    </IconButton>
+    {meal && (
+      <React.Fragment>
+        <IconButton
+          className={meal.accept ? classes.buttonSelected : classes.button}
+          onClick={onAcceptClick}
+        >
+          <img src={MealAcceptIcon} alt="meal accept" className={classes.img} />
+        </IconButton>
+        <IconButton
+          className={meal.reject ? classes.buttonSelected : classes.button}
+          onClick={onRejectClick}
+        >
+          <img
+            src={MealDeclineIcon}
+            alt="meal decline"
+            className={classes.img}
+          />
+        </IconButton>
+        <IconButton
+          className={
+            meal.notApplicable ? classes.buttonSelected : classes.button
+          }
+          onClick={onNotApplicableClick}
+        >
+          <img
+            src={NotApplicableIcon}
+            alt="not applicable"
+            className={classes.img}
+            disabled
+          />
+        </IconButton>
+      </React.Fragment>
+    )}
   </CardActions>
 );
 
 MealCellDetaineeCardFooterComponent.propTypes = propTypes;
+MealCellDetaineeCardFooterComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   actions: {
@@ -55,10 +76,10 @@ export default withStyles((theme) => ({
   },
   button: {
     margin: 0,
-  },
-  buttonDisabled: {
-    margin: 0,
     opacity: 0.2,
+  },
+  buttonSelected: {
+    margin: 0,
   },
   img: {
     height: theme.spacing.unit * 6,

@@ -128,7 +128,25 @@ const saveCellCheck = async (cellCheck) => {
       detentionLogAction: visual
         ? constants.DETENTION_LOG_ACTION_TYPE_VISUAL
         : constants.DETENTION_LOG_ACTION_TYPE_VERBAL,
-      userName: 'cpb1',
+      userName: 'cpb1', // TODO: remove hard-coded user name
+    });
+  });
+};
+
+const saveMeal = async (meal) => {
+  await _.forOwn(meal, async (value) => {
+    const { detainee, accept, notApplicable } = value;
+    if (notApplicable) {
+      return;
+    }
+    await saveDetentionLog({
+      arrestId: detainee.arrestId,
+      detentionLogType: constants.DETENTION_LOG_DATA_TYPE_MEAL,
+      // eslint-disable-next-line no-nested-ternary
+      detentionLogAction: accept
+        ? constants.DETENTION_LOG_ACTION_TYPE_ACCEPT
+        : constants.DETENTION_LOG_ACTION_TYPE_REJECT,
+      userName: 'cpb1', // TODO: remove hard-coded user name
     });
   });
 };
@@ -137,4 +155,5 @@ export default {
   getCellDetails,
   getCellDetainees,
   saveCellCheck,
+  saveMeal,
 };

@@ -16,12 +16,28 @@ const propTypes = {
     lastName: PropTypes.string.isRequired,
   }).isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
+  meal: PropTypes.shape({
+    accept: PropTypes.bool.isRequired,
+    reject: PropTypes.bool.isRequired,
+    notApplicable: PropTypes.bool.isRequired,
+  }),
+  onAcceptClick: PropTypes.func.isRequired,
+  onRejectClick: PropTypes.func.isRequired,
+  onNotApplicableClick: PropTypes.func.isRequired,
+};
+
+const defaultProps = {
+  meal: null,
 };
 
 const MealCellDetaineeCardComponent = ({
   classes,
   cellDetainee,
   isAuthenticated,
+  meal,
+  onAcceptClick,
+  onRejectClick,
+  onNotApplicableClick,
 }) => (
   <Card className={classes.card}>
     <CellDetaineeCardHeader cellDetainee={cellDetainee} />
@@ -29,11 +45,17 @@ const MealCellDetaineeCardComponent = ({
       cellDetainee={cellDetainee}
       isAuthenticated={isAuthenticated}
     />
-    <MealCellDetaineeCardFooter />
+    <MealCellDetaineeCardFooter
+      meal={meal}
+      onAcceptClick={onAcceptClick}
+      onRejectClick={onRejectClick}
+      onNotApplicableClick={onNotApplicableClick}
+    />
   </Card>
 );
 
 MealCellDetaineeCardComponent.propTypes = propTypes;
+MealCellDetaineeCardComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   card: {

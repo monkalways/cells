@@ -20,9 +20,22 @@ const propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  radioButtonValue: PropTypes.string.isRequired,
+  isSavingMeal: PropTypes.bool.isRequired,
+  isSaveDisabled: PropTypes.bool.isRequired,
+  onRadioGroupChange: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
 };
 
-const OverviewFooterComponent = ({ classes, history }) => {
+const MealFooterComponent = ({
+  classes,
+  history,
+  radioButtonValue,
+  isSavingMeal,
+  isSaveDisabled,
+  onRadioGroupChange,
+  onSave,
+}) => {
   const handleBackClick = () => {
     history.goBack();
   };
@@ -44,13 +57,20 @@ const OverviewFooterComponent = ({ classes, history }) => {
               label={<Typography variant="body1">Back</Typography>}
               onClick={handleBackClick}
               icon={<ArrowBackIcon className={classes.icon} />}
+              disabled={isSavingMeal}
             />
             <BottomNavigationAction
               label={<Typography variant="body1">Save</Typography>}
+              onClick={onSave}
               icon={<SaveIcon className={classes.icon} />}
+              disabled={isSaveDisabled || isSavingMeal}
             />
             <BottomNavigationAction disabled />
-            <MealFooterRadioButtonGroup />
+            <MealFooterRadioButtonGroup
+              radioButtonValue={radioButtonValue}
+              isSavingMeal={isSavingMeal}
+              onRadioGroupChange={onRadioGroupChange}
+            />
           </BottomNavigation>
         </Grid>
       </AppBar>
@@ -58,7 +78,7 @@ const OverviewFooterComponent = ({ classes, history }) => {
   );
 };
 
-OverviewFooterComponent.propTypes = propTypes;
+MealFooterComponent.propTypes = propTypes;
 
 export default compose(
   withStyles((theme) => ({
@@ -78,4 +98,4 @@ export default compose(
     },
   })),
   withRouter,
-)(OverviewFooterComponent);
+)(MealFooterComponent);

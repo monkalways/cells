@@ -10,19 +10,34 @@ import {
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
+  radioButtonValue: PropTypes.string.isRequired,
+  isSavingMeal: PropTypes.bool.isRequired,
+  onRadioGroupChange: PropTypes.func.isRequired,
 };
 
-const MealFooterRadioButtonGroup = ({ classes }) => (
-  <RadioGroup name="MealRadio" className={classes.group} value="visual">
+const MealFooterRadioButtonGroup = ({
+  classes,
+  radioButtonValue,
+  isSavingMeal,
+  onRadioGroupChange,
+}) => (
+  <RadioGroup
+    name="MealRadio"
+    className={classes.group}
+    value={radioButtonValue}
+    onChange={onRadioGroupChange}
+  >
     <FormControlLabel
-      value="accepted"
+      value="accept"
       control={<Radio className={classes.radioButton} />}
       label={<Typography variant="body1">Accepted - All</Typography>}
+      disabled={isSavingMeal}
     />
     <FormControlLabel
       value="not-applicable"
       control={<Radio className={classes.radioButton} />}
       label={<Typography variant="body1">N/A - All</Typography>}
+      disabled={isSavingMeal}
     />
   </RadioGroup>
 );

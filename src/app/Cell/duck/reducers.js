@@ -66,10 +66,54 @@ const cellCheckReducer = (state = cellCheckReducerDefaultState, action) => {
   }
 };
 
+const mealReducerDefaultState = {
+  saving: false,
+  data: {},
+};
+
+const mealReducer = (state = mealReducerDefaultState, action) => {
+  switch (action.type) {
+    case types.ACCEPT_MEAL:
+      // eslint-disable-next-line no-param-reassign
+      state.data[action.detainee.id] = {
+        detainee: action.detainee,
+        accept: true,
+        reject: false,
+        notApplicable: false,
+      };
+      return { ...state, data: { ...state.data } };
+    case types.REJECT_MEAL:
+      // eslint-disable-next-line no-param-reassign
+      state.data[action.detainee.id] = {
+        detainee: action.detainee,
+        accept: false,
+        reject: true,
+        notApplicable: false,
+      };
+      return { ...state, data: { ...state.data } };
+    case types.NOT_APPLICABLE_MEAL:
+      // eslint-disable-next-line no-param-reassign
+      state.data[action.detainee.id] = {
+        detainee: action.detainee,
+        accept: false,
+        reject: false,
+        notApplicable: true,
+      };
+      return { ...state, data: { ...state.data } };
+    case types.SAVE_MEAL:
+      return { ...state, saving: true };
+    case types.SAVE_MEAL_SUCCESS:
+      return { saving: false, data: {} };
+    default:
+      return state;
+  }
+};
+
 const cellReducer = combineReducers({
   details: detailsReducer,
   detainees: detaineesReducer,
   cellCheck: cellCheckReducer,
+  meal: mealReducer,
 });
 
 export default cellReducer;
