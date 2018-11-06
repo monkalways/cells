@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Grid, Paper, Typography, withStyles,
-} from '@material-ui/core';
+import { Grid, Typography, withStyles } from '@material-ui/core';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -83,9 +81,6 @@ export default withStyles((theme) => ({
   img: {
     width: '150px',
     height: '150px',
-  },
-  row: {
-    padding: theme.spacing.unit * 0.5,
   },
   column: {
     padding: theme.spacing.unit * 0.5,

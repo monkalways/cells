@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Grid, Paper, Typography, withStyles,
-} from '@material-ui/core';
+import { Grid, Typography, withStyles } from '@material-ui/core';
 import detaineeImage from './detainee.PNG';
 import PersonalStats from './PersonalStats';
 
@@ -12,7 +10,7 @@ const propTypes = {
 };
 
 const PersonalInformationComponent = ({ classes, detainee }) => {
-  console.log(detainee);
+  // console.log(detainee);
 
   const getDetaineeImage = () => {
     const { intakePhotoResourceUri } = detainee;
@@ -59,9 +57,6 @@ export default withStyles((theme) => ({
   img: {
     width: '150px',
     height: '150px',
-  },
-  row: {
-    padding: theme.spacing.unit * 0.5,
   },
   column: {
     padding: theme.spacing.unit * 0.5,
