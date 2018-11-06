@@ -5,18 +5,52 @@ import MealComponent from './MealComponent';
 
 export const mapStateToProps = (
   state,
-  cellDetainees = selectors.getInCellDetaineesState(state),
+  cellDetainees = selectors.getCellDetaineesState(state),
   isCellDetaineesLoaded = selectors.isCellDetaineesLoadedState(state),
   isAuthenticated = authenticationSelectors.isAuthenticatedState(state),
+  meal = selectors.getMealState(state),
+  isSavingMeal = selectors.isSavingMealState(state),
 ) => ({
   cellDetainees,
   isAuthenticated,
   isCellDetaineesLoaded,
+  meal,
+  isSavingMeal,
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  getCellDetainees: (name, getCellDetainees = operations.getCellDetainees) => {
+  getCellDetainees: (
+    name,
+    getCellDetainees = operations.getCellDetaineesForMeal,
+  ) => {
     dispatch(getCellDetainees(name));
+  },
+  acceptMeal: (detainee, acceptMeal = operations.acceptMeal) => {
+    dispatch(acceptMeal(detainee));
+  },
+  rejectMeal: (detainee, rejectMeal = operations.rejectMeal) => {
+    dispatch(rejectMeal(detainee));
+  },
+  notApplicableMeal: (
+    detainee,
+    notApplicableMeal = operations.notApplicableMeal,
+  ) => {
+    dispatch(notApplicableMeal(detainee));
+  },
+  acceptMealAll: (detainees, acceptMeal = operations.acceptMeal) => {
+    detainees.forEach((detainee) => dispatch(acceptMeal(detainee)));
+  },
+  rejectMealAll: (detainees, rejectMeal = operations.rejectMeal) => {
+    detainees.forEach((detainee) => dispatch(rejectMeal(detainee)));
+  },
+  notApplicableMealAll: (
+    detainees,
+    notApplicableMeal = operations.notApplicableMeal,
+  ) => {
+    detainees.forEach((detainee) => dispatch(notApplicableMeal(detainee)));
+  },
+  onSave: (meal, cellName, saveMeal = operations.saveMeal) => {
+    dispatch(saveMeal(meal, cellName));
   },
 });
 

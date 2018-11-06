@@ -38,19 +38,36 @@ class CellCheckComponent extends Component {
     if (!isCellDetaineesLoaded || _.isEmpty(cellCheck)) {
       return '';
     }
-    const isAllVisual = cellDetainees.every((detainee) => cellCheck[detainee.id].visual);
-    const isAllVerbal = cellDetainees.every((detainee) => cellCheck[detainee.id].verbal);
+    const isAllVisual = cellDetainees
+      .filter((detainee) => !detainee.location)
+      .every((detainee) => cellCheck[detainee.id].visual);
+    const isAllVerbal = cellDetainees
+      .filter((detainee) => !detainee.location)
+      .every((detainee) => cellCheck[detainee.id].verbal);
 
     if (isAllVisual) return 'visual';
     if (isAllVerbal) return 'verbal';
     return '';
   };
 
+  isSaveDisabled = () => {
+    const { isCellDetaineesLoaded, cellDetainees, cellCheck } = this.props;
+    if (!isCellDetaineesLoaded && !_.isEmpty(cellCheck)) return true;
+
+    if (
+      cellDetainees
+      && cellDetainees.length > 0
+      && cellDetainees.every((detainee) => detainee.location)
+    ) return true;
+
+    return false;
+  };
+
   handleRadioGroupChange = (event) => {
     const { visualCheckAll, verbalCheckAll, cellDetainees } = this.props;
     const { value } = event.target;
-    if (value === 'visual') visualCheckAll(cellDetainees);
-    if (value === 'verbal') verbalCheckAll(cellDetainees);
+    if (value === 'visual') visualCheckAll(cellDetainees.filter((detainee) => !detainee.location));
+    if (value === 'verbal') verbalCheckAll(cellDetainees.filter((detainee) => !detainee.location));
   };
 
   handleSave = () => {
@@ -72,30 +89,28 @@ class CellCheckComponent extends Component {
     return (
       <React.Fragment>
         <CellDetaineeGrid>
-          {isCellDetaineesLoaded
-          && !_.isEmpty(cellCheck)
-          && !isSavingCellCheck ? (
+          {isCellDetaineesLoaded && !isSavingCellCheck ? (
             <React.Fragment>
               {cellDetainees.map((cellDetainee) => (
                 <Grid key={cellDetainee.id} item sm={4}>
                   <CellCheckCellDetaineeCard
                     cellDetainee={cellDetainee}
                     isAuthenticated={isAuthenticated}
-                    visual={cellCheck[cellDetainee.id].visual}
-                    verbal={cellCheck[cellDetainee.id].verbal}
+                    cellCheck={cellCheck[cellDetainee.id]}
                     onVisualClick={() => visualCheck(cellDetainee)}
                     onVerbalClick={() => verbalCheck(cellDetainee)}
                   />
                 </Grid>
               ))}
             </React.Fragment>
-            ) : (
-              <Loading />
-            )}
+          ) : (
+            <Loading />
+          )}
         </CellDetaineeGrid>
         <CellCheckFooter
           radioButtonValue={this.getCellCheckRadioButtonValue()}
           isSavingCellCheck={isSavingCellCheck}
+          isSaveDisabled={this.isSaveDisabled()}
           onRadioGroupChange={this.handleRadioGroupChange}
           onSave={this.handleSave}
         />

@@ -2,6 +2,8 @@ import { push } from 'connected-react-router';
 import actions from './actions';
 import services from './services';
 
+/* OVERVIEW */
+
 const getCellDetails = (
   name,
   getCellDetailsService = services.getCellDetails,
@@ -34,6 +36,8 @@ const getCellDetaineesForOverview = (
   }
 };
 
+/* CELL CHECK */
+
 const { visualCheck, verbalCheck } = actions;
 
 const getCellDetaineesForCellCheck = (
@@ -48,9 +52,11 @@ const getCellDetaineesForCellCheck = (
     dispatch(getCellDetaineesAction());
     const cellDetainees = await getCellDetaineesService(name);
     if (cellDetainees) {
-      cellDetainees.forEach((detainee) => {
-        dispatch(visualCheck(detainee));
-      });
+      cellDetainees
+        .filter((detainee) => !detainee.location)
+        .forEach((detainee) => {
+          dispatch(visualCheck(detainee));
+        });
     }
     dispatch(getCellDetaineesSuccessAction(cellDetainees));
   } catch (error) {
@@ -77,6 +83,100 @@ const saveCellCheck = (
   }
 };
 
+/* MEAL */
+
+const { acceptMeal, rejectMeal, notApplicableMeal } = actions;
+
+const getCellDetaineesForMeal = (
+  name,
+  getCellDetaineesService = services.getCellDetainees,
+  getCellDetaineesAction = actions.getCellDetainees,
+  getCellDetaineesSuccessAction = actions.getCellDetaineesSuccess,
+  // TODO: add global error handler
+  // setAppErrorAction = commonActions.setAppError,
+) => async (dispatch) => {
+  try {
+    dispatch(getCellDetaineesAction());
+    const cellDetainees = await getCellDetaineesService(name);
+    if (cellDetainees) {
+      cellDetainees
+        .filter((detainee) => !detainee.location)
+        .forEach((detainee) => {
+          dispatch(acceptMeal(detainee));
+        });
+    }
+    dispatch(getCellDetaineesSuccessAction(cellDetainees));
+  } catch (error) {
+    // dispatch(setAppErrorAction());
+  }
+};
+
+const saveMeal = (
+  meal,
+  cellName,
+  saveMealService = services.saveMeal,
+  saveMealAction = actions.saveMeal,
+  saveMealSuccessAction = actions.saveMealSuccess,
+  // TODO: add global error handler
+  // setAppErrorAction = commonActions.setAppError,
+) => async (dispatch) => {
+  try {
+    dispatch(saveMealAction());
+    await saveMealService(meal);
+    dispatch(saveMealSuccessAction());
+    dispatch(push(`/cells/${cellName}/home/`));
+  } catch (error) {
+    // dispatch(setAppErrorAction());
+  }
+};
+
+/* MEDICATION */
+
+const { acceptMedication, rejectMedication, notApplicableMedication } = actions;
+
+const getCellDetaineesForMedication = (
+  name,
+  getCellDetaineesService = services.getCellDetainees,
+  getCellDetaineesAction = actions.getCellDetainees,
+  getCellDetaineesSuccessAction = actions.getCellDetaineesSuccess,
+  // TODO: add global error handler
+  // setAppErrorAction = commonActions.setAppError,
+) => async (dispatch) => {
+  try {
+    dispatch(getCellDetaineesAction());
+    const cellDetainees = await getCellDetaineesService(name);
+    if (cellDetainees) {
+      cellDetainees
+        .filter((detainee) => !detainee.location)
+        .forEach((detainee) => {
+          dispatch(acceptMedication(detainee));
+        });
+    }
+    dispatch(getCellDetaineesSuccessAction(cellDetainees));
+  } catch (error) {
+    // dispatch(setAppErrorAction());
+  }
+};
+
+const saveMedication = (
+  medication,
+  cellName,
+  saveMedicationService = services.saveMedication,
+  saveMedicationAction = actions.saveMedication,
+  saveMedicationSuccessAction = actions.saveMedicationSuccess,
+  // TODO: add global error handler
+  // setAppErrorAction = commonActions.setAppError,
+) => async (dispatch) => {
+  try {
+    dispatch(saveMedicationAction());
+    await saveMedicationService(medication);
+    dispatch(saveMedicationSuccessAction());
+    dispatch(push(`/cells/${cellName}/home/`));
+  } catch (error) {
+    // dispatch(setAppErrorAction());
+  }
+};
+
 export default {
   getCellDetails,
   getCellDetaineesForOverview,
@@ -84,4 +184,14 @@ export default {
   visualCheck,
   verbalCheck,
   saveCellCheck,
+  acceptMeal,
+  rejectMeal,
+  notApplicableMeal,
+  getCellDetaineesForMeal,
+  saveMeal,
+  acceptMedication,
+  rejectMedication,
+  notApplicableMedication,
+  getCellDetaineesForMedication,
+  saveMedication,
 };

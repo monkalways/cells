@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CardActions, IconButton, withStyles } from '@material-ui/core';
 
-import MealAcceptIcon from '../../../../images/MealAccept.png';
-import MealDeclineIcon from '../../../../images/MealDecline.png';
+import MedicineAcceptIcon from '../../../../images/MedicineAccept.png';
+import MedicineDeclineIcon from '../../../../images/MedicineDecline.png';
 import NotApplicableIcon from '../../../../images/NotApplicable.png';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  meal: PropTypes.shape({
+  medication: PropTypes.shape({
     accept: PropTypes.bool.isRequired,
     reject: PropTypes.bool.isRequired,
     notApplicable: PropTypes.bool.isRequired,
@@ -19,38 +19,46 @@ const propTypes = {
 };
 
 const defaultProps = {
-  meal: null,
+  medication: null,
 };
 
-const MealCellDetaineeCardFooterComponent = ({
+const MedicationCellDetaineeCardFooterComponent = ({
   classes,
-  meal,
+  medication,
   onAcceptClick,
   onRejectClick,
   onNotApplicableClick,
 }) => (
   <CardActions className={classes.actions} disableActionSpacing>
-    {meal && (
+    {medication && (
       <React.Fragment>
         <IconButton
-          className={meal.accept ? classes.buttonSelected : classes.button}
+          className={
+            medication.accept ? classes.buttonSelected : classes.button
+          }
           onClick={onAcceptClick}
         >
-          <img src={MealAcceptIcon} alt="meal accept" className={classes.img} />
-        </IconButton>
-        <IconButton
-          className={meal.reject ? classes.buttonSelected : classes.button}
-          onClick={onRejectClick}
-        >
           <img
-            src={MealDeclineIcon}
-            alt="meal decline"
+            src={MedicineAcceptIcon}
+            alt="Medicine accept"
             className={classes.img}
           />
         </IconButton>
         <IconButton
           className={
-            meal.notApplicable ? classes.buttonSelected : classes.button
+            medication.reject ? classes.buttonSelected : classes.button
+          }
+          onClick={onRejectClick}
+        >
+          <img
+            src={MedicineDeclineIcon}
+            alt="Medicine decline"
+            className={classes.img}
+          />
+        </IconButton>
+        <IconButton
+          className={
+            medication.notApplicable ? classes.buttonSelected : classes.button
           }
           onClick={onNotApplicableClick}
         >
@@ -66,8 +74,8 @@ const MealCellDetaineeCardFooterComponent = ({
   </CardActions>
 );
 
-MealCellDetaineeCardFooterComponent.propTypes = propTypes;
-MealCellDetaineeCardFooterComponent.defaultProps = defaultProps;
+MedicationCellDetaineeCardFooterComponent.propTypes = propTypes;
+MedicationCellDetaineeCardFooterComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   actions: {
@@ -85,4 +93,4 @@ export default withStyles((theme) => ({
     height: theme.spacing.unit * 6,
     width: theme.spacing.unit * 6,
   },
-}))(MealCellDetaineeCardFooterComponent);
+}))(MedicationCellDetaineeCardFooterComponent);

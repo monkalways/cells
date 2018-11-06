@@ -6,6 +6,10 @@ const getCellDetainees = (state) => state.cell.detainees.data;
 const isCellDetaineesLoaded = (state) => state.cell.detainees.loaded;
 const getCellCheck = (state) => state.cell.cellCheck.data;
 const isSavingCellCheck = (state) => state.cell.cellCheck.saving;
+const getMeal = (state) => state.cell.meal.data;
+const isSavingMeal = (state) => state.cell.meal.saving;
+const getMedication = (state) => state.cell.medication.data;
+const isSavingMedication = (state) => state.cell.medication.saving;
 
 // Reselect selectors
 const getCellDetailsState = createSelector(
@@ -16,11 +20,6 @@ const getCellDetailsState = createSelector(
 const getCellDetaineesState = createSelector(
   [getCellDetainees],
   (cellDetainees) => cellDetainees,
-);
-
-const getInCellDetaineesState = createSelector(
-  [getCellDetainees],
-  (cellDetainees) => cellDetainees.filter((detainee) => !detainee.location),
 );
 
 const isCellDetaineesLoadedState = createSelector(
@@ -38,11 +37,28 @@ const isSavingCellCheckState = createSelector(
   (saving) => saving,
 );
 
+const getMealState = createSelector([getMeal], (meal) => meal);
+
+const isSavingMealState = createSelector([isSavingMeal], (saving) => saving);
+
+const getMedicationState = createSelector(
+  [getMedication],
+  (medication) => medication,
+);
+
+const isSavingMedicationState = createSelector(
+  [isSavingMedication],
+  (saving) => saving,
+);
+
 export default {
   getCellDetailsState,
   getCellDetaineesState,
-  getInCellDetaineesState,
   isCellDetaineesLoadedState,
   getCellCheckState,
   isSavingCellCheckState,
+  getMealState,
+  isSavingMealState,
+  getMedicationState,
+  isSavingMedicationState,
 };

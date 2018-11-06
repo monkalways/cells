@@ -103,23 +103,69 @@ const getCellDetainees = async (name) => {
   }));
 };
 
+const saveDetentionLog = async ({
+  arrestId,
+  detentionLogType,
+  detentionLogAction,
+  userName,
+}) => axios.post(
+  `${process.env.REACT_APP_CELL_SERVICE_URL}${constants.DETENTION_LOGS_URL}`,
+  {
+    arrestId,
+    detentionLogType,
+    detentionLogAction,
+    userName,
+  },
+  commonConstants.HEADERS,
+);
+
 const saveCellCheck = async (cellCheck) => {
   await _.forOwn(cellCheck, async (value) => {
     const { detainee, visual } = value;
-    await axios.post(
-      `${process.env.REACT_APP_CELL_SERVICE_URL}${
-        constants.DETENTION_LOGS_URL
-      }`,
-      {
-        arrestId: detainee.arrestId,
-        detentionLogType: constants.DETENTION_LOG_DATA_TYPE_CELL_CHECK,
-        detentionLogAction: visual
-          ? constants.DETENTION_LOG_ACTION_TYPE_VISUAL
-          : constants.DETENTION_LOG_ACTION_TYPE_VERBAL,
-        userName: 'cpb1',
-      },
-      commonConstants.HEADERS,
-    );
+    await saveDetentionLog({
+      arrestId: detainee.arrestId,
+      detentionLogType: constants.DETENTION_LOG_DATA_TYPE_CELL_CHECK,
+      detentionLogAction: visual
+        ? constants.DETENTION_LOG_ACTION_TYPE_VISUAL
+        : constants.DETENTION_LOG_ACTION_TYPE_VERBAL,
+      userName: 'cpb1', // TODO: remove hard-coded user name
+    });
+  });
+};
+
+const saveMeal = async (meal) => {
+  await _.forOwn(meal, async (value) => {
+    const { detainee, accept, notApplicable } = value;
+    if (notApplicable) {
+      return;
+    }
+    await saveDetentionLog({
+      arrestId: detainee.arrestId,
+      detentionLogType: constants.DETENTION_LOG_DATA_TYPE_MEAL,
+      // eslint-disable-next-line no-nested-ternary
+      detentionLogAction: accept
+        ? constants.DETENTION_LOG_ACTION_TYPE_ACCEPT
+        : constants.DETENTION_LOG_ACTION_TYPE_REJECT,
+      userName: 'cpb1', // TODO: remove hard-coded user name
+    });
+  });
+};
+
+const saveMedication = async (medication) => {
+  await _.forOwn(medication, async (value) => {
+    const { detainee, accept, notApplicable } = value;
+    if (notApplicable) {
+      return;
+    }
+    await saveDetentionLog({
+      arrestId: detainee.arrestId,
+      detentionLogType: constants.DETENTION_LOG_DATA_TYPE_MEDICATION,
+      // eslint-disable-next-line no-nested-ternary
+      detentionLogAction: accept
+        ? constants.DETENTION_LOG_ACTION_TYPE_ACCEPT
+        : constants.DETENTION_LOG_ACTION_TYPE_REJECT,
+      userName: 'cpb1', // TODO: remove hard-coded user name
+    });
   });
 };
 
@@ -127,4 +173,6 @@ export default {
   getCellDetails,
   getCellDetainees,
   saveCellCheck,
+  saveMeal,
+  saveMedication,
 };
