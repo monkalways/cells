@@ -20,20 +20,20 @@ const PersonalStatsComponent = ({ classes, detainee }) => (
         >
           <Grid item xs>
             <Grid container>
-              <Typography variant="subtitle2">Name:</Typography>
+              <Typography variant="body2">Name:</Typography>
             </Grid>
           </Grid>
           <Grid item xs>
-            <Typography variant="subtitle2">DOB:</Typography>
+            <Typography variant="body2">DOB:</Typography>
           </Grid>
           <Grid item xs>
-            <Typography variant="subtitle2">Gender:</Typography>
+            <Typography variant="body2">Gender:</Typography>
           </Grid>
           <Grid item xs>
-            <Typography variant="subtitle2">BIN:</Typography>
+            <Typography variant="body2">BIN:</Typography>
           </Grid>
           <Grid item xs>
-            <Typography variant="subtitle2">Remarks:</Typography>
+            <Typography variant="body2">Remarks:</Typography>
           </Grid>
         </Grid>
       </Grid>
@@ -61,7 +61,7 @@ const PersonalStatsComponent = ({ classes, detainee }) => (
           </Grid>
           <Grid item xs>
             <Typography variant="subtitle2">
-              {detainee.propertyBagNumber}
+              {detainee.propertyBagNumber ? detainee.propertyBagNumber : <br />}
             </Typography>
           </Grid>
           <Grid item xs>
