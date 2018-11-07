@@ -5,6 +5,7 @@ import Loading from '../../common/Loading';
 import DetaineeGrid from '../DetaineeGrid';
 import PersonalInformation from '../PersonalInformation';
 import Location from '../Location';
+import Notice from '../Notice';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -52,8 +53,8 @@ const DetaineeDetailsComponent = ({
             className={classes.row}
             spacing={8}
           >
-            <Grid item sm>
-              <Paper className={classes.paper}>Notice</Paper>
+            <Grid item sm={12}>
+              <Notice detainee={detainee} />
             </Grid>
           </Grid>
           <Grid
