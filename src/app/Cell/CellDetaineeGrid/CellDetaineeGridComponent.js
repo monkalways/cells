@@ -22,6 +22,7 @@ export default withStyles((theme) => ({
   container: {
     height: theme.spacing.unit * 97,
     overflowY: 'auto',
+    msOverflowStyle: '-ms-autohiding-scrollbar',
     marginLeft: 0,
     marginRight: 0,
     marginBottom: theme.spacing.unit * 0.4,

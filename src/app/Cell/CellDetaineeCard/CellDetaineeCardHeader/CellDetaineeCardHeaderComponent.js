@@ -32,9 +32,7 @@ const CellDetaineeCardHeaderComponent = ({ classes, cellDetainee }) => {
     let locationIconSrc = InCellIcon;
 
     if (location) {
-      if (
-        location.toLowerCase().includes(LOCATION_IN_TRANSIT)
-      ) {
+      if (location.toLowerCase().includes(LOCATION_IN_TRANSIT)) {
         locationIconSrc = InTransitIcon;
       }
 
