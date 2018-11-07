@@ -1,12 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Avatar,
-  Button,
-  Grid,
-  Paper,
-  Typography,
-  withStyles,
+  Avatar, Grid, Paper, Typography, withStyles,
 } from '@material-ui/core';
 
 import MedicalVisitIcon from '../../../images/MedicalVisit.png';
@@ -35,7 +30,7 @@ const propTypes = {
 
 const gridSpacing = 2;
 
-const DetaineeActionComponent = ({ classes, detainee }) => (
+const DetaineeActionComponent = ({ classes }) => (
   <Paper className={classes.body}>
     <Grid container spacing={8} className={classes.grid}>
       <Grid item xs={12}>

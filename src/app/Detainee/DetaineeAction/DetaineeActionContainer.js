@@ -3,7 +3,7 @@ import DetaineeActionComponent from './DetaineeActionComponent';
 
 export const mapStateToProps = () => ({});
 
-export const mapDispatchToProps = (dispatch) => ({});
+export const mapDispatchToProps = () => ({});
 
 export default connect(
   mapStateToProps,

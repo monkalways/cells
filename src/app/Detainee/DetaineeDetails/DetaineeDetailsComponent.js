@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Paper, withStyles } from '@material-ui/core';
+import { Grid, withStyles } from '@material-ui/core';
 import Loading from '../../common/Loading';
 import DetaineeGrid from '../DetaineeGrid';
 import PersonalInformation from '../PersonalInformation';
