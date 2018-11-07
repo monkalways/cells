@@ -82,7 +82,9 @@ class ScanCardDialogComponent extends Component {
           )}
         </DialogContent>
         <DialogActions>
-          {// TODO: Remove the "Proceed with Test Account" button}
+          {
+            // TODO: Remove the "Proceed with Test Account" button
+          }
           <Button
             onClick={this.handleFakeUserClick}
             color="secondary"
