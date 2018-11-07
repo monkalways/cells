@@ -119,11 +119,13 @@ export default compose(
     },
     navigation: {
       height: '100%',
-      width: '100%',
+      width: '69%',
       backgroundColor: '#A8C6FA', // TODO: move color to theme
     },
     button: {
-      margin: theme.spacing.unit,
+      height: theme.spacing.unit * 7,
+      width: theme.spacing.unit * 40,
+      margin: theme.spacing.unit * 2,
     },
     navigationImage: {
       width: theme.spacing.unit * 6,

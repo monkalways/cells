@@ -90,7 +90,7 @@ export default compose(
     },
     navigation: {
       height: '100%',
-      width: '100%',
+      width: '69%',
       backgroundColor: '#A8C6FA', // TODO: move color to theme
     },
     icon: {
