@@ -1,6 +1,8 @@
 import { push } from 'connected-react-router';
+
 import actions from './actions';
 import services from './services';
+import utils from '../../utils';
 
 /* OVERVIEW */
 
@@ -8,14 +10,12 @@ const getCellDetails = (
   name,
   getCellDetailsService = services.getCellDetails,
   getCellDetailsSuccessAction = actions.getCellDetailsSuccess,
-  // TODO: add global error handler
-  // setAppErrorAction = commonActions.setAppError,
 ) => async (dispatch) => {
   try {
     const payload = await getCellDetailsService(name);
     dispatch(getCellDetailsSuccessAction(payload));
   } catch (error) {
-    // dispatch(setAppErrorAction());
+    utils.sendErrorMessage({ dispatch, error });
   }
 };
 
@@ -24,15 +24,13 @@ const getCellDetaineesForOverview = (
   getCellDetaineesService = services.getCellDetainees,
   getCellDetaineesAction = actions.getCellDetainees,
   getCellDetaineesSuccessAction = actions.getCellDetaineesSuccess,
-  // TODO: add global error handler
-  // setAppErrorAction = commonActions.setAppError,
 ) => async (dispatch) => {
   try {
     dispatch(getCellDetaineesAction());
     const payload = await getCellDetaineesService(name);
     dispatch(getCellDetaineesSuccessAction(payload));
   } catch (error) {
-    // dispatch(setAppErrorAction());
+    utils.sendErrorMessage({ dispatch, error });
   }
 };
 
@@ -45,8 +43,6 @@ const getCellDetaineesForCellCheck = (
   getCellDetaineesService = services.getCellDetainees,
   getCellDetaineesAction = actions.getCellDetainees,
   getCellDetaineesSuccessAction = actions.getCellDetaineesSuccess,
-  // TODO: add global error handler
-  // setAppErrorAction = commonActions.setAppError,
 ) => async (dispatch) => {
   try {
     dispatch(getCellDetaineesAction());
@@ -60,7 +56,7 @@ const getCellDetaineesForCellCheck = (
     }
     dispatch(getCellDetaineesSuccessAction(cellDetainees));
   } catch (error) {
-    // dispatch(setAppErrorAction());
+    utils.sendErrorMessage({ dispatch, error });
   }
 };
 
@@ -70,16 +66,15 @@ const saveCellCheck = (
   saveCellCheckService = services.saveCellCheck,
   saveCellCheckAction = actions.saveCellCheck,
   saveCellCheckSuccessAction = actions.saveCellCheckSuccess,
-  // TODO: add global error handler
-  // setAppErrorAction = commonActions.setAppError,
 ) => async (dispatch) => {
   try {
     dispatch(saveCellCheckAction());
     await saveCellCheckService(cellCheck);
     dispatch(saveCellCheckSuccessAction());
     dispatch(push(`/cells/${cellName}/home/`));
+    utils.sendSuccessMessage({ dispatch, message: 'Cell check saved.' });
   } catch (error) {
-    // dispatch(setAppErrorAction());
+    utils.sendErrorMessage({ dispatch, error });
   }
 };
 
@@ -92,8 +87,6 @@ const getCellDetaineesForMeal = (
   getCellDetaineesService = services.getCellDetainees,
   getCellDetaineesAction = actions.getCellDetainees,
   getCellDetaineesSuccessAction = actions.getCellDetaineesSuccess,
-  // TODO: add global error handler
-  // setAppErrorAction = commonActions.setAppError,
 ) => async (dispatch) => {
   try {
     dispatch(getCellDetaineesAction());
@@ -107,7 +100,7 @@ const getCellDetaineesForMeal = (
     }
     dispatch(getCellDetaineesSuccessAction(cellDetainees));
   } catch (error) {
-    // dispatch(setAppErrorAction());
+    utils.sendErrorMessage({ dispatch, error });
   }
 };
 
@@ -117,16 +110,15 @@ const saveMeal = (
   saveMealService = services.saveMeal,
   saveMealAction = actions.saveMeal,
   saveMealSuccessAction = actions.saveMealSuccess,
-  // TODO: add global error handler
-  // setAppErrorAction = commonActions.setAppError,
 ) => async (dispatch) => {
   try {
     dispatch(saveMealAction());
-    await saveMealService(meal);
+    const savedAny = await saveMealService(meal);
     dispatch(saveMealSuccessAction());
     dispatch(push(`/cells/${cellName}/home/`));
+    if (savedAny) utils.sendSuccessMessage({ dispatch, message: 'Meal provision saved.' });
   } catch (error) {
-    // dispatch(setAppErrorAction());
+    utils.sendErrorMessage({ dispatch, error });
   }
 };
 
@@ -139,8 +131,6 @@ const getCellDetaineesForMedication = (
   getCellDetaineesService = services.getCellDetainees,
   getCellDetaineesAction = actions.getCellDetainees,
   getCellDetaineesSuccessAction = actions.getCellDetaineesSuccess,
-  // TODO: add global error handler
-  // setAppErrorAction = commonActions.setAppError,
 ) => async (dispatch) => {
   try {
     dispatch(getCellDetaineesAction());
@@ -154,7 +144,7 @@ const getCellDetaineesForMedication = (
     }
     dispatch(getCellDetaineesSuccessAction(cellDetainees));
   } catch (error) {
-    // dispatch(setAppErrorAction());
+    utils.sendErrorMessage({ dispatch, error });
   }
 };
 
@@ -164,16 +154,20 @@ const saveMedication = (
   saveMedicationService = services.saveMedication,
   saveMedicationAction = actions.saveMedication,
   saveMedicationSuccessAction = actions.saveMedicationSuccess,
-  // TODO: add global error handler
-  // setAppErrorAction = commonActions.setAppError,
 ) => async (dispatch) => {
   try {
     dispatch(saveMedicationAction());
-    await saveMedicationService(medication);
+    const savedAny = await saveMedicationService(medication);
     dispatch(saveMedicationSuccessAction());
     dispatch(push(`/cells/${cellName}/home/`));
+    if (savedAny) {
+      utils.sendSuccessMessage({
+        dispatch,
+        message: 'Medication provision saved.',
+      });
+    }
   } catch (error) {
-    // dispatch(setAppErrorAction());
+    utils.sendErrorMessage({ dispatch, error });
   }
 };
 

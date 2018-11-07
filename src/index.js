@@ -5,8 +5,10 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Provider as ReduxProvider } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider } from '@material-ui/core/styles';
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 
 import App from './app/App';
+import Notification from './app/common/Notification';
 import configureStore from './store';
 import theme from './mui-theme';
 
@@ -21,6 +23,7 @@ const RootHtml = () => (
         <ConnectedRouter history={history}>
           <App />
         </ConnectedRouter>
+        <Notification />
       </MuiThemeProvider>
     </CssBaseline>
   </ReduxProvider>

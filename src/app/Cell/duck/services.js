@@ -134,11 +134,13 @@ const saveCellCheck = async (cellCheck) => {
 };
 
 const saveMeal = async (meal) => {
+  let savedAny = false;
   await _.forOwn(meal, async (value) => {
     const { detainee, accept, notApplicable } = value;
     if (notApplicable) {
       return;
     }
+    savedAny = true;
     await saveDetentionLog({
       arrestId: detainee.arrestId,
       detentionLogType: constants.DETENTION_LOG_DATA_TYPE_MEAL,
@@ -149,14 +151,17 @@ const saveMeal = async (meal) => {
       userName: 'cpb1', // TODO: remove hard-coded user name
     });
   });
+  return savedAny;
 };
 
 const saveMedication = async (medication) => {
+  let savedAny = false;
   await _.forOwn(medication, async (value) => {
     const { detainee, accept, notApplicable } = value;
     if (notApplicable) {
       return;
     }
+    savedAny = true;
     await saveDetentionLog({
       arrestId: detainee.arrestId,
       detentionLogType: constants.DETENTION_LOG_DATA_TYPE_MEDICATION,
@@ -167,6 +172,7 @@ const saveMedication = async (medication) => {
       userName: 'cpb1', // TODO: remove hard-coded user name
     });
   });
+  return savedAny;
 };
 
 export default {
