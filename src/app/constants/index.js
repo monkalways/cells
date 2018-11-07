@@ -11,4 +11,6 @@ const HEADERS = {
   },
 };
 
-export default { LAYOUT, HEADERS };
+const SCAN_CARD_ID_LENGTH = 16;
+
+export default { LAYOUT, HEADERS, SCAN_CARD_ID_LENGTH };
