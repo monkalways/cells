@@ -12,6 +12,8 @@ import {
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
+import ScanCardDialog from './ScanCardDialog';
+
 import MedicineAcceptIcon from '../../../images/MedicineAccept.png';
 import MealAcceptIcon from '../../../images/MealAccept.png';
 import WellnessVisualIcon from '../../../images/WellnessVisual.png';
@@ -92,14 +94,17 @@ const OverviewFooterComponent = ({
               />
             </BottomNavigation>
           ) : (
-            <Button
-              variant="contained"
-              color="secondary"
-              className={classes.button}
-              onClick={() => onSignIn(true)}
-            >
-              Scan ID Card to Access
-            </Button>
+            <React.Fragment>
+              <Button
+                variant="contained"
+                color="secondary"
+                className={classes.button}
+                onClick={() => onSignIn()}
+              >
+                Scan ID Card to Access
+              </Button>
+              <ScanCardDialog />
+            </React.Fragment>
           )}
         </Grid>
       </AppBar>

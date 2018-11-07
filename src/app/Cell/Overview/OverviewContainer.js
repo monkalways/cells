@@ -24,11 +24,8 @@ export const mapDispatchToProps = (dispatch) => ({
   ) => {
     dispatch(getCellDetainees(name));
   },
-  handleSignIn: (
-    isAuthenticated,
-    authenticate = authenticationOperations.authenticate,
-  ) => {
-    dispatch(authenticate(isAuthenticated));
+  handleSignIn: (startSignIn = authenticationOperations.startSignIn) => {
+    dispatch(startSignIn());
   },
 });
 
