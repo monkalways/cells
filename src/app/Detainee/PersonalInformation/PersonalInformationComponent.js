@@ -30,7 +30,7 @@ const PersonalInformationComponent = ({ classes, detainee }) => {
         spacing={8}
       >
         <Grid item>
-          <Typography>Personal Information</Typography>
+          <Typography variant="h6">Personal Information</Typography>
         </Grid>
         <Grid item>
           <Grid container alignItems="flex-start" justify="flex-start">
