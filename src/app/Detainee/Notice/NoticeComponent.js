@@ -69,7 +69,7 @@ const NoticeComponent = ({ classes, detainee }) => {
   return (
     <Grid container spacing={8} className={classes.grid}>
       <Grid item xs={12}>
-        <Typography>Notice</Typography>
+        <Typography variant="h6">Notice</Typography>
       </Grid>
       {renderWarnings()}
     </Grid>

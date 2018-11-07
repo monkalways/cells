@@ -6,6 +6,8 @@ import DetaineeGrid from '../DetaineeGrid';
 import PersonalInformation from '../PersonalInformation';
 import Location from '../Location';
 import Notice from '../Notice';
+import ProvidedWelfare from '../ProvidedWelfare';
+import Activities from '../Activities';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -64,7 +66,7 @@ const DetaineeDetailsComponent = ({
             spacing={8}
           >
             <Grid item sm>
-              <Paper className={classes.paper}>Provided Welfare</Paper>
+              <ProvidedWelfare detainee={detainee} />
             </Grid>
           </Grid>
           <Grid
@@ -74,7 +76,7 @@ const DetaineeDetailsComponent = ({
             spacing={8}
           >
             <Grid item sm>
-              <Paper className={classes.paper}>Activities</Paper>
+              <Activities detainee={detainee} />
             </Grid>
           </Grid>
           <Grid
