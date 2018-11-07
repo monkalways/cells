@@ -3,13 +3,13 @@ import { Route, Switch } from 'react-router-dom';
 import routes from './routes';
 
 const App = () => (
-  <main>
+  <React.Fragment>
     <Switch>
       {routes.map((route) => (
         <Route key={route.path} {...route} />
       ))}
     </Switch>
-  </main>
+  </React.Fragment>
 );
 
 export default App;
