@@ -52,6 +52,11 @@ class ScanCardDialogComponent extends Component {
     }
   };
 
+  handleFakeUserClick = () => {
+    const { authenticate } = this.props;
+    authenticate('b5a3d600f8ff12e0');
+  };
+
   render() {
     const {
       classes,
@@ -77,6 +82,14 @@ class ScanCardDialogComponent extends Component {
           )}
         </DialogContent>
         <DialogActions>
+          {// TODO: Remove the "Proceed with Test Account" button}
+          <Button
+            onClick={this.handleFakeUserClick}
+            color="secondary"
+            autoFocus
+          >
+            Proceed with Test Account
+          </Button>
           <Button onClick={onClose} color="primary" autoFocus>
             Cancel
           </Button>
