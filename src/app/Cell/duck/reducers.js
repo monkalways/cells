@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import types from './types';
+import { types as authenticationTypes } from '../../Authentication/duck';
 
 const detailsReducer = (state = null, action) => {
   switch (action.type) {
@@ -7,6 +8,8 @@ const detailsReducer = (state = null, action) => {
       return {
         ...action.cellDetails,
       };
+    case authenticationTypes.LOG_OUT:
+      return null;
     default:
       return state;
   }
@@ -29,6 +32,8 @@ const detaineesReducer = (state = detaineesReducerDefaultState, action) => {
         loaded: true,
         data: [...action.cellDetainees],
       };
+    case authenticationTypes.LOG_OUT:
+      return detaineesReducerDefaultState;
     default:
       return state;
   }
@@ -61,6 +66,8 @@ const cellCheckReducer = (state = cellCheckReducerDefaultState, action) => {
       return { ...state, saving: true };
     case types.SAVE_CELL_CHECK_SUCCESS:
       return { saving: false, data: {} };
+    case authenticationTypes.LOG_OUT:
+      return cellCheckReducerDefaultState;
     default:
       return state;
   }
@@ -104,6 +111,8 @@ const mealReducer = (state = mealReducerDefaultState, action) => {
       return { ...state, saving: true };
     case types.SAVE_MEAL_SUCCESS:
       return { saving: false, data: {} };
+    case authenticationTypes.LOG_OUT:
+      return mealReducerDefaultState;
     default:
       return state;
   }
@@ -147,6 +156,8 @@ const medicationReducer = (state = medicationReducerDefaultState, action) => {
       return { ...state, saving: true };
     case types.SAVE_MEDICATION_SUCCESS:
       return { saving: false, data: {} };
+    case authenticationTypes.LOG_OUT:
+      return medicationReducerDefaultState;
     default:
       return state;
   }
