@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Typography, withStyles } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 
 const propTypes = {
-  classes: PropTypes.shape({}).isRequired,
   detainee: PropTypes.shape({}).isRequired,
 };
 
-const PersonalStatsComponent = ({ classes, detainee }) => (
+const PersonalStatsComponent = ({ detainee }) => (
   <React.Fragment>
     <Grid container spacing={8}>
       <Grid item xs={12}>
@@ -76,12 +75,4 @@ const PersonalStatsComponent = ({ classes, detainee }) => (
 
 PersonalStatsComponent.propTypes = propTypes;
 
-export default withStyles((theme) => ({
-  img: {
-    width: '150px',
-    height: '150px',
-  },
-  column: {
-    padding: theme.spacing.unit * 0.5,
-  },
-}))(PersonalStatsComponent);
+export default PersonalStatsComponent;
