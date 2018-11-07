@@ -34,7 +34,7 @@ const variant = 'subtitle2';
 const ActivitiesComponent = ({ classes, detainee }) => (
   <Grid container spacing={8} className={classes.grid}>
     <Grid item xs={12}>
-      <Typography variant="h6">Activities</Typography>
+      <Typography variant="subtitle2">Activities</Typography>
     </Grid>
     <Grid item xs={12}>
       <Grid container spacing={16}>

@@ -8,6 +8,7 @@ import Location from '../Location';
 import Notice from '../Notice';
 import ProvidedWelfare from '../ProvidedWelfare';
 import Activities from '../Activities';
+import DetaineeAction from '../DetaineeAction';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -19,8 +20,6 @@ const defaultProps = {
   detainee: null,
 };
 
-// Make an action to determine if detainee data has loaded or not
-// Replace "detainee ?" with "isDetaineeDataLoaded ?"
 const DetaineeDetailsComponent = ({
   classes,
   detainee,
@@ -32,7 +31,7 @@ const DetaineeDetailsComponent = ({
         <Grid
           container
           direction="column"
-          justify="space-between"
+          justify="space-around"
           className={classes.column}
           spacing={8}
         >
@@ -86,7 +85,7 @@ const DetaineeDetailsComponent = ({
             spacing={8}
           >
             <Grid item sm>
-              <Paper className={classes.paper}>Detainee Action</Paper>
+              <DetaineeAction detainee={detainee} />
             </Grid>
           </Grid>
         </Grid>

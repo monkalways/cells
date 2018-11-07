@@ -59,7 +59,7 @@ const LocationComponent = ({ classes, location }) => {
       spacing={8}
     >
       <Grid item>
-        <Typography variant="h6">Location</Typography>
+        <Typography variant="subtitle2">Location</Typography>
       </Grid>
       <Grid item>
         <img
