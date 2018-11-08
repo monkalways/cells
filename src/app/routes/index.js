@@ -1,9 +1,15 @@
 import TapToBeginPage from '../TapToBeginPage';
+import Home from '../Home';
 import Cell from '../Cell';
 import Detainee from '../Detainee';
 import withAuthentication from './enhancers/withAuthentication';
 
 const routes = [
+  {
+    path: '/',
+    component: Home,
+    exact: true,
+  },
   {
     path: '/cells/:name',
     component: TapToBeginPage,
