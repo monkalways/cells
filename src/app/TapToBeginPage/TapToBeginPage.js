@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
 import constants from '../constants';
-import logo from './EPSlogo.png';
+import logo from '../images/EPSlogo.png';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,

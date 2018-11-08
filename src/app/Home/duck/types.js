@@ -1,0 +1,5 @@
+const GET_VERSIONS_SUCCESS = 'app/Cells/GET_VERSIONS_SUCCESS';
+
+export default {
+  GET_VERSIONS_SUCCESS,
+};
