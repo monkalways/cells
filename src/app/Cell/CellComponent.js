@@ -11,6 +11,7 @@ import CellCheck from './CellCheck';
 import Meal from './Meal';
 import Medication from './Medication';
 import commonConstants from '../constants';
+import withAuthentication from '../routes/enhancers/withAuthentication';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -78,7 +79,6 @@ class CellComponent extends Component {
     const {
       cellDetails, match, classes, isAuthenticated,
     } = this.props;
-    const { name } = match.params;
     return (
       <React.Fragment>
         {cellDetails && (
@@ -90,24 +90,20 @@ class CellComponent extends Component {
             />
             <div className={classes.body}>
               <Switch>
-                <Route
-                  path={match.url}
-                  render={(props) => <Overview cellName={name} {...props} />}
-                  exact
-                />
+                <Route path={match.url} component={Overview} exact />
                 <Route
                   path={`${match.url}/cell-check`}
-                  render={(props) => <CellCheck cellName={name} {...props} />}
+                  component={withAuthentication(CellCheck)}
                   exact
                 />
                 <Route
                   path={`${match.url}/meal`}
-                  render={(props) => <Meal cellName={name} {...props} />}
+                  component={withAuthentication(Meal)}
                   exact
                 />
                 <Route
                   path={`${match.url}/Medication`}
-                  render={(props) => <Medication cellName={name} {...props} />}
+                  component={withAuthentication(Medication)}
                   exact
                 />
               </Switch>

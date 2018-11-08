@@ -6,12 +6,14 @@ import MedicationComponent from './MedicationComponent';
 export const mapStateToProps = (
   state,
   cellDetainees = selectors.getCellDetaineesState(state),
+  cellName = selectors.getCellNameState(state),
   isCellDetaineesLoaded = selectors.isCellDetaineesLoadedState(state),
   isAuthenticated = authenticationSelectors.isAuthenticatedState(state),
   medication = selectors.getMedicationState(state),
   isSavingMedication = selectors.isSavingMedicationState(state),
 ) => ({
   cellDetainees,
+  cellName,
   isAuthenticated,
   isCellDetaineesLoaded,
   medication,

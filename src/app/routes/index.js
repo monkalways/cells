@@ -1,6 +1,7 @@
 import TapToBeginPage from '../TapToBeginPage';
 import Cell from '../Cell';
 import Detainee from '../Detainee';
+import withAuthentication from './enhancers/withAuthentication';
 
 const routes = [
   {
@@ -15,7 +16,7 @@ const routes = [
   },
   {
     path: '/detainees/:id',
-    component: Detainee,
+    component: withAuthentication(Detainee),
     exact: false,
   },
 ];
