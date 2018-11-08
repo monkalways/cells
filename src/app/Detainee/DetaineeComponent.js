@@ -44,7 +44,7 @@ class DetaineeComponent extends Component {
     return (
       <React.Fragment>
         <Layout>
-          <Header cellName="" onLogout={this.handleLogout} isAuthenticated />
+          <Header onLogout={this.handleLogout} />
           <div className={classes.body}>
             <DetaineeDetails />
           </div>

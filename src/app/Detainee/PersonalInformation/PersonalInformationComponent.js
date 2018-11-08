@@ -10,8 +10,6 @@ const propTypes = {
 };
 
 const PersonalInformationComponent = ({ classes, detainee }) => {
-  // console.log(detainee);
-
   const getDetaineeImage = () => {
     const { intakePhotoResourceUri } = detainee;
     if (intakePhotoResourceUri) {

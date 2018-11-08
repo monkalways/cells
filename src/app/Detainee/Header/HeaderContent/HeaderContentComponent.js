@@ -4,17 +4,19 @@ import { Grid, Typography, withStyles } from '@material-ui/core';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  cellName: PropTypes.string.isRequired,
+  detainee: PropTypes.shape({
+    assignedCellName: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
-const HeaderContent = ({ classes, cellName }) => (
+const HeaderContent = ({ classes, detainee }) => (
   <Grid container justify="center" className={classes.grid}>
     <Grid item sm={5}>
       <Typography variant="h4" className={classes.headerTitle}>
         Cell:
       </Typography>
       <Typography variant="h4" className={classes.headerContent}>
-        {cellName}
+        {detainee.assignedCellName}
       </Typography>
     </Grid>
   </Grid>
@@ -23,9 +25,6 @@ const HeaderContent = ({ classes, cellName }) => (
 HeaderContent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
   headerTitle: {
     display: 'inline',
     color: 'red',
