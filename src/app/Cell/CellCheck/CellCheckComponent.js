@@ -78,6 +78,7 @@ class CellCheckComponent extends Component {
   render() {
     const {
       cellDetainees,
+      cellName,
       isCellDetaineesLoaded,
       isAuthenticated,
       cellCheck,
@@ -95,6 +96,7 @@ class CellCheckComponent extends Component {
                 <Grid key={cellDetainee.id} item sm={4}>
                   <CellCheckCellDetaineeCard
                     cellDetainee={cellDetainee}
+                    cellName={cellName}
                     isAuthenticated={isAuthenticated}
                     cellCheck={cellCheck[cellDetainee.id]}
                     onVisualClick={() => visualCheck(cellDetainee)}

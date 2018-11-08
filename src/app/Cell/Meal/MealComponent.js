@@ -90,6 +90,7 @@ class MealComponent extends Component {
   render() {
     const {
       cellDetainees,
+      cellName,
       isCellDetaineesLoaded,
       isAuthenticated,
       meal,
@@ -107,6 +108,7 @@ class MealComponent extends Component {
                 <Grid key={cellDetainee.id} item sm={4}>
                   <MealCellDetaineeCard
                     cellDetainee={cellDetainee}
+                    cellName={cellName}
                     isAuthenticated={isAuthenticated}
                     meal={meal[cellDetainee.id]}
                     onAcceptClick={() => acceptMeal(cellDetainee)}

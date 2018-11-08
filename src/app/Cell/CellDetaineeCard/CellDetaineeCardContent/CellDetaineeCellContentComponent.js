@@ -14,6 +14,7 @@ const propTypes = {
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
   }).isRequired,
+  cellName: PropTypes.string.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
@@ -23,6 +24,7 @@ const propTypes = {
 const CellDetaineeCardContentComponent = ({
   classes,
   cellDetainee,
+  cellName,
   isAuthenticated,
   history,
 }) => {
@@ -39,13 +41,13 @@ const CellDetaineeCardContentComponent = ({
 
   const handleClick = () => {
     if (isAuthenticated) {
-      history.push(`/detainees/${cellDetainee.id}`);
+      history.push(`/detainees/${cellDetainee.id}?from=${cellName}`);
     }
   };
 
   return (
     <CardMedia
-      className={classes.media}
+      className={isAuthenticated ? classes.authenticatedMedia : classes.media}
       image={getDetaineeImage()}
       title={`${cellDetainee.firstName} ${cellDetainee.lastName}`}
       onClick={handleClick}
@@ -60,6 +62,11 @@ export default compose(
     media: {
       height: 0,
       paddingTop: '66.25%', // 16:9
+    },
+    authenticatedMedia: {
+      height: 0,
+      paddingTop: '66.25%', // 16:9
+      cursor: 'pointer',
     },
   })),
   withRouter,

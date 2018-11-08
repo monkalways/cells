@@ -43,6 +43,7 @@ class OverviewComponent extends Component {
                 <Grid key={cellDetainee.id} item sm={4}>
                   <OverviewCellDetaineeCard
                     cellDetainee={cellDetainee}
+                    cellName={cellName}
                     isAuthenticated={isAuthenticated}
                   />
                 </Grid>

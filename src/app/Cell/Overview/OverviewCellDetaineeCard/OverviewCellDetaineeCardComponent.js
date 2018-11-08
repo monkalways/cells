@@ -15,18 +15,21 @@ const propTypes = {
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
   }).isRequired,
+  cellName: PropTypes.string.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
 const OverviewCellDetaineeCardComponent = ({
   classes,
   cellDetainee,
+  cellName,
   isAuthenticated,
 }) => (
   <Card className={classes.card}>
     <CellDetaineeCardHeader cellDetainee={cellDetainee} />
     <CellDetaineeCardContent
       cellDetainee={cellDetainee}
+      cellName={cellName}
       isAuthenticated={isAuthenticated}
     />
     <OverviewCellDetaineeCardFooter

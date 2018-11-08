@@ -15,6 +15,7 @@ const propTypes = {
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
   }).isRequired,
+  cellName: PropTypes.string.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   meal: PropTypes.shape({
     accept: PropTypes.bool.isRequired,
@@ -33,6 +34,7 @@ const defaultProps = {
 const MealCellDetaineeCardComponent = ({
   classes,
   cellDetainee,
+  cellName,
   isAuthenticated,
   meal,
   onAcceptClick,
@@ -43,6 +45,7 @@ const MealCellDetaineeCardComponent = ({
     <CellDetaineeCardHeader cellDetainee={cellDetainee} />
     <CellDetaineeCardContent
       cellDetainee={cellDetainee}
+      cellName={cellName}
       isAuthenticated={isAuthenticated}
     />
     <MealCellDetaineeCardFooter

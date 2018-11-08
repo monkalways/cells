@@ -90,6 +90,7 @@ class MedicationComponent extends Component {
   render() {
     const {
       cellDetainees,
+      cellName,
       isCellDetaineesLoaded,
       isAuthenticated,
       medication,
@@ -107,6 +108,7 @@ class MedicationComponent extends Component {
                 <Grid key={cellDetainee.id} item sm={4}>
                   <MedicationCellDetaineeCard
                     cellDetainee={cellDetainee}
+                    cellName={cellName}
                     isAuthenticated={isAuthenticated}
                     medication={medication[cellDetainee.id]}
                     onAcceptClick={() => acceptMedication(cellDetainee)}

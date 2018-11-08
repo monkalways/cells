@@ -15,6 +15,7 @@ const propTypes = {
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
   }).isRequired,
+  cellName: PropTypes.string.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   cellCheck: PropTypes.shape({
     visual: PropTypes.bool.isRequired,
@@ -33,6 +34,7 @@ const defaultProps = {
 const CellCheckCellDetaineeCardComponent = ({
   classes,
   cellDetainee,
+  cellName,
   isAuthenticated,
   cellCheck,
   onVisualClick,
@@ -42,6 +44,7 @@ const CellCheckCellDetaineeCardComponent = ({
     <CellDetaineeCardHeader cellDetainee={cellDetainee} />
     <CellDetaineeCardContent
       cellDetainee={cellDetainee}
+      cellName={cellName}
       isAuthenticated={isAuthenticated}
     />
     <CellCheckCellDetaineeCardFooter
