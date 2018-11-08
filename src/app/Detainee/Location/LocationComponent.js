@@ -59,7 +59,9 @@ const LocationComponent = ({ classes, location }) => {
       spacing={8}
     >
       <Grid item>
-        <Typography variant="subtitle2">Location</Typography>
+        <Typography variant="h6" className={classes.text}>
+          Location
+        </Typography>
       </Grid>
       <Grid item>
         <img
@@ -81,5 +83,8 @@ export default withStyles((theme) => ({
   },
   column: {
     padding: theme.spacing.unit * 0.5,
+  },
+  text: {
+    textDecorationLine: 'underline',
   },
 }))(LocationComponent);

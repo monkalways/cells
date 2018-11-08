@@ -33,7 +33,9 @@ const variant = 'subtitle2';
 const ProvidedWelfareComponent = ({ classes, detainee }) => (
   <Grid container spacing={8} className={classes.grid}>
     <Grid item xs={12}>
-      <Typography variant="subtitle2">Provided Welfare</Typography>
+      <Typography variant="h6" className={classes.text}>
+        Provided Welfare
+      </Typography>
     </Grid>
     <Grid item xs={12}>
       <Grid container spacing={16}>
@@ -105,5 +107,8 @@ export default withStyles((theme) => ({
   },
   grid: {
     padding: theme.spacing.unit * 0.5,
+  },
+  text: {
+    textDecorationLine: 'underline',
   },
 }))(ProvidedWelfareComponent);

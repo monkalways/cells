@@ -30,7 +30,9 @@ const PersonalInformationComponent = ({ classes, detainee }) => {
         spacing={8}
       >
         <Grid item>
-          <Typography variant="subtitle2">Personal Information</Typography>
+          <Typography variant="h6" className={classes.text}>
+            Personal Information
+          </Typography>
         </Grid>
         <Grid item>
           <Grid container alignItems="flex-start" justify="flex-start">
@@ -60,5 +62,8 @@ export default withStyles((theme) => ({
   },
   column: {
     padding: theme.spacing.unit * 0.5,
+  },
+  text: {
+    textDecorationLine: 'underline',
   },
 }))(PersonalInformationComponent);

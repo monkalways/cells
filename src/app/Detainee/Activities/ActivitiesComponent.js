@@ -34,7 +34,9 @@ const variant = 'subtitle2';
 const ActivitiesComponent = ({ classes, detainee }) => (
   <Grid container spacing={8} className={classes.grid}>
     <Grid item xs={12}>
-      <Typography variant="subtitle2">Activities</Typography>
+      <Typography variant="h6" className={classes.text}>
+        Activities
+      </Typography>
     </Grid>
     <Grid item xs={12}>
       <Grid container spacing={16}>
@@ -114,5 +116,8 @@ export default withStyles((theme) => ({
   },
   grid: {
     padding: theme.spacing.unit * 0.5,
+  },
+  text: {
+    textDecorationLine: 'underline',
   },
 }))(ActivitiesComponent);
