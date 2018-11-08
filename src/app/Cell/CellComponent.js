@@ -10,6 +10,7 @@ import Overview from './Overview';
 import CellCheck from './CellCheck';
 import Meal from './Meal';
 import Medication from './Medication';
+import commonConstants from '../constants';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -36,7 +37,36 @@ class CellComponent extends Component {
     const { match, getCellDetails } = this.props;
     const { name } = match.params;
     getCellDetails(name);
+
+    this.setUnauthenticatedTimeout();
   }
+
+  componentDidUpdate() {
+    const { isAuthenticated } = this.props;
+    if (isAuthenticated) {
+      this.cancelUnauthenticatedTimeout();
+    }
+  }
+
+  componentWillUnmount() {
+    this.cancelUnauthenticatedTimeout();
+  }
+
+  setUnauthenticatedTimeout = () => {
+    const { isAuthenticated } = this.props;
+    this.cancelUnauthenticatedTimeout();
+    if (!isAuthenticated) {
+      this.unauthenticatedTimeout = setTimeout(() => {
+        this.handleLogout();
+      }, commonConstants.UNAUTHENTICATED_TIMEOUT_SECONDS * 1000);
+    }
+  };
+
+  cancelUnauthenticatedTimeout = () => {
+    if (this.unauthenticatedTimeout) {
+      clearTimeout(this.unauthenticatedTimeout);
+    }
+  };
 
   handleLogout = () => {
     const { logOut, match } = this.props;
