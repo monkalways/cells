@@ -19,7 +19,7 @@ const getCellDetailsState = createSelector(
 
 const getCellNameState = createSelector(
   [getCellDetails],
-  (cellDetails) => cellDetails.name,
+  (cellDetails) => cellDetails && cellDetails.name,
 );
 
 const getCellDetaineesState = createSelector(
