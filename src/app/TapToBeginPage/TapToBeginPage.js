@@ -47,18 +47,16 @@ const TapToBeginPage = ({ classes, history, match }) => {
 TapToBeginPage.propTypes = propTypes;
 
 export default compose(
-  withStyles((theme) => ({
+  withStyles(() => ({
     container: {
       height: constants.LAYOUT.height,
-      background: '#3D89F7', // TODO: set this color in theme config
-      [theme.breakpoints.up('md')]: {
-        width: constants.LAYOUT.width,
-      },
+      background: '#3D89F7',
+      width: constants.LAYOUT.width,
       cursor: 'pointer',
     },
     heading: {
       marginTop: 20,
-      color: '#FFFFFF', // TODO: set this color in theme config
+      color: '#FFFFFF',
     },
   })),
   withRouter,

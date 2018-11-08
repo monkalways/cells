@@ -4,4 +4,10 @@ export default createMuiTheme({
   typography: {
     useNextVariants: true,
   },
+  palette: {
+    background: {
+      default: '#A8C6FA',
+      paper: '#EBEBEB',
+    },
+  },
 });

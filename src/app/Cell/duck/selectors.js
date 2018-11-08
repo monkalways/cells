@@ -17,6 +17,11 @@ const getCellDetailsState = createSelector(
   (cellDetails) => cellDetails,
 );
 
+const getCellNameState = createSelector(
+  [getCellDetails],
+  (cellDetails) => cellDetails.name,
+);
+
 const getCellDetaineesState = createSelector(
   [getCellDetainees],
   (cellDetainees) => cellDetainees,
@@ -53,6 +58,7 @@ const isSavingMedicationState = createSelector(
 
 export default {
   getCellDetailsState,
+  getCellNameState,
   getCellDetaineesState,
   isCellDetaineesLoadedState,
   getCellCheckState,

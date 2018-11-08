@@ -24,11 +24,9 @@ const Layout = ({ classes, children }) => (
 
 Layout.propTypes = propTypes;
 
-export default withStyles((theme) => ({
+export default withStyles(() => ({
   container: {
     height: constants.LAYOUT.height,
-    [theme.breakpoints.up('md')]: {
-      width: constants.LAYOUT.width,
-    },
+    width: constants.LAYOUT.width,
   },
 }))(Layout);

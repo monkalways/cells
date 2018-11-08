@@ -63,6 +63,6 @@ MedicationCellDetaineeCardComponent.defaultProps = defaultProps;
 export default withStyles((theme) => ({
   card: {
     maxWidth: theme.spacing.unit * 50,
-    backgroundColor: '#EBEBEB',
+    backgroundColor: theme.palette.background.paper,
   },
 }))(MedicationCellDetaineeCardComponent);

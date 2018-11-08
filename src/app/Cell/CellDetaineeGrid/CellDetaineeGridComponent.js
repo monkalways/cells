@@ -26,7 +26,7 @@ export default withStyles((theme) => ({
     marginLeft: 0,
     marginRight: 0,
     marginBottom: theme.spacing.unit * 0.4,
-    backgroundColor: '#A8C6FA', // TODO: move color to theme
+    backgroundColor: theme.palette.background.default,
     width: '100%',
   },
 }))(CellDetaineeGridComponent);
