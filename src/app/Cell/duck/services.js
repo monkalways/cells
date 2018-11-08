@@ -55,7 +55,7 @@ const getCellDetails = async (name) => {
     designation: getDesignation(genderLabel),
     id,
     isActivityRoom,
-    name,
+    name: name.toUpperCase(),
     occupancy,
     occupancyCount,
     occupancyLabel,
