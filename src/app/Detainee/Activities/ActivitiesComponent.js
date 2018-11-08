@@ -28,7 +28,6 @@ const propTypes = {
   }).isRequired,
 };
 
-const gridSpacing = 1;
 const variant = 'subtitle2';
 
 const ActivitiesComponent = ({ classes, detainee }) => (
@@ -40,25 +39,25 @@ const ActivitiesComponent = ({ classes, detainee }) => (
     </Grid>
     <Grid item xs={12}>
       <Grid container spacing={16}>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Avatar className={classes.avatar} src={MedicalVisitIcon} />
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Avatar className={classes.avatar} src={PhoneAcceptIcon} />
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Avatar className={classes.avatar} src={PhoneDeclineIcon} />
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Avatar className={classes.avatar} src={FingerprintingIcon} />
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Avatar className={classes.avatar} src={BreathalyzerIcon} />
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Avatar className={classes.avatar} src={InterviewIcon} />
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Avatar className={classes.avatar} src={BailHearingIcon} />
         </Grid>
       </Grid>
@@ -68,37 +67,37 @@ const ActivitiesComponent = ({ classes, detainee }) => (
     </Grid>
     <Grid item xs={12}>
       <Grid container spacing={16}>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Typography variant={variant} align="center">
             {detainee.medicalCount}
           </Typography>
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Typography variant={variant} align="center">
             {detainee.telephoneAcceptedCount}
           </Typography>
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Typography variant={variant} align="center">
             {detainee.telephoneDeclinedCount}
           </Typography>
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Typography variant={variant} align="center">
             {detainee.fingerPrintCount}
           </Typography>
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Typography variant={variant} align="center">
             {detainee.breathTestCount}
           </Typography>
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Typography variant={variant} align="center">
             {detainee.interviewCount}
           </Typography>
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Typography variant={variant} align="center">
             {detainee.bailHearingCount}
           </Typography>

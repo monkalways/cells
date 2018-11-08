@@ -27,7 +27,6 @@ const propTypes = {
   }).isRequired,
 };
 
-const gridSpacing = 1;
 const variant = 'subtitle2';
 
 const ProvidedWelfareComponent = ({ classes, detainee }) => (
@@ -39,22 +38,22 @@ const ProvidedWelfareComponent = ({ classes, detainee }) => (
     </Grid>
     <Grid item xs={12}>
       <Grid container spacing={16}>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Avatar className={classes.avatar} src={VisualCheckIcon} />
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Avatar className={classes.avatar} src={VerbalCheckIcon} />
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Avatar className={classes.avatar} src={MealAcceptIcon} />
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Avatar className={classes.avatar} src={MealDeclineIcon} />
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Avatar className={classes.avatar} src={MedicineAcceptIcon} />
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Avatar className={classes.avatar} src={MedicineDeclineIcon} />
         </Grid>
       </Grid>
@@ -64,32 +63,32 @@ const ProvidedWelfareComponent = ({ classes, detainee }) => (
     </Grid>
     <Grid item xs={12}>
       <Grid container spacing={16}>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Typography variant={variant} align="center">
             {detainee.visualCellCheckCount}
           </Typography>
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Typography variant={variant} align="center">
             {detainee.verbalCellCheckCount}
           </Typography>
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Typography variant={variant} align="center">
             {detainee.mealAcceptedCount}
           </Typography>
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Typography variant={variant} align="center">
             {detainee.mealDeclinedCount}
           </Typography>
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Typography variant={variant} align="center">
             {detainee.medicationAcceptedCount}
           </Typography>
         </Grid>
-        <Grid item xs={gridSpacing}>
+        <Grid item xs={1}>
           <Typography variant={variant} align="center">
             {detainee.medicationRefusedCount}
           </Typography>
