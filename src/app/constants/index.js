@@ -1,6 +1,6 @@
 const LAYOUT = {
   width: 720,
-  height: 950,
+  height: 965,
 };
 
 const HEADERS = {
