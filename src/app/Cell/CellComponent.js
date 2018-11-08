@@ -39,10 +39,9 @@ class CellComponent extends Component {
   }
 
   handleLogout = () => {
-    const { history, match, logOut } = this.props;
+    const { logOut, match } = this.props;
     const { name } = match.params;
-    history.push(`/cells/${name}`);
-    logOut();
+    logOut(name);
   };
 
   render() {

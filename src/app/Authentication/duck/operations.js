@@ -1,11 +1,10 @@
+import { push } from 'connected-react-router';
+
 import actions from './actions';
 import services from './services';
-
 import utils from '../../utils';
 
-const {
-  startSignIn, startAuthenticate, cancelAuthenticate, logOut,
-} = actions;
+const { startSignIn, startAuthenticate, cancelAuthenticate } = actions;
 
 const authenticate = (
   cardId,
@@ -25,6 +24,11 @@ const authenticate = (
       utils.sendErrorMessage({ dispatch, error });
     }
   }
+};
+
+const logOut = (cellName, logOutAction = actions.logOut) => (dispatch) => {
+  dispatch(logOutAction());
+  dispatch(push(`/cells/${cellName}`));
 };
 
 export default {
