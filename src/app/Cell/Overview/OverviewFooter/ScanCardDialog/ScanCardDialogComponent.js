@@ -21,6 +21,7 @@ const propTypes = {
   isAuthenticationFailed: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   authenticate: PropTypes.func.isRequired,
+  handleSignIn: PropTypes.func.isRequired,
 };
 
 class ScanCardDialogComponent extends Component {
@@ -40,7 +41,9 @@ class ScanCardDialogComponent extends Component {
   handleKeyDown = (event) => {
     if (this.isCancelled) return;
 
-    const { authenticate } = this.props;
+    const { isSignInDialogOpen, handleSignIn, authenticate } = this.props;
+    if (!isSignInDialogOpen) handleSignIn();
+
     let { cardId } = this.state;
     cardId += event.key;
     this.setState({

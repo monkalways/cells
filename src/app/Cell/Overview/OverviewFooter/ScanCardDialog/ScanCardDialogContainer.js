@@ -28,6 +28,9 @@ export const mapDispatchToProps = (dispatch) => ({
   onClose: () => {
     dispatch(authenticationOperations.cancelAuthenticate());
   },
+  handleSignIn: (startSignIn = authenticationOperations.startSignIn) => {
+    dispatch(startSignIn());
+  },
 });
 
 export default connect(
