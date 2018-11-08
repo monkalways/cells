@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  AppBar, IconButton, Toolbar, withStyles,
+  AppBar,
+  Grid,
+  IconButton,
+  Toolbar,
+  withStyles,
 } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
@@ -10,13 +14,17 @@ import HeaderContent from './HeaderContent';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  cellName: PropTypes.string.isRequired,
+  detainee: PropTypes.shape({}),
+  isDetaineeProfileLoaded: PropTypes.bool.isRequired,
   onLogout: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
+};
+
+const defaultProps = {
+  detainee: null,
 };
 
 const Header = ({
-  classes, cellName, onLogout, isAuthenticated,
+  classes, detainee, isDetaineeProfileLoaded, onLogout,
 }) => (
   <div className={classes.root}>
     <AppBar position="static" className={classes.appBar}>
@@ -28,23 +36,29 @@ const Header = ({
         >
           <img src={logoIcon} alt="EPS Logo" width={70} />
         </IconButton>
-        <HeaderContent cellName={cellName} />
-        {isAuthenticated && (
-          <IconButton
-            className={classes.logoutButton}
-            color="inherit"
-            aria-label="Menu"
-            onClick={onLogout}
-          >
-            <CloseIcon className={classes.logoutIcon} />
-          </IconButton>
+        {isDetaineeProfileLoaded ? (
+          <HeaderContent
+            detainee={detainee}
+            isDetaineeProfileLoaded={isDetaineeProfileLoaded}
+          />
+        ) : (
+          <Grid item xs={12} />
         )}
+        <IconButton
+          className={classes.logoutButton}
+          color="inherit"
+          aria-label="Menu"
+          onClick={onLogout}
+        >
+          <CloseIcon className={classes.logoutIcon} />
+        </IconButton>
       </Toolbar>
     </AppBar>
   </div>
 );
 
 Header.propTypes = propTypes;
+Header.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   root: {
