@@ -35,7 +35,7 @@ const DetaineeActionComponent = ({ classes }) => (
     <Grid container spacing={8} className={classes.grid}>
       <Grid item xs={12}>
         <Paper className={classes.heading}>
-          <Typography variant="subtitle2" className={classes.text}>
+          <Typography variant="h6" className={classes.text}>
             Detainee Action
           </Typography>
         </Paper>

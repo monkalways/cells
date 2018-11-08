@@ -69,7 +69,9 @@ const NoticeComponent = ({ classes, detainee }) => {
   return (
     <Grid container spacing={8} className={classes.grid}>
       <Grid item xs={12}>
-        <Typography variant="subtitle2">Notice</Typography>
+        <Typography variant="h6" className={classes.text}>
+          Notice
+        </Typography>
       </Grid>
       {renderWarnings()}
     </Grid>
@@ -112,5 +114,8 @@ export default withStyles((theme) => ({
   },
   grid: {
     padding: theme.spacing.unit * 0.5,
+  },
+  text: {
+    textDecorationLine: 'underline',
   },
 }))(NoticeComponent);
