@@ -10,9 +10,9 @@ const getDetainee = async (custodyEventId) => {
   );
 
   const {
-    id,
     arrestId,
-    personId,
+    assignedCellId,
+    assignedCellName,
     bailHearingCount,
     breathTestCount,
     cautionsArray,
@@ -23,6 +23,7 @@ const getDetainee = async (custodyEventId) => {
     firstName,
     gender,
     hasWarning,
+    id,
     intakePhotoResourceUri,
     interviewCount,
     isContagious,
@@ -36,6 +37,7 @@ const getDetainee = async (custodyEventId) => {
     medicationAcceptedCount,
     medicationRefusedCount,
     mustBeKeptAlone,
+    personId,
     propertyBagNumber,
     telephoneAcceptedCount,
     telephoneDeclinedCount,
@@ -45,9 +47,9 @@ const getDetainee = async (custodyEventId) => {
   } = response.data;
 
   return {
-    id,
     arrestId,
-    personId,
+    assignedCellId,
+    assignedCellName,
     bailHearingCount,
     breathTestCount,
     cautionsArray,
@@ -58,6 +60,7 @@ const getDetainee = async (custodyEventId) => {
     firstName,
     gender,
     hasWarning,
+    id,
     intakePhotoResourceUri,
     interviewCount,
     isContagious,
@@ -71,6 +74,7 @@ const getDetainee = async (custodyEventId) => {
     medicationAcceptedCount,
     medicationRefusedCount,
     mustBeKeptAlone,
+    personId,
     propertyBagNumber,
     telephoneAcceptedCount,
     telephoneDeclinedCount,
