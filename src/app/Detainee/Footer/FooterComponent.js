@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  AppBar, Button, Grid, withStyles,
+  AppBar,
+  BottomNavigation,
+  BottomNavigationAction,
+  Grid,
+  Typography,
+  withStyles,
 } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
@@ -24,21 +29,21 @@ const FooterComponent = ({ classes, history }) => {
       <AppBar position="static" className={classes.appBar}>
         <Grid
           container
+          justify="left"
           alignItems="center"
-          spacing={8}
           className={classes.container}
         >
-          <Grid item sm>
-            <Button
-              variant="contained"
-              size="small"
-              className={classes.button}
-              onClick={() => handleBackButtonClick()}
-            >
-              <ArrowBackIcon className={classes.icon} />
-              Back
-            </Button>
-          </Grid>
+          <BottomNavigation
+            value={-1}
+            showLabels
+            className={classes.navigation}
+          >
+            <BottomNavigationAction
+              label={<Typography variant="body1">Back</Typography>}
+              onClick={handleBackButtonClick}
+              icon={<ArrowBackIcon className={classes.icon} />}
+            />
+          </BottomNavigation>
         </Grid>
       </AppBar>
     </div>
@@ -52,18 +57,15 @@ export default compose(
     root: {
       flexGrow: 1,
     },
-    container: {
-      padding: theme.spacing.unit * 1,
+    appBar: {
+      backgroundColor: theme.palette.background.default,
     },
     icon: {
       fontSize: theme.typography.h3.fontSize,
     },
-    button: {
-      padding: theme.spacing.unit * 1,
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-    appBar: {
+    navigation: {
+      height: '100%',
+      width: theme.spacing.unit * 15,
       backgroundColor: theme.palette.background.default,
     },
   })),
