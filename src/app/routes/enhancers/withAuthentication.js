@@ -2,16 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import queryString from 'query-string';
 
 import { selectors as authenticationSelectors } from '../../Authentication/duck';
 import { selectors as cellSelectors } from '../../Cell/duck';
 
 export default function withAuthentication(WrappedComponent) {
   const WithAuthentication = (props) => {
-    const { isAuthenticated, cellName } = props;
+    const { isAuthenticated, cellName, location } = props;
     if (!isAuthenticated) {
-      if (cellName) {
-        return <Redirect to={`/cells/${cellName}/home`} />;
+      const cellNameInPath = cellName || queryString.parse(location.search).from;
+      if (cellNameInPath) {
+        return <Redirect to={`/cells/${cellNameInPath}/home`} />;
       }
 
       return <Redirect to="/" />;
