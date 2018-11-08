@@ -120,12 +120,12 @@ export default compose(
       flexGrow: 1,
     },
     appBar: {
-      backgroundColor: '#A8C6FA', // TODO: move color to theme
+      backgroundColor: theme.palette.background.default,
     },
     navigation: {
       height: '100%',
       width: '69%',
-      backgroundColor: '#A8C6FA', // TODO: move color to theme
+      backgroundColor: theme.palette.background.default,
     },
     button: {
       height: theme.spacing.unit * 7,

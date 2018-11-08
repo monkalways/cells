@@ -58,14 +58,6 @@ export default withStyles((theme) => ({
   grid: {
     flexGrow: 1,
   },
-  logoutButton: {
-    margin: theme.spacing.unit,
-    backgroundColor: '#444480',
-    color: '#F10607',
-    '&:hover': {
-      backgroundColor: '#444480',
-    },
-  },
   headerTitle: {
     display: 'inline',
     color: 'red',

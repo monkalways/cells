@@ -51,7 +51,7 @@ export default withStyles((theme) => ({
     flexGrow: 1,
   },
   appBar: {
-    backgroundColor: '#A8C6FA', // TODO: move color to theme
+    backgroundColor: theme.palette.background.default,
   },
   menuButton: {
     marginLeft: -12,

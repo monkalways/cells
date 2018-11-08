@@ -64,13 +64,8 @@ export default compose(
       color: theme.palette.text.secondary,
     },
     appBar: {
-      backgroundColor: '#A8C6FA', // TODO: move color to theme
+      backgroundColor: theme.palette.background.default,
     },
-    // navigation: {
-    //   height: '100%',
-    //   width: '100%',
-    //   backgroundColor: '#A8C6FA', // TODO: move color to theme
-    // },
   })),
   withRouter,
 )(FooterComponent);
