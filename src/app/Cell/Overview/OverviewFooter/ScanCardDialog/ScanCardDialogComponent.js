@@ -33,10 +33,13 @@ class ScanCardDialogComponent extends Component {
   }
 
   componentWillUnmount() {
+    this.isCancelled = true;
     document.removeEventListener('keydown', this.handleKeyDown.bind(this));
   }
 
   handleKeyDown = (event) => {
+    if (this.isCancelled) return;
+
     const { authenticate } = this.props;
     let { cardId } = this.state;
     cardId += event.key;
