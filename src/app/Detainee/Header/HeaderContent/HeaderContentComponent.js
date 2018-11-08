@@ -5,7 +5,7 @@ import { Grid, Typography, withStyles } from '@material-ui/core';
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   detainee: PropTypes.shape({
-    assignedCellId: PropTypes.string.isRequired,
+    assignedCellName: PropTypes.string.isRequired,
   }).isRequired,
 };
 
@@ -16,7 +16,7 @@ const HeaderContent = ({ classes, detainee }) => (
         Cell:
       </Typography>
       <Typography variant="h4" className={classes.headerContent}>
-        {detainee.assignedCellId.substring(0, 10)}
+        {detainee.assignedCellName}
       </Typography>
     </Grid>
   </Grid>
