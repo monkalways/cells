@@ -37,13 +37,8 @@ const authenticationReducer = (state = defaultAuthenticationState, action) => {
         authenticationFailed: true,
       };
     case types.CANCEL_AUTHENTICATE:
-      return defaultAuthenticationState;
     case types.LOG_OUT:
-      return {
-        ...state,
-        authenticated: false,
-        userName: null,
-      };
+      return defaultAuthenticationState;
     default:
       return state;
   }
