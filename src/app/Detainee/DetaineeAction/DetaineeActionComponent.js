@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Avatar, Grid, Paper, Typography, withStyles,
+  Avatar,
+  Card,
+  CardHeader,
+  CardContent,
+  Grid,
+  withStyles,
 } from '@material-ui/core';
 
 import MedicalVisitIcon from '../../../images/MedicalVisit.png';
@@ -28,66 +33,52 @@ const propTypes = {
   }).isRequired,
 };
 
-const gridSpacing = 2;
-
 const DetaineeActionComponent = ({ classes }) => (
-  <Paper className={classes.body}>
-    <Grid container spacing={8} className={classes.grid}>
-      <Grid item xs={12}>
-        <Paper className={classes.heading}>
-          <Typography variant="h6" className={classes.text}>
-            Detainee Action
-          </Typography>
-        </Paper>
-      </Grid>
-
-      <Grid item xs={12}>
-        <Grid container spacing={16}>
-          <Grid item xs={gridSpacing}>
+  <Card className={classes.card}>
+    <CardHeader title="Detainee Action" className={classes.cardHeader} />
+    <CardContent className={classes.cardContent}>
+      <Grid container spacing={16}>
+        <Grid container item xs={12}>
+          <Grid item xs={2}>
             <Avatar className={classes.avatar} src={MedicalVisitIcon} />
-            {/* <Button variant="contained" className={classes.button}>
-            MedicalVisitIcon
-            </Button> */}
           </Grid>
-          <Grid item xs={gridSpacing}>
+          <Grid item xs={2}>
             <Avatar className={classes.avatar} src={PhoneAcceptIcon} />
           </Grid>
-          <Grid item xs={gridSpacing}>
+          <Grid item xs={2}>
             <Avatar className={classes.avatar} src={PhoneDeclineIcon} />
           </Grid>
-          <Grid item xs={gridSpacing}>
+          <Grid item xs={2}>
             <Avatar className={classes.avatar} src={FingerprintingIcon} />
           </Grid>
-          <Grid item xs={gridSpacing}>
+          <Grid item xs={2}>
             <Avatar className={classes.avatar} src={BreathalyzerIcon} />
           </Grid>
-          <Grid item xs={gridSpacing}>
+          <Grid item xs={2}>
             <Avatar className={classes.avatar} src={InterviewIcon} />
           </Grid>
         </Grid>
-      </Grid>
 
-      <Grid item xs={12}>
-        <Grid container spacing={16}>
-          <Grid item xs={gridSpacing}>
+        <Grid container item xs={12}>
+          <Grid item xs={2}>
             <Avatar className={classes.avatar} src={BailHearing1Icon} />
           </Grid>
-          <Grid item xs={gridSpacing}>
+          <Grid item xs={2}>
             <Avatar className={classes.avatar} src={BailHearing2Icon} />
           </Grid>
-          <Grid item xs={gridSpacing}>
+          <Grid item xs={2}>
             <Avatar className={classes.avatar} src={RemandHoldingIcon} />
           </Grid>
-          <Grid item xs={gridSpacing}>
+          <Grid item xs={2}>
             <Avatar className={classes.avatar} src={ReleaseHoldingIcon} />
           </Grid>
-          <Grid item xs={gridSpacing}>
+          <Grid item xs={2}>
             <Avatar className={classes.avatar} src={InCellIcon} />
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
-  </Paper>
+    </CardContent>
+  </Card>
 );
 DetaineeActionComponent.propTypes = propTypes;
 
@@ -96,24 +87,11 @@ export default withStyles((theme) => ({
     height: theme.spacing.unit * 6,
     width: theme.spacing.unit * 6,
   },
-  body: {
+  cardContent: {
     backgroundColor: '#d4e2fc',
   },
-  button: {
-    margin: theme.spacing.unit,
-    height: theme.spacing.unit * 6,
-    width: theme.spacing.unit * 6,
-  },
-  heading: {
+  cardHeader: {
     backgroundColor: '#3d89f7',
-  },
-  grid: {
-    paddingBottom: theme.spacing.unit * 0.5,
-    paddingLeft: theme.spacing.unit * 0.5,
-    paddingRight: theme.spacing.unit * 0.5,
-  },
-  text: {
-    paddingLeft: theme.spacing.unit,
-    color: 'white',
+    padding: theme.spacing.unit,
   },
 }))(DetaineeActionComponent);
