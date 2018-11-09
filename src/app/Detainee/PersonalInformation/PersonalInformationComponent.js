@@ -45,11 +45,9 @@ PersonalInformationComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   img: {
-    width: '150px',
-    height: '150px',
-  },
-  column: {
-    padding: theme.spacing.unit * 0.5,
+    objectFit: 'cover',
+    height: theme.spacing.unit * 20,
+    width: theme.spacing.unit * 20,
   },
   text: {
     textDecoration: 'underline',
