@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, withStyles } from '@material-ui/core';
 
 const propTypes = {
+  classes: PropTypes.shape({}).isRequired,
   detainee: PropTypes.shape({
     detentionUnitName: PropTypes.string.isRequired,
     dob: PropTypes.string.isRequired,
@@ -13,12 +14,14 @@ const propTypes = {
   }).isRequired,
 };
 
-const PersonalStatsComponent = ({ detainee }) => (
+const PersonalStatsComponent = ({ classes, detainee }) => (
   <React.Fragment>
     <Grid container spacing={0}>
       <Grid container item xs={12}>
         <Grid item xs={3}>
-          <Typography variant="h6">Name:</Typography>
+          <Typography variant="h6" className={classes.text}>
+            Name:
+          </Typography>
         </Grid>
         <Grid item xs={9}>
           <Typography variant="h6">
@@ -29,7 +32,9 @@ const PersonalStatsComponent = ({ detainee }) => (
 
       <Grid container item xs={12}>
         <Grid item xs={3}>
-          <Typography variant="h6">DOB:</Typography>
+          <Typography variant="h6" className={classes.text}>
+            DOB:
+          </Typography>
         </Grid>
         <Grid item xs={9}>
           <Typography variant="h6">{detainee.dob}</Typography>
@@ -38,7 +43,9 @@ const PersonalStatsComponent = ({ detainee }) => (
 
       <Grid container item xs={12}>
         <Grid item xs={3}>
-          <Typography variant="h6">Gender:</Typography>
+          <Typography variant="h6" className={classes.text}>
+            Gender:
+          </Typography>
         </Grid>
         <Grid item xs={9}>
           <Typography variant="h6">{detainee.gender}</Typography>
@@ -47,7 +54,9 @@ const PersonalStatsComponent = ({ detainee }) => (
 
       <Grid container item xs={12}>
         <Grid item xs={3}>
-          <Typography variant="h6">BIN:</Typography>
+          <Typography variant="h6" className={classes.text}>
+            BIN:
+          </Typography>
         </Grid>
         <Grid item xs={9}>
           <Typography variant="h6">
@@ -58,7 +67,9 @@ const PersonalStatsComponent = ({ detainee }) => (
 
       <Grid container item xs={12}>
         <Grid item xs={3}>
-          <Typography variant="h6">Remarks:</Typography>
+          <Typography variant="h6" className={classes.text}>
+            Remarks:
+          </Typography>
         </Grid>
         <Grid item xs={9}>
           <Typography variant="h6">{detainee.detentionUnitName}</Typography>
@@ -70,4 +81,8 @@ const PersonalStatsComponent = ({ detainee }) => (
 
 PersonalStatsComponent.propTypes = propTypes;
 
-export default PersonalStatsComponent;
+export default withStyles(() => ({
+  text: {
+    fontWeight: 400,
+  },
+}))(PersonalStatsComponent);
