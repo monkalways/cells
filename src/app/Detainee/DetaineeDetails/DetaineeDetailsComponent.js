@@ -11,7 +11,6 @@ import Activities from '../Activities';
 import DetaineeAction from '../DetaineeAction';
 
 const propTypes = {
-  classes: PropTypes.shape({}).isRequired,
   detainee: PropTypes.shape({}),
   isDetaineeProfileLoaded: PropTypes.bool.isRequired,
 };
