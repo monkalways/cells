@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, withStyles } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import Loading from '../../common/Loading';
 import DetaineeGrid from '../DetaineeGrid';
 import PersonalInformation from '../PersonalInformation';
@@ -20,73 +20,28 @@ const defaultProps = {
   detainee: null,
 };
 
-const DetaineeDetailsComponent = ({
-  classes,
-  detainee,
-  isDetaineeProfileLoaded,
-}) => (
+const DetaineeDetailsComponent = ({ detainee, isDetaineeProfileLoaded }) => (
   <React.Fragment>
     <DetaineeGrid>
       {isDetaineeProfileLoaded ? (
-        <Grid
-          container
-          direction="column"
-          justify="space-around"
-          className={classes.column}
-          spacing={8}
-        >
-          <Grid
-            container
-            justify="space-between"
-            className={classes.row}
-            spacing={8}
-          >
-            <Grid item sm={9}>
-              <PersonalInformation detainee={detainee} />
-            </Grid>
-            <Grid item sm={3}>
-              <Location location={detainee.location} />
-            </Grid>
+        <Grid container>
+          <Grid item sm={9}>
+            <PersonalInformation detainee={detainee} />
           </Grid>
-          <Grid
-            container
-            justify="space-between"
-            className={classes.row}
-            spacing={8}
-          >
-            <Grid item sm={12}>
-              <Notice detainee={detainee} />
-            </Grid>
+          <Grid item sm={3}>
+            <Location location={detainee.location} />
           </Grid>
-          <Grid
-            container
-            justify="space-between"
-            className={classes.row}
-            spacing={8}
-          >
-            <Grid item sm>
-              <ProvidedWelfare detainee={detainee} />
-            </Grid>
+          <Grid item sm={12}>
+            <Notice detainee={detainee} />
           </Grid>
-          <Grid
-            container
-            justify="space-between"
-            className={classes.row}
-            spacing={8}
-          >
-            <Grid item sm>
-              <Activities detainee={detainee} />
-            </Grid>
+          <Grid item sm={12}>
+            <ProvidedWelfare detainee={detainee} />
           </Grid>
-          <Grid
-            container
-            justify="space-between"
-            className={classes.row}
-            spacing={8}
-          >
-            <Grid item sm>
-              <DetaineeAction detainee={detainee} />
-            </Grid>
+          <Grid item sm={12}>
+            <Activities detainee={detainee} />
+          </Grid>
+          <Grid item sm={12}>
+            <DetaineeAction detainee={detainee} />
           </Grid>
         </Grid>
       ) : (
@@ -99,15 +54,4 @@ const DetaineeDetailsComponent = ({
 DetaineeDetailsComponent.propTypes = propTypes;
 DetaineeDetailsComponent.defaultProps = defaultProps;
 
-export default withStyles((theme) => ({
-  paper: {
-    padding: theme.spacing.unit * 2,
-    textAlign: 'left',
-    color: theme.palette.text.secondary,
-    height: theme.spacing.unit * 16,
-  },
-  row: {
-    padding: theme.spacing.unit * 0.5,
-  },
-  column: {},
-}))(DetaineeDetailsComponent);
+export default DetaineeDetailsComponent;
