@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, withStyles } from '@material-ui/core';
+import { Grid, Typography, withStyles } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
 import Header from '../common/Header';
 import constants from '../constants';
 import logo from '../images/EPSlogo.png';
-import GotoCell from './GotoCell';
-import GotoActivityRoom from './GotoActivityRoom';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
+  }).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
   versions: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
@@ -22,17 +25,28 @@ const propTypes = {
   getVersions: PropTypes.func.isRequired,
 };
 
-class HomeComponent extends Component {
+class TapToBegin extends Component {
   componentDidMount() {
     const { getVersions } = this.props;
     getVersions();
   }
 
+  handleClick = () => {
+    const { match, history } = this.props;
+    const { name } = match.params;
+    history.push(`/cells/${name}/home`);
+  };
+
   render() {
     const { classes, versions } = this.props;
     return (
       <Grid container justify="center">
-        <Grid container className={classes.container} justify="center">
+        <Grid
+          container
+          className={classes.container}
+          justify="center"
+          onClick={this.handleClick}
+        >
           <Grid item xs={12}>
             <Header versions={versions} />
           </Grid>
@@ -40,17 +54,12 @@ class HomeComponent extends Component {
             <img
               src={logo}
               alt="EPS Logo"
-              width={300}
+              width={350}
               className={classes.logo}
             />
-          </Grid>
-          <Grid item container xs={12} spacing={24}>
-            <Grid item xs={12} sm={6}>
-              <GotoCell />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <GotoActivityRoom />
-            </Grid>
+            <Typography variant="h4" className={classes.heading} align="center">
+              Tap to begin
+            </Typography>
           </Grid>
         </Grid>
       </Grid>
@@ -58,7 +67,7 @@ class HomeComponent extends Component {
   }
 }
 
-HomeComponent.propTypes = propTypes;
+TapToBegin.propTypes = propTypes;
 
 export default compose(
   withStyles((theme) => ({
@@ -66,14 +75,16 @@ export default compose(
       height: constants.LAYOUT.height,
       background: theme.palette.background.default,
       width: constants.LAYOUT.width,
+      cursor: 'pointer',
     },
-    item: {
-      marginLeft: theme.spacing.unit * 2,
-      marginRight: theme.spacing.unit * 2,
+    heading: {
+      marginTop: theme.spacing.unit * 5,
+      color: '#F8F8F8',
+      fontWeight: 500,
     },
     logo: {
-      marginTop: theme.spacing.unit * 6,
+      marginTop: -theme.spacing.unit * 15,
     },
   })),
   withRouter,
-)(HomeComponent);
+)(TapToBegin);

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import constants from '../constants';
+import constants from '../../constants';
 
 const getVersions = async () => {
   const response = await axios.get(`${process.env.REACT_APP_CELL_SERVICE_URL}${constants.VERSION_URL}`);

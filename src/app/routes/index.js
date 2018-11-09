@@ -1,4 +1,4 @@
-import TapToBeginPage from '../TapToBeginPage';
+import TapToBegin from '../TapToBegin';
 import Home from '../Home';
 import Cell from '../Cell';
 import Detainee from '../Detainee';
@@ -12,7 +12,7 @@ const routes = [
   },
   {
     path: '/cells/:name',
-    component: TapToBeginPage,
+    component: TapToBegin,
     exact: true,
   },
   {
