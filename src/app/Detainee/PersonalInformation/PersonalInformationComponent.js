@@ -48,9 +48,9 @@ PersonalInformationComponent.propTypes = propTypes;
 export default withStyles((theme) => ({
   img: {
     objectFit: 'cover',
-    height: theme.spacing.unit * 19,
-    width: theme.spacing.unit * 19,
-    paddingTop: theme.spacing.unit,
+    height: theme.spacing.unit * 18.5,
+    width: theme.spacing.unit * 18.5,
+    paddingTop: theme.spacing.unit * 0.5,
     paddingRight: theme.spacing.unit,
   },
   text: {
