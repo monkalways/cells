@@ -26,15 +26,17 @@ const PersonalInformationComponent = ({ classes, detainee }) => {
             Personal Information
           </Typography>
         </Grid>
-        <Grid item xs={3}>
-          <img
-            className={classes.img}
-            alt="Detainee"
-            src={getDetaineeImage()}
-          />
-        </Grid>
-        <Grid item xs={9}>
-          <PersonalStats detainee={detainee} />
+        <Grid container spacing={24}>
+          <Grid item xs={3}>
+            <img
+              className={classes.img}
+              alt="Detainee"
+              src={getDetaineeImage()}
+            />
+          </Grid>
+          <Grid item xs={9}>
+            <PersonalStats detainee={detainee} />
+          </Grid>
         </Grid>
       </Grid>
     </React.Fragment>
@@ -46,8 +48,10 @@ PersonalInformationComponent.propTypes = propTypes;
 export default withStyles((theme) => ({
   img: {
     objectFit: 'cover',
-    height: theme.spacing.unit * 17,
-    width: theme.spacing.unit * 17,
+    height: theme.spacing.unit * 19,
+    width: theme.spacing.unit * 19,
+    paddingTop: theme.spacing.unit,
+    paddingRight: theme.spacing.unit,
   },
   text: {
     textDecoration: 'underline',
