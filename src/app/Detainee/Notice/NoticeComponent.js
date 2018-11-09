@@ -39,7 +39,7 @@ const NoticeComponent = ({ classes, detainee }) => {
     return icons.map((icon) => {
       if (icon.includes(CAUTION_PRESENT)) {
         return (
-          <Grid item key={icon}>
+          <Grid item key={icon} xs={1}>
             <Avatar
               className={icons.length <= 3 ? classes.avatar3 : classes.avatar6}
               src={icon}
@@ -56,7 +56,7 @@ const NoticeComponent = ({ classes, detainee }) => {
         );
       }
       return (
-        <Grid item key={icon}>
+        <Grid item key={icon} xs={1}>
           <Avatar
             className={icons.length <= 3 ? classes.avatar3 : classes.avatar6}
             src={icon}
@@ -114,7 +114,7 @@ export default withStyles((theme) => ({
   },
   grid: {
     padding: theme.spacing.unit * 0.5,
-    height: theme.spacing.unit * 12,
+    height: theme.spacing.unit * 15,
   },
   text: {
     textDecoration: 'underline',
