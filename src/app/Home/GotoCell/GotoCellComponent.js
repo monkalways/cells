@@ -50,7 +50,6 @@ class GotoCellComponent extends Component {
               id="cellName"
               name="cellName"
               autoComplete="cellName"
-              autoFocus
               value={cellName}
               onChange={this.handleChange}
             />
