@@ -11,7 +11,7 @@ const propTypes = {
 };
 
 const CellDetaineeGridComponent = ({ classes, children }) => (
-  <Grid container className={classes.container} spacing={8}>
+  <Grid container className={classes.container} spacing={8} justify="center">
     {children}
   </Grid>
 );
