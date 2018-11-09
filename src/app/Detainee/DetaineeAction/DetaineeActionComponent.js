@@ -39,40 +39,40 @@ const DetaineeActionComponent = ({ classes }) => (
     <CardContent className={classes.cardContent}>
       <Grid container spacing={16}>
         <Grid container item xs={12}>
-          <Grid item xs={2}>
+          <Grid item xs={2} className={classes.imgContainer}>
             <Avatar className={classes.avatar} src={MedicalVisitIcon} />
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} className={classes.imgContainer}>
             <Avatar className={classes.avatar} src={PhoneAcceptIcon} />
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} className={classes.imgContainer}>
             <Avatar className={classes.avatar} src={PhoneDeclineIcon} />
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} className={classes.imgContainer}>
             <Avatar className={classes.avatar} src={FingerprintingIcon} />
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} className={classes.imgContainer}>
             <Avatar className={classes.avatar} src={BreathalyzerIcon} />
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} className={classes.imgContainer}>
             <Avatar className={classes.avatar} src={InterviewIcon} />
           </Grid>
         </Grid>
 
         <Grid container item xs={12}>
-          <Grid item xs={2}>
+          <Grid item xs={2} className={classes.imgContainer}>
             <Avatar className={classes.avatar} src={BailHearing1Icon} />
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} className={classes.imgContainer}>
             <Avatar className={classes.avatar} src={BailHearing2Icon} />
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} className={classes.imgContainer}>
             <Avatar className={classes.avatar} src={RemandHoldingIcon} />
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} className={classes.imgContainer}>
             <Avatar className={classes.avatar} src={ReleaseHoldingIcon} />
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} className={classes.imgContainer}>
             <Avatar className={classes.avatar} src={InCellIcon} />
           </Grid>
         </Grid>
@@ -89,9 +89,14 @@ export default withStyles((theme) => ({
   },
   cardContent: {
     backgroundColor: '#d4e2fc',
+    paddingBottom: [16, '!important'],
   },
   cardHeader: {
     backgroundColor: '#3d89f7',
     padding: theme.spacing.unit,
+  },
+  imgContainer: {
+    display: 'flex',
+    justifyContent: 'center',
   },
 }))(DetaineeActionComponent);
