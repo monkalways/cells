@@ -4,7 +4,7 @@ import { reducer as toastrReducer } from 'react-redux-toastr';
 import cellsReducer from './app/Cell/duck';
 import detaineeReducer from './app/Detainee/duck';
 import authenticationReducer from './app/Authentication/duck';
-import versionsReducer from './app/Home/duck';
+import versionsReducer from './app/common/duck';
 
 export default (history) => combineReducers({
   router: connectRouter(history),

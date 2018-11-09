@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { operations, selectors } from '../common/duck';
-import HomeComponent from './HomeComponent';
+import TapToBeginComponent from './TapToBeginComponent';
 
 export const mapStateToProps = (
   state,
@@ -18,4 +18,4 @@ export const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(HomeComponent);
+)(TapToBeginComponent);
