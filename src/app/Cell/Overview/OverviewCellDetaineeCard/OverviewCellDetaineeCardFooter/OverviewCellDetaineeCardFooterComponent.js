@@ -55,7 +55,7 @@ const OverviewCellDetaineeCardFooterComponent = ({
                 icons.length <= 3 ? classes.cautionText3 : classes.cautionText6
               }
             >
-              {cellDetainee.cautionsArray.join('')}
+              {cellDetainee.cautionsArray.sort().join('')}
             </Typography>
           </div>
         );
