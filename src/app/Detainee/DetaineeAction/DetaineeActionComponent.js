@@ -7,6 +7,7 @@ import {
   CardContent,
   Grid,
   withStyles,
+  Typography,
 } from '@material-ui/core';
 
 import MedicalVisitIcon from '../../../images/MedicalVisit.png';
@@ -35,7 +36,13 @@ const propTypes = {
 
 const DetaineeActionComponent = ({ classes }) => (
   <Card className={classes.card}>
-    <CardHeader title="Detainee Action" className={classes.cardHeader} />
+    <CardHeader
+      component={() => (
+        <Typography variant="h6" className={classes.cardHeader}>
+          Detainee Action
+        </Typography>
+      )}
+    />
     <CardContent className={classes.cardContent}>
       <Grid container spacing={16}>
         <Grid container item xs={12}>
@@ -93,7 +100,9 @@ export default withStyles((theme) => ({
   },
   cardHeader: {
     backgroundColor: '#3d89f7',
-    padding: theme.spacing.unit,
+    paddingLeft: theme.spacing.unit,
+    paddingTop: theme.spacing.unit * 0.5,
+    paddingBottom: theme.spacing.unit * 0.5,
   },
   imgContainer: {
     display: 'flex',
