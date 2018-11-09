@@ -27,12 +27,7 @@ const FooterComponent = ({ classes, history }) => {
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
-        <Grid
-          container
-          justify="left"
-          alignItems="center"
-          className={classes.container}
-        >
+        <Grid container alignItems="center" className={classes.container}>
           <BottomNavigation
             value={-1}
             showLabels
