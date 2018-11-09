@@ -114,6 +114,7 @@ export default withStyles((theme) => ({
   },
   grid: {
     padding: theme.spacing.unit * 0.5,
+    height: theme.spacing.unit * 12,
   },
   text: {
     textDecoration: 'underline',
