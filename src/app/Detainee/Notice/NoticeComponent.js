@@ -42,7 +42,7 @@ const NoticeComponent = ({ classes, detainee }) => {
           <Grid item key={icon} xs={1} className={classes.gridItem}>
             <Avatar className={classes.avatar} src={icon} />
             <Typography align="center" className={classes.cautionText}>
-              {detainee.cautionsArray.join('')}
+              {detainee.cautionsArray.sort().join('')}
             </Typography>
           </Grid>
         );
