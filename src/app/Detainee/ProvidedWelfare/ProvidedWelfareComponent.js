@@ -32,101 +32,77 @@ const ProvidedWelfareComponent = ({ classes, detainee }) => (
         Provided Welfare
       </Typography>
     </Grid>
-    <Grid item xs={12}>
-      <Grid container>
-        <Grid item xs={1} className={`${classes.gridItem} ${classes.topLeft}`}>
-          <Avatar className={classes.avatar} src={VisualCheckIcon} />
-        </Grid>
-        <Grid
-          item
-          xs={1}
-          className={`${classes.gridItem} ${classes.topCenter}`}
-        >
-          <Avatar className={classes.avatar} src={VerbalCheckIcon} />
-        </Grid>
-        <Grid
-          item
-          xs={1}
-          className={`${classes.gridItem} ${classes.topCenter}`}
-        >
-          <Avatar className={classes.avatar} src={MealAcceptIcon} />
-        </Grid>
-        <Grid
-          item
-          xs={1}
-          className={`${classes.gridItem} ${classes.topCenter}`}
-        >
-          <Avatar className={classes.avatar} src={MealDeclineIcon} />
-        </Grid>
-        <Grid
-          item
-          xs={1}
-          className={`${classes.gridItem} ${classes.topCenter}`}
-        >
-          <Avatar className={classes.avatar} src={MedicineAcceptIcon} />
-        </Grid>
-        <Grid item xs={1} className={`${classes.gridItem} ${classes.topRight}`}>
-          <Avatar className={classes.avatar} src={MedicineDeclineIcon} />
-        </Grid>
+    <Grid container item xs={12}>
+      <Grid item xs={1} className={`${classes.gridItem} ${classes.topLeft}`}>
+        <Avatar className={classes.avatar} src={VisualCheckIcon} />
+      </Grid>
+      <Grid item xs={1} className={`${classes.gridItem} ${classes.topCenter}`}>
+        <Avatar className={classes.avatar} src={VerbalCheckIcon} />
+      </Grid>
+      <Grid item xs={1} className={`${classes.gridItem} ${classes.topCenter}`}>
+        <Avatar className={classes.avatar} src={MealAcceptIcon} />
+      </Grid>
+      <Grid item xs={1} className={`${classes.gridItem} ${classes.topCenter}`}>
+        <Avatar className={classes.avatar} src={MealDeclineIcon} />
+      </Grid>
+      <Grid item xs={1} className={`${classes.gridItem} ${classes.topCenter}`}>
+        <Avatar className={classes.avatar} src={MedicineAcceptIcon} />
+      </Grid>
+      <Grid item xs={1} className={`${classes.gridItem} ${classes.topRight}`}>
+        <Avatar className={classes.avatar} src={MedicineDeclineIcon} />
       </Grid>
     </Grid>
 
-    <Grid item xs={12}>
-      <Grid container>
-        <Grid
-          item
-          xs={1}
-          className={`${classes.gridItem} ${classes.bottomLeft}`}
-        >
-          <Typography variant={variant} align="center">
-            {detainee.visualCellCheckCount}
-          </Typography>
-        </Grid>
-        <Grid
-          item
-          xs={1}
-          className={`${classes.gridItem} ${classes.bottomCenter}`}
-        >
-          <Typography variant={variant} align="center">
-            {detainee.verbalCellCheckCount}
-          </Typography>
-        </Grid>
-        <Grid
-          item
-          xs={1}
-          className={`${classes.gridItem} ${classes.bottomCenter}`}
-        >
-          <Typography variant={variant} align="center">
-            {detainee.mealAcceptedCount}
-          </Typography>
-        </Grid>
-        <Grid
-          item
-          xs={1}
-          className={`${classes.gridItem} ${classes.bottomCenter}`}
-        >
-          <Typography variant={variant} align="center">
-            {detainee.mealDeclinedCount}
-          </Typography>
-        </Grid>
-        <Grid
-          item
-          xs={1}
-          className={`${classes.gridItem} ${classes.bottomCenter}`}
-        >
-          <Typography variant={variant} align="center">
-            {detainee.medicationAcceptedCount}
-          </Typography>
-        </Grid>
-        <Grid
-          item
-          xs={1}
-          className={`${classes.gridItem} ${classes.bottomRight}`}
-        >
-          <Typography variant={variant} align="center">
-            {detainee.medicationRefusedCount}
-          </Typography>
-        </Grid>
+    <Grid container item xs={12}>
+      <Grid item xs={1} className={`${classes.gridItem} ${classes.bottomLeft}`}>
+        <Typography variant={variant} align="center">
+          {detainee.visualCellCheckCount}
+        </Typography>
+      </Grid>
+      <Grid
+        item
+        xs={1}
+        className={`${classes.gridItem} ${classes.bottomCenter}`}
+      >
+        <Typography variant={variant} align="center">
+          {detainee.verbalCellCheckCount}
+        </Typography>
+      </Grid>
+      <Grid
+        item
+        xs={1}
+        className={`${classes.gridItem} ${classes.bottomCenter}`}
+      >
+        <Typography variant={variant} align="center">
+          {detainee.mealAcceptedCount}
+        </Typography>
+      </Grid>
+      <Grid
+        item
+        xs={1}
+        className={`${classes.gridItem} ${classes.bottomCenter}`}
+      >
+        <Typography variant={variant} align="center">
+          {detainee.mealDeclinedCount}
+        </Typography>
+      </Grid>
+      <Grid
+        item
+        xs={1}
+        className={`${classes.gridItem} ${classes.bottomCenter}`}
+      >
+        <Typography variant={variant} align="center">
+          {detainee.medicationAcceptedCount}
+        </Typography>
+      </Grid>
+      <Grid
+        item
+        xs={1}
+        className={`${classes.gridItem} ${classes.bottomRight}`}
+      >
+        <Typography variant={variant} align="center">
+          {detainee.medicationRefusedCount}
+        </Typography>
       </Grid>
     </Grid>
   </Grid>
