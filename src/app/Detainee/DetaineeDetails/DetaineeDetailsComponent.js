@@ -24,10 +24,10 @@ const DetaineeDetailsComponent = ({ detainee, isDetaineeProfileLoaded }) => (
     <DetaineeGrid>
       {isDetaineeProfileLoaded ? (
         <Grid container>
-          <Grid item sm={9}>
+          <Grid item sm={10}>
             <PersonalInformation detainee={detainee} />
           </Grid>
-          <Grid item sm={3}>
+          <Grid item sm={2}>
             <Location location={detainee.location} />
           </Grid>
           <Grid item sm={12}>

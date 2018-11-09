@@ -15,55 +15,53 @@ const propTypes = {
 
 const PersonalStatsComponent = ({ detainee }) => (
   <React.Fragment>
-    <Grid container spacing={8}>
+    <Grid container spacing={0}>
       <Grid container item xs={12}>
-        <Grid item xs={4}>
-          <Typography variant="body2">Name:</Typography>
+        <Grid item xs={3}>
+          <Typography variant="h6">Name:</Typography>
         </Grid>
-        <Grid item xs={8}>
-          <Typography variant="subtitle2">
+        <Grid item xs={9}>
+          <Typography variant="h6">
             {detainee.lastName}, {detainee.firstName}
           </Typography>
         </Grid>
       </Grid>
 
       <Grid container item xs={12}>
-        <Grid item xs={4}>
-          <Typography variant="body2">DOB:</Typography>
+        <Grid item xs={3}>
+          <Typography variant="h6">DOB:</Typography>
         </Grid>
-        <Grid item xs={8}>
-          <Typography variant="subtitle2">{detainee.dob}</Typography>
-        </Grid>
-      </Grid>
-
-      <Grid container item xs={12}>
-        <Grid item xs={4}>
-          <Typography variant="body2">Gender:</Typography>
-        </Grid>
-        <Grid item xs={8}>
-          <Typography variant="subtitle2">{detainee.gender}</Typography>
+        <Grid item xs={9}>
+          <Typography variant="h6">{detainee.dob}</Typography>
         </Grid>
       </Grid>
 
       <Grid container item xs={12}>
-        <Grid item xs={4}>
-          <Typography variant="body2">BIN:</Typography>
+        <Grid item xs={3}>
+          <Typography variant="h6">Gender:</Typography>
         </Grid>
-        <Grid item xs={8}>
-          <Typography variant="subtitle2">
+        <Grid item xs={9}>
+          <Typography variant="h6">{detainee.gender}</Typography>
+        </Grid>
+      </Grid>
+
+      <Grid container item xs={12}>
+        <Grid item xs={3}>
+          <Typography variant="h6">BIN:</Typography>
+        </Grid>
+        <Grid item xs={9}>
+          <Typography variant="h6">
             {detainee.propertyBagNumber ? detainee.propertyBagNumber : <br />}
           </Typography>
         </Grid>
       </Grid>
 
       <Grid container item xs={12}>
-        <Grid item xs={4}>
-          <Typography variant="body2">Remarks:</Typography>
+        <Grid item xs={3}>
+          <Typography variant="h6">Remarks:</Typography>
         </Grid>
-        <Grid item xs={8}>
-          <Typography variant="subtitle2">
-            {detainee.detentionUnitName}
-          </Typography>
+        <Grid item xs={9}>
+          <Typography variant="h6">{detainee.detentionUnitName}</Typography>
         </Grid>
       </Grid>
     </Grid>
