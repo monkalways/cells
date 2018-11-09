@@ -51,19 +51,13 @@ const LocationComponent = ({ classes, location }) => {
   };
 
   return (
-    <Grid
-      container
-      direction="column"
-      justify="space-between"
-      className={classes.column}
-      spacing={8}
-    >
-      <Grid item>
+    <Grid container>
+      <Grid item container justify="center" xs={12}>
         <Typography variant="h6" className={classes.text}>
           Location
         </Typography>
       </Grid>
-      <Grid item>
+      <Grid item container justify="center" xs={12}>
         <img
           className={classes.img}
           alt="Detainee Location"
@@ -78,11 +72,7 @@ LocationComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   img: {
-    width: '150px',
-    height: '150px',
-  },
-  column: {
-    padding: theme.spacing.unit * 0.5,
+    height: theme.spacing.unit * 16,
   },
   text: {
     textDecoration: 'underline',
