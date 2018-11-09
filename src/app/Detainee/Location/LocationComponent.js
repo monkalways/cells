@@ -85,6 +85,6 @@ export default withStyles((theme) => ({
     padding: theme.spacing.unit * 0.5,
   },
   text: {
-    textDecorationLine: 'underline',
+    textDecoration: 'underline',
   },
 }))(LocationComponent);

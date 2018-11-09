@@ -167,7 +167,7 @@ export default withStyles((theme) => ({
     padding: theme.spacing.unit * 0.5,
   },
   text: {
-    textDecorationLine: 'underline',
+    textDecoration: 'underline',
   },
   topLeft: { borderWidth: '0 1px 1px 0' },
   topCenter: { borderWidth: '0 1px 1px 1px' },
