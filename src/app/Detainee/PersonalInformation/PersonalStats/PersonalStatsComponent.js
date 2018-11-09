@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import { Grid, Typography } from '@material-ui/core';
 
 const propTypes = {
-  detainee: PropTypes.shape({}).isRequired,
+  detainee: PropTypes.shape({
+    detentionUnitName: PropTypes.string.isRequired,
+    dob: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    gender: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    propertyBagNumber: PropTypes.string,
+  }).isRequired,
 };
 
 const PersonalStatsComponent = ({ detainee }) => (
