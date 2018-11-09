@@ -72,7 +72,7 @@ LocationComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   img: {
-    height: theme.spacing.unit * 16,
+    height: theme.spacing.unit * 15,
   },
   text: {
     textDecoration: 'underline',

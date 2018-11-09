@@ -26,14 +26,14 @@ const PersonalInformationComponent = ({ classes, detainee }) => {
             Personal Information
           </Typography>
         </Grid>
-        <Grid item sm={4}>
+        <Grid item xs={3}>
           <img
             className={classes.img}
             alt="Detainee"
             src={getDetaineeImage()}
           />
         </Grid>
-        <Grid item sm={8}>
+        <Grid item xs={9}>
           <PersonalStats detainee={detainee} />
         </Grid>
       </Grid>
@@ -46,8 +46,8 @@ PersonalInformationComponent.propTypes = propTypes;
 export default withStyles((theme) => ({
   img: {
     objectFit: 'cover',
-    height: theme.spacing.unit * 20,
-    width: theme.spacing.unit * 20,
+    height: theme.spacing.unit * 17,
+    width: theme.spacing.unit * 17,
   },
   text: {
     textDecoration: 'underline',

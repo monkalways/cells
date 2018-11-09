@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 
 // Basic selectors
-const getDetainee = (state) => state.detainee.detainee.data;
-const isDetaineeProfileLoaded = (state) => state.detainee.detainee.loaded;
+const getDetainee = (state) => state.detainee.data;
+const isDetaineeProfileLoaded = (state) => state.detainee.loaded;
 
 // Reselect selectors
 const getDetaineeState = createSelector([getDetainee], (detainee) => detainee);

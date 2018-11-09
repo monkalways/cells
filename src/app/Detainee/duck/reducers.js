@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import types from './types';
 
 const defaultDetaineeState = {
@@ -23,8 +22,4 @@ const detaineeReducer = (state = defaultDetaineeState, action) => {
   }
 };
 
-const reducer = combineReducers({
-  detainee: detaineeReducer,
-});
-
-export default reducer;
+export default detaineeReducer;
