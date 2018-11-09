@@ -20,31 +20,21 @@ const PersonalInformationComponent = ({ classes, detainee }) => {
 
   return (
     <React.Fragment>
-      <Grid
-        container
-        direction="column"
-        justify="space-between"
-        className={classes.column}
-        spacing={8}
-      >
-        <Grid item>
+      <Grid container>
+        <Grid item xs={12}>
           <Typography variant="h6" className={classes.text}>
             Personal Information
           </Typography>
         </Grid>
-        <Grid item>
-          <Grid container alignItems="flex-start" justify="flex-start">
-            <Grid item sm={4}>
-              <img
-                className={classes.img}
-                alt="Detainee"
-                src={getDetaineeImage()}
-              />
-            </Grid>
-            <Grid item sm={8}>
-              <PersonalStats detainee={detainee} />
-            </Grid>
-          </Grid>
+        <Grid item sm={4}>
+          <img
+            className={classes.img}
+            alt="Detainee"
+            src={getDetaineeImage()}
+          />
+        </Grid>
+        <Grid item sm={8}>
+          <PersonalStats detainee={detainee} />
         </Grid>
       </Grid>
     </React.Fragment>
