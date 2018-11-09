@@ -1,11 +1,12 @@
 import axios from 'axios';
-import constants from '../constants';
+import detaineeConstants from '../constants';
+import constants from '../../constants';
 
 const getDetainee = async (custodyEventId) => {
   const response = await axios.get(
     `${process.env.REACT_APP_CELL_SERVICE_URL}${
-      constants.DETAINEE_URL
-    }${custodyEventId}${constants.DETAINEE_PROFILE}`,
+      detaineeConstants.DETAINEE_URL
+    }${custodyEventId}${detaineeConstants.DETAINEE_PROFILE}`,
     constants.HEADERS,
   );
 
