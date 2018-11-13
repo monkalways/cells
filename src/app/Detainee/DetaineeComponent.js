@@ -10,6 +10,7 @@ import DetaineeDetails from './DetaineeDetails';
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   getDetainee: PropTypes.func.isRequired,
+  getAvailableActivityRooms: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
