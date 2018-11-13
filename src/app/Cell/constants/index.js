@@ -1,6 +1,13 @@
 // DMU Service URLS
-const CELL_URL = 'api/cells/';
-const DETENTION_LOGS_URL = 'api/detention-logs/';
+const GET_CELL_URL = (cellName) => `${process.env.REACT_APP_CELL_SERVICE_URL}api/cells/${cellName}`;
+
+const GET_CELL_DETAINEES_URL = (cellName) => `${
+  process.env.REACT_APP_CELL_SERVICE_URL
+}api/cells/${cellName}/get-cell-detainees`;
+
+const DETENTION_LOGS_URL = `${
+  process.env.REACT_APP_CELL_SERVICE_URL
+}api/detention-logs`;
 
 // Detention Log Data Types
 const DETENTION_LOG_DATA_TYPE_MEAL = 'IsMeal';
@@ -17,7 +24,8 @@ const DETENTION_LOG_ACTION_TYPE_VERBAL = 'Verbal';
 const DETENTION_LOG_ACTION_TYPE_PHONE_DECLINED = 'PhoneDeclined';
 
 export default {
-  CELL_URL,
+  GET_CELL_URL,
+  GET_CELL_DETAINEES_URL,
   DETENTION_LOGS_URL,
   DETENTION_LOG_DATA_TYPE_MEAL,
   DETENTION_LOG_DATA_TYPE_MEDICATION,

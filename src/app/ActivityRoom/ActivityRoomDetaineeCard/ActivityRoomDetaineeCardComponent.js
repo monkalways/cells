@@ -5,45 +5,39 @@ import { Card, withStyles } from '@material-ui/core';
 import {
   CellDetaineeCardHeader,
   CellDetaineeCardContent,
-} from '../../../common/CellDetaineeCard';
-
-import OverviewCellDetaineeCardFooter from './OverviewCellDetaineeCardFooter';
+} from '../../common/CellDetaineeCard';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  cellDetainee: PropTypes.shape({
+  detainee: PropTypes.shape({
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
   }).isRequired,
-  cellName: PropTypes.string.isRequired,
+  usage: PropTypes.string.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
-const OverviewCellDetaineeCardComponent = ({
+const ActivityRoomDetaineeCardComponent = ({
   classes,
-  cellDetainee,
-  cellName,
+  detainee,
+  usage,
   isAuthenticated,
 }) => (
   <Card className={classes.card}>
-    <CellDetaineeCardHeader cellDetainee={cellDetainee} />
+    <CellDetaineeCardHeader cellDetainee={detainee} />
     <CellDetaineeCardContent
-      cellDetainee={cellDetainee}
-      cellName={cellName}
-      isAuthenticated={isAuthenticated}
-    />
-    <OverviewCellDetaineeCardFooter
-      cellDetainee={cellDetainee}
+      cellDetainee={detainee}
+      cellName={usage}
       isAuthenticated={isAuthenticated}
     />
   </Card>
 );
 
-OverviewCellDetaineeCardComponent.propTypes = propTypes;
+ActivityRoomDetaineeCardComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   card: {
     maxWidth: theme.spacing.unit * 50,
     backgroundColor: theme.palette.background.paper,
   },
-}))(OverviewCellDetaineeCardComponent);
+}))(ActivityRoomDetaineeCardComponent);

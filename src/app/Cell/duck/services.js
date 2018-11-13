@@ -25,7 +25,7 @@ const getDesignation = (genderLabel) => {
 
 const getCellDetails = async (name) => {
   const response = await axios.get(
-    `${process.env.REACT_APP_CELL_SERVICE_URL}${constants.CELL_URL}${name}`,
+    constants.GET_CELL_URL(name),
     commonConstants.HEADERS,
   );
 
@@ -68,9 +68,7 @@ const getCellDetails = async (name) => {
 
 const getCellDetainees = async (name) => {
   const response = await axios.get(
-    `${process.env.REACT_APP_CELL_SERVICE_URL}${
-      constants.CELL_URL
-    }${name}/get-cell-detainees`,
+    constants.GET_CELL_DETAINEES_URL(name),
     commonConstants.HEADERS,
   );
 
@@ -109,7 +107,7 @@ const saveDetentionLog = async ({
   detentionLogAction,
   userName,
 }) => axios.post(
-  `${process.env.REACT_APP_CELL_SERVICE_URL}${constants.DETENTION_LOGS_URL}`,
+  constants.DETENTION_LOGS_URL,
   {
     arrestId,
     detentionLogType,
