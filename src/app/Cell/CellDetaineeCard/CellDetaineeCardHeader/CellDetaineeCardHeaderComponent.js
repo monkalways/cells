@@ -61,8 +61,12 @@ const CellDetaineeCardHeaderComponent = ({ classes, cellDetainee }) => {
     <CardContent className={classes.header}>
       <Grid container>
         <Grid item sm={7}>
-          <Typography variant="h6">{cellDetainee.firstName}</Typography>
-          <Typography variant="h6">{cellDetainee.lastName}</Typography>
+          <Typography variant="h6" className={classes.heading}>
+            {cellDetainee.lastName}
+          </Typography>
+          <Typography variant="h6" className={classes.heading}>
+            {cellDetainee.firstName}
+          </Typography>
           <Typography variant="h6" className={classes.subtitle}>
             {`{ ${cellDetainee.division[0]} }`}
           </Typography>
@@ -80,6 +84,11 @@ CellDetaineeCardHeaderComponent.propTypes = propTypes;
 export default withStyles((theme) => ({
   header: {
     padding: theme.spacing.unit,
+  },
+  heading: {
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
   },
   subtitle: {
     color: '#7B2C31',
