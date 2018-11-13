@@ -5,7 +5,7 @@ import { Card, withStyles } from '@material-ui/core';
 import {
   CellDetaineeCardHeader,
   CellDetaineeCardContent,
-} from '../../CellDetaineeCard';
+} from '../../../common/CellDetaineeCard';
 
 import MealCellDetaineeCardFooter from './MealCellDetaineeCardFooter';
 

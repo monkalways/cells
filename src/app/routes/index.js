@@ -2,6 +2,7 @@ import TapToBegin from '../TapToBegin';
 import Home from '../Home';
 import Cell from '../Cell';
 import Detainee from '../Detainee';
+import ActivityRoom from '../ActivityRoom';
 import withAuthentication from './enhancers/withAuthentication';
 
 const routes = [
@@ -23,7 +24,12 @@ const routes = [
   {
     path: '/detainees/:id',
     component: withAuthentication(Detainee),
-    exact: false,
+    exact: true,
+  },
+  {
+    path: '/activity-room/:usage',
+    component: ActivityRoom,
+    exact: true,
   },
 ];
 
