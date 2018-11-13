@@ -1,1 +1,1 @@
-export { default } from './ActivityRoomComponent';
+export { default } from './ActivityRoomContainer';

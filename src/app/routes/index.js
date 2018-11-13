@@ -27,7 +27,7 @@ const routes = [
     exact: true,
   },
   {
-    path: '/activity-room/:usage',
+    path: '/activity-rooms/:usage',
     component: ActivityRoom,
     exact: true,
   },

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 
-import CellDetaineeGrid from '../CellDetaineeGrid';
+import CellDetaineeGrid from '../../common/CellDetaineeGrid';
 import MedicationCellDetaineeCard from './MedicationCellDetaineeCard';
 import MedicationFooter from './MedicationFooter';
 import Loading from '../../common/Loading';
