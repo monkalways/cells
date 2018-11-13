@@ -28,8 +28,9 @@ class DetaineeComponent extends Component {
   componentDidMount() {
     const { match } = this.props;
     const { id } = match.params;
-    const { getDetainee } = this.props;
+    const { getDetainee, getAvailableActivityRooms } = this.props;
     getDetainee(id);
+    getAvailableActivityRooms();
   }
 
   handleLogout = () => {

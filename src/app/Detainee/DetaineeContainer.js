@@ -4,6 +4,8 @@ import { operations as authenticationOperations } from '../Authentication/duck';
 import DetaineeComponent from './DetaineeComponent';
 
 export const mapDispatchToProps = (dispatch) => ({
+  // eslint-disable-next-line max-len
+  getAvailableActivityRooms: (getAvailableActivityRooms = operations.getAvailableActivityRooms) => dispatch(getAvailableActivityRooms()),
   getDetainee: (id, getDetainee = operations.getDetainee) => dispatch(getDetainee(id)),
   logOut: (cellName, logOut = authenticationOperations.logOut) => {
     dispatch(logOut(cellName));
