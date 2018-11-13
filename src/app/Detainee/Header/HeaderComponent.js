@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
-import logoIcon from './eps-logo-icon.png';
+import logoIcon from '../../images/eps-logo-icon.png';
 import HeaderContent from './HeaderContent';
 
 const propTypes = {
