@@ -15,7 +15,7 @@ const SCAN_CARD_ID_LENGTH = 16;
 
 const UNAUTHENTICATED_TIMEOUT_SECONDS = 10;
 
-const VERSION_URL = 'api/version';
+const VERSION_URL = `${process.env.REACT_APP_CELL_SERVICE_URL}api/version`;
 
 export default {
   LAYOUT,
