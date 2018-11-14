@@ -44,7 +44,7 @@ class HomeComponent extends Component {
               className={classes.logo}
             />
           </Grid>
-          <Grid item container xs={12} spacing={24}>
+          <Grid item container xs={12}>
             <Grid item xs={12} sm={6}>
               <GotoCell />
             </Grid>

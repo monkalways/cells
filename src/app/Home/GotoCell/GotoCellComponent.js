@@ -76,12 +76,14 @@ export default compose(
   withStyles((theme) => ({
     paper: {
       marginTop: theme.spacing.unit * 8,
+      marginLeft: theme.spacing.unit * 2,
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
         .spacing.unit * 3}px`,
-      height: 212,
+      height: theme.spacing.unit * 27,
+      width: theme.spacing.unit * 40,
     },
     form: {
       width: '100%', // Fix IE 11 issue.
