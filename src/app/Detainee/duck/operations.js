@@ -2,6 +2,21 @@ import actions from './actions';
 import services from './services';
 import utils from '../../utils';
 
+const getAvailableActivityRooms = (
+  id,
+  getAvailableActivityRoomsService = services.getAvailableActivityRooms,
+  getAvailableActivityRoomsActions = actions.getAvailableActivityRooms,
+  getAvailableActivityRoomsSuccessAction = actions.getAvailableActivityRoomsSuccess,
+) => async (dispatch) => {
+  try {
+    await dispatch(getAvailableActivityRoomsActions());
+    const payload = await getAvailableActivityRoomsService(id);
+    await dispatch(getAvailableActivityRoomsSuccessAction(payload));
+  } catch (error) {
+    utils.sendErrorMessage({ dispatch, error });
+  }
+};
+
 const getDetainee = (
   id,
   getDetaineeService = services.getDetainee,
@@ -18,5 +33,6 @@ const getDetainee = (
 };
 
 export default {
+  getAvailableActivityRooms,
   getDetainee,
 };

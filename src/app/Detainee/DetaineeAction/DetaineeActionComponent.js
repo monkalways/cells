@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import {
   Avatar,
   Card,
   CardHeader,
   CardContent,
   Grid,
-  withStyles,
   Typography,
+  withStyles,
 } from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
 
 import MedicalVisitIcon from '../../../images/MedicalVisit.png';
 import PhoneAcceptIcon from '../../../images/PhoneAccept.png';
@@ -24,17 +26,10 @@ import InCellIcon from '../../../images/InCell.png';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  detainee: PropTypes.shape({
-    mealAcceptedCount: PropTypes.number.isRequired,
-    mealDeclinedCount: PropTypes.number.isRequired,
-    medicationAcceptedCount: PropTypes.number.isRequired,
-    medicationRefusedCount: PropTypes.number.isRequired,
-    verbalCellCheckCount: PropTypes.number.isRequired,
-    visualCellCheckCount: PropTypes.number.isRequired,
-  }).isRequired,
+  isMedicalRoomAvailable: PropTypes.bool.isRequired,
 };
 
-const DetaineeActionComponent = ({ classes }) => (
+const DetaineeActionComponent = ({ classes, isMedicalRoomAvailable }) => (
   <Card className={classes.card}>
     <CardHeader
       component={() => (
@@ -47,40 +42,120 @@ const DetaineeActionComponent = ({ classes }) => (
       <Grid container spacing={16}>
         <Grid container item xs={12}>
           <Grid item xs={2} className={classes.imgContainer}>
-            <Avatar className={classes.avatar} src={MedicalVisitIcon} />
+            <IconButton
+              className={classes.button}
+              disabled={!isMedicalRoomAvailable}
+            >
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isMedicalRoomAvailable,
+                })}
+                src={MedicalVisitIcon}
+              />
+            </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
-            <Avatar className={classes.avatar} src={PhoneAcceptIcon} />
+            <IconButton className={classes.button}>
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isMedicalRoomAvailable,
+                })}
+                src={PhoneAcceptIcon}
+              />
+            </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
-            <Avatar className={classes.avatar} src={PhoneDeclineIcon} />
+            <IconButton className={classes.button}>
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isMedicalRoomAvailable,
+                })}
+                src={PhoneDeclineIcon}
+              />
+            </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
-            <Avatar className={classes.avatar} src={FingerprintingIcon} />
+            <IconButton className={classes.button}>
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isMedicalRoomAvailable,
+                })}
+                src={FingerprintingIcon}
+              />
+            </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
-            <Avatar className={classes.avatar} src={BreathalyzerIcon} />
+            <IconButton className={classes.button}>
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isMedicalRoomAvailable,
+                })}
+                src={BreathalyzerIcon}
+              />
+            </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
-            <Avatar className={classes.avatar} src={InterviewIcon} />
+            <IconButton className={classes.button}>
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isMedicalRoomAvailable,
+                })}
+                src={InterviewIcon}
+              />
+            </IconButton>
           </Grid>
         </Grid>
 
         <Grid container item xs={12}>
           <Grid item xs={2} className={classes.imgContainer}>
-            <Avatar className={classes.avatar} src={BailHearing1Icon} />
+            <IconButton className={classes.button}>
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isMedicalRoomAvailable,
+                })}
+                src={BailHearing1Icon}
+              />
+            </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
-            <Avatar className={classes.avatar} src={BailHearing2Icon} />
+            <IconButton className={classes.button}>
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isMedicalRoomAvailable,
+                })}
+                src={BailHearing2Icon}
+              />
+            </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
-            <Avatar className={classes.avatar} src={RemandHoldingIcon} />
+            <IconButton className={classes.button}>
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isMedicalRoomAvailable,
+                })}
+                src={RemandHoldingIcon}
+              />
+            </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
-            <Avatar className={classes.avatar} src={ReleaseHoldingIcon} />
+            <IconButton className={classes.button}>
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isMedicalRoomAvailable,
+                })}
+                src={ReleaseHoldingIcon}
+              />
+            </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
-            <Avatar className={classes.avatar} src={InCellIcon} />
+            <IconButton className={classes.button}>
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isMedicalRoomAvailable,
+                })}
+                src={InCellIcon}
+              />
+            </IconButton>
           </Grid>
         </Grid>
       </Grid>
@@ -94,6 +169,9 @@ export default withStyles((theme) => ({
     height: theme.spacing.unit * 6,
     width: theme.spacing.unit * 6,
   },
+  button: {
+    padding: theme.spacing.unit * 0.5,
+  },
   cardContent: {
     backgroundColor: '#d4e2fc',
     paddingBottom: [16, '!important'],
@@ -103,6 +181,9 @@ export default withStyles((theme) => ({
     paddingLeft: theme.spacing.unit,
     paddingTop: theme.spacing.unit * 0.5,
     paddingBottom: theme.spacing.unit * 0.5,
+  },
+  disabled: {
+    opacity: '0.2',
   },
   imgContainer: {
     display: 'flex',

@@ -9,7 +9,18 @@ const getDetaineeSuccess = (payload) => ({
   payload,
 });
 
+const getAvailableActivityRooms = () => ({
+  type: types.GET_AVAILABLE_ACTIVITY_ROOMS,
+});
+
+const getAvailableActivityRoomsSuccess = (payload) => ({
+  type: types.GET_AVAILABLE_ACTIVITY_ROOMS_SUCCESS,
+  payload,
+});
+
 export default {
   getDetainee,
   getDetaineeSuccess,
+  getAvailableActivityRooms,
+  getAvailableActivityRoomsSuccess,
 };
