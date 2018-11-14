@@ -10,6 +10,9 @@ import {
   Typography,
   withStyles,
 } from '@material-ui/core';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
+
 import Loading from '../../../common/Loading';
 
 const propTypes = {
@@ -23,6 +26,9 @@ const propTypes = {
   isCheckingIn: PropTypes.bool.isRequired,
   usage: PropTypes.string.isRequired,
   onCheckIn: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 const LOCATION_IN_TRANSIT = 'in transit';
@@ -37,6 +43,12 @@ class CardFooterComponent extends Component {
     this.setState({
       dialogOpen: true,
     });
+  };
+
+  handleOutButtonClick = () => {
+    const { history, detainee, usage } = this.props;
+    const first = 'activity-rooms';
+    history.push(`/detainees/${detainee.id}?first=${first}&second=${usage}`);
   };
 
   handleClose = () => {
@@ -72,6 +84,7 @@ class CardFooterComponent extends Component {
             variant="contained"
             size="large"
             className={classes.outButton}
+            onClick={this.handleOutButtonClick}
           >
             OUT
           </Button>
@@ -144,29 +157,32 @@ class CardFooterComponent extends Component {
 
 CardFooterComponent.propTypes = propTypes;
 
-export default withStyles((theme) => ({
-  actions: {
-    display: 'flex',
-    height: theme.spacing.unit * 9,
-  },
-  heading: {
-    width: theme.spacing.unit * 8,
-    marginRight: theme.spacing.unit * 4,
-  },
-  inButton: {
-    backgroundColor: '#2895F2',
-    color: '#FFFFFF',
-    fontSize: theme.typography.h6.fontSize,
-    '&:hover': {
-      backgroundColor: '#0E47A1',
+export default compose(
+  withStyles((theme) => ({
+    actions: {
+      display: 'flex',
+      height: theme.spacing.unit * 9,
     },
-  },
-  outButton: {
-    backgroundColor: '#558A3A',
-    color: '#FFFFFF',
-    fontSize: theme.typography.h6.fontSize,
-    '&:hover': {
-      backgroundColor: '#456336',
+    heading: {
+      width: theme.spacing.unit * 8,
+      marginRight: theme.spacing.unit * 4,
     },
-  },
-}))(CardFooterComponent);
+    inButton: {
+      backgroundColor: '#2895F2',
+      color: '#FFFFFF',
+      fontSize: theme.typography.h6.fontSize,
+      '&:hover': {
+        backgroundColor: '#0E47A1',
+      },
+    },
+    outButton: {
+      backgroundColor: '#558A3A',
+      color: '#FFFFFF',
+      fontSize: theme.typography.h6.fontSize,
+      '&:hover': {
+        backgroundColor: '#456336',
+      },
+    },
+  })),
+  withRouter,
+)(CardFooterComponent);
