@@ -26,10 +26,10 @@ import InCellIcon from '../../../images/InCell.png';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  isMedicalRoomAvailable: PropTypes.bool.isRequired,
+  isMedicalRoomOptionAvailable: PropTypes.bool.isRequired,
 };
 
-const DetaineeActionComponent = ({ classes, isMedicalRoomAvailable }) => (
+const DetaineeActionComponent = ({ classes, isMedicalRoomOptionAvailable }) => (
   <Card className={classes.card}>
     <CardHeader
       component={() => (
@@ -44,11 +44,11 @@ const DetaineeActionComponent = ({ classes, isMedicalRoomAvailable }) => (
           <Grid item xs={2} className={classes.imgContainer}>
             <IconButton
               className={classes.button}
-              disabled={!isMedicalRoomAvailable}
+              disabled={!isMedicalRoomOptionAvailable}
             >
               <Avatar
                 className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomAvailable,
+                  [classes.disabled]: !isMedicalRoomOptionAvailable,
                 })}
                 src={MedicalVisitIcon}
               />
@@ -58,7 +58,7 @@ const DetaineeActionComponent = ({ classes, isMedicalRoomAvailable }) => (
             <IconButton className={classes.button}>
               <Avatar
                 className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomAvailable,
+                  [classes.disabled]: !isMedicalRoomOptionAvailable,
                 })}
                 src={PhoneAcceptIcon}
               />
@@ -68,7 +68,7 @@ const DetaineeActionComponent = ({ classes, isMedicalRoomAvailable }) => (
             <IconButton className={classes.button}>
               <Avatar
                 className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomAvailable,
+                  [classes.disabled]: !isMedicalRoomOptionAvailable,
                 })}
                 src={PhoneDeclineIcon}
               />
@@ -78,7 +78,7 @@ const DetaineeActionComponent = ({ classes, isMedicalRoomAvailable }) => (
             <IconButton className={classes.button}>
               <Avatar
                 className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomAvailable,
+                  [classes.disabled]: !isMedicalRoomOptionAvailable,
                 })}
                 src={FingerprintingIcon}
               />
@@ -88,7 +88,7 @@ const DetaineeActionComponent = ({ classes, isMedicalRoomAvailable }) => (
             <IconButton className={classes.button}>
               <Avatar
                 className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomAvailable,
+                  [classes.disabled]: !isMedicalRoomOptionAvailable,
                 })}
                 src={BreathalyzerIcon}
               />
@@ -98,7 +98,7 @@ const DetaineeActionComponent = ({ classes, isMedicalRoomAvailable }) => (
             <IconButton className={classes.button}>
               <Avatar
                 className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomAvailable,
+                  [classes.disabled]: !isMedicalRoomOptionAvailable,
                 })}
                 src={InterviewIcon}
               />
@@ -111,7 +111,7 @@ const DetaineeActionComponent = ({ classes, isMedicalRoomAvailable }) => (
             <IconButton className={classes.button}>
               <Avatar
                 className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomAvailable,
+                  [classes.disabled]: !isMedicalRoomOptionAvailable,
                 })}
                 src={BailHearing1Icon}
               />
@@ -121,7 +121,7 @@ const DetaineeActionComponent = ({ classes, isMedicalRoomAvailable }) => (
             <IconButton className={classes.button}>
               <Avatar
                 className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomAvailable,
+                  [classes.disabled]: !isMedicalRoomOptionAvailable,
                 })}
                 src={BailHearing2Icon}
               />
@@ -131,7 +131,7 @@ const DetaineeActionComponent = ({ classes, isMedicalRoomAvailable }) => (
             <IconButton className={classes.button}>
               <Avatar
                 className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomAvailable,
+                  [classes.disabled]: !isMedicalRoomOptionAvailable,
                 })}
                 src={RemandHoldingIcon}
               />
@@ -141,7 +141,7 @@ const DetaineeActionComponent = ({ classes, isMedicalRoomAvailable }) => (
             <IconButton className={classes.button}>
               <Avatar
                 className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomAvailable,
+                  [classes.disabled]: !isMedicalRoomOptionAvailable,
                 })}
                 src={ReleaseHoldingIcon}
               />
@@ -151,7 +151,7 @@ const DetaineeActionComponent = ({ classes, isMedicalRoomAvailable }) => (
             <IconButton className={classes.button}>
               <Avatar
                 className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomAvailable,
+                  [classes.disabled]: !isMedicalRoomOptionAvailable,
                 })}
                 src={InCellIcon}
               />

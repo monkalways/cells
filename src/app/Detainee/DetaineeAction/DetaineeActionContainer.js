@@ -4,9 +4,9 @@ import DetaineeActionComponent from './DetaineeActionComponent';
 
 export const mapStateToProps = (
   state,
-  isMedicalRoomAvailable = selectors.isMedicalRoomAvailableState(state),
+  isMedicalRoomOptionAvailable = selectors.isMedicalRoomOptionAvailableState(state),
 ) => ({
-  isMedicalRoomAvailable,
+  isMedicalRoomOptionAvailable,
 });
 
 export const mapDispatchToProps = () => ({});
