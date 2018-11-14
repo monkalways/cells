@@ -32,7 +32,8 @@ const ActivityRoomDetaineeCardComponent = ({
     <CellDetaineeCardHeader cellDetainee={detainee} />
     <CellDetaineeCardContent
       cellDetainee={detainee}
-      cellName={usage}
+      first="activity-rooms"
+      second={usage}
       isAuthenticated={isAuthenticated}
     />
     <CardFooter
