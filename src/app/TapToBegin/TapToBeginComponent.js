@@ -15,7 +15,8 @@ const propTypes = {
   }).isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
-      name: PropTypes.string.isRequired,
+      first: PropTypes.string.isRequired,
+      second: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
   versions: PropTypes.arrayOf(PropTypes.shape({
@@ -33,8 +34,8 @@ class TapToBegin extends Component {
 
   handleClick = () => {
     const { match, history } = this.props;
-    const { name } = match.params;
-    history.push(`/cells/${name}/home`);
+    const { first, second } = match.params;
+    history.push(`/${first}/${second}/home`);
   };
 
   render() {

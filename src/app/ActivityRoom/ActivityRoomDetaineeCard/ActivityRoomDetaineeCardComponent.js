@@ -6,6 +6,7 @@ import {
   CellDetaineeCardHeader,
   CellDetaineeCardContent,
 } from '../../common/CellDetaineeCard';
+import CardFooter from './CardFooter';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -15,6 +16,8 @@ const propTypes = {
   }).isRequired,
   usage: PropTypes.string.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
+  isCheckingIn: PropTypes.bool.isRequired,
+  handleCheckIn: PropTypes.func.isRequired,
 };
 
 const ActivityRoomDetaineeCardComponent = ({
@@ -22,6 +25,8 @@ const ActivityRoomDetaineeCardComponent = ({
   detainee,
   usage,
   isAuthenticated,
+  isCheckingIn,
+  handleCheckIn,
 }) => (
   <Card className={classes.card}>
     <CellDetaineeCardHeader cellDetainee={detainee} />
@@ -29,6 +34,13 @@ const ActivityRoomDetaineeCardComponent = ({
       cellDetainee={detainee}
       cellName={usage}
       isAuthenticated={isAuthenticated}
+    />
+    <CardFooter
+      usage={usage}
+      detainee={detainee}
+      isAuthenticated={isAuthenticated}
+      isCheckingIn={isCheckingIn}
+      handleCheckIn={handleCheckIn}
     />
   </Card>
 );

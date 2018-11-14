@@ -12,7 +12,7 @@ const routes = [
     exact: true,
   },
   {
-    path: '/cells/:name',
+    path: '/:first/:second',
     component: TapToBegin,
     exact: true,
   },
@@ -27,7 +27,7 @@ const routes = [
     exact: true,
   },
   {
-    path: '/activity-rooms/:usage',
+    path: '/activity-rooms/:usage/home',
     component: ActivityRoom,
     exact: true,
   },

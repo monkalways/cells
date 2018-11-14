@@ -4,6 +4,7 @@ import { createSelector } from 'reselect';
 const getActivityRoomUsage = (state) => state.activityRoom.usage;
 const isActivityRoomDetaineesLoaded = (state) => state.activityRoom.loaded;
 const getActivityRoomDetainees = (state) => state.activityRoom.detainees;
+const isCheckingIn = (state) => state.activityRoom.checkingIn;
 
 // Reselect selectors
 const getActivityRoomUsageState = createSelector(
@@ -21,8 +22,14 @@ const getActivityRoomDetaineesState = createSelector(
   (detainees) => detainees,
 );
 
+const isCheckingInState = createSelector(
+  [isCheckingIn],
+  (checkingIn) => checkingIn,
+);
+
 export default {
   getActivityRoomUsageState,
   isActivityRoomDetaineesLoadedState,
   getActivityRoomDetaineesState,
+  isCheckingInState,
 };

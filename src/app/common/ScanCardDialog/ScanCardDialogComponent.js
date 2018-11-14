@@ -11,8 +11,8 @@ import {
   withStyles,
 } from '@material-ui/core';
 
-import commonConstants from '../../../../constants';
-import Loading from '../../../../common/Loading';
+import commonConstants from '../../constants';
+import Loading from '../Loading';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,

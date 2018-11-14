@@ -17,6 +17,7 @@ const sendErrorMessage = ({ dispatch, error }) => {
     title: 'Oops!',
     attention: true,
     message: `Something went wrong. ${errorMessage}.`,
+    timeOut: 10000,
   }));
 };
 

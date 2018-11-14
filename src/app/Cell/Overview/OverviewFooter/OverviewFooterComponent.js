@@ -12,7 +12,7 @@ import {
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import ScanCardDialog from './ScanCardDialog';
+import ScanCardDialog from '../../../common/ScanCardDialog';
 
 import MedicineAcceptIcon from '../../../images/MedicineAccept.png';
 import MealAcceptIcon from '../../../images/MealAccept.png';
