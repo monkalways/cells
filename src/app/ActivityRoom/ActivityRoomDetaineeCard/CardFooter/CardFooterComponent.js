@@ -1,19 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button,
-  CardActions,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Typography,
-  withStyles,
+  Button, CardActions, Typography, withStyles,
 } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import Loading from '../../../common/Loading';
+import CheckInDetaineeDialog from './CheckInDetaineeDialog';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -36,12 +29,12 @@ const LOCATION_IN_PROGRESS = 'in progress';
 
 class CardFooterComponent extends Component {
   state = {
-    dialogOpen: false,
+    isDialogOpen: false,
   };
 
   handleInButtonClick = () => {
     this.setState({
-      dialogOpen: true,
+      isDialogOpen: true,
     });
   };
 
@@ -53,7 +46,7 @@ class CardFooterComponent extends Component {
 
   handleClose = () => {
     this.setState({
-      dialogOpen: false,
+      isDialogOpen: false,
     });
   };
 
@@ -94,51 +87,11 @@ class CardFooterComponent extends Component {
     return null;
   };
 
-  // TODO: refactor this into separate component
-  renderDialog = () => {
-    const { detainee, isCheckingIn } = this.props;
-    const { dialogOpen } = this.state;
-    return (
-      <Dialog
-        open={dialogOpen}
-        onClose={this.handleClose}
-        disableBackdropClick={isCheckingIn}
-        disableEscapeKeyDown={isCheckingIn}
-      >
-        <DialogTitle>
-          {`Placing ${detainee.lastName}, ${detainee.firstName} in phone room ${
-            detainee.activityRoomName
-          }?`}
-        </DialogTitle>
-        {isCheckingIn && (
-          <DialogContent>
-            <Loading size={50} />
-          </DialogContent>
-        )}
-        <DialogActions>
-          <Button
-            onClick={this.handleClose}
-            color="primary"
-            disabled={isCheckingIn}
-          >
-            Cancel
-          </Button>
-          <Button
-            onClick={this.handleCheckIn}
-            color="primary"
-            variant="contained"
-            autoFocus
-            disabled={isCheckingIn}
-          >
-            Confirm
-          </Button>
-        </DialogActions>
-      </Dialog>
-    );
-  };
-
   render() {
-    const { classes, isAuthenticated, detainee } = this.props;
+    const {
+      classes, isAuthenticated, detainee, isCheckingIn,
+    } = this.props;
+    const { isDialogOpen } = this.state;
     return (
       <CardActions className={classes.actions}>
         {isAuthenticated && (
@@ -147,7 +100,13 @@ class CardFooterComponent extends Component {
               {detainee.activityRoomName}
             </Typography>
             {this.renderButton()}
-            {this.renderDialog()}
+            <CheckInDetaineeDialog
+              isDialogOpen={isDialogOpen}
+              detainee={detainee}
+              isCheckingIn={isCheckingIn}
+              onClose={this.handleClose}
+              onCheckIn={this.handleCheckIn}
+            />
           </React.Fragment>
         )}
       </CardActions>
