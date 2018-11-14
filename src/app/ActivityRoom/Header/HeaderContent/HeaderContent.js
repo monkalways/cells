@@ -7,12 +7,16 @@ import BailHearing2Icon from '../../../images/BailHearing2.png';
 import FingerprintingIcon from '../../../images/Fingerprinting.png';
 import MedicalVisitIcon from '../../../images/MedicalVisit.png';
 import PhoneAcceptIcon from '../../../images/PhoneAccept.png';
+import InterviewIcon from '../../../images/Interview.png';
+import BreathalyzerIcon from '../../../images/Breathalyzer.png';
 
 const LOCATION_PHONE = 'phone';
 const LOCATION_MEDICAL_VISIT = 'medical';
 const LOCATION_FINGER_PRINTING = 'fingerprinting';
 const LOCATION_BAIL_HEARING_1 = 'bail hearing1';
 const LOCATION_BAIL_HEARING_2 = 'bail hearing2';
+const LOCATION_INTERVIEW = 'interview';
+const LOCATION_BREATH_TEST = 'breath test';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -37,6 +41,12 @@ const HeaderContent = ({ classes, usage }) => {
         break;
       case LOCATION_BAIL_HEARING_2:
         locationIconSrc = BailHearing2Icon;
+        break;
+      case LOCATION_INTERVIEW:
+        locationIconSrc = InterviewIcon;
+        break;
+      case LOCATION_BREATH_TEST:
+        locationIconSrc = BreathalyzerIcon;
         break;
       default:
         break;
