@@ -17,10 +17,14 @@ const LOCATION_IN_TRANSIT = 'in transit';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  location: PropTypes.string.isRequired,
+  detainee: PropTypes.shape({
+    location: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
-const LocationComponent = ({ classes, location }) => {
+const LocationComponent = ({ classes, detainee }) => {
+  const { location } = detainee;
+
   const getLocationIconSrc = () => {
     let locationIconSrc = InCellIcon;
 

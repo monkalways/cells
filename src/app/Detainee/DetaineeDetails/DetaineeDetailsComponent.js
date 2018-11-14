@@ -11,9 +11,7 @@ import Activities from '../Activities';
 import DetaineeAction from '../DetaineeAction';
 
 const propTypes = {
-  detainee: PropTypes.shape({
-    location: PropTypes.string.isRequired,
-  }),
+  detainee: PropTypes.shape({}),
   isDetaineeProfileLoaded: PropTypes.bool.isRequired,
 };
 
@@ -30,7 +28,7 @@ const DetaineeDetailsComponent = ({ detainee, isDetaineeProfileLoaded }) => (
             <PersonalInformation detainee={detainee} />
           </Grid>
           <Grid item sm={2}>
-            <Location location={detainee.location} />
+            <Location detainee={detainee} />
           </Grid>
           <Grid item sm={12}>
             <Notice detainee={detainee} />
@@ -42,7 +40,7 @@ const DetaineeDetailsComponent = ({ detainee, isDetaineeProfileLoaded }) => (
             <Activities detainee={detainee} />
           </Grid>
           <Grid item sm={12}>
-            <DetaineeAction detainee={detainee} />
+            <DetaineeAction />
           </Grid>
         </Grid>
       ) : (

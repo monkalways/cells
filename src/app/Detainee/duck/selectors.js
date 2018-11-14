@@ -5,12 +5,17 @@ import constants from '../constants';
 const getDetainee = (state) => state.detainee.detaineeProfile.data;
 // eslint-disable-next-line max-len
 const isDetaineeProfileLoaded = (state) => state.detainee.detaineeProfile.loaded && state.detainee.activityRooms.loaded;
-const isMedicalRoomAvailable = (state) => {
+const isMedicalRoomOptionAvailable = (state) => {
+  const { location } = state.detainee.detaineeProfile.data;
   const {
     availableRooms,
     // eslint-disable-next-line max-len
   } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === constants.MEDICAL_ROOM.toLowerCase());
-  return availableRooms.length > 0;
+  return (
+    location.toLowerCase() !== constants.MEDICAL_IN_PROGRESS.toLowerCase()
+    && location.toLowerCase() !== constants.MEDICAL_IN_TRANSIT.toLowerCase()
+    && availableRooms.length > 0
+  );
 };
 
 // Reselect selectors
@@ -21,13 +26,13 @@ const isDetaineeProfileLoadedState = createSelector(
   (loaded) => loaded,
 );
 
-const isMedicalRoomAvailableState = createSelector(
-  [isMedicalRoomAvailable],
+const isMedicalRoomOptionAvailableState = createSelector(
+  [isMedicalRoomOptionAvailable],
   (rooms) => rooms,
 );
 
 export default {
-  isMedicalRoomAvailableState,
+  isMedicalRoomOptionAvailableState,
   getDetaineeState,
   isDetaineeProfileLoadedState,
 };
