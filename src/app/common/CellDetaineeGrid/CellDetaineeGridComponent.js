@@ -20,7 +20,7 @@ CellDetaineeGridComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   container: {
-    height: theme.spacing.unit * 97,
+    height: theme.spacing.unit * 113,
     overflowY: 'auto',
     msOverflowStyle: '-ms-autohiding-scrollbar',
     marginLeft: 0,

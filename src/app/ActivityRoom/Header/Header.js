@@ -55,7 +55,6 @@ export default withStyles((theme) => ({
   },
   menuButton: {
     marginLeft: -12,
-    marginRight: 20,
   },
   logoutButton: {
     margin: theme.spacing.unit,
