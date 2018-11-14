@@ -36,8 +36,8 @@ class DetaineeComponent extends Component {
 
   handleLogout = () => {
     const { logOut, location } = this.props;
-    const name = queryString.parse(location.search).from;
-    logOut(name);
+    const { first, second } = queryString.parse(location.search);
+    logOut(first, second);
   };
 
   render() {
