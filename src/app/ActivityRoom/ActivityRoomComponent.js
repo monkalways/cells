@@ -110,7 +110,7 @@ class ActivityRoomComponent extends Component {
                           usage={usage}
                           isAuthenticated={isAuthenticated}
                           isCheckingIn={isCheckingIn}
-                          handleCheckIn={handleCheckIn}
+                          onCheckIn={handleCheckIn}
                         />
                       </Grid>
                     ))}

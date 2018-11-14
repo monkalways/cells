@@ -22,7 +22,7 @@ const propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   isCheckingIn: PropTypes.bool.isRequired,
   usage: PropTypes.string.isRequired,
-  handleCheckIn: PropTypes.func.isRequired,
+  onCheckIn: PropTypes.func.isRequired,
 };
 
 const LOCATION_IN_TRANSIT = 'in transit';
@@ -45,9 +45,9 @@ class CardFooterComponent extends Component {
     });
   };
 
-  handleConfirmCheckIn = () => {
-    const { handleCheckIn, detainee, usage } = this.props;
-    handleCheckIn(detainee.id, usage);
+  handleCheckIn = () => {
+    const { onCheckIn, detainee, usage } = this.props;
+    onCheckIn(detainee.id, usage);
   };
 
   renderButton = () => {
@@ -111,7 +111,7 @@ class CardFooterComponent extends Component {
             Cancel
           </Button>
           <Button
-            onClick={this.handleConfirmCheckIn}
+            onClick={this.handleCheckIn}
             color="primary"
             variant="contained"
             autoFocus

@@ -17,7 +17,7 @@ const propTypes = {
   usage: PropTypes.string.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   isCheckingIn: PropTypes.bool.isRequired,
-  handleCheckIn: PropTypes.func.isRequired,
+  onCheckIn: PropTypes.func.isRequired,
 };
 
 const ActivityRoomDetaineeCardComponent = ({
@@ -26,7 +26,7 @@ const ActivityRoomDetaineeCardComponent = ({
   usage,
   isAuthenticated,
   isCheckingIn,
-  handleCheckIn,
+  onCheckIn,
 }) => (
   <Card className={classes.card}>
     <CellDetaineeCardHeader cellDetainee={detainee} />
@@ -41,7 +41,7 @@ const ActivityRoomDetaineeCardComponent = ({
       detainee={detainee}
       isAuthenticated={isAuthenticated}
       isCheckingIn={isCheckingIn}
-      handleCheckIn={handleCheckIn}
+      onCheckIn={onCheckIn}
     />
   </Card>
 );
