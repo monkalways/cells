@@ -39,16 +39,20 @@ const NoticeComponent = ({ classes, detainee }) => {
     return icons.map((icon) => {
       if (icon.includes(CAUTION_PRESENT)) {
         return (
-          <Grid item key={icon} xs={1} className={classes.gridItem}>
-            <Avatar className={classes.avatar} src={icon} />
-            <Typography align="center" className={classes.cautionText}>
-              {detainee.cautionsArray.sort().join('')}
-            </Typography>
+          <Grid item container key={icon} className={classes.gridItem}>
+            <Grid xs={12}>
+              <Avatar className={classes.avatar} src={icon} />
+            </Grid>
+            <Grid xs={12}>
+              <Typography align="center" className={classes.cautionText}>
+                {detainee.cautionsArray.sort().join('')}
+              </Typography>
+            </Grid>
           </Grid>
         );
       }
       return (
-        <Grid item key={icon} xs={1} className={classes.gridItem}>
+        <Grid item key={icon} className={classes.gridItem}>
           <Avatar className={classes.avatar} src={icon} />
         </Grid>
       );
@@ -58,7 +62,7 @@ const NoticeComponent = ({ classes, detainee }) => {
   return (
     <Grid container className={classes.grid}>
       <Grid item xs={12}>
-        <Typography variant="h6" className={classes.text}>
+        <Typography variant="h5" className={classes.text}>
           Notice
         </Typography>
       </Grid>
@@ -73,16 +77,16 @@ NoticeComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   avatar: {
-    height: theme.spacing.unit * 6,
-    width: theme.spacing.unit * 6,
+    height: theme.spacing.unit * 8,
+    width: theme.spacing.unit * 8,
     zIndex: 99,
   },
   cautionText: {
     color: '#FFFFFF',
     backgroundColor: '#F80205',
-    width: theme.spacing.unit * 6,
-    fontWeight: theme.typography.caption.fontWeight,
-    fontSize: theme.typography.caption.fontSize,
+    width: theme.spacing.unit * 8,
+    fontWeight: theme.typography.body1.fontWeight,
+    fontSize: theme.typography.body1.fontSize,
   },
   grid: {
     padding: theme.spacing.unit * 0.5,
@@ -90,6 +94,9 @@ export default withStyles((theme) => ({
   },
   gridItem: {
     padding: theme.spacing.unit * 0.5,
+    width: theme.spacing.unit * 10,
+    display: 'flex',
+    justifyContent: 'center',
   },
   text: {
     textDecoration: 'underline',

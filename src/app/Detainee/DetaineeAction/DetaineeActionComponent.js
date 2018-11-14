@@ -38,7 +38,7 @@ const DetaineeActionComponent = ({
   <Card className={classes.card}>
     <CardHeader
       component={() => (
-        <Typography variant="h6" className={classes.cardHeader}>
+        <Typography variant="h5" className={classes.cardHeader}>
           Detainee Action
         </Typography>
       )}
@@ -129,11 +129,11 @@ DetaineeActionComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   avatar: {
-    height: theme.spacing.unit * 6,
-    width: theme.spacing.unit * 6,
+    height: theme.spacing.unit * 8,
+    width: theme.spacing.unit * 8,
   },
   button: {
-    padding: theme.spacing.unit * 0.5,
+    padding: theme.spacing.unit,
   },
   cardContent: {
     backgroundColor: '#d4e2fc',
@@ -142,8 +142,8 @@ export default withStyles((theme) => ({
   cardHeader: {
     backgroundColor: '#3d89f7',
     paddingLeft: theme.spacing.unit,
-    paddingTop: theme.spacing.unit * 0.5,
-    paddingBottom: theme.spacing.unit * 0.5,
+    paddingTop: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit,
   },
   disabled: {
     opacity: '0.2',

@@ -24,95 +24,71 @@ const propTypes = {
   }).isRequired,
 };
 
-const variant = 'subtitle2';
+const variant = 'h6';
 
 const ActivitiesComponent = ({ classes, detainee }) => (
   <Grid container className={classes.grid}>
     <Grid item xs={12}>
-      <Typography variant="h6" className={classes.text}>
+      <Typography variant="h5" className={classes.text}>
         Activities
       </Typography>
     </Grid>
     <Grid container item xs={12}>
-      <Grid item xs={1} className={`${classes.gridItem} ${classes.topLeft}`}>
+      <Grid item className={`${classes.gridItem} ${classes.topLeft}`}>
         <Avatar className={classes.avatar} src={MedicalVisitIcon} />
       </Grid>
-      <Grid item xs={1} className={`${classes.gridItem} ${classes.topCenter}`}>
+      <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
         <Avatar className={classes.avatar} src={PhoneAcceptIcon} />
       </Grid>
-      <Grid item xs={1} className={`${classes.gridItem} ${classes.topCenter}`}>
+      <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
         <Avatar className={classes.avatar} src={PhoneDeclineIcon} />
       </Grid>
-      <Grid item xs={1} className={`${classes.gridItem} ${classes.topCenter}`}>
+      <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
         <Avatar className={classes.avatar} src={FingerprintingIcon} />
       </Grid>
-      <Grid item xs={1} className={`${classes.gridItem} ${classes.topCenter}`}>
+      <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
         <Avatar className={classes.avatar} src={BreathalyzerIcon} />
       </Grid>
-      <Grid item xs={1} className={`${classes.gridItem} ${classes.topCenter}`}>
+      <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
         <Avatar className={classes.avatar} src={InterviewIcon} />
       </Grid>
-      <Grid item xs={1} className={`${classes.gridItem} ${classes.topRight}`}>
+      <Grid item className={`${classes.gridItem} ${classes.topRight}`}>
         <Avatar className={classes.avatar} src={BailHearingIcon} />
       </Grid>
     </Grid>
 
     <Grid container item xs={12}>
-      <Grid item xs={1} className={`${classes.gridItem} ${classes.bottomLeft}`}>
+      <Grid item className={`${classes.gridItem} ${classes.bottomLeft}`}>
         <Typography variant={variant} align="center">
           {detainee.medicalCount}
         </Typography>
       </Grid>
-      <Grid
-        item
-        xs={1}
-        className={`${classes.gridItem} ${classes.bottomCenter}`}
-      >
+      <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
         <Typography variant={variant} align="center">
           {detainee.telephoneAcceptedCount}
         </Typography>
       </Grid>
-      <Grid
-        item
-        xs={1}
-        className={`${classes.gridItem} ${classes.bottomCenter}`}
-      >
+      <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
         <Typography variant={variant} align="center">
           {detainee.telephoneDeclinedCount}
         </Typography>
       </Grid>
-      <Grid
-        item
-        xs={1}
-        className={`${classes.gridItem} ${classes.bottomCenter}`}
-      >
+      <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
         <Typography variant={variant} align="center">
           {detainee.fingerPrintCount}
         </Typography>
       </Grid>
-      <Grid
-        item
-        xs={1}
-        className={`${classes.gridItem} ${classes.bottomCenter}`}
-      >
+      <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
         <Typography variant={variant} align="center">
           {detainee.breathTestCount}
         </Typography>
       </Grid>
-      <Grid
-        item
-        xs={1}
-        className={`${classes.gridItem} ${classes.bottomCenter}`}
-      >
+      <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
         <Typography variant={variant} align="center">
           {detainee.interviewCount}
         </Typography>
       </Grid>
-      <Grid
-        item
-        xs={1}
-        className={`${classes.gridItem} ${classes.bottomRight}`}
-      >
+      <Grid item className={`${classes.gridItem} ${classes.bottomRight}`}>
         <Typography variant={variant} align="center">
           {detainee.bailHearingCount}
         </Typography>
@@ -124,8 +100,8 @@ ActivitiesComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   avatar: {
-    height: theme.spacing.unit * 6,
-    width: theme.spacing.unit * 6,
+    height: theme.spacing.unit * 8,
+    width: theme.spacing.unit * 8,
   },
   bottomLeft: { borderWidth: '1px 1px 0 0' },
   bottomCenter: { borderWidth: '1px 1px 0 1px' },
@@ -137,6 +113,9 @@ export default withStyles((theme) => ({
     borderStyle: 'solid',
     borderColor: 'black',
     padding: theme.spacing.unit * 0.5,
+    width: theme.spacing.unit * 10,
+    display: 'flex',
+    justifyContent: 'center',
   },
   text: {
     textDecoration: 'underline',
