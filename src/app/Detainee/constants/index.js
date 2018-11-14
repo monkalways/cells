@@ -5,10 +5,13 @@ const DETAINEE_PROFILE = '/detainee-profile';
 
 // Activity Rooms
 const MEDICAL_ROOM = 'Medical';
+const PHONE_ROOM = 'Phone';
 
 // Temporary Absence Reasons
 const MEDICAL_IN_PROGRESS = 'Medical - In Progress';
 const MEDICAL_IN_TRANSIT = 'Medical - In Transit';
+const PHONE_IN_PROGRESS = 'Phone - In Progress';
+const PHONE_IN_TRANSIT = 'Phone - In Transit';
 
 export default {
   AVAILABLE_ACTIVITY_ROOMS,
@@ -18,4 +21,7 @@ export default {
   MEDICAL_ROOM,
   MEDICAL_IN_PROGRESS,
   MEDICAL_IN_TRANSIT,
+  PHONE_ROOM,
+  PHONE_IN_PROGRESS,
+  PHONE_IN_TRANSIT,
 };

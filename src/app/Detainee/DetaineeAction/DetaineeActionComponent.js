@@ -27,9 +27,14 @@ import InCellIcon from '../../../images/InCell.png';
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   isMedicalRoomOptionAvailable: PropTypes.bool.isRequired,
+  isPhoneRoomOptionAvailable: PropTypes.bool.isRequired,
 };
 
-const DetaineeActionComponent = ({ classes, isMedicalRoomOptionAvailable }) => (
+const DetaineeActionComponent = ({
+  classes,
+  isMedicalRoomOptionAvailable,
+  isPhoneRoomOptionAvailable,
+}) => (
   <Card className={classes.card}>
     <CardHeader
       component={() => (
@@ -55,10 +60,13 @@ const DetaineeActionComponent = ({ classes, isMedicalRoomOptionAvailable }) => (
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
-            <IconButton className={classes.button}>
+            <IconButton
+              className={classes.button}
+              disabled={!isPhoneRoomOptionAvailable}
+            >
               <Avatar
                 className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomOptionAvailable,
+                  [classes.disabled]: !isPhoneRoomOptionAvailable,
                 })}
                 src={PhoneAcceptIcon}
               />
@@ -66,42 +74,22 @@ const DetaineeActionComponent = ({ classes, isMedicalRoomOptionAvailable }) => (
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
             <IconButton className={classes.button}>
-              <Avatar
-                className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomOptionAvailable,
-                })}
-                src={PhoneDeclineIcon}
-              />
+              <Avatar className={classes.avatar} src={PhoneDeclineIcon} />
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
             <IconButton className={classes.button}>
-              <Avatar
-                className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomOptionAvailable,
-                })}
-                src={FingerprintingIcon}
-              />
+              <Avatar className={classes.avatar} src={FingerprintingIcon} />
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
             <IconButton className={classes.button}>
-              <Avatar
-                className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomOptionAvailable,
-                })}
-                src={BreathalyzerIcon}
-              />
+              <Avatar className={classes.avatar} src={BreathalyzerIcon} />
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
             <IconButton className={classes.button}>
-              <Avatar
-                className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomOptionAvailable,
-                })}
-                src={InterviewIcon}
-              />
+              <Avatar className={classes.avatar} src={InterviewIcon} />
             </IconButton>
           </Grid>
         </Grid>
@@ -109,52 +97,27 @@ const DetaineeActionComponent = ({ classes, isMedicalRoomOptionAvailable }) => (
         <Grid container item xs={12}>
           <Grid item xs={2} className={classes.imgContainer}>
             <IconButton className={classes.button}>
-              <Avatar
-                className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomOptionAvailable,
-                })}
-                src={BailHearing1Icon}
-              />
+              <Avatar className={classes.avatar} src={BailHearing1Icon} />
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
             <IconButton className={classes.button}>
-              <Avatar
-                className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomOptionAvailable,
-                })}
-                src={BailHearing2Icon}
-              />
+              <Avatar className={classes.avatar} src={BailHearing2Icon} />
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
             <IconButton className={classes.button}>
-              <Avatar
-                className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomOptionAvailable,
-                })}
-                src={RemandHoldingIcon}
-              />
+              <Avatar className={classes.avatar} src={RemandHoldingIcon} />
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
             <IconButton className={classes.button}>
-              <Avatar
-                className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomOptionAvailable,
-                })}
-                src={ReleaseHoldingIcon}
-              />
+              <Avatar className={classes.avatar} src={ReleaseHoldingIcon} />
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
             <IconButton className={classes.button}>
-              <Avatar
-                className={classNames(classes.avatar, {
-                  [classes.disabled]: !isMedicalRoomOptionAvailable,
-                })}
-                src={InCellIcon}
-              />
+              <Avatar className={classes.avatar} src={InCellIcon} />
             </IconButton>
           </Grid>
         </Grid>

@@ -18,6 +18,19 @@ const isMedicalRoomOptionAvailable = (state) => {
   );
 };
 
+const isPhoneRoomOptionAvailable = (state) => {
+  const { location } = state.detainee.detaineeProfile.data;
+  const {
+    availableRooms,
+    // eslint-disable-next-line max-len
+  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === constants.PHONE_ROOM.toLowerCase());
+  return (
+    location.toLowerCase() !== constants.PHONE_IN_PROGRESS.toLowerCase()
+    && location.toLowerCase() !== constants.PHONE_IN_TRANSIT.toLowerCase()
+    && availableRooms.length > 0
+  );
+};
+
 // Reselect selectors
 const getDetaineeState = createSelector([getDetainee], (detainee) => detainee);
 
@@ -28,11 +41,17 @@ const isDetaineeProfileLoadedState = createSelector(
 
 const isMedicalRoomOptionAvailableState = createSelector(
   [isMedicalRoomOptionAvailable],
-  (rooms) => rooms,
+  (available) => available,
+);
+
+const isPhoneRoomOptionAvailableState = createSelector(
+  [isPhoneRoomOptionAvailable],
+  (available) => available,
 );
 
 export default {
+  isDetaineeProfileLoadedState,
+  isPhoneRoomOptionAvailableState,
   isMedicalRoomOptionAvailableState,
   getDetaineeState,
-  isDetaineeProfileLoadedState,
 };
