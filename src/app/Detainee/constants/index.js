@@ -1,7 +1,9 @@
+// URLs
 const AVAILABLE_ACTIVITY_ROOMS = 'get-activity-rooms-availability';
 const CELLS_URL = 'api/cells/';
 const DETAINEE_URL = 'api/detainees/';
 const DETAINEE_PROFILE = '/detainee-profile';
+const CELLS_QUERYSTRING = 'cells';
 
 // Activity Rooms
 const MEDICAL_ROOM = 'Medical';
@@ -15,6 +17,7 @@ const PHONE_IN_TRANSIT = 'Phone - In Transit';
 
 export default {
   AVAILABLE_ACTIVITY_ROOMS,
+  CELLS_QUERYSTRING,
   CELLS_URL,
   DETAINEE_URL,
   DETAINEE_PROFILE,

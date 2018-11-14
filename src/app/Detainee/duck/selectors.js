@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import queryString from 'query-string';
 import constants from '../constants';
 
 // Basic selectors
@@ -31,6 +32,11 @@ const isPhoneRoomOptionAvailable = (state) => {
   );
 };
 
+const isPhoneDeclineOptionAvailable = (state) => {
+  const { first } = queryString.parse(state.router.location.search);
+  return first === constants.CELLS_QUERYSTRING;
+};
+
 // Reselect selectors
 const getDetaineeState = createSelector([getDetainee], (detainee) => detainee);
 
@@ -49,8 +55,14 @@ const isPhoneRoomOptionAvailableState = createSelector(
   (available) => available,
 );
 
+const isPhoneDeclineOptionAvailableState = createSelector(
+  [isPhoneDeclineOptionAvailable],
+  (available) => available,
+);
+
 export default {
   isDetaineeProfileLoadedState,
+  isPhoneDeclineOptionAvailableState,
   isPhoneRoomOptionAvailableState,
   isMedicalRoomOptionAvailableState,
   getDetaineeState,

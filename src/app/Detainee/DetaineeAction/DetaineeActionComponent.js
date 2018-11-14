@@ -27,12 +27,14 @@ import InCellIcon from '../../../images/InCell.png';
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   isMedicalRoomOptionAvailable: PropTypes.bool.isRequired,
+  isPhoneDeclineOptionAvailable: PropTypes.bool.isRequired,
   isPhoneRoomOptionAvailable: PropTypes.bool.isRequired,
 };
 
 const DetaineeActionComponent = ({
   classes,
   isMedicalRoomOptionAvailable,
+  isPhoneDeclineOptionAvailable,
   isPhoneRoomOptionAvailable,
 }) => (
   <Card className={classes.card}>
@@ -73,8 +75,16 @@ const DetaineeActionComponent = ({
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
-            <IconButton className={classes.button}>
-              <Avatar className={classes.avatar} src={PhoneDeclineIcon} />
+            <IconButton
+              className={classes.button}
+              disabled={!isPhoneDeclineOptionAvailable}
+            >
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isPhoneDeclineOptionAvailable,
+                })}
+                src={PhoneDeclineIcon}
+              />
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
