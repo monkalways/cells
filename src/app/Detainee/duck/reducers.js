@@ -30,7 +30,7 @@ const detaineeProfileReducer = (
 };
 
 const defaultActivityRoomsState = {
-  availableActivityRooms: {},
+  availableActivityRooms: [],
   loaded: false,
 };
 
