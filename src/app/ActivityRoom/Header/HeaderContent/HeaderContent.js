@@ -67,7 +67,7 @@ HeaderContent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   grid: {
-    width: theme.spacing.unit * 62,
+    width: theme.spacing.unit * 60,
   },
   avatar: {
     margin: theme.spacing.unit,
