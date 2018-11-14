@@ -11,11 +11,13 @@ export const mapStateToProps = (
   isActivityRoomDetaineesLoaded = selectors.isActivityRoomDetaineesLoadedState(state),
   usage = selectors.getActivityRoomUsageState(state),
   detainees = selectors.getActivityRoomDetaineesState(state),
+  isCheckingIn = selectors.isCheckingInState(state),
   isAuthenticated = authenticationSelectors.isAuthenticatedState(state),
 ) => ({
   isActivityRoomDetaineesLoaded,
   usage,
   detainees,
+  isCheckingIn,
   isAuthenticated,
 });
 
@@ -26,8 +28,14 @@ export const mapDispatchToProps = (dispatch) => ({
   ) => {
     dispatch(getActivityRoomDetainees(usage));
   },
-  logOut: (usage, logOut = authenticationOperations.logOut) => {
-    dispatch(logOut(usage));
+  handleCheckIn: (detaineeId, usage, checkIn = operations.checkIn) => {
+    dispatch(checkIn(detaineeId, usage));
+  },
+  handleSignIn: (startSignIn = authenticationOperations.startSignIn) => {
+    dispatch(startSignIn());
+  },
+  logOut: (first, second, logOut = authenticationOperations.logOut) => {
+    dispatch(logOut(first, second));
   },
 });
 

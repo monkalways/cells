@@ -14,7 +14,8 @@ const propTypes = {
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
   }).isRequired,
-  cellName: PropTypes.string.isRequired,
+  first: PropTypes.string.isRequired,
+  second: PropTypes.string.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
@@ -24,7 +25,8 @@ const propTypes = {
 const CellDetaineeCardContentComponent = ({
   classes,
   cellDetainee,
-  cellName,
+  first,
+  second,
   isAuthenticated,
   history,
 }) => {
@@ -41,7 +43,7 @@ const CellDetaineeCardContentComponent = ({
 
   const handleClick = () => {
     if (isAuthenticated) {
-      history.push(`/detainees/${cellDetainee.id}?from=${cellName}`);
+      history.push(`/detainees/${cellDetainee.id}?first=${first}&second=${second}`);
     }
   };
 

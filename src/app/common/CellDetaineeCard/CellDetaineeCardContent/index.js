@@ -1,1 +1,1 @@
-export { default } from './CellDetaineeCellContentComponent';
+export { default } from './CellDetaineeCardContentComponent';

@@ -45,7 +45,8 @@ const MealCellDetaineeCardComponent = ({
     <CellDetaineeCardHeader cellDetainee={cellDetainee} />
     <CellDetaineeCardContent
       cellDetainee={cellDetainee}
-      cellName={cellName}
+      first="cells"
+      second={cellName}
       isAuthenticated={isAuthenticated}
     />
     <MealCellDetaineeCardFooter

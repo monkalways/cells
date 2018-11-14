@@ -72,7 +72,7 @@ class CellComponent extends Component {
   handleLogout = () => {
     const { logOut, match } = this.props;
     const { name } = match.params;
-    logOut(name);
+    logOut('cells', name);
   };
 
   render() {

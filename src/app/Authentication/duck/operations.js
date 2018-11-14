@@ -26,9 +26,9 @@ const authenticate = (
   }
 };
 
-const logOut = (cellName, logOutAction = actions.logOut) => (dispatch) => {
+const logOut = (first, second, logOutAction = actions.logOut) => (dispatch) => {
   dispatch(logOutAction());
-  dispatch(push(`/cells/${cellName}`));
+  dispatch(push(`/${first}/${second}`));
 };
 
 export default {

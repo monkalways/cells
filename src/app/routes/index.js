@@ -12,7 +12,12 @@ const routes = [
     exact: true,
   },
   {
-    path: '/cells/:name',
+    path: '/detainees/:id',
+    component: withAuthentication(Detainee),
+    exact: true,
+  },
+  {
+    path: '/:first/:second',
     component: TapToBegin,
     exact: true,
   },
@@ -22,12 +27,7 @@ const routes = [
     exact: false,
   },
   {
-    path: '/detainees/:id',
-    component: withAuthentication(Detainee),
-    exact: true,
-  },
-  {
-    path: '/activity-rooms/:usage',
+    path: '/activity-rooms/:usage/home',
     component: ActivityRoom,
     exact: true,
   },

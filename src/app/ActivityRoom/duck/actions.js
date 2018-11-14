@@ -10,7 +10,22 @@ const getActivityRoomDetaineesSuccess = (detainees) => ({
   detainees,
 });
 
+const checkIn = () => ({
+  type: types.CHECK_IN,
+});
+
+const checkInSuccess = () => ({
+  type: types.CHECK_IN_SUCCESS,
+});
+
+const checkInFail = () => ({
+  type: types.CHECK_IN_FAIL,
+});
+
 export default {
   getActivityRoomDetainees,
   getActivityRoomDetaineesSuccess,
+  checkIn,
+  checkInSuccess,
+  checkInFail,
 };

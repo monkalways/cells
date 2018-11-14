@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import {
   operations as authenticationOperations,
   selectors as authenticationSelectors,
-} from '../../../../Authentication/duck';
+} from '../../Authentication/duck';
 import ScanCardDialogComponent from './ScanCardDialogComponent';
 
 export const mapStateToProps = (

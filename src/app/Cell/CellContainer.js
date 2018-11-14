@@ -19,8 +19,8 @@ export const mapDispatchToProps = (dispatch) => ({
   getCellDetails: (name, getCellDetails = operations.getCellDetails) => {
     dispatch(getCellDetails(name));
   },
-  logOut: (cellName, logOut = authenticationOperations.logOut) => {
-    dispatch(logOut(cellName));
+  logOut: (first, second, logOut = authenticationOperations.logOut) => {
+    dispatch(logOut(first, second));
   },
 });
 
