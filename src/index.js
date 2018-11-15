@@ -1,8 +1,11 @@
+import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createBrowserHistory } from 'history';
 import { ConnectedRouter } from 'connected-react-router';
 import { Provider as ReduxProvider } from 'react-redux';
+
+import 'typeface-roboto';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
