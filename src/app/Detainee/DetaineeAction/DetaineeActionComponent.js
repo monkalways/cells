@@ -12,17 +12,17 @@ import {
 } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 
-import MedicalVisitIcon from '../../../images/MedicalVisit.png';
-import PhoneAcceptIcon from '../../../images/PhoneAccept.png';
-import PhoneDeclineIcon from '../../../images/PhoneDecline.png';
-import FingerprintingIcon from '../../../images/Fingerprinting.png';
-import BreathalyzerIcon from '../../../images/Breathalyzer.png';
-import InterviewIcon from '../../../images/Interview.png';
-import BailHearing1Icon from '../../../images/BailHearing1.png';
-import BailHearing2Icon from '../../../images/BailHearing2.png';
-import RemandHoldingIcon from '../../../images/RemandHolding.png';
-import ReleaseHoldingIcon from '../../../images/ReleaseHolding.png';
-import InCellIcon from '../../../images/InCell.png';
+import MedicalVisitIcon from '../../images/MedicalVisit.png';
+import PhoneAcceptIcon from '../../images/PhoneAccept.png';
+import PhoneDeclineIcon from '../../images/PhoneDecline.png';
+import FingerprintingIcon from '../../images/Fingerprinting.png';
+import BreathalyzerIcon from '../../images/Breathalyzer.png';
+import InterviewIcon from '../../images/Interview.png';
+import BailHearing1Icon from '../../images/BailHearing1.png';
+import BailHearing2Icon from '../../images/BailHearing2.png';
+import RemandHoldingIcon from '../../images/RemandHolding.png';
+import ReleaseHoldingIcon from '../../images/ReleaseHolding.png';
+import InCellIcon from '../../images/InCell.png';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
