@@ -6,6 +6,8 @@ const DETAINEE_PROFILE = '/detainee-profile';
 const CELLS_QUERYSTRING = 'cells';
 
 // Activity Rooms
+const BAIL_HEARING_ROOM_1 = 'Bail Hearing1';
+const BAIL_HEARING_ROOM_2 = 'Bail Hearing2';
 const BREATH_TEST_ROOM = 'Breath Test';
 const FINGERPRINTING_ROOM = 'Fingerprinting';
 const INTERVIEW_ROOM = 'Interview';
@@ -13,6 +15,8 @@ const MEDICAL_ROOM = 'Medical';
 const PHONE_ROOM = 'Phone';
 
 // Temporary Absence Reasons
+const BAIL_HEARING_IN_PROGRESS = 'Bail Hearing - In Progress';
+const BAIL_HEARING_IN_TRANSIT = 'Bail Hearing - In Transit';
 const BREATH_TEST_IN_PROGRESS = 'Breath Test - In Progress';
 const BREATH_TEST_IN_TRANSIT = 'Breath Test - In Transit';
 const FINGERPRINTING_IN_PROGRESS = 'Fingerprinting - In Progress';
@@ -26,6 +30,10 @@ const PHONE_IN_TRANSIT = 'Phone - In Transit';
 
 export default {
   AVAILABLE_ACTIVITY_ROOMS,
+  BAIL_HEARING_ROOM_1,
+  BAIL_HEARING_ROOM_2,
+  BAIL_HEARING_IN_PROGRESS,
+  BAIL_HEARING_IN_TRANSIT,
   BREATH_TEST_IN_PROGRESS,
   BREATH_TEST_IN_TRANSIT,
   BREATH_TEST_ROOM,

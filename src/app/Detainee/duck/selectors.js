@@ -5,6 +5,36 @@ import constants from '../constants';
 // Basic selectors
 const getDetainee = (state) => state.detainee.detaineeProfile.data;
 
+const isBailHearingRoom1OptionAvailable = (state) => {
+  const { location } = state.detainee.detaineeProfile.data;
+  const {
+    availableRooms,
+    // eslint-disable-next-line max-len
+  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === constants.BAIL_HEARING_ROOM_1.toLowerCase());
+  return (
+    location.toLowerCase()
+      !== constants.BAIL_HEARING_IN_PROGRESS.toLowerCase()
+    && location.toLowerCase()
+      !== constants.BAIL_HEARING_IN_TRANSIT.toLowerCase()
+    && availableRooms.length > 0
+  );
+};
+
+const isBailHearingRoom2OptionAvailable = (state) => {
+  const { location } = state.detainee.detaineeProfile.data;
+  const {
+    availableRooms,
+    // eslint-disable-next-line max-len
+  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === constants.BAIL_HEARING_ROOM_2.toLowerCase());
+  return (
+    location.toLowerCase()
+      !== constants.BAIL_HEARING_IN_PROGRESS.toLowerCase()
+    && location.toLowerCase()
+      !== constants.BAIL_HEARING_IN_TRANSIT.toLowerCase()
+    && availableRooms.length > 0
+  );
+};
+
 const isBreathTestRoomOptionAvailable = (state) => {
   const { location } = state.detainee.detaineeProfile.data;
   const {
@@ -84,6 +114,16 @@ const isPhoneRoomOptionAvailable = (state) => {
 // Reselect selectors
 const getDetaineeState = createSelector([getDetainee], (detainee) => detainee);
 
+const isBailHearingRoom1OptionAvailableState = createSelector(
+  [isBailHearingRoom1OptionAvailable],
+  (loaded) => loaded,
+);
+
+const isBailHearingRoom2OptionAvailableState = createSelector(
+  [isBailHearingRoom2OptionAvailable],
+  (loaded) => loaded,
+);
+
 const isBreathTestRoomOptionAvailableState = createSelector(
   [isBreathTestRoomOptionAvailable],
   (loaded) => loaded,
@@ -121,6 +161,8 @@ const isPhoneRoomOptionAvailableState = createSelector(
 
 export default {
   getDetaineeState,
+  isBailHearingRoom1OptionAvailableState,
+  isBailHearingRoom2OptionAvailableState,
   isBreathTestRoomOptionAvailableState,
   isDetaineeProfileLoadedState,
   isFingerprintingRoomOptionAvailableState,

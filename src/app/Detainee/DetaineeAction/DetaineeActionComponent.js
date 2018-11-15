@@ -26,6 +26,8 @@ import InCellIcon from '../../../images/InCell.png';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
+  isBailHearingRoom1OptionAvailable: PropTypes.bool.isRequired,
+  isBailHearingRoom2OptionAvailable: PropTypes.bool.isRequired,
   isBreathTestRoomOptionAvailable: PropTypes.bool.isRequired,
   isFingerprintingRoomOptionAvailable: PropTypes.bool.isRequired,
   isInterviewRoomOptionAvailable: PropTypes.bool.isRequired,
@@ -36,6 +38,8 @@ const propTypes = {
 
 const DetaineeActionComponent = ({
   classes,
+  isBailHearingRoom1OptionAvailable,
+  isBailHearingRoom2OptionAvailable,
   isBreathTestRoomOptionAvailable,
   isFingerprintingRoomOptionAvailable,
   isInterviewRoomOptionAvailable,
@@ -136,13 +140,29 @@ const DetaineeActionComponent = ({
 
         <Grid container item xs={12}>
           <Grid item xs={2} className={classes.imgContainer}>
-            <IconButton className={classes.button}>
-              <Avatar className={classes.avatar} src={BailHearing1Icon} />
+            <IconButton
+              className={classes.button}
+              disabled={!isBailHearingRoom1OptionAvailable}
+            >
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isBailHearingRoom1OptionAvailable,
+                })}
+                src={BailHearing1Icon}
+              />
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
-            <IconButton className={classes.button}>
-              <Avatar className={classes.avatar} src={BailHearing2Icon} />
+            <IconButton
+              className={classes.button}
+              disabled={!isBailHearingRoom2OptionAvailable}
+            >
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isBailHearingRoom2OptionAvailable,
+                })}
+                src={BailHearing2Icon}
+              />
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
