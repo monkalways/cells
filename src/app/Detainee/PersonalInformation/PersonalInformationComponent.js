@@ -22,7 +22,7 @@ const PersonalInformationComponent = ({ classes, detainee }) => {
     <React.Fragment>
       <Grid container>
         <Grid item xs={12}>
-          <Typography variant="h6" className={classes.text}>
+          <Typography variant="h5" className={classes.text}>
             Personal Information
           </Typography>
         </Grid>

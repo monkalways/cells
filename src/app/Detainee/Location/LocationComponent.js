@@ -57,7 +57,7 @@ const LocationComponent = ({ classes, detainee }) => {
   return (
     <Grid container>
       <Grid item container justify="center" xs={12}>
-        <Typography variant="h6" className={classes.text}>
+        <Typography variant="h5" className={classes.text}>
           Location
         </Typography>
       </Grid>

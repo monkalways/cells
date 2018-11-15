@@ -21,7 +21,7 @@ DetaineeGridComponent.propTypes = propTypes;
 export default withStyles((theme) => ({
   container: {
     backgroundColor: theme.palette.background.default,
-    height: theme.spacing.unit * 97,
+    height: theme.spacing.unit * 113,
     marginLeft: 0,
     marginRight: 0,
     marginBottom: theme.spacing.unit * 0.4,
