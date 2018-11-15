@@ -57,6 +57,14 @@
     "error-statistics-name": "ESLint Error Count",
     "warning-statistics-name": "ESLint Warning Count"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!/node_modules/",
+      "!src/**/index.js",
+      "!src/serviceWorker.js"
+    ]
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
