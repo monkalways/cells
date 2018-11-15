@@ -1,7 +1,7 @@
 import actions from '../actions';
 import types from '../types';
 
-test('should setup getActivityRoomDetainees action object', () => {
+it('should setup getActivityRoomDetainees action object', () => {
   const usage = 'phone';
   const action = actions.getActivityRoomDetainees(usage);
   expect(action).toEqual({
@@ -10,7 +10,7 @@ test('should setup getActivityRoomDetainees action object', () => {
   });
 });
 
-test('should setup getActivityRoomDetaineesSuccess action object', () => {
+it('should setup getActivityRoomDetaineesSuccess action object', () => {
   const detainees = [];
   const action = actions.getActivityRoomDetaineesSuccess(detainees);
   expect(action).toEqual({
@@ -19,21 +19,21 @@ test('should setup getActivityRoomDetaineesSuccess action object', () => {
   });
 });
 
-test('should setup checkIn action object', () => {
+it('should setup checkIn action object', () => {
   const action = actions.checkIn();
   expect(action).toEqual({
     type: types.CHECK_IN,
   });
 });
 
-test('should setup checkInSuccess action object', () => {
+it('should setup checkInSuccess action object', () => {
   const action = actions.checkInSuccess();
   expect(action).toEqual({
     type: types.CHECK_IN_SUCCESS,
   });
 });
 
-test('should setup checkInFail action object', () => {
+it('should setup checkInFail action object', () => {
   const action = actions.checkInFail();
   expect(action).toEqual({
     type: types.CHECK_IN_FAIL,

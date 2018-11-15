@@ -1,7 +1,7 @@
 import operations from '../operations';
 
 describe('getActivityRoomDetainees', () => {
-  test('should return successfully', async () => {
+  it('should return successfully', async () => {
     const usage = 'phone';
     const detainees = [];
 
@@ -23,7 +23,7 @@ describe('getActivityRoomDetainees', () => {
     expect(dispatch).toBeCalledTimes(2);
   });
 
-  test('should send error message when error occurs', async () => {
+  it('should send error message when error occurs', async () => {
     const usage = 'phone';
     const error = new Error('Network error');
 
@@ -49,7 +49,7 @@ describe('getActivityRoomDetainees', () => {
 });
 
 describe('checkIn', () => {
-  test('should return successfully when there is a last temp absence record with reason contains "In Transit"', async () => {
+  it('should return successfully when there is a last temp absence record with reason contains "In Transit"', async () => {
     const detaineeId = '123';
     const usage = 'phone';
     const lastTempAbsence = {
@@ -101,7 +101,7 @@ describe('checkIn', () => {
     expect(dispatch).toBeCalledTimes(3);
   });
 
-  test('should notify error if last temp absence record is not available', async () => {
+  it('should notify error if last temp absence record is not available', async () => {
     const detaineeId = '123';
     const usage = 'phone';
 
@@ -138,7 +138,7 @@ describe('checkIn', () => {
     expect(dispatch).toBeCalledTimes(2);
   });
 
-  test('should notify error if last temp absence record does not have reason', async () => {
+  it('should notify error if last temp absence record does not have reason', async () => {
     const detaineeId = '123';
     const usage = 'phone';
     const lastTempAbsence = {
@@ -181,7 +181,7 @@ describe('checkIn', () => {
     expect(dispatch).toBeCalledTimes(2);
   });
 
-  test('should notify error if the reason of last temp absence record does not contain "In Transit"', async () => {
+  it('should notify error if the reason of last temp absence record does not contain "In Transit"', async () => {
     const detaineeId = '123';
     const usage = 'phone';
     const lastTempAbsence = {
@@ -224,7 +224,7 @@ describe('checkIn', () => {
     expect(dispatch).toBeCalledTimes(2);
   });
 
-  test('should send error message when error occurs', async () => {
+  it('should send error message when error occurs', async () => {
     const detaineeId = '123';
     const usage = 'phone';
     const error = new Error('Network error');
