@@ -41,7 +41,7 @@ describe('CheckInDetaineeDialogComponent', () => {
 
     const wrapper = setup({ isCheckingIn, onCheckIn, onClose });
 
-    expect(wrapper.find(Loading)).toHaveProp('size', 50);
+    expect(wrapper.find(Loading)).toExist();
   });
 
   it('should call onCheckIn when checkInButton is clicked', () => {
