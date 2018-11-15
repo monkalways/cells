@@ -1,9 +1,10 @@
 // URLs
+const ACTIVITY_ROOMS_QUERYSTRING = 'activity-rooms';
 const AVAILABLE_ACTIVITY_ROOMS = 'get-activity-rooms-availability';
+const CELLS_QUERYSTRING = 'cells';
 const CELLS_URL = 'api/cells/';
 const DETAINEE_URL = 'api/detainees/';
 const DETAINEE_PROFILE = '/detainee-profile';
-const CELLS_QUERYSTRING = 'cells';
 
 // Activity Rooms
 const BAIL_HEARING_ROOM_1 = 'Bail Hearing1';
@@ -13,8 +14,6 @@ const FINGERPRINTING_ROOM = 'Fingerprinting';
 const INTERVIEW_ROOM = 'Interview';
 const MEDICAL_ROOM = 'Medical';
 const PHONE_ROOM = 'Phone';
-
-// Alternate Rooms
 const RELEASE_ROOM = 'Release Room';
 const REMAND_HOLDING_ROOM = 'Remand Holding Room';
 
@@ -23,6 +22,7 @@ const BAIL_HEARING_IN_PROGRESS = 'Bail Hearing - In Progress';
 const BAIL_HEARING_IN_TRANSIT = 'Bail Hearing - In Transit';
 const BREATH_TEST_IN_PROGRESS = 'Breath Test - In Progress';
 const BREATH_TEST_IN_TRANSIT = 'Breath Test - In Transit';
+const CELL_IN_TRANSIT = 'Cell - In Transit';
 const FINGERPRINTING_IN_PROGRESS = 'Fingerprinting - In Progress';
 const FINGERPRINTING_IN_TRANSIT = 'Fingerprinting - In Transit';
 const INTERVIEW_IN_PROGRESS = 'Interview - In Progress';
@@ -35,6 +35,7 @@ const RELEASE_HOLDING_IN_TRANSIT = 'Release Holding - In Transit';
 const REMAND_HOLDING_IN_TRANSIT = 'Remand Holding - In Transit';
 
 export default {
+  ACTIVITY_ROOMS_QUERYSTRING,
   AVAILABLE_ACTIVITY_ROOMS,
   BAIL_HEARING_ROOM_1,
   BAIL_HEARING_ROOM_2,
@@ -43,6 +44,7 @@ export default {
   BREATH_TEST_IN_PROGRESS,
   BREATH_TEST_IN_TRANSIT,
   BREATH_TEST_ROOM,
+  CELL_IN_TRANSIT,
   CELLS_QUERYSTRING,
   CELLS_URL,
   DETAINEE_URL,
