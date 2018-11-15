@@ -12,6 +12,8 @@ export const mapStateToProps = (
   isMedicalRoomOptionAvailable = selectors.isMedicalRoomOptionAvailableState(state),
   isPhoneDeclineOptionAvailable = selectors.isPhoneDeclineOptionAvailableState(state),
   isPhoneRoomOptionAvailable = selectors.isPhoneRoomOptionAvailableState(state),
+  isReleaseRoomOptionAvailable = selectors.isReleaseRoomOptionAvailableState(state),
+  isRemandHoldingRoomOptionAvailable = selectors.isRemandHoldingRoomOptionAvailableState(state),
 ) => ({
   isBailHearingRoom1OptionAvailable,
   isBailHearingRoom2OptionAvailable,
@@ -21,6 +23,8 @@ export const mapStateToProps = (
   isMedicalRoomOptionAvailable,
   isPhoneDeclineOptionAvailable,
   isPhoneRoomOptionAvailable,
+  isReleaseRoomOptionAvailable,
+  isRemandHoldingRoomOptionAvailable,
 });
 
 export const mapDispatchToProps = () => ({});

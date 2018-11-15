@@ -111,22 +111,48 @@ const isPhoneRoomOptionAvailable = (state) => {
   );
 };
 
+const isReleaseRoomOptionAvailable = (state) => {
+  const { location } = state.detainee.detaineeProfile.data;
+  const {
+    availableRooms,
+    // eslint-disable-next-line max-len
+  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === constants.RELEASE_ROOM.toLowerCase());
+  return (
+    location.toLowerCase()
+      !== constants.RELEASE_HOLDING_IN_TRANSIT.toLowerCase()
+    && availableRooms.length > 0
+  );
+};
+
+const isRemandHoldingRoomOptionAvailable = (state) => {
+  const { location } = state.detainee.detaineeProfile.data;
+  const {
+    availableRooms,
+    // eslint-disable-next-line max-len
+  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === constants.REMAND_HOLDING_ROOM.toLowerCase());
+  return (
+    location.toLowerCase()
+      !== constants.REMAND_HOLDING_IN_TRANSIT.toLowerCase()
+    && availableRooms.length > 0
+  );
+};
+
 // Reselect selectors
 const getDetaineeState = createSelector([getDetainee], (detainee) => detainee);
 
 const isBailHearingRoom1OptionAvailableState = createSelector(
   [isBailHearingRoom1OptionAvailable],
-  (loaded) => loaded,
+  (available) => available,
 );
 
 const isBailHearingRoom2OptionAvailableState = createSelector(
   [isBailHearingRoom2OptionAvailable],
-  (loaded) => loaded,
+  (available) => available,
 );
 
 const isBreathTestRoomOptionAvailableState = createSelector(
   [isBreathTestRoomOptionAvailable],
-  (loaded) => loaded,
+  (available) => available,
 );
 
 const isDetaineeProfileLoadedState = createSelector(
@@ -159,6 +185,16 @@ const isPhoneRoomOptionAvailableState = createSelector(
   (available) => available,
 );
 
+const isReleaseRoomOptionAvailableState = createSelector(
+  [isReleaseRoomOptionAvailable],
+  (available) => available,
+);
+
+const isRemandHoldingRoomOptionAvailableState = createSelector(
+  [isRemandHoldingRoomOptionAvailable],
+  (available) => available,
+);
+
 export default {
   getDetaineeState,
   isBailHearingRoom1OptionAvailableState,
@@ -170,4 +206,6 @@ export default {
   isPhoneDeclineOptionAvailableState,
   isPhoneRoomOptionAvailableState,
   isMedicalRoomOptionAvailableState,
+  isReleaseRoomOptionAvailableState,
+  isRemandHoldingRoomOptionAvailableState,
 };

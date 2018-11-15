@@ -34,6 +34,8 @@ const propTypes = {
   isMedicalRoomOptionAvailable: PropTypes.bool.isRequired,
   isPhoneDeclineOptionAvailable: PropTypes.bool.isRequired,
   isPhoneRoomOptionAvailable: PropTypes.bool.isRequired,
+  isReleaseRoomOptionAvailable: PropTypes.bool.isRequired,
+  isRemandHoldingRoomOptionAvailable: PropTypes.bool.isRequired,
 };
 
 const DetaineeActionComponent = ({
@@ -46,6 +48,8 @@ const DetaineeActionComponent = ({
   isMedicalRoomOptionAvailable,
   isPhoneDeclineOptionAvailable,
   isPhoneRoomOptionAvailable,
+  isReleaseRoomOptionAvailable,
+  isRemandHoldingRoomOptionAvailable,
 }) => (
   <Card className={classes.card}>
     <CardHeader
@@ -166,13 +170,29 @@ const DetaineeActionComponent = ({
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
-            <IconButton className={classes.button}>
-              <Avatar className={classes.avatar} src={RemandHoldingIcon} />
+            <IconButton
+              className={classes.button}
+              disabled={!isRemandHoldingRoomOptionAvailable}
+            >
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isRemandHoldingRoomOptionAvailable,
+                })}
+                src={RemandHoldingIcon}
+              />
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
-            <IconButton className={classes.button}>
-              <Avatar className={classes.avatar} src={ReleaseHoldingIcon} />
+            <IconButton
+              className={classes.button}
+              disabled={!isReleaseRoomOptionAvailable}
+            >
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isReleaseRoomOptionAvailable,
+                })}
+                src={ReleaseHoldingIcon}
+              />
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
