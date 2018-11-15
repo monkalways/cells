@@ -34,6 +34,8 @@ const propTypes = {
   isMedicalRoomOptionAvailable: PropTypes.bool.isRequired,
   isPhoneDeclineOptionAvailable: PropTypes.bool.isRequired,
   isPhoneRoomOptionAvailable: PropTypes.bool.isRequired,
+  isReleaseRoomOptionAvailable: PropTypes.bool.isRequired,
+  isRemandHoldingRoomOptionAvailable: PropTypes.bool.isRequired,
 };
 
 const DetaineeActionComponent = ({
