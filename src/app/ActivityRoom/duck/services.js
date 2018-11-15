@@ -62,6 +62,8 @@ const createTempAbsence = async ({ detaineeId, reason, activityRoomName }) => {
     },
     commonConstants.HEADERS,
   );
+
+  return true;
 };
 
 const updateTempAbsence = async ({
@@ -84,6 +86,8 @@ const updateTempAbsence = async ({
     },
     commonConstants.HEADERS,
   );
+
+  return true;
 };
 
 export default {
