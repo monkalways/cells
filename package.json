@@ -39,6 +39,7 @@
     "lint:ci": "eslint --ext .js --ext .jsx src/** --format .\\node_modules\\eslint-teamcity\\index.js"
   },
   "devDependencies": {
+    "axios-mock-adapter": "^1.15.0",
     "babel-eslint": "^9.0.0",
     "babel-jest": "^23.6.0",
     "eslint": "^5.5.0",
