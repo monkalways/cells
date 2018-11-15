@@ -4,6 +4,21 @@ import constants from '../constants';
 
 // Basic selectors
 const getDetainee = (state) => state.detainee.detaineeProfile.data;
+
+const isBreathTestRoomOptionAvailable = (state) => {
+  const { location } = state.detainee.detaineeProfile.data;
+  const {
+    availableRooms,
+    // eslint-disable-next-line max-len
+  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === constants.BREATH_TEST_ROOM.toLowerCase());
+  return (
+    location.toLowerCase()
+      !== constants.BREATH_TEST_IN_PROGRESS.toLowerCase()
+    && location.toLowerCase() !== constants.BREATH_TEST_IN_TRANSIT.toLowerCase()
+    && availableRooms.length > 0
+  );
+};
+
 // eslint-disable-next-line max-len
 const isDetaineeProfileLoaded = (state) => state.detainee.detaineeProfile.loaded && state.detainee.activityRooms.loaded;
 
@@ -56,6 +71,11 @@ const isPhoneRoomOptionAvailable = (state) => {
 // Reselect selectors
 const getDetaineeState = createSelector([getDetainee], (detainee) => detainee);
 
+const isBreathTestRoomOptionAvailableState = createSelector(
+  [isBreathTestRoomOptionAvailable],
+  (loaded) => loaded,
+);
+
 const isDetaineeProfileLoadedState = createSelector(
   [isDetaineeProfileLoaded],
   (loaded) => loaded,
@@ -82,10 +102,11 @@ const isPhoneRoomOptionAvailableState = createSelector(
 );
 
 export default {
+  getDetaineeState,
+  isBreathTestRoomOptionAvailableState,
   isDetaineeProfileLoadedState,
   isFingerprintingRoomOptionAvailableState,
   isPhoneDeclineOptionAvailableState,
   isPhoneRoomOptionAvailableState,
   isMedicalRoomOptionAvailableState,
-  getDetaineeState,
 };

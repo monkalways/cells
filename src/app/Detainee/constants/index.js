@@ -6,11 +6,14 @@ const DETAINEE_PROFILE = '/detainee-profile';
 const CELLS_QUERYSTRING = 'cells';
 
 // Activity Rooms
+const BREATH_TEST_ROOM = 'Breath Test';
 const FINGERPRINTING_ROOM = 'Fingerprinting';
 const MEDICAL_ROOM = 'Medical';
 const PHONE_ROOM = 'Phone';
 
 // Temporary Absence Reasons
+const BREATH_TEST_IN_PROGRESS = 'Breath Test - In Progress';
+const BREATH_TEST_IN_TRANSIT = 'Breath Test - In Transit';
 const FINGERPRINTING_IN_PROGRESS = 'Fingerprinting - In Progress';
 const FINGERPRINTING_IN_TRANSIT = 'Fingerprinting - In Transit';
 const MEDICAL_IN_PROGRESS = 'Medical - In Progress';
@@ -20,6 +23,9 @@ const PHONE_IN_TRANSIT = 'Phone - In Transit';
 
 export default {
   AVAILABLE_ACTIVITY_ROOMS,
+  BREATH_TEST_IN_PROGRESS,
+  BREATH_TEST_IN_TRANSIT,
+  BREATH_TEST_ROOM,
   CELLS_QUERYSTRING,
   CELLS_URL,
   DETAINEE_URL,

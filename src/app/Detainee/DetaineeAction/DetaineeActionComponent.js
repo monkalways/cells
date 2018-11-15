@@ -26,6 +26,7 @@ import InCellIcon from '../../../images/InCell.png';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
+  isBreathTestRoomOptionAvailable: PropTypes.bool.isRequired,
   isFingerprintingRoomOptionAvailable: PropTypes.bool.isRequired,
   isMedicalRoomOptionAvailable: PropTypes.bool.isRequired,
   isPhoneDeclineOptionAvailable: PropTypes.bool.isRequired,
@@ -34,6 +35,7 @@ const propTypes = {
 
 const DetaineeActionComponent = ({
   classes,
+  isBreathTestRoomOptionAvailable,
   isFingerprintingRoomOptionAvailable,
   isMedicalRoomOptionAvailable,
   isPhoneDeclineOptionAvailable,
@@ -103,8 +105,16 @@ const DetaineeActionComponent = ({
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
-            <IconButton className={classes.button}>
-              <Avatar className={classes.avatar} src={BreathalyzerIcon} />
+            <IconButton
+              className={classes.button}
+              disabled={!isBreathTestRoomOptionAvailable}
+            >
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isBreathTestRoomOptionAvailable,
+                })}
+                src={BreathalyzerIcon}
+              />
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
