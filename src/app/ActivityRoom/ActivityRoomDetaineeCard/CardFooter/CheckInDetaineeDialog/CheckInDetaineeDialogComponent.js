@@ -14,6 +14,7 @@ const propTypes = {
   detainee: PropTypes.shape({
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
+    activityRoomName: PropTypes.string.isRequired,
   }).isRequired,
   isDialogOpen: PropTypes.bool.isRequired,
   isCheckingIn: PropTypes.bool.isRequired,
@@ -45,10 +46,16 @@ const CheckInDetaineeDialogComponent = ({
       </DialogContent>
     )}
     <DialogActions>
-      <Button onClick={onClose} color="primary" disabled={isCheckingIn}>
+      <Button
+        id="cancelButton"
+        onClick={onClose}
+        color="primary"
+        disabled={isCheckingIn}
+      >
         Cancel
       </Button>
       <Button
+        id="checkInButton"
         onClick={onCheckIn}
         color="primary"
         variant="contained"
