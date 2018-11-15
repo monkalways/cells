@@ -76,6 +76,10 @@ class GotoActivityRoomComponent extends Component {
               <MenuItem value="interview">Interview</MenuItem>
               <MenuItem value="medical">Medical</MenuItem>
               <MenuItem value="phone">Phone</MenuItem>
+              <MenuItem value="release room">Release Room</MenuItem>
+              <MenuItem value="remand holding room">
+                Remand Holding Room
+              </MenuItem>
             </Select>
           </FormControl>
           <Button
