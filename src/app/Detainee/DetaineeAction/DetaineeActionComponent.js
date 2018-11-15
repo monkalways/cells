@@ -28,6 +28,7 @@ const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   isBreathTestRoomOptionAvailable: PropTypes.bool.isRequired,
   isFingerprintingRoomOptionAvailable: PropTypes.bool.isRequired,
+  isInterviewRoomOptionAvailable: PropTypes.bool.isRequired,
   isMedicalRoomOptionAvailable: PropTypes.bool.isRequired,
   isPhoneDeclineOptionAvailable: PropTypes.bool.isRequired,
   isPhoneRoomOptionAvailable: PropTypes.bool.isRequired,
@@ -37,6 +38,7 @@ const DetaineeActionComponent = ({
   classes,
   isBreathTestRoomOptionAvailable,
   isFingerprintingRoomOptionAvailable,
+  isInterviewRoomOptionAvailable,
   isMedicalRoomOptionAvailable,
   isPhoneDeclineOptionAvailable,
   isPhoneRoomOptionAvailable,
@@ -118,8 +120,16 @@ const DetaineeActionComponent = ({
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
-            <IconButton className={classes.button}>
-              <Avatar className={classes.avatar} src={InterviewIcon} />
+            <IconButton
+              className={classes.button}
+              disabled={!isInterviewRoomOptionAvailable}
+            >
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isInterviewRoomOptionAvailable,
+                })}
+                src={InterviewIcon}
+              />
             </IconButton>
           </Grid>
         </Grid>

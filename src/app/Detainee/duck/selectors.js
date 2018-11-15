@@ -37,6 +37,19 @@ const isFingerprintingRoomOptionAvailable = (state) => {
   );
 };
 
+const isInterviewRoomOptionAvailable = (state) => {
+  const { location } = state.detainee.detaineeProfile.data;
+  const {
+    availableRooms,
+    // eslint-disable-next-line max-len
+  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === constants.INTERVIEW_ROOM.toLowerCase());
+  return (
+    location.toLowerCase() !== constants.INTERVIEW_IN_PROGRESS.toLowerCase()
+    && location.toLowerCase() !== constants.INTERVIEW_IN_TRANSIT.toLowerCase()
+    && availableRooms.length > 0
+  );
+};
+
 const isMedicalRoomOptionAvailable = (state) => {
   const { location } = state.detainee.detaineeProfile.data;
   const {
@@ -86,6 +99,11 @@ const isFingerprintingRoomOptionAvailableState = createSelector(
   (available) => available,
 );
 
+const isInterviewRoomOptionAvailableState = createSelector(
+  [isInterviewRoomOptionAvailable],
+  (available) => available,
+);
+
 const isMedicalRoomOptionAvailableState = createSelector(
   [isMedicalRoomOptionAvailable],
   (available) => available,
@@ -106,6 +124,7 @@ export default {
   isBreathTestRoomOptionAvailableState,
   isDetaineeProfileLoadedState,
   isFingerprintingRoomOptionAvailableState,
+  isInterviewRoomOptionAvailableState,
   isPhoneDeclineOptionAvailableState,
   isPhoneRoomOptionAvailableState,
   isMedicalRoomOptionAvailableState,
