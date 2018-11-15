@@ -53,7 +53,7 @@ export default compose(
     },
     appBar: {
       backgroundColor: theme.palette.background.default,
-      height: theme.spacing.unit * 11,
+      height: 89,
     },
     button: {
       height: theme.spacing.unit * 7,
