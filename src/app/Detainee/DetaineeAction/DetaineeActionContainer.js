@@ -4,6 +4,8 @@ import DetaineeActionComponent from './DetaineeActionComponent';
 
 export const mapStateToProps = (
   state,
+  isBailHearingRoom1OptionAvailable = selectors.isBailHearingRoom1OptionAvailableState(state),
+  isBailHearingRoom2OptionAvailable = selectors.isBailHearingRoom2OptionAvailableState(state),
   isBreathTestRoomOptionAvailable = selectors.isBreathTestRoomOptionAvailableState(state),
   isFingerprintingRoomOptionAvailable = selectors.isFingerprintingRoomOptionAvailableState(state),
   isInterviewRoomOptionAvailable = selectors.isInterviewRoomOptionAvailableState(state),
@@ -11,6 +13,8 @@ export const mapStateToProps = (
   isPhoneDeclineOptionAvailable = selectors.isPhoneDeclineOptionAvailableState(state),
   isPhoneRoomOptionAvailable = selectors.isPhoneRoomOptionAvailableState(state),
 ) => ({
+  isBailHearingRoom1OptionAvailable,
+  isBailHearingRoom2OptionAvailable,
   isBreathTestRoomOptionAvailable,
   isFingerprintingRoomOptionAvailable,
   isInterviewRoomOptionAvailable,
