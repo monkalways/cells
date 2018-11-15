@@ -19,13 +19,14 @@ const getActivityRoomDetainees = (
   getActivityRoomDetaineesService = services.getActivityRoomDetainees,
   getActivityRoomDetaineesAction = actions.getActivityRoomDetainees,
   getActivityRoomDetaineesSuccessAction = actions.getActivityRoomDetaineesSuccess,
+  sendErrorMessage = utils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
     dispatch(getActivityRoomDetaineesAction(usage));
     const detainees = await getActivityRoomDetaineesService(usage);
     dispatch(getActivityRoomDetaineesSuccessAction(detainees));
   } catch (error) {
-    utils.sendErrorMessage({ dispatch, error });
+    sendErrorMessage({ dispatch, error });
   }
 };
 
@@ -35,9 +36,12 @@ const checkIn = (
   getLastTempAbsenceService = services.getLastTempAbsence,
   createTempAbsenceService = services.createTempAbsence,
   updateTempAbsenceService = services.updateTempAbsence,
+  getActivityRoomDetaineesOperation = getActivityRoomDetainees,
   checkInAction = actions.checkIn,
   checkInSuccessAction = actions.checkInSuccess,
   checkInFailAction = actions.checkInFail,
+  sendErrorMessage = utils.sendErrorMessage,
+  notifyOperation = notify,
 ) => async (dispatch) => {
   try {
     dispatch(checkInAction());
@@ -68,10 +72,10 @@ const checkIn = (
         dispatch(checkInSuccessAction());
 
         // reload activity room detainees
-        dispatch(getActivityRoomDetainees(usage));
+        dispatch(getActivityRoomDetaineesOperation(usage));
       } else {
         dispatch(checkInFailAction());
-        notify(
+        notifyOperation(
           dispatch,
           `Detainee [ID: ${detaineeId}]'s location has been changed to ${
             lastTempAbsence.reason
@@ -80,13 +84,13 @@ const checkIn = (
       }
     } else {
       dispatch(checkInFailAction());
-      notify(
+      notifyOperation(
         dispatch,
         `Cannot find last temporary absence record for this detainee [ID: ${detaineeId}].`,
       );
     }
   } catch (error) {
-    utils.sendErrorMessage({ dispatch, error });
+    sendErrorMessage({ dispatch, error });
     checkInFailAction();
   }
 };
