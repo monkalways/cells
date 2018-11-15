@@ -67,6 +67,27 @@ const isFingerprintingRoomOptionAvailable = (state) => {
   );
 };
 
+const isInCellOptionAvailable = (state) => {
+  // Case 1: User came from activity room screen.
+  // Detainee is leaving activity room or in transit to activity room
+  // and is now going back to their cell.
+  const { first } = queryString.parse(state.router.location.search);
+  const { location } = state.detainee.detaineeProfile.data;
+  if (
+    first === constants.ACTIVITY_ROOMS_QUERYSTRING
+    && location.toLowerCase() !== constants.CELL_IN_TRANSIT.toLowerCase()
+  ) return true;
+
+  // Case 2: User came from cell management screen.
+  // Detainee is currently in transit back to their cell and is being checked in.
+  if (
+    first === constants.CELLS_QUERYSTRING
+    && location.toLowerCase() === constants.CELL_IN_TRANSIT.toLowerCase()
+  ) return true;
+
+  return false;
+};
+
 const isInterviewRoomOptionAvailable = (state) => {
   const { location } = state.detainee.detaineeProfile.data;
   const {
@@ -165,6 +186,11 @@ const isFingerprintingRoomOptionAvailableState = createSelector(
   (available) => available,
 );
 
+const isInCellOptionAvailableState = createSelector(
+  [isInCellOptionAvailable],
+  (available) => available,
+);
+
 const isInterviewRoomOptionAvailableState = createSelector(
   [isInterviewRoomOptionAvailable],
   (available) => available,
@@ -202,6 +228,7 @@ export default {
   isBreathTestRoomOptionAvailableState,
   isDetaineeProfileLoadedState,
   isFingerprintingRoomOptionAvailableState,
+  isInCellOptionAvailableState,
   isInterviewRoomOptionAvailableState,
   isPhoneDeclineOptionAvailableState,
   isPhoneRoomOptionAvailableState,

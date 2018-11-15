@@ -30,6 +30,7 @@ const propTypes = {
   isBailHearingRoom2OptionAvailable: PropTypes.bool.isRequired,
   isBreathTestRoomOptionAvailable: PropTypes.bool.isRequired,
   isFingerprintingRoomOptionAvailable: PropTypes.bool.isRequired,
+  isInCellOptionAvailable: PropTypes.bool.isRequired,
   isInterviewRoomOptionAvailable: PropTypes.bool.isRequired,
   isMedicalRoomOptionAvailable: PropTypes.bool.isRequired,
   isPhoneDeclineOptionAvailable: PropTypes.bool.isRequired,
@@ -44,6 +45,7 @@ const DetaineeActionComponent = ({
   isBailHearingRoom2OptionAvailable,
   isBreathTestRoomOptionAvailable,
   isFingerprintingRoomOptionAvailable,
+  isInCellOptionAvailable,
   isInterviewRoomOptionAvailable,
   isMedicalRoomOptionAvailable,
   isPhoneDeclineOptionAvailable,
@@ -196,8 +198,16 @@ const DetaineeActionComponent = ({
             </IconButton>
           </Grid>
           <Grid item xs={2} className={classes.imgContainer}>
-            <IconButton className={classes.button}>
-              <Avatar className={classes.avatar} src={InCellIcon} />
+            <IconButton
+              className={classes.button}
+              disabled={!isInCellOptionAvailable}
+            >
+              <Avatar
+                className={classNames(classes.avatar, {
+                  [classes.disabled]: !isInCellOptionAvailable,
+                })}
+                src={InCellIcon}
+              />
             </IconButton>
           </Grid>
         </Grid>
