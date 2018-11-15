@@ -14,6 +14,10 @@ const INTERVIEW_ROOM = 'Interview';
 const MEDICAL_ROOM = 'Medical';
 const PHONE_ROOM = 'Phone';
 
+// Alternate Rooms
+const RELEASE_ROOM = 'Release Room';
+const REMAND_HOLDING_ROOM = 'Remand Holding Room';
+
 // Temporary Absence Reasons
 const BAIL_HEARING_IN_PROGRESS = 'Bail Hearing - In Progress';
 const BAIL_HEARING_IN_TRANSIT = 'Bail Hearing - In Transit';
@@ -27,6 +31,8 @@ const MEDICAL_IN_PROGRESS = 'Medical - In Progress';
 const MEDICAL_IN_TRANSIT = 'Medical - In Transit';
 const PHONE_IN_PROGRESS = 'Phone - In Progress';
 const PHONE_IN_TRANSIT = 'Phone - In Transit';
+const RELEASE_HOLDING_IN_TRANSIT = 'Release Holding - In Transit';
+const REMAND_HOLDING_IN_TRANSIT = 'Remand Holding - In Transit';
 
 export default {
   AVAILABLE_ACTIVITY_ROOMS,
@@ -53,4 +59,8 @@ export default {
   PHONE_ROOM,
   PHONE_IN_PROGRESS,
   PHONE_IN_TRANSIT,
+  RELEASE_HOLDING_IN_TRANSIT,
+  RELEASE_ROOM,
+  REMAND_HOLDING_IN_TRANSIT,
+  REMAND_HOLDING_ROOM,
 };
