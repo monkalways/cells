@@ -24,7 +24,9 @@ const propTypes = {
   }).isRequired,
   isActivityRoomDetaineesLoaded: PropTypes.bool.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
-  detainees: PropTypes.arrayOf(PropTypes.shape({})),
+  detainees: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  })),
   isCheckingIn: PropTypes.bool.isRequired,
   getActivityRoomDetainees: PropTypes.func.isRequired,
   handleCheckIn: PropTypes.func.isRequired,
@@ -36,7 +38,7 @@ const defaultProps = {
   detainees: [],
 };
 
-class ActivityRoomComponent extends Component {
+export class ActivityRoomComponent extends Component {
   componentDidMount() {
     const { match, getActivityRoomDetainees } = this.props;
     const { usage } = match.params;

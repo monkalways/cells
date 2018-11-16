@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActivityRoomComponent should render "no detainees" when detainees are loaded but there are none 1`] = `
+<Fragment>
+  <WithStyles(Layout)>
+    <WithStyles(HeaderComponent)
+      isAuthenticated={false}
+      onLogout={[Function]}
+      usage="phone"
+    />
+    <div
+      className={Object {}}
+    >
+      <WithStyles(CellDetaineeGridComponent)>
+        <WithStyles(Typography)
+          className={Object {}}
+          variant="h6"
+        >
+          No detainees.
+        </WithStyles(Typography)>
+      </WithStyles(CellDetaineeGridComponent)>
+      <WithStyles(withRouter(FooterComponent))
+        isAuthenticated={false}
+        onSignIn={[MockFunction]}
+      />
+    </div>
+  </WithStyles(Layout)>
+</Fragment>
+`;
+
+exports[`ActivityRoomComponent should render Loading when detainees are not yet loaded 1`] = `
+<Fragment>
+  <WithStyles(Layout)>
+    <WithStyles(HeaderComponent)
+      isAuthenticated={false}
+      onLogout={[Function]}
+      usage="phone"
+    />
+    <div
+      className={Object {}}
+    >
+      <WithStyles(CellDetaineeGridComponent)>
+        <WithStyles(LoadingComponent) />
+      </WithStyles(CellDetaineeGridComponent)>
+      <WithStyles(withRouter(FooterComponent))
+        isAuthenticated={false}
+        onSignIn={[MockFunction]}
+      />
+    </div>
+  </WithStyles(Layout)>
+</Fragment>
+`;
+
+exports[`ActivityRoomComponent should render detainee cards when one or more detainees are loaded 1`] = `
+<Fragment>
+  <WithStyles(Layout)>
+    <WithStyles(HeaderComponent)
+      isAuthenticated={false}
+      onLogout={[Function]}
+      usage="phone"
+    />
+    <div
+      className={Object {}}
+    >
+      <WithStyles(CellDetaineeGridComponent)>
+        <WithStyles(Grid)
+          item={true}
+          key="123"
+          sm={4}
+        >
+          <WithStyles(ActivityRoomDetaineeCardComponent)
+            detainee={
+              Object {
+                "id": "123",
+              }
+            }
+            isAuthenticated={false}
+            isCheckingIn={false}
+            onCheckIn={[MockFunction]}
+            usage="phone"
+          />
+        </WithStyles(Grid)>
+        <WithStyles(Grid)
+          item={true}
+          key="456"
+          sm={4}
+        >
+          <WithStyles(ActivityRoomDetaineeCardComponent)
+            detainee={
+              Object {
+                "id": "456",
+              }
+            }
+            isAuthenticated={false}
+            isCheckingIn={false}
+            onCheckIn={[MockFunction]}
+            usage="phone"
+          />
+        </WithStyles(Grid)>
+      </WithStyles(CellDetaineeGridComponent)>
+      <WithStyles(withRouter(FooterComponent))
+        isAuthenticated={false}
+        onSignIn={[MockFunction]}
+      />
+    </div>
+  </WithStyles(Layout)>
+</Fragment>
+`;
