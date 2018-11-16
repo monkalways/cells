@@ -2,7 +2,7 @@
 
 exports[`ActivityRoomDetaineeCardComponent should render 1`] = `
 <WithStyles(Card)
-  className={Object {}}
+  className=""
 >
   <WithStyles(CellDetaineeCardHeaderComponent)
     cellDetainee={Object {}}

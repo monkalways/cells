@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterComponent should not render Scan ID Card button when authenticated 1`] = `
+<div
+  className=""
+>
+  <WithStyles(AppBar)
+    className=""
+    position="static"
+  >
+    <WithStyles(Grid)
+      alignItems="center"
+      container={true}
+      justify="center"
+    />
+  </WithStyles(AppBar)>
+</div>
+`;
+
+exports[`FooterComponent should render Scan ID Card button when not authenticated 1`] = `
+<div
+  className=""
+>
+  <WithStyles(AppBar)
+    className=""
+    position="static"
+  >
+    <WithStyles(Grid)
+      alignItems="center"
+      container={true}
+      justify="center"
+    >
+      <WithStyles(Button)
+        className=""
+        color="secondary"
+        onClick={[Function]}
+        variant="contained"
+      >
+        Scan ID Card to Access
+      </WithStyles(Button)>
+      <Connect(WithStyles(ScanCardDialogComponent)) />
+    </WithStyles(Grid)>
+  </WithStyles(AppBar)>
+</div>
+`;

@@ -17,15 +17,10 @@ const propTypes = {
   }).isRequired,
 };
 
-const FooterComponent = ({ classes, isAuthenticated, onSignIn }) => (
+export const FooterComponent = ({ classes, isAuthenticated, onSignIn }) => (
   <div className={classes.root}>
     <AppBar position="static" className={classes.appBar}>
-      <Grid
-        container
-        justify="center"
-        alignItems="center"
-        className={classes.container}
-      >
+      <Grid container justify="center" alignItems="center">
         {!isAuthenticated && (
           <React.Fragment>
             <Button

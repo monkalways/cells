@@ -2,22 +2,22 @@
 
 exports[`CardFooterComponent should render empty when isAuthenticated is false 1`] = `
 <WithStyles(CardActions)
-  className={Object {}}
+  className=""
 />
 `;
 
 exports[`CardFooterComponent should render title when isAuthenticated is true 1`] = `
 <WithStyles(CardActions)
-  className={Object {}}
+  className=""
 >
   <WithStyles(Typography)
-    className={Object {}}
+    className=""
     variant="h6"
   >
     T1
   </WithStyles(Typography)>
   <WithStyles(Button)
-    className={Object {}}
+    className=""
     id="inButton"
     onClick={[Function]}
     size="large"
@@ -29,7 +29,9 @@ exports[`CardFooterComponent should render title when isAuthenticated is true 1`
     detainee={
       Object {
         "activityRoomName": "T1",
+        "firstName": "John",
         "id": "123",
+        "lastName": "Smith",
         "location": "Phone - In Transit",
       }
     }

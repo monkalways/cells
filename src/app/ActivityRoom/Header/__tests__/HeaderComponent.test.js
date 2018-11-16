@@ -17,10 +17,10 @@ describe('HeaderComponent', () => {
 
   const setup = () => {
     const classes = {
-      root: {},
-      appBar: {},
-      menuButton: {},
-      logoutButton: {},
+      root: '',
+      appBar: '',
+      menuButton: '',
+      logoutButton: '',
     };
     return shallow(<HeaderComponent
       classes={classes}

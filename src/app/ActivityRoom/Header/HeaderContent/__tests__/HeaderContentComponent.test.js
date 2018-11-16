@@ -21,7 +21,7 @@ describe('HeaderContentComponent', () => {
   });
 
   const setup = () => {
-    const classes = { grid: {}, avatar: {} };
+    const classes = { grid: '', avatar: '' };
     return shallow(<HeaderContentComponent classes={classes} usage={usage} />);
   };
 

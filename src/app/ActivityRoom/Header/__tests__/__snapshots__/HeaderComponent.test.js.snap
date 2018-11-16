@@ -2,16 +2,16 @@
 
 exports[`HeaderComponent should render 1`] = `
 <div
-  className={Object {}}
+  className=""
 >
   <WithStyles(AppBar)
-    className={Object {}}
+    className=""
     position="static"
   >
     <WithStyles(Toolbar)>
       <WithStyles(IconButton)
         aria-label="Menu"
-        className={Object {}}
+        className=""
         color="inherit"
       >
         <img
@@ -30,16 +30,16 @@ exports[`HeaderComponent should render 1`] = `
 
 exports[`HeaderComponent should render logout button if authenticated 1`] = `
 <div
-  className={Object {}}
+  className=""
 >
   <WithStyles(AppBar)
-    className={Object {}}
+    className=""
     position="static"
   >
     <WithStyles(Toolbar)>
       <WithStyles(IconButton)
         aria-label="Menu"
-        className={Object {}}
+        className=""
         color="inherit"
       >
         <img
@@ -53,7 +53,7 @@ exports[`HeaderComponent should render logout button if authenticated 1`] = `
       />
       <WithStyles(IconButton)
         aria-label="Menu"
-        className={Object {}}
+        className=""
         color="inherit"
         onClick={[MockFunction]}
       >
