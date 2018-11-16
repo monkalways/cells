@@ -1,11 +1,10 @@
 import React from 'react';
-import { createShallow } from '@material-ui/core/test-utils';
+import { shallow } from 'enzyme';
 import { Button, Typography } from '@material-ui/core';
 
 import { CardFooterComponent } from '../CardFooterComponent';
 
 describe('CardFooterComponent', () => {
-  let shallow;
   let isAuthenticated;
   let detaineeId;
   let location;
@@ -14,7 +13,6 @@ describe('CardFooterComponent', () => {
   let usage;
 
   beforeEach(() => {
-    shallow = createShallow();
     isAuthenticated = true;
     detaineeId = '123';
     location = 'Phone - In Transit';
