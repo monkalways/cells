@@ -12,16 +12,17 @@ const authenticate = (
   startAuthenticateAction = actions.startAuthenticate,
   authenticateSuccessAction = actions.authenticateSuccess,
   authenticateFailAction = actions.authenticateFail,
+  sendErrorMessage = utils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
-    dispatch(startAuthenticateAction({ cardId }));
+    dispatch(startAuthenticateAction(cardId));
     const userName = await authenticateService(cardId);
-    dispatch(authenticateSuccessAction({ userName }));
+    dispatch(authenticateSuccessAction(userName));
   } catch (error) {
     if (error.response.status === 401) {
       dispatch(authenticateFailAction());
     } else {
-      utils.sendErrorMessage({ dispatch, error });
+      sendErrorMessage({ dispatch, error });
     }
   }
 };

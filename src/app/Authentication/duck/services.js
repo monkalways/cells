@@ -11,7 +11,8 @@ const authenticate = async (cardId) => {
     },
   });
 
-  return response.data;
+  const userName = response.data;
+  return userName;
 };
 
 export default {

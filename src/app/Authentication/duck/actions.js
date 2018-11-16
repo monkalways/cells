@@ -1,18 +1,17 @@
 import types from './types';
 
-const startSignIn = (cardId) => ({
+const startSignIn = () => ({
   type: types.START_SIGN_IN,
-  payload: { cardId },
 });
 
-const startAuthenticate = (payload) => ({
+const startAuthenticate = (cardId) => ({
   type: types.START_AUTHENTICATE,
-  payload,
+  cardId,
 });
 
-const authenticateSuccess = (payload) => ({
+const authenticateSuccess = (userName) => ({
   type: types.AUTHENTICATE_SUCCESS,
-  payload,
+  userName,
 });
 
 const authenticateFail = () => ({
