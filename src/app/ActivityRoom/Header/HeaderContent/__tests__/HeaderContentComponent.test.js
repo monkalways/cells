@@ -40,6 +40,7 @@ describe('HeaderContentComponent', () => {
     ['breath test', BreathalyzerIcon],
     ['release room', ReleaseRoomIcon],
     ['remand holding room', RemandHoldingRoomIcon],
+    ['', null],
   ])(
     'should render avatar based on activity room usage',
     (activityRoomUsage, avatarSrc) => {
