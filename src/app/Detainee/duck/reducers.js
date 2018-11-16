@@ -32,6 +32,7 @@ const detaineeProfileReducer = (
 const defaultActivityRoomsState = {
   availableActivityRooms: [],
   loaded: false,
+  assigningToRoom: false,
 };
 
 const activityRoomsReducer = (state = defaultActivityRoomsState, action) => {
@@ -45,6 +46,21 @@ const activityRoomsReducer = (state = defaultActivityRoomsState, action) => {
       return {
         availableActivityRooms: action.payload,
         loaded: true,
+      };
+    case types.ASSIGN_TO_ROOM:
+      return {
+        ...state,
+        assigningToRoom: true,
+      };
+    case types.ASSIGN_TO_ROOM_SUCCESS:
+      return {
+        ...state,
+        assigningToRoom: false,
+      };
+    case types.ASSIGN_TO_ROOM_FAILURE:
+      return {
+        ...state,
+        assigningToRoom: false,
       };
     case authenticationTypes.LOG_OUT:
       return defaultActivityRoomsState;

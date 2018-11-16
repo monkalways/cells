@@ -4,6 +4,7 @@ import constants from '../constants';
 
 // Basic selectors
 const getDetainee = (state) => state.detainee.detaineeProfile.data;
+const isAssigningToRoom = (state) => state.detainee.activityRooms.isAssigningToRoom;
 
 const isBailHearingRoom1OptionAvailable = (state) => {
   const { location } = state.detainee.detaineeProfile.data;
@@ -160,6 +161,7 @@ const isRemandHoldingRoomOptionAvailable = (state) => {
 
 // Reselect selectors
 const getDetaineeState = createSelector([getDetainee], (detainee) => detainee);
+const isAssigningToRoomState = createSelector([isAssigningToRoom], (detainee) => detainee);
 
 const isBailHearingRoom1OptionAvailableState = createSelector(
   [isBailHearingRoom1OptionAvailable],
@@ -223,6 +225,7 @@ const isRemandHoldingRoomOptionAvailableState = createSelector(
 
 export default {
   getDetaineeState,
+  isAssigningToRoomState,
   isBailHearingRoom1OptionAvailableState,
   isBailHearingRoom2OptionAvailableState,
   isBreathTestRoomOptionAvailableState,

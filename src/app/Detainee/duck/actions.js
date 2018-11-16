@@ -1,12 +1,15 @@
 import types from './types';
 
-const getDetainee = () => ({
-  type: types.GET_DETAINEE,
+const assignToRoom = () => ({
+  type: types.ASSIGN_TO_ROOM,
 });
 
-const getDetaineeSuccess = (payload) => ({
-  type: types.GET_DETAINEE_SUCCESS,
-  payload,
+const assignToRoomFailure = () => ({
+  type: types.ASSIGN_TO_ROOM_FAILURE,
+});
+
+const assignToRoomSuccess = () => ({
+  type: types.ASSIGN_TO_ROOM_SUCCESS,
 });
 
 const getAvailableActivityRooms = () => ({
@@ -18,9 +21,21 @@ const getAvailableActivityRoomsSuccess = (payload) => ({
   payload,
 });
 
+const getDetainee = () => ({
+  type: types.GET_DETAINEE,
+});
+
+const getDetaineeSuccess = (payload) => ({
+  type: types.GET_DETAINEE_SUCCESS,
+  payload,
+});
+
 export default {
-  getDetainee,
-  getDetaineeSuccess,
+  assignToRoom,
+  assignToRoomFailure,
+  assignToRoomSuccess,
   getAvailableActivityRooms,
   getAvailableActivityRoomsSuccess,
+  getDetainee,
+  getDetaineeSuccess,
 };
