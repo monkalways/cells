@@ -4,7 +4,7 @@ import MockAdapter from 'axios-mock-adapter';
 import services from '../services';
 import constants from '../../constants';
 
-test('should getLastTempAbsence', async () => {
+it('should getLastTempAbsence', async () => {
   const usage = 'phone';
   const detainees = [
     {
@@ -47,7 +47,7 @@ test('should getLastTempAbsence', async () => {
   ]);
 });
 
-test('should getLastTempAbsence', async () => {
+it('should getLastTempAbsence', async () => {
   const detaineeId = '123';
   const detainee = {
     id: '123',
@@ -76,7 +76,7 @@ test('should getLastTempAbsence', async () => {
   });
 });
 
-test('should createTempAbsence', async () => {
+it('should createTempAbsence', async () => {
   const detaineeId = '123';
   const reason = 'Phone - In Progress';
   const activityRoomName = 'T1';
@@ -92,7 +92,7 @@ test('should createTempAbsence', async () => {
   expect(result).toBe(true);
 });
 
-test('should updateTempAbsence', async () => {
+it('should updateTempAbsence', async () => {
   const detaineeId = '123';
   const tempAbsenceId = '456';
   const reason = 'Phone - In Progress';

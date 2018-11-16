@@ -27,7 +27,7 @@ const propTypes = {
 const LOCATION_IN_TRANSIT = 'in transit';
 const LOCATION_IN_PROGRESS = 'in progress';
 
-class CardFooterComponent extends Component {
+export class CardFooterComponent extends Component {
   state = {
     isDialogOpen: false,
   };
@@ -62,6 +62,7 @@ class CardFooterComponent extends Component {
       if (location.toLowerCase().includes(LOCATION_IN_TRANSIT)) {
         return (
           <Button
+            id="inButton"
             variant="contained"
             size="large"
             className={classes.inButton}
@@ -74,6 +75,7 @@ class CardFooterComponent extends Component {
       if (location.toLowerCase().includes(LOCATION_IN_PROGRESS)) {
         return (
           <Button
+            id="outButton"
             variant="contained"
             size="large"
             className={classes.outButton}
@@ -89,7 +91,11 @@ class CardFooterComponent extends Component {
 
   render() {
     const {
-      classes, isAuthenticated, detainee, isCheckingIn,
+      classes,
+      isAuthenticated,
+      detainee,
+      isCheckingIn,
+      usage,
     } = this.props;
     const { isDialogOpen } = this.state;
     return (
@@ -104,6 +110,7 @@ class CardFooterComponent extends Component {
               isDialogOpen={isDialogOpen}
               detainee={detainee}
               isCheckingIn={isCheckingIn}
+              usage={usage}
               onClose={this.handleClose}
               onCheckIn={this.handleCheckIn}
             />

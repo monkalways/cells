@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderComponent should render 1`] = `
+<div
+  className={Object {}}
+>
+  <WithStyles(AppBar)
+    className={Object {}}
+    position="static"
+  >
+    <WithStyles(Toolbar)>
+      <WithStyles(IconButton)
+        aria-label="Menu"
+        className={Object {}}
+        color="inherit"
+      >
+        <img
+          alt="EPS Logo"
+          src="eps-logo-icon.png"
+          width={70}
+        />
+      </WithStyles(IconButton)>
+      <WithStyles(HeaderContentComponent)
+        usage="phone"
+      />
+    </WithStyles(Toolbar)>
+  </WithStyles(AppBar)>
+</div>
+`;
+
+exports[`HeaderComponent should render logout button if authenticated 1`] = `
+<div
+  className={Object {}}
+>
+  <WithStyles(AppBar)
+    className={Object {}}
+    position="static"
+  >
+    <WithStyles(Toolbar)>
+      <WithStyles(IconButton)
+        aria-label="Menu"
+        className={Object {}}
+        color="inherit"
+      >
+        <img
+          alt="EPS Logo"
+          src="eps-logo-icon.png"
+          width={70}
+        />
+      </WithStyles(IconButton)>
+      <WithStyles(HeaderContentComponent)
+        usage="phone"
+      />
+      <WithStyles(IconButton)
+        aria-label="Menu"
+        className={Object {}}
+        color="inherit"
+        onClick={[MockFunction]}
+      >
+        <pure(CloseIcon) />
+      </WithStyles(IconButton)>
+    </WithStyles(Toolbar)>
+  </WithStyles(AppBar)>
+</div>
+`;

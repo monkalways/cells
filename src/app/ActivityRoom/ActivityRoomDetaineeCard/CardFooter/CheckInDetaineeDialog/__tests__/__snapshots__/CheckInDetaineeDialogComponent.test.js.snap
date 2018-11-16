@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckInDetaineeDialogComponent should render 1`] = `
+<WithStyles(Dialog)
+  disableBackdropClick={false}
+  disableEscapeKeyDown={false}
+  onClose={[MockFunction]}
+  open={false}
+>
+  <WithStyles(DialogTitle)>
+    Placing Smith, John in phone room T1?
+  </WithStyles(DialogTitle)>
+  <WithStyles(DialogActions)>
+    <WithStyles(Button)
+      color="primary"
+      disabled={false}
+      id="cancelButton"
+      onClick={[MockFunction]}
+    >
+      Cancel
+    </WithStyles(Button)>
+    <WithStyles(Button)
+      autoFocus={true}
+      color="primary"
+      disabled={false}
+      id="checkInButton"
+      onClick={[MockFunction]}
+      variant="contained"
+    >
+      Confirm
+    </WithStyles(Button)>
+  </WithStyles(DialogActions)>
+</WithStyles(Dialog)>
+`;

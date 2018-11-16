@@ -3,5 +3,6 @@ build/*
 **/*.png
 **/*.css
 **/*.test.js
+**/*.test.js.snap
 **/*.svg
 serviceWorker.js

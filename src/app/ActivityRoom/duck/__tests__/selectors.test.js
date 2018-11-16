@@ -1,6 +1,6 @@
 import selectors from '../selectors';
 
-test('should select ActivityRoomUsage', () => {
+it('should select ActivityRoomUsage', () => {
   const usage = 'phone';
   const state = {
     activityRoom: {
@@ -12,7 +12,7 @@ test('should select ActivityRoomUsage', () => {
   expect(result).toEqual(usage);
 });
 
-test('should select isActivityRoomDetaineesLoaded', () => {
+it('should select isActivityRoomDetaineesLoaded', () => {
   const loaded = false;
   const state = {
     activityRoom: {
@@ -24,7 +24,7 @@ test('should select isActivityRoomDetaineesLoaded', () => {
   expect(result).toEqual(loaded);
 });
 
-test('should select ActivityRoomDetainees', () => {
+it('should select ActivityRoomDetainees', () => {
   const detainees = [];
   const state = {
     activityRoom: {
@@ -36,7 +36,7 @@ test('should select ActivityRoomDetainees', () => {
   expect(result).toEqual(detainees);
 });
 
-test('should select ActivityRoomDetainees', () => {
+it('should select ActivityRoomDetainees', () => {
   const checkingIn = false;
   const state = {
     activityRoom: {

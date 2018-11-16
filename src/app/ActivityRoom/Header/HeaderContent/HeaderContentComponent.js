@@ -9,6 +9,8 @@ import MedicalVisitIcon from '../../../images/MedicalVisit.png';
 import PhoneAcceptIcon from '../../../images/PhoneAccept.png';
 import InterviewIcon from '../../../images/Interview.png';
 import BreathalyzerIcon from '../../../images/Breathalyzer.png';
+import ReleaseRoomIcon from '../../../images/ReleaseHolding.png';
+import RemandHoldingRoomIcon from '../../../images/RemandHolding.png';
 
 const LOCATION_PHONE = 'phone';
 const LOCATION_MEDICAL_VISIT = 'medical';
@@ -17,13 +19,15 @@ const LOCATION_BAIL_HEARING_1 = 'bail hearing1';
 const LOCATION_BAIL_HEARING_2 = 'bail hearing2';
 const LOCATION_INTERVIEW = 'interview';
 const LOCATION_BREATH_TEST = 'breath test';
+const LOCATION_RELEASE_ROOM = 'release room';
+const LOCATION_REMAND_HOLDING_ROOM = 'remand holding room';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   usage: PropTypes.string.isRequired,
 };
 
-const HeaderContent = ({ classes, usage }) => {
+export const HeaderContentComponent = ({ classes, usage }) => {
   const getActivityRoomIcon = () => {
     let locationIconSrc = null;
     switch (usage.toLowerCase()) {
@@ -48,6 +52,12 @@ const HeaderContent = ({ classes, usage }) => {
       case LOCATION_BREATH_TEST:
         locationIconSrc = BreathalyzerIcon;
         break;
+      case LOCATION_RELEASE_ROOM:
+        locationIconSrc = ReleaseRoomIcon;
+        break;
+      case LOCATION_REMAND_HOLDING_ROOM:
+        locationIconSrc = RemandHoldingRoomIcon;
+        break;
       default:
         break;
     }
@@ -63,7 +73,7 @@ const HeaderContent = ({ classes, usage }) => {
   );
 };
 
-HeaderContent.propTypes = propTypes;
+HeaderContentComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   grid: {
@@ -74,4 +84,4 @@ export default withStyles((theme) => ({
     height: theme.spacing.unit * 8,
     width: theme.spacing.unit * 8,
   },
-}))(HeaderContent);
+}))(HeaderContentComponent);

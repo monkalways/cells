@@ -4,12 +4,12 @@ import {
   Avatar, Grid, Typography, withStyles,
 } from '@material-ui/core';
 
-import VisualCheckIcon from '../../../images/WellnessVisual.png';
-import VerbalCheckIcon from '../../../images/WellnessVerbal.png';
-import MealAcceptIcon from '../../../images/MealAccept.png';
-import MealDeclineIcon from '../../../images/MealDecline.png';
-import MedicineAcceptIcon from '../../../images/MedicineAccept.png';
-import MedicineDeclineIcon from '../../../images/MedicineDecline.png';
+import VisualCheckIcon from '../../images/WellnessVisual.png';
+import VerbalCheckIcon from '../../images/WellnessVerbal.png';
+import MealAcceptIcon from '../../images/MealAccept.png';
+import MealDeclineIcon from '../../images/MealDecline.png';
+import MedicineAcceptIcon from '../../images/MedicineAccept.png';
+import MedicineDeclineIcon from '../../images/MedicineDecline.png';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,

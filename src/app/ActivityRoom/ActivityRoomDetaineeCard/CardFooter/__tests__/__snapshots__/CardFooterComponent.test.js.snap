@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardFooterComponent should render empty when isAuthenticated is false 1`] = `
+<WithStyles(CardActions)
+  className={Object {}}
+/>
+`;
+
+exports[`CardFooterComponent should render title when isAuthenticated is true 1`] = `
+<WithStyles(CardActions)
+  className={Object {}}
+>
+  <WithStyles(Typography)
+    className={Object {}}
+    variant="h6"
+  >
+    T1
+  </WithStyles(Typography)>
+  <WithStyles(Button)
+    className={Object {}}
+    id="inButton"
+    onClick={[Function]}
+    size="large"
+    variant="contained"
+  >
+    IN
+  </WithStyles(Button)>
+  <CheckInDetaineeDialogComponent
+    detainee={
+      Object {
+        "activityRoomName": "T1",
+        "id": "123",
+        "location": "Phone - In Transit",
+      }
+    }
+    isCheckingIn={false}
+    isDialogOpen={false}
+    onCheckIn={[Function]}
+    onClose={[Function]}
+    usage="phone"
+  />
+</WithStyles(CardActions)>
+`;

@@ -4,13 +4,13 @@ import {
   Avatar, Grid, Typography, withStyles,
 } from '@material-ui/core';
 
-import MedicalVisitIcon from '../../../images/MedicalVisit.png';
-import PhoneAcceptIcon from '../../../images/PhoneAccept.png';
-import PhoneDeclineIcon from '../../../images/PhoneDecline.png';
-import FingerprintingIcon from '../../../images/Fingerprinting.png';
-import BreathalyzerIcon from '../../../images/Breathalyzer.png';
-import InterviewIcon from '../../../images/Interview.png';
-import BailHearingIcon from '../../../images/BailHearingGeneral.png';
+import MedicalVisitIcon from '../../images/MedicalVisit.png';
+import PhoneAcceptIcon from '../../images/PhoneAccept.png';
+import PhoneDeclineIcon from '../../images/PhoneDecline.png';
+import FingerprintingIcon from '../../images/Fingerprinting.png';
+import BreathalyzerIcon from '../../images/Breathalyzer.png';
+import InterviewIcon from '../../images/Interview.png';
+import BailHearingIcon from '../../images/BailHearingGeneral.png';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
