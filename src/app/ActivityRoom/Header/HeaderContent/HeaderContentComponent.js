@@ -27,7 +27,7 @@ const propTypes = {
   usage: PropTypes.string.isRequired,
 };
 
-const HeaderContent = ({ classes, usage }) => {
+export const HeaderContentComponent = ({ classes, usage }) => {
   const getActivityRoomIcon = () => {
     let locationIconSrc = null;
     switch (usage.toLowerCase()) {
@@ -73,7 +73,7 @@ const HeaderContent = ({ classes, usage }) => {
   );
 };
 
-HeaderContent.propTypes = propTypes;
+HeaderContentComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   grid: {
@@ -84,4 +84,4 @@ export default withStyles((theme) => ({
     height: theme.spacing.unit * 8,
     width: theme.spacing.unit * 8,
   },
-}))(HeaderContent);
+}))(HeaderContentComponent);

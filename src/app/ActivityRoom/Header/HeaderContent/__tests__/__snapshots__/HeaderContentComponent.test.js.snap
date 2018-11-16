@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderContentComponent should render 1`] = `
+<WithStyles(Grid)
+  className={Object {}}
+  container={true}
+  justify="center"
+>
+  <WithStyles(Grid)
+    alignItems="center"
+    container={true}
+    justify="center"
+  >
+    <WithStyles(Avatar)
+      className={Object {}}
+      src="PhoneAccept.png"
+    />
+  </WithStyles(Grid)>
+</WithStyles(Grid)>
+`;
