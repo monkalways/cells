@@ -12,6 +12,7 @@ const authenticate = (
   startAuthenticateAction = actions.startAuthenticate,
   authenticateSuccessAction = actions.authenticateSuccess,
   authenticateFailAction = actions.authenticateFail,
+  sendErrorMessage = utils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
     dispatch(startAuthenticateAction(cardId));
@@ -21,7 +22,7 @@ const authenticate = (
     if (error.response.status === 401) {
       dispatch(authenticateFailAction());
     } else {
-      utils.sendErrorMessage({ dispatch, error });
+      sendErrorMessage({ dispatch, error });
     }
   }
 };
