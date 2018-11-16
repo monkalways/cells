@@ -19,7 +19,7 @@ const authenticationReducer = (state = defaultAuthenticationState, action) => {
     case types.START_AUTHENTICATE:
       return {
         ...state,
-        cardId: action.payload.cardId,
+        cardId: action.cardId,
         authenticating: true,
       };
     case types.AUTHENTICATE_SUCCESS:
@@ -28,7 +28,7 @@ const authenticationReducer = (state = defaultAuthenticationState, action) => {
         authenticating: false,
         authenticated: true,
         signInDialogOpen: false,
-        userName: action.payload.userName,
+        userName: action.userName,
       };
     case types.AUTHENTICATE_FAIL:
       return {

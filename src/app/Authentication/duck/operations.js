@@ -14,9 +14,9 @@ const authenticate = (
   authenticateFailAction = actions.authenticateFail,
 ) => async (dispatch) => {
   try {
-    dispatch(startAuthenticateAction({ cardId }));
+    dispatch(startAuthenticateAction(cardId));
     const userName = await authenticateService(cardId);
-    dispatch(authenticateSuccessAction({ userName }));
+    dispatch(authenticateSuccessAction(userName));
   } catch (error) {
     if (error.response.status === 401) {
       dispatch(authenticateFailAction());
