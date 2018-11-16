@@ -15,8 +15,11 @@ const propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
-const Header = ({
-  classes, usage, onLogout, isAuthenticated,
+export const HeaderComponent = ({
+  classes,
+  usage,
+  onLogout,
+  isAuthenticated,
 }) => (
   <div className={classes.root}>
     <AppBar position="static" className={classes.appBar}>
@@ -44,7 +47,7 @@ const Header = ({
   </div>
 );
 
-Header.propTypes = propTypes;
+HeaderComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   root: {
@@ -67,4 +70,4 @@ export default withStyles((theme) => ({
   logoutIcon: {
     fontSize: theme.typography.h4.fontSize,
   },
-}))(Header);
+}))(HeaderComponent);
