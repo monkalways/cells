@@ -13,6 +13,7 @@ describe('CheckInDetaineeDialogComponent', () => {
       activityRoomName: 'T1',
     };
     const isDialogOpen = false;
+    const usage = 'phone';
 
     const wrapper = shallow(<CheckInDetaineeDialogComponent
       detainee={detainee}
@@ -20,6 +21,7 @@ describe('CheckInDetaineeDialogComponent', () => {
       isCheckingIn={isCheckingIn}
       onCheckIn={onCheckIn}
       onClose={onClose}
+      usage={usage}
     />);
     return wrapper;
   };

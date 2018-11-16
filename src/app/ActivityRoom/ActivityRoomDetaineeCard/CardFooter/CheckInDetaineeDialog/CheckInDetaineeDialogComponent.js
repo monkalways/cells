@@ -16,6 +16,7 @@ const propTypes = {
     lastName: PropTypes.string.isRequired,
     activityRoomName: PropTypes.string.isRequired,
   }).isRequired,
+  usage: PropTypes.string.isRequired,
   isDialogOpen: PropTypes.bool.isRequired,
   isCheckingIn: PropTypes.bool.isRequired,
   onCheckIn: PropTypes.func.isRequired,
@@ -24,6 +25,7 @@ const propTypes = {
 
 const CheckInDetaineeDialogComponent = ({
   detainee,
+  usage,
   isCheckingIn,
   isDialogOpen,
   onCheckIn,
@@ -36,7 +38,7 @@ const CheckInDetaineeDialogComponent = ({
     disableEscapeKeyDown={isCheckingIn}
   >
     <DialogTitle>
-      {`Placing ${detainee.lastName}, ${detainee.firstName} in phone room ${
+      {`Placing ${detainee.lastName}, ${detainee.firstName} in ${usage} room ${
         detainee.activityRoomName
       }?`}
     </DialogTitle>

@@ -89,7 +89,11 @@ class CardFooterComponent extends Component {
 
   render() {
     const {
-      classes, isAuthenticated, detainee, isCheckingIn,
+      classes,
+      isAuthenticated,
+      detainee,
+      isCheckingIn,
+      usage,
     } = this.props;
     const { isDialogOpen } = this.state;
     return (
@@ -104,6 +108,7 @@ class CardFooterComponent extends Component {
               isDialogOpen={isDialogOpen}
               detainee={detainee}
               isCheckingIn={isCheckingIn}
+              usage={usage}
               onClose={this.handleClose}
               onCheckIn={this.handleCheckIn}
             />
