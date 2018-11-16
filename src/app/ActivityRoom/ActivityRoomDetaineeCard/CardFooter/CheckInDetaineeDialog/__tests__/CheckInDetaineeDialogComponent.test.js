@@ -6,7 +6,17 @@ import CheckInDetaineeDialogComponent from '../CheckInDetaineeDialogComponent';
 import Loading from '../../../../../common/Loading';
 
 describe('CheckInDetaineeDialogComponent', () => {
-  const setup = ({ isCheckingIn, onCheckIn, onClose }) => {
+  let isCheckingIn;
+  let onCheckIn;
+  let onClose;
+
+  beforeEach(() => {
+    isCheckingIn = true;
+    onCheckIn = jest.fn();
+    onClose = jest.fn();
+  });
+
+  const setup = () => {
     const detainee = {
       firstName: 'John',
       lastName: 'Smith',
@@ -15,7 +25,7 @@ describe('CheckInDetaineeDialogComponent', () => {
     const isDialogOpen = false;
     const usage = 'phone';
 
-    const wrapper = shallow(<CheckInDetaineeDialogComponent
+    return shallow(<CheckInDetaineeDialogComponent
       detainee={detainee}
       isDialogOpen={isDialogOpen}
       isCheckingIn={isCheckingIn}
@@ -23,57 +33,36 @@ describe('CheckInDetaineeDialogComponent', () => {
       onClose={onClose}
       usage={usage}
     />);
-    return wrapper;
   };
 
   it('should render', () => {
-    const isCheckingIn = false;
-    const onCheckIn = jest.fn();
-    const onClose = jest.fn();
-
-    const wrapper = setup({ isCheckingIn, onCheckIn, onClose });
-
+    isCheckingIn = false;
+    const wrapper = setup();
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render Loading component when isCheckingIn is true', () => {
-    const isCheckingIn = true;
-    const onCheckIn = jest.fn();
-    const onClose = jest.fn();
-
-    const wrapper = setup({ isCheckingIn, onCheckIn, onClose });
+    const wrapper = setup();
 
     expect(wrapper.find(Loading)).toExist();
   });
 
   it('should call onCheckIn when checkInButton is clicked', () => {
-    const isCheckingIn = true;
-    const onCheckIn = jest.fn();
-    const onClose = jest.fn();
-
-    const wrapper = setup({ isCheckingIn, onCheckIn, onClose });
+    const wrapper = setup();
 
     wrapper.find('#checkInButton').simulate('click');
     expect(onCheckIn).toBeCalled();
   });
 
   it('should call onClose when cancelButton is clicked', () => {
-    const isCheckingIn = true;
-    const onCheckIn = jest.fn();
-    const onClose = jest.fn();
-
-    const wrapper = setup({ isCheckingIn, onCheckIn, onClose });
+    const wrapper = setup();
 
     wrapper.find('#cancelButton').simulate('click');
     expect(onClose).toBeCalled();
   });
 
   it('should call onClose when dialog is closed', () => {
-    const isCheckingIn = true;
-    const onCheckIn = jest.fn();
-    const onClose = jest.fn();
-
-    const wrapper = setup({ isCheckingIn, onCheckIn, onClose });
+    const wrapper = setup();
 
     wrapper.find(Dialog).simulate('close');
     expect(onClose).toBeCalled();
