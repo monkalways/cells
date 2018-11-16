@@ -27,6 +27,7 @@ import InCellIcon from '../../images/InCell.png';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
+  detainee: PropTypes.shape({}).isRequired,
   isBailHearingRoom1OptionAvailable: PropTypes.bool.isRequired,
   isBailHearingRoom2OptionAvailable: PropTypes.bool.isRequired,
   isBreathTestRoomOptionAvailable: PropTypes.bool.isRequired,
@@ -48,6 +49,7 @@ class DetaineeActionComponent extends Component {
   render() {
     const {
       classes,
+      detainee,
       isBailHearingRoom1OptionAvailable,
       isBailHearingRoom2OptionAvailable,
       isBreathTestRoomOptionAvailable,
@@ -224,6 +226,7 @@ class DetaineeActionComponent extends Component {
             </Grid>
           </Grid>
         </CardContent>
+        <DetaineeActionDialog detainee={detainee} isDialogOpen={isDialogOpen} />
       </Card>
     );
   }

@@ -40,7 +40,7 @@ const DetaineeDetailsComponent = ({ detainee, isDetaineeProfileLoaded }) => (
             <Activities detainee={detainee} />
           </Grid>
           <Grid item sm={12}>
-            <DetaineeAction />
+            <DetaineeAction detanee={detainee} />
           </Grid>
         </Grid>
       ) : (

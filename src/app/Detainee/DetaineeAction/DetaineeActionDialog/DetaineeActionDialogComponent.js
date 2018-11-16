@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button,
+  // Button,
   Dialog,
   DialogActions,
-  DialogContent,
+  // DialogContent,
   DialogTitle,
 } from '@material-ui/core';
 
-import Loading from '../../../common/Loading';
+// import Loading from '../../../common/Loading';
 
 const propTypes = {
   detainee: PropTypes.shape({
@@ -16,36 +16,37 @@ const propTypes = {
     lastName: PropTypes.string.isRequired,
   }).isRequired,
   isDialogOpen: PropTypes.bool.isRequired,
-  isCheckingIn: PropTypes.bool.isRequired,
-  onCheckIn: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
+  // isCheckingIn: PropTypes.bool.isRequired,
+  // onCheckIn: PropTypes.func.isRequired,
+  // onClose: PropTypes.func.isRequired,
 };
 
 const CheckInDetaineeDialogComponent = ({
   detainee,
-  isCheckingIn,
+  // isCheckingIn,
   isDialogOpen,
-  onCheckIn,
-  onClose,
+  // onCheckIn,
+  // onClose,
+  // usage
 }) => (
   <Dialog
     open={isDialogOpen}
-    onClose={onClose}
-    disableBackdropClick={isCheckingIn}
-    disableEscapeKeyDown={isCheckingIn}
+    // onClose={onClose}
+    // disableBackdropClick={isCheckingIn}
+    // disableEscapeKeyDown={isCheckingIn}
   >
     <DialogTitle>
-      {`Placing ${detainee.lastName}, ${detainee.firstName} in phone room ${
+      {`Placing ${detainee.lastName}, ${detainee.firstName} in 'usage' ${
         detainee.activityRoomName
       }?`}
     </DialogTitle>
-    {isCheckingIn && (
+    {/* {isCheckingIn && (
       <DialogContent>
         <Loading size={50} />
       </DialogContent>
-    )}
+    )} */}
     <DialogActions>
-      <Button onClick={onClose} color="primary" disabled={isCheckingIn}>
+      {/* <Button onClick={onClose} color="primary" disabled={isCheckingIn}>
         Cancel
       </Button>
       <Button
@@ -56,7 +57,7 @@ const CheckInDetaineeDialogComponent = ({
         disabled={isCheckingIn}
       >
         Confirm
-      </Button>
+      </Button> */}
     </DialogActions>
   </Dialog>
 );
