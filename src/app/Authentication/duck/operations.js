@@ -27,9 +27,14 @@ const authenticate = (
   }
 };
 
-const logOut = (first, second, logOutAction = actions.logOut) => (dispatch) => {
+const logOut = (
+  first,
+  second,
+  logOutAction = actions.logOut,
+  pushAction = push,
+) => (dispatch) => {
   dispatch(logOutAction());
-  dispatch(push(`/${first}/${second}`));
+  dispatch(pushAction(`/${first}/${second}`));
 };
 
 export default {

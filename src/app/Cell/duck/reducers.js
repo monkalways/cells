@@ -1,8 +1,9 @@
+import _ from 'lodash';
 import { combineReducers } from 'redux';
 import types from './types';
 import { types as authenticationTypes } from '../../Authentication/duck';
 
-const detailsReducer = (state = null, action) => {
+export const detailsReducer = (state = null, action) => {
   switch (action.type) {
     case types.GET_CELL_DETAILS_SUCCESS:
       return {
@@ -20,7 +21,10 @@ const detaineesReducerDefaultState = {
   data: [],
 };
 
-const detaineesReducer = (state = detaineesReducerDefaultState, action) => {
+export const detaineesReducer = (
+  state = detaineesReducerDefaultState,
+  action,
+) => {
   switch (action.type) {
     case types.GET_CELL_DETAINEES:
       return {
@@ -44,32 +48,34 @@ const cellCheckReducerDefaultState = {
   data: {},
 };
 
-const cellCheckReducer = (state = cellCheckReducerDefaultState, action) => {
+export const cellCheckReducer = (
+  state = cellCheckReducerDefaultState,
+  action,
+) => {
+  const currentState = _.cloneDeep(state);
   switch (action.type) {
     case types.VISUAL_CHECK:
-      // eslint-disable-next-line no-param-reassign
-      state.data[action.detainee.id] = {
+      currentState.data[action.detainee.id] = {
         detainee: action.detainee,
         visual: true,
         verbal: false,
       };
-      return { ...state, data: { ...state.data } };
+      return { ...currentState };
     case types.VERBAL_CHECK:
-      // eslint-disable-next-line no-param-reassign
-      state.data[action.detainee.id] = {
+      currentState.data[action.detainee.id] = {
         detainee: action.detainee,
         visual: false,
         verbal: true,
       };
-      return { ...state, data: { ...state.data } };
+      return { ...currentState };
     case types.SAVE_CELL_CHECK:
-      return { ...state, saving: true };
+      return { ...currentState, saving: true };
     case types.SAVE_CELL_CHECK_SUCCESS:
       return { saving: false, data: {} };
     case authenticationTypes.LOG_OUT:
       return cellCheckReducerDefaultState;
     default:
-      return state;
+      return currentState;
   }
 };
 
@@ -78,43 +84,41 @@ const mealReducerDefaultState = {
   data: {},
 };
 
-const mealReducer = (state = mealReducerDefaultState, action) => {
+export const mealReducer = (state = mealReducerDefaultState, action) => {
+  const currentState = _.cloneDeep(state);
   switch (action.type) {
     case types.ACCEPT_MEAL:
-      // eslint-disable-next-line no-param-reassign
-      state.data[action.detainee.id] = {
+      currentState.data[action.detainee.id] = {
         detainee: action.detainee,
         accept: true,
         reject: false,
         notApplicable: false,
       };
-      return { ...state, data: { ...state.data } };
+      return { ...currentState };
     case types.REJECT_MEAL:
-      // eslint-disable-next-line no-param-reassign
-      state.data[action.detainee.id] = {
+      currentState.data[action.detainee.id] = {
         detainee: action.detainee,
         accept: false,
         reject: true,
         notApplicable: false,
       };
-      return { ...state, data: { ...state.data } };
+      return { ...currentState };
     case types.NOT_APPLICABLE_MEAL:
-      // eslint-disable-next-line no-param-reassign
-      state.data[action.detainee.id] = {
+      currentState.data[action.detainee.id] = {
         detainee: action.detainee,
         accept: false,
         reject: false,
         notApplicable: true,
       };
-      return { ...state, data: { ...state.data } };
+      return { ...currentState };
     case types.SAVE_MEAL:
-      return { ...state, saving: true };
+      return { ...currentState, saving: true };
     case types.SAVE_MEAL_SUCCESS:
       return { saving: false, data: {} };
     case authenticationTypes.LOG_OUT:
       return mealReducerDefaultState;
     default:
-      return state;
+      return currentState;
   }
 };
 
@@ -123,43 +127,44 @@ const medicationReducerDefaultState = {
   data: {},
 };
 
-const medicationReducer = (state = medicationReducerDefaultState, action) => {
+export const medicationReducer = (
+  state = medicationReducerDefaultState,
+  action,
+) => {
+  const currentState = _.cloneDeep(state);
   switch (action.type) {
     case types.ACCEPT_MEDICATION:
-      // eslint-disable-next-line no-param-reassign
-      state.data[action.detainee.id] = {
+      currentState.data[action.detainee.id] = {
         detainee: action.detainee,
         accept: true,
         reject: false,
         notApplicable: false,
       };
-      return { ...state, data: { ...state.data } };
+      return { ...currentState };
     case types.REJECT_MEDICATION:
-      // eslint-disable-next-line no-param-reassign
-      state.data[action.detainee.id] = {
+      currentState.data[action.detainee.id] = {
         detainee: action.detainee,
         accept: false,
         reject: true,
         notApplicable: false,
       };
-      return { ...state, data: { ...state.data } };
+      return { ...currentState };
     case types.NOT_APPLICABLE_MEDICATION:
-      // eslint-disable-next-line no-param-reassign
-      state.data[action.detainee.id] = {
+      currentState.data[action.detainee.id] = {
         detainee: action.detainee,
         accept: false,
         reject: false,
         notApplicable: true,
       };
-      return { ...state, data: { ...state.data } };
+      return { ...currentState };
     case types.SAVE_MEDICATION:
-      return { ...state, saving: true };
+      return { ...currentState, saving: true };
     case types.SAVE_MEDICATION_SUCCESS:
       return { saving: false, data: {} };
     case authenticationTypes.LOG_OUT:
       return medicationReducerDefaultState;
     default:
-      return state;
+      return currentState;
   }
 };
 

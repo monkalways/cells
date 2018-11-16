@@ -90,4 +90,19 @@ describe('Authentication operations', () => {
       expect(dispatch).toBeCalledTimes(1);
     });
   });
+
+  describe('logout', () => {
+    it('should log out', () => {
+      const first = 'cells';
+      const second = 'c1';
+      const logOutAction = jest.fn();
+      const pushAction = jest.fn();
+      const dispatch = jest.fn();
+
+      operations.logOut(first, second, logOutAction, pushAction)(dispatch);
+
+      expect(logOutAction).toBeCalled();
+      expect(pushAction).toBeCalledWith('/cells/c1');
+    });
+  });
 });
