@@ -10,17 +10,14 @@ import CardFooter from './CardFooter';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  detainee: PropTypes.shape({
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-  }).isRequired,
+  detainee: PropTypes.shape({}).isRequired,
   usage: PropTypes.string.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   isCheckingIn: PropTypes.bool.isRequired,
   onCheckIn: PropTypes.func.isRequired,
 };
 
-const ActivityRoomDetaineeCardComponent = ({
+export const ActivityRoomDetaineeCardComponent = ({
   classes,
   detainee,
   usage,

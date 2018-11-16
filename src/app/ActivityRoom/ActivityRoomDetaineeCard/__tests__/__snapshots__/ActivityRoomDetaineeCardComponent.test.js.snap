@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActivityRoomDetaineeCardComponent should render 1`] = `
+<WithStyles(Card)
+  className={Object {}}
+>
+  <WithStyles(CellDetaineeCardHeaderComponent)
+    cellDetainee={Object {}}
+  />
+  <WithStyles(withRouter(CellDetaineeCardContentComponent))
+    cellDetainee={Object {}}
+    first="activity-rooms"
+    isAuthenticated={false}
+    second="phone"
+  />
+  <WithStyles(withRouter(CardFooterComponent))
+    detainee={Object {}}
+    isAuthenticated={false}
+    isCheckingIn={false}
+    onCheckIn={[MockFunction]}
+    usage="phone"
+  />
+</WithStyles(Card)>
+`;
