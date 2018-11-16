@@ -44,8 +44,9 @@ const activityRoomsReducer = (state = defaultActivityRoomsState, action) => {
       };
     case types.GET_AVAILABLE_ACTIVITY_ROOMS_SUCCESS:
       return {
-        availableActivityRooms: action.payload,
+        ...state,
         loaded: true,
+        availableActivityRooms: action.payload,
       };
     case types.ASSIGN_TO_ROOM:
       return {
