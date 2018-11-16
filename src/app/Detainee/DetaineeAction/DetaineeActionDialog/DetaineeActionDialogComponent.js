@@ -18,27 +18,25 @@ const propTypes = {
   isDialogOpen: PropTypes.bool.isRequired,
   // isCheckingIn: PropTypes.bool.isRequired,
   // onCheckIn: PropTypes.func.isRequired,
-  // onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
-const CheckInDetaineeDialogComponent = ({
+const DetaineeActionDialogComponent = ({
   detainee,
   // isCheckingIn,
   isDialogOpen,
   // onCheckIn,
-  // onClose,
+  onClose,
   // usage
 }) => (
   <Dialog
     open={isDialogOpen}
-    // onClose={onClose}
+    onClose={onClose}
     // disableBackdropClick={isCheckingIn}
     // disableEscapeKeyDown={isCheckingIn}
   >
     <DialogTitle>
-      {`Placing ${detainee.lastName}, ${detainee.firstName} in 'usage' ${
-        detainee.activityRoomName
-      }?`}
+      {`Moving ${detainee.lastName}, ${detainee.firstName} to 'usage'?`}
     </DialogTitle>
     {/* {isCheckingIn && (
       <DialogContent>
@@ -62,6 +60,6 @@ const CheckInDetaineeDialogComponent = ({
   </Dialog>
 );
 
-CheckInDetaineeDialogComponent.propTypes = propTypes;
+DetaineeActionDialogComponent.propTypes = propTypes;
 
-export default CheckInDetaineeDialogComponent;
+export default DetaineeActionDialogComponent;
