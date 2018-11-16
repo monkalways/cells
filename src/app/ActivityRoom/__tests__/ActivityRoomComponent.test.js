@@ -40,8 +40,8 @@ describe('ActivityRoomComponent', () => {
 
   const setup = () => {
     const classes = {
-      body: {},
-      heading: {},
+      body: '',
+      heading: '',
     };
     return shallow(<ActivityRoomComponent
       classes={classes}

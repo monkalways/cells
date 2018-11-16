@@ -2,7 +2,7 @@
 
 exports[`HeaderContentComponent should render 1`] = `
 <WithStyles(Grid)
-  className={Object {}}
+  className=""
   container={true}
   justify="center"
 >
@@ -12,7 +12,7 @@ exports[`HeaderContentComponent should render 1`] = `
     justify="center"
   >
     <WithStyles(Avatar)
-      className={Object {}}
+      className=""
       src="PhoneAccept.png"
     />
   </WithStyles(Grid)>

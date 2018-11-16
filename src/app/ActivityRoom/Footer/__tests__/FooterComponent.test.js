@@ -17,9 +17,9 @@ describe('FooterComponent', () => {
 
   const setup = () => {
     const classes = {
-      root: {},
-      appBar: {},
-      button: {},
+      root: '',
+      appBar: '',
+      button: '',
     };
     return shallow(<FooterComponent
       classes={classes}

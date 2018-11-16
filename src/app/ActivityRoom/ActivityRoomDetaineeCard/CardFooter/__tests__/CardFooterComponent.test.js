@@ -23,10 +23,10 @@ describe('CardFooterComponent', () => {
 
   const setup = () => {
     const classes = {
-      actions: {},
-      heading: {},
-      inButton: {},
-      outButton: {},
+      actions: '',
+      heading: '',
+      inButton: '',
+      outButton: '',
     };
     const detainee = {
       id: detaineeId,

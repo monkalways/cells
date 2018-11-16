@@ -5,7 +5,7 @@ import { ActivityRoomDetaineeCardComponent } from '../ActivityRoomDetaineeCardCo
 
 describe('ActivityRoomDetaineeCardComponent', () => {
   it('should render', () => {
-    const classes = { card: {} };
+    const classes = { card: '' };
     const detainee = {};
     const wrapper = shallow(<ActivityRoomDetaineeCardComponent
       classes={classes}

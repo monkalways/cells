@@ -9,11 +9,11 @@ exports[`ActivityRoomComponent should render "no detainees" when detainees are l
       usage="phone"
     />
     <div
-      className={Object {}}
+      className=""
     >
       <WithStyles(CellDetaineeGridComponent)>
         <WithStyles(Typography)
-          className={Object {}}
+          className=""
           variant="h6"
         >
           No detainees.
@@ -37,7 +37,7 @@ exports[`ActivityRoomComponent should render Loading when detainees are not yet 
       usage="phone"
     />
     <div
-      className={Object {}}
+      className=""
     >
       <WithStyles(CellDetaineeGridComponent)>
         <WithStyles(LoadingComponent) />
@@ -60,7 +60,7 @@ exports[`ActivityRoomComponent should render detainee cards when one or more det
       usage="phone"
     />
     <div
-      className={Object {}}
+      className=""
     >
       <WithStyles(CellDetaineeGridComponent)>
         <WithStyles(Grid)

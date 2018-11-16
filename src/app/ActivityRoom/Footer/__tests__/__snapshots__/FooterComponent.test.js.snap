@@ -2,10 +2,10 @@
 
 exports[`FooterComponent should not render Scan ID Card button when authenticated 1`] = `
 <div
-  className={Object {}}
+  className=""
 >
   <WithStyles(AppBar)
-    className={Object {}}
+    className=""
     position="static"
   >
     <WithStyles(Grid)
@@ -19,10 +19,10 @@ exports[`FooterComponent should not render Scan ID Card button when authenticate
 
 exports[`FooterComponent should render Scan ID Card button when not authenticated 1`] = `
 <div
-  className={Object {}}
+  className=""
 >
   <WithStyles(AppBar)
-    className={Object {}}
+    className=""
     position="static"
   >
     <WithStyles(Grid)
@@ -31,7 +31,7 @@ exports[`FooterComponent should render Scan ID Card button when not authenticate
       justify="center"
     >
       <WithStyles(Button)
-        className={Object {}}
+        className=""
         color="secondary"
         onClick={[Function]}
         variant="contained"
