@@ -14,6 +14,8 @@ const propTypes = {
     id: PropTypes.string.isRequired,
     activityRoomName: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
   }).isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   isCheckingIn: PropTypes.bool.isRequired,

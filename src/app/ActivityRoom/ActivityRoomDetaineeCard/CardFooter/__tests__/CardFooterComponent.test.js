@@ -32,6 +32,8 @@ describe('CardFooterComponent', () => {
       id: detaineeId,
       activityRoomName: 'T1',
       location,
+      firstName: 'John',
+      lastName: 'Smith',
     };
     const isCheckingIn = false;
     const history = { push };

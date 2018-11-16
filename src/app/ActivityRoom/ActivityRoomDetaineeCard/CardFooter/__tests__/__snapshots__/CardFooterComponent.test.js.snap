@@ -29,7 +29,9 @@ exports[`CardFooterComponent should render title when isAuthenticated is true 1`
     detainee={
       Object {
         "activityRoomName": "T1",
+        "firstName": "John",
         "id": "123",
+        "lastName": "Smith",
         "location": "Phone - In Transit",
       }
     }
