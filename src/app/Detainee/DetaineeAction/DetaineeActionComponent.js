@@ -24,6 +24,7 @@ import BailHearing2Icon from '../../images/BailHearing2.png';
 import RemandHoldingIcon from '../../images/RemandHolding.png';
 import ReleaseHoldingIcon from '../../images/ReleaseHolding.png';
 import InCellIcon from '../../images/InCell.png';
+import constants from '../constants';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -47,11 +48,14 @@ const propTypes = {
 class DetaineeActionComponent extends Component {
   state = {
     isDialogOpen: false,
+    usage: '',
   };
 
-  handleButtonClick = () => {
+  handleButtonClick = (usage) => {
+    console.log(usage);
     this.setState({
       isDialogOpen: true,
+      usage,
     });
   };
 
@@ -78,7 +82,7 @@ class DetaineeActionComponent extends Component {
       isRemandHoldingRoomOptionAvailable,
     } = this.props;
 
-    const { isDialogOpen } = this.state;
+    const { isDialogOpen, usage } = this.state;
 
     return (
       <Card className={classes.card}>
@@ -96,7 +100,9 @@ class DetaineeActionComponent extends Component {
                 <IconButton
                   className={classes.button}
                   disabled={!isMedicalRoomOptionAvailable}
-                  onClick={this.handleButtonClick}
+                  onClick={() => {
+                    this.handleButtonClick(constants.MEDICAL_ROOM);
+                  }}
                   onClose={this.handleClose}
                 >
                   <Avatar
@@ -111,7 +117,9 @@ class DetaineeActionComponent extends Component {
                 <IconButton
                   className={classes.button}
                   disabled={!isPhoneRoomOptionAvailable}
-                  onClick={this.handleButtonClick}
+                  onClick={() => {
+                    this.handleButtonClick(constants.PHONE_ROOM);
+                  }}
                   onClose={this.handleClose}
                 >
                   <Avatar
@@ -126,7 +134,9 @@ class DetaineeActionComponent extends Component {
                 <IconButton
                   className={classes.button}
                   disabled={!isPhoneDeclineOptionAvailable}
-                  onClick={this.handleButtonClick}
+                  onClick={() => {
+                    this.handleButtonClick(constants.PHONE_DECLINE);
+                  }}
                   onClose={this.handleClose}
                 >
                   <Avatar
@@ -141,7 +151,9 @@ class DetaineeActionComponent extends Component {
                 <IconButton
                   className={classes.button}
                   disabled={!isFingerprintingRoomOptionAvailable}
-                  onClick={this.handleButtonClick}
+                  onClick={() => {
+                    this.handleButtonClick(constants.FINGERPRINTING_ROOM);
+                  }}
                   onClose={this.handleClose}
                 >
                   <Avatar
@@ -156,7 +168,9 @@ class DetaineeActionComponent extends Component {
                 <IconButton
                   className={classes.button}
                   disabled={!isBreathTestRoomOptionAvailable}
-                  onClick={this.handleButtonClick}
+                  onClick={() => {
+                    this.handleButtonClick(constants.BREATH_TEST_ROOM);
+                  }}
                   onClose={this.handleClose}
                 >
                   <Avatar
@@ -171,7 +185,9 @@ class DetaineeActionComponent extends Component {
                 <IconButton
                   className={classes.button}
                   disabled={!isInterviewRoomOptionAvailable}
-                  onClick={this.handleButtonClick}
+                  onClick={() => {
+                    this.handleButtonClick(constants.INTERVIEW_ROOM);
+                  }}
                   onClose={this.handleClose}
                 >
                   <Avatar
@@ -189,7 +205,9 @@ class DetaineeActionComponent extends Component {
                 <IconButton
                   className={classes.button}
                   disabled={!isBailHearingRoom1OptionAvailable}
-                  onClick={this.handleButtonClick}
+                  onClick={() => {
+                    this.handleButtonClick(constants.BAIL_HEARING_ROOM_1);
+                  }}
                   onClose={this.handleClose}
                 >
                   <Avatar
@@ -204,7 +222,9 @@ class DetaineeActionComponent extends Component {
                 <IconButton
                   className={classes.button}
                   disabled={!isBailHearingRoom2OptionAvailable}
-                  onClick={this.handleButtonClick}
+                  onClick={() => {
+                    this.handleButtonClick(constants.BAIL_HEARING_ROOM_2);
+                  }}
                   onClose={this.handleClose}
                 >
                   <Avatar
@@ -219,7 +239,9 @@ class DetaineeActionComponent extends Component {
                 <IconButton
                   className={classes.button}
                   disabled={!isRemandHoldingRoomOptionAvailable}
-                  onClick={this.handleButtonClick}
+                  onClick={() => {
+                    this.handleButtonClick(constants.REMAND_HOLDING_ROOM);
+                  }}
                   onClose={this.handleClose}
                 >
                   <Avatar
@@ -234,7 +256,9 @@ class DetaineeActionComponent extends Component {
                 <IconButton
                   className={classes.button}
                   disabled={!isReleaseRoomOptionAvailable}
-                  onClick={this.handleButtonClick}
+                  onClick={() => {
+                    this.handleButtonClick(constants.RELEASE_ROOM);
+                  }}
                   onClose={this.handleClose}
                 >
                   <Avatar
@@ -249,7 +273,9 @@ class DetaineeActionComponent extends Component {
                 <IconButton
                   className={classes.button}
                   disabled={!isInCellOptionAvailable}
-                  onClick={this.handleButtonClick}
+                  onClick={() => {
+                    this.handleButtonClick(constants.CELL);
+                  }}
                   onClose={this.handleClose}
                 >
                   <Avatar
@@ -267,6 +293,7 @@ class DetaineeActionComponent extends Component {
           detainee={detainee}
           isDialogOpen={isDialogOpen}
           onClose={this.handleClose}
+          usage={usage}
         />
       </Card>
     );

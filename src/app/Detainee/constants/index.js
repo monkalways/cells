@@ -6,13 +6,15 @@ const CELLS_URL = 'api/cells/';
 const DETAINEE_URL = 'api/detainees/';
 const DETAINEE_PROFILE = '/detainee-profile';
 
-// Activity Rooms
+// Usages
 const BAIL_HEARING_ROOM_1 = 'Bail Hearing1';
 const BAIL_HEARING_ROOM_2 = 'Bail Hearing2';
 const BREATH_TEST_ROOM = 'Breath Test';
+const CELL = 'Cell';
 const FINGERPRINTING_ROOM = 'Fingerprinting';
 const INTERVIEW_ROOM = 'Interview';
 const MEDICAL_ROOM = 'Medical';
+const PHONE_DECLINE = 'Phone Decline';
 const PHONE_ROOM = 'Phone';
 const RELEASE_ROOM = 'Release Room';
 const REMAND_HOLDING_ROOM = 'Remand Holding Room';
@@ -47,6 +49,7 @@ export default {
   BREATH_TEST_IN_PROGRESS,
   BREATH_TEST_IN_TRANSIT,
   BREATH_TEST_ROOM,
+  CELL,
   CELL_IN_TRANSIT,
   CELLS_QUERYSTRING,
   CELLS_URL,
@@ -62,6 +65,7 @@ export default {
   MEDICAL_ROOM,
   MEDICAL_IN_PROGRESS,
   MEDICAL_IN_TRANSIT,
+  PHONE_DECLINE,
   PHONE_ROOM,
   PHONE_IN_PROGRESS,
   PHONE_IN_TRANSIT,
