@@ -34,6 +34,9 @@ const PHONE_IN_TRANSIT = 'Phone - In Transit';
 const RELEASE_HOLDING_IN_TRANSIT = 'Release Holding - In Transit';
 const REMAND_HOLDING_IN_TRANSIT = 'Remand Holding - In Transit';
 
+// Locations
+const IN_PROGRESS = 'In Progress';
+
 export default {
   ACTIVITY_ROOMS_QUERYSTRING,
   AVAILABLE_ACTIVITY_ROOMS,
@@ -52,6 +55,7 @@ export default {
   FINGERPRINTING_IN_PROGRESS,
   FINGERPRINTING_IN_TRANSIT,
   FINGERPRINTING_ROOM,
+  IN_PROGRESS,
   INTERVIEW_ROOM,
   INTERVIEW_IN_PROGRESS,
   INTERVIEW_IN_TRANSIT,
