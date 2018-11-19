@@ -7,7 +7,7 @@ import { FooterRadioButtonGroupComponent } from '../FooterRadioButtonGroupCompon
 describe('FooterRadioButtonGroupComponent', () => {
   let onRadioGroupChange;
 
-  beforeAll(() => {
+  beforeEach(() => {
     onRadioGroupChange = jest.fn();
   });
 
@@ -26,6 +26,10 @@ describe('FooterRadioButtonGroupComponent', () => {
   it('should render', () => {
     const wrapper = setup();
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should handle radio group change', () => {
+    const wrapper = setup();
 
     wrapper.find(RadioGroup).simulate('change');
     expect(onRadioGroupChange).toBeCalled();
