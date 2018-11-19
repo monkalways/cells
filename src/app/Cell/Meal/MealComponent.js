@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 
 import CellDetaineeGrid from '../../common/CellDetaineeGrid';
-import MealCellDetaineeCard from './MealCellDetaineeCard';
+import CellDetaineeCard from './CellDetaineeCard';
 import MealFooter from './MealFooter';
 import Loading from '../../common/Loading';
 
@@ -110,7 +110,7 @@ class MealComponent extends Component {
             <React.Fragment>
               {cellDetainees.map((cellDetainee) => (
                 <Grid key={cellDetainee.id} item sm={4}>
-                  <MealCellDetaineeCard
+                  <CellDetaineeCard
                     cellDetainee={cellDetainee}
                     cellName={cellName}
                     isAuthenticated={isAuthenticated}

@@ -7,7 +7,7 @@ import {
   CellDetaineeCardContent,
 } from '../../../common/CellDetaineeCard';
 
-import MedicationCellDetaineeCardFooter from './MedicationCellDetaineeCardFooter';
+import CardFooter from './CardFooter';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -31,7 +31,7 @@ const defaultProps = {
   medication: null,
 };
 
-const MedicationCellDetaineeCardComponent = ({
+const CellDetaineeCardComponent = ({
   classes,
   cellDetainee,
   cellName,
@@ -49,7 +49,7 @@ const MedicationCellDetaineeCardComponent = ({
       second={cellName}
       isAuthenticated={isAuthenticated}
     />
-    <MedicationCellDetaineeCardFooter
+    <CardFooter
       medication={medication}
       onAcceptClick={onAcceptClick}
       onRejectClick={onRejectClick}
@@ -58,12 +58,12 @@ const MedicationCellDetaineeCardComponent = ({
   </Card>
 );
 
-MedicationCellDetaineeCardComponent.propTypes = propTypes;
-MedicationCellDetaineeCardComponent.defaultProps = defaultProps;
+CellDetaineeCardComponent.propTypes = propTypes;
+CellDetaineeCardComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   card: {
     maxWidth: theme.spacing.unit * 50,
     backgroundColor: theme.palette.background.paper,
   },
-}))(MedicationCellDetaineeCardComponent);
+}))(CellDetaineeCardComponent);

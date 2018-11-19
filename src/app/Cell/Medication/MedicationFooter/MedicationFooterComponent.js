@@ -13,7 +13,7 @@ import SaveIcon from '@material-ui/icons/Save';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import MedicationFooterRadioButtonGroup from './MedicationFooterRadioButtonGroup';
+import FooterRadioButtonGroup from './FooterRadioButtonGroup';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -66,7 +66,7 @@ const MedicationFooterComponent = ({
               disabled={isSaveDisabled || isSavingMedication}
             />
             <BottomNavigationAction disabled />
-            <MedicationFooterRadioButtonGroup
+            <FooterRadioButtonGroup
               radioButtonValue={radioButtonValue}
               disabled={isSaveDisabled || isSavingMedication}
               onRadioGroupChange={onRadioGroupChange}

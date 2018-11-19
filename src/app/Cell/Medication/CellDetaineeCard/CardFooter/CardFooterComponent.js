@@ -22,7 +22,7 @@ const defaultProps = {
   medication: null,
 };
 
-const MedicationCellDetaineeCardFooterComponent = ({
+const CardFooterComponent = ({
   classes,
   medication,
   onAcceptClick,
@@ -74,8 +74,8 @@ const MedicationCellDetaineeCardFooterComponent = ({
   </CardActions>
 );
 
-MedicationCellDetaineeCardFooterComponent.propTypes = propTypes;
-MedicationCellDetaineeCardFooterComponent.defaultProps = defaultProps;
+CardFooterComponent.propTypes = propTypes;
+CardFooterComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   actions: {
@@ -93,4 +93,4 @@ export default withStyles((theme) => ({
     height: theme.spacing.unit * 6,
     width: theme.spacing.unit * 6,
   },
-}))(MedicationCellDetaineeCardFooterComponent);
+}))(CardFooterComponent);

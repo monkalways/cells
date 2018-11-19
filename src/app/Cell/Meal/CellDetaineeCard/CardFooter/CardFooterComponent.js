@@ -22,7 +22,7 @@ const defaultProps = {
   meal: null,
 };
 
-const MealCellDetaineeCardFooterComponent = ({
+const CardFooterComponent = ({
   classes,
   meal,
   onAcceptClick,
@@ -66,8 +66,8 @@ const MealCellDetaineeCardFooterComponent = ({
   </CardActions>
 );
 
-MealCellDetaineeCardFooterComponent.propTypes = propTypes;
-MealCellDetaineeCardFooterComponent.defaultProps = defaultProps;
+CardFooterComponent.propTypes = propTypes;
+CardFooterComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   actions: {
@@ -85,4 +85,4 @@ export default withStyles((theme) => ({
     height: theme.spacing.unit * 6,
     width: theme.spacing.unit * 6,
   },
-}))(MealCellDetaineeCardFooterComponent);
+}))(CardFooterComponent);

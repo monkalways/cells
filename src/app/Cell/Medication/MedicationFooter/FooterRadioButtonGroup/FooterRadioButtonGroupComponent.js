@@ -15,14 +15,14 @@ const propTypes = {
   onRadioGroupChange: PropTypes.func.isRequired,
 };
 
-const MealFooterRadioButtonGroup = ({
+const FooterRadioButtonGroup = ({
   classes,
   radioButtonValue,
   disabled,
   onRadioGroupChange,
 }) => (
   <RadioGroup
-    name="MealRadio"
+    name="MedicationRadio"
     className={classes.group}
     value={radioButtonValue}
     onChange={onRadioGroupChange}
@@ -42,7 +42,7 @@ const MealFooterRadioButtonGroup = ({
   </RadioGroup>
 );
 
-MealFooterRadioButtonGroup.propTypes = propTypes;
+FooterRadioButtonGroup.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   group: {
@@ -52,4 +52,4 @@ export default withStyles((theme) => ({
   radioButton: {
     padding: theme.spacing.unit,
   },
-}))(MealFooterRadioButtonGroup);
+}))(FooterRadioButtonGroup);

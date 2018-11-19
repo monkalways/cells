@@ -13,7 +13,7 @@ import SaveIcon from '@material-ui/icons/Save';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import CellCheckFooterRadioButtonGroup from './CellCheckFooterRadioButtonGroup';
+import FooterRadioButtonGroup from './FooterRadioButtonGroup';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -66,7 +66,7 @@ const CellCheckFooterComponent = ({
               onClick={onSave}
             />
             <BottomNavigationAction disabled />
-            <CellCheckFooterRadioButtonGroup
+            <FooterRadioButtonGroup
               radioButtonValue={radioButtonValue}
               disabled={isSaveDisabled || isSavingCellCheck}
               onRadioGroupChange={onRadioGroupChange}

@@ -7,7 +7,7 @@ import {
   CellDetaineeCardContent,
 } from '../../../common/CellDetaineeCard';
 
-import CellCheckCellDetaineeCardFooter from './CellCheckCellDetaineeCardFooter';
+import CardFooter from './CardFooter';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -17,28 +17,29 @@ const propTypes = {
   }).isRequired,
   cellName: PropTypes.string.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
-  cellCheck: PropTypes.shape({
-    visual: PropTypes.bool.isRequired,
-    verbal: PropTypes.bool.isRequired,
+  meal: PropTypes.shape({
+    accept: PropTypes.bool.isRequired,
+    reject: PropTypes.bool.isRequired,
+    notApplicable: PropTypes.bool.isRequired,
   }),
-  onVisualClick: PropTypes.func,
-  onVerbalClick: PropTypes.func,
+  onAcceptClick: PropTypes.func.isRequired,
+  onRejectClick: PropTypes.func.isRequired,
+  onNotApplicableClick: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
-  cellCheck: null,
-  onVisualClick: null,
-  onVerbalClick: null,
+  meal: null,
 };
 
-const CellCheckCellDetaineeCardComponent = ({
+const CellDetaineeCardComponent = ({
   classes,
   cellDetainee,
   cellName,
   isAuthenticated,
-  cellCheck,
-  onVisualClick,
-  onVerbalClick,
+  meal,
+  onAcceptClick,
+  onRejectClick,
+  onNotApplicableClick,
 }) => (
   <Card className={classes.card}>
     <CellDetaineeCardHeader cellDetainee={cellDetainee} />
@@ -48,20 +49,21 @@ const CellCheckCellDetaineeCardComponent = ({
       second={cellName}
       isAuthenticated={isAuthenticated}
     />
-    <CellCheckCellDetaineeCardFooter
-      cellCheck={cellCheck}
-      onVisualClick={onVisualClick}
-      onVerbalClick={onVerbalClick}
+    <CardFooter
+      meal={meal}
+      onAcceptClick={onAcceptClick}
+      onRejectClick={onRejectClick}
+      onNotApplicableClick={onNotApplicableClick}
     />
   </Card>
 );
 
-CellCheckCellDetaineeCardComponent.propTypes = propTypes;
-CellCheckCellDetaineeCardComponent.defaultProps = defaultProps;
+CellDetaineeCardComponent.propTypes = propTypes;
+CellDetaineeCardComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   card: {
     maxWidth: theme.spacing.unit * 50,
     backgroundColor: theme.palette.background.paper,
   },
-}))(CellCheckCellDetaineeCardComponent);
+}))(CellDetaineeCardComponent);

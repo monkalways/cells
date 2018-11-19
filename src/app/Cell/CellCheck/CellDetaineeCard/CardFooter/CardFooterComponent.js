@@ -21,7 +21,7 @@ const defaultProps = {
   onVerbalClick: null,
 };
 
-const CellCheckCellDetaineeCardFooterComponent = ({
+const CardFooterComponent = ({
   classes,
   cellCheck,
   onVisualClick,
@@ -59,8 +59,8 @@ const CellCheckCellDetaineeCardFooterComponent = ({
   </CardActions>
 );
 
-CellCheckCellDetaineeCardFooterComponent.propTypes = propTypes;
-CellCheckCellDetaineeCardFooterComponent.defaultProps = defaultProps;
+CardFooterComponent.propTypes = propTypes;
+CardFooterComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   actions: {
@@ -87,4 +87,4 @@ export default withStyles((theme) => ({
     height: theme.spacing.unit * 6,
     width: theme.spacing.unit * 6,
   },
-}))(CellCheckCellDetaineeCardFooterComponent);
+}))(CardFooterComponent);

@@ -7,7 +7,7 @@ import {
   CellDetaineeCardContent,
 } from '../../../common/CellDetaineeCard';
 
-import MealCellDetaineeCardFooter from './MealCellDetaineeCardFooter';
+import CardFooter from './CardFooter';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -17,29 +17,28 @@ const propTypes = {
   }).isRequired,
   cellName: PropTypes.string.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
-  meal: PropTypes.shape({
-    accept: PropTypes.bool.isRequired,
-    reject: PropTypes.bool.isRequired,
-    notApplicable: PropTypes.bool.isRequired,
+  cellCheck: PropTypes.shape({
+    visual: PropTypes.bool.isRequired,
+    verbal: PropTypes.bool.isRequired,
   }),
-  onAcceptClick: PropTypes.func.isRequired,
-  onRejectClick: PropTypes.func.isRequired,
-  onNotApplicableClick: PropTypes.func.isRequired,
+  onVisualClick: PropTypes.func,
+  onVerbalClick: PropTypes.func,
 };
 
 const defaultProps = {
-  meal: null,
+  cellCheck: null,
+  onVisualClick: null,
+  onVerbalClick: null,
 };
 
-const MealCellDetaineeCardComponent = ({
+const CellDetaineeCardComponent = ({
   classes,
   cellDetainee,
   cellName,
   isAuthenticated,
-  meal,
-  onAcceptClick,
-  onRejectClick,
-  onNotApplicableClick,
+  cellCheck,
+  onVisualClick,
+  onVerbalClick,
 }) => (
   <Card className={classes.card}>
     <CellDetaineeCardHeader cellDetainee={cellDetainee} />
@@ -49,21 +48,20 @@ const MealCellDetaineeCardComponent = ({
       second={cellName}
       isAuthenticated={isAuthenticated}
     />
-    <MealCellDetaineeCardFooter
-      meal={meal}
-      onAcceptClick={onAcceptClick}
-      onRejectClick={onRejectClick}
-      onNotApplicableClick={onNotApplicableClick}
+    <CardFooter
+      cellCheck={cellCheck}
+      onVisualClick={onVisualClick}
+      onVerbalClick={onVerbalClick}
     />
   </Card>
 );
 
-MealCellDetaineeCardComponent.propTypes = propTypes;
-MealCellDetaineeCardComponent.defaultProps = defaultProps;
+CellDetaineeCardComponent.propTypes = propTypes;
+CellDetaineeCardComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   card: {
     maxWidth: theme.spacing.unit * 50,
     backgroundColor: theme.palette.background.paper,
   },
-}))(MealCellDetaineeCardComponent);
+}))(CellDetaineeCardComponent);

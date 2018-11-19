@@ -15,34 +15,34 @@ const propTypes = {
   onRadioGroupChange: PropTypes.func.isRequired,
 };
 
-const MedicationFooterRadioButtonGroup = ({
+const FooterRadioButtonGroup = ({
   classes,
   radioButtonValue,
   disabled,
   onRadioGroupChange,
 }) => (
   <RadioGroup
-    name="MedicationRadio"
+    name="cellCheckRadio"
     className={classes.group}
     value={radioButtonValue}
     onChange={onRadioGroupChange}
   >
     <FormControlLabel
-      value="accept"
+      value="visual"
       control={<Radio className={classes.radioButton} />}
-      label={<Typography variant="body1">Accepted - All</Typography>}
+      label={<Typography variant="body1">Visual - All</Typography>}
       disabled={disabled}
     />
     <FormControlLabel
-      value="not-applicable"
+      value="verbal"
       control={<Radio className={classes.radioButton} />}
-      label={<Typography variant="body1">N/A - All</Typography>}
+      label={<Typography variant="body1">Verbal - All</Typography>}
       disabled={disabled}
     />
   </RadioGroup>
 );
 
-MedicationFooterRadioButtonGroup.propTypes = propTypes;
+FooterRadioButtonGroup.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   group: {
@@ -52,4 +52,4 @@ export default withStyles((theme) => ({
   radioButton: {
     padding: theme.spacing.unit,
   },
-}))(MedicationFooterRadioButtonGroup);
+}))(FooterRadioButtonGroup);
