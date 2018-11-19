@@ -40,4 +40,14 @@ describe('Authentication selectors', () => {
     const result = selectors.isAuthenticationFailedState(state);
     expect(result).toBe(state.authentication.authenticationFailed);
   });
+
+  it('should select userName', () => {
+    const state = {
+      authentication: {
+        userName: 'test',
+      },
+    };
+    const result = selectors.getUserNameState(state);
+    expect(result).toBe(state.authentication.userName);
+  });
 });
