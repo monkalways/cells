@@ -11,7 +11,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
-import DetaineeActionDialog from './DetaineeActionDialog';
+import GenericActivityRoomDialog from './GenericActivityRoomDialog';
 
 import MedicalVisitIcon from '../../images/MedicalVisit.png';
 import PhoneAcceptIcon from '../../images/PhoneAccept.png';
@@ -30,8 +30,11 @@ const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   detainee: PropTypes.shape({
     firstName: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
   }).isRequired,
+  getAvailableActivityRooms: PropTypes.func.isRequired,
+  getDetainee: PropTypes.func.isRequired,
   isBailHearingRoom1OptionAvailable: PropTypes.bool.isRequired,
   isBailHearingRoom2OptionAvailable: PropTypes.bool.isRequired,
   isBreathTestRoomOptionAvailable: PropTypes.bool.isRequired,
@@ -47,21 +50,24 @@ const propTypes = {
 
 class DetaineeActionComponent extends Component {
   state = {
-    isDialogOpen: false,
+    isGenericActivityRoomDialogOpen: false,
     usage: '',
   };
 
   handleButtonClick = (usage) => {
     this.setState({
-      isDialogOpen: true,
+      isGenericActivityRoomDialogOpen: true,
       usage,
     });
   };
 
   handleClose = () => {
     this.setState({
-      isDialogOpen: false,
+      isGenericActivityRoomDialogOpen: false,
     });
+    const { getAvailableActivityRooms, getDetainee, detainee } = this.props;
+    getAvailableActivityRooms();
+    getDetainee(detainee.id);
   };
 
   render() {
@@ -81,7 +87,7 @@ class DetaineeActionComponent extends Component {
       isRemandHoldingRoomOptionAvailable,
     } = this.props;
 
-    const { isDialogOpen, usage } = this.state;
+    const { isGenericActivityRoomDialogOpen, usage } = this.state;
 
     return (
       <Card className={classes.card}>
@@ -288,9 +294,9 @@ class DetaineeActionComponent extends Component {
             </Grid>
           </Grid>
         </CardContent>
-        <DetaineeActionDialog
+        <GenericActivityRoomDialog
           detainee={detainee}
-          isDialogOpen={isDialogOpen}
+          isDialogOpen={isGenericActivityRoomDialogOpen}
           onClose={this.handleClose}
           usage={usage}
         />

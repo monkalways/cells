@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { selectors } from '../duck';
+import { operations, selectors } from '../duck';
 import constants from '../constants';
 import DetaineeActionComponent from './DetaineeActionComponent';
 
@@ -75,7 +75,11 @@ export const mapStateToProps = (
   isRemandHoldingRoomOptionAvailable,
 });
 
-export const mapDispatchToProps = () => ({});
+export const mapDispatchToProps = (dispatch) => ({
+  // eslint-disable-next-line max-len
+  getAvailableActivityRooms: (getAvailableActivityRooms = operations.getAvailableActivityRooms) => dispatch(getAvailableActivityRooms()),
+  getDetainee: (id, getDetainee = operations.getDetainee) => dispatch(getDetainee(id)),
+});
 
 export default connect(
   mapStateToProps,

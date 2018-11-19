@@ -22,7 +22,7 @@ const propTypes = {
   usage: PropTypes.string.isRequired,
 };
 
-const DetaineeActionDialogComponent = ({
+const GenericActivityRoomDialogComponent = ({
   detainee,
   // isCheckingIn,
   isDialogOpen,
@@ -36,14 +36,27 @@ const DetaineeActionDialogComponent = ({
     // disableBackdropClick={isCheckingIn}
     // disableEscapeKeyDown={isCheckingIn}
   >
+    {/* Probably should make children here based on use cases
+   1. *** This one - Medical, Fingerprinting, Telephone, Bail Hearing 1 and 2, Breath Test ***
+   2. Not here - Interview
+   3. Not here - Check back into cell
+   4. Not here - Decline phone call
+   5. Not here - Remand and Release Holding rooms
+   Can do separate components or separate renderings. Components might be cleaner and make this file smaller. */}
     <DialogTitle>
       {`Moving ${detainee.lastName}, ${detainee.firstName} to ${usage}?`}
     </DialogTitle>
     {/* {isCheckingIn && (
       <DialogContent>
-        <Loading size={50} />
+      <Loading size={50} />
       </DialogContent>
     )} */}
+    {/* <DialogTitle>{`The ${usage} room is no longer available`}</DialogTitle>
+    <DialogActions>
+      <Button onClick={onClose} color="primary">
+        Close
+      </Button>
+    </DialogActions> */}
     <DialogActions>
       <Button
         onClick={onClose}
@@ -66,6 +79,6 @@ const DetaineeActionDialogComponent = ({
   </Dialog>
 );
 
-DetaineeActionDialogComponent.propTypes = propTypes;
+GenericActivityRoomDialogComponent.propTypes = propTypes;
 
-export default DetaineeActionDialogComponent;
+export default GenericActivityRoomDialogComponent;
