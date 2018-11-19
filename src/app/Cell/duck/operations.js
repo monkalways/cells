@@ -108,13 +108,14 @@ const getCellDetaineesForMeal = (
 const saveMeal = (
   meal,
   cellName,
+  userName,
   saveMealService = services.saveMeal,
   saveMealAction = actions.saveMeal,
   saveMealSuccessAction = actions.saveMealSuccess,
 ) => async (dispatch) => {
   try {
     dispatch(saveMealAction());
-    const savedAny = await saveMealService(meal);
+    const savedAny = await saveMealService(meal, userName);
     dispatch(saveMealSuccessAction());
     dispatch(push(`/cells/${cellName}/home/`));
     if (savedAny) utils.sendSuccessMessage({ dispatch, message: 'Meal provision saved.' });
