@@ -204,6 +204,22 @@ describe('Cell services', () => {
     expect(result).toBe(true);
   });
 
+  it('should not saveMeal if not applicable', async () => {
+    const meal = {
+      123: {
+        detainee: {
+          arrestId: '456',
+        },
+        notApplicable: true,
+      },
+    };
+    const userName = 'test';
+
+    const result = await services.saveMeal(meal, userName);
+
+    expect(result).toBe(false);
+  });
+
   it('should saveMeal for rejecting meal', async () => {
     const meal = {
       123: {
@@ -252,6 +268,22 @@ describe('Cell services', () => {
     const result = await services.saveMedication(medication, userName);
 
     expect(result).toBe(true);
+  });
+
+  it('should not saveMedication if not applicable', async () => {
+    const meal = {
+      123: {
+        detainee: {
+          arrestId: '456',
+        },
+        notApplicable: true,
+      },
+    };
+    const userName = 'test';
+
+    const result = await services.saveMedication(meal, userName);
+
+    expect(result).toBe(false);
   });
 
   it('should saveMedication for rejecting medication', async () => {
