@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 
 import CellDetaineeGrid from '../../common/CellDetaineeGrid';
-import CellCheckCellDetaineeCard from './CellCheckCellDetaineeCard';
+import CellDetaineeCard from './CellDetaineeCard';
 import CellCheckFooter from './CellCheckFooter';
 import Loading from '../../common/Loading';
 
@@ -98,7 +98,7 @@ class CellCheckComponent extends Component {
             <React.Fragment>
               {cellDetainees.map((cellDetainee) => (
                 <Grid key={cellDetainee.id} item sm={4}>
-                  <CellCheckCellDetaineeCard
+                  <CellDetaineeCard
                     cellDetainee={cellDetainee}
                     cellName={cellName}
                     isAuthenticated={isAuthenticated}

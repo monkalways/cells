@@ -13,7 +13,7 @@ import SaveIcon from '@material-ui/icons/Save';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import MealFooterRadioButtonGroup from './MealFooterRadioButtonGroup';
+import FooterRadioButtonGroup from './FooterRadioButtonGroup';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -66,7 +66,7 @@ const MealFooterComponent = ({
               disabled={isSaveDisabled || isSavingMeal}
             />
             <BottomNavigationAction disabled />
-            <MealFooterRadioButtonGroup
+            <FooterRadioButtonGroup
               radioButtonValue={radioButtonValue}
               disabled={isSaveDisabled || isSavingMeal}
               onRadioGroupChange={onRadioGroupChange}

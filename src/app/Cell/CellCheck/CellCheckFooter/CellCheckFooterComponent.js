@@ -13,12 +13,12 @@ import SaveIcon from '@material-ui/icons/Save';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import CellCheckFooterRadioButtonGroup from './CellCheckFooterRadioButtonGroup';
+import FooterRadioButtonGroup from './FooterRadioButtonGroup';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
+    goBack: PropTypes.func.isRequired,
   }).isRequired,
   radioButtonValue: PropTypes.string.isRequired,
   isSavingCellCheck: PropTypes.bool.isRequired,
@@ -27,7 +27,7 @@ const propTypes = {
   onSave: PropTypes.func.isRequired,
 };
 
-const CellCheckFooterComponent = ({
+export const CellCheckFooterComponent = ({
   classes,
   history,
   radioButtonValue,
@@ -54,19 +54,21 @@ const CellCheckFooterComponent = ({
             className={classes.navigation}
           >
             <BottomNavigationAction
+              id="backButton"
               label={<Typography variant="body1">Back</Typography>}
               icon={<ArrowBackIcon className={classes.icon} />}
               onClick={handleBackClick}
               disabled={isSavingCellCheck}
             />
             <BottomNavigationAction
+              id="saveButton"
               label={<Typography variant="body1">Save</Typography>}
               icon={<SaveIcon className={classes.icon} />}
               disabled={isSaveDisabled || isSavingCellCheck}
               onClick={onSave}
             />
             <BottomNavigationAction disabled />
-            <CellCheckFooterRadioButtonGroup
+            <FooterRadioButtonGroup
               radioButtonValue={radioButtonValue}
               disabled={isSaveDisabled || isSavingCellCheck}
               onRadioGroupChange={onRadioGroupChange}

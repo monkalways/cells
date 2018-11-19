@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardFooterComponent should not render any buttons if cell check is null 1`] = `
+<WithStyles(CardActions)
+  className="actions"
+  disableActionSpacing={true}
+/>
+`;
+
+exports[`CardFooterComponent should render visual and verbal buttons if cell check is not null 1`] = `
+<WithStyles(CardActions)
+  className="actions"
+  disableActionSpacing={true}
+>
+  <WithStyles(IconButton)
+    className="leftButtonSelected"
+    id="visualCheckButton"
+    onClick={[MockFunction]}
+  >
+    <img
+      alt="wellness visual"
+      className="img"
+      src="WellnessVisual.png"
+    />
+  </WithStyles(IconButton)>
+  <WithStyles(IconButton)
+    className="rightButton"
+    id="verbalCheckButton"
+    onClick={[MockFunction]}
+  >
+    <img
+      alt="wellness verbal"
+      className="img"
+      src="WellnessVerbal.png"
+    />
+  </WithStyles(IconButton)>
+</WithStyles(CardActions)>
+`;
