@@ -45,6 +45,7 @@ const getCellDetaineesForCellCheck = (
   getCellDetaineesService = services.getCellDetainees,
   getCellDetaineesAction = actions.getCellDetainees,
   getCellDetaineesSuccessAction = actions.getCellDetaineesSuccess,
+  visualCheckAction = visualCheck,
   sendErrorMessage = utils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
@@ -54,7 +55,7 @@ const getCellDetaineesForCellCheck = (
       cellDetainees
         .filter((detainee) => !detainee.location)
         .forEach((detainee) => {
-          dispatch(visualCheck(detainee));
+          dispatch(visualCheckAction(detainee));
         });
     }
     dispatch(getCellDetaineesSuccessAction(cellDetainees));
@@ -70,14 +71,16 @@ const saveCellCheck = (
   saveCellCheckService = services.saveCellCheck,
   saveCellCheckAction = actions.saveCellCheck,
   saveCellCheckSuccessAction = actions.saveCellCheckSuccess,
+  pushAction = push,
+  sendSuccessMessage = utils.sendSuccessMessage,
   sendErrorMessage = utils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
     dispatch(saveCellCheckAction());
     await saveCellCheckService(cellCheck, userName);
     dispatch(saveCellCheckSuccessAction());
-    dispatch(push(`/cells/${cellName}/home/`));
-    utils.sendSuccessMessage({ dispatch, message: 'Cell check saved.' });
+    dispatch(pushAction(`/cells/${cellName}/home/`));
+    sendSuccessMessage({ dispatch, message: 'Cell check saved.' });
   } catch (error) {
     sendErrorMessage({ dispatch, error });
   }
@@ -92,6 +95,7 @@ const getCellDetaineesForMeal = (
   getCellDetaineesService = services.getCellDetainees,
   getCellDetaineesAction = actions.getCellDetainees,
   getCellDetaineesSuccessAction = actions.getCellDetaineesSuccess,
+  acceptMealAction = acceptMeal,
   sendErrorMessage = utils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
@@ -101,7 +105,7 @@ const getCellDetaineesForMeal = (
       cellDetainees
         .filter((detainee) => !detainee.location)
         .forEach((detainee) => {
-          dispatch(acceptMeal(detainee));
+          dispatch(acceptMealAction(detainee));
         });
     }
     dispatch(getCellDetaineesSuccessAction(cellDetainees));
@@ -117,14 +121,16 @@ const saveMeal = (
   saveMealService = services.saveMeal,
   saveMealAction = actions.saveMeal,
   saveMealSuccessAction = actions.saveMealSuccess,
+  pushAction = push,
+  sendSuccessMessage = utils.sendSuccessMessage,
   sendErrorMessage = utils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
     dispatch(saveMealAction());
     const savedAny = await saveMealService(meal, userName);
     dispatch(saveMealSuccessAction());
-    dispatch(push(`/cells/${cellName}/home/`));
-    if (savedAny) utils.sendSuccessMessage({ dispatch, message: 'Meal provision saved.' });
+    dispatch(pushAction(`/cells/${cellName}/home/`));
+    if (savedAny) sendSuccessMessage({ dispatch, message: 'Meal provision saved.' });
   } catch (error) {
     sendErrorMessage({ dispatch, error });
   }
@@ -139,6 +145,7 @@ const getCellDetaineesForMedication = (
   getCellDetaineesService = services.getCellDetainees,
   getCellDetaineesAction = actions.getCellDetainees,
   getCellDetaineesSuccessAction = actions.getCellDetaineesSuccess,
+  acceptMedicationAction = acceptMedication,
   sendErrorMessage = utils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
@@ -148,7 +155,7 @@ const getCellDetaineesForMedication = (
       cellDetainees
         .filter((detainee) => !detainee.location)
         .forEach((detainee) => {
-          dispatch(acceptMedication(detainee));
+          dispatch(acceptMedicationAction(detainee));
         });
     }
     dispatch(getCellDetaineesSuccessAction(cellDetainees));
@@ -164,15 +171,17 @@ const saveMedication = (
   saveMedicationService = services.saveMedication,
   saveMedicationAction = actions.saveMedication,
   saveMedicationSuccessAction = actions.saveMedicationSuccess,
+  pushAction = push,
+  sendSuccessMessage = utils.sendSuccessMessage,
   sendErrorMessage = utils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
     dispatch(saveMedicationAction());
     const savedAny = await saveMedicationService(medication, userName);
     dispatch(saveMedicationSuccessAction());
-    dispatch(push(`/cells/${cellName}/home/`));
+    dispatch(pushAction(`/cells/${cellName}/home/`));
     if (savedAny) {
-      utils.sendSuccessMessage({
+      sendSuccessMessage({
         dispatch,
         message: 'Medication provision saved.',
       });
