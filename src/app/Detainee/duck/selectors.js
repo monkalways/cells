@@ -89,11 +89,19 @@ const isFingerprintingRoomOptionAvailable = (state) => {
 };
 
 const isInCellOptionAvailable = (state) => {
+  const { first } = queryString.parse(state.router.location.search);
+  const { location } = state.detainee.detaineeProfile.data;
+
+  // Case 3: If the user came from the cell management screen
+  // and the detainee location is 'In Progress' in an activity room, this button is disabled.
+  if (
+    first === constants.CELLS_QUERYSTRING
+    && location.toLowerCase().includes(constants.IN_PROGRESS.toLowerCase())
+  ) return false;
+
   // Case 1: User came from activity room screen.
   // Detainee is leaving activity room or in transit to activity room
   // and is now going back to their cell.
-  const { first } = queryString.parse(state.router.location.search);
-  const { location } = state.detainee.detaineeProfile.data;
   if (
     first === constants.ACTIVITY_ROOMS_QUERYSTRING
     && location.toLowerCase() !== constants.CELL_IN_TRANSIT.toLowerCase()
@@ -105,13 +113,6 @@ const isInCellOptionAvailable = (state) => {
     first === constants.CELLS_QUERYSTRING
     && location.toLowerCase() === constants.CELL_IN_TRANSIT.toLowerCase()
   ) return true;
-
-  // Case 3: If the user came from the cell management screen
-  // and the detainee location is 'In Progress' in an activity room, this button is disabled.
-  if (
-    first === constants.CELLS_QUERYSTRING
-    && location.toLowerCase().includes(constants.IN_PROGRESS.toLowerCase())
-  ) return false;
 
   return false;
 };
