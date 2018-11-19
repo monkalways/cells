@@ -12,6 +12,7 @@ const propTypes = {
   cellDetainees: PropTypes.arrayOf(PropTypes.shape({})),
   isCellDetaineesLoaded: PropTypes.bool.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
+  userName: PropTypes.string,
   getCellDetainees: PropTypes.func.isRequired,
   cellName: PropTypes.string.isRequired,
   meal: PropTypes.shape({}).isRequired,
@@ -27,6 +28,7 @@ const propTypes = {
 
 const defaultProps = {
   cellDetainees: [],
+  userName: null,
 };
 
 class MealComponent extends Component {
@@ -83,8 +85,10 @@ class MealComponent extends Component {
   };
 
   handleSave = () => {
-    const { meal, cellName, onSave } = this.props;
-    onSave(meal, cellName);
+    const {
+      meal, cellName, userName, onSave,
+    } = this.props;
+    onSave(meal, cellName, userName);
   };
 
   render() {

@@ -63,13 +63,14 @@ const getCellDetaineesForCellCheck = (
 const saveCellCheck = (
   cellCheck,
   cellName,
+  userName,
   saveCellCheckService = services.saveCellCheck,
   saveCellCheckAction = actions.saveCellCheck,
   saveCellCheckSuccessAction = actions.saveCellCheckSuccess,
 ) => async (dispatch) => {
   try {
     dispatch(saveCellCheckAction());
-    await saveCellCheckService(cellCheck);
+    await saveCellCheckService(cellCheck, userName);
     dispatch(saveCellCheckSuccessAction());
     dispatch(push(`/cells/${cellName}/home/`));
     utils.sendSuccessMessage({ dispatch, message: 'Cell check saved.' });
@@ -107,13 +108,14 @@ const getCellDetaineesForMeal = (
 const saveMeal = (
   meal,
   cellName,
+  userName,
   saveMealService = services.saveMeal,
   saveMealAction = actions.saveMeal,
   saveMealSuccessAction = actions.saveMealSuccess,
 ) => async (dispatch) => {
   try {
     dispatch(saveMealAction());
-    const savedAny = await saveMealService(meal);
+    const savedAny = await saveMealService(meal, userName);
     dispatch(saveMealSuccessAction());
     dispatch(push(`/cells/${cellName}/home/`));
     if (savedAny) utils.sendSuccessMessage({ dispatch, message: 'Meal provision saved.' });
@@ -151,6 +153,7 @@ const getCellDetaineesForMedication = (
 const saveMedication = (
   medication,
   cellName,
+  userName,
   saveMedicationService = services.saveMedication,
   saveMedicationAction = actions.saveMedication,
   saveMedicationSuccessAction = actions.saveMedicationSuccess,

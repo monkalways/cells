@@ -9,12 +9,14 @@ export const mapStateToProps = (
   cellName = selectors.getCellNameState(state),
   isCellDetaineesLoaded = selectors.isCellDetaineesLoadedState(state),
   isAuthenticated = authenticationSelectors.isAuthenticatedState(state),
+  userName = authenticationSelectors.getUserNameState(state),
   meal = selectors.getMealState(state),
   isSavingMeal = selectors.isSavingMealState(state),
 ) => ({
   cellDetainees,
   cellName,
   isAuthenticated,
+  userName,
   isCellDetaineesLoaded,
   meal,
   isSavingMeal,
@@ -51,8 +53,8 @@ export const mapDispatchToProps = (dispatch) => ({
   ) => {
     detainees.forEach((detainee) => dispatch(notApplicableMeal(detainee)));
   },
-  onSave: (meal, cellName, saveMeal = operations.saveMeal) => {
-    dispatch(saveMeal(meal, cellName));
+  onSave: (meal, cellName, userName, saveMeal = operations.saveMeal) => {
+    dispatch(saveMeal(meal, cellName, userName));
   },
 });
 

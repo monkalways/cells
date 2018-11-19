@@ -12,6 +12,7 @@ const propTypes = {
   cellDetainees: PropTypes.arrayOf(PropTypes.shape({})),
   isCellDetaineesLoaded: PropTypes.bool.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
+  userName: PropTypes.string,
   cellName: PropTypes.string.isRequired,
   getCellDetainees: PropTypes.func.isRequired,
   cellCheck: PropTypes.shape({}).isRequired,
@@ -25,6 +26,7 @@ const propTypes = {
 
 const defaultProps = {
   cellDetainees: [],
+  userName: null,
 };
 
 class CellCheckComponent extends Component {
@@ -71,8 +73,10 @@ class CellCheckComponent extends Component {
   };
 
   handleSave = () => {
-    const { cellCheck, cellName, onSave } = this.props;
-    onSave(cellCheck, cellName);
+    const {
+      cellCheck, cellName, userName, onSave,
+    } = this.props;
+    onSave(cellCheck, cellName, userName);
   };
 
   render() {
