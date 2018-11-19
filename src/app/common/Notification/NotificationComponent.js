@@ -5,7 +5,7 @@ const NotificationComponent = () => (
   <ReduxToastr
     timeOut={5000}
     newestOnTop
-    preventDuplicates
+    preventDuplicates={false}
     position="top-right"
     transitionIn="fadeIn"
     transitionOut="fadeOut"
