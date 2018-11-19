@@ -52,7 +52,6 @@ class DetaineeActionComponent extends Component {
   };
 
   handleButtonClick = (usage) => {
-    console.log(usage);
     this.setState({
       isDialogOpen: true,
       usage,
