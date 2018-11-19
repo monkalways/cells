@@ -6,87 +6,26 @@ import constants from '../constants';
 const getDetainee = (state) => state.detainee.detaineeProfile.data;
 const isAssigningToRoom = (state) => state.detainee.activityRooms.isAssigningToRoom;
 
-const isBailHearingRoom1OptionAvailable = (state) => {
+const isActivityRoomOptionAvailable = (state, usage, inProgress, inTransit) => {
   const { first } = queryString.parse(state.router.location.search);
   const { location } = state.detainee.detaineeProfile.data;
   const {
     availableRooms,
     // eslint-disable-next-line max-len
-  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === constants.BAIL_HEARING_ROOM_1.toLowerCase());
+  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === usage.toLowerCase());
   return (
     !(
       first === constants.CELLS_QUERYSTRING
       && location.toLowerCase().includes(constants.IN_PROGRESS.toLowerCase())
     )
-    && location.toLowerCase()
-      !== constants.BAIL_HEARING_IN_PROGRESS.toLowerCase()
-    && location.toLowerCase()
-      !== constants.BAIL_HEARING_IN_TRANSIT.toLowerCase()
-    && availableRooms.length > 0
-  );
-};
-
-const isBailHearingRoom2OptionAvailable = (state) => {
-  const { first } = queryString.parse(state.router.location.search);
-  const { location } = state.detainee.detaineeProfile.data;
-  const {
-    availableRooms,
-    // eslint-disable-next-line max-len
-  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === constants.BAIL_HEARING_ROOM_2.toLowerCase());
-  return (
-    !(
-      first === constants.CELLS_QUERYSTRING
-      && location.toLowerCase().includes(constants.IN_PROGRESS.toLowerCase())
-    )
-    && location.toLowerCase()
-      !== constants.BAIL_HEARING_IN_PROGRESS.toLowerCase()
-    && location.toLowerCase()
-      !== constants.BAIL_HEARING_IN_TRANSIT.toLowerCase()
-    && availableRooms.length > 0
-  );
-};
-
-const isBreathTestRoomOptionAvailable = (state) => {
-  const { first } = queryString.parse(state.router.location.search);
-  const { location } = state.detainee.detaineeProfile.data;
-  const {
-    availableRooms,
-    // eslint-disable-next-line max-len
-  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === constants.BREATH_TEST_ROOM.toLowerCase());
-  return (
-    !(
-      first === constants.CELLS_QUERYSTRING
-      && location.toLowerCase().includes(constants.IN_PROGRESS.toLowerCase())
-    )
-    && location.toLowerCase()
-      !== constants.BREATH_TEST_IN_PROGRESS.toLowerCase()
-    && location.toLowerCase() !== constants.BREATH_TEST_IN_TRANSIT.toLowerCase()
+    && location.toLowerCase() !== inProgress.toLowerCase()
+    && location.toLowerCase() !== inTransit.toLowerCase()
     && availableRooms.length > 0
   );
 };
 
 // eslint-disable-next-line max-len
 const isDetaineeProfileLoaded = (state) => state.detainee.detaineeProfile.loaded && state.detainee.activityRooms.loaded;
-
-const isFingerprintingRoomOptionAvailable = (state) => {
-  const { first } = queryString.parse(state.router.location.search);
-  const { location } = state.detainee.detaineeProfile.data;
-  const {
-    availableRooms,
-    // eslint-disable-next-line max-len
-  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === constants.FINGERPRINTING_ROOM.toLowerCase());
-  return (
-    !(
-      first === constants.CELLS_QUERYSTRING
-      && location.toLowerCase().includes(constants.IN_PROGRESS.toLowerCase())
-    )
-    && location.toLowerCase()
-      !== constants.FINGERPRINTING_IN_PROGRESS.toLowerCase()
-    && location.toLowerCase()
-      !== constants.FINGERPRINTING_IN_TRANSIT.toLowerCase()
-    && availableRooms.length > 0
-  );
-};
 
 const isInCellOptionAvailable = (state) => {
   const { first } = queryString.parse(state.router.location.search);
@@ -117,42 +56,6 @@ const isInCellOptionAvailable = (state) => {
   return false;
 };
 
-const isInterviewRoomOptionAvailable = (state) => {
-  const { first } = queryString.parse(state.router.location.search);
-  const { location } = state.detainee.detaineeProfile.data;
-  const {
-    availableRooms,
-    // eslint-disable-next-line max-len
-  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === constants.INTERVIEW_ROOM.toLowerCase());
-  return (
-    !(
-      first === constants.CELLS_QUERYSTRING
-      && location.toLowerCase().includes(constants.IN_PROGRESS.toLowerCase())
-    )
-    && location.toLowerCase() !== constants.INTERVIEW_IN_PROGRESS.toLowerCase()
-    && location.toLowerCase() !== constants.INTERVIEW_IN_TRANSIT.toLowerCase()
-    && availableRooms.length > 0
-  );
-};
-
-const isMedicalRoomOptionAvailable = (state) => {
-  const { first } = queryString.parse(state.router.location.search);
-  const { location } = state.detainee.detaineeProfile.data;
-  const {
-    availableRooms,
-    // eslint-disable-next-line max-len
-  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === constants.MEDICAL_ROOM.toLowerCase());
-  return (
-    !(
-      first === constants.CELLS_QUERYSTRING
-      && location.toLowerCase().includes(constants.IN_PROGRESS.toLowerCase())
-    )
-    && location.toLowerCase() !== constants.MEDICAL_IN_PROGRESS.toLowerCase()
-    && location.toLowerCase() !== constants.MEDICAL_IN_TRANSIT.toLowerCase()
-    && availableRooms.length > 0
-  );
-};
-
 const isPhoneDeclineOptionAvailable = (state) => {
   const { first } = queryString.parse(state.router.location.search);
   const { location } = state.detainee.detaineeProfile.data;
@@ -164,80 +67,17 @@ const isPhoneDeclineOptionAvailable = (state) => {
   return first === constants.CELLS_QUERYSTRING;
 };
 
-const isPhoneRoomOptionAvailable = (state) => {
-  const { first } = queryString.parse(state.router.location.search);
-  const { location } = state.detainee.detaineeProfile.data;
-  const {
-    availableRooms,
-    // eslint-disable-next-line max-len
-  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === constants.PHONE_ROOM.toLowerCase());
-  return (
-    !(
-      first === constants.CELLS_QUERYSTRING
-      && location.toLowerCase().includes(constants.IN_PROGRESS.toLowerCase())
-    )
-    && location.toLowerCase() !== constants.PHONE_IN_PROGRESS.toLowerCase()
-    && location.toLowerCase() !== constants.PHONE_IN_TRANSIT.toLowerCase()
-    && availableRooms.length > 0
-  );
-};
-
-const isReleaseRoomOptionAvailable = (state) => {
-  const { first } = queryString.parse(state.router.location.search);
-  const { location } = state.detainee.detaineeProfile.data;
-  const {
-    availableRooms,
-    // eslint-disable-next-line max-len
-  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === constants.RELEASE_ROOM.toLowerCase());
-  return (
-    !(
-      first === constants.CELLS_QUERYSTRING
-      && location.toLowerCase().includes(constants.IN_PROGRESS.toLowerCase())
-    )
-    && location.toLowerCase()
-      !== constants.RELEASE_HOLDING_IN_TRANSIT.toLowerCase()
-    && availableRooms.length > 0
-  );
-};
-
-const isRemandHoldingRoomOptionAvailable = (state) => {
-  const { first } = queryString.parse(state.router.location.search);
-  const { location } = state.detainee.detaineeProfile.data;
-  const {
-    availableRooms,
-    // eslint-disable-next-line max-len
-  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === constants.REMAND_HOLDING_ROOM.toLowerCase());
-  return (
-    !(
-      first === constants.CELLS_QUERYSTRING
-      && location.toLowerCase().includes(constants.IN_PROGRESS.toLowerCase())
-    )
-    && location.toLowerCase()
-      !== constants.REMAND_HOLDING_IN_TRANSIT.toLowerCase()
-    && availableRooms.length > 0
-  );
-};
-
 // Reselect selectors
 const getDetaineeState = createSelector([getDetainee], (detainee) => detainee);
+
+const isActivityRoomOptionAvailableState = createSelector(
+  [isActivityRoomOptionAvailable],
+  (available) => available,
+);
+
 const isAssigningToRoomState = createSelector(
   [isAssigningToRoom],
   (detainee) => detainee,
-);
-
-const isBailHearingRoom1OptionAvailableState = createSelector(
-  [isBailHearingRoom1OptionAvailable],
-  (available) => available,
-);
-
-const isBailHearingRoom2OptionAvailableState = createSelector(
-  [isBailHearingRoom2OptionAvailable],
-  (available) => available,
-);
-
-const isBreathTestRoomOptionAvailableState = createSelector(
-  [isBreathTestRoomOptionAvailable],
-  (available) => available,
 );
 
 const isDetaineeProfileLoadedState = createSelector(
@@ -245,23 +85,8 @@ const isDetaineeProfileLoadedState = createSelector(
   (loaded) => loaded,
 );
 
-const isFingerprintingRoomOptionAvailableState = createSelector(
-  [isFingerprintingRoomOptionAvailable],
-  (available) => available,
-);
-
 const isInCellOptionAvailableState = createSelector(
   [isInCellOptionAvailable],
-  (available) => available,
-);
-
-const isInterviewRoomOptionAvailableState = createSelector(
-  [isInterviewRoomOptionAvailable],
-  (available) => available,
-);
-
-const isMedicalRoomOptionAvailableState = createSelector(
-  [isMedicalRoomOptionAvailable],
   (available) => available,
 );
 
@@ -270,34 +95,11 @@ const isPhoneDeclineOptionAvailableState = createSelector(
   (available) => available,
 );
 
-const isPhoneRoomOptionAvailableState = createSelector(
-  [isPhoneRoomOptionAvailable],
-  (available) => available,
-);
-
-const isReleaseRoomOptionAvailableState = createSelector(
-  [isReleaseRoomOptionAvailable],
-  (available) => available,
-);
-
-const isRemandHoldingRoomOptionAvailableState = createSelector(
-  [isRemandHoldingRoomOptionAvailable],
-  (available) => available,
-);
-
 export default {
   getDetaineeState,
+  isActivityRoomOptionAvailableState,
   isAssigningToRoomState,
-  isBailHearingRoom1OptionAvailableState,
-  isBailHearingRoom2OptionAvailableState,
-  isBreathTestRoomOptionAvailableState,
   isDetaineeProfileLoadedState,
-  isFingerprintingRoomOptionAvailableState,
   isInCellOptionAvailableState,
-  isInterviewRoomOptionAvailableState,
   isPhoneDeclineOptionAvailableState,
-  isPhoneRoomOptionAvailableState,
-  isMedicalRoomOptionAvailableState,
-  isReleaseRoomOptionAvailableState,
-  isRemandHoldingRoomOptionAvailableState,
 };
