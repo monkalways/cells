@@ -106,6 +106,75 @@ describe('Cell operations', () => {
     });
   });
 
+  describe('getCellDetaineesForCellCheck', () => {
+    it('should getCellDetaineesForCellCheck successfully when service returns data', async () => {
+      const name = 'c1';
+      const inCellDetainee = {
+        location: '',
+      };
+      const outOfCellDetainee = {
+        location: 'Phone - In Transit',
+      };
+      const cellDetainees = [inCellDetainee, outOfCellDetainee];
+
+      const getCellDetaineesService = jest.fn();
+      getCellDetaineesService.mockReturnValue(cellDetainees);
+      const getCellDetaineesAction = jest.fn();
+      const getCellDetaineesSuccessAction = jest.fn();
+      const visualCheckAction = jest.fn();
+      const sendErrorMessage = jest.fn();
+      const dispatch = jest.fn();
+
+      await operations.getCellDetaineesForCellCheck(
+        name,
+        getCellDetaineesService,
+        getCellDetaineesAction,
+        getCellDetaineesSuccessAction,
+        visualCheckAction,
+        sendErrorMessage,
+      )(dispatch);
+
+      expect(getCellDetaineesAction).toBeCalled();
+      expect(getCellDetaineesService).toBeCalledWith(name);
+      expect(visualCheckAction).toBeCalledWith(inCellDetainee);
+      expect(visualCheckAction).toBeCalledTimes(1);
+      expect(getCellDetaineesSuccessAction).toBeCalledWith(cellDetainees);
+      expect(dispatch).toBeCalledTimes(3);
+    });
+
+    it('should notify error when service returns errors', async () => {
+      const name = 'c1';
+
+      const getCellDetaineesService = jest.fn();
+      getCellDetaineesService.mockImplementation(() => {
+        const error = new Error('500');
+        error.response = { status: 500 };
+        throw error;
+      });
+      const getCellDetaineesAction = jest.fn();
+      const getCellDetaineesSuccessAction = jest.fn();
+      const visualCheckAction = jest.fn();
+      const sendErrorMessage = jest.fn();
+      const dispatch = jest.fn();
+
+      await operations.getCellDetaineesForCellCheck(
+        name,
+        getCellDetaineesService,
+        getCellDetaineesAction,
+        getCellDetaineesSuccessAction,
+        visualCheckAction,
+        sendErrorMessage,
+      )(dispatch);
+
+      expect(getCellDetaineesAction).toBeCalled();
+      expect(getCellDetaineesService).toBeCalledWith(name);
+      expect(visualCheckAction).not.toBeCalled();
+      expect(getCellDetaineesSuccessAction).not.toBeCalled();
+      expect(sendErrorMessage).toBeCalled();
+      expect(dispatch).toBeCalledTimes(1);
+    });
+  });
+
   describe('getCellDetaineesForMeal', () => {
     it('should getCellDetaineesForMeal successfully when service returns data', async () => {
       const name = 'c1';
