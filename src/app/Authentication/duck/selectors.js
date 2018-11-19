@@ -5,6 +5,7 @@ const isAuthenticated = (state) => state.authentication.authenticated;
 const isSignInDialogOpen = (state) => state.authentication.signInDialogOpen;
 const isAuthenticating = (state) => state.authentication.authenticating;
 const isAuthenticationFailed = (state) => state.authentication.authenticationFailed;
+const getUserName = (state) => state.authentication.userName;
 
 // Reselect selectors
 const isAuthenticatedState = createSelector(
@@ -27,9 +28,15 @@ const isAuthenticationFailedState = createSelector(
   (authenticationFailed) => authenticationFailed,
 );
 
+const getUserNameState = createSelector(
+  [getUserName],
+  (userName) => userName,
+);
+
 export default {
   isAuthenticatedState,
   isSignInDialogOpenState,
   isAuthenticatingState,
   isAuthenticationFailedState,
+  getUserNameState,
 };
