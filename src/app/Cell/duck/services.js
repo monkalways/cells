@@ -153,7 +153,7 @@ const saveMeal = async (meal, userName) => {
   return savedAny;
 };
 
-const saveMedication = async (medication) => {
+const saveMedication = async (medication, userName) => {
   let savedAny = false;
   await _.forOwn(medication, async (value) => {
     const { detainee, accept, notApplicable } = value;
@@ -164,11 +164,10 @@ const saveMedication = async (medication) => {
     await saveDetentionLog({
       arrestId: detainee.arrestId,
       detentionLogType: constants.DETENTION_LOG_DATA_TYPE_MEDICATION,
-      // eslint-disable-next-line no-nested-ternary
       detentionLogAction: accept
         ? constants.DETENTION_LOG_ACTION_TYPE_ACCEPT
         : constants.DETENTION_LOG_ACTION_TYPE_REJECT,
-      userName: 'cpb1', // TODO: remove hard-coded user name
+      userName,
     });
   });
   return savedAny;

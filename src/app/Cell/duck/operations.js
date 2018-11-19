@@ -153,6 +153,7 @@ const getCellDetaineesForMedication = (
 const saveMedication = (
   medication,
   cellName,
+  userName,
   saveMedicationService = services.saveMedication,
   saveMedicationAction = actions.saveMedication,
   saveMedicationSuccessAction = actions.saveMedicationSuccess,
