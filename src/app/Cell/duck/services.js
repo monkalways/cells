@@ -117,7 +117,7 @@ const saveDetentionLog = async ({
   commonConstants.HEADERS,
 );
 
-const saveCellCheck = async (cellCheck) => {
+const saveCellCheck = async (cellCheck, userName) => {
   await _.forOwn(cellCheck, async (value) => {
     const { detainee, visual } = value;
     await saveDetentionLog({
@@ -126,9 +126,11 @@ const saveCellCheck = async (cellCheck) => {
       detentionLogAction: visual
         ? constants.DETENTION_LOG_ACTION_TYPE_VISUAL
         : constants.DETENTION_LOG_ACTION_TYPE_VERBAL,
-      userName: 'cpb1', // TODO: remove hard-coded user name
+      userName,
     });
   });
+
+  return true;
 };
 
 const saveMeal = async (meal) => {

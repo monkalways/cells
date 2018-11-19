@@ -6,6 +6,7 @@ import CellCheckComponent from './CellCheckComponent';
 export const mapStateToProps = (
   state,
   isAuthenticated = authenticationSelectors.isAuthenticatedState(state),
+  userName = authenticationSelectors.getUserNameState(state),
   cellDetainees = selectors.getCellDetaineesState(state),
   cellName = selectors.getCellNameState(state),
   isCellDetaineesLoaded = selectors.isCellDetaineesLoadedState(state),
@@ -13,6 +14,7 @@ export const mapStateToProps = (
   isSavingCellCheck = selectors.isSavingCellCheckState(state),
 ) => ({
   isAuthenticated,
+  userName,
   cellDetainees,
   cellName,
   isCellDetaineesLoaded,
@@ -39,8 +41,13 @@ export const mapDispatchToProps = (dispatch) => ({
   verbalCheckAll: (detainees, verbalCheck = operations.verbalCheck) => {
     detainees.forEach((detainee) => dispatch(verbalCheck(detainee)));
   },
-  onSave: (cellCheck, cellName, saveCellCheck = operations.saveCellCheck) => {
-    dispatch(saveCellCheck(cellCheck, cellName));
+  onSave: (
+    cellCheck,
+    cellName,
+    userName,
+    saveCellCheck = operations.saveCellCheck,
+  ) => {
+    dispatch(saveCellCheck(cellCheck, cellName, userName));
   },
 });
 

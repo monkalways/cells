@@ -63,13 +63,14 @@ const getCellDetaineesForCellCheck = (
 const saveCellCheck = (
   cellCheck,
   cellName,
+  userName,
   saveCellCheckService = services.saveCellCheck,
   saveCellCheckAction = actions.saveCellCheck,
   saveCellCheckSuccessAction = actions.saveCellCheckSuccess,
 ) => async (dispatch) => {
   try {
     dispatch(saveCellCheckAction());
-    await saveCellCheckService(cellCheck);
+    await saveCellCheckService(cellCheck, userName);
     dispatch(saveCellCheckSuccessAction());
     dispatch(push(`/cells/${cellName}/home/`));
     utils.sendSuccessMessage({ dispatch, message: 'Cell check saved.' });
