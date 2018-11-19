@@ -12,6 +12,7 @@ describe('Cell services', () => {
     ['MA', 'Male Adult'],
     ['MJ', 'Male Juvenile'],
     ['MY', 'Male Youth'],
+    ['Other', 'Other'],
     ['', ''],
   ])(
     'should getCellDetails for various designation',
