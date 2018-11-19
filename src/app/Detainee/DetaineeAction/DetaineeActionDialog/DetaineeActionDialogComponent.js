@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  // Button,
+  Button,
   Dialog,
   DialogActions,
   // DialogContent,
@@ -19,6 +19,7 @@ const propTypes = {
   // isCheckingIn: PropTypes.bool.isRequired,
   // onCheckIn: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
+  usage: PropTypes.string.isRequired,
 };
 
 const DetaineeActionDialogComponent = ({
@@ -27,7 +28,7 @@ const DetaineeActionDialogComponent = ({
   isDialogOpen,
   // onCheckIn,
   onClose,
-  // usage
+  usage,
 }) => (
   <Dialog
     open={isDialogOpen}
@@ -36,7 +37,7 @@ const DetaineeActionDialogComponent = ({
     // disableEscapeKeyDown={isCheckingIn}
   >
     <DialogTitle>
-      {`Moving ${detainee.lastName}, ${detainee.firstName} to 'usage'?`}
+      {`Moving ${detainee.lastName}, ${detainee.firstName} to ${usage}?`}
     </DialogTitle>
     {/* {isCheckingIn && (
       <DialogContent>
@@ -44,18 +45,23 @@ const DetaineeActionDialogComponent = ({
       </DialogContent>
     )} */}
     <DialogActions>
-      {/* <Button onClick={onClose} color="primary" disabled={isCheckingIn}>
+      <Button
+        onClick={onClose}
+        color="primary"
+        // disabled={isCheckingIn}
+      >
         Cancel
       </Button>
       <Button
-        onClick={onCheckIn}
+        // onClick={onCheckIn}
+        onClick={onClose}
         color="primary"
         variant="contained"
         autoFocus
-        disabled={isCheckingIn}
+        // disabled={isCheckingIn}
       >
         Confirm
-      </Button> */}
+      </Button>
     </DialogActions>
   </Dialog>
 );
