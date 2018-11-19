@@ -85,7 +85,9 @@ class MedicationComponent extends Component {
   };
 
   handleSave = () => {
-    const { medication, cellName, userName, onSave } = this.props;
+    const {
+      medication, cellName, userName, onSave,
+    } = this.props;
     onSave(medication, cellName, userName);
   };
 
