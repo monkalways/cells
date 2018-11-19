@@ -21,7 +21,7 @@ const defaultProps = {
   onVerbalClick: null,
 };
 
-const CardFooterComponent = ({
+export const CardFooterComponent = ({
   classes,
   cellCheck,
   onVisualClick,
@@ -31,6 +31,7 @@ const CardFooterComponent = ({
     {cellCheck && (
       <React.Fragment>
         <IconButton
+          id="visualCheckButton"
           className={
             cellCheck.visual ? classes.leftButtonSelected : classes.leftButton
           }
@@ -43,6 +44,7 @@ const CardFooterComponent = ({
           />
         </IconButton>
         <IconButton
+          id="verbalCheckButton"
           className={
             cellCheck.verbal ? classes.rightButtonSelected : classes.rightButton
           }
