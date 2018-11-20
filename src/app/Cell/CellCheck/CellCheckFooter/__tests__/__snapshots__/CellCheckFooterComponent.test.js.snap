@@ -10,7 +10,6 @@ exports[`CellCheckFooterComponent should render 1`] = `
   >
     <WithStyles(Grid)
       alignItems="center"
-      className=""
       container={true}
       justify="center"
     >
