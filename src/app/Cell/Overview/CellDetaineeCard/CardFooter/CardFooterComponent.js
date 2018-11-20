@@ -27,7 +27,11 @@ const propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
-const CardFooterComponent = ({ classes, cellDetainee, isAuthenticated }) => {
+export const CardFooterComponent = ({
+  classes,
+  cellDetainee,
+  isAuthenticated,
+}) => {
   const renderWarnings = () => {
     const icons = [];
     if (cellDetainee.withCaution) icons.push(CautionPresentIcon);

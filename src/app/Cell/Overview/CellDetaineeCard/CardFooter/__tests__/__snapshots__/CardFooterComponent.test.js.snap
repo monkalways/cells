@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardFooterComponent should not render any icons if not authenticated 1`] = `
+<WithStyles(CardActions)
+  className="actions"
+  disableActionSpacing={true}
+/>
+`;
