@@ -31,7 +31,7 @@ const defaultProps = {
   onVerbalClick: null,
 };
 
-const CellDetaineeCardComponent = ({
+export const CellDetaineeCardComponent = ({
   classes,
   cellDetainee,
   cellName,
