@@ -105,7 +105,7 @@ describe('MealComponent', () => {
     expect(getCellDetainees).toBeCalledWith(cellName);
   });
 
-  describe('getCellCheckRadioButtonValue', () => {
+  describe('getMealRadioButtonValue', () => {
     it('should return empty string if cell detainees are not loaded', () => {
       isCellDetaineesLoaded = false;
 
