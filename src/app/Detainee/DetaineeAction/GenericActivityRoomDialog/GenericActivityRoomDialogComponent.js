@@ -15,6 +15,7 @@ const propTypes = {
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
   }).isRequired,
+  isActivityRoomAvailable: PropTypes.bool.isRequired,
   isDialogOpen: PropTypes.bool.isRequired,
   // isCheckingIn: PropTypes.bool.isRequired,
   // onCheckIn: PropTypes.func.isRequired,
@@ -23,6 +24,7 @@ const propTypes = {
 };
 
 const GenericActivityRoomDialogComponent = ({
+  isActivityRoomAvailable,
   detainee,
   // isCheckingIn,
   isDialogOpen,
@@ -36,46 +38,47 @@ const GenericActivityRoomDialogComponent = ({
     // disableBackdropClick={isCheckingIn}
     // disableEscapeKeyDown={isCheckingIn}
   >
-    {/* Probably should make children here based on use cases
-   1. *** This one - Medical, Fingerprinting, Telephone, Bail Hearing 1 and 2, Breath Test ***
-   2. Not here - Interview
-   3. Not here - Check back into cell
-   4. Not here - Decline phone call
-   5. Not here - Remand and Release Holding rooms
-   Can do separate components or separate renderings. Components might be cleaner and make this file smaller. */}
-    <DialogTitle>
-      {`Moving ${detainee.lastName}, ${detainee.firstName} to ${usage}?`}
-    </DialogTitle>
+    {/** * Medical, Fingerprinting, Telephone, Bail Hearing 1 and 2, Breath Test ** */}
+    {isActivityRoomAvailable ? (
+      <React.Fragment>
+        <DialogTitle>
+          {`Moving ${detainee.lastName}, ${detainee.firstName} to ${usage}?`}
+        </DialogTitle>
+        <DialogActions>
+          <Button
+            onClick={onClose}
+            color="primary"
+            // disabled={isCheckingIn}
+          >
+            Cancel
+          </Button>
+          <Button
+            // onClick={onCheckIn}
+            onClick={onClose}
+            color="primary"
+            variant="contained"
+            autoFocus
+            // disabled={isCheckingIn}
+          >
+            Confirm
+          </Button>
+        </DialogActions>
+      </React.Fragment>
+    ) : (
+      <React.Fragment>
+        <DialogTitle>{`The ${usage} room is no longer available`}</DialogTitle>
+        <DialogActions>
+          <Button onClick={onClose} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </React.Fragment>
+    )}
     {/* {isCheckingIn && (
       <DialogContent>
       <Loading size={50} />
       </DialogContent>
     )} */}
-    {/* <DialogTitle>{`The ${usage} room is no longer available`}</DialogTitle>
-    <DialogActions>
-      <Button onClick={onClose} color="primary">
-        Close
-      </Button>
-    </DialogActions> */}
-    <DialogActions>
-      <Button
-        onClick={onClose}
-        color="primary"
-        // disabled={isCheckingIn}
-      >
-        Cancel
-      </Button>
-      <Button
-        // onClick={onCheckIn}
-        onClick={onClose}
-        color="primary"
-        variant="contained"
-        autoFocus
-        // disabled={isCheckingIn}
-      >
-        Confirm
-      </Button>
-    </DialogActions>
   </Dialog>
 );
 

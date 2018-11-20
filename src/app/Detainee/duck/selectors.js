@@ -3,7 +3,9 @@ import queryString from 'query-string';
 import constants from '../constants';
 
 // Basic selectors
+const getAvailableActivityRooms = (state) => state.detainee.activityRooms.availableActivityRooms;
 const getDetainee = (state) => state.detainee.detaineeProfile.data;
+const getProp = (_state, prop) => prop;
 const isAssigningToRoom = (state) => state.detainee.activityRooms.isAssigningToRoom;
 
 const isActivityRoomOptionAvailable = (state, usage, inProgress, inTransit) => {
@@ -85,6 +87,19 @@ const isDetaineeProfileLoadedState = createSelector(
   (loaded) => loaded,
 );
 
+const isGenericActivityRoomAvailableState = createSelector(
+  [getAvailableActivityRooms, getProp],
+  (rooms, usage) => {
+    if (usage) {
+      // eslint-disable-next-line max-len
+      const { availableRooms } = rooms.find((room) => room.usage.toLowerCase() === usage.toLowerCase());
+      return availableRooms.length > 0;
+    }
+
+    return false;
+  },
+);
+
 const isInCellOptionAvailableState = createSelector(
   [isInCellOptionAvailable],
   (available) => available,
@@ -100,6 +115,7 @@ export default {
   isActivityRoomOptionAvailableState,
   isAssigningToRoomState,
   isDetaineeProfileLoadedState,
+  isGenericActivityRoomAvailableState,
   isInCellOptionAvailableState,
   isPhoneDeclineOptionAvailableState,
 };
