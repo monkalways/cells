@@ -14,11 +14,11 @@ describe('FooterRadioButtonGroupComponent', () => {
   const setup = () => {
     const classes = { group: '', radioButton: '' };
     const radioButtonValue = 'accept';
-    const disable = false;
+    const disabled = false;
     return shallow(<FooterRadioButtonGroupComponent
       classes={classes}
       radioButtonValue={radioButtonValue}
-      disable={disable}
+      disabled={disabled}
       onRadioGroupChange={onRadioGroupChange}
     />);
   };
