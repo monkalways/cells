@@ -38,14 +38,7 @@ const GenericActivityRoomDialogComponent = ({
     // disableBackdropClick={isCheckingIn}
     // disableEscapeKeyDown={isCheckingIn}
   >
-    {/* Probably should make children here based on use cases
-   1. *** This one - Medical, Fingerprinting, Telephone, Bail Hearing 1 and 2, Breath Test ***
-   2. Not here - Interview
-   3. Not here - Check back into cell
-   4. Not here - Decline phone call
-   5. Not here - Remand and Release Holding rooms
-   Can do separate components or separate renderings.
-   Components might be cleaner and make this file smaller. */}
+    {/** * Medical, Fingerprinting, Telephone, Bail Hearing 1 and 2, Breath Test ** */}
     {isActivityRoomAvailable ? (
       <React.Fragment>
         <DialogTitle>
@@ -86,12 +79,6 @@ const GenericActivityRoomDialogComponent = ({
       <Loading size={50} />
       </DialogContent>
     )} */}
-    {/* <DialogTitle>{`The ${usage} room is no longer available`}</DialogTitle>
-    <DialogActions>
-      <Button onClick={onClose} color="primary">
-        Close
-      </Button>
-    </DialogActions> */}
   </Dialog>
 );
 
