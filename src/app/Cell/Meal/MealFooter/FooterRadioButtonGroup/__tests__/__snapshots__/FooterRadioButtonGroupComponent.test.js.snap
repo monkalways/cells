@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterRadioButtonGroupComponent should render 1`] = `
+<RadioGroup
+  className=""
+  name="MealRadio"
+  onChange={[MockFunction]}
+  value="accept"
+>
+  <WithStyles(FormControlLabel)
+    control={
+      <WithStyles(Radio)
+        className=""
+      />
+    }
+    label={
+      <WithStyles(Typography)
+        variant="body1"
+      >
+        Accepted - All
+      </WithStyles(Typography)>
+    }
+    value="accept"
+  />
+  <WithStyles(FormControlLabel)
+    control={
+      <WithStyles(Radio)
+        className=""
+      />
+    }
+    label={
+      <WithStyles(Typography)
+        variant="body1"
+      >
+        N/A - All
+      </WithStyles(Typography)>
+    }
+    value="not-applicable"
+  />
+</RadioGroup>
+`;
