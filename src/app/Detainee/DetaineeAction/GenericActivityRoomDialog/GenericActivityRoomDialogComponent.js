@@ -15,7 +15,7 @@ const propTypes = {
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
   }).isRequired,
-  // isActivityRoomAvailable: PropTypes.bool.isRequired,
+  isActivityRoomAvailable: PropTypes.bool.isRequired,
   isDialogOpen: PropTypes.bool.isRequired,
   // isCheckingIn: PropTypes.bool.isRequired,
   // onCheckIn: PropTypes.func.isRequired,
@@ -24,7 +24,7 @@ const propTypes = {
 };
 
 const GenericActivityRoomDialogComponent = ({
-  // isActivityRoomAvailable,
+  isActivityRoomAvailable,
   detainee,
   // isCheckingIn,
   isDialogOpen,
@@ -46,9 +46,41 @@ const GenericActivityRoomDialogComponent = ({
    5. Not here - Remand and Release Holding rooms
    Can do separate components or separate renderings.
    Components might be cleaner and make this file smaller. */}
-    <DialogTitle>
-      {`Moving ${detainee.lastName}, ${detainee.firstName} to ${usage}? `}
-    </DialogTitle>
+    {isActivityRoomAvailable ? (
+      <React.Fragment>
+        <DialogTitle>
+          {`Moving ${detainee.lastName}, ${detainee.firstName} to ${usage}?`}
+        </DialogTitle>
+        <DialogActions>
+          <Button
+            onClick={onClose}
+            color="primary"
+            // disabled={isCheckingIn}
+          >
+            Cancel
+          </Button>
+          <Button
+            // onClick={onCheckIn}
+            onClick={onClose}
+            color="primary"
+            variant="contained"
+            autoFocus
+            // disabled={isCheckingIn}
+          >
+            Confirm
+          </Button>
+        </DialogActions>
+      </React.Fragment>
+    ) : (
+      <React.Fragment>
+        <DialogTitle>{`The ${usage} room is no longer available`}</DialogTitle>
+        <DialogActions>
+          <Button onClick={onClose} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </React.Fragment>
+    )}
     {/* {isCheckingIn && (
       <DialogContent>
       <Loading size={50} />
@@ -60,25 +92,6 @@ const GenericActivityRoomDialogComponent = ({
         Close
       </Button>
     </DialogActions> */}
-    <DialogActions>
-      <Button
-        onClick={onClose}
-        color="primary"
-        // disabled={isCheckingIn}
-      >
-        Cancel
-      </Button>
-      <Button
-        // onClick={onCheckIn}
-        onClick={onClose}
-        color="primary"
-        variant="contained"
-        autoFocus
-        // disabled={isCheckingIn}
-      >
-        Confirm
-      </Button>
-    </DialogActions>
   </Dialog>
 );
 

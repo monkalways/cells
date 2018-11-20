@@ -1,1 +1,1 @@
-export { default } from './GenericActivityRoomDialogComponent';
+export { default } from './GenericActivityRoomDialogContainer';
