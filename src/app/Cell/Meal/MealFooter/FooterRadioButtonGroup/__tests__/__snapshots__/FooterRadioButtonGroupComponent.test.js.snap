@@ -13,6 +13,7 @@ exports[`FooterRadioButtonGroupComponent should render 1`] = `
         className=""
       />
     }
+    disabled={false}
     label={
       <WithStyles(Typography)
         variant="body1"
@@ -28,6 +29,7 @@ exports[`FooterRadioButtonGroupComponent should render 1`] = `
         className=""
       />
     }
+    disabled={false}
     label={
       <WithStyles(Typography)
         variant="body1"

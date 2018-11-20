@@ -5,10 +5,20 @@ exports[`CellDetaineeCardComponent should render 1`] = `
   className="card"
 >
   <WithStyles(CellDetaineeCardHeaderComponent)
-    cellDetainee={Object {}}
+    cellDetainee={
+      Object {
+        "firstName": "John",
+        "lastName": "Smith",
+      }
+    }
   />
   <WithStyles(withRouter(CellDetaineeCardContentComponent))
-    cellDetainee={Object {}}
+    cellDetainee={
+      Object {
+        "firstName": "John",
+        "lastName": "Smith",
+      }
+    }
     first="cells"
     isAuthenticated={false}
     second="c1"
