@@ -24,7 +24,13 @@ exports[`CellDetaineeCardComponent should render 1`] = `
     second="c1"
   />
   <WithStyles(CardFooterComponent)
-    meal={null}
+    meal={
+      Object {
+        "accept": true,
+        "notApplicable": false,
+        "reject": false,
+      }
+    }
     onAcceptClick={[MockFunction]}
     onNotApplicableClick={[MockFunction]}
     onRejectClick={[MockFunction]}

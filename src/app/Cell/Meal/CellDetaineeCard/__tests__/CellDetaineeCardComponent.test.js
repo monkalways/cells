@@ -16,7 +16,11 @@ describe('CellDetaineeCardComponent', () => {
       }}
       cellName="c1"
       isAuthenticated={false}
-      cellCheck={{}}
+      meal={{
+        accept: true,
+        reject: false,
+        notApplicable: false,
+      }}
       onAcceptClick={jest.fn()}
       onRejectClick={jest.fn()}
       onNotApplicableClick={jest.fn()}
