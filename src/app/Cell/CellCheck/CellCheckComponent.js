@@ -9,7 +9,10 @@ import CellCheckFooter from './CellCheckFooter';
 import Loading from '../../common/Loading';
 
 const propTypes = {
-  cellDetainees: PropTypes.arrayOf(PropTypes.shape({})),
+  cellDetainees: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    location: PropTypes.string,
+  })),
   isCellDetaineesLoaded: PropTypes.bool.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   userName: PropTypes.string,
@@ -29,7 +32,7 @@ const defaultProps = {
   userName: null,
 };
 
-class CellCheckComponent extends Component {
+export class CellCheckComponent extends Component {
   componentDidMount() {
     const { cellName, getCellDetainees } = this.props;
     getCellDetainees(cellName);

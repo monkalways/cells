@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CellDetaineeCardComponent should render 1`] = `
+<WithStyles(Card)
+  className="card"
+>
+  <WithStyles(CellDetaineeCardHeaderComponent)
+    cellDetainee={Object {}}
+  />
+  <WithStyles(withRouter(CellDetaineeCardContentComponent))
+    cellDetainee={Object {}}
+    first="cells"
+    isAuthenticated={false}
+    second="c1"
+  />
+  <WithStyles(CardFooterComponent)
+    cellCheck={Object {}}
+    onVerbalClick={[MockFunction]}
+    onVisualClick={[MockFunction]}
+  />
+</WithStyles(Card)>
+`;
