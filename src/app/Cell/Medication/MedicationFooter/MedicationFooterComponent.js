@@ -27,7 +27,7 @@ const propTypes = {
   onSave: PropTypes.func.isRequired,
 };
 
-const MedicationFooterComponent = ({
+export const MedicationFooterComponent = ({
   classes,
   history,
   radioButtonValue,
@@ -54,12 +54,14 @@ const MedicationFooterComponent = ({
             className={classes.navigation}
           >
             <BottomNavigationAction
+              id="backButton"
               label={<Typography variant="body1">Back</Typography>}
               onClick={handleBackClick}
               icon={<ArrowBackIcon className={classes.icon} />}
               disabled={isSavingMedication}
             />
             <BottomNavigationAction
+              id="saveButton"
               label={<Typography variant="body1">Save</Typography>}
               onClick={onSave}
               icon={<SaveIcon className={classes.icon} />}
