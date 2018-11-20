@@ -72,6 +72,19 @@ const isPhoneDeclineOptionAvailable = (state) => {
 // Reselect selectors
 const getDetaineeState = createSelector([getDetainee], (detainee) => detainee);
 
+const getFirstAvailableActivityRoom = createSelector(
+  [getAvailableActivityRooms, getProp],
+  (rooms, usage) => {
+    if (usage) {
+      // eslint-disable-next-line max-len
+      const { availableRooms } = rooms.find((room) => room.usage.toLowerCase() === usage.toLowerCase());
+      if (availableRooms.length > 0) return availableRooms[0];
+    }
+
+    return null;
+  },
+);
+
 const isActivityRoomOptionAvailableState = createSelector(
   [isActivityRoomOptionAvailable],
   (available) => available,
@@ -112,6 +125,7 @@ const isPhoneDeclineOptionAvailableState = createSelector(
 
 export default {
   getDetaineeState,
+  getFirstAvailableActivityRoom,
   isActivityRoomOptionAvailableState,
   isAssigningToRoomState,
   isDetaineeProfileLoadedState,
