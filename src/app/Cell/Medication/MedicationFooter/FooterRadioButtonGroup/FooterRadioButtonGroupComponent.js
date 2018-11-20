@@ -15,7 +15,7 @@ const propTypes = {
   onRadioGroupChange: PropTypes.func.isRequired,
 };
 
-const FooterRadioButtonGroup = ({
+export const FooterRadioButtonGroupComponent = ({
   classes,
   radioButtonValue,
   disabled,
@@ -42,7 +42,7 @@ const FooterRadioButtonGroup = ({
   </RadioGroup>
 );
 
-FooterRadioButtonGroup.propTypes = propTypes;
+FooterRadioButtonGroupComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   group: {
@@ -52,4 +52,4 @@ export default withStyles((theme) => ({
   radioButton: {
     padding: theme.spacing.unit,
   },
-}))(FooterRadioButtonGroup);
+}))(FooterRadioButtonGroupComponent);
