@@ -31,7 +31,7 @@ const defaultProps = {
   userName: null,
 };
 
-class MealComponent extends Component {
+export class MealComponent extends Component {
   componentDidMount() {
     const { cellName, getCellDetainees } = this.props;
     getCellDetainees(cellName);
@@ -60,15 +60,16 @@ class MealComponent extends Component {
 
   isSaveDisabled = () => {
     const { isCellDetaineesLoaded, cellDetainees, meal } = this.props;
-    if (!isCellDetaineesLoaded && !_.isEmpty(meal)) return true;
+    if (!isCellDetaineesLoaded) return true;
+    if (_.isEmpty(meal)) return true;
 
     if (
       cellDetainees
       && cellDetainees.length > 0
-      && cellDetainees.every((detainee) => detainee.location)
-    ) return true;
+      && cellDetainees.some((detainee) => !detainee.location)
+    ) return false;
 
-    return false;
+    return true;
   };
 
   handleRadioGroupChange = (event) => {
