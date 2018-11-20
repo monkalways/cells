@@ -52,11 +52,11 @@ describe('MealContainer', () => {
     });
 
     it('should acceptMeal', () => {
-      const { rejectMeal } = mapDispatchToProps(dispatch);
+      const { acceptMeal } = mapDispatchToProps(dispatch);
       const detainee = {};
       const acceptMealMock = jest.fn();
 
-      rejectMeal(detainee, acceptMealMock);
+      acceptMeal(detainee, acceptMealMock);
 
       expect(dispatch).toBeCalled();
       expect(acceptMealMock).toBeCalledWith(detainee);
