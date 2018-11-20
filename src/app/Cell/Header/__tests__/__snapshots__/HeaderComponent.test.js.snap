@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderComponent should render 1`] = `
+<div
+  className="root"
+>
+  <WithStyles(AppBar)
+    className="appBar"
+    position="static"
+  >
+    <WithStyles(Toolbar)>
+      <WithStyles(IconButton)
+        aria-label="Menu"
+        className="menuButton"
+        color="inherit"
+      >
+        <img
+          alt="EPS Logo"
+          src="eps-logo-icon.png"
+          width={70}
+        />
+      </WithStyles(IconButton)>
+      <WithStyles(HeaderContentComponent)
+        cellDetails={
+          Object {
+            "cellStatus": "Allocated",
+            "designation": "Male Adult",
+            "name": "c1",
+            "occupancy": 2,
+            "occupancyCount": 2,
+          }
+        }
+      />
+    </WithStyles(Toolbar)>
+  </WithStyles(AppBar)>
+</div>
+`;
+
+exports[`HeaderComponent should render logout button and handle logout if authenticated 1`] = `
+<div
+  className="root"
+>
+  <WithStyles(AppBar)
+    className="appBar"
+    position="static"
+  >
+    <WithStyles(Toolbar)>
+      <WithStyles(IconButton)
+        aria-label="Menu"
+        className="menuButton"
+        color="inherit"
+      >
+        <img
+          alt="EPS Logo"
+          src="eps-logo-icon.png"
+          width={70}
+        />
+      </WithStyles(IconButton)>
+      <WithStyles(HeaderContentComponent)
+        cellDetails={
+          Object {
+            "cellStatus": "Allocated",
+            "designation": "Male Adult",
+            "name": "c1",
+            "occupancy": 2,
+            "occupancyCount": 2,
+          }
+        }
+      />
+      <WithStyles(IconButton)
+        aria-label="Menu"
+        className="logoutButton"
+        color="inherit"
+        id="logoutButton"
+        onClick={[MockFunction]}
+      >
+        <pure(CloseIcon) />
+      </WithStyles(IconButton)>
+    </WithStyles(Toolbar)>
+  </WithStyles(AppBar)>
+</div>
+`;
