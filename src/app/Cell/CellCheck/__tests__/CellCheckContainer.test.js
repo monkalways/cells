@@ -108,5 +108,17 @@ describe('CellCheckContainer', () => {
       expect(dispatch).toBeCalled();
       expect(verbalCheckMock).toBeCalledTimes(2);
     });
+
+    it('should onSave', () => {
+      const { onSave } = mapDispatchToProps(dispatch);
+      const cellCheck = {};
+      const cellName = 'c1';
+      const userName = 'test';
+      const saveCellCheckMock = jest.fn();
+
+      onSave(cellCheck, cellName, userName, saveCellCheckMock);
+
+      expect(saveCellCheckMock).toBeCalled();
+    });
   });
 });
