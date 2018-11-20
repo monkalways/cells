@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CellCheckComponent should render cell detainee cards when cell detainees are loaded and the app is not saving cell check 1`] = `
+<Fragment>
+  <WithStyles(CellDetaineeGridComponent)>
+    <WithStyles(Grid)
+      item={true}
+      key="123"
+      sm={4}
+    >
+      <WithStyles(CellDetaineeCardComponent)
+        cellCheck={
+          Object {
+            "verbal": false,
+            "visual": true,
+          }
+        }
+        cellDetainee={
+          Object {
+            "id": "123",
+          }
+        }
+        cellName="c1"
+        isAuthenticated={false}
+        onVerbalClick={[Function]}
+        onVisualClick={[Function]}
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      key="456"
+      sm={4}
+    >
+      <WithStyles(CellDetaineeCardComponent)
+        cellCheck={
+          Object {
+            "verbal": false,
+            "visual": true,
+          }
+        }
+        cellDetainee={
+          Object {
+            "id": "456",
+          }
+        }
+        cellName="c1"
+        isAuthenticated={false}
+        onVerbalClick={[Function]}
+        onVisualClick={[Function]}
+      />
+    </WithStyles(Grid)>
+  </WithStyles(CellDetaineeGridComponent)>
+  <WithStyles(withRouter(CellCheckFooterComponent))
+    isSaveDisabled={false}
+    isSavingCellCheck={false}
+    onRadioGroupChange={[Function]}
+    onSave={[Function]}
+    radioButtonValue="visual"
+  />
+</Fragment>
+`;
