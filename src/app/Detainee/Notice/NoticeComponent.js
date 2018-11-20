@@ -40,10 +40,10 @@ const NoticeComponent = ({ classes, detainee }) => {
       if (icon.includes(CAUTION_PRESENT)) {
         return (
           <Grid item container key={icon} className={classes.gridItem}>
-            <Grid xs={12}>
+            <Grid item xs={12}>
               <Avatar className={classes.avatar} src={icon} />
             </Grid>
-            <Grid xs={12}>
+            <Grid item xs={12}>
               <Typography align="center" className={classes.cautionText}>
                 {detainee.cautionsArray.sort().join('')}
               </Typography>
