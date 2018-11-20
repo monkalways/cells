@@ -15,6 +15,7 @@ const propTypes = {
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
   }).isRequired,
+  // isActivityRoomAvailable: PropTypes.bool.isRequired,
   isDialogOpen: PropTypes.bool.isRequired,
   // isCheckingIn: PropTypes.bool.isRequired,
   // onCheckIn: PropTypes.func.isRequired,
@@ -23,6 +24,7 @@ const propTypes = {
 };
 
 const GenericActivityRoomDialogComponent = ({
+  // isActivityRoomAvailable,
   detainee,
   // isCheckingIn,
   isDialogOpen,
@@ -42,9 +44,10 @@ const GenericActivityRoomDialogComponent = ({
    3. Not here - Check back into cell
    4. Not here - Decline phone call
    5. Not here - Remand and Release Holding rooms
-   Can do separate components or separate renderings. Components might be cleaner and make this file smaller. */}
+   Can do separate components or separate renderings.
+   Components might be cleaner and make this file smaller. */}
     <DialogTitle>
-      {`Moving ${detainee.lastName}, ${detainee.firstName} to ${usage}?`}
+      {`Moving ${detainee.lastName}, ${detainee.firstName} to ${usage}? `}
     </DialogTitle>
     {/* {isCheckingIn && (
       <DialogContent>
