@@ -53,7 +53,6 @@ describe('MealComponent', () => {
     notApplicableMeal={notApplicableMeal}
     acceptMealAll={acceptMealAll}
     rejectMealAll={rejectMealAll}
-    rejectMealAll={rejectMealAll}
     notApplicableMealAll={notApplicableMealAll}
     onSave={onSave}
   />);
