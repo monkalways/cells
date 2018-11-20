@@ -18,7 +18,7 @@ import FooterRadioButtonGroup from './FooterRadioButtonGroup';
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
+    goBack: PropTypes.func.isRequired,
   }).isRequired,
   radioButtonValue: PropTypes.string.isRequired,
   isSavingMeal: PropTypes.bool.isRequired,
