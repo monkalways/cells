@@ -6,7 +6,7 @@ import constants from '../constants';
 const getAvailableActivityRooms = (state) => state.detainee.activityRooms.availableActivityRooms;
 const getDetainee = (state) => state.detainee.detaineeProfile.data;
 const getProp = (_state, prop) => prop;
-const isAssigningToRoom = (state) => state.detainee.activityRooms.isAssigningToRoom;
+const isAssigningToRoom = (state) => state.detainee.activityRooms.assigningToRoom;
 
 const isActivityRoomOptionAvailable = (state, usage, inProgress, inTransit) => {
   const { first } = queryString.parse(state.router.location.search);
