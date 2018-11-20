@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardFooterComponent should not render any buttons if meal is null 1`] = `
+<WithStyles(CardActions)
+  className="actions"
+  disableActionSpacing={true}
+/>
+`;
+
+exports[`CardFooterComponent should render accept, reject and not-applicable buttons if meal is not null 1`] = `
+<WithStyles(CardActions)
+  className="actions"
+  disableActionSpacing={true}
+>
+  <WithStyles(IconButton)
+    className="buttonSelected"
+    id="acceptButton"
+    onClick={[MockFunction]}
+  >
+    <img
+      alt="meal accept"
+      className="img"
+      src="MealAccept.png"
+    />
+  </WithStyles(IconButton)>
+  <WithStyles(IconButton)
+    className="button"
+    id="rejectButton"
+    onClick={[MockFunction]}
+  >
+    <img
+      alt="meal decline"
+      className="img"
+      src="MealDecline.png"
+    />
+  </WithStyles(IconButton)>
+  <WithStyles(IconButton)
+    className="button"
+    id="notApplicableButton"
+    onClick={[MockFunction]}
+  >
+    <img
+      alt="not applicable"
+      className="img"
+      disabled={true}
+      src="NotApplicable.png"
+    />
+  </WithStyles(IconButton)>
+</WithStyles(CardActions)>
+`;

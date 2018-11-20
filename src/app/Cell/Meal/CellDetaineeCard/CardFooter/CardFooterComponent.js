@@ -22,7 +22,7 @@ const defaultProps = {
   meal: null,
 };
 
-const CardFooterComponent = ({
+export const CardFooterComponent = ({
   classes,
   meal,
   onAcceptClick,
@@ -33,12 +33,14 @@ const CardFooterComponent = ({
     {meal && (
       <React.Fragment>
         <IconButton
+          id="acceptButton"
           className={meal.accept ? classes.buttonSelected : classes.button}
           onClick={onAcceptClick}
         >
           <img src={MealAcceptIcon} alt="meal accept" className={classes.img} />
         </IconButton>
         <IconButton
+          id="rejectButton"
           className={meal.reject ? classes.buttonSelected : classes.button}
           onClick={onRejectClick}
         >
@@ -49,6 +51,7 @@ const CardFooterComponent = ({
           />
         </IconButton>
         <IconButton
+          id="notApplicableButton"
           className={
             meal.notApplicable ? classes.buttonSelected : classes.button
           }
