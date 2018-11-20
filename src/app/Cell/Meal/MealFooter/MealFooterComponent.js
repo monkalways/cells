@@ -27,7 +27,7 @@ const propTypes = {
   onSave: PropTypes.func.isRequired,
 };
 
-const MealFooterComponent = ({
+export const MealFooterComponent = ({
   classes,
   history,
   radioButtonValue,
@@ -42,12 +42,7 @@ const MealFooterComponent = ({
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
-        <Grid
-          container
-          justify="center"
-          alignItems="center"
-          className={classes.container}
-        >
+        <Grid container justify="center" alignItems="center">
           <BottomNavigation
             value={-1}
             showLabels
