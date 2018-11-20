@@ -15,6 +15,7 @@ const propTypes = {
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
   }).isRequired,
+  getFirstAvailableActivityRoom: PropTypes.string,
   isActivityRoomAvailable: PropTypes.bool.isRequired,
   isDialogOpen: PropTypes.bool.isRequired,
   // isCheckingIn: PropTypes.bool.isRequired,
@@ -23,10 +24,15 @@ const propTypes = {
   usage: PropTypes.string.isRequired,
 };
 
+const defaultProps = {
+  getFirstAvailableActivityRoom: null,
+};
+
 const GenericActivityRoomDialogComponent = ({
   isActivityRoomAvailable,
   detainee,
   // isCheckingIn,
+  getFirstAvailableActivityRoom,
   isDialogOpen,
   // onCheckIn,
   onClose,
@@ -42,7 +48,9 @@ const GenericActivityRoomDialogComponent = ({
     {isActivityRoomAvailable ? (
       <React.Fragment>
         <DialogTitle>
-          {`Moving ${detainee.lastName}, ${detainee.firstName} to ${usage}?`}
+          {`Moving ${detainee.lastName}, ${
+            detainee.firstName
+          } to ${usage} room ${getFirstAvailableActivityRoom}?`}
         </DialogTitle>
         <DialogActions>
           <Button
@@ -83,5 +91,6 @@ const GenericActivityRoomDialogComponent = ({
 );
 
 GenericActivityRoomDialogComponent.propTypes = propTypes;
+GenericActivityRoomDialogComponent.defaultProps = defaultProps;
 
 export default GenericActivityRoomDialogComponent;
