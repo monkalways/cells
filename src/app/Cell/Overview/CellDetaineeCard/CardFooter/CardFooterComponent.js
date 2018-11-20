@@ -27,11 +27,7 @@ const propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
-const OverviewCellDetaineeCardFooterComponent = ({
-  classes,
-  cellDetainee,
-  isAuthenticated,
-}) => {
+const CardFooterComponent = ({ classes, cellDetainee, isAuthenticated }) => {
   const renderWarnings = () => {
     const icons = [];
     if (cellDetainee.withCaution) icons.push(CautionPresentIcon);
@@ -77,7 +73,7 @@ const OverviewCellDetaineeCardFooterComponent = ({
   );
 };
 
-OverviewCellDetaineeCardFooterComponent.propTypes = propTypes;
+CardFooterComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   actions: {
@@ -111,4 +107,4 @@ export default withStyles((theme) => ({
     fontWeight: theme.typography.caption.fontWeight,
     fontSize: theme.typography.fontSize * 0.7,
   },
-}))(OverviewCellDetaineeCardFooterComponent);
+}))(CardFooterComponent);

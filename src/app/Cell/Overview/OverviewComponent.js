@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 
 import CellDetaineeGrid from '../../common/CellDetaineeGrid';
-import OverviewCellDetaineeCard from './OverviewCellDetaineeCard';
+import CellDetaineeCard from './CellDetaineeCard';
 import OverviewFooter from './OverviewFooter';
 import Loading from '../../common/Loading';
 
@@ -41,7 +41,7 @@ class OverviewComponent extends Component {
             <React.Fragment>
               {cellDetainees.map((cellDetainee) => (
                 <Grid key={cellDetainee.id} item sm={4}>
-                  <OverviewCellDetaineeCard
+                  <CellDetaineeCard
                     cellDetainee={cellDetainee}
                     cellName={cellName}
                     isAuthenticated={isAuthenticated}

@@ -7,7 +7,7 @@ import {
   CellDetaineeCardContent,
 } from '../../../common/CellDetaineeCard';
 
-import OverviewCellDetaineeCardFooter from './OverviewCellDetaineeCardFooter';
+import CardFooter from './CardFooter';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -33,10 +33,7 @@ const OverviewCellDetaineeCardComponent = ({
       second={cellName}
       isAuthenticated={isAuthenticated}
     />
-    <OverviewCellDetaineeCardFooter
-      cellDetainee={cellDetainee}
-      isAuthenticated={isAuthenticated}
-    />
+    <CardFooter cellDetainee={cellDetainee} isAuthenticated={isAuthenticated} />
   </Card>
 );
 
