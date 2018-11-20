@@ -57,15 +57,16 @@ export class CellCheckComponent extends Component {
 
   isSaveDisabled = () => {
     const { isCellDetaineesLoaded, cellDetainees, cellCheck } = this.props;
-    if (!isCellDetaineesLoaded && !_.isEmpty(cellCheck)) return true;
+    if (!isCellDetaineesLoaded) return true;
+    if (_.isEmpty(cellCheck)) return true;
 
     if (
       cellDetainees
       && cellDetainees.length > 0
-      && cellDetainees.every((detainee) => detainee.location)
-    ) return true;
+      && cellDetainees.some((detainee) => !detainee.location)
+    ) return false;
 
-    return false;
+    return true;
   };
 
   handleRadioGroupChange = (event) => {
