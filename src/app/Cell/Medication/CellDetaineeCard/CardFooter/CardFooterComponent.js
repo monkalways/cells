@@ -22,7 +22,7 @@ const defaultProps = {
   medication: null,
 };
 
-const CardFooterComponent = ({
+export const CardFooterComponent = ({
   classes,
   medication,
   onAcceptClick,
@@ -33,6 +33,7 @@ const CardFooterComponent = ({
     {medication && (
       <React.Fragment>
         <IconButton
+          id="acceptButton"
           className={
             medication.accept ? classes.buttonSelected : classes.button
           }
@@ -45,6 +46,7 @@ const CardFooterComponent = ({
           />
         </IconButton>
         <IconButton
+          id="rejectButton"
           className={
             medication.reject ? classes.buttonSelected : classes.button
           }
@@ -57,6 +59,7 @@ const CardFooterComponent = ({
           />
         </IconButton>
         <IconButton
+          id="notApplicableButton"
           className={
             medication.notApplicable ? classes.buttonSelected : classes.button
           }
