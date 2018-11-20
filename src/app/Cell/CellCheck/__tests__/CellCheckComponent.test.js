@@ -266,7 +266,7 @@ describe('CellCheckComponent', () => {
 
     const result = wrapper.instance().isSaveDisabled();
 
-    expect(result).toBe(false);
+    expect(result).toBe(true);
   });
 
   it('should disable save if cell check data is empty', () => {
@@ -282,7 +282,7 @@ describe('CellCheckComponent', () => {
 
     const result = wrapper.instance().isSaveDisabled();
 
-    expect(result).toBe(false);
+    expect(result).toBe(true);
   });
 
   it('should disable save if cell detainees data is empty', () => {
@@ -298,7 +298,7 @@ describe('CellCheckComponent', () => {
 
     const result = wrapper.instance().isSaveDisabled();
 
-    expect(result).toBe(false);
+    expect(result).toBe(true);
   });
 
   it('should disable save if all cell detainees are not in cell', () => {
