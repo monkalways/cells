@@ -13,7 +13,7 @@ const propTypes = {
   }).isRequired,
 };
 
-const HeaderContent = ({ classes, cellDetails }) => (
+export const HeaderContentComponent = ({ classes, cellDetails }) => (
   <Grid container justify="center" className={classes.grid}>
     <Grid container alignItems="center" justify="center">
       <Grid item sm={5}>
@@ -52,7 +52,7 @@ const HeaderContent = ({ classes, cellDetails }) => (
   </Grid>
 );
 
-HeaderContent.propTypes = propTypes;
+HeaderContentComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   grid: {
@@ -66,4 +66,4 @@ export default withStyles((theme) => ({
   headerContent: {
     display: 'inline',
   },
-}))(HeaderContent);
+}))(HeaderContentComponent);
