@@ -19,7 +19,7 @@ const propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
-const OverviewCellDetaineeCardComponent = ({
+export const CellDetaineeCardComponent = ({
   classes,
   cellDetainee,
   cellName,
@@ -37,11 +37,11 @@ const OverviewCellDetaineeCardComponent = ({
   </Card>
 );
 
-OverviewCellDetaineeCardComponent.propTypes = propTypes;
+CellDetaineeCardComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   card: {
     maxWidth: theme.spacing.unit * 50,
     backgroundColor: theme.palette.background.paper,
   },
-}))(OverviewCellDetaineeCardComponent);
+}))(CellDetaineeCardComponent);

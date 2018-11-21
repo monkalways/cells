@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CellDetaineeCardComponent should render 1`] = `
+<WithStyles(Card)
+  className="card"
+>
+  <WithStyles(CellDetaineeCardHeaderComponent)
+    cellDetainee={
+      Object {
+        "firstName": "John",
+        "lastName": "Smith",
+      }
+    }
+  />
+  <WithStyles(withRouter(CellDetaineeCardContentComponent))
+    cellDetainee={
+      Object {
+        "firstName": "John",
+        "lastName": "Smith",
+      }
+    }
+    first="cells"
+    isAuthenticated={false}
+    second="c1"
+  />
+  <WithStyles(CardFooterComponent)
+    cellDetainee={
+      Object {
+        "firstName": "John",
+        "lastName": "Smith",
+      }
+    }
+    isAuthenticated={false}
+  />
+</WithStyles(Card)>
+`;
