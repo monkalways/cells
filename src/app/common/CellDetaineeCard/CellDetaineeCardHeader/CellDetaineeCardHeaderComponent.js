@@ -27,6 +27,7 @@ const propTypes = {
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
     division: PropTypes.arrayOf(PropTypes.string).isRequired,
+    location: PropTypes.string,
   }).isRequired,
 };
 
