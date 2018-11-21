@@ -12,7 +12,7 @@ const propTypes = {
   })).isRequired,
 };
 
-const HeaderComponent = ({ classes, versions }) => (
+export const HeaderComponent = ({ classes, versions }) => (
   <AppBar position="static">
     <Toolbar>
       <Typography
