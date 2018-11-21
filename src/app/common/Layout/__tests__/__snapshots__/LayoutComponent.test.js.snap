@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout should render 1`] = `
+<WithStyles(Grid)
+  container={true}
+  justify="center"
+>
+  <WithStyles(Grid)
+    className="container"
+    container={true}
+  >
+    <WithStyles(Grid)
+      item={true}
+      xs={12}
+    >
+      <h1>
+        Hello Test
+      </h1>
+    </WithStyles(Grid)>
+  </WithStyles(Grid)>
+</WithStyles(Grid)>
+`;
