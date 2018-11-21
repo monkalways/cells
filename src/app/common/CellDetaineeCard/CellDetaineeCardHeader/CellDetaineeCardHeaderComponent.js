@@ -23,10 +23,14 @@ const LOCATION_IN_TRANSIT = 'in transit';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  cellDetainee: PropTypes.shape({}).isRequired, // TODO: expand detainee properties
+  cellDetainee: PropTypes.shape({
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    division: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
 };
 
-const CellDetaineeCardHeaderComponent = ({ classes, cellDetainee }) => {
+export const CellDetaineeCardHeaderComponent = ({ classes, cellDetainee }) => {
   const getLocationIconSrc = () => {
     const { location } = cellDetainee;
     let locationIconSrc = InCellIcon;
