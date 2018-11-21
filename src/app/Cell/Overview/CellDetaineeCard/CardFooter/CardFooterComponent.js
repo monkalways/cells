@@ -27,7 +27,7 @@ const propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
-const OverviewCellDetaineeCardFooterComponent = ({
+export const CardFooterComponent = ({
   classes,
   cellDetainee,
   isAuthenticated,
@@ -77,7 +77,7 @@ const OverviewCellDetaineeCardFooterComponent = ({
   );
 };
 
-OverviewCellDetaineeCardFooterComponent.propTypes = propTypes;
+CardFooterComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   actions: {
@@ -111,4 +111,4 @@ export default withStyles((theme) => ({
     fontWeight: theme.typography.caption.fontWeight,
     fontSize: theme.typography.fontSize * 0.7,
   },
-}))(OverviewCellDetaineeCardFooterComponent);
+}))(CardFooterComponent);

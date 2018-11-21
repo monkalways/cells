@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MedicationComponent should render cell detainee cards when cell detainees are loaded and the app is not saving medication 1`] = `
+<Fragment>
+  <WithStyles(CellDetaineeGridComponent)>
+    <WithStyles(Grid)
+      item={true}
+      key="123"
+      sm={4}
+    >
+      <WithStyles(CellDetaineeCardComponent)
+        cellDetainee={
+          Object {
+            "id": "123",
+          }
+        }
+        cellName="c1"
+        isAuthenticated={false}
+        medication={
+          Object {
+            "accept": true,
+            "notApplicable": false,
+            "reject": false,
+          }
+        }
+        onAcceptClick={[Function]}
+        onNotApplicableClick={[Function]}
+        onRejectClick={[Function]}
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      key="456"
+      sm={4}
+    >
+      <WithStyles(CellDetaineeCardComponent)
+        cellDetainee={
+          Object {
+            "id": "456",
+          }
+        }
+        cellName="c1"
+        isAuthenticated={false}
+        medication={
+          Object {
+            "accept": true,
+            "notApplicable": false,
+            "reject": false,
+          }
+        }
+        onAcceptClick={[Function]}
+        onNotApplicableClick={[Function]}
+        onRejectClick={[Function]}
+      />
+    </WithStyles(Grid)>
+  </WithStyles(CellDetaineeGridComponent)>
+  <WithStyles(withRouter(MedicationFooterComponent))
+    isSaveDisabled={false}
+    isSavingMedication={false}
+    onRadioGroupChange={[Function]}
+    onSave={[Function]}
+    radioButtonValue="accept"
+  />
+</Fragment>
+`;

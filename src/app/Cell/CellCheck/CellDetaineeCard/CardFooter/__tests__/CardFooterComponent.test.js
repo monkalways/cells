@@ -43,6 +43,9 @@ describe('CardFooterComponent', () => {
     };
     const wrapper = setup();
     expect(wrapper).toMatchSnapshot();
+
+    expect(wrapper.find('#visualCheckButton')).toExist();
+    expect(wrapper.find('#verbalCheckButton')).toExist();
   });
 
   it('should render visual button as selected if visual check is selected', () => {

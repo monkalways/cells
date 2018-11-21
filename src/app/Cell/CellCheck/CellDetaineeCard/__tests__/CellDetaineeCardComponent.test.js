@@ -10,10 +10,16 @@ describe('CellDetaineeCardComponent', () => {
     };
     return shallow(<CellDetaineeCardComponent
       classes={classes}
-      cellDetainee={{}}
+      cellDetainee={{
+        firstName: 'John',
+        lastName: 'Smith',
+      }}
       cellName="c1"
       isAuthenticated={false}
-      cellCheck={{}}
+      cellCheck={{
+        visual: true,
+        verbal: false,
+      }}
       onVisualClick={jest.fn()}
       onVerbalClick={jest.fn()}
     />);

@@ -15,7 +15,7 @@ const propTypes = {
   onRadioGroupChange: PropTypes.func.isRequired,
 };
 
-const FooterRadioButtonGroupComponent = ({
+export const FooterRadioButtonGroupComponent = ({
   classes,
   radioButtonValue,
   disabled,

@@ -7,7 +7,7 @@ import {
   CellDetaineeCardContent,
 } from '../../../common/CellDetaineeCard';
 
-import OverviewCellDetaineeCardFooter from './OverviewCellDetaineeCardFooter';
+import CardFooter from './CardFooter';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -19,7 +19,7 @@ const propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
-const OverviewCellDetaineeCardComponent = ({
+export const CellDetaineeCardComponent = ({
   classes,
   cellDetainee,
   cellName,
@@ -33,18 +33,15 @@ const OverviewCellDetaineeCardComponent = ({
       second={cellName}
       isAuthenticated={isAuthenticated}
     />
-    <OverviewCellDetaineeCardFooter
-      cellDetainee={cellDetainee}
-      isAuthenticated={isAuthenticated}
-    />
+    <CardFooter cellDetainee={cellDetainee} isAuthenticated={isAuthenticated} />
   </Card>
 );
 
-OverviewCellDetaineeCardComponent.propTypes = propTypes;
+CellDetaineeCardComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   card: {
     maxWidth: theme.spacing.unit * 50,
     backgroundColor: theme.palette.background.paper,
   },
-}))(OverviewCellDetaineeCardComponent);
+}))(CellDetaineeCardComponent);

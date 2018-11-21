@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderContentComponent should render 1`] = `
+<WithStyles(Grid)
+  className="grid"
+  container={true}
+  justify="center"
+>
+  <WithStyles(Grid)
+    alignItems="center"
+    container={true}
+    justify="center"
+  >
+    <WithStyles(Grid)
+      item={true}
+      sm={5}
+    >
+      <WithStyles(Typography)
+        className="headerTitle"
+        variant="h6"
+      >
+        Cell:
+      </WithStyles(Typography)>
+      <WithStyles(Typography)
+        className="headerContent"
+        variant="h4"
+      >
+        c1
+      </WithStyles(Typography)>
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      sm={7}
+    >
+      <WithStyles(Typography)
+        className="headerTitle"
+        variant="h6"
+      >
+        Designation:
+      </WithStyles(Typography)>
+      <WithStyles(Typography)
+        className="headerContent"
+        variant="h6"
+      >
+        Male Adult
+      </WithStyles(Typography)>
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      sm={5}
+    >
+      <WithStyles(Typography)
+        className="headerTitle"
+        variant="h6"
+      >
+        Occupancy:
+      </WithStyles(Typography)>
+      <WithStyles(Typography)
+        className="headerContent"
+        variant="h6"
+      >
+        2
+        /
+        2
+      </WithStyles(Typography)>
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      sm={7}
+    >
+      <WithStyles(Typography)
+        className="headerTitle"
+        variant="h6"
+      >
+        Cell Status:
+      </WithStyles(Typography)>
+      <WithStyles(Typography)
+        className="headerContent"
+        variant="h6"
+      >
+        Allocated
+      </WithStyles(Typography)>
+    </WithStyles(Grid)>
+  </WithStyles(Grid)>
+</WithStyles(Grid)>
+`;

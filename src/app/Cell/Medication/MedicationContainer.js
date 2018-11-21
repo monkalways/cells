@@ -65,8 +65,13 @@ export const mapDispatchToProps = (dispatch) => ({
   ) => {
     detainees.forEach((detainee) => dispatch(notApplicableMedication(detainee)));
   },
-  onSave: (meal, cellName, userName, saveMedication = operations.saveMedication) => {
-    dispatch(saveMedication(meal, cellName, userName));
+  onSave: (
+    medication,
+    cellName,
+    userName,
+    saveMedication = operations.saveMedication,
+  ) => {
+    dispatch(saveMedication(medication, cellName, userName));
   },
 });
 

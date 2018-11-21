@@ -18,7 +18,7 @@ import FooterRadioButtonGroup from './FooterRadioButtonGroup';
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
+    goBack: PropTypes.func.isRequired,
   }).isRequired,
   radioButtonValue: PropTypes.string.isRequired,
   isSavingMeal: PropTypes.bool.isRequired,
@@ -27,7 +27,7 @@ const propTypes = {
   onSave: PropTypes.func.isRequired,
 };
 
-const MealFooterComponent = ({
+export const MealFooterComponent = ({
   classes,
   history,
   radioButtonValue,
@@ -42,24 +42,21 @@ const MealFooterComponent = ({
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
-        <Grid
-          container
-          justify="center"
-          alignItems="center"
-          className={classes.container}
-        >
+        <Grid container justify="center" alignItems="center">
           <BottomNavigation
             value={-1}
             showLabels
             className={classes.navigation}
           >
             <BottomNavigationAction
+              id="backButton"
               label={<Typography variant="body1">Back</Typography>}
               onClick={handleBackClick}
               icon={<ArrowBackIcon className={classes.icon} />}
               disabled={isSavingMeal}
             />
             <BottomNavigationAction
+              id="saveButton"
               label={<Typography variant="body1">Save</Typography>}
               onClick={onSave}
               icon={<SaveIcon className={classes.icon} />}

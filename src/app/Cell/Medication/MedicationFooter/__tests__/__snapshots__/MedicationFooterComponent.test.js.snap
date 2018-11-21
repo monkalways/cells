@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MedicationFooterComponent should render 1`] = `
+<div
+  className=""
+>
+  <WithStyles(AppBar)
+    className=""
+    position="static"
+  >
+    <WithStyles(Grid)
+      alignItems="center"
+      container={true}
+      justify="center"
+    >
+      <WithStyles(BottomNavigation)
+        className=""
+        showLabels={true}
+        value={-1}
+      >
+        <WithStyles(BottomNavigationAction)
+          disabled={false}
+          icon={
+            <pure(ArrowBackIcon)
+              className=""
+            />
+          }
+          id="backButton"
+          label={
+            <WithStyles(Typography)
+              variant="body1"
+            >
+              Back
+            </WithStyles(Typography)>
+          }
+          onClick={[Function]}
+        />
+        <WithStyles(BottomNavigationAction)
+          disabled={false}
+          icon={
+            <pure(SaveIcon)
+              className=""
+            />
+          }
+          id="saveButton"
+          label={
+            <WithStyles(Typography)
+              variant="body1"
+            >
+              Save
+            </WithStyles(Typography)>
+          }
+          onClick={[MockFunction]}
+        />
+        <WithStyles(BottomNavigationAction)
+          disabled={true}
+        />
+        <WithStyles(FooterRadioButtonGroupComponent)
+          disabled={false}
+          onRadioGroupChange={[MockFunction]}
+          radioButtonValue="accept"
+        />
+      </WithStyles(BottomNavigation)>
+    </WithStyles(Grid)>
+  </WithStyles(AppBar)>
+</div>
+`;

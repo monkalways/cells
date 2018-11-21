@@ -28,7 +28,7 @@ const propTypes = {
   cellName: PropTypes.string.isRequired,
 };
 
-const OverviewFooterComponent = ({
+export const OverviewFooterComponent = ({
   classes,
   isAuthenticated,
   onSignIn,
@@ -42,17 +42,12 @@ const OverviewFooterComponent = ({
     history.push(`/cells/${cellName}/home/meal`);
   };
   const handleMedicationClick = () => {
-    history.push(`/cells/${cellName}/home/Medication`);
+    history.push(`/cells/${cellName}/home/medication`);
   };
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
-        <Grid
-          container
-          justify="center"
-          alignItems="center"
-          className={classes.container}
-        >
+        <Grid container justify="center" alignItems="center">
           {isAuthenticated ? (
             <BottomNavigation
               value={-1}
@@ -60,6 +55,7 @@ const OverviewFooterComponent = ({
               className={classes.navigation}
             >
               <BottomNavigationAction
+                id="cellCheckButton"
                 label={<Typography variant="body1">Cell Check</Typography>}
                 onClick={handleCellCheckClick}
                 icon={(
@@ -71,6 +67,7 @@ const OverviewFooterComponent = ({
 )}
               />
               <BottomNavigationAction
+                id="mealButton"
                 label={<Typography variant="body1">Meal</Typography>}
                 onClick={handleMealClick}
                 icon={(
@@ -82,6 +79,7 @@ const OverviewFooterComponent = ({
 )}
               />
               <BottomNavigationAction
+                id="medicationButton"
                 label={<Typography variant="body1">Medication</Typography>}
                 onClick={handleMedicationClick}
                 icon={(
@@ -96,6 +94,7 @@ const OverviewFooterComponent = ({
           ) : (
             <React.Fragment>
               <Button
+                id="signInButton"
                 variant="contained"
                 color="secondary"
                 className={classes.button}
