@@ -10,7 +10,7 @@ const propTypes = {
   ]).isRequired,
 };
 
-const CellDetaineeGridComponent = ({ classes, children }) => (
+export const CellDetaineeGridComponent = ({ classes, children }) => (
   <Grid container className={classes.container} spacing={8} justify="center">
     {children}
   </Grid>
