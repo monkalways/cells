@@ -2,8 +2,8 @@ import { actions as toastrActions } from 'react-redux-toastr';
 
 import actions from './actions';
 import services from './services';
-import activityRoomServices from '../../ActivityRoom/duck/services';
-import utils from '../utils';
+// import activityRoomServices from '../../ActivityRoom/duck/services';
+// import utils from '../utils';
 import commonUtils from '../../utils';
 import constants from '../constants';
 
@@ -56,24 +56,24 @@ const assignDetaineeToRoom = (
   assignToRoomAction = actions.assignToRoom,
   assignToRoomFailureAction = actions.assignToRoomFailure,
   assignToRoomSuccessAction = actions.assignToRoomSuccess,
-  createTempAbsenceService = activityRoomServices.createTempAbsence,
-  getActivityRoomDetainees = activityRoomServices.getActivityRoomDetainees,
+  // createTempAbsenceService = activityRoomServices.createTempAbsence,
+  // getActivityRoomDetainees = activityRoomServices.getActivityRoomDetainees,
   getAvailableActivityRoomsOperation = getAvailableActivityRooms,
   getAvailableActivityRoomsService = services.getAvailableActivityRooms,
   getDetaineeOperation = getDetainee,
-  getLastTempAbsenceService = activityRoomServices.getLastTempAbsence,
+  // getLastTempAbsenceService = activityRoomServices.getLastTempAbsence,
   notifyOperation = notify,
   sendErrorMessage = commonUtils.sendErrorMessage,
   updateActivityRoomService = services.updateActivityRoom,
-  updateTempAbsenceService = activityRoomServices.updateTempAbsence,
+  // updateTempAbsenceService = activityRoomServices.updateTempAbsence,
 ) => async (dispatch) => {
   try {
     dispatch(assignToRoomAction());
     // const lastTempAbsence = await getLastTempAbsenceService(detaineeId);
     // console.log(lastTempAbsence);
 
-    console.log('assignToRoom');
-    console.log(detainee);
+    // console.log('assignToRoom');
+    // console.log(detainee);
 
     // Check the detainee's location
     if (!detainee.location) {
@@ -86,7 +86,7 @@ const assignDetaineeToRoom = (
       const { availableRooms } = availableActivityRooms.find((activityRoom) => activityRoom.usage.toLowerCase() === usage.toLowerCase());
 
       if (availableRooms.includes(room)) {
-        console.log(`Room ${room} is still available and we can book it.`);
+        // console.log(`Room ${room} is still available and we can book it.`);
 
         // Book this room
         // Note that this throws an NAC error - "Cannot update cell: Update outside of grace period"
@@ -112,8 +112,10 @@ const assignDetaineeToRoom = (
     dispatch(assignToRoomSuccessAction());
 
     // If they had a temporary absence, end it.
-    // Case 2: They were in transit and will be redirected to a new room ('in transit' temporary absence)
-    // Case 3: They were in an activity and will be sent to a new location ('in progress' temporary absence)
+    // Case 2: They were in transit and will be redirected
+    // to a new room ('in transit' temporary absence)
+    // Case 3: They were in an activity and will be sent
+    //  to a new location ('in progress' temporary absence)
     // if (lastTempAbsence) {
     //   console.log('Found a last temporary absence');
     //   console.log(lastTempAbsence);
@@ -183,9 +185,6 @@ const assignDetaineeToRoom = (
     //   );
     // }
   } catch (error) {
-    console.log('catching an error!');
-    console.log(error);
-    console.log(error.response);
     sendErrorMessage({ dispatch, error });
     assignToRoomFailureAction();
   }
