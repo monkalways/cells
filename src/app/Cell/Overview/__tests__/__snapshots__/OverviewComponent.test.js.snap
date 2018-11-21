@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CellCheckComponent should render cell detainee cards when cell detainees are loaded 1`] = `
+exports[`OverviewComponent should render cell detainee cards when cell detainees are loaded 1`] = `
 <Fragment>
   <WithStyles(CellDetaineeGridComponent)>
     <WithStyles(Grid)
