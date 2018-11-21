@@ -111,7 +111,7 @@ describe('ActivityRoomComponent', () => {
 
   it(`should set unauthenticated timer to call logout in ${
     commonConstants.UNAUTHENTICATED_TIMEOUT_SECONDS
-  } seconds when not authenticated`, () => {
+  } seconds when not authenticated and clear timeout after unmount`, () => {
     isAuthenticated = false;
     const wrapper = setup();
 
