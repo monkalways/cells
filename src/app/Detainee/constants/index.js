@@ -6,10 +6,6 @@ const CELLS_URL = 'api/cells/';
 const DETAINEE_URL = 'api/detainees/';
 const DETAINEE_PROFILE = '/detainee-profile';
 
-const UPDATE_ACTIVITY_ROOM_URL = `${
-  process.env.REACT_APP_CELL_SERVICE_URL
-}api/cells/`;
-
 // Usages
 const BAIL_HEARING_ROOM_1 = 'Bail Hearing1';
 const BAIL_HEARING_ROOM_2 = 'Bail Hearing2';
@@ -42,9 +38,6 @@ const REMAND_HOLDING_IN_TRANSIT = 'Remand Holding - In Transit';
 
 // Locations
 const IN_PROGRESS = 'In Progress';
-
-// Room state
-const ROOM_STATE_ALLOCATED = 'ALC';
 
 export default {
   ACTIVITY_ROOMS_QUERYSTRING,
@@ -80,6 +73,4 @@ export default {
   RELEASE_ROOM,
   REMAND_HOLDING_IN_TRANSIT,
   REMAND_HOLDING_ROOM,
-  ROOM_STATE_ALLOCATED,
-  UPDATE_ACTIVITY_ROOM_URL,
 };
