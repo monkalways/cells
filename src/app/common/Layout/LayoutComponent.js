@@ -12,7 +12,7 @@ const propTypes = {
   ]).isRequired,
 };
 
-const Layout = ({ classes, children }) => (
+export const LayoutComponent = ({ classes, children }) => (
   <Grid container justify="center">
     <Grid container className={classes.container}>
       <Grid item xs={12}>
@@ -22,11 +22,11 @@ const Layout = ({ classes, children }) => (
   </Grid>
 );
 
-Layout.propTypes = propTypes;
+LayoutComponent.propTypes = propTypes;
 
 export default withStyles(() => ({
   container: {
     height: constants.LAYOUT.height,
     width: constants.LAYOUT.width,
   },
-}))(Layout);
+}))(LayoutComponent);

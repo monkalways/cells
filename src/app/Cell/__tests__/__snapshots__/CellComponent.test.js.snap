@@ -2,7 +2,7 @@
 
 exports[`CellComponent should render if cell details is not null 1`] = `
 <Fragment>
-  <WithStyles(Layout)>
+  <WithStyles(LayoutComponent)>
     <WithStyles(HeaderComponent)
       cellDetails={Object {}}
       isAuthenticated={false}
@@ -33,6 +33,6 @@ exports[`CellComponent should render if cell details is not null 1`] = `
         />
       </Switch>
     </div>
-  </WithStyles(Layout)>
+  </WithStyles(LayoutComponent)>
 </Fragment>
 `;

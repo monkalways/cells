@@ -2,7 +2,7 @@
 
 exports[`ActivityRoomComponent should render "no detainees" when detainees are loaded but there are none 1`] = `
 <Fragment>
-  <WithStyles(Layout)>
+  <WithStyles(LayoutComponent)>
     <WithStyles(HeaderComponent)
       isAuthenticated={false}
       onLogout={[Function]}
@@ -24,13 +24,13 @@ exports[`ActivityRoomComponent should render "no detainees" when detainees are l
         onSignIn={[MockFunction]}
       />
     </div>
-  </WithStyles(Layout)>
+  </WithStyles(LayoutComponent)>
 </Fragment>
 `;
 
 exports[`ActivityRoomComponent should render Loading when detainees are not yet loaded 1`] = `
 <Fragment>
-  <WithStyles(Layout)>
+  <WithStyles(LayoutComponent)>
     <WithStyles(HeaderComponent)
       isAuthenticated={false}
       onLogout={[Function]}
@@ -47,13 +47,13 @@ exports[`ActivityRoomComponent should render Loading when detainees are not yet 
         onSignIn={[MockFunction]}
       />
     </div>
-  </WithStyles(Layout)>
+  </WithStyles(LayoutComponent)>
 </Fragment>
 `;
 
 exports[`ActivityRoomComponent should render detainee cards when one or more detainees are loaded 1`] = `
 <Fragment>
-  <WithStyles(Layout)>
+  <WithStyles(LayoutComponent)>
     <WithStyles(HeaderComponent)
       isAuthenticated={false}
       onLogout={[Function]}
@@ -103,6 +103,6 @@ exports[`ActivityRoomComponent should render detainee cards when one or more det
         onSignIn={[MockFunction]}
       />
     </div>
-  </WithStyles(Layout)>
+  </WithStyles(LayoutComponent)>
 </Fragment>
 `;
