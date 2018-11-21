@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CellDetaineeCardHeaderComponent should render 1`] = `
+<WithStyles(CardContent)
+  className="header"
+>
+  <WithStyles(Grid)
+    container={true}
+  >
+    <WithStyles(Grid)
+      item={true}
+      sm={7}
+    >
+      <WithStyles(Typography)
+        className="heading"
+        variant="h6"
+      >
+        Smith
+      </WithStyles(Typography)>
+      <WithStyles(Typography)
+        className="heading"
+        variant="h6"
+      >
+        John
+      </WithStyles(Typography)>
+      <WithStyles(Typography)
+        className="subtitle"
+        variant="h6"
+      >
+        { EPS }
+      </WithStyles(Typography)>
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      sm={5}
+    >
+      <WithStyles(Avatar)
+        className="avatar"
+        src="InCell.png"
+      />
+    </WithStyles(Grid)>
+  </WithStyles(Grid)>
+</WithStyles(CardContent)>
+`;
