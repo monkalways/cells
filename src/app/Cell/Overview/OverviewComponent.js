@@ -20,7 +20,7 @@ const defaultProps = {
   cellDetainees: [],
 };
 
-class OverviewComponent extends Component {
+export class OverviewComponent extends Component {
   componentDidMount() {
     const { cellName, getCellDetainees } = this.props;
     getCellDetainees(cellName);
