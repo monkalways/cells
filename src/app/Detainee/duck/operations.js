@@ -5,6 +5,7 @@ import services from './services';
 import activityRoomServices from '../../ActivityRoom/duck/services';
 import utils from '../utils';
 import commonUtils from '../../utils';
+import constants from '../constants';
 
 const notify = (dispatch, errorMessage) => {
   dispatch(toastrActions.add({
@@ -63,12 +64,16 @@ const assignDetaineeToRoom = (
   getLastTempAbsenceService = activityRoomServices.getLastTempAbsence,
   notifyOperation = notify,
   sendErrorMessage = commonUtils.sendErrorMessage,
+  updateActivityRoomService = services.updateActivityRoom,
   updateTempAbsenceService = activityRoomServices.updateTempAbsence,
 ) => async (dispatch) => {
   try {
     dispatch(assignToRoomAction());
     // const lastTempAbsence = await getLastTempAbsenceService(detaineeId);
     // console.log(lastTempAbsence);
+
+    console.log('assignToRoom');
+    console.log(detainee);
 
     // Check the detainee's location
     if (!detainee.location) {
@@ -84,6 +89,12 @@ const assignDetaineeToRoom = (
         console.log(`Room ${room} is still available and we can book it.`);
 
         // Book this room
+        // Note that this throws an NAC error - "Cannot update cell: Update outside of grace period"
+        updateActivityRoomService({
+          cellName: room,
+          remarks: `${detainee.lastName}, ${detainee.firstName}`,
+          statusCode: constants.ROOM_STATE_ALLOCATED,
+        });
 
         // Create a temporary absence showing detainee is in transit to the room
 
@@ -97,6 +108,8 @@ const assignDetaineeToRoom = (
         );
       }
     }
+
+    dispatch(assignToRoomSuccessAction());
 
     // If they had a temporary absence, end it.
     // Case 2: They were in transit and will be redirected to a new room ('in transit' temporary absence)
@@ -170,6 +183,9 @@ const assignDetaineeToRoom = (
     //   );
     // }
   } catch (error) {
+    console.log('catching an error!');
+    console.log(error);
+    console.log(error.response);
     sendErrorMessage({ dispatch, error });
     assignToRoomFailureAction();
   }
