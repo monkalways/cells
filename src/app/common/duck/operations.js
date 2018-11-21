@@ -5,6 +5,7 @@ import utils from '../../utils';
 const getVersions = (
   getVersionsService = services.getVersions,
   getVersionsSuccessAction = actions.getVersionsSuccess,
+  sendErrorMessage = utils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
     const payload = await getVersionsService();
@@ -17,7 +18,7 @@ const getVersions = (
     ];
     dispatch(getVersionsSuccessAction(versions));
   } catch (error) {
-    utils.sendErrorMessage({ dispatch, error });
+    sendErrorMessage({ dispatch, error });
   }
 };
 
