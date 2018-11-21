@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingComponent should render with default size 100 1`] = `
+<div
+  className="container"
+>
+  <WithStyles(CircularProgress)
+    className="progress"
+    size={100}
+  />
+</div>
+`;
+
+exports[`LoadingComponent should render with provided size 1`] = `
+<div
+  className="container"
+>
+  <WithStyles(CircularProgress)
+    className="progress"
+    size={50}
+  />
+</div>
+`;
