@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OverviewFooterComponent should render bottom navigation actions if authenticated 1`] = `
+<div
+  className=""
+>
+  <WithStyles(AppBar)
+    className=""
+    position="static"
+  >
+    <WithStyles(Grid)
+      alignItems="center"
+      container={true}
+      justify="center"
+    >
+      <WithStyles(BottomNavigation)
+        className=""
+        showLabels={true}
+        value={-1}
+      >
+        <WithStyles(BottomNavigationAction)
+          icon={
+            <img
+              alt="wellness visual"
+              src="WellnessVisual.png"
+            />
+          }
+          id="cellCheckButton"
+          label={
+            <WithStyles(Typography)
+              variant="body1"
+            >
+              Cell Check
+            </WithStyles(Typography)>
+          }
+          onClick={[Function]}
+        />
+        <WithStyles(BottomNavigationAction)
+          icon={
+            <img
+              alt="meal accept"
+              src="MealAccept.png"
+            />
+          }
+          id="mealButton"
+          label={
+            <WithStyles(Typography)
+              variant="body1"
+            >
+              Meal
+            </WithStyles(Typography)>
+          }
+          onClick={[Function]}
+        />
+        <WithStyles(BottomNavigationAction)
+          icon={
+            <img
+              alt="Medication accept"
+              src="MedicineAccept.png"
+            />
+          }
+          id="medicationButton"
+          label={
+            <WithStyles(Typography)
+              variant="body1"
+            >
+              Medication
+            </WithStyles(Typography)>
+          }
+          onClick={[Function]}
+        />
+      </WithStyles(BottomNavigation)>
+    </WithStyles(Grid)>
+  </WithStyles(AppBar)>
+</div>
+`;
+
+exports[`OverviewFooterComponent should render sign in button if not authenticated 1`] = `
+<div
+  className=""
+>
+  <WithStyles(AppBar)
+    className=""
+    position="static"
+  >
+    <WithStyles(Grid)
+      alignItems="center"
+      container={true}
+      justify="center"
+    >
+      <WithStyles(Button)
+        color="secondary"
+        id="signInButton"
+        onClick={[Function]}
+        variant="contained"
+      >
+        Scan ID Card to Access
+      </WithStyles(Button)>
+      <Connect(WithStyles(ScanCardDialogComponent)) />
+    </WithStyles(Grid)>
+  </WithStyles(AppBar)>
+</div>
+`;
