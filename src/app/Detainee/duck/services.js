@@ -99,7 +99,22 @@ const getDetainee = async (custodyEventId) => {
   };
 };
 
+const updateActivityRoom = async ({ cellName, remarks, statusCode }) => {
+  await axios.put(
+    constants.UPDATE_ACTIVITY_ROOM_URL,
+    {
+      cellName,
+      remarks,
+      statusCode,
+    },
+    commonConstants.HEADERS,
+  );
+
+  return true;
+};
+
 export default {
   getAvailableActivityRooms,
   getDetainee,
+  updateActivityRoom,
 };
