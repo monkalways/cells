@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GotoActivityRoomComponent should render 1`] = `
+<WithStyles(Paper)
+  className="paper"
+>
+  <WithStyles(Typography)
+    component="h1"
+    variant="h5"
+  >
+    Go to Activity Room?
+  </WithStyles(Typography)>
+  <form
+    className="form"
+  >
+    <WithStyles(FormControl)
+      fullWidth={true}
+      margin="normal"
+      required={true}
+    >
+      <WithStyles(InputLabel)
+        htmlFor="usage"
+      >
+        Usage
+      </WithStyles(InputLabel)>
+      <WithStyles(Select)
+        inputProps={
+          Object {
+            "id": "usage",
+            "name": "usage",
+          }
+        }
+        onChange={[Function]}
+        onClose={[Function]}
+        onOpen={[Function]}
+        open={false}
+        value=""
+      >
+        <WithStyles(MenuItem)
+          value=""
+        >
+          <em>
+            None
+          </em>
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
+          value="bail hearing1"
+        >
+          Bail Hearing 1
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
+          value="bail hearing2"
+        >
+          Bail Hearing 2
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
+          value="breath test"
+        >
+          Breath Test
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
+          value="interview"
+        >
+          Interview
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
+          value="medical"
+        >
+          Medical
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
+          value="phone"
+        >
+          Phone
+        </WithStyles(MenuItem)>
+      </WithStyles(Select)>
+    </WithStyles(FormControl)>
+    <WithStyles(Button)
+      className="submit"
+      color="primary"
+      fullWidth={true}
+      onClick={[Function]}
+      type="submit"
+      variant="contained"
+    >
+      Go
+    </WithStyles(Button)>
+  </form>
+</WithStyles(Paper)>
+`;

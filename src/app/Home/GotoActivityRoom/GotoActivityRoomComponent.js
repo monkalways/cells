@@ -18,7 +18,7 @@ const propTypes = {
   }).isRequired,
 };
 
-class GotoActivityRoomComponent extends Component {
+export class GotoActivityRoomComponent extends Component {
   state = {
     usage: '',
     open: false,
