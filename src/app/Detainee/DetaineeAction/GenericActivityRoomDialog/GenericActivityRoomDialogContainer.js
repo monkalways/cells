@@ -1,24 +1,34 @@
 import { connect } from 'react-redux';
-import { selectors } from '../../duck';
+import { operations, selectors } from '../../duck';
 import GenericActivityRoomDialogComponent from './GenericActivityRoomDialogComponent';
 
 export const mapStateToProps = (
   state,
   { usage },
-  getFirstAvailableActivityRoom = selectors.getFirstAvailableActivityRoom(
+  room = selectors.getFirstAvailableActivityRoom(state, usage),
+  isAnyRoomForGivenActivityAvailable = selectors.isAnyRoomForGivenActivityAvailableState(
     state,
     usage,
   ),
-  isActivityRoomAvailable = selectors.isGenericActivityRoomAvailableState(
-    state,
-    usage,
-  ),
+  isAssigningToRoom = selectors.isAssigningToRoomState(state),
 ) => ({
-  getFirstAvailableActivityRoom,
-  isActivityRoomAvailable,
+  room,
+  isAnyRoomForGivenActivityAvailable,
+  isAssigningToRoom,
+});
+
+export const mapDispatchToProps = (dispatch) => ({
+  // eslint-disable-next-line max-len
+  getAvailableActivityRooms: (getAvailableActivityRooms = operations.getAvailableActivityRooms) => dispatch(getAvailableActivityRooms()),
+  assignDetaineeToRoom: (
+    detainee,
+    room,
+    usage,
+    assignDetaineeToRoom = operations.assignDetaineeToRoom,
+  ) => dispatch(assignDetaineeToRoom(detainee, room, usage)),
 });
 
 export default connect(
   mapStateToProps,
-  null,
+  mapDispatchToProps,
 )(GenericActivityRoomDialogComponent);

@@ -4,69 +4,78 @@ import {
   Button,
   Dialog,
   DialogActions,
-  // DialogContent,
+  DialogContent,
   DialogTitle,
 } from '@material-ui/core';
 
-// import Loading from '../../../common/Loading';
+import Loading from '../../../common/Loading';
 
 const propTypes = {
+  assignDetaineeToRoom: PropTypes.func.isRequired,
   detainee: PropTypes.shape({
     firstName: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
   }).isRequired,
-  getFirstAvailableActivityRoom: PropTypes.string,
-  isActivityRoomAvailable: PropTypes.bool.isRequired,
+  isAnyRoomForGivenActivityAvailable: PropTypes.bool.isRequired,
   isDialogOpen: PropTypes.bool.isRequired,
-  // isCheckingIn: PropTypes.bool.isRequired,
-  // onCheckIn: PropTypes.func.isRequired,
+  isAssigningToRoom: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  room: PropTypes.string,
   usage: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
-  getFirstAvailableActivityRoom: null,
+  room: null,
 };
 
 const GenericActivityRoomDialogComponent = ({
-  isActivityRoomAvailable,
+  assignDetaineeToRoom,
   detainee,
-  // isCheckingIn,
-  getFirstAvailableActivityRoom,
+  isAnyRoomForGivenActivityAvailable,
+  isAssigningToRoom,
   isDialogOpen,
-  // onCheckIn,
   onClose,
+  room,
   usage,
 }) => (
   <Dialog
     open={isDialogOpen}
     onClose={onClose}
-    // disableBackdropClick={isCheckingIn}
-    // disableEscapeKeyDown={isCheckingIn}
+    disableBackdropClick={isAssigningToRoom}
+    disableEscapeKeyDown={isAssigningToRoom}
   >
     {/** * Medical, Fingerprinting, Telephone, Bail Hearing 1 and 2, Breath Test ** */}
-    {isActivityRoomAvailable ? (
+    {isAnyRoomForGivenActivityAvailable ? (
       <React.Fragment>
         <DialogTitle>
           {`Moving ${detainee.lastName}, ${
             detainee.firstName
-          } to ${usage} room ${getFirstAvailableActivityRoom}?`}
+          } to ${usage} room ${room}?`}
         </DialogTitle>
+        {isAssigningToRoom && (
+          <DialogContent>
+            <Loading size={50} />
+          </DialogContent>
+        )}
         <DialogActions>
           <Button
             onClick={onClose}
             color="primary"
-            // disabled={isCheckingIn}
+            disabled={isAssigningToRoom}
           >
             Cancel
           </Button>
           <Button
             // onClick={onCheckIn}
-            onClick={onClose}
+            onClick={() => {
+              assignDetaineeToRoom(detainee, room, usage);
+            }}
             color="primary"
             variant="contained"
             autoFocus
-            // disabled={isCheckingIn}
+            disabled={isAssigningToRoom}
           >
             Confirm
           </Button>
@@ -82,11 +91,6 @@ const GenericActivityRoomDialogComponent = ({
         </DialogActions>
       </React.Fragment>
     )}
-    {/* {isCheckingIn && (
-      <DialogContent>
-      <Loading size={50} />
-      </DialogContent>
-    )} */}
   </Dialog>
 );
 

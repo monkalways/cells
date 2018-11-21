@@ -5,7 +5,7 @@ import constants from '../constants';
 // Basic selectors
 const getAvailableActivityRooms = (state) => state.detainee.activityRooms.availableActivityRooms;
 const getDetainee = (state) => state.detainee.detaineeProfile.data;
-const getProp = (_state, prop) => prop;
+const getSecondProp = (_state, prop) => prop;
 const isAssigningToRoom = (state) => state.detainee.activityRooms.assigningToRoom;
 
 const isActivityRoomOptionAvailable = (state, usage, inProgress, inTransit) => {
@@ -73,7 +73,7 @@ const isPhoneDeclineOptionAvailable = (state) => {
 const getDetaineeState = createSelector([getDetainee], (detainee) => detainee);
 
 const getFirstAvailableActivityRoom = createSelector(
-  [getAvailableActivityRooms, getProp],
+  [getAvailableActivityRooms, getSecondProp],
   (rooms, usage) => {
     if (usage) {
       // eslint-disable-next-line max-len
@@ -92,7 +92,7 @@ const isActivityRoomOptionAvailableState = createSelector(
 
 const isAssigningToRoomState = createSelector(
   [isAssigningToRoom],
-  (detainee) => detainee,
+  (isAssigning) => isAssigning,
 );
 
 const isDetaineeProfileLoadedState = createSelector(
@@ -100,8 +100,8 @@ const isDetaineeProfileLoadedState = createSelector(
   (loaded) => loaded,
 );
 
-const isGenericActivityRoomAvailableState = createSelector(
-  [getAvailableActivityRooms, getProp],
+const isAnyRoomForGivenActivityAvailableState = createSelector(
+  [getAvailableActivityRooms, getSecondProp],
   (rooms, usage) => {
     if (usage) {
       // eslint-disable-next-line max-len
@@ -127,9 +127,9 @@ export default {
   getDetaineeState,
   getFirstAvailableActivityRoom,
   isActivityRoomOptionAvailableState,
+  isAnyRoomForGivenActivityAvailableState,
   isAssigningToRoomState,
   isDetaineeProfileLoadedState,
-  isGenericActivityRoomAvailableState,
   isInCellOptionAvailableState,
   isPhoneDeclineOptionAvailableState,
 };
