@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CellComponent should render if cell details is not null 1`] = `
+<Fragment>
+  <WithStyles(Layout)>
+    <WithStyles(HeaderComponent)
+      cellDetails={Object {}}
+      isAuthenticated={false}
+      onLogout={[Function]}
+    />
+    <div
+      className="body"
+    >
+      <Switch>
+        <Route
+          component={[Function]}
+          exact={true}
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="undefined/cell-check"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="undefined/meal"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="undefined/Medication"
+        />
+      </Switch>
+    </div>
+  </WithStyles(Layout)>
+</Fragment>
+`;
