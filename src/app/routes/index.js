@@ -13,7 +13,8 @@ const routes = [
   },
   {
     path: '/detainees/:id',
-    component: withAuthentication(Detainee),
+    // component: withAuthentication(Detainee),
+    component: Detainee,
     exact: true,
   },
   {
