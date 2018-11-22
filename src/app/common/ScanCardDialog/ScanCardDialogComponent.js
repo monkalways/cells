@@ -72,7 +72,12 @@ export class ScanCardDialogComponent extends Component {
       onClose,
     } = this.props;
     return (
-      <Dialog open={isSignInDialogOpen} onClose={onClose}>
+      <Dialog
+        open={isSignInDialogOpen}
+        disableBackdropClick
+        disableEscapeKeyDown
+        onClose={onClose}
+      >
         <DialogTitle id="alert-dialog-title">Sign In</DialogTitle>
         <DialogContent className={classes.dialog}>
           {isAuthenticating ? (
@@ -95,11 +100,10 @@ export class ScanCardDialogComponent extends Component {
             id="fakeUserLoginButton"
             onClick={this.handleFakeUserClick}
             color="secondary"
-            autoFocus
           >
             Proceed with Test Account
           </Button>
-          <Button onClick={onClose} color="primary" autoFocus>
+          <Button onClick={onClose} color="primary">
             Cancel
           </Button>
         </DialogActions>
