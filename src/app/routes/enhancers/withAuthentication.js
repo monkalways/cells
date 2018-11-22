@@ -11,7 +11,7 @@ export default function withAuthentication(WrappedComponent) {
   const WithAuthentication = (props) => {
     const { isAuthenticated, cellName, location } = props;
     if (!isAuthenticated) {
-      const cellNameInPath = cellName || queryString.parse(location.search).from;
+      const cellNameInPath = cellName || queryString.parse(location.search).second;
       if (cellNameInPath) {
         return <Redirect to={`/cells/${cellNameInPath}/home`} />;
       }
