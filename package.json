@@ -65,7 +65,10 @@
       "src/**/*.js",
       "!/node_modules/",
       "!src/**/index.js",
-      "!src/serviceWorker.js"
+      "!src/serviceWorker.js",
+      "!src/mui-theme.js",
+      "!src/reducers.js",
+      "!src/store.js"
     ]
   },
   "browserslist": [
