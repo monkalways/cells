@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScanCardDialogComponent should render "Authentication Failed" if not authenticating but authentication failed 1`] = `
+<WithStyles(Dialog)
+  onClose={[MockFunction]}
+  open={false}
+>
+  <WithStyles(DialogTitle)
+    id="alert-dialog-title"
+  >
+    Sign In
+  </WithStyles(DialogTitle)>
+  <WithStyles(DialogContent)
+    className="dialog"
+  >
+    <WithStyles(DialogContentText)
+      id="alert-dialog-description"
+      variant="body1"
+    >
+      Authentication Failed
+    </WithStyles(DialogContentText)>
+  </WithStyles(DialogContent)>
+  <WithStyles(DialogActions)>
+    <WithStyles(Button)
+      autoFocus={true}
+      color="secondary"
+      id="fakeUserLoginButton"
+      onClick={[Function]}
+    >
+      Proceed with Test Account
+    </WithStyles(Button)>
+    <WithStyles(Button)
+      autoFocus={true}
+      color="primary"
+      onClick={[MockFunction]}
+    >
+      Cancel
+    </WithStyles(Button)>
+  </WithStyles(DialogActions)>
+</WithStyles(Dialog)>
+`;
+
+exports[`ScanCardDialogComponent should render "Please scan your ID card to proceed" if not authenticating 1`] = `
+<WithStyles(Dialog)
+  onClose={[MockFunction]}
+  open={false}
+>
+  <WithStyles(DialogTitle)
+    id="alert-dialog-title"
+  >
+    Sign In
+  </WithStyles(DialogTitle)>
+  <WithStyles(DialogContent)
+    className="dialog"
+  >
+    <WithStyles(DialogContentText)
+      id="alert-dialog-description"
+      variant="body1"
+    >
+      Please scan your ID card to proceed ...
+    </WithStyles(DialogContentText)>
+  </WithStyles(DialogContent)>
+  <WithStyles(DialogActions)>
+    <WithStyles(Button)
+      autoFocus={true}
+      color="secondary"
+      id="fakeUserLoginButton"
+      onClick={[Function]}
+    >
+      Proceed with Test Account
+    </WithStyles(Button)>
+    <WithStyles(Button)
+      autoFocus={true}
+      color="primary"
+      onClick={[MockFunction]}
+    >
+      Cancel
+    </WithStyles(Button)>
+  </WithStyles(DialogActions)>
+</WithStyles(Dialog)>
+`;
+
+exports[`ScanCardDialogComponent should render loading component if authenticating 1`] = `
+<WithStyles(Dialog)
+  onClose={[MockFunction]}
+  open={false}
+>
+  <WithStyles(DialogTitle)
+    id="alert-dialog-title"
+  >
+    Sign In
+  </WithStyles(DialogTitle)>
+  <WithStyles(DialogContent)
+    className="dialog"
+  >
+    <WithStyles(LoadingComponent)
+      size={50}
+    />
+  </WithStyles(DialogContent)>
+  <WithStyles(DialogActions)>
+    <WithStyles(Button)
+      autoFocus={true}
+      color="secondary"
+      id="fakeUserLoginButton"
+      onClick={[Function]}
+    >
+      Proceed with Test Account
+    </WithStyles(Button)>
+    <WithStyles(Button)
+      autoFocus={true}
+      color="primary"
+      onClick={[MockFunction]}
+    >
+      Cancel
+    </WithStyles(Button)>
+  </WithStyles(DialogActions)>
+</WithStyles(Dialog)>
+`;
