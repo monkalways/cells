@@ -113,8 +113,29 @@ const updateActivityRoom = async ({ cellName, remarks, statusCode }) => {
   return true;
 };
 
+const moveDetainee = async ({ detaineeId, usage, room }) => {
+  console.log(moveDetainee);
+  console.log(detaineeId);
+  console.log(usage);
+  console.log(room);
+  const response = await axios.post(
+    constants.MOVE_DETAINEE_URL,
+    {
+      custodyEventId: detaineeId,
+      from: usage,
+      to: room,
+    },
+    commonConstants.HEADERS,
+  );
+
+  const { error } = response.data;
+
+  return { error };
+};
+
 export default {
   getAvailableActivityRooms,
   getDetainee,
+  moveDetainee,
   updateActivityRoom,
 };
