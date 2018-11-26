@@ -7,7 +7,7 @@ const HEADERS = {
   headers: {
     Accept: 'application/json,',
     'x-work-domain': 'edmonton',
-    authorization: 'Basic Y3BiMTpkZXZlMzMzMw==',
+    authorization: 'Basic Y2VsbHMxOmRldmUzMzMz',
   },
 };
 
