@@ -54,7 +54,7 @@ class DetaineeActionComponent extends Component {
     usage: '',
   };
 
-  handleButtonClick = (usage) => {
+  handleGenericActivityRoomButtonClick = (usage) => {
     this.setState({
       isGenericActivityRoomDialogOpen: true,
       usage,
@@ -106,7 +106,7 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isMedicalRoomOptionAvailable}
                   onClick={() => {
-                    this.handleButtonClick(constants.MEDICAL_ROOM);
+                    this.handleGenericActivityRoomButtonClick(constants.MEDICAL_ROOM);
                   }}
                   onClose={this.handleClose}
                 >
@@ -123,7 +123,7 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isPhoneRoomOptionAvailable}
                   onClick={() => {
-                    this.handleButtonClick(constants.PHONE_ROOM);
+                    this.handleGenericActivityRoomButtonClick(constants.PHONE_ROOM);
                   }}
                   onClose={this.handleClose}
                 >
@@ -140,7 +140,8 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isPhoneDeclineOptionAvailable}
                   onClick={() => {
-                    this.handleButtonClick(constants.PHONE_DECLINE);
+                    // eslint-disable-next-line no-alert
+                    alert('Function not available');
                   }}
                   onClose={this.handleClose}
                 >
@@ -157,7 +158,7 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isFingerprintingRoomOptionAvailable}
                   onClick={() => {
-                    this.handleButtonClick(constants.FINGERPRINTING_ROOM);
+                    this.handleGenericActivityRoomButtonClick(constants.FINGERPRINTING_ROOM);
                   }}
                   onClose={this.handleClose}
                 >
@@ -174,7 +175,7 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isBreathTestRoomOptionAvailable}
                   onClick={() => {
-                    this.handleButtonClick(constants.BREATH_TEST_ROOM);
+                    this.handleGenericActivityRoomButtonClick(constants.BREATH_TEST_ROOM);
                   }}
                   onClose={this.handleClose}
                 >
@@ -191,7 +192,8 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isInterviewRoomOptionAvailable}
                   onClick={() => {
-                    this.handleButtonClick(constants.INTERVIEW_ROOM);
+                    // eslint-disable-next-line no-alert
+                    alert('Function not available');
                   }}
                   onClose={this.handleClose}
                 >
@@ -211,7 +213,7 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isBailHearingRoom1OptionAvailable}
                   onClick={() => {
-                    this.handleButtonClick(constants.BAIL_HEARING_ROOM_1);
+                    this.handleGenericActivityRoomButtonClick(constants.BAIL_HEARING_ROOM_1);
                   }}
                   onClose={this.handleClose}
                 >
@@ -228,7 +230,7 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isBailHearingRoom2OptionAvailable}
                   onClick={() => {
-                    this.handleButtonClick(constants.BAIL_HEARING_ROOM_2);
+                    this.handleGenericActivityRoomButtonClick(constants.BAIL_HEARING_ROOM_2);
                   }}
                   onClose={this.handleClose}
                 >
@@ -245,7 +247,8 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isRemandHoldingRoomOptionAvailable}
                   onClick={() => {
-                    this.handleButtonClick(constants.REMAND_HOLDING_ROOM);
+                    // eslint-disable-next-line no-alert
+                    alert('Function not available');
                   }}
                   onClose={this.handleClose}
                 >
@@ -262,7 +265,8 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isReleaseRoomOptionAvailable}
                   onClick={() => {
-                    this.handleButtonClick(constants.RELEASE_ROOM);
+                    // eslint-disable-next-line no-alert
+                    alert('Function not available');
                   }}
                   onClose={this.handleClose}
                 >
@@ -279,7 +283,11 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isInCellOptionAvailable}
                   onClick={() => {
-                    this.handleButtonClick(constants.CELL);
+                    // Note: make a separate dialog for this function.
+                    // The generic dialog tries to find a room.
+                    // This is perhaps too tightly coupled and should come from somewhere else. 
+                    // eslint-disable-next-line no-alert
+                    alert('Function not available');
                   }}
                   onClose={this.handleClose}
                 >
