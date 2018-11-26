@@ -10,6 +10,8 @@ const UPDATE_ACTIVITY_ROOM_URL = `${
   process.env.REACT_APP_CELL_SERVICE_URL
 }api/cells/`;
 
+const MOVE_DETAINEE_URL = `${process.env.REACT_APP_CELL_SERVICE_URL}api/moves/`;
+
 // Usages
 const BAIL_HEARING_ROOM_1 = 'Bail Hearing1';
 const BAIL_HEARING_ROOM_2 = 'Bail Hearing2';
@@ -72,6 +74,7 @@ export default {
   MEDICAL_ROOM,
   MEDICAL_IN_PROGRESS,
   MEDICAL_IN_TRANSIT,
+  MOVE_DETAINEE_URL,
   PHONE_DECLINE,
   PHONE_ROOM,
   PHONE_IN_PROGRESS,
