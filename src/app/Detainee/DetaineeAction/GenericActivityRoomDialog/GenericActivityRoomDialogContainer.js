@@ -5,27 +5,29 @@ import GenericActivityRoomDialogComponent from './GenericActivityRoomDialogCompo
 export const mapStateToProps = (
   state,
   { usage },
-  room = selectors.getFirstAvailableActivityRoom(state, usage),
+  currentActivityRoom = selectors.getCurrentActivityRoomState(state),
   isAnyRoomForGivenActivityAvailable = selectors.isAnyRoomForGivenActivityAvailableState(
     state,
     usage,
   ),
   isAssigningToRoom = selectors.isAssigningToRoomState(state),
+  room = selectors.getFirstAvailableActivityRoom(state, usage),
 ) => ({
-  room,
+  currentActivityRoom,
   isAnyRoomForGivenActivityAvailable,
   isAssigningToRoom,
+  room,
 });
 
 export const mapDispatchToProps = (dispatch) => ({
   // eslint-disable-next-line max-len
   getAvailableActivityRooms: (getAvailableActivityRooms = operations.getAvailableActivityRooms) => dispatch(getAvailableActivityRooms()),
-  assignDetaineeToRoom: (
-    detainee,
+  moveDetaineeToRoomFromUsage: (
+    detaineeId,
     room,
     usage,
-    assignDetaineeToRoom = operations.assignDetaineeToRoom,
-  ) => dispatch(assignDetaineeToRoom(detainee, room, usage)),
+    moveDetaineeToRoomFromUsage = operations.moveDetaineeToRoomFromUsage,
+  ) => dispatch(moveDetaineeToRoomFromUsage(detaineeId, room, usage)),
 });
 
 export default connect(
