@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render 1`] = `
+<Fragment>
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      key="/"
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="/detainees/:id"
+      path="/detainees/:id"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="/:first/:second"
+      path="/:first/:second"
+    />
+    <Route
+      component={[Function]}
+      exact={false}
+      key="/cells/:name/home"
+      path="/cells/:name/home"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="/activity-rooms/:usage/home"
+      path="/activity-rooms/:usage/home"
+    />
+  </Switch>
+</Fragment>
+`;

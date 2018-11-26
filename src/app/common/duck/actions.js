@@ -1,8 +1,8 @@
 import types from './types';
 
-const getVersionsSuccess = (payload) => ({
+const getVersionsSuccess = (versions) => ({
   type: types.GET_VERSIONS_SUCCESS,
-  payload,
+  versions,
 });
 
 export default {

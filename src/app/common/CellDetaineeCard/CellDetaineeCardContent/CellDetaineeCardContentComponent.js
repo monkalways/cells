@@ -22,7 +22,7 @@ const propTypes = {
   }).isRequired,
 };
 
-const CellDetaineeCardContentComponent = ({
+export const CellDetaineeCardContentComponent = ({
   classes,
   cellDetainee,
   first,

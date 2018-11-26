@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CellDetaineeCardContentComponent should render 1`] = `
+<WithStyles(CardMedia)
+  image="detainee-anonymous.PNG"
+  onClick={[Function]}
+  title="John Smith"
+/>
+`;

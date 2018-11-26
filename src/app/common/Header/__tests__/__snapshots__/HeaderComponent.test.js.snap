@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderComponent should render 1`] = `
+<WithStyles(AppBar)
+  position="static"
+>
+  <WithStyles(Toolbar)>
+    <WithStyles(Typography)
+      className="heading"
+      color="inherit"
+      id="title"
+      variant="h6"
+    >
+      Cell App - Detainee Management Unit
+    </WithStyles(Typography)>
+    <div>
+      <WithStyles(Typography)
+        align="right"
+        color="inherit"
+        id="version"
+        key="Cell App"
+      >
+        Cell App
+        : 
+        1.0.0
+      </WithStyles(Typography)>
+      <WithStyles(Typography)
+        align="right"
+        color="inherit"
+        id="version"
+        key="Detainee Management Service"
+      >
+        Detainee Management Service
+        : 
+        1.0.0
+      </WithStyles(Typography)>
+      <WithStyles(Typography)
+        align="right"
+        color="inherit"
+        id="version"
+        key="EPROS Service"
+      >
+        EPROS Service
+        : 
+        1.0.0
+      </WithStyles(Typography)>
+    </div>
+  </WithStyles(Toolbar)>
+</WithStyles(AppBar)>
+`;

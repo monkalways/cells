@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OverviewComponent should render cell detainee cards when cell detainees are loaded 1`] = `
+<Fragment>
+  <WithStyles(CellDetaineeGridComponent)>
+    <WithStyles(Grid)
+      item={true}
+      key="123"
+      sm={4}
+    >
+      <WithStyles(CellDetaineeCardComponent)
+        cellDetainee={
+          Object {
+            "id": "123",
+          }
+        }
+        cellName="c1"
+        isAuthenticated={false}
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      key="456"
+      sm={4}
+    >
+      <WithStyles(CellDetaineeCardComponent)
+        cellDetainee={
+          Object {
+            "id": "456",
+          }
+        }
+        cellName="c1"
+        isAuthenticated={false}
+      />
+    </WithStyles(Grid)>
+  </WithStyles(CellDetaineeGridComponent)>
+  <WithStyles(withRouter(OverviewFooterComponent))
+    cellName="c1"
+    isAuthenticated={false}
+    onSignIn={[MockFunction]}
+  />
+</Fragment>
+`;

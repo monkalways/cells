@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeComponent should render 1`] = `
+<WithStyles(Grid)
+  container={true}
+  justify="center"
+>
+  <WithStyles(Grid)
+    container={true}
+    justify="center"
+  >
+    <WithStyles(Grid)
+      item={true}
+      xs={12}
+    >
+      <WithStyles(HeaderComponent)
+        versions={
+          Array [
+            Object {
+              "name": "Cell App",
+              "version": "1.0.0",
+            },
+            Object {
+              "name": "Detainee Management Service",
+              "version": "1.0.0",
+            },
+            Object {
+              "name": "EPROS Service",
+              "version": "1.0.0",
+            },
+          ]
+        }
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+    >
+      <img
+        alt="EPS Logo"
+        src="EPSlogo.png"
+        width={300}
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      container={true}
+      item={true}
+      xs={12}
+    >
+      <WithStyles(Grid)
+        item={true}
+        sm={6}
+        xs={12}
+      >
+        <WithStyles(withRouter(GotoCellComponent)) />
+      </WithStyles(Grid)>
+      <WithStyles(Grid)
+        item={true}
+        sm={6}
+        xs={12}
+      >
+        <WithStyles(withRouter(GotoActivityRoomComponent)) />
+      </WithStyles(Grid)>
+    </WithStyles(Grid)>
+  </WithStyles(Grid)>
+</WithStyles(Grid)>
+`;

@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GotoCellComponent should render 1`] = `
+<WithStyles(Paper)
+  className="paper"
+>
+  <WithStyles(Typography)
+    component="h1"
+    variant="h5"
+  >
+    Go to Cell Room?
+  </WithStyles(Typography)>
+  <form
+    className="form"
+  >
+    <WithStyles(FormControl)
+      fullWidth={true}
+      margin="normal"
+      required={true}
+    >
+      <WithStyles(InputLabel)
+        htmlFor="cellName"
+      >
+        Cell Name
+      </WithStyles(InputLabel)>
+      <WithStyles(Input)
+        autoComplete="cellName"
+        id="cellName"
+        name="cellName"
+        onChange={[Function]}
+        value=""
+      />
+    </WithStyles(FormControl)>
+    <WithStyles(Button)
+      className="submit"
+      color="primary"
+      fullWidth={true}
+      onClick={[Function]}
+      type="submit"
+      variant="contained"
+    >
+      Go
+    </WithStyles(Button)>
+  </form>
+</WithStyles(Paper)>
+`;

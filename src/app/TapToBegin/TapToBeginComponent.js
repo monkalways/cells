@@ -26,7 +26,7 @@ const propTypes = {
   getVersions: PropTypes.func.isRequired,
 };
 
-class TapToBegin extends Component {
+export class TapToBeginComponent extends Component {
   componentDidMount() {
     const { getVersions } = this.props;
     getVersions();
@@ -43,6 +43,7 @@ class TapToBegin extends Component {
     return (
       <Grid container justify="center">
         <Grid
+          id="mainGrid"
           container
           className={classes.container}
           justify="center"
@@ -68,7 +69,7 @@ class TapToBegin extends Component {
   }
 }
 
-TapToBegin.propTypes = propTypes;
+TapToBeginComponent.propTypes = propTypes;
 
 export default compose(
   withStyles((theme) => ({
@@ -88,4 +89,4 @@ export default compose(
     },
   })),
   withRouter,
-)(TapToBegin);
+)(TapToBeginComponent);

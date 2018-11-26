@@ -22,7 +22,7 @@ const propTypes = {
   getVersions: PropTypes.func.isRequired,
 };
 
-class HomeComponent extends Component {
+export class HomeComponent extends Component {
   componentDidMount() {
     const { getVersions } = this.props;
     getVersions();

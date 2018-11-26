@@ -51,7 +51,8 @@
     "jest": "^23.6.0",
     "jest-enzyme": "^7.0.1",
     "jest-matchers": "^20.0.3",
-    "jest-teamcity-reporter": "^0.9.0"
+    "jest-teamcity-reporter": "^0.9.0",
+    "redux-mock-store": "^1.5.3"
   },
   "eslint-teamcity": {
     "reporter": "inspections",
@@ -64,7 +65,10 @@
       "src/**/*.js",
       "!/node_modules/",
       "!src/**/index.js",
-      "!src/serviceWorker.js"
+      "!src/serviceWorker.js",
+      "!src/mui-theme.js",
+      "!src/reducers.js",
+      "!src/store.js"
     ]
   },
   "browserslist": [

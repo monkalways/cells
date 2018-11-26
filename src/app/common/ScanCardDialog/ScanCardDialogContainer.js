@@ -7,12 +7,10 @@ import ScanCardDialogComponent from './ScanCardDialogComponent';
 
 export const mapStateToProps = (
   state,
-  isAuthenticated = authenticationSelectors.isAuthenticatedState(state),
   isSignInDialogOpen = authenticationSelectors.isSignInDialogOpenState(state),
   isAuthenticating = authenticationSelectors.isAuthenticatingState(state),
   isAuthenticationFailed = authenticationSelectors.isAuthenticationFailedState(state),
 ) => ({
-  isAuthenticated,
   isSignInDialogOpen,
   isAuthenticating,
   isAuthenticationFailed,
@@ -25,11 +23,11 @@ export const mapDispatchToProps = (dispatch) => ({
   ) => {
     dispatch(authenticate(cardId));
   },
-  onClose: () => {
-    dispatch(authenticationOperations.cancelAuthenticate());
-  },
   handleSignIn: (startSignIn = authenticationOperations.startSignIn) => {
     dispatch(startSignIn());
+  },
+  onClose: () => {
+    dispatch(authenticationOperations.cancelAuthenticate());
   },
 });
 

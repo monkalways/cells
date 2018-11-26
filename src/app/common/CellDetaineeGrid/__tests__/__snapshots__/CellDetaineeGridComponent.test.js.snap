@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CellDetaineeGridComponent should render 1`] = `
+<WithStyles(Grid)
+  className="container"
+  container={true}
+  justify="center"
+  spacing={8}
+>
+  <div>
+    Hello Test
+  </div>
+</WithStyles(Grid)>
+`;

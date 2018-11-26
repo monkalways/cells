@@ -24,18 +24,18 @@ const propTypes = {
   handleSignIn: PropTypes.func.isRequired,
 };
 
-class ScanCardDialogComponent extends Component {
+export class ScanCardDialogComponent extends Component {
   state = {
     cardId: '',
   };
 
-  componentWillMount() {
-    document.addEventListener('keydown', this.handleKeyDown.bind(this));
+  componentDidMount() {
+    window.addEventListener('keydown', this.handleKeyDown.bind(this));
   }
 
   componentWillUnmount() {
     this.isCancelled = true;
-    document.removeEventListener('keydown', this.handleKeyDown.bind(this));
+    window.removeEventListener('keydown', this.handleKeyDown.bind(this));
   }
 
   handleKeyDown = (event) => {
@@ -72,7 +72,12 @@ class ScanCardDialogComponent extends Component {
       onClose,
     } = this.props;
     return (
-      <Dialog open={isSignInDialogOpen} onClose={onClose}>
+      <Dialog
+        open={isSignInDialogOpen}
+        disableBackdropClick
+        disableEscapeKeyDown
+        onClose={onClose}
+      >
         <DialogTitle id="alert-dialog-title">Sign In</DialogTitle>
         <DialogContent className={classes.dialog}>
           {isAuthenticating ? (
@@ -92,13 +97,13 @@ class ScanCardDialogComponent extends Component {
             // TODO: Remove the "Proceed with Test Account" button
           }
           <Button
+            id="fakeUserLoginButton"
             onClick={this.handleFakeUserClick}
             color="secondary"
-            autoFocus
           >
             Proceed with Test Account
           </Button>
-          <Button onClick={onClose} color="primary" autoFocus>
+          <Button onClick={onClose} color="primary">
             Cancel
           </Button>
         </DialogActions>

@@ -11,7 +11,7 @@ const defaultProps = {
   size: 100,
 };
 
-const LoadingComponent = ({ classes, size }) => (
+export const LoadingComponent = ({ classes, size }) => (
   <div className={classes.container}>
     <CircularProgress className={classes.progress} size={size} />
   </div>

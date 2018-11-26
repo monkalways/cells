@@ -33,7 +33,7 @@ const defaultProps = {
   cellDetails: null,
 };
 
-class CellComponent extends Component {
+export class CellComponent extends Component {
   componentDidMount() {
     const { match, getCellDetails } = this.props;
     const { name } = match.params;

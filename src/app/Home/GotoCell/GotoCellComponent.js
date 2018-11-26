@@ -17,7 +17,7 @@ const propTypes = {
   }).isRequired,
 };
 
-class GotoCellComponent extends Component {
+export class GotoCellComponent extends Component {
   state = {
     cellName: '',
   };
