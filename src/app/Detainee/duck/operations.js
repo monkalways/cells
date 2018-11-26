@@ -2,10 +2,7 @@ import { actions as toastrActions } from 'react-redux-toastr';
 
 import actions from './actions';
 import services from './services';
-import activityRoomServices from '../../ActivityRoom/duck/services';
-import utils from '../utils';
 import commonUtils from '../../utils';
-import constants from '../constants';
 
 const notify = (dispatch, errorMessage) => {
   dispatch(toastrActions.add({
@@ -63,10 +60,6 @@ const moveDetaineeToRoomFromUsage = (
 ) => async (dispatch) => {
   try {
     dispatch(assignToRoomAction());
-
-    console.log(detaineeId);
-    console.log(`To room: ${room}`);
-    console.log(`From activity: ${usage}`);
 
     // Attempt to move the detainee to a new room
     const { error } = await moveDetaineeService({ detaineeId, usage, room });

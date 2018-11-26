@@ -285,7 +285,7 @@ class DetaineeActionComponent extends Component {
                   onClick={() => {
                     // Note: make a separate dialog for this function.
                     // The generic dialog tries to find a room.
-                    // This is perhaps too tightly coupled and should come from somewhere else. 
+                    // This is perhaps too tightly coupled and should come from somewhere else.
                     // eslint-disable-next-line no-alert
                     alert('Function not available');
                   }}
