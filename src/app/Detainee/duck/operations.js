@@ -16,12 +16,27 @@ const notify = (dispatch, errorMessage) => {
 
 const getAvailableActivityRooms = (
   getAvailableActivityRoomsService = services.getAvailableActivityRooms,
-  getAvailableActivityRoomsActions = actions.getAvailableActivityRooms,
+  getAvailableActivityRoomsAction = actions.getAvailableActivityRooms,
   getAvailableActivityRoomsSuccessAction = actions.getAvailableActivityRoomsSuccess,
   sendErrorMessage = commonUtils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
-    await dispatch(getAvailableActivityRoomsActions());
+    await dispatch(getAvailableActivityRoomsAction());
+    const payload = await getAvailableActivityRoomsService();
+    await dispatch(getAvailableActivityRoomsSuccessAction(payload));
+  } catch (error) {
+    sendErrorMessage({ dispatch, error });
+  }
+};
+
+const getAvailableActivityRoomsRefresh = (
+  getAvailableActivityRoomsService = services.getAvailableActivityRooms,
+  getAvailableActivityRoomsRefreshAction = actions.getAvailableActivityRoomsRefresh,
+  getAvailableActivityRoomsSuccessAction = actions.getAvailableActivityRoomsSuccess,
+  sendErrorMessage = commonUtils.sendErrorMessage,
+) => async (dispatch) => {
+  try {
+    await dispatch(getAvailableActivityRoomsRefreshAction());
     const payload = await getAvailableActivityRoomsService();
     await dispatch(getAvailableActivityRoomsSuccessAction(payload));
   } catch (error) {
@@ -45,16 +60,51 @@ const getDetainee = (
   }
 };
 
-const moveDetaineeToRoomFromUsage = (
+const checkDetaineeInToCell = (
   detaineeId,
-  room,
-  usage,
   assignToRoomAction = actions.assignToRoom,
   assignToRoomFailureAction = actions.assignToRoomFailure,
   assignToRoomSuccessAction = actions.assignToRoomSuccess,
   getAvailableActivityRoomsOperation = getAvailableActivityRooms,
   getDetaineeOperation = getDetainee,
-  moveDetaineeService = services.moveDetainee,
+  checkDetaineeInToCellService = services.checkInToCell,
+  notifyOperation = notify,
+  sendErrorMessage = commonUtils.sendErrorMessage,
+) => async (dispatch) => {
+  try {
+    dispatch(assignToRoomAction());
+
+    // Attempt to check the detainee in to their cell
+    const { error } = await checkDetaineeInToCellService({
+      detaineeId,
+    });
+
+    if (error) {
+      notifyOperation(dispatch, error);
+      dispatch(assignToRoomFailureAction());
+    } else {
+      dispatch(assignToRoomSuccessAction());
+    }
+
+    // Reload detainee profile
+    dispatch(getDetaineeOperation(detaineeId));
+    dispatch(getAvailableActivityRoomsOperation());
+  } catch (error) {
+    sendErrorMessage({ dispatch, error });
+    dispatch(assignToRoomFailureAction());
+  }
+};
+
+const moveDetaineeToActivityRoom = (
+  detaineeId,
+  from,
+  destinationRoom,
+  assignToRoomAction = actions.assignToRoom,
+  assignToRoomFailureAction = actions.assignToRoomFailure,
+  assignToRoomSuccessAction = actions.assignToRoomSuccess,
+  getAvailableActivityRoomsOperation = getAvailableActivityRooms,
+  getDetaineeOperation = getDetainee,
+  moveToActivityRoomService = services.moveToActivityRoom,
   notifyOperation = notify,
   sendErrorMessage = commonUtils.sendErrorMessage,
 ) => async (dispatch) => {
@@ -62,7 +112,45 @@ const moveDetaineeToRoomFromUsage = (
     dispatch(assignToRoomAction());
 
     // Attempt to move the detainee to a new room
-    const { error } = await moveDetaineeService({ detaineeId, usage, room });
+    const { error } = await moveToActivityRoomService({
+      detaineeId,
+      from,
+      destinationRoom,
+    });
+
+    if (error) {
+      notifyOperation(dispatch, error);
+      dispatch(assignToRoomFailureAction());
+    } else {
+      dispatch(assignToRoomSuccessAction());
+    }
+
+    // Reload detainee profile
+    dispatch(getDetaineeOperation(detaineeId));
+    dispatch(getAvailableActivityRoomsOperation());
+  } catch (error) {
+    sendErrorMessage({ dispatch, error });
+    dispatch(assignToRoomFailureAction());
+  }
+};
+
+const moveDetaineeToCell = (
+  detaineeId,
+  from,
+  assignToRoomAction = actions.assignToRoom,
+  assignToRoomFailureAction = actions.assignToRoomFailure,
+  assignToRoomSuccessAction = actions.assignToRoomSuccess,
+  getAvailableActivityRoomsOperation = getAvailableActivityRooms,
+  getDetaineeOperation = getDetainee,
+  moveToCellService = services.moveToCell,
+  notifyOperation = notify,
+  sendErrorMessage = commonUtils.sendErrorMessage,
+) => async (dispatch) => {
+  try {
+    dispatch(assignToRoomAction());
+
+    // Attempt to move the detainee to their cell
+    const { error } = await moveToCellService({ detaineeId, from });
 
     if (error) {
       notifyOperation(dispatch, error);
@@ -81,7 +169,10 @@ const moveDetaineeToRoomFromUsage = (
 };
 
 export default {
-  moveDetaineeToRoomFromUsage,
+  checkDetaineeInToCell,
+  getAvailableActivityRoomsRefresh,
+  moveDetaineeToActivityRoom,
+  moveDetaineeToCell,
   getAvailableActivityRooms,
   getDetainee,
 };

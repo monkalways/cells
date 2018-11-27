@@ -10,7 +10,18 @@ const UPDATE_ACTIVITY_ROOM_URL = `${
   process.env.REACT_APP_CELL_SERVICE_URL
 }api/cells/`;
 
-const MOVE_DETAINEE_URL = `${process.env.REACT_APP_CELL_SERVICE_URL}api/moves/`;
+const CHECK_IN_TO_ACTIVITY_ROOM_URL = `${
+  process.env.REACT_APP_CELL_SERVICE_URL
+}api/moves/check-in-to-activity-room`;
+const CHECK_IN_TO_CELL_URL = `${
+  process.env.REACT_APP_CELL_SERVICE_URL
+}api/moves/check-in-to-cell`;
+const MOVE_TO_ACTIVITY_ROOM_URL = `${
+  process.env.REACT_APP_CELL_SERVICE_URL
+}api/moves/move-to-activity-room`;
+const MOVE_TO_CELL_URL = `${
+  process.env.REACT_APP_CELL_SERVICE_URL
+}api/moves/move-to-cell`;
 
 // Usages
 const BAIL_HEARING_ROOM_1 = 'Bail Hearing1';
@@ -62,6 +73,8 @@ export default {
   CELL_IN_TRANSIT,
   CELLS_QUERYSTRING,
   CELLS_URL,
+  CHECK_IN_TO_ACTIVITY_ROOM_URL,
+  CHECK_IN_TO_CELL_URL,
   DETAINEE_URL,
   DETAINEE_PROFILE,
   FINGERPRINTING_IN_PROGRESS,
@@ -74,7 +87,8 @@ export default {
   MEDICAL_ROOM,
   MEDICAL_IN_PROGRESS,
   MEDICAL_IN_TRANSIT,
-  MOVE_DETAINEE_URL,
+  MOVE_TO_ACTIVITY_ROOM_URL,
+  MOVE_TO_CELL_URL,
   PHONE_DECLINE,
   PHONE_ROOM,
   PHONE_IN_PROGRESS,
