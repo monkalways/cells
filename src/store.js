@@ -7,9 +7,19 @@ import rootReducer from './reducers';
 
 export default function configureStore(history, initialState) {
   const middlewares = [thunkMiddleware, routerMiddleware(history)];
-  return createStore(
+  const store = createStore(
     rootReducer(history),
     initialState,
     composeWithDevTools(applyMiddleware(...middlewares)),
   );
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (module.hot) {
+      module.hot.accept('./reducers', () => {
+        store.replaceReducer(rootReducer);
+      });
+    }
+  }
+
+  return store;
 }

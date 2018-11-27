@@ -19,16 +19,29 @@ const history = createBrowserHistory();
 
 const reduxStore = configureStore(history, window.REDUX_INITIAL_DATA);
 
-const RootHtml = () => (
+const rootEl = document.getElementById('root');
+
+// eslint-disable-next-line react/no-render-return-value
+const render = (Component) => ReactDOM.render(
   <ReduxProvider store={reduxStore}>
     <CssBaseline>
       <MuiThemeProvider theme={theme}>
         <ConnectedRouter history={history}>
-          <App />
+          <Component />
         </ConnectedRouter>
         <Notification />
       </MuiThemeProvider>
     </CssBaseline>
-  </ReduxProvider>
+  </ReduxProvider>,
+  rootEl,
 );
-ReactDOM.render(<RootHtml />, document.getElementById('root'));
+
+render(App);
+
+if (module.hot) {
+  module.hot.accept('./app/App', () => {
+    // eslint-disable-next-line global-require
+    const NextApp = require('./app/App').default;
+    render(NextApp);
+  });
+}
