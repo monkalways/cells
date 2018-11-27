@@ -3,6 +3,7 @@ import queryString from 'query-string';
 import constants from '../constants';
 
 // Basic selectors
+const areActivityRoomsRefreshing = (state) => state.detainee.activityRooms.isRefreshing;
 const getAvailableActivityRooms = (state) => state.detainee.activityRooms.availableActivityRooms;
 
 const getCurrentActivityRoom = (state) => {
@@ -79,6 +80,11 @@ const isPhoneDeclineOptionAvailable = (state) => {
 };
 
 // Reselect selectors
+const areActivityRoomsRefreshingState = createSelector(
+  [areActivityRoomsRefreshing],
+  (refreshing) => refreshing,
+);
+
 const getCurrentActivityRoomState = createSelector(
   [getCurrentActivityRoom],
   (room) => room,
@@ -138,6 +144,7 @@ const isPhoneDeclineOptionAvailableState = createSelector(
 );
 
 export default {
+  areActivityRoomsRefreshingState,
   getCurrentActivityRoomState,
   getDetaineeState,
   getFirstAvailableActivityRoom,
