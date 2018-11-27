@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -11,55 +11,71 @@ import {
 import Loading from '../../../common/Loading';
 
 const propTypes = {
-  currentActivityRoom: PropTypes.string.isRequired,
+  areActivityRoomsRefreshing: PropTypes.bool.isRequired,
+  currentActivity: PropTypes.string.isRequired,
   detainee: PropTypes.shape({
     firstName: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
   }).isRequired,
+  getAvailableActivityRoomsRefresh: PropTypes.func.isRequired,
   isAnyRoomForGivenActivityAvailable: PropTypes.bool.isRequired,
   isDialogOpen: PropTypes.bool.isRequired,
   isAssigningToRoom: PropTypes.bool.isRequired,
-  moveDetaineeToRoomFromUsage: PropTypes.func.isRequired,
+  moveDetaineeToActivityRoom: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
-  room: PropTypes.string,
+  destinationRoom: PropTypes.string,
   usage: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
-  room: null,
+  destinationRoom: null,
 };
 
-const GenericActivityRoomDialogComponent = ({
-  currentActivityRoom,
+const ActivityRoomDialogComponent = ({
+  areActivityRoomsRefreshing,
+  currentActivity,
   detainee,
+  getAvailableActivityRoomsRefresh,
   isAnyRoomForGivenActivityAvailable,
   isAssigningToRoom,
   isDialogOpen,
-  moveDetaineeToRoomFromUsage,
+  moveDetaineeToActivityRoom,
   onClose,
-  room,
+  destinationRoom,
   usage,
 }) => {
   const handleClick = () => {
-    moveDetaineeToRoomFromUsage(detainee.id, room, currentActivityRoom);
+    moveDetaineeToActivityRoom(detainee.id, currentActivity, destinationRoom);
+  };
+
+  const handleOpen = () => {
+    getAvailableActivityRoomsRefresh();
   };
 
   return (
     <Dialog
-      open={isDialogOpen}
-      onClose={onClose}
       disableBackdropClick={isAssigningToRoom}
       disableEscapeKeyDown={isAssigningToRoom}
+      open={isDialogOpen}
+      onClose={onClose}
+      onRendered={handleOpen}
     >
       {/** * Medical, Fingerprinting, Telephone, Bail Hearing 1 and 2, Breath Test ** */}
-      {isAnyRoomForGivenActivityAvailable ? (
+      {areActivityRoomsRefreshing ? (
+        <React.Fragment>
+          <DialogTitle>{`Searching for available ${usage} room...`}</DialogTitle>
+          <DialogContent>
+            <Loading size={50} />
+          </DialogContent>
+        </React.Fragment>
+      ) : isAnyRoomForGivenActivityAvailable ? (
         <React.Fragment>
           <DialogTitle>
             {`Moving ${detainee.lastName}, ${
               detainee.firstName
-            } to ${usage} room ${room}?`}
+            } to ${usage} room ${destinationRoom}?`}
           </DialogTitle>
           {isAssigningToRoom && (
             <DialogContent>
@@ -75,7 +91,6 @@ const GenericActivityRoomDialogComponent = ({
               Cancel
             </Button>
             <Button
-              // onClick={onCheckIn}
               onClick={handleClick}
               color="primary"
               variant="contained"
@@ -88,7 +103,7 @@ const GenericActivityRoomDialogComponent = ({
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <DialogTitle>{`The ${usage} room is no longer available`}</DialogTitle>
+          <DialogTitle>{`Sorry, the ${usage} room is no longer available.`}</DialogTitle>
           <DialogActions>
             <Button onClick={onClose} color="primary">
               Close
@@ -100,7 +115,7 @@ const GenericActivityRoomDialogComponent = ({
   );
 };
 
-GenericActivityRoomDialogComponent.propTypes = propTypes;
-GenericActivityRoomDialogComponent.defaultProps = defaultProps;
+ActivityRoomDialogComponent.propTypes = propTypes;
+ActivityRoomDialogComponent.defaultProps = defaultProps;
 
-export default GenericActivityRoomDialogComponent;
+export default ActivityRoomDialogComponent;

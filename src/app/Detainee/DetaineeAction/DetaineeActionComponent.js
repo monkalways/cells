@@ -11,7 +11,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
-import GenericActivityRoomDialog from './GenericActivityRoomDialog';
+import ActivityRoomDialog from './ActivityRoomDialog';
 
 import MedicalVisitIcon from '../../images/MedicalVisit.png';
 import PhoneAcceptIcon from '../../images/PhoneAccept.png';
@@ -54,7 +54,7 @@ class DetaineeActionComponent extends Component {
     usage: '',
   };
 
-  handleGenericActivityRoomButtonClick = (usage) => {
+  handleActivityRoomButtonClick = (usage) => {
     this.setState({
       isGenericActivityRoomDialogOpen: true,
       usage,
@@ -106,7 +106,7 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isMedicalRoomOptionAvailable}
                   onClick={() => {
-                    this.handleGenericActivityRoomButtonClick(constants.MEDICAL_ROOM);
+                    this.handleActivityRoomButtonClick(constants.MEDICAL_ROOM);
                   }}
                   onClose={this.handleClose}
                 >
@@ -123,7 +123,7 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isPhoneRoomOptionAvailable}
                   onClick={() => {
-                    this.handleGenericActivityRoomButtonClick(constants.PHONE_ROOM);
+                    this.handleActivityRoomButtonClick(constants.PHONE_ROOM);
                   }}
                   onClose={this.handleClose}
                 >
@@ -158,7 +158,7 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isFingerprintingRoomOptionAvailable}
                   onClick={() => {
-                    this.handleGenericActivityRoomButtonClick(constants.FINGERPRINTING_ROOM);
+                    this.handleActivityRoomButtonClick(constants.FINGERPRINTING_ROOM);
                   }}
                   onClose={this.handleClose}
                 >
@@ -175,7 +175,7 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isBreathTestRoomOptionAvailable}
                   onClick={() => {
-                    this.handleGenericActivityRoomButtonClick(constants.BREATH_TEST_ROOM);
+                    this.handleActivityRoomButtonClick(constants.BREATH_TEST_ROOM);
                   }}
                   onClose={this.handleClose}
                 >
@@ -213,7 +213,7 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isBailHearingRoom1OptionAvailable}
                   onClick={() => {
-                    this.handleGenericActivityRoomButtonClick(constants.BAIL_HEARING_ROOM_1);
+                    this.handleActivityRoomButtonClick(constants.BAIL_HEARING_ROOM_1);
                   }}
                   onClose={this.handleClose}
                 >
@@ -230,7 +230,7 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isBailHearingRoom2OptionAvailable}
                   onClick={() => {
-                    this.handleGenericActivityRoomButtonClick(constants.BAIL_HEARING_ROOM_2);
+                    this.handleActivityRoomButtonClick(constants.BAIL_HEARING_ROOM_2);
                   }}
                   onClose={this.handleClose}
                 >
@@ -302,7 +302,7 @@ class DetaineeActionComponent extends Component {
             </Grid>
           </Grid>
         </CardContent>
-        <GenericActivityRoomDialog
+        <ActivityRoomDialog
           detainee={detainee}
           isDialogOpen={isGenericActivityRoomDialogOpen}
           onClose={this.handleClose}
