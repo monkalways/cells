@@ -16,6 +16,10 @@ const getAvailableActivityRooms = () => ({
   type: types.GET_AVAILABLE_ACTIVITY_ROOMS,
 });
 
+const getAvailableActivityRoomsRefresh = () => ({
+  type: types.GET_AVAILABLE_ACTIVITY_ROOMS_REFRESH,
+});
+
 const getAvailableActivityRoomsSuccess = (payload) => ({
   type: types.GET_AVAILABLE_ACTIVITY_ROOMS_SUCCESS,
   payload,
@@ -35,6 +39,7 @@ export default {
   assignToRoomFailure,
   assignToRoomSuccess,
   getAvailableActivityRooms,
+  getAvailableActivityRoomsRefresh,
   getAvailableActivityRoomsSuccess,
   getDetainee,
   getDetaineeSuccess,
