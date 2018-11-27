@@ -99,39 +99,67 @@ const getDetainee = async (custodyEventId) => {
   };
 };
 
-const updateActivityRoom = async ({ cellName, remarks, statusCode }) => {
-  await axios.put(
-    constants.UPDATE_ACTIVITY_ROOM_URL,
-    {
-      cellName,
-      remarks,
-      statusCode,
-    },
-    commonConstants.HEADERS,
-  );
-
-  return true;
-};
-
-const moveDetainee = async ({ detaineeId, usage, room }) => {
+const checkInToActivityRoom = async ({ detaineeId, usage }) => {
   const response = await axios.post(
-    constants.MOVE_DETAINEE_URL,
+    constants.CHECK_IN_TO_ACTIVITY_ROOM_URL,
     {
       custodyEventId: detaineeId,
-      from: usage,
-      to: room,
+      usage,
     },
     commonConstants.HEADERS,
   );
 
   const { error } = response.data;
+  return { error };
+};
 
+const checkInToCell = async ({ detaineeId }) => {
+  const response = await axios.post(
+    constants.CHECK_IN_TO_CELL_URL,
+    {
+      custodyEventId: detaineeId,
+    },
+    commonConstants.HEADERS,
+  );
+
+  const { error } = response.data;
+  return { error };
+};
+
+const moveToActivityRoom = async ({ detaineeId, from, destinationRoom }) => {
+  const response = await axios.post(
+    constants.MOVE_TO_ACTIVITY_ROOM_URL,
+    {
+      custodyEventId: detaineeId,
+      from,
+      to: destinationRoom,
+    },
+    commonConstants.HEADERS,
+  );
+
+  const { error } = response.data;
+  return { error };
+};
+
+const moveToCell = async ({ detaineeId, from }) => {
+  const response = await axios.post(
+    constants.MOVE_TO_CELL_URL,
+    {
+      custodyEventId: detaineeId,
+      from,
+    },
+    commonConstants.HEADERS,
+  );
+
+  const { error } = response.data;
   return { error };
 };
 
 export default {
+  checkInToActivityRoom,
+  checkInToCell,
   getAvailableActivityRooms,
   getDetainee,
-  moveDetainee,
-  updateActivityRoom,
+  moveToActivityRoom,
+  moveToCell,
 };
