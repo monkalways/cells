@@ -27,7 +27,7 @@ exports[`CellDetaineeCardHeaderComponent should render 1`] = `
         className="subtitle"
         variant="h6"
       >
-        { EPS }
+        EPS,RCMP
       </WithStyles(Typography)>
     </WithStyles(Grid)>
     <WithStyles(Grid)

@@ -25,7 +25,7 @@ describe('CellDetaineeCardHeaderComponent', () => {
     cellDetainee = {
       firstName: 'John',
       lastName: 'Smith',
-      division: ['EPS'],
+      division: ['EPS', 'RCMP'],
     };
   });
 

@@ -73,7 +73,7 @@ export const CellDetaineeCardHeaderComponent = ({ classes, cellDetainee }) => {
             {cellDetainee.firstName}
           </Typography>
           <Typography variant="h6" className={classes.subtitle}>
-            {`{ ${cellDetainee.division[0]} }`}
+            {`${cellDetainee.division.join(',')}`}
           </Typography>
         </Grid>
         <Grid item sm={5}>
