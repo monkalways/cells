@@ -24,10 +24,7 @@ const getDesignation = (genderLabel) => {
 };
 
 const getCellDetails = async (name) => {
-  const response = await axios.get(
-    constants.GET_CELL_URL(name),
-    commonConstants.HEADERS,
-  );
+  const response = await axios.get(constants.GET_CELL_URL(name));
 
   const {
     cellStatus,
@@ -67,10 +64,7 @@ const getCellDetails = async (name) => {
 };
 
 const getCellDetainees = async (name) => {
-  const response = await axios.get(
-    constants.GET_CELL_DETAINEES_URL(name),
-    commonConstants.HEADERS,
-  );
+  const response = await axios.get(constants.GET_CELL_DETAINEES_URL(name));
 
   return response.data.map((detainee) => ({
     id: detainee.id,
