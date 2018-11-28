@@ -33,6 +33,9 @@ exports[`App should render 1`] = `
       key="/activity-rooms/:usage/home"
       path="/activity-rooms/:usage/home"
     />
+    <Route
+      component={[Function]}
+    />
   </Switch>
 </Fragment>
 `;
