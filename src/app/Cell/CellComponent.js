@@ -12,6 +12,7 @@ import Meal from './Meal';
 import Medication from './Medication';
 import commonConstants from '../constants';
 import withAuthentication from '../routes/enhancers/withAuthentication';
+import Loading from '../common/Loading';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -81,35 +82,39 @@ export class CellComponent extends Component {
     } = this.props;
     return (
       <React.Fragment>
-        {cellDetails && (
-          <Layout>
-            <Header
-              cellDetails={cellDetails}
-              onLogout={this.handleLogout}
-              isAuthenticated={isAuthenticated}
-            />
-            <div className={classes.body}>
-              <Switch>
-                <Route path={match.url} component={Overview} exact />
-                <Route
-                  path={`${match.url}/cell-check`}
-                  component={withAuthentication(CellCheck)}
-                  exact
-                />
-                <Route
-                  path={`${match.url}/meal`}
-                  component={withAuthentication(Meal)}
-                  exact
-                />
-                <Route
-                  path={`${match.url}/Medication`}
-                  component={withAuthentication(Medication)}
-                  exact
-                />
-              </Switch>
-            </div>
-          </Layout>
-        )}
+        <Layout>
+          {cellDetails ? (
+            <React.Fragment>
+              <Header
+                cellDetails={cellDetails}
+                onLogout={this.handleLogout}
+                isAuthenticated={isAuthenticated}
+              />
+              <div className={classes.body}>
+                <Switch>
+                  <Route path={match.url} component={Overview} exact />
+                  <Route
+                    path={`${match.url}/cell-check`}
+                    component={withAuthentication(CellCheck)}
+                    exact
+                  />
+                  <Route
+                    path={`${match.url}/meal`}
+                    component={withAuthentication(Meal)}
+                    exact
+                  />
+                  <Route
+                    path={`${match.url}/Medication`}
+                    component={withAuthentication(Medication)}
+                    exact
+                  />
+                </Switch>
+              </div>
+            </React.Fragment>
+          ) : (
+            <Loading />
+          )}
+        </Layout>
       </React.Fragment>
     );
   }

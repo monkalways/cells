@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import { CellComponent } from '../CellComponent';
 import Header from '../Header';
 import commonConstants from '../../constants';
+import Loading from '../../common/Loading';
 
 describe('CellComponent', () => {
   let classes;
@@ -54,6 +55,14 @@ describe('CellComponent', () => {
     const wrapper = setup();
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Header)).toExist();
+  });
+
+  it('should render Loading component if cell details is null', () => {
+    cellDetails = null;
+
+    const wrapper = setup();
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(Loading)).toExist();
   });
 
   it('should get cell details when componentDidMount is called', () => {
