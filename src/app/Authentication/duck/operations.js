@@ -3,6 +3,7 @@ import { push } from 'connected-react-router';
 import actions from './actions';
 import services from './services';
 import utils from '../../utils';
+import commonConstants from '../../constants';
 
 const { startSignIn, startAuthenticate, cancelAuthenticate } = actions;
 
@@ -17,6 +18,7 @@ const authenticate = (
   try {
     dispatch(startAuthenticateAction(cardId));
     const userName = await authenticateService(cardId);
+    sessionStorage.setItem(commonConstants.SCAN_CARD_ID_KEY, cardId);
     dispatch(authenticateSuccessAction(userName));
   } catch (error) {
     if (error.response.status === 401) {
@@ -33,6 +35,7 @@ const logOut = (
   logOutAction = actions.logOut,
   pushAction = push,
 ) => (dispatch) => {
+  sessionStorage.removeItem(commonConstants.SCAN_CARD_ID_KEY);
   dispatch(logOutAction());
   dispatch(pushAction(`/${first}/${second}`));
 };

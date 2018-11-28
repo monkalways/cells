@@ -14,6 +14,10 @@ import App from './app/App';
 import Notification from './app/common/Notification';
 import configureStore from './store';
 import theme from './mui-theme';
+import commonConstants from './app/constants';
+
+// clean up session storage
+sessionStorage.removeItem(commonConstants.SCAN_CARD_ID_KEY);
 
 const history = createBrowserHistory();
 
