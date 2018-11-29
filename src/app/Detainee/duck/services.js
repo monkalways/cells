@@ -3,12 +3,7 @@ import constants from '../constants';
 import commonConstants from '../../constants';
 
 const getAvailableActivityRooms = async () => {
-  const response = await axios.get(
-    `${process.env.REACT_APP_CELL_SERVICE_URL}${constants.CELLS_URL}${
-      constants.AVAILABLE_ACTIVITY_ROOMS
-    }`,
-    commonConstants.HEADERS,
-  );
+  const response = await axios.get(constants.GET_AVAILABLE_ACTIVITY_ROOMS_URL);
 
   return response.data.map((activity) => ({
     usage: activity.usage,
@@ -17,12 +12,7 @@ const getAvailableActivityRooms = async () => {
 };
 
 const getDetainee = async (custodyEventId) => {
-  const response = await axios.get(
-    `${process.env.REACT_APP_CELL_SERVICE_URL}${
-      constants.DETAINEE_URL
-    }${custodyEventId}${constants.DETAINEE_PROFILE}`,
-    commonConstants.HEADERS,
-  );
+  const response = await axios.get(constants.GET_DETAINEE_URL(custodyEventId));
 
   const {
     arrestId,
