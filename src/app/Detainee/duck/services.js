@@ -7,7 +7,7 @@ const getAvailableActivityRooms = async () => {
     `${process.env.REACT_APP_CELL_SERVICE_URL}${constants.CELLS_URL}${
       constants.AVAILABLE_ACTIVITY_ROOMS
     }`,
-    commonConstants.HEADERS,
+    commonConstants.HEADERS(),
   );
 
   return response.data.map((activity) => ({
@@ -21,7 +21,7 @@ const getDetainee = async (custodyEventId) => {
     `${process.env.REACT_APP_CELL_SERVICE_URL}${
       constants.DETAINEE_URL
     }${custodyEventId}${constants.DETAINEE_PROFILE}`,
-    commonConstants.HEADERS,
+    commonConstants.HEADERS(),
   );
 
   const {
@@ -106,7 +106,7 @@ const checkInToActivityRoom = async ({ detaineeId, usage }) => {
       custodyEventId: detaineeId,
       usage,
     },
-    commonConstants.HEADERS,
+    commonConstants.HEADERS(),
   );
 
   const { error } = response.data;
@@ -119,7 +119,7 @@ const checkInToCell = async ({ detaineeId }) => {
     {
       custodyEventId: detaineeId,
     },
-    commonConstants.HEADERS,
+    commonConstants.HEADERS(),
   );
 
   const { error } = response.data;
@@ -134,7 +134,7 @@ const moveToActivityRoom = async ({ detaineeId, from, destinationRoom }) => {
       from,
       to: destinationRoom,
     },
-    commonConstants.HEADERS,
+    commonConstants.HEADERS(),
   );
 
   const { error } = response.data;
@@ -148,7 +148,7 @@ const moveToCell = async ({ detaineeId, from }) => {
       custodyEventId: detaineeId,
       from,
     },
-    commonConstants.HEADERS,
+    commonConstants.HEADERS(),
   );
 
   const { error } = response.data;

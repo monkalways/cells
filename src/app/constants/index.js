@@ -6,12 +6,12 @@ const LAYOUT = {
 const SCAN_CARD_ID_LENGTH = 16;
 const SCAN_CARD_ID_KEY = 'x-swipe-card-serial-number';
 
-const HEADERS = {
+const HEADERS = () => ({
   headers: {
     'x-swipe-card-serial-number':
       sessionStorage.getItem(SCAN_CARD_ID_KEY) || '',
   },
-};
+});
 
 const UNAUTHENTICATED_TIMEOUT_SECONDS = 10;
 

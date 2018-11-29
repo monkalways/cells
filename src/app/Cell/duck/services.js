@@ -68,7 +68,7 @@ const getCellDetainees = async (name, authenticated = true) => {
   if (authenticated) {
     response = await axios.get(
       constants.GET_CELL_DETAINEES_URL(name),
-      commonConstants.HEADERS,
+      commonConstants.HEADERS(),
     );
   } else {
     response = await axios.get(constants.GET_CELL_DETAINEES_PUBLIC_URL(name));
@@ -91,7 +91,7 @@ const getCellDetainees = async (name, authenticated = true) => {
     dob: detainee.dob,
     division: detainee.division,
     withCaution: detainee.withCaution,
-    cautionsArray: detainee.cautionsArray,
+    cautionsArray: detainee.cautionsArray || [],
     isUnderMedication: detainee.isUnderMedication,
     isSuicidal: detainee.isSuicidal,
     isContagious: detainee.isContagious,
@@ -115,7 +115,7 @@ const saveDetentionLog = async ({
     detentionLogAction,
     userName,
   },
-  commonConstants.HEADERS,
+  commonConstants.HEADERS(),
 );
 
 const saveCellCheck = async (cellCheck, userName) => {
