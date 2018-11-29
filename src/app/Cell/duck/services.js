@@ -64,10 +64,16 @@ const getCellDetails = async (name) => {
 };
 
 const getCellDetainees = async (name, authenticated = true) => {
-  const response = await axios.get(authenticated
-    ? constants.GET_CELL_DETAINEES_URL(name)
-    : constants.GET_CELL_DETAINEES_PUBLIC_URL(name));
-
+  let response;
+  console.log(commonConstants.HEADERS);
+  if (authenticated) {
+    response = await axios.get(
+      constants.GET_CELL_DETAINEES_URL(name),
+      commonConstants.HEADERS,
+    );
+  } else {
+    response = await axios.get(constants.GET_CELL_DETAINEES_PUBLIC_URL(name));
+  }
   return response.data.map((detainee) => ({
     id: detainee.id,
     arrestId: detainee.arrestId,
