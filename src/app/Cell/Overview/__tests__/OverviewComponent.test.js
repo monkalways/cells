@@ -59,4 +59,43 @@ describe('OverviewComponent', () => {
 
     expect(getCellDetainees).toBeCalledWith(cellName, isAuthenticated);
   });
+
+  it('should get cell detainees if cell name is changed during componentDidUpdate', () => {
+    const prevProps = {
+      cellName: 'g1',
+      isAuthenticated,
+    };
+    const wrapper = setup();
+    getCellDetainees.mockReset();
+
+    wrapper.instance().componentDidUpdate(prevProps);
+
+    expect(getCellDetainees).toBeCalledWith(cellName, isAuthenticated);
+  });
+
+  it('should get cell detainees if isAuthenticated is changed during componentDidUpdate', () => {
+    const prevProps = {
+      cellName,
+      isAuthenticated: !isAuthenticated,
+    };
+    const wrapper = setup();
+    getCellDetainees.mockReset();
+
+    wrapper.instance().componentDidUpdate(prevProps);
+
+    expect(getCellDetainees).toBeCalledWith(cellName, isAuthenticated);
+  });
+
+  it('should get cell detainees if neither cell name or isAuthenticated is changed during componentDidUpdate', () => {
+    const prevProps = {
+      cellName,
+      isAuthenticated,
+    };
+    const wrapper = setup();
+    getCellDetainees.mockReset();
+
+    wrapper.instance().componentDidUpdate(prevProps);
+
+    expect(getCellDetainees).not.toBeCalled();
+  });
 });

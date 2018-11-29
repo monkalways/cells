@@ -26,6 +26,16 @@ export class OverviewComponent extends Component {
     getCellDetainees(cellName, isAuthenticated);
   }
 
+  componentDidUpdate(prevProps) {
+    const { cellName, isAuthenticated, getCellDetainees } = this.props;
+    if (
+      isAuthenticated !== prevProps.isAuthenticated
+      || cellName !== prevProps.cellName
+    ) {
+      getCellDetainees(cellName, isAuthenticated);
+    }
+  }
+
   render() {
     const {
       cellDetainees,
