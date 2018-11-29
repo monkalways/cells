@@ -5,7 +5,7 @@ import commonConstants from '../../constants';
 const getActivityRoomDetainees = async (usage) => {
   const response = await axios.get(
     constants.GET_ACTIVITY_ROOM_DETAINEES_URL(usage),
-    commonConstants.HEADERS,
+    commonConstants.HEADERS(),
   );
 
   return response.data.map((detainee) => ({
@@ -27,7 +27,7 @@ const getActivityRoomDetainees = async (usage) => {
 const getLastTempAbsence = async (detaineeId) => {
   const response = await axios.get(
     constants.GET_LAST_TEMP_ABSENCE_URL(detaineeId),
-    commonConstants.HEADERS,
+    commonConstants.HEADERS(),
   );
 
   const {
@@ -60,7 +60,7 @@ const createTempAbsence = async ({ detaineeId, reason, activityRoomName }) => {
       startTime: new Date(),
       remarks: activityRoomName,
     },
-    commonConstants.HEADERS,
+    commonConstants.HEADERS(),
   );
 
   return true;
@@ -84,7 +84,7 @@ const updateTempAbsence = async ({
       endTime,
       remarks: activityRoomName,
     },
-    commonConstants.HEADERS,
+    commonConstants.HEADERS(),
   );
 
   return true;

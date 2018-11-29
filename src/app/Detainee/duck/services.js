@@ -3,7 +3,10 @@ import constants from '../constants';
 import commonConstants from '../../constants';
 
 const getAvailableActivityRooms = async () => {
-  const response = await axios.get(constants.GET_AVAILABLE_ACTIVITY_ROOMS_URL);
+  const response = await axios.get(
+    constants.GET_AVAILABLE_ACTIVITY_ROOMS_URL,
+    commonConstants.HEADERS(),
+  );
 
   return response.data.map((activity) => ({
     usage: activity.usage,
@@ -12,7 +15,10 @@ const getAvailableActivityRooms = async () => {
 };
 
 const getDetainee = async (custodyEventId) => {
-  const response = await axios.get(constants.GET_DETAINEE_URL(custodyEventId));
+  const response = await axios.get(
+    constants.GET_DETAINEE_URL(custodyEventId),
+    commonConstants.HEADERS(),
+  );
 
   const {
     arrestId,
@@ -96,7 +102,7 @@ const checkInToActivityRoom = async ({ detaineeId, usage }) => {
       custodyEventId: detaineeId,
       usage,
     },
-    commonConstants.HEADERS,
+    commonConstants.HEADERS(),
   );
 
   const { error } = response.data;
@@ -109,7 +115,7 @@ const checkInToCell = async ({ detaineeId }) => {
     {
       custodyEventId: detaineeId,
     },
-    commonConstants.HEADERS,
+    commonConstants.HEADERS(),
   );
 
   const { error } = response.data;
@@ -124,7 +130,7 @@ const moveToActivityRoom = async ({ detaineeId, from, destinationRoom }) => {
       from,
       to: destinationRoom,
     },
-    commonConstants.HEADERS,
+    commonConstants.HEADERS(),
   );
 
   const { error } = response.data;
@@ -138,7 +144,7 @@ const moveToCell = async ({ detaineeId, from }) => {
       custodyEventId: detaineeId,
       from,
     },
-    commonConstants.HEADERS,
+    commonConstants.HEADERS(),
   );
 
   const { error } = response.data;
