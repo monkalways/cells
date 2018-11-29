@@ -65,7 +65,6 @@ const getCellDetails = async (name) => {
 
 const getCellDetainees = async (name, authenticated = true) => {
   let response;
-  console.log(commonConstants.HEADERS);
   if (authenticated) {
     response = await axios.get(
       constants.GET_CELL_DETAINEES_URL(name),
