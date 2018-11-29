@@ -8,15 +8,14 @@ const getAvailableActivityRooms = (state) => state.detainee.activityRooms.availa
 
 const getCurrentActivityRoom = (state) => {
   const { first, second } = queryString.parse(state.router.location.search);
-
-  if (first === constants.CELLS_QUERYSTRING) return constants.CELL;
-
+  if (first === constants.CELLS_QUERYSTRING) {
+    return constants.CELL;
+  }
   return second;
 };
 
 const getDetainee = (state) => state.detainee.detaineeProfile.data;
 const getSecondProp = (_state, prop) => prop;
-const isAssigningToRoom = (state) => state.detainee.activityRooms.assigningToRoom;
 
 const isActivityRoomOptionAvailable = (state, usage, inProgress, inTransit) => {
   const { first } = queryString.parse(state.router.location.search);
@@ -36,6 +35,7 @@ const isActivityRoomOptionAvailable = (state, usage, inProgress, inTransit) => {
   );
 };
 
+const isAssigningToRoom = (state) => state.detainee.activityRooms.assigningToRoom;
 // eslint-disable-next-line max-len
 const isDetaineeProfileLoaded = (state) => state.detainee.detaineeProfile.loaded && state.detainee.activityRooms.loaded;
 
@@ -100,7 +100,6 @@ const getFirstAvailableActivityRoom = createSelector(
       const { availableRooms } = rooms.find((room) => room.usage.toLowerCase() === usage.toLowerCase());
       if (availableRooms.length > 0) return availableRooms[0];
     }
-
     return null;
   },
 );
@@ -128,7 +127,6 @@ const isAnyRoomForGivenActivityAvailableState = createSelector(
       const { availableRooms } = rooms.find((room) => room.usage.toLowerCase() === usage.toLowerCase());
       return availableRooms.length > 0;
     }
-
     return false;
   },
 );
