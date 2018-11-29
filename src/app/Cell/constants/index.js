@@ -7,9 +7,9 @@ const GET_CELL_DETAINEES_PUBLIC_URL = (cellName) => `${
 
 const GET_CELL_DETAINEES_URL = (cellName) => `${process.env.REACT_APP_CELL_SERVICE_URL}api/cells/${cellName}/detainees`;
 
-const DETENTION_LOGS_URL = `${
+const GET_DETENTION_LOGS_URL = (arrestId) => `${
   process.env.REACT_APP_CELL_SERVICE_URL
-}api/detention-logs`;
+}api/detainees/${arrestId}/detention-logs`;
 
 // Detention Log Data Types
 const DETENTION_LOG_DATA_TYPE_MEAL = 'IsMeal';
@@ -29,7 +29,7 @@ export default {
   GET_CELL_URL,
   GET_CELL_DETAINEES_PUBLIC_URL,
   GET_CELL_DETAINEES_URL,
-  DETENTION_LOGS_URL,
+  GET_DETENTION_LOGS_URL,
   DETENTION_LOG_DATA_TYPE_MEAL,
   DETENTION_LOG_DATA_TYPE_MEDICATION,
   DETENTION_LOG_DATA_TYPE_CELL_CHECK,
