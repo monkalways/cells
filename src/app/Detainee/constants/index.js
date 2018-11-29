@@ -8,7 +8,9 @@ const CHECK_IN_TO_CELL_URL = `${
 const GET_AVAILABLE_ACTIVITY_ROOMS_URL = `${
   process.env.REACT_APP_CELL_SERVICE_URL
 }api/cells/rooms-availability`;
-const GET_DETAINEE_URL = (custodyEventId) => `${process.env.REACT_APP_CELL_SERVICE_URL}${custodyEventId}/profile`;
+const GET_DETAINEE_URL = (custodyEventId) => `${
+  process.env.REACT_APP_CELL_SERVICE_URL
+}api/detainees/${custodyEventId}/profile`;
 const MOVE_TO_ACTIVITY_ROOM_URL = `${
   process.env.REACT_APP_CELL_SERVICE_URL
 }api/moves/move-to-activity-room`;
