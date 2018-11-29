@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import ActivityRoomDialog from './ActivityRoomDialog';
+import CellDialog from './CellDialog';
 
 import MedicalVisitIcon from '../../images/MedicalVisit.png';
 import PhoneAcceptIcon from '../../images/PhoneAccept.png';
@@ -50,20 +51,30 @@ const propTypes = {
 
 class DetaineeActionComponent extends Component {
   state = {
-    isGenericActivityRoomDialogOpen: false,
+    isActivityRoomDialogOpen: false,
+    isCellDialogOpen: false,
     usage: '',
   };
 
   handleActivityRoomButtonClick = (usage) => {
     this.setState({
-      isGenericActivityRoomDialogOpen: true,
+      isActivityRoomDialogOpen: true,
+      isCellDialogOpen: false,
       usage,
+    });
+  };
+
+  handleCellButtonClick = () => {
+    this.setState({
+      isActivityRoomDialogOpen: false,
+      isCellDialogOpen: true,
     });
   };
 
   handleClose = () => {
     this.setState({
-      isGenericActivityRoomDialogOpen: false,
+      isActivityRoomDialogOpen: false,
+      isCellDialogOpen: false,
     });
     const { getAvailableActivityRooms, getDetainee, detainee } = this.props;
     getAvailableActivityRooms();
@@ -87,7 +98,7 @@ class DetaineeActionComponent extends Component {
       isRemandHoldingRoomOptionAvailable,
     } = this.props;
 
-    const { isGenericActivityRoomDialogOpen, usage } = this.state;
+    const { isActivityRoomDialogOpen, isCellDialogOpen, usage } = this.state;
 
     return (
       <Card className={classes.card}>
@@ -283,11 +294,7 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isInCellOptionAvailable}
                   onClick={() => {
-                    // Note: make a separate dialog for this function.
-                    // The generic dialog tries to find a room.
-                    // This is perhaps too tightly coupled and should come from somewhere else.
-                    // eslint-disable-next-line no-alert
-                    alert('Function not available');
+                    this.handleCellButtonClick();
                   }}
                   onClose={this.handleClose}
                 >
@@ -304,9 +311,14 @@ class DetaineeActionComponent extends Component {
         </CardContent>
         <ActivityRoomDialog
           detainee={detainee}
-          isDialogOpen={isGenericActivityRoomDialogOpen}
+          isDialogOpen={isActivityRoomDialogOpen}
           onClose={this.handleClose}
           usage={usage}
+        />
+        <CellDialog
+          detainee={detainee}
+          isDialogOpen={isCellDialogOpen}
+          onClose={this.handleClose}
         />
       </Card>
     );
