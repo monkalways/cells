@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import axios from 'axios';
 import constants from '../constants';
 import commonConstants from '../../constants';
@@ -108,7 +107,7 @@ const saveDetentionLog = async ({
   detentionLogAction,
   userName,
 }) => axios.post(
-  constants.DETENTION_LOGS_URL,
+  constants.GET_DETENTION_LOGS_URL(arrestId),
   {
     arrestId,
     detentionLogType,
@@ -119,58 +118,69 @@ const saveDetentionLog = async ({
 );
 
 const saveCellCheck = async (cellCheck, userName) => {
-  await _.forOwn(cellCheck, async (value) => {
-    const { detainee, visual } = value;
-    await saveDetentionLog({
+  const results = [];
+  const cellCheckEntries = Object.values(cellCheck);
+  for (let i = 0; i < cellCheckEntries.length; i += 1) {
+    const { detainee, visual } = cellCheckEntries[i];
+    results.push(saveDetentionLog({
       arrestId: detainee.arrestId,
       detentionLogType: constants.DETENTION_LOG_DATA_TYPE_CELL_CHECK,
       detentionLogAction: visual
         ? constants.DETENTION_LOG_ACTION_TYPE_VISUAL
         : constants.DETENTION_LOG_ACTION_TYPE_VERBAL,
       userName,
-    });
-  });
+    }));
+  }
 
+  await Promise.all(results);
   return true;
 };
 
 const saveMeal = async (meal, userName) => {
   let savedAny = false;
-  await _.forOwn(meal, async (value) => {
-    const { detainee, accept, notApplicable } = value;
+  const results = [];
+  const mealEntries = Object.values(meal);
+  for (let i = 0; i < mealEntries.length; i += 1) {
+    const { detainee, accept, notApplicable } = mealEntries[i];
     if (notApplicable) {
-      return;
+      break;
     }
     savedAny = true;
-    await saveDetentionLog({
+    results.push(saveDetentionLog({
       arrestId: detainee.arrestId,
       detentionLogType: constants.DETENTION_LOG_DATA_TYPE_MEAL,
       detentionLogAction: accept
         ? constants.DETENTION_LOG_ACTION_TYPE_ACCEPT
         : constants.DETENTION_LOG_ACTION_TYPE_REJECT,
       userName,
-    });
-  });
+    }));
+  }
+
+  await Promise.all(results);
   return savedAny;
 };
 
 const saveMedication = async (medication, userName) => {
   let savedAny = false;
-  await _.forOwn(medication, async (value) => {
-    const { detainee, accept, notApplicable } = value;
+  const results = [];
+  const medicationEntries = Object.values(medication);
+  for (let i = 0; i < medicationEntries.length; i += 1) {
+    const { detainee, accept, notApplicable } = medicationEntries[i];
     if (notApplicable) {
-      return;
+      break;
     }
     savedAny = true;
-    await saveDetentionLog({
+    results.push(saveDetentionLog({
       arrestId: detainee.arrestId,
       detentionLogType: constants.DETENTION_LOG_DATA_TYPE_MEDICATION,
       detentionLogAction: accept
         ? constants.DETENTION_LOG_ACTION_TYPE_ACCEPT
         : constants.DETENTION_LOG_ACTION_TYPE_REJECT,
       userName,
-    });
-  });
+    }));
+  }
+
+  await Promise.all(results);
   return savedAny;
 };
 
