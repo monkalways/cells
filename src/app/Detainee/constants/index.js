@@ -1,27 +1,29 @@
 // URLs
-const ACTIVITY_ROOMS_QUERYSTRING = 'activity-rooms';
-const AVAILABLE_ACTIVITY_ROOMS = 'get-activity-rooms-availability';
-const CELLS_QUERYSTRING = 'cells';
-const CELLS_URL = 'api/cells/';
-const DETAINEE_URL = 'api/detainees/';
-const DETAINEE_PROFILE = '/detainee-profile';
-
-const UPDATE_ACTIVITY_ROOM_URL = `${
-  process.env.REACT_APP_CELL_SERVICE_URL
-}api/cells/`;
-
 const CHECK_IN_TO_ACTIVITY_ROOM_URL = `${
   process.env.REACT_APP_CELL_SERVICE_URL
 }api/moves/check-in-to-activity-room`;
 const CHECK_IN_TO_CELL_URL = `${
   process.env.REACT_APP_CELL_SERVICE_URL
 }api/moves/check-in-to-cell`;
+const GET_AVAILABLE_ACTIVITY_ROOMS_URL = `${
+  process.env.REACT_APP_CELL_SERVICE_URL
+}api/cells/rooms-availability`;
+const GET_DETAINEE_URL = (custodyEventId) => `${
+  process.env.REACT_APP_CELL_SERVICE_URL
+}api/detainees/${custodyEventId}/profile`;
 const MOVE_TO_ACTIVITY_ROOM_URL = `${
   process.env.REACT_APP_CELL_SERVICE_URL
 }api/moves/move-to-activity-room`;
 const MOVE_TO_CELL_URL = `${
   process.env.REACT_APP_CELL_SERVICE_URL
 }api/moves/move-to-cell`;
+const UPDATE_ACTIVITY_ROOM_URL = `${
+  process.env.REACT_APP_CELL_SERVICE_URL
+}api/cells/`;
+
+// Query strings
+const ACTIVITY_ROOMS_QUERYSTRING = 'activity-rooms';
+const CELLS_QUERYSTRING = 'cells';
 
 // Usages
 const BAIL_HEARING_ROOM_1 = 'Bail Hearing1';
@@ -61,7 +63,6 @@ const ROOM_STATE_ALLOCATED = 'ALC';
 
 export default {
   ACTIVITY_ROOMS_QUERYSTRING,
-  AVAILABLE_ACTIVITY_ROOMS,
   BAIL_HEARING_ROOM_1,
   BAIL_HEARING_ROOM_2,
   BAIL_HEARING_IN_PROGRESS,
@@ -72,14 +73,13 @@ export default {
   CELL,
   CELL_IN_TRANSIT,
   CELLS_QUERYSTRING,
-  CELLS_URL,
   CHECK_IN_TO_ACTIVITY_ROOM_URL,
   CHECK_IN_TO_CELL_URL,
-  DETAINEE_URL,
-  DETAINEE_PROFILE,
   FINGERPRINTING_IN_PROGRESS,
   FINGERPRINTING_IN_TRANSIT,
   FINGERPRINTING_ROOM,
+  GET_AVAILABLE_ACTIVITY_ROOMS_URL,
+  GET_DETAINEE_URL,
   IN_PROGRESS,
   INTERVIEW_ROOM,
   INTERVIEW_IN_PROGRESS,
