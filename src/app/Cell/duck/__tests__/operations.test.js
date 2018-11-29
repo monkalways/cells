@@ -52,6 +52,7 @@ describe('Cell operations', () => {
 
   describe('getCellDetaineesForOverview', () => {
     it('should getCellDetaineesForOverview successfully when service returns data', async () => {
+      const authenticated = false;
       const name = 'c1';
       const cellDetainees = [];
 
@@ -64,6 +65,7 @@ describe('Cell operations', () => {
 
       await operations.getCellDetaineesForOverview(
         name,
+        authenticated,
         getCellDetaineesService,
         getCellDetaineesAction,
         getCellDetaineesSuccessAction,
@@ -71,12 +73,13 @@ describe('Cell operations', () => {
       )(dispatch);
 
       expect(getCellDetaineesAction).toBeCalled();
-      expect(getCellDetaineesService).toBeCalledWith(name);
+      expect(getCellDetaineesService).toBeCalledWith(name, authenticated);
       expect(getCellDetaineesSuccessAction).toBeCalledWith(cellDetainees);
       expect(dispatch).toBeCalledTimes(2);
     });
 
     it('should notify error when service returns errors', async () => {
+      const authenticated = false;
       const name = 'c1';
 
       const getCellDetaineesService = jest.fn();
@@ -92,6 +95,7 @@ describe('Cell operations', () => {
 
       await operations.getCellDetaineesForOverview(
         name,
+        authenticated,
         getCellDetaineesService,
         getCellDetaineesAction,
         getCellDetaineesSuccessAction,
@@ -99,7 +103,7 @@ describe('Cell operations', () => {
       )(dispatch);
 
       expect(getCellDetaineesAction).toBeCalled();
-      expect(getCellDetaineesService).toBeCalledWith(name);
+      expect(getCellDetaineesService).toBeCalledWith(name, authenticated);
       expect(getCellDetaineesSuccessAction).not.toBeCalled();
       expect(sendErrorMessage).toBeCalled();
       expect(dispatch).toBeCalledTimes(1);

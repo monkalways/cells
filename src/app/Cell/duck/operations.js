@@ -22,6 +22,7 @@ const getCellDetails = (
 
 const getCellDetaineesForOverview = (
   name,
+  authenticated,
   getCellDetaineesService = services.getCellDetainees,
   getCellDetaineesAction = actions.getCellDetainees,
   getCellDetaineesSuccessAction = actions.getCellDetaineesSuccess,
@@ -29,7 +30,7 @@ const getCellDetaineesForOverview = (
 ) => async (dispatch) => {
   try {
     dispatch(getCellDetaineesAction());
-    const payload = await getCellDetaineesService(name);
+    const payload = await getCellDetaineesService(name, authenticated);
     dispatch(getCellDetaineesSuccessAction(payload));
   } catch (error) {
     sendErrorMessage({ dispatch, error });

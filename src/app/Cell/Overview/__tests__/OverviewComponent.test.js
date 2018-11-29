@@ -57,6 +57,6 @@ describe('OverviewComponent', () => {
     const wrapper = setup();
     wrapper.instance().componentDidMount();
 
-    expect(getCellDetainees).toBeCalledWith(cellName);
+    expect(getCellDetainees).toBeCalledWith(cellName, isAuthenticated);
   });
 });

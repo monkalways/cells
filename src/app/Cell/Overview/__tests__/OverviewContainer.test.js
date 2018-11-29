@@ -34,12 +34,13 @@ describe('OverviewContainer', () => {
     it('should getCellDetainees', () => {
       const { getCellDetainees } = mapDispatchToProps(dispatch);
       const name = 'c1';
+      const isAuthenticated = false;
       const getCellDetaineesMock = jest.fn();
 
-      getCellDetainees(name, getCellDetaineesMock);
+      getCellDetainees(name, isAuthenticated, getCellDetaineesMock);
 
       expect(dispatch).toBeCalled();
-      expect(getCellDetaineesMock).toBeCalledWith(name);
+      expect(getCellDetaineesMock).toBeCalledWith(name, isAuthenticated);
     });
 
     it('should handleSignIn', () => {

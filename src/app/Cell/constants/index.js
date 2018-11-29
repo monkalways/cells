@@ -1,9 +1,11 @@
 // DMU Service URLS
-const GET_CELL_URL = (cellName) => `${process.env.REACT_APP_CELL_SERVICE_URL}api/cells/${cellName}`;
+const GET_CELL_URL = (cellName) => `${process.env.REACT_APP_CELL_SERVICE_URL}api/public/cells/${cellName}`;
 
-const GET_CELL_DETAINEES_URL = (cellName) => `${
+const GET_CELL_DETAINEES_PUBLIC_URL = (cellName) => `${
   process.env.REACT_APP_CELL_SERVICE_URL
-}api/cells/${cellName}/get-cell-detainees`;
+}api/public/cells/${cellName}/detainees`;
+
+const GET_CELL_DETAINEES_URL = (cellName) => `${process.env.REACT_APP_CELL_SERVICE_URL}api/cells/${cellName}/detainees`;
 
 const DETENTION_LOGS_URL = `${
   process.env.REACT_APP_CELL_SERVICE_URL
@@ -25,6 +27,7 @@ const DETENTION_LOG_ACTION_TYPE_PHONE_DECLINED = 'PhoneDeclined';
 
 export default {
   GET_CELL_URL,
+  GET_CELL_DETAINEES_PUBLIC_URL,
   GET_CELL_DETAINEES_URL,
   DETENTION_LOGS_URL,
   DETENTION_LOG_DATA_TYPE_MEAL,

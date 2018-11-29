@@ -22,9 +22,10 @@ export const mapStateToProps = (
 export const mapDispatchToProps = (dispatch) => ({
   getCellDetainees: (
     name,
+    isAuthenticated,
     getCellDetainees = operations.getCellDetaineesForOverview,
   ) => {
-    dispatch(getCellDetainees(name));
+    dispatch(getCellDetainees(name, isAuthenticated));
   },
   handleSignIn: (startSignIn = authenticationOperations.startSignIn) => {
     dispatch(startSignIn());

@@ -61,7 +61,7 @@ describe('Cell services', () => {
     },
   );
 
-  it('should getCellDetainees', async () => {
+  it('should call getCellDetainees if authenticated', async () => {
     const name = 'g1';
     const detainees = [
       {
@@ -97,6 +97,77 @@ describe('Cell services', () => {
     mock.onGet(constants.GET_CELL_DETAINEES_URL(name)).reply(200, detainees);
 
     const result = await services.getCellDetainees(name);
+    expect(result).toEqual([
+      {
+        id: '123',
+        arrestId: '456',
+        personId: '789',
+        assignedCellId: '321',
+        // custodyCostCategoryCode: ';EPS;', // should not be mapped
+        detentionUnitId: '654',
+        detentionUnitName: 'DETAINEE MANAGEMENT UNIT',
+        // propertyBagNumber: '', // should not be mapped
+        carePlanHealthAndWellBeingRiskCode: '',
+        carePlanSafetyToOthersRiskCode: '',
+        carePlanSafetyToSelfRiskCode: '',
+        hasWarning: false,
+        mustBeKeptAlone: false,
+        closed: false,
+        dob: '2002-01-01',
+        location: '',
+        division: ['EPS'],
+        withCaution: false,
+        cautionsArray: [],
+        isUnderMedication: false,
+        isSuicidal: false,
+        isContagious: false,
+        firstName: 'John',
+        lastName: 'Smith',
+        gender: 'Male',
+        intakePhotoResourceUri: '',
+      },
+    ]);
+  });
+
+  it('should call public getCellDetainees if not authenticated', async () => {
+    const authenticated = false;
+    const name = 'g1';
+    const detainees = [
+      {
+        id: '123',
+        arrestId: '456',
+        personId: '789',
+        assignedCellId: '321',
+        custodyCostCategoryCode: ';EPS;',
+        detentionUnitId: '654',
+        detentionUnitName: 'DETAINEE MANAGEMENT UNIT',
+        propertyBagNumber: '',
+        carePlanHealthAndWellBeingRiskCode: '',
+        carePlanSafetyToOthersRiskCode: '',
+        carePlanSafetyToSelfRiskCode: '',
+        hasWarning: false,
+        mustBeKeptAlone: false,
+        closed: false,
+        dob: '2002-01-01',
+        location: '',
+        division: ['EPS'],
+        withCaution: false,
+        cautionsArray: [],
+        isUnderMedication: false,
+        isSuicidal: false,
+        isContagious: false,
+        firstName: 'John',
+        lastName: 'Smith',
+        gender: 'Male',
+        intakePhotoResourceUri: '',
+      },
+    ];
+    const mock = new MockAdapter(axios);
+    mock
+      .onGet(constants.GET_CELL_DETAINEES_PUBLIC_URL(name))
+      .reply(200, detainees);
+
+    const result = await services.getCellDetainees(name, authenticated);
     expect(result).toEqual([
       {
         id: '123',
