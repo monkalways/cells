@@ -27,6 +27,7 @@ const getDetainee = async (custodyEventId) => {
     bailHearingCount,
     breathTestCount,
     cautionsArray,
+    currentActivityRoom,
     detentionUnitName,
     division,
     dob,
@@ -64,6 +65,7 @@ const getDetainee = async (custodyEventId) => {
     bailHearingCount,
     breathTestCount,
     cautionsArray,
+    currentActivityRoom,
     detentionUnitName,
     division,
     dob,
@@ -97,10 +99,9 @@ const getDetainee = async (custodyEventId) => {
 
 const checkInToActivityRoom = async ({ detaineeId, usage }) => {
   const response = await axios.post(
-    constants.CHECK_IN_TO_ACTIVITY_ROOM_URL,
+    constants.CHECK_IN_TO_ACTIVITY_ROOM_URL(usage),
     {
       custodyEventId: detaineeId,
-      usage,
     },
     commonConstants.HEADERS(),
   );
