@@ -1,7 +1,7 @@
 // URLs
-const CHECK_IN_TO_ACTIVITY_ROOM_URL = `${
+const CHECK_IN_TO_ACTIVITY_ROOM_URL = (usage) => `${
   process.env.REACT_APP_CELL_SERVICE_URL
-}api/moves/check-in-to-activity-room`;
+}api/activity-rooms/${usage}/check-in`;
 const CHECK_IN_TO_CELL_URL = `${
   process.env.REACT_APP_CELL_SERVICE_URL
 }api/moves/check-in-to-cell`;
