@@ -57,6 +57,7 @@ const REMAND_HOLDING_IN_TRANSIT = 'Remand Holding - In Transit';
 
 // Locations
 const IN_PROGRESS = 'In Progress';
+const IN_TRANSIT = 'In Transit';
 
 // Room state
 const ROOM_STATE_ALLOCATED = 'ALC';
@@ -81,6 +82,7 @@ export default {
   GET_AVAILABLE_ACTIVITY_ROOMS_URL,
   GET_DETAINEE_URL,
   IN_PROGRESS,
+  IN_TRANSIT,
   INTERVIEW_ROOM,
   INTERVIEW_IN_PROGRESS,
   INTERVIEW_IN_TRANSIT,
