@@ -30,7 +30,7 @@ const LocationComponent = ({ classes, detainee }) => {
         return InTransitIcon;
       }
 
-      switch (location.toLowerCase()) {
+      switch (location) {
         case constants.BAIL_HEARING_IN_PROGRESS:
           return BailHearingIcon;
         case constants.BREATH_TEST_IN_PROGRESS:
