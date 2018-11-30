@@ -36,8 +36,6 @@ const isActivityRoomOptionAvailable = (state, usage, inProgress, inTransit) => {
 };
 
 const isAssigningToRoom = (state) => state.detainee.activityRooms.assigningToRoom;
-// eslint-disable-next-line max-len
-const isDetaineeProfileLoaded = (state) => state.detainee.detaineeProfile.loaded && state.detainee.activityRooms.loaded;
 
 const isInCellOptionAvailable = (state) => {
   const { first } = queryString.parse(state.router.location.search);
@@ -67,6 +65,9 @@ const isInCellOptionAvailable = (state) => {
 
   return false;
 };
+
+// eslint-disable-next-line max-len
+const isDetaineeProfileLoaded = (state) => state.detainee.detaineeProfile.loaded && state.detainee.activityRooms.loaded;
 
 const isPhoneDeclineOptionAvailable = (state) => {
   const { first } = queryString.parse(state.router.location.search);
