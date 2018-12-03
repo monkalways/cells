@@ -76,6 +76,7 @@ exports[`ActivityRoomComponent should render detainee cards when one or more det
             }
             isAuthenticated={false}
             isCheckingIn={false}
+            isCheckingInSuccess={false}
             onCheckIn={[MockFunction]}
             usage="phone"
           />
@@ -93,6 +94,7 @@ exports[`ActivityRoomComponent should render detainee cards when one or more det
             }
             isAuthenticated={false}
             isCheckingIn={false}
+            isCheckingInSuccess={false}
             onCheckIn={[MockFunction]}
             usage="phone"
           />

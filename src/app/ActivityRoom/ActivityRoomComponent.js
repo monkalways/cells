@@ -28,6 +28,7 @@ const propTypes = {
     id: PropTypes.string.isRequired,
   })),
   isCheckingIn: PropTypes.bool.isRequired,
+  isCheckingInSuccess: PropTypes.bool.isRequired,
   getActivityRoomDetainees: PropTypes.func.isRequired,
   handleCheckIn: PropTypes.func.isRequired,
   handleSignIn: PropTypes.func.isRequired,
@@ -49,6 +50,7 @@ export class ActivityRoomComponent extends Component {
 
   componentDidUpdate() {
     const { isAuthenticated } = this.props;
+
     if (isAuthenticated) {
       this.cancelUnauthenticatedTimeout();
     }
@@ -86,6 +88,7 @@ export class ActivityRoomComponent extends Component {
       detainees,
       classes,
       isCheckingIn,
+      isCheckingInSuccess,
       isAuthenticated,
       isActivityRoomDetaineesLoaded,
       handleSignIn,
@@ -112,6 +115,7 @@ export class ActivityRoomComponent extends Component {
                           usage={usage}
                           isAuthenticated={isAuthenticated}
                           isCheckingIn={isCheckingIn}
+                          isCheckingInSuccess={isCheckingInSuccess}
                           onCheckIn={handleCheckIn}
                         />
                       </Grid>

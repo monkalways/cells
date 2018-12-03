@@ -9,6 +9,8 @@ describe('CardFooterComponent', () => {
   let detaineeId;
   let location;
   let onCheckIn;
+  let isCheckingIn;
+  let isCheckingInSuccess;
   let push;
   let usage;
 
@@ -17,6 +19,8 @@ describe('CardFooterComponent', () => {
     detaineeId = '123';
     location = 'Phone - In Transit';
     onCheckIn = jest.fn();
+    isCheckingIn = false;
+    isCheckingInSuccess = false;
     push = jest.fn();
     usage = 'phone';
   });
@@ -35,7 +39,6 @@ describe('CardFooterComponent', () => {
       firstName: 'John',
       lastName: 'Smith',
     };
-    const isCheckingIn = false;
     const history = { push };
 
     return shallow(<CardFooterComponent
@@ -44,10 +47,35 @@ describe('CardFooterComponent', () => {
       detainee={detainee}
       isAuthenticated={isAuthenticated}
       isCheckingIn={isCheckingIn}
+      isCheckingInSuccess={isCheckingInSuccess}
       onCheckIn={onCheckIn}
       usage={usage}
     />);
   };
+
+  it('should set isDialogOpen to true when check-in is still in progress', () => {
+    const wrapper = setup();
+    const nextProps = {
+      isCheckingIn: true,
+      isCheckingInSuccess: false,
+    };
+
+    wrapper.instance().componentWillReceiveProps(nextProps);
+
+    expect(wrapper).toHaveState('isDialogOpen', true);
+  });
+
+  it('should set isDialogOpen to false when check-in is complete', () => {
+    const wrapper = setup();
+    const nextProps = {
+      isCheckingIn: false,
+      isCheckingInSuccess: true,
+    };
+
+    wrapper.instance().componentWillReceiveProps(nextProps);
+
+    expect(wrapper).toHaveState('isDialogOpen', false);
+  });
 
   it('should render empty when isAuthenticated is false', () => {
     isAuthenticated = false;

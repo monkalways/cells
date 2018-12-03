@@ -13,6 +13,7 @@ describe('ActivityRoomDetaineeCardComponent', () => {
       usage="phone"
       isAuthenticated={false}
       isCheckingIn={false}
+      isCheckingInSuccess={false}
       onCheckIn={jest.fn()}
     />);
 

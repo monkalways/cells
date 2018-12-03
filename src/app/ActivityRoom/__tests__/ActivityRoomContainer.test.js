@@ -7,6 +7,7 @@ describe('ActivityRoomContainer', () => {
     const usage = 'phone';
     const detainees = [];
     const isCheckingIn = false;
+    const isCheckingInSuccess = false;
     const isAuthenticated = false;
 
     const result = mapStateToProps(
@@ -15,6 +16,7 @@ describe('ActivityRoomContainer', () => {
       usage,
       detainees,
       isCheckingIn,
+      isCheckingInSuccess,
       isAuthenticated,
     );
 
@@ -23,6 +25,7 @@ describe('ActivityRoomContainer', () => {
       usage,
       detainees,
       isCheckingIn,
+      isCheckingInSuccess,
       isAuthenticated,
     });
   });

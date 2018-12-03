@@ -19,6 +19,7 @@ const propTypes = {
   }).isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   isCheckingIn: PropTypes.bool.isRequired,
+  isCheckingInSuccess: PropTypes.bool.isRequired,
   usage: PropTypes.string.isRequired,
   onCheckIn: PropTypes.func.isRequired,
   history: PropTypes.shape({
@@ -33,6 +34,12 @@ export class CardFooterComponent extends Component {
   state = {
     isDialogOpen: false,
   };
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      isDialogOpen: nextProps.isCheckingIn && !nextProps.isCheckingInSuccess,
+    });
+  }
 
   handleInButtonClick = () => {
     this.setState({

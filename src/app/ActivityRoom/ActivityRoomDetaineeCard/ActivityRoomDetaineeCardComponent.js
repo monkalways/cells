@@ -14,6 +14,7 @@ const propTypes = {
   usage: PropTypes.string.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   isCheckingIn: PropTypes.bool.isRequired,
+  isCheckingInSuccess: PropTypes.bool.isRequired,
   onCheckIn: PropTypes.func.isRequired,
 };
 
@@ -23,6 +24,7 @@ export const ActivityRoomDetaineeCardComponent = ({
   usage,
   isAuthenticated,
   isCheckingIn,
+  isCheckingInSuccess,
   onCheckIn,
 }) => (
   <Card className={classes.card}>
@@ -38,6 +40,7 @@ export const ActivityRoomDetaineeCardComponent = ({
       detainee={detainee}
       isAuthenticated={isAuthenticated}
       isCheckingIn={isCheckingIn}
+      isCheckingInSuccess={isCheckingInSuccess}
       onCheckIn={onCheckIn}
     />
   </Card>

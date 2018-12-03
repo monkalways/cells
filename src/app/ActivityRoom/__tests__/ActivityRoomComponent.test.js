@@ -14,6 +14,7 @@ describe('ActivityRoomComponent', () => {
   let isAuthenticated;
   let detainees;
   let isCheckingIn;
+  let isCheckingInSuccess;
   let getActivityRoomDetainees;
   let handleCheckIn;
   let handleSignIn;
@@ -26,6 +27,7 @@ describe('ActivityRoomComponent', () => {
     isAuthenticated = false;
     detainees = [];
     isCheckingIn = false;
+    isCheckingInSuccess = false;
     getActivityRoomDetainees = jest.fn();
     handleCheckIn = jest.fn();
     handleSignIn = jest.fn();
@@ -51,6 +53,7 @@ describe('ActivityRoomComponent', () => {
       detainees={detainees}
       isAuthenticated={isAuthenticated}
       isCheckingIn={isCheckingIn}
+      isCheckingInSuccess={isCheckingInSuccess}
       getActivityRoomDetainees={getActivityRoomDetainees}
       handleCheckIn={handleCheckIn}
       handleSignIn={handleSignIn}

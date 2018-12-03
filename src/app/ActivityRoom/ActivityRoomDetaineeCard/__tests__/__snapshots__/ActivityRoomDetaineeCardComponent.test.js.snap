@@ -17,6 +17,7 @@ exports[`ActivityRoomDetaineeCardComponent should render 1`] = `
     detainee={Object {}}
     isAuthenticated={false}
     isCheckingIn={false}
+    isCheckingInSuccess={false}
     onCheckIn={[MockFunction]}
     usage="phone"
   />
