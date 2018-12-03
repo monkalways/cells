@@ -6,6 +6,7 @@ const activityRoomReducerDefaultState = {
   loaded: false,
   detainees: [],
   checkingIn: false,
+  checkingInSuccess: true,
 };
 
 const activityRoomReducer = (
@@ -29,16 +30,19 @@ const activityRoomReducer = (
       return {
         ...state,
         checkingIn: true,
+        checkingInSuccess: false,
       };
     case types.CHECK_IN_SUCCESS:
       return {
         ...state,
         checkingIn: false,
+        checkingInSuccess: true,
       };
     case types.CHECK_IN_FAIL:
       return {
         ...state,
         checkingIn: false,
+        checkingInSuccess: false,
       };
     case authenticationTypes.LOG_OUT:
       return activityRoomReducerDefaultState;

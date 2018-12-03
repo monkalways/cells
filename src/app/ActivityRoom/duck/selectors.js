@@ -5,6 +5,7 @@ const getActivityRoomUsage = (state) => state.activityRoom.usage;
 const isActivityRoomDetaineesLoaded = (state) => state.activityRoom.loaded;
 const getActivityRoomDetainees = (state) => state.activityRoom.detainees;
 const isCheckingIn = (state) => state.activityRoom.checkingIn;
+const isCheckingInSuccess = (state) => state.activityRoom.checkingInSuccess;
 
 // Reselect selectors
 const getActivityRoomUsageState = createSelector(
@@ -27,9 +28,15 @@ const isCheckingInState = createSelector(
   (checkingIn) => checkingIn,
 );
 
+const isCheckingInSuccessState = createSelector(
+  [isCheckingInSuccess],
+  (checkingInSuccess) => checkingInSuccess,
+);
+
 export default {
   getActivityRoomUsageState,
   isActivityRoomDetaineesLoadedState,
   getActivityRoomDetaineesState,
   isCheckingInState,
+  isCheckingInSuccessState,
 };

@@ -37,7 +37,7 @@ describe('ActivityRoom selectors', () => {
     expect(result).toEqual(detainees);
   });
 
-  it('should select ActivityRoomDetainees', () => {
+  it('should select isCheckingInState', () => {
     const checkingIn = false;
     const state = {
       activityRoom: {
@@ -47,5 +47,17 @@ describe('ActivityRoom selectors', () => {
 
     const result = selectors.isCheckingInState(state);
     expect(result).toEqual(checkingIn);
+  });
+
+  it('should select isCheckingInSuccessState', () => {
+    const checkingInSuccess = false;
+    const state = {
+      activityRoom: {
+        checkingInSuccess,
+      },
+    };
+
+    const result = selectors.isCheckingInSuccessState(state);
+    expect(result).toEqual(checkingInSuccess);
   });
 });

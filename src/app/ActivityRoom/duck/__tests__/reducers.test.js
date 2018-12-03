@@ -10,6 +10,7 @@ describe('activityRoomReducer', () => {
       loaded: false,
       detainees: [],
       checkingIn: false,
+      checkingInSuccess: true,
     });
   });
 
@@ -38,6 +39,7 @@ describe('activityRoomReducer', () => {
       type: types.CHECK_IN,
     });
     expect(result.checkingIn).toBe(true);
+    expect(result.checkingInSuccess).toBe(false);
   });
 
   it('should update state by CHECK_IN_SUCCESS', () => {
@@ -45,6 +47,7 @@ describe('activityRoomReducer', () => {
       type: types.CHECK_IN_SUCCESS,
     });
     expect(result.checkingIn).toBe(false);
+    expect(result.checkingInSuccess).toBe(true);
   });
 
   it('should update state by CHECK_IN_FAIL', () => {
@@ -52,6 +55,7 @@ describe('activityRoomReducer', () => {
       type: types.CHECK_IN_FAIL,
     });
     expect(result.checkingIn).toBe(false);
+    expect(result.checkingInSuccess).toBe(false);
   });
 
   it('should update state by authentication action type LOG_OUT', () => {
@@ -63,6 +67,7 @@ describe('activityRoomReducer', () => {
       loaded: false,
       detainees: [],
       checkingIn: false,
+      checkingInSuccess: true,
     });
   });
 });
