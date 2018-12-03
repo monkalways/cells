@@ -2,24 +2,14 @@
 const CHECK_IN_TO_ACTIVITY_ROOM_URL = (usage) => `${
   process.env.REACT_APP_CELL_SERVICE_URL
 }api/activity-rooms/${usage}/check-in`;
-const CHECK_IN_TO_CELL_URL = `${
-  process.env.REACT_APP_CELL_SERVICE_URL
-}api/moves/check-in-to-cell`;
+const CHECK_IN_TO_CELL_URL = (cellName) => `${process.env.REACT_APP_CELL_SERVICE_URL}api/cells/${cellName}/check-in`;
 const GET_AVAILABLE_ACTIVITY_ROOMS_URL = `${
   process.env.REACT_APP_CELL_SERVICE_URL
 }api/cells/rooms-availability`;
 const GET_DETAINEE_URL = (custodyEventId) => `${
   process.env.REACT_APP_CELL_SERVICE_URL
 }api/detainees/${custodyEventId}/profile`;
-const MOVE_TO_ACTIVITY_ROOM_URL = `${
-  process.env.REACT_APP_CELL_SERVICE_URL
-}api/moves/move-to-activity-room`;
-const MOVE_TO_CELL_URL = `${
-  process.env.REACT_APP_CELL_SERVICE_URL
-}api/moves/move-to-cell`;
-const UPDATE_ACTIVITY_ROOM_URL = `${
-  process.env.REACT_APP_CELL_SERVICE_URL
-}api/cells/`;
+const MOVE_DETAINEE_TO_ROOM_URL = (from, to) => `${process.env.REACT_APP_CELL_SERVICE_URL}api/moves/${from}/${to}`;
 
 // Query strings
 const ACTIVITY_ROOMS_QUERYSTRING = 'activity-rooms';
@@ -89,8 +79,7 @@ export default {
   MEDICAL_ROOM,
   MEDICAL_IN_PROGRESS,
   MEDICAL_IN_TRANSIT,
-  MOVE_TO_ACTIVITY_ROOM_URL,
-  MOVE_TO_CELL_URL,
+  MOVE_DETAINEE_TO_ROOM_URL,
   PHONE_DECLINE,
   PHONE_ROOM,
   PHONE_IN_PROGRESS,
@@ -100,5 +89,4 @@ export default {
   REMAND_HOLDING_IN_TRANSIT,
   REMAND_HOLDING_ROOM,
   ROOM_STATE_ALLOCATED,
-  UPDATE_ACTIVITY_ROOM_URL,
 };

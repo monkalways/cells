@@ -1,11 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Avatar,
-  CardContent,
-  Grid,
-  Typography,
-  withStyles,
+  CardContent, Grid, Typography, withStyles,
 } from '@material-ui/core';
 
 import LocationIcon from '../../LocationIcon';

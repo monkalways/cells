@@ -110,9 +110,9 @@ const checkInToActivityRoom = async ({ detaineeId, usage }) => {
   return { error };
 };
 
-const checkInToCell = async ({ detaineeId }) => {
+const checkInToCell = async ({ detaineeId, cellName }) => {
   const response = await axios.post(
-    constants.CHECK_IN_TO_CELL_URL,
+    constants.CHECK_IN_TO_CELL_URL(cellName),
     {
       custodyEventId: detaineeId,
     },
@@ -123,27 +123,17 @@ const checkInToCell = async ({ detaineeId }) => {
   return { error };
 };
 
-const moveToActivityRoom = async ({ detaineeId, from, destinationRoom }) => {
+const moveDetaineeToRoom = async ({
+  detaineeId,
+  originRoom,
+  destinationRoom,
+}) => {
   const response = await axios.post(
-    constants.MOVE_TO_ACTIVITY_ROOM_URL,
+    constants.MOVE_DETAINEE_TO_ROOM_URL(originRoom, destinationRoom),
     {
       custodyEventId: detaineeId,
-      from,
+      from: originRoom,
       to: destinationRoom,
-    },
-    commonConstants.HEADERS(),
-  );
-
-  const { error } = response.data;
-  return { error };
-};
-
-const moveToCell = async ({ detaineeId, from }) => {
-  const response = await axios.post(
-    constants.MOVE_TO_CELL_URL,
-    {
-      custodyEventId: detaineeId,
-      from,
     },
     commonConstants.HEADERS(),
   );
@@ -157,6 +147,5 @@ export default {
   checkInToCell,
   getAvailableActivityRooms,
   getDetainee,
-  moveToActivityRoom,
-  moveToCell,
+  moveDetaineeToRoom,
 };

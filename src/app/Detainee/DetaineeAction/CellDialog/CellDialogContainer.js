@@ -14,11 +14,12 @@ export const mapStateToProps = (
 export const mapDispatchToProps = (dispatch) => ({
   moveDetaineeToCell: (
     detaineeId,
-    from,
+    originRoom,
     destinationRoom,
-    moveDetaineeToCell = operations.moveDetaineeToCell,
-  ) => dispatch(moveDetaineeToCell(detaineeId, from, destinationRoom)),
-  checkDetaineeInToCell: (detaineeId) => dispatch(operations.checkDetaineeInToCell(detaineeId)),
+    moveDetaineeToCell = operations.moveDetaineeToRoom,
+  ) => dispatch(moveDetaineeToCell(detaineeId, originRoom, destinationRoom)),
+  // eslint-disable-next-line max-len
+  checkDetaineeInToCell: (detaineeId, cellName) => dispatch(operations.checkDetaineeInToCell(detaineeId, cellName)),
 });
 
 export default connect(

@@ -14,6 +14,14 @@ const getCurrentActivityRoom = (state) => {
   return second;
 };
 
+const getCurrentRoom = (state) => {
+  const { first, second } = queryString.parse(state.router.location.search);
+  if (first === constants.CELLS_QUERYSTRING) {
+    return second;
+  }
+  return state.detainee.detaineeProfile.data.currentActivityRoom;
+};
+
 const getDetainee = (state) => state.detainee.detaineeProfile.data;
 const getSecondProp = (_state, prop) => prop;
 
@@ -91,6 +99,8 @@ const getCurrentActivityRoomState = createSelector(
   (room) => room,
 );
 
+const getCurrentRoomState = createSelector([getCurrentRoom], (room) => room);
+
 const getDetaineeState = createSelector([getDetainee], (detainee) => detainee);
 
 const getFirstAvailableActivityRoom = createSelector(
@@ -145,6 +155,7 @@ const isPhoneDeclineOptionAvailableState = createSelector(
 export default {
   areActivityRoomsRefreshingState,
   getCurrentActivityRoomState,
+  getCurrentRoomState,
   getDetaineeState,
   getFirstAvailableActivityRoom,
   isActivityRoomOptionAvailableState,

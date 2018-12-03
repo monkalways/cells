@@ -9,7 +9,7 @@ const SCAN_CARD_ID_KEY = 'x-swipe-card-serial-number';
 const HEADERS = () => ({
   headers: {
     'x-swipe-card-serial-number':
-      sessionStorage.getItem(SCAN_CARD_ID_KEY) || '',
+        sessionStorage.getItem(SCAN_CARD_ID_KEY) || '',
   },
 });
 

@@ -6,7 +6,7 @@ export const mapStateToProps = (
   state,
   { usage },
   areActivityRoomsRefreshing = selectors.areActivityRoomsRefreshingState(state),
-  currentActivity = selectors.getCurrentActivityRoomState(state),
+  currentRoom = selectors.getCurrentRoomState(state),
   isAnyRoomForGivenActivityAvailable = selectors.isAnyRoomForGivenActivityAvailableState(
     state,
     usage,
@@ -15,7 +15,7 @@ export const mapStateToProps = (
   destinationRoom = selectors.getFirstAvailableActivityRoom(state, usage),
 ) => ({
   areActivityRoomsRefreshing,
-  currentActivity,
+  currentRoom,
   isAnyRoomForGivenActivityAvailable,
   isAssigningToRoom,
   destinationRoom,
@@ -26,10 +26,10 @@ export const mapDispatchToProps = (dispatch) => ({
   getAvailableActivityRoomsRefresh: (getAvailableActivityRoomsRefresh = operations.getAvailableActivityRoomsRefresh) => dispatch(getAvailableActivityRoomsRefresh()),
   moveDetaineeToActivityRoom: (
     detaineeId,
-    from,
+    originRoom,
     destinationRoom,
-    moveDetaineeToActivityRoom = operations.moveDetaineeToActivityRoom,
-  ) => dispatch(moveDetaineeToActivityRoom(detaineeId, from, destinationRoom)),
+    moveDetaineeToActivityRoom = operations.moveDetaineeToRoom,
+  ) => dispatch(moveDetaineeToActivityRoom(detaineeId, originRoom, destinationRoom)),
 });
 
 export default connect(

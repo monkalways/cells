@@ -12,7 +12,7 @@ import Loading from '../../../common/Loading';
 
 const propTypes = {
   areActivityRoomsRefreshing: PropTypes.bool.isRequired,
-  currentActivity: PropTypes.string.isRequired,
+  currentRoom: PropTypes.string,
   detainee: PropTypes.shape({
     firstName: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
@@ -30,12 +30,13 @@ const propTypes = {
 };
 
 const defaultProps = {
+  currentRoom: null,
   destinationRoom: null,
 };
 
 const ActivityRoomDialogComponent = ({
   areActivityRoomsRefreshing,
-  currentActivity,
+  currentRoom,
   detainee,
   getAvailableActivityRoomsRefresh,
   isAnyRoomForGivenActivityAvailable,
@@ -47,7 +48,7 @@ const ActivityRoomDialogComponent = ({
   usage,
 }) => {
   const handleClick = () => {
-    moveDetaineeToActivityRoom(detainee.id, currentActivity, destinationRoom);
+    moveDetaineeToActivityRoom(detainee.id, currentRoom, destinationRoom);
   };
 
   const handleOpen = () => {
@@ -103,7 +104,7 @@ const ActivityRoomDialogComponent = ({
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <DialogTitle>{`Sorry, the ${usage} room is no longer available.`}</DialogTitle>
+          <DialogTitle>{`Sorry, the ${usage} room ${destinationRoom} is no longer available.`}</DialogTitle>
           <DialogActions>
             <Button onClick={onClose} color="primary">
               Close

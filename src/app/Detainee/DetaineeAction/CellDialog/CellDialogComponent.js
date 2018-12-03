@@ -17,6 +17,7 @@ const propTypes = {
   currentActivity: PropTypes.string.isRequired,
   detainee: PropTypes.shape({
     assignedCellName: PropTypes.string.isRequired,
+    currentActivityRoom: PropTypes.string,
     firstName: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
@@ -40,8 +41,9 @@ const CellDialogComponent = ({
   onClose,
 }) => {
   const handleClick = () => {
-    if (currentActivity === constants.CELL) checkDetaineeInToCell(detainee.id);
-    else moveDetaineeToCell(detainee.id, currentActivity);
+    const { id, currentActivityRoom, assignedCellName } = detainee;
+    if (currentActivity === constants.CELL) checkDetaineeInToCell(id, assignedCellName);
+    else moveDetaineeToCell(id, currentActivityRoom, assignedCellName);
   };
 
   return (
