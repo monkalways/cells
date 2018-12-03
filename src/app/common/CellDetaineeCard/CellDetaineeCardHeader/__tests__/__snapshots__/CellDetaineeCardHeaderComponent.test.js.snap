@@ -34,10 +34,7 @@ exports[`CellDetaineeCardHeaderComponent should render 1`] = `
       item={true}
       sm={5}
     >
-      <WithStyles(Avatar)
-        className="avatar"
-        src="InCell.png"
-      />
+      <WithStyles(LocationComponent) />
     </WithStyles(Grid)>
   </WithStyles(Grid)>
 </WithStyles(CardContent)>
