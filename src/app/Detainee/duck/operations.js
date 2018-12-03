@@ -60,43 +60,6 @@ const getDetainee = (
   }
 };
 
-const checkDetaineeInToActivityRoom = (
-  detaineeId,
-  usage,
-  assignToRoomAction = actions.assignToRoom,
-  assignToRoomFailureAction = actions.assignToRoomFailure,
-  assignToRoomSuccessAction = actions.assignToRoomSuccess,
-  getAvailableActivityRoomsOperation = getAvailableActivityRooms,
-  getDetaineeOperation = getDetainee,
-  checkDetaineeInToActivityRoomService = services.checkInToActivityRoom,
-  notifyOperation = notify,
-  sendErrorMessage = commonUtils.sendErrorMessage,
-) => async (dispatch) => {
-  try {
-    dispatch(assignToRoomAction());
-
-    // Attempt to check the detainee in to their cell
-    const { error } = await checkDetaineeInToActivityRoomService({
-      detaineeId,
-      usage,
-    });
-
-    if (error) {
-      notifyOperation(dispatch, error);
-      dispatch(assignToRoomFailureAction());
-    } else {
-      dispatch(assignToRoomSuccessAction());
-    }
-
-    // Reload detainee profile
-    dispatch(getDetaineeOperation(detaineeId));
-    dispatch(getAvailableActivityRoomsOperation());
-  } catch (error) {
-    sendErrorMessage({ dispatch, error });
-    dispatch(assignToRoomFailureAction());
-  }
-};
-
 const checkDetaineeInToCell = (
   detaineeId,
   cellName,
@@ -174,7 +137,6 @@ const moveDetaineeToRoom = (
 };
 
 export default {
-  checkDetaineeInToActivityRoom,
   checkDetaineeInToCell,
   getAvailableActivityRoomsRefresh,
   moveDetaineeToRoom,

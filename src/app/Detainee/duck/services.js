@@ -97,19 +97,6 @@ const getDetainee = async (custodyEventId) => {
   };
 };
 
-const checkInToActivityRoom = async ({ detaineeId, usage }) => {
-  const response = await axios.post(
-    constants.CHECK_IN_TO_ACTIVITY_ROOM_URL(usage),
-    {
-      custodyEventId: detaineeId,
-    },
-    commonConstants.HEADERS(),
-  );
-
-  const { error } = response.data;
-  return { error };
-};
-
 const checkInToCell = async ({ detaineeId, cellName }) => {
   const response = await axios.post(
     constants.CHECK_IN_TO_CELL_URL(cellName),
@@ -143,7 +130,6 @@ const moveDetaineeToRoom = async ({
 };
 
 export default {
-  checkInToActivityRoom,
   checkInToCell,
   getAvailableActivityRooms,
   getDetainee,
