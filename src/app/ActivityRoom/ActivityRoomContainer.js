@@ -4,6 +4,7 @@ import {
   operations as authenticationOperations,
   selectors as authenticationSelectors,
 } from '../Authentication/duck';
+import { operations as detaineeOperations } from '../Detainee/duck';
 import ActivityRoomComponent from './ActivityRoomComponent';
 
 export const mapStateToProps = (
@@ -28,7 +29,11 @@ export const mapDispatchToProps = (dispatch) => ({
   ) => {
     dispatch(getActivityRoomDetainees(usage));
   },
-  handleCheckIn: (detaineeId, usage, checkIn = operations.checkIn) => {
+  handleCheckIn: (
+    detaineeId,
+    usage,
+    checkIn = detaineeOperations.checkDetaineeInToActivityRoom,
+  ) => {
     dispatch(checkIn(detaineeId, usage));
   },
   handleSignIn: (startSignIn = authenticationOperations.startSignIn) => {
