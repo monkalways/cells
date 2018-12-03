@@ -55,6 +55,7 @@ describe('ActivityRoom operations', () => {
       const usage = 'phone';
 
       const checkIntoActivityRoomService = jest.fn();
+      const getActivityRoomDetaineesOperation = jest.fn();
       const checkInAction = jest.fn();
       const checkInSuccessAction = jest.fn();
       const checkInFailAction = jest.fn();
@@ -65,7 +66,7 @@ describe('ActivityRoom operations', () => {
         detaineeId,
         usage,
         checkIntoActivityRoomService,
-        createTempAbsenceService,
+        getActivityRoomDetaineesOperation,
         checkInAction,
         checkInSuccessAction,
         checkInFailAction,
@@ -75,7 +76,8 @@ describe('ActivityRoom operations', () => {
       expect(checkInAction).toBeCalled();
       expect(checkInSuccessAction).toBeCalled();
       expect(checkIntoActivityRoomService).toBeCalledWith(detaineeId, usage);
-      expect(dispatch).toBeCalledTimes(2);
+      expect(getActivityRoomDetaineesOperation).toBeCalledWith(usage);
+      expect(dispatch).toBeCalledTimes(3);
     });
 
     it('should send error message when error occurs', async () => {
@@ -86,6 +88,7 @@ describe('ActivityRoom operations', () => {
       checkIntoActivityRoomService.mockImplementation(() => {
         throw error;
       });
+      const getActivityRoomDetaineesOperation = jest.fn();
       const checkInAction = jest.fn();
       const checkInSuccessAction = jest.fn();
       const checkInFailAction = jest.fn();
@@ -96,7 +99,7 @@ describe('ActivityRoom operations', () => {
         detaineeId,
         usage,
         checkIntoActivityRoomService,
-        createTempAbsenceService,
+        getActivityRoomDetaineesOperation,
         checkInAction,
         checkInSuccessAction,
         checkInFailAction,

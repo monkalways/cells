@@ -22,6 +22,7 @@ const checkIn = (
   detaineeId,
   usage,
   checkIntoActivityRoomService = services.checkIntoActivityRoom,
+  getActivityRoomDetaineesOperation = getActivityRoomDetainees,
   checkInAction = actions.checkIn,
   checkInSuccessAction = actions.checkInSuccess,
   checkInFailAction = actions.checkInFail,
@@ -31,9 +32,10 @@ const checkIn = (
     dispatch(checkInAction());
     await checkIntoActivityRoomService(detaineeId, usage);
     dispatch(checkInSuccessAction());
+    dispatch(getActivityRoomDetaineesOperation(usage));
   } catch (error) {
     sendErrorMessage({ dispatch, error });
-    checkInFailAction();
+    dispatch(checkInFailAction());
   }
 };
 
