@@ -52,7 +52,7 @@ describe('ActivityRoom services', () => {
     const detaineeId = '123';
     const usage = 'phone';
     const mock = new MockAdapter(axios);
-    mock.onGet(constants.CHECK_INTO_ACTIVITY_ROOM_URL(usage)).reply(200);
+    mock.onPost(constants.CHECK_INTO_ACTIVITY_ROOM_URL(usage)).reply(200);
 
     const result = await services.checkIntoActivityRoom(detaineeId, usage);
     expect(result).toBe(true);
