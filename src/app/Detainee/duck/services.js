@@ -129,9 +129,21 @@ const moveDetaineeToRoom = async ({
   return { error };
 };
 
+const savePhoneCallDecline = async ({ arrestId, userName }) => axios.post(
+  constants.CREATE_DETENTION_LOG_URL(arrestId),
+  {
+    arrestId,
+    detentionLogType: constants.DETENTION_LOG_DATA_TYPE_DETAINEE_ACTION,
+    detentionLogAction: constants.DETENTION_LOG_ACTION_TYPE_PHONE_DECLINED,
+    userName,
+  },
+  commonConstants.HEADERS(),
+);
+
 export default {
   checkInToCell,
   getAvailableActivityRooms,
   getDetainee,
   moveDetaineeToRoom,
+  savePhoneCallDecline,
 };

@@ -13,6 +13,7 @@ import {
 import IconButton from '@material-ui/core/IconButton';
 import ActivityRoomDialog from './ActivityRoomDialog';
 import CellDialog from './CellDialog';
+import PhoneDeclineDialog from './PhoneDeclineDialog';
 
 import MedicalVisitIcon from '../../images/MedicalVisit.png';
 import PhoneAcceptIcon from '../../images/PhoneAccept.png';
@@ -53,6 +54,7 @@ class DetaineeActionComponent extends Component {
   state = {
     isActivityRoomDialogOpen: false,
     isCellDialogOpen: false,
+    isPhoneDialogOpen: false,
     usage: '',
   };
 
@@ -60,6 +62,7 @@ class DetaineeActionComponent extends Component {
     this.setState({
       isActivityRoomDialogOpen: true,
       isCellDialogOpen: false,
+      isPhoneDialogOpen: false,
       usage,
     });
   };
@@ -68,6 +71,15 @@ class DetaineeActionComponent extends Component {
     this.setState({
       isActivityRoomDialogOpen: false,
       isCellDialogOpen: true,
+      isPhoneDialogOpen: false,
+    });
+  };
+
+  handlePhoneDeclineClick = () => {
+    this.setState({
+      isActivityRoomDialogOpen: false,
+      isCellDialogOpen: false,
+      isPhoneDialogOpen: true,
     });
   };
 
@@ -75,6 +87,7 @@ class DetaineeActionComponent extends Component {
     this.setState({
       isActivityRoomDialogOpen: false,
       isCellDialogOpen: false,
+      isPhoneDialogOpen: false,
     });
     const { getAvailableActivityRooms, getDetainee, detainee } = this.props;
     getAvailableActivityRooms();
@@ -98,7 +111,12 @@ class DetaineeActionComponent extends Component {
       isRemandHoldingRoomOptionAvailable,
     } = this.props;
 
-    const { isActivityRoomDialogOpen, isCellDialogOpen, usage } = this.state;
+    const {
+      isActivityRoomDialogOpen,
+      isCellDialogOpen,
+      isPhoneDialogOpen,
+      usage,
+    } = this.state;
 
     return (
       <Card className={classes.card}>
@@ -151,8 +169,7 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isPhoneDeclineOptionAvailable}
                   onClick={() => {
-                    // eslint-disable-next-line no-alert
-                    alert('Function not available');
+                    this.handlePhoneDeclineClick();
                   }}
                   onClose={this.handleClose}
                 >
@@ -318,6 +335,11 @@ class DetaineeActionComponent extends Component {
         <CellDialog
           detainee={detainee}
           isDialogOpen={isCellDialogOpen}
+          onClose={this.handleClose}
+        />
+        <PhoneDeclineDialog
+          detainee={detainee}
+          isDialogOpen={isPhoneDialogOpen}
           onClose={this.handleClose}
         />
       </Card>

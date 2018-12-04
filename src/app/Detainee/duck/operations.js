@@ -1,4 +1,5 @@
 import { actions as toastrActions } from 'react-redux-toastr';
+import { push } from 'connected-react-router';
 
 import actions from './actions';
 import services from './services';
@@ -136,10 +137,35 @@ const moveDetaineeToRoom = (
   }
 };
 
+const savePhoneCallDecline = (
+  arrestId,
+  cellName,
+  userName,
+  savePhoneCallDeclineService = services.savePhoneCallDecline,
+  phoneCallDeclineAction = actions.declinePhoneCall,
+  phoneCallDeclineFailureAction = actions.declinePhoneCallFailure,
+  phoneCallDeclineSuccessAction = actions.declinePhoneCallSuccess,
+  pushAction = push,
+  sendSuccessMessage = commonUtils.sendSuccessMessage,
+  sendErrorMessage = commonUtils.sendErrorMessage,
+) => async (dispatch) => {
+  try {
+    dispatch(phoneCallDeclineAction());
+    await savePhoneCallDeclineService({ arrestId, userName });
+    dispatch(phoneCallDeclineSuccessAction());
+    dispatch(pushAction(`/cells/${cellName}/home/`));
+    sendSuccessMessage({ dispatch, message: 'Phone decline saved.' });
+  } catch (error) {
+    sendErrorMessage({ dispatch, error });
+    dispatch(phoneCallDeclineFailureAction());
+  }
+};
+
 export default {
   checkDetaineeInToCell,
   getAvailableActivityRoomsRefresh,
   moveDetaineeToRoom,
   getAvailableActivityRooms,
   getDetainee,
+  savePhoneCallDecline,
 };

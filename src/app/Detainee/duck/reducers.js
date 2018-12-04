@@ -34,6 +34,7 @@ const defaultActivityRoomsState = {
   assigningToRoom: false,
   loaded: false,
   isRefreshing: false,
+  updatingDetentionLog: false,
 };
 
 const activityRoomsReducer = (state = defaultActivityRoomsState, action) => {
@@ -69,6 +70,21 @@ const activityRoomsReducer = (state = defaultActivityRoomsState, action) => {
       return {
         ...state,
         assigningToRoom: false,
+      };
+    case types.DECLINE_PHONECALL:
+      return {
+        ...state,
+        updatingDetentionLog: true,
+      };
+    case types.DECLINE_PHONECALL_FAILURE:
+      return {
+        ...state,
+        updatingDetentionLog: false,
+      };
+    case types.DECLINE_PHONECALL_SUCCESS:
+      return {
+        ...state,
+        updatingDetentionLog: false,
       };
     case authenticationTypes.LOG_OUT:
       return defaultActivityRoomsState;

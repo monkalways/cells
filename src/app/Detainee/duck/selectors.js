@@ -5,7 +5,6 @@ import constants from '../constants';
 // Basic selectors
 const areActivityRoomsRefreshing = (state) => state.detainee.activityRooms.isRefreshing;
 const getAvailableActivityRooms = (state) => state.detainee.activityRooms.availableActivityRooms;
-
 const getCurrentActivityRoom = (state) => {
   const { first, second } = queryString.parse(state.router.location.search);
   if (first === constants.CELLS_QUERYSTRING) {
@@ -88,6 +87,8 @@ const isPhoneDeclineOptionAvailable = (state) => {
   return first === constants.CELLS_QUERYSTRING;
 };
 
+const isUpdatingDetentionLog = (state) => state.detainee.activityRooms.updatingDetentionLog;
+
 // Reselect selectors
 const areActivityRoomsRefreshingState = createSelector(
   [areActivityRoomsRefreshing],
@@ -152,6 +153,11 @@ const isPhoneDeclineOptionAvailableState = createSelector(
   (available) => available,
 );
 
+const isUpdatingDetentionLogState = createSelector(
+  [isUpdatingDetentionLog],
+  (isUpdating) => isUpdating,
+);
+
 export default {
   areActivityRoomsRefreshingState,
   getCurrentActivityRoomState,
@@ -164,4 +170,5 @@ export default {
   isDetaineeProfileLoadedState,
   isInCellOptionAvailableState,
   isPhoneDeclineOptionAvailableState,
+  isUpdatingDetentionLogState,
 };
