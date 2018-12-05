@@ -203,7 +203,7 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isFingerprintingRoomOptionAvailable}
                   onClick={() => {
-                    this.handleActivityRoomButtonClick(constants.FINGERPRINTING_ROOM);
+                    this.handleRoomSelectionDialogButtonClick(constants.FINGERPRINTING_ROOM);
                   }}
                   onClose={this.handleClose}
                 >
