@@ -59,6 +59,11 @@ exports[`GotoActivityRoomComponent should render 1`] = `
           Breath Test
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
+          value="fingerprinting"
+        >
+          Finger Printing
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
           value="interview"
         >
           Interview
