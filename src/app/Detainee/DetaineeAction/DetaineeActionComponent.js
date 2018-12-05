@@ -13,6 +13,8 @@ import {
 import IconButton from '@material-ui/core/IconButton';
 import ActivityRoomDialog from './ActivityRoomDialog';
 import CellDialog from './CellDialog';
+import PhoneDeclineDialog from './PhoneDeclineDialog';
+import RoomSelectionDialog from './RoomSelectionDialog';
 
 import MedicalVisitIcon from '../../images/MedicalVisit.png';
 import PhoneAcceptIcon from '../../images/PhoneAccept.png';
@@ -53,6 +55,8 @@ class DetaineeActionComponent extends Component {
   state = {
     isActivityRoomDialogOpen: false,
     isCellDialogOpen: false,
+    isRoomSelectionDialogOpen: false,
+    isPhoneDialogOpen: false,
     usage: '',
   };
 
@@ -60,6 +64,8 @@ class DetaineeActionComponent extends Component {
     this.setState({
       isActivityRoomDialogOpen: true,
       isCellDialogOpen: false,
+      isRoomSelectionDialogOpen: false,
+      isPhoneDialogOpen: false,
       usage,
     });
   };
@@ -68,6 +74,27 @@ class DetaineeActionComponent extends Component {
     this.setState({
       isActivityRoomDialogOpen: false,
       isCellDialogOpen: true,
+      isRoomSelectionDialogOpen: false,
+      isPhoneDialogOpen: false,
+    });
+  };
+
+  handleRoomSelectionDialogButtonClick = (usage) => {
+    this.setState({
+      isActivityRoomDialogOpen: false,
+      isCellDialogOpen: false,
+      isRoomSelectionDialogOpen: true,
+      isPhoneDialogOpen: false,
+      usage,
+    });
+  };
+
+  handlePhoneDeclineButtonClick = () => {
+    this.setState({
+      isActivityRoomDialogOpen: false,
+      isCellDialogOpen: false,
+      isRoomSelectionDialogOpen: false,
+      isPhoneDialogOpen: true,
     });
   };
 
@@ -75,6 +102,8 @@ class DetaineeActionComponent extends Component {
     this.setState({
       isActivityRoomDialogOpen: false,
       isCellDialogOpen: false,
+      isRoomSelectionDialogOpen: false,
+      isPhoneDialogOpen: false,
     });
     const { getAvailableActivityRooms, getDetainee, detainee } = this.props;
     getAvailableActivityRooms();
@@ -98,7 +127,13 @@ class DetaineeActionComponent extends Component {
       isRemandHoldingRoomOptionAvailable,
     } = this.props;
 
-    const { isActivityRoomDialogOpen, isCellDialogOpen, usage } = this.state;
+    const {
+      isActivityRoomDialogOpen,
+      isCellDialogOpen,
+      isRoomSelectionDialogOpen,
+      isPhoneDialogOpen,
+      usage,
+    } = this.state;
 
     return (
       <Card className={classes.card}>
@@ -151,8 +186,7 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isPhoneDeclineOptionAvailable}
                   onClick={() => {
-                    // eslint-disable-next-line no-alert
-                    alert('Function not available');
+                    this.handlePhoneDeclineButtonClick();
                   }}
                   onClose={this.handleClose}
                 >
@@ -203,8 +237,7 @@ class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isInterviewRoomOptionAvailable}
                   onClick={() => {
-                    // eslint-disable-next-line no-alert
-                    alert('Function not available');
+                    this.handleRoomSelectionDialogButtonClick(constants.INTERVIEW_ROOM);
                   }}
                   onClose={this.handleClose}
                 >
@@ -319,6 +352,17 @@ class DetaineeActionComponent extends Component {
           detainee={detainee}
           isDialogOpen={isCellDialogOpen}
           onClose={this.handleClose}
+        />
+        <PhoneDeclineDialog
+          detainee={detainee}
+          isDialogOpen={isPhoneDialogOpen}
+          onClose={this.handleClose}
+        />
+        <RoomSelectionDialog
+          detainee={detainee}
+          isDialogOpen={isRoomSelectionDialogOpen}
+          onClose={this.handleClose}
+          usage={usage}
         />
       </Card>
     );

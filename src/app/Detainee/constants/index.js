@@ -9,6 +9,9 @@ const GET_AVAILABLE_ACTIVITY_ROOMS_URL = `${
 const GET_DETAINEE_URL = (custodyEventId) => `${
   process.env.REACT_APP_CELL_SERVICE_URL
 }api/detainees/${custodyEventId}/profile`;
+const CREATE_DETENTION_LOG_URL = (arrestId) => `${
+  process.env.REACT_APP_CELL_SERVICE_URL
+}api/detainees/${arrestId}/detention-logs`;
 const MOVE_DETAINEE_TO_ROOM_URL = (from, to) => `${process.env.REACT_APP_CELL_SERVICE_URL}api/moves/${from}/${to}`;
 
 // Query strings
@@ -52,6 +55,12 @@ const IN_TRANSIT = 'In Transit';
 // Room state
 const ROOM_STATE_ALLOCATED = 'ALC';
 
+// Detention Log Data Types
+const DETENTION_LOG_DATA_TYPE_DETAINEE_ACTION = 'DetaineeAction';
+
+// Detention Log Action Types
+const DETENTION_LOG_ACTION_TYPE_PHONE_DECLINED = 'PhoneDeclined';
+
 export default {
   ACTIVITY_ROOMS_QUERYSTRING,
   BAIL_HEARING_ROOM_1,
@@ -66,6 +75,9 @@ export default {
   CELLS_QUERYSTRING,
   CHECK_IN_TO_ACTIVITY_ROOM_URL,
   CHECK_IN_TO_CELL_URL,
+  CREATE_DETENTION_LOG_URL,
+  DETENTION_LOG_ACTION_TYPE_PHONE_DECLINED,
+  DETENTION_LOG_DATA_TYPE_DETAINEE_ACTION,
   FINGERPRINTING_IN_PROGRESS,
   FINGERPRINTING_IN_TRANSIT,
   FINGERPRINTING_ROOM,

@@ -1,24 +1,24 @@
 import { connect } from 'react-redux';
 import { operations, selectors } from '../../duck';
-import ActivityRoomDialogComponent from './ActivityRoomDialogComponent';
+import RoomSelectionDialogComponent from './RoomSelectionDialogComponent';
 
 export const mapStateToProps = (
   state,
   { usage },
   areActivityRoomsRefreshing = selectors.areActivityRoomsRefreshingState(state),
+  availableRooms = selectors.getAllAvailableActivityRoomsState(state, usage),
   currentRoom = selectors.getCurrentRoomState(state),
   isAnyRoomForGivenActivityAvailable = selectors.isAnyRoomForGivenActivityAvailableState(
     state,
     usage,
   ),
   isAssigningToRoom = selectors.isAssigningToRoomState(state),
-  destinationRoom = selectors.getFirstAvailableActivityRoomState(state, usage),
 ) => ({
   areActivityRoomsRefreshing,
+  availableRooms,
   currentRoom,
   isAnyRoomForGivenActivityAvailable,
   isAssigningToRoom,
-  destinationRoom,
 });
 
 export const mapDispatchToProps = (dispatch) => ({
@@ -35,4 +35,4 @@ export const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(ActivityRoomDialogComponent);
+)(RoomSelectionDialogComponent);

@@ -5,7 +5,6 @@ import constants from '../constants';
 // Basic selectors
 const areActivityRoomsRefreshing = (state) => state.detainee.activityRooms.isRefreshing;
 const getAvailableActivityRooms = (state) => state.detainee.activityRooms.availableActivityRooms;
-
 const getCurrentActivityRoom = (state) => {
   const { first, second } = queryString.parse(state.router.location.search);
   if (first === constants.CELLS_QUERYSTRING) {
@@ -88,10 +87,24 @@ const isPhoneDeclineOptionAvailable = (state) => {
   return first === constants.CELLS_QUERYSTRING;
 };
 
+const isUpdatingDetentionLog = (state) => state.detainee.activityRooms.updatingDetentionLog;
+
 // Reselect selectors
 const areActivityRoomsRefreshingState = createSelector(
   [areActivityRoomsRefreshing],
   (refreshing) => refreshing,
+);
+
+const getAllAvailableActivityRoomsState = createSelector(
+  [getAvailableActivityRooms, getSecondProp],
+  (rooms, usage) => {
+    if (usage) {
+      // eslint-disable-next-line max-len
+      const { availableRooms } = rooms.find((room) => room.usage.toLowerCase() === usage.toLowerCase());
+      return availableRooms;
+    }
+    return null;
+  },
 );
 
 const getCurrentActivityRoomState = createSelector(
@@ -103,7 +116,7 @@ const getCurrentRoomState = createSelector([getCurrentRoom], (room) => room);
 
 const getDetaineeState = createSelector([getDetainee], (detainee) => detainee);
 
-const getFirstAvailableActivityRoom = createSelector(
+const getFirstAvailableActivityRoomState = createSelector(
   [getAvailableActivityRooms, getSecondProp],
   (rooms, usage) => {
     if (usage) {
@@ -152,16 +165,23 @@ const isPhoneDeclineOptionAvailableState = createSelector(
   (available) => available,
 );
 
+const isUpdatingDetentionLogState = createSelector(
+  [isUpdatingDetentionLog],
+  (isUpdating) => isUpdating,
+);
+
 export default {
   areActivityRoomsRefreshingState,
+  getAllAvailableActivityRoomsState,
   getCurrentActivityRoomState,
   getCurrentRoomState,
   getDetaineeState,
-  getFirstAvailableActivityRoom,
+  getFirstAvailableActivityRoomState,
   isActivityRoomOptionAvailableState,
   isAnyRoomForGivenActivityAvailableState,
   isAssigningToRoomState,
   isDetaineeProfileLoadedState,
   isInCellOptionAvailableState,
   isPhoneDeclineOptionAvailableState,
+  isUpdatingDetentionLogState,
 };

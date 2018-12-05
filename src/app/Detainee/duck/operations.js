@@ -1,4 +1,5 @@
 import { actions as toastrActions } from 'react-redux-toastr';
+import { push } from 'connected-react-router';
 
 import actions from './actions';
 import services from './services';
@@ -57,43 +58,6 @@ const getDetainee = (
     await dispatch(getDetaineeSuccessAction(payload));
   } catch (error) {
     sendErrorMessage({ dispatch, error });
-  }
-};
-
-const checkDetaineeInToActivityRoom = (
-  detaineeId,
-  usage,
-  assignToRoomAction = actions.assignToRoom,
-  assignToRoomFailureAction = actions.assignToRoomFailure,
-  assignToRoomSuccessAction = actions.assignToRoomSuccess,
-  getAvailableActivityRoomsOperation = getAvailableActivityRooms,
-  getDetaineeOperation = getDetainee,
-  checkDetaineeInToActivityRoomService = services.checkInToActivityRoom,
-  notifyOperation = notify,
-  sendErrorMessage = commonUtils.sendErrorMessage,
-) => async (dispatch) => {
-  try {
-    dispatch(assignToRoomAction());
-
-    // Attempt to check the detainee in to their cell
-    const { error } = await checkDetaineeInToActivityRoomService({
-      detaineeId,
-      usage,
-    });
-
-    if (error) {
-      notifyOperation(dispatch, error);
-      dispatch(assignToRoomFailureAction());
-    } else {
-      dispatch(assignToRoomSuccessAction());
-    }
-
-    // Reload detainee profile
-    dispatch(getDetaineeOperation(detaineeId));
-    dispatch(getAvailableActivityRoomsOperation());
-  } catch (error) {
-    sendErrorMessage({ dispatch, error });
-    dispatch(assignToRoomFailureAction());
   }
 };
 
@@ -173,11 +137,35 @@ const moveDetaineeToRoom = (
   }
 };
 
+const savePhoneCallDecline = (
+  arrestId,
+  cellName,
+  userName,
+  savePhoneCallDeclineService = services.savePhoneCallDecline,
+  phoneCallDeclineAction = actions.declinePhoneCall,
+  phoneCallDeclineFailureAction = actions.declinePhoneCallFailure,
+  phoneCallDeclineSuccessAction = actions.declinePhoneCallSuccess,
+  pushAction = push,
+  sendSuccessMessage = commonUtils.sendSuccessMessage,
+  sendErrorMessage = commonUtils.sendErrorMessage,
+) => async (dispatch) => {
+  try {
+    dispatch(phoneCallDeclineAction());
+    await savePhoneCallDeclineService({ arrestId, userName });
+    dispatch(phoneCallDeclineSuccessAction());
+    dispatch(pushAction(`/cells/${cellName}/home/`));
+    sendSuccessMessage({ dispatch, message: 'Phone decline saved.' });
+  } catch (error) {
+    sendErrorMessage({ dispatch, error });
+    dispatch(phoneCallDeclineFailureAction());
+  }
+};
+
 export default {
-  checkDetaineeInToActivityRoom,
   checkDetaineeInToCell,
   getAvailableActivityRoomsRefresh,
   moveDetaineeToRoom,
   getAvailableActivityRooms,
   getDetainee,
+  savePhoneCallDecline,
 };

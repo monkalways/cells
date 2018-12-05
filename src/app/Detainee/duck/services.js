@@ -97,19 +97,6 @@ const getDetainee = async (custodyEventId) => {
   };
 };
 
-const checkInToActivityRoom = async ({ detaineeId, usage }) => {
-  const response = await axios.post(
-    constants.CHECK_IN_TO_ACTIVITY_ROOM_URL(usage),
-    {
-      custodyEventId: detaineeId,
-    },
-    commonConstants.HEADERS(),
-  );
-
-  const { error } = response.data;
-  return { error };
-};
-
 const checkInToCell = async ({ detaineeId, cellName }) => {
   const response = await axios.post(
     constants.CHECK_IN_TO_CELL_URL(cellName),
@@ -142,10 +129,21 @@ const moveDetaineeToRoom = async ({
   return { error };
 };
 
+const savePhoneCallDecline = async ({ arrestId, userName }) => axios.post(
+  constants.CREATE_DETENTION_LOG_URL(arrestId),
+  {
+    arrestId,
+    detentionLogType: constants.DETENTION_LOG_DATA_TYPE_DETAINEE_ACTION,
+    detentionLogAction: constants.DETENTION_LOG_ACTION_TYPE_PHONE_DECLINED,
+    userName,
+  },
+  commonConstants.HEADERS(),
+);
+
 export default {
-  checkInToActivityRoom,
   checkInToCell,
   getAvailableActivityRooms,
   getDetainee,
   moveDetaineeToRoom,
+  savePhoneCallDecline,
 };

@@ -12,6 +12,17 @@ const assignToRoomSuccess = () => ({
   type: types.ASSIGN_TO_ROOM_SUCCESS,
 });
 
+const declinePhoneCall = () => ({
+  type: types.DECLINE_PHONECALL,
+});
+
+const declinePhoneCallFailure = () => ({
+  type: types.DECLINE_PHONECALL_FAILURE,
+});
+const declinePhoneCallSuccess = () => ({
+  type: types.DECLINE_PHONECALL_SUCCESS,
+});
+
 const getAvailableActivityRooms = () => ({
   type: types.GET_AVAILABLE_ACTIVITY_ROOMS,
 });
@@ -38,6 +49,9 @@ export default {
   assignToRoom,
   assignToRoomFailure,
   assignToRoomSuccess,
+  declinePhoneCall,
+  declinePhoneCallFailure,
+  declinePhoneCallSuccess,
   getAvailableActivityRooms,
   getAvailableActivityRoomsRefresh,
   getAvailableActivityRoomsSuccess,
