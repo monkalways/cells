@@ -95,6 +95,18 @@ const areActivityRoomsRefreshingState = createSelector(
   (refreshing) => refreshing,
 );
 
+const getAllAvailableActivityRoomsState = createSelector(
+  [getAvailableActivityRooms, getSecondProp],
+  (rooms, usage) => {
+    if (usage) {
+      // eslint-disable-next-line max-len
+      const { availableRooms } = rooms.find((room) => room.usage.toLowerCase() === usage.toLowerCase());
+      return availableRooms;
+    }
+    return null;
+  },
+);
+
 const getCurrentActivityRoomState = createSelector(
   [getCurrentActivityRoom],
   (room) => room,
@@ -104,7 +116,7 @@ const getCurrentRoomState = createSelector([getCurrentRoom], (room) => room);
 
 const getDetaineeState = createSelector([getDetainee], (detainee) => detainee);
 
-const getFirstAvailableActivityRoom = createSelector(
+const getFirstAvailableActivityRoomState = createSelector(
   [getAvailableActivityRooms, getSecondProp],
   (rooms, usage) => {
     if (usage) {
@@ -160,10 +172,11 @@ const isUpdatingDetentionLogState = createSelector(
 
 export default {
   areActivityRoomsRefreshingState,
+  getAllAvailableActivityRoomsState,
   getCurrentActivityRoomState,
   getCurrentRoomState,
   getDetaineeState,
-  getFirstAvailableActivityRoom,
+  getFirstAvailableActivityRoomState,
   isActivityRoomOptionAvailableState,
   isAnyRoomForGivenActivityAvailableState,
   isAssigningToRoomState,
