@@ -73,6 +73,7 @@ export class GotoActivityRoomComponent extends Component {
               <MenuItem value="bail hearing1">Bail Hearing 1</MenuItem>
               <MenuItem value="bail hearing2">Bail Hearing 2</MenuItem>
               <MenuItem value="breath test">Breath Test</MenuItem>
+              <MenuItem value="fingerprinting">Finger Printing</MenuItem>
               <MenuItem value="interview">Interview</MenuItem>
               <MenuItem value="medical">Medical</MenuItem>
               <MenuItem value="phone">Phone</MenuItem>
