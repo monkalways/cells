@@ -20,12 +20,13 @@ describe('ActivitiesComponent', () => {
     return shallow(<ActivitiesComponent
       classes={classes}
       detainee={{
-        mealAcceptedCount: 0,
-        mealDeclinedCount: 1,
-        medicationAcceptedCount: 2,
-        medicationRefusedCount: 3,
-        verbalCellCheckCount: 4,
-        visualCellCheckCount: 5,
+        medicalCount: 0,
+        telephoneAcceptedCount: 1,
+        telephoneDeclinedCount: 2,
+        fingerPrintCount: 3,
+        breathTestCount: 4,
+        interviewCount: 5,
+        bailHearingCount: 6,
       }}
     />);
   };

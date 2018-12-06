@@ -97,7 +97,9 @@ exports[`ActivitiesComponent should render 1`] = `
       <WithStyles(Typography)
         align="center"
         variant="h6"
-      />
+      >
+        0
+      </WithStyles(Typography)>
     </WithStyles(Grid)>
     <WithStyles(Grid)
       className="gridItem bottomCenter"
@@ -106,7 +108,9 @@ exports[`ActivitiesComponent should render 1`] = `
       <WithStyles(Typography)
         align="center"
         variant="h6"
-      />
+      >
+        1
+      </WithStyles(Typography)>
     </WithStyles(Grid)>
     <WithStyles(Grid)
       className="gridItem bottomCenter"
@@ -115,7 +119,9 @@ exports[`ActivitiesComponent should render 1`] = `
       <WithStyles(Typography)
         align="center"
         variant="h6"
-      />
+      >
+        2
+      </WithStyles(Typography)>
     </WithStyles(Grid)>
     <WithStyles(Grid)
       className="gridItem bottomCenter"
@@ -124,7 +130,9 @@ exports[`ActivitiesComponent should render 1`] = `
       <WithStyles(Typography)
         align="center"
         variant="h6"
-      />
+      >
+        3
+      </WithStyles(Typography)>
     </WithStyles(Grid)>
     <WithStyles(Grid)
       className="gridItem bottomCenter"
@@ -133,7 +141,9 @@ exports[`ActivitiesComponent should render 1`] = `
       <WithStyles(Typography)
         align="center"
         variant="h6"
-      />
+      >
+        4
+      </WithStyles(Typography)>
     </WithStyles(Grid)>
     <WithStyles(Grid)
       className="gridItem bottomCenter"
@@ -142,7 +152,9 @@ exports[`ActivitiesComponent should render 1`] = `
       <WithStyles(Typography)
         align="center"
         variant="h6"
-      />
+      >
+        5
+      </WithStyles(Typography)>
     </WithStyles(Grid)>
     <WithStyles(Grid)
       className="gridItem bottomRight"
@@ -151,7 +163,9 @@ exports[`ActivitiesComponent should render 1`] = `
       <WithStyles(Typography)
         align="center"
         variant="h6"
-      />
+      >
+        6
+      </WithStyles(Typography)>
     </WithStyles(Grid)>
   </WithStyles(Grid)>
 </WithStyles(Grid)>

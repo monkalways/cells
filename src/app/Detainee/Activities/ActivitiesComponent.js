@@ -15,87 +15,101 @@ import BailHearingIcon from '../../images/BailHearingGeneral.png';
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   detainee: PropTypes.shape({
-    mealAcceptedCount: PropTypes.number.isRequired,
-    mealDeclinedCount: PropTypes.number.isRequired,
-    medicationAcceptedCount: PropTypes.number.isRequired,
-    medicationRefusedCount: PropTypes.number.isRequired,
-    verbalCellCheckCount: PropTypes.number.isRequired,
-    visualCellCheckCount: PropTypes.number.isRequired,
+    medicalCount: PropTypes.number.isRequired,
+    telephoneAcceptedCount: PropTypes.number.isRequired,
+    telephoneDeclinedCount: PropTypes.number.isRequired,
+    fingerPrintCount: PropTypes.number.isRequired,
+    breathTestCount: PropTypes.number.isRequired,
+    interviewCount: PropTypes.number.isRequired,
+    bailHearingCount: PropTypes.number.isRequired,
   }).isRequired,
 };
 
 const variant = 'h6';
 
-export const ActivitiesComponent = ({ classes, detainee }) => (
-  <Grid container className={classes.grid}>
-    <Grid item xs={12}>
-      <Typography variant="h5" className={classes.text}>
-        Activities
-      </Typography>
-    </Grid>
-    <Grid container item xs={12}>
-      <Grid item className={`${classes.gridItem} ${classes.topLeft}`}>
-        <Avatar className={classes.avatar} src={MedicalVisitIcon} />
-      </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
-        <Avatar className={classes.avatar} src={PhoneAcceptIcon} />
-      </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
-        <Avatar className={classes.avatar} src={PhoneDeclineIcon} />
-      </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
-        <Avatar className={classes.avatar} src={FingerprintingIcon} />
-      </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
-        <Avatar className={classes.avatar} src={BreathalyzerIcon} />
-      </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
-        <Avatar className={classes.avatar} src={InterviewIcon} />
-      </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.topRight}`}>
-        <Avatar className={classes.avatar} src={BailHearingIcon} />
-      </Grid>
-    </Grid>
+export const ActivitiesComponent = ({ classes, detainee }) => {
+  const {
+    medicalCount,
+    telephoneAcceptedCount,
+    telephoneDeclinedCount,
+    fingerPrintCount,
+    breathTestCount,
+    interviewCount,
+    bailHearingCount,
+  } = detainee;
 
-    <Grid container item xs={12}>
-      <Grid item className={`${classes.gridItem} ${classes.bottomLeft}`}>
-        <Typography variant={variant} align="center">
-          {detainee.medicalCount}
+  return (
+    <Grid container className={classes.grid}>
+      <Grid item xs={12}>
+        <Typography variant="h5" className={classes.text}>
+          Activities
         </Typography>
       </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
-        <Typography variant={variant} align="center">
-          {detainee.telephoneAcceptedCount}
-        </Typography>
+      <Grid container item xs={12}>
+        <Grid item className={`${classes.gridItem} ${classes.topLeft}`}>
+          <Avatar className={classes.avatar} src={MedicalVisitIcon} />
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
+          <Avatar className={classes.avatar} src={PhoneAcceptIcon} />
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
+          <Avatar className={classes.avatar} src={PhoneDeclineIcon} />
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
+          <Avatar className={classes.avatar} src={FingerprintingIcon} />
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
+          <Avatar className={classes.avatar} src={BreathalyzerIcon} />
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
+          <Avatar className={classes.avatar} src={InterviewIcon} />
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.topRight}`}>
+          <Avatar className={classes.avatar} src={BailHearingIcon} />
+        </Grid>
       </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
-        <Typography variant={variant} align="center">
-          {detainee.telephoneDeclinedCount}
-        </Typography>
-      </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
-        <Typography variant={variant} align="center">
-          {detainee.fingerPrintCount}
-        </Typography>
-      </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
-        <Typography variant={variant} align="center">
-          {detainee.breathTestCount}
-        </Typography>
-      </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
-        <Typography variant={variant} align="center">
-          {detainee.interviewCount}
-        </Typography>
-      </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.bottomRight}`}>
-        <Typography variant={variant} align="center">
-          {detainee.bailHearingCount}
-        </Typography>
+
+      <Grid container item xs={12}>
+        <Grid item className={`${classes.gridItem} ${classes.bottomLeft}`}>
+          <Typography variant={variant} align="center">
+            {medicalCount}
+          </Typography>
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
+          <Typography variant={variant} align="center">
+            {telephoneAcceptedCount}
+          </Typography>
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
+          <Typography variant={variant} align="center">
+            {telephoneDeclinedCount}
+          </Typography>
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
+          <Typography variant={variant} align="center">
+            {fingerPrintCount}
+          </Typography>
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
+          <Typography variant={variant} align="center">
+            {breathTestCount}
+          </Typography>
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
+          <Typography variant={variant} align="center">
+            {interviewCount}
+          </Typography>
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.bottomRight}`}>
+          <Typography variant={variant} align="center">
+            {bailHearingCount}
+          </Typography>
+        </Grid>
       </Grid>
     </Grid>
-  </Grid>
-);
+  );
+};
+
 ActivitiesComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
