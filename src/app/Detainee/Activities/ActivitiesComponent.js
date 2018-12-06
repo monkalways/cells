@@ -26,7 +26,7 @@ const propTypes = {
 
 const variant = 'h6';
 
-const ActivitiesComponent = ({ classes, detainee }) => (
+export const ActivitiesComponent = ({ classes, detainee }) => (
   <Grid container className={classes.grid}>
     <Grid item xs={12}>
       <Typography variant="h5" className={classes.text}>
