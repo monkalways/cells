@@ -9,8 +9,8 @@ import DetaineeDetails from './DetaineeDetails';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  getDetainee: PropTypes.func.isRequired,
   getAvailableActivityRooms: PropTypes.func.isRequired,
+  getDetainee: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
@@ -25,7 +25,7 @@ const propTypes = {
   }).isRequired,
 };
 
-class DetaineeComponent extends Component {
+export class DetaineeComponent extends Component {
   componentDidMount() {
     const { match } = this.props;
     const { id } = match.params;
