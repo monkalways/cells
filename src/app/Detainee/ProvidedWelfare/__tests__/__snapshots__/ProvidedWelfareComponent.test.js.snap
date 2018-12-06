@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProvidedWelfareComponent should render 1`] = `
+<WithStyles(Grid)
+  className="grid"
+  container={true}
+>
+  <WithStyles(Grid)
+    item={true}
+    xs={12}
+  >
+    <WithStyles(Typography)
+      className="test"
+      variant="h5"
+    >
+      Provided Welfare
+    </WithStyles(Typography)>
+  </WithStyles(Grid)>
+  <WithStyles(Grid)
+    container={true}
+    item={true}
+    xs={12}
+  >
+    <WithStyles(Grid)
+      className="gridItem topLeft"
+      item={true}
+    >
+      <WithStyles(Avatar)
+        className="avatar"
+        src="WellnessVisual.png"
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      className="gridItem topCenter"
+      item={true}
+    >
+      <WithStyles(Avatar)
+        className="avatar"
+        src="WellnessVerbal.png"
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      className="gridItem topCenter"
+      item={true}
+    >
+      <WithStyles(Avatar)
+        className="avatar"
+        src="MealAccept.png"
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      className="gridItem topCenter"
+      item={true}
+    >
+      <WithStyles(Avatar)
+        className="avatar"
+        src="MealDecline.png"
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      className="gridItem topCenter"
+      item={true}
+    >
+      <WithStyles(Avatar)
+        className="avatar"
+        src="MedicineAccept.png"
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      className="gridItem topRight"
+      item={true}
+    >
+      <WithStyles(Avatar)
+        className="avatar"
+        src="MedicineDecline.png"
+      />
+    </WithStyles(Grid)>
+  </WithStyles(Grid)>
+  <WithStyles(Grid)
+    container={true}
+    item={true}
+    xs={12}
+  >
+    <WithStyles(Grid)
+      className="gridItem bottomLeft"
+      item={true}
+    >
+      <WithStyles(Typography)
+        align="center"
+        variant="h6"
+      >
+        5
+      </WithStyles(Typography)>
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      className="gridItem bottomCenter"
+      item={true}
+    >
+      <WithStyles(Typography)
+        align="center"
+        variant="h6"
+      >
+        4
+      </WithStyles(Typography)>
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      className="gridItem bottomCenter"
+      item={true}
+    >
+      <WithStyles(Typography)
+        align="center"
+        variant="h6"
+      >
+        0
+      </WithStyles(Typography)>
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      className="gridItem bottomCenter"
+      item={true}
+    >
+      <WithStyles(Typography)
+        align="center"
+        variant="h6"
+      >
+        1
+      </WithStyles(Typography)>
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      className="gridItem bottomCenter"
+      item={true}
+    >
+      <WithStyles(Typography)
+        align="center"
+        variant="h6"
+      >
+        2
+      </WithStyles(Typography)>
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      className="gridItem bottomRight"
+      item={true}
+    >
+      <WithStyles(Typography)
+        align="center"
+        variant="h6"
+      >
+        3
+      </WithStyles(Typography)>
+    </WithStyles(Grid)>
+  </WithStyles(Grid)>
+</WithStyles(Grid)>
+`;

@@ -25,68 +25,79 @@ const propTypes = {
 
 const variant = 'h6';
 
-const ProvidedWelfareComponent = ({ classes, detainee }) => (
-  <Grid container className={classes.grid}>
-    <Grid item xs={12}>
-      <Typography variant="h5" className={classes.text}>
-        Provided Welfare
-      </Typography>
-    </Grid>
-    <Grid container item xs={12}>
-      <Grid item className={`${classes.gridItem} ${classes.topLeft}`}>
-        <Avatar className={classes.avatar} src={VisualCheckIcon} />
-      </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
-        <Avatar className={classes.avatar} src={VerbalCheckIcon} />
-      </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
-        <Avatar className={classes.avatar} src={MealAcceptIcon} />
-      </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
-        <Avatar className={classes.avatar} src={MealDeclineIcon} />
-      </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
-        <Avatar className={classes.avatar} src={MedicineAcceptIcon} />
-      </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.topRight}`}>
-        <Avatar className={classes.avatar} src={MedicineDeclineIcon} />
-      </Grid>
-    </Grid>
+export const ProvidedWelfareComponent = ({ classes, detainee }) => {
+  const {
+    mealAcceptedCount,
+    mealDeclinedCount,
+    medicationAcceptedCount,
+    medicationRefusedCount,
+    verbalCellCheckCount,
+    visualCellCheckCount,
+  } = detainee;
 
-    <Grid container item xs={12}>
-      <Grid item className={`${classes.gridItem} ${classes.bottomLeft}`}>
-        <Typography variant={variant} align="center">
-          {detainee.visualCellCheckCount}
+  return (
+    <Grid container className={classes.grid}>
+      <Grid item xs={12}>
+        <Typography variant="h5" className={classes.text}>
+          Provided Welfare
         </Typography>
       </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
-        <Typography variant={variant} align="center">
-          {detainee.verbalCellCheckCount}
-        </Typography>
+      <Grid container item xs={12}>
+        <Grid item className={`${classes.gridItem} ${classes.topLeft}`}>
+          <Avatar className={classes.avatar} src={VisualCheckIcon} />
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
+          <Avatar className={classes.avatar} src={VerbalCheckIcon} />
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
+          <Avatar className={classes.avatar} src={MealAcceptIcon} />
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
+          <Avatar className={classes.avatar} src={MealDeclineIcon} />
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.topCenter}`}>
+          <Avatar className={classes.avatar} src={MedicineAcceptIcon} />
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.topRight}`}>
+          <Avatar className={classes.avatar} src={MedicineDeclineIcon} />
+        </Grid>
       </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
-        <Typography variant={variant} align="center">
-          {detainee.mealAcceptedCount}
-        </Typography>
-      </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
-        <Typography variant={variant} align="center">
-          {detainee.mealDeclinedCount}
-        </Typography>
-      </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
-        <Typography variant={variant} align="center">
-          {detainee.medicationAcceptedCount}
-        </Typography>
-      </Grid>
-      <Grid item className={`${classes.gridItem} ${classes.bottomRight}`}>
-        <Typography variant={variant} align="center">
-          {detainee.medicationRefusedCount}
-        </Typography>
+
+      <Grid container item xs={12}>
+        <Grid item className={`${classes.gridItem} ${classes.bottomLeft}`}>
+          <Typography variant={variant} align="center">
+            {visualCellCheckCount}
+          </Typography>
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
+          <Typography variant={variant} align="center">
+            {verbalCellCheckCount}
+          </Typography>
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
+          <Typography variant={variant} align="center">
+            {mealAcceptedCount}
+          </Typography>
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
+          <Typography variant={variant} align="center">
+            {mealDeclinedCount}
+          </Typography>
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.bottomCenter}`}>
+          <Typography variant={variant} align="center">
+            {medicationAcceptedCount}
+          </Typography>
+        </Grid>
+        <Grid item className={`${classes.gridItem} ${classes.bottomRight}`}>
+          <Typography variant={variant} align="center">
+            {medicationRefusedCount}
+          </Typography>
+        </Grid>
       </Grid>
     </Grid>
-  </Grid>
-);
+  );
+};
 ProvidedWelfareComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
