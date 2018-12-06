@@ -9,14 +9,12 @@ import {
   FormControl,
   FormControlLabel,
   FormGroup,
-  FormHelperText,
   Grid,
   Radio,
   RadioGroup,
   withStyles,
   Typography,
 } from '@material-ui/core';
-import classNames from 'classnames';
 
 import Loading from '../../../common/Loading';
 
@@ -52,12 +50,20 @@ class RoomSelectionDialogComponent extends Component {
   };
 
   handleConfirmClick = () => {
-    const { detainee, currentRoom, moveDetaineeToActivityRoom } = this.props;
-    const { value } = this.state;
-    this.setState({ userHasClicked: true });
-    if (value) {
-      moveDetaineeToActivityRoom(detainee.id, currentRoom, value);
-    }
+    const {
+      availableRooms,
+      detainee,
+      currentRoom,
+      moveDetaineeToActivityRoom,
+    } = this.props;
+    const { userHasClicked, value } = this.state;
+
+    // On the initial load 'state.value' will be null but the user will see
+    // that the first element is selected.
+    // In the case that "Confirm" is clicked immediately this will bypass
+    // the state value and submit instead the value that the user sees is selected.
+    const destinationRoom = userHasClicked ? value : availableRooms[0];
+    moveDetaineeToActivityRoom(detainee.id, currentRoom, destinationRoom);
   };
 
   handleOpen = () => {
@@ -67,12 +73,6 @@ class RoomSelectionDialogComponent extends Component {
 
   handleChange = (event) => {
     this.setState({ userHasClicked: true, value: event.target.value });
-  };
-
-  // Take this logic and convert it to a state variable
-  isError = () => {
-    const { value, userHasClicked } = this.state;
-    return value === null && userHasClicked;
   };
 
   render() {
@@ -88,7 +88,7 @@ class RoomSelectionDialogComponent extends Component {
       usage,
     } = this.props;
 
-    const { value } = this.state;
+    const { userHasClicked, value } = this.state;
 
     return (
       <Dialog
@@ -121,7 +121,8 @@ class RoomSelectionDialogComponent extends Component {
                     <FormGroup>
                       <RadioGroup
                         name="availableRooms"
-                        value={value}
+                        // On initial load, display a value that is not yet linked to state.
+                        value={userHasClicked ? value : availableRooms[0]}
                         onChange={this.handleChange}
                       >
                         {availableRooms.map((room) => (
@@ -135,14 +136,6 @@ class RoomSelectionDialogComponent extends Component {
                         ))}
                       </RadioGroup>
                     </FormGroup>
-                    <FormHelperText
-                      error
-                      className={classNames(classes.errorText, {
-                        [classes.disabled]: !this.isError(),
-                      })}
-                    >
-                      Please select a room
-                    </FormHelperText>
                   </FormControl>
                 </Grid>
               )}
@@ -168,7 +161,7 @@ class RoomSelectionDialogComponent extends Component {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <DialogTitle>{`Sorry, the room ${value} is no longer available.`}</DialogTitle>
+            <DialogTitle>Sorry, no rooms are currently available.</DialogTitle>
             <DialogActions>
               <Button onClick={onClose} color="primary">
                 Close
@@ -185,13 +178,6 @@ RoomSelectionDialogComponent.propTypes = propTypes;
 RoomSelectionDialogComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
-  disabled: {
-    opacity: '0',
-    marginBottom: theme.spacing.unit * -2.5,
-  },
-  errorText: {
-    fontSize: theme.typography.h6.fontSize,
-  },
   radioButton: {
     padding: theme.spacing.unit,
   },
