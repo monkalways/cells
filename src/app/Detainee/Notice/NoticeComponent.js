@@ -16,25 +16,35 @@ const CAUTION_PRESENT = 'CautionPresent';
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   detainee: PropTypes.shape({
-    withCaution: PropTypes.bool.isRequired,
-    mustBeKeptAlone: PropTypes.bool.isRequired,
-    isSuicidal: PropTypes.bool.isRequired,
-    isContagious: PropTypes.bool.isRequired,
-    hasWarning: PropTypes.bool.isRequired,
-    isUnderMedication: PropTypes.bool.isRequired,
     cautionsArray: PropTypes.arrayOf(PropTypes.string).isRequired,
+    hasWarning: PropTypes.bool.isRequired,
+    isContagious: PropTypes.bool.isRequired,
+    isSuicidal: PropTypes.bool.isRequired,
+    isUnderMedication: PropTypes.bool.isRequired,
+    mustBeKeptAlone: PropTypes.bool.isRequired,
+    withCaution: PropTypes.bool.isRequired,
   }).isRequired,
 };
 
-const NoticeComponent = ({ classes, detainee }) => {
+export const NoticeComponent = ({ classes, detainee }) => {
   const renderWarnings = () => {
+    const {
+      cautionsArray,
+      hasWarning,
+      isContagious,
+      isSuicidal,
+      isUnderMedication,
+      mustBeKeptAlone,
+      withCaution,
+    } = detainee;
     const icons = [];
-    if (detainee.withCaution) icons.push(CautionPresentIcon);
-    if (detainee.mustBeKeptAlone) icons.push(KeepAloneIcon);
-    if (detainee.isSuicidal) icons.push(SuicideWarningIcon);
-    if (detainee.isContagious) icons.push(ContagiousIcon);
-    if (detainee.hasWarning) icons.push(OtherWarningIcon);
-    if (detainee.isUnderMedication) icons.push(MedicineAcceptIcon);
+
+    if (withCaution) icons.push(CautionPresentIcon);
+    if (mustBeKeptAlone) icons.push(KeepAloneIcon);
+    if (isSuicidal) icons.push(SuicideWarningIcon);
+    if (isContagious) icons.push(ContagiousIcon);
+    if (hasWarning) icons.push(OtherWarningIcon);
+    if (isUnderMedication) icons.push(MedicineAcceptIcon);
 
     return icons.map((icon) => {
       if (icon.includes(CAUTION_PRESENT)) {
@@ -45,7 +55,7 @@ const NoticeComponent = ({ classes, detainee }) => {
             </Grid>
             <Grid item xs={12}>
               <Typography align="center" className={classes.cautionText}>
-                {detainee.cautionsArray.sort().join('')}
+                {cautionsArray.sort().join('')}
               </Typography>
             </Grid>
           </Grid>
