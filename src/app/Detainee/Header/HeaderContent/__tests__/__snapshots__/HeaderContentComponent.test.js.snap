@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderContentComponent should render 1`] = `
+<WithStyles(Grid)
+  container={true}
+  justify="center"
+>
+  <WithStyles(Grid)
+    item={true}
+    sm={5}
+  >
+    <WithStyles(Typography)
+      variant="h4"
+    >
+      Cell:
+    </WithStyles(Typography)>
+    <WithStyles(Typography)
+      variant="h4"
+    >
+      B4
+    </WithStyles(Typography)>
+  </WithStyles(Grid)>
+</WithStyles(Grid)>
+`;
