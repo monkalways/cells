@@ -59,7 +59,7 @@ exports[`HeaderComponent should render HeaderContent if detainee profile is load
           width={70}
         />
       </WithStyles(IconButton)>
-      <WithStyles(HeaderContent)
+      <WithStyles(HeaderContentComponent)
         detainee={
           Object {
             "assignedCellName": "C1",

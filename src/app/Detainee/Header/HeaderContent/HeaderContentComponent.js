@@ -9,7 +9,7 @@ const propTypes = {
   }).isRequired,
 };
 
-export const HeaderContent = ({ classes, detainee }) => {
+export const HeaderContentComponent = ({ classes, detainee }) => {
   const { assignedCellName } = detainee;
   return (
     <Grid container justify="center" className={classes.grid}>
@@ -25,7 +25,7 @@ export const HeaderContent = ({ classes, detainee }) => {
   );
 };
 
-HeaderContent.propTypes = propTypes;
+HeaderContentComponent.propTypes = propTypes;
 
 export default withStyles((theme) => ({
   headerTitle: {
@@ -36,4 +36,4 @@ export default withStyles((theme) => ({
   headerContent: {
     display: 'inline',
   },
-}))(HeaderContent);
+}))(HeaderContentComponent);
