@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocationComponent should render 1`] = `
+<WithStyles(Grid)
+  container={true}
+>
+  <WithStyles(Grid)
+    container={true}
+    item={true}
+    justify="center"
+    xs={12}
+  >
+    <WithStyles(Typography)
+      className="text"
+      variant="h5"
+    >
+      Location
+    </WithStyles(Typography)>
+  </WithStyles(Grid)>
+  <WithStyles(Grid)
+    container={true}
+    item={true}
+    justify="center"
+    xs={12}
+  >
+    <div
+      className="div"
+    >
+      <WithStyles(LocationComponent)
+        location="location"
+      />
+    </div>
+  </WithStyles(Grid)>
+</WithStyles(Grid)>
+`;
