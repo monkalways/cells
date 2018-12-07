@@ -4,7 +4,6 @@ import { shallow } from 'enzyme';
 import { DetaineeComponent } from '../DetaineeComponent';
 
 describe('DetaineeComponent', () => {
-  let classes;
   let getAvailableActivityRooms;
   let getDetainee;
   let push; // history
@@ -16,9 +15,6 @@ describe('DetaineeComponent', () => {
   const second = 'B4';
 
   beforeEach(() => {
-    classes = {
-      body: 'body',
-    };
     getAvailableActivityRooms = jest.fn();
     getDetainee = jest.fn();
     push = jest.fn();
@@ -27,19 +23,25 @@ describe('DetaineeComponent', () => {
     logOut = jest.fn();
   });
 
-  const setup = () => shallow(<DetaineeComponent
-    classes={classes}
-    getAvailableActivityRooms={getAvailableActivityRooms}
-    getDetainee={getDetainee}
-    history={{ push }}
-    location={{ search }}
-    logOut={logOut}
-    match={{
-      params: {
-        id,
-      },
-    }}
-  />);
+  const setup = () => {
+    const classes = {
+      body: 'body',
+    };
+
+    return shallow(<DetaineeComponent
+      classes={classes}
+      getAvailableActivityRooms={getAvailableActivityRooms}
+      getDetainee={getDetainee}
+      history={{ push }}
+      location={{ search }}
+      logOut={logOut}
+      match={{
+        params: {
+          id,
+        },
+      }}
+    />);
+  };
 
   it('should render component', () => {
     const wrapper = setup();

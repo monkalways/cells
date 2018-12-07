@@ -4,14 +4,9 @@ import { shallow } from 'enzyme';
 import { PersonalInformationComponent } from '../PersonalInformationComponent';
 
 describe('PersonalInformationComponent', () => {
-  let classes;
   let detainee;
 
   beforeEach(() => {
-    classes = {
-      img: 'img',
-      test: 'text',
-    };
     detainee = {
       detentionUnitName: 'detentionUnitName',
       dob: 'dob',
@@ -22,7 +17,14 @@ describe('PersonalInformationComponent', () => {
     };
   });
 
-  const setup = () => shallow(<PersonalInformationComponent classes={classes} detainee={detainee} />);
+  const setup = () => {
+    const classes = {
+      img: 'img',
+      test: 'text',
+    };
+
+    return shallow(<PersonalInformationComponent classes={classes} detainee={detainee} />);
+  };
 
   it('should render', () => {
     const wrapper = setup();
