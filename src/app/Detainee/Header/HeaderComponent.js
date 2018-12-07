@@ -14,7 +14,9 @@ import HeaderContent from './HeaderContent';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  detainee: PropTypes.shape({}),
+  detainee: PropTypes.shape({
+    assignedCellName: PropTypes.string.isRequired,
+  }),
   isDetaineeProfileLoaded: PropTypes.bool.isRequired,
   onLogout: PropTypes.func.isRequired,
 };
@@ -23,8 +25,11 @@ const defaultProps = {
   detainee: null,
 };
 
-const Header = ({
-  classes, detainee, isDetaineeProfileLoaded, onLogout,
+export const HeaderComponent = ({
+  classes,
+  detainee,
+  isDetaineeProfileLoaded,
+  onLogout,
 }) => (
   <div className={classes.root}>
     <AppBar position="static" className={classes.appBar}>
@@ -56,9 +61,8 @@ const Header = ({
     </AppBar>
   </div>
 );
-
-Header.propTypes = propTypes;
-Header.defaultProps = defaultProps;
+HeaderComponent.propTypes = propTypes;
+HeaderComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   root: {
@@ -82,4 +86,4 @@ export default withStyles((theme) => ({
   logoutIcon: {
     fontSize: theme.typography.h4.fontSize,
   },
-}))(Header);
+}))(HeaderComponent);
