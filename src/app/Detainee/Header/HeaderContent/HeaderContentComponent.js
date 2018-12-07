@@ -9,18 +9,21 @@ const propTypes = {
   }).isRequired,
 };
 
-const HeaderContent = ({ classes, detainee }) => (
-  <Grid container justify="center" className={classes.grid}>
-    <Grid item sm={5}>
-      <Typography variant="h4" className={classes.headerTitle}>
-        Cell:
-      </Typography>
-      <Typography variant="h4" className={classes.headerContent}>
-        {detainee.assignedCellName}
-      </Typography>
+export const HeaderContent = ({ classes, detainee }) => {
+  const { assignedCellName } = detainee;
+  return (
+    <Grid container justify="center" className={classes.grid}>
+      <Grid item sm={5}>
+        <Typography variant="h4" className={classes.headerTitle}>
+          Cell:
+        </Typography>
+        <Typography variant="h4" className={classes.headerContent}>
+          {assignedCellName}
+        </Typography>
+      </Grid>
     </Grid>
-  </Grid>
-);
+  );
+};
 
 HeaderContent.propTypes = propTypes;
 
