@@ -14,70 +14,79 @@ const propTypes = {
   }).isRequired,
 };
 
-const PersonalStatsComponent = ({ classes, detainee }) => (
-  <React.Fragment>
-    <Grid container spacing={0}>
-      <Grid container item xs={12}>
-        <Grid item xs={3}>
-          <Typography variant="h6" className={classes.text}>
-            Name:
-          </Typography>
-        </Grid>
-        <Grid item xs={9}>
-          <Typography variant="h6">
-            {detainee.lastName}, {detainee.firstName}
-          </Typography>
-        </Grid>
-      </Grid>
+export const PersonalStatsComponent = ({ classes, detainee }) => {
+  const {
+    detentionUnitName,
+    dob,
+    firstName,
+    gender,
+    lastName,
+    propertyBagNumber,
+  } = detainee;
 
-      <Grid container item xs={12}>
-        <Grid item xs={3}>
-          <Typography variant="h6" className={classes.text}>
-            DOB:
-          </Typography>
+  return (
+    <React.Fragment>
+      <Grid container spacing={0}>
+        <Grid container item xs={12}>
+          <Grid item xs={3}>
+            <Typography variant="h6" className={classes.text}>
+              Name:
+            </Typography>
+          </Grid>
+          <Grid item xs={9}>
+            <Typography variant="h6">
+              {lastName}, {firstName}
+            </Typography>
+          </Grid>
         </Grid>
-        <Grid item xs={9}>
-          <Typography variant="h6">{detainee.dob}</Typography>
-        </Grid>
-      </Grid>
 
-      <Grid container item xs={12}>
-        <Grid item xs={3}>
-          <Typography variant="h6" className={classes.text}>
-            Gender:
-          </Typography>
+        <Grid container item xs={12}>
+          <Grid item xs={3}>
+            <Typography variant="h6" className={classes.text}>
+              DOB:
+            </Typography>
+          </Grid>
+          <Grid item xs={9}>
+            <Typography variant="h6">{dob}</Typography>
+          </Grid>
         </Grid>
-        <Grid item xs={9}>
-          <Typography variant="h6">{detainee.gender}</Typography>
-        </Grid>
-      </Grid>
 
-      <Grid container item xs={12}>
-        <Grid item xs={3}>
-          <Typography variant="h6" className={classes.text}>
-            BIN:
-          </Typography>
+        <Grid container item xs={12}>
+          <Grid item xs={3}>
+            <Typography variant="h6" className={classes.text}>
+              Gender:
+            </Typography>
+          </Grid>
+          <Grid item xs={9}>
+            <Typography variant="h6">{gender}</Typography>
+          </Grid>
         </Grid>
-        <Grid item xs={9}>
-          <Typography variant="h6">
-            {detainee.propertyBagNumber ? detainee.propertyBagNumber : <br />}
-          </Typography>
-        </Grid>
-      </Grid>
 
-      <Grid container item xs={12}>
-        <Grid item xs={3}>
-          <Typography variant="h6" className={classes.text}>
-            Remarks:
-          </Typography>
+        <Grid container item xs={12}>
+          <Grid item xs={3}>
+            <Typography variant="h6" className={classes.text}>
+              BIN:
+            </Typography>
+          </Grid>
+          <Grid item xs={9}>
+            <Typography variant="h6">{propertyBagNumber || <br />}</Typography>
+          </Grid>
         </Grid>
-        <Grid item xs={9}>
-          <Typography variant="h6">{detainee.detentionUnitName}</Typography>
+
+        <Grid container item xs={12}>
+          <Grid item xs={3}>
+            <Typography variant="h6" className={classes.text}>
+              Remarks:
+            </Typography>
+          </Grid>
+          <Grid item xs={9}>
+            <Typography variant="h6">{detentionUnitName}</Typography>
+          </Grid>
         </Grid>
       </Grid>
-    </Grid>
-  </React.Fragment>
-);
+    </React.Fragment>
+  );
+};
 
 PersonalStatsComponent.propTypes = propTypes;
 
