@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderComponent should not render HeaderContent if detainee profile is not loaded 1`] = `
+<div
+  className="root"
+>
+  <WithStyles(AppBar)
+    className="appBar"
+    position="static"
+  >
+    <WithStyles(Toolbar)>
+      <WithStyles(IconButton)
+        aria-label="Menu"
+        className="menuButton"
+        color="inherit"
+      >
+        <img
+          alt="EPS Logo"
+          src="eps-logo-icon.png"
+          width={70}
+        />
+      </WithStyles(IconButton)>
+      <WithStyles(Grid)
+        item={true}
+        xs={12}
+      />
+      <WithStyles(IconButton)
+        aria-label="Menu"
+        className="logoutButton"
+        color="inherit"
+        onClick={[MockFunction]}
+      >
+        <pure(CloseIcon)
+          className="logoutIcon"
+        />
+      </WithStyles(IconButton)>
+    </WithStyles(Toolbar)>
+  </WithStyles(AppBar)>
+</div>
+`;
+
+exports[`HeaderComponent should render HeaderContent if detainee profile is loaded 1`] = `
+<div
+  className="root"
+>
+  <WithStyles(AppBar)
+    className="appBar"
+    position="static"
+  >
+    <WithStyles(Toolbar)>
+      <WithStyles(IconButton)
+        aria-label="Menu"
+        className="menuButton"
+        color="inherit"
+      >
+        <img
+          alt="EPS Logo"
+          src="eps-logo-icon.png"
+          width={70}
+        />
+      </WithStyles(IconButton)>
+      <WithStyles(HeaderContent)
+        detainee={
+          Object {
+            "assignedCellName": "C1",
+          }
+        }
+        isDetaineeProfileLoaded={true}
+      />
+      <WithStyles(IconButton)
+        aria-label="Menu"
+        className="logoutButton"
+        color="inherit"
+        onClick={[MockFunction]}
+      >
+        <pure(CloseIcon)
+          className="logoutIcon"
+        />
+      </WithStyles(IconButton)>
+    </WithStyles(Toolbar)>
+  </WithStyles(AppBar)>
+</div>
+`;
