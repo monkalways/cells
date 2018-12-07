@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoticeComponent should render 1`] = `
+<WithStyles(Grid)
+  className="grid"
+  container={true}
+>
+  <WithStyles(Grid)
+    item={true}
+    xs={12}
+  >
+    <WithStyles(Typography)
+      className="text"
+      variant="h5"
+    >
+      Notice
+    </WithStyles(Typography)>
+  </WithStyles(Grid)>
+  <WithStyles(Grid)
+    container={true}
+    item={true}
+    xs={12}
+  />
+</WithStyles(Grid)>
+`;
