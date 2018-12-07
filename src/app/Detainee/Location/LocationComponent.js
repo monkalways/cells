@@ -10,20 +10,24 @@ const propTypes = {
   }).isRequired,
 };
 
-const LocationComponent = ({ classes, detainee }) => (
-  <Grid container>
-    <Grid item container justify="center" xs={12}>
-      <Typography variant="h5" className={classes.text}>
-        Location
-      </Typography>
+export const LocationComponent = ({ classes, detainee }) => {
+  const { location } = detainee;
+
+  return (
+    <Grid container>
+      <Grid item container justify="center" xs={12}>
+        <Typography variant="h5" className={classes.text}>
+          Location
+        </Typography>
+      </Grid>
+      <Grid item container justify="center" xs={12}>
+        <div className={classes.div}>
+          <LocationIcon location={location} />
+        </div>
+      </Grid>
     </Grid>
-    <Grid item container justify="center" xs={12}>
-      <div className={classes.div}>
-        <LocationIcon location={detainee.location} />
-      </div>
-    </Grid>
-  </Grid>
-);
+  );
+};
 
 LocationComponent.propTypes = propTypes;
 
