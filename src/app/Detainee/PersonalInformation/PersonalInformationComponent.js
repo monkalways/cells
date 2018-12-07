@@ -6,10 +6,18 @@ import PersonalStats from './PersonalStats';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  detainee: PropTypes.shape({}).isRequired,
+  detainee: PropTypes.shape({
+    detentionUnitName: PropTypes.string.isRequired,
+    dob: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    gender: PropTypes.string.isRequired,
+    intakePhotoResourceUri: PropTypes.string,
+    lastName: PropTypes.string.isRequired,
+    propertyBagNumber: PropTypes.string,
+  }).isRequired,
 };
 
-const PersonalInformationComponent = ({ classes, detainee }) => {
+export const PersonalInformationComponent = ({ classes, detainee }) => {
   const getDetaineeImage = () => {
     const { intakePhotoResourceUri } = detainee;
     if (intakePhotoResourceUri) {
