@@ -3,7 +3,7 @@
 exports[`DetaineeComponent should render component 1`] = `
 <Fragment>
   <WithStyles(LayoutComponent)>
-    <Connect(WithStyles(Header))
+    <Connect(WithStyles(HeaderComponent))
       onLogout={[Function]}
     />
     <div
