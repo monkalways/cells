@@ -11,7 +11,31 @@ import Activities from '../Activities';
 import DetaineeAction from '../DetaineeAction';
 
 const propTypes = {
-  detainee: PropTypes.shape({}),
+  detainee: PropTypes.shape({
+    bailHearingCount: PropTypes.number.isRequired,
+    breathTestCount: PropTypes.number.isRequired,
+    cautionsArray: PropTypes.arrayOf(PropTypes.string).isRequired,
+    detentionUnitName: PropTypes.string.isRequired,
+    dob: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    fingerPrintCount: PropTypes.number.isRequired,
+    gender: PropTypes.string.isRequired,
+    hasWarning: PropTypes.bool.isRequired,
+    id: PropTypes.string.isRequired,
+    intakePhotoResourceUri: PropTypes.string,
+    interviewCount: PropTypes.number.isRequired,
+    isContagious: PropTypes.bool.isRequired,
+    isSuicidal: PropTypes.bool.isRequired,
+    isUnderMedication: PropTypes.bool.isRequired,
+    lastName: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    medicalCount: PropTypes.number.isRequired,
+    mustBeKeptAlone: PropTypes.bool.isRequired,
+    propertyBagNumber: PropTypes.string,
+    telephoneAcceptedCount: PropTypes.number.isRequired,
+    telephoneDeclinedCount: PropTypes.number.isRequired,
+    withCaution: PropTypes.bool.isRequired,
+  }),
   isDetaineeProfileLoaded: PropTypes.bool.isRequired,
 };
 
@@ -19,7 +43,10 @@ const defaultProps = {
   detainee: null,
 };
 
-const DetaineeDetailsComponent = ({ detainee, isDetaineeProfileLoaded }) => (
+export const DetaineeDetailsComponent = ({
+  detainee,
+  isDetaineeProfileLoaded,
+}) => (
   <React.Fragment>
     <DetaineeGrid>
       {isDetaineeProfileLoaded ? (
