@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetaineeGridComponent should render 1`] = `
+<WithStyles(Grid)
+  className="container"
+  container={true}
+  spacing={8}
+>
+  <h1>
+    Hello Test
+  </h1>
+</WithStyles(Grid)>
+`;
