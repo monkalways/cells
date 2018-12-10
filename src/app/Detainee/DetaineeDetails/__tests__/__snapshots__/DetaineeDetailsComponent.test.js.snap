@@ -1,0 +1,236 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CellComponent should render Loading component if detainee profile is not loaded 1`] = `
+<Fragment>
+  <WithStyles(DetaineeGridComponent)>
+    <WithStyles(LoadingComponent) />
+  </WithStyles(DetaineeGridComponent)>
+</Fragment>
+`;
+
+exports[`CellComponent should render if detainee profile is loaded 1`] = `
+<Fragment>
+  <WithStyles(DetaineeGridComponent)>
+    <WithStyles(Grid)
+      container={true}
+    >
+      <WithStyles(Grid)
+        item={true}
+        sm={10}
+      >
+        <WithStyles(PersonalInformationComponent)
+          detainee={
+            Object {
+              "bailHearingCount": 0,
+              "breathTestCount": 1,
+              "cautionsArray": Array [
+                "",
+              ],
+              "detentionUnitName": "Detainee Management Unit",
+              "dob": "2001-01-01",
+              "fingerPrintCount": 3,
+              "firstName": "Steveo",
+              "gender": "M",
+              "hasWarning": false,
+              "id": "123",
+              "intakePhotoResourceUri": null,
+              "interviewCount": 4,
+              "isContagious": false,
+              "isSuicidal": false,
+              "isUnderMedication": false,
+              "lastName": "Nordic",
+              "location": "",
+              "medicalCount": 5,
+              "mustBeKeptAlone": false,
+              "propertyBagNumber": null,
+              "telephoneAcceptedCount": 6,
+              "telephoneDeclinedCount": 7,
+              "withCaution": false,
+            }
+          }
+        />
+      </WithStyles(Grid)>
+      <WithStyles(Grid)
+        item={true}
+        sm={2}
+      >
+        <WithStyles(LocationComponent)
+          detainee={
+            Object {
+              "bailHearingCount": 0,
+              "breathTestCount": 1,
+              "cautionsArray": Array [
+                "",
+              ],
+              "detentionUnitName": "Detainee Management Unit",
+              "dob": "2001-01-01",
+              "fingerPrintCount": 3,
+              "firstName": "Steveo",
+              "gender": "M",
+              "hasWarning": false,
+              "id": "123",
+              "intakePhotoResourceUri": null,
+              "interviewCount": 4,
+              "isContagious": false,
+              "isSuicidal": false,
+              "isUnderMedication": false,
+              "lastName": "Nordic",
+              "location": "",
+              "medicalCount": 5,
+              "mustBeKeptAlone": false,
+              "propertyBagNumber": null,
+              "telephoneAcceptedCount": 6,
+              "telephoneDeclinedCount": 7,
+              "withCaution": false,
+            }
+          }
+        />
+      </WithStyles(Grid)>
+      <WithStyles(Grid)
+        item={true}
+        sm={12}
+      >
+        <WithStyles(NoticeComponent)
+          detainee={
+            Object {
+              "bailHearingCount": 0,
+              "breathTestCount": 1,
+              "cautionsArray": Array [
+                "",
+              ],
+              "detentionUnitName": "Detainee Management Unit",
+              "dob": "2001-01-01",
+              "fingerPrintCount": 3,
+              "firstName": "Steveo",
+              "gender": "M",
+              "hasWarning": false,
+              "id": "123",
+              "intakePhotoResourceUri": null,
+              "interviewCount": 4,
+              "isContagious": false,
+              "isSuicidal": false,
+              "isUnderMedication": false,
+              "lastName": "Nordic",
+              "location": "",
+              "medicalCount": 5,
+              "mustBeKeptAlone": false,
+              "propertyBagNumber": null,
+              "telephoneAcceptedCount": 6,
+              "telephoneDeclinedCount": 7,
+              "withCaution": false,
+            }
+          }
+        />
+      </WithStyles(Grid)>
+      <WithStyles(Grid)
+        item={true}
+        sm={12}
+      >
+        <WithStyles(ProvidedWelfareComponent)
+          detainee={
+            Object {
+              "bailHearingCount": 0,
+              "breathTestCount": 1,
+              "cautionsArray": Array [
+                "",
+              ],
+              "detentionUnitName": "Detainee Management Unit",
+              "dob": "2001-01-01",
+              "fingerPrintCount": 3,
+              "firstName": "Steveo",
+              "gender": "M",
+              "hasWarning": false,
+              "id": "123",
+              "intakePhotoResourceUri": null,
+              "interviewCount": 4,
+              "isContagious": false,
+              "isSuicidal": false,
+              "isUnderMedication": false,
+              "lastName": "Nordic",
+              "location": "",
+              "medicalCount": 5,
+              "mustBeKeptAlone": false,
+              "propertyBagNumber": null,
+              "telephoneAcceptedCount": 6,
+              "telephoneDeclinedCount": 7,
+              "withCaution": false,
+            }
+          }
+        />
+      </WithStyles(Grid)>
+      <WithStyles(Grid)
+        item={true}
+        sm={12}
+      >
+        <WithStyles(ActivitiesComponent)
+          detainee={
+            Object {
+              "bailHearingCount": 0,
+              "breathTestCount": 1,
+              "cautionsArray": Array [
+                "",
+              ],
+              "detentionUnitName": "Detainee Management Unit",
+              "dob": "2001-01-01",
+              "fingerPrintCount": 3,
+              "firstName": "Steveo",
+              "gender": "M",
+              "hasWarning": false,
+              "id": "123",
+              "intakePhotoResourceUri": null,
+              "interviewCount": 4,
+              "isContagious": false,
+              "isSuicidal": false,
+              "isUnderMedication": false,
+              "lastName": "Nordic",
+              "location": "",
+              "medicalCount": 5,
+              "mustBeKeptAlone": false,
+              "propertyBagNumber": null,
+              "telephoneAcceptedCount": 6,
+              "telephoneDeclinedCount": 7,
+              "withCaution": false,
+            }
+          }
+        />
+      </WithStyles(Grid)>
+      <WithStyles(Grid)
+        item={true}
+        sm={12}
+      >
+        <Connect(WithStyles(DetaineeActionComponent))
+          detainee={
+            Object {
+              "bailHearingCount": 0,
+              "breathTestCount": 1,
+              "cautionsArray": Array [
+                "",
+              ],
+              "detentionUnitName": "Detainee Management Unit",
+              "dob": "2001-01-01",
+              "fingerPrintCount": 3,
+              "firstName": "Steveo",
+              "gender": "M",
+              "hasWarning": false,
+              "id": "123",
+              "intakePhotoResourceUri": null,
+              "interviewCount": 4,
+              "isContagious": false,
+              "isSuicidal": false,
+              "isUnderMedication": false,
+              "lastName": "Nordic",
+              "location": "",
+              "medicalCount": 5,
+              "mustBeKeptAlone": false,
+              "propertyBagNumber": null,
+              "telephoneAcceptedCount": 6,
+              "telephoneDeclinedCount": 7,
+              "withCaution": false,
+            }
+          }
+        />
+      </WithStyles(Grid)>
+    </WithStyles(Grid)>
+  </WithStyles(DetaineeGridComponent)>
+</Fragment>
+`;
