@@ -1,0 +1,208 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocationIconComponent Transit Destination Icon should render Bail Hearing icon 1`] = `
+<WithStyles(Badge)
+  badgeContent={
+    <img
+      alt="Transit Destination"
+      className="cornerImg"
+      src="BailHearingGeneral.png"
+    />
+  }
+  classes={
+    Object {
+      "badge": "badge",
+    }
+  }
+>
+  <img
+    alt="Detainee Location"
+    className="mainImg"
+    src="InTransit.png"
+  />
+</WithStyles(Badge)>
+`;
+
+exports[`LocationIconComponent Transit Destination Icon should render Breath Test icon 1`] = `
+<WithStyles(Badge)
+  badgeContent={
+    <img
+      alt="Transit Destination"
+      className="cornerImg"
+      src="Breathalyzer.png"
+    />
+  }
+  classes={
+    Object {
+      "badge": "badge",
+    }
+  }
+>
+  <img
+    alt="Detainee Location"
+    className="mainImg"
+    src="InTransit.png"
+  />
+</WithStyles(Badge)>
+`;
+
+exports[`LocationIconComponent Transit Destination Icon should render Cell icon 1`] = `
+<WithStyles(Badge)
+  badgeContent={
+    <img
+      alt="Transit Destination"
+      className="cornerImg"
+      src="InCell.png"
+    />
+  }
+  classes={
+    Object {
+      "badge": "badge",
+    }
+  }
+>
+  <img
+    alt="Detainee Location"
+    className="mainImg"
+    src="InTransit.png"
+  />
+</WithStyles(Badge)>
+`;
+
+exports[`LocationIconComponent Transit Destination Icon should render Fingerprinting icon 1`] = `
+<WithStyles(Badge)
+  badgeContent={
+    <img
+      alt="Transit Destination"
+      className="cornerImg"
+      src="Fingerprinting.png"
+    />
+  }
+  classes={
+    Object {
+      "badge": "badge",
+    }
+  }
+>
+  <img
+    alt="Detainee Location"
+    className="mainImg"
+    src="InTransit.png"
+  />
+</WithStyles(Badge)>
+`;
+
+exports[`LocationIconComponent Transit Destination Icon should render Interview icon 1`] = `
+<WithStyles(Badge)
+  badgeContent={
+    <img
+      alt="Transit Destination"
+      className="cornerImg"
+      src="Interview.png"
+    />
+  }
+  classes={
+    Object {
+      "badge": "badge",
+    }
+  }
+>
+  <img
+    alt="Detainee Location"
+    className="mainImg"
+    src="InTransit.png"
+  />
+</WithStyles(Badge)>
+`;
+
+exports[`LocationIconComponent Transit Destination Icon should render Medical icon 1`] = `
+<WithStyles(Badge)
+  badgeContent={
+    <img
+      alt="Transit Destination"
+      className="cornerImg"
+      src="MedicalVisit.png"
+    />
+  }
+  classes={
+    Object {
+      "badge": "badge",
+    }
+  }
+>
+  <img
+    alt="Detainee Location"
+    className="mainImg"
+    src="InTransit.png"
+  />
+</WithStyles(Badge)>
+`;
+
+exports[`LocationIconComponent Transit Destination Icon should render Phone icon 1`] = `
+<WithStyles(Badge)
+  badgeContent={
+    <img
+      alt="Transit Destination"
+      className="cornerImg"
+      src="PhoneAccept.png"
+    />
+  }
+  classes={
+    Object {
+      "badge": "badge",
+    }
+  }
+>
+  <img
+    alt="Detainee Location"
+    className="mainImg"
+    src="InTransit.png"
+  />
+</WithStyles(Badge)>
+`;
+
+exports[`LocationIconComponent Transit Destination Icon should render Release Holding icon 1`] = `
+<WithStyles(Badge)
+  badgeContent={
+    <img
+      alt="Transit Destination"
+      className="cornerImg"
+      src="ReleaseHolding.png"
+    />
+  }
+  classes={
+    Object {
+      "badge": "badge",
+    }
+  }
+>
+  <img
+    alt="Detainee Location"
+    className="mainImg"
+    src="InTransit.png"
+  />
+</WithStyles(Badge)>
+`;
+
+exports[`LocationIconComponent Transit Destination Icon should render Remand Holding icon 1`] = `
+<WithStyles(Badge)
+  badgeContent={
+    <img
+      alt="Transit Destination"
+      className="cornerImg"
+      src="RemandHolding.png"
+    />
+  }
+  classes={
+    Object {
+      "badge": "badge",
+    }
+  }
+>
+  <img
+    alt="Detainee Location"
+    className="mainImg"
+    src="InTransit.png"
+  />
+</WithStyles(Badge)>
+`;
