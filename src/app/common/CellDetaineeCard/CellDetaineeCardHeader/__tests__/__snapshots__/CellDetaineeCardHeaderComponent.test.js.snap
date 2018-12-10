@@ -34,7 +34,7 @@ exports[`CellDetaineeCardHeaderComponent should render 1`] = `
       item={true}
       sm={5}
     >
-      <WithStyles(LocationComponent) />
+      <WithStyles(LocationIconComponent) />
     </WithStyles(Grid)>
   </WithStyles(Grid)>
 </WithStyles(CardContent)>
