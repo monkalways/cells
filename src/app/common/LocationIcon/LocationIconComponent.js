@@ -19,7 +19,7 @@ const propTypes = {
   location: PropTypes.string.isRequired,
 };
 
-const LocationComponent = ({ classes, location }) => {
+export const LocationIconComponent = ({ classes, location }) => {
   const getLocationIcon = () => {
     if (location) {
       if (location.includes(constants.IN_TRANSIT)) {
@@ -102,7 +102,7 @@ const LocationComponent = ({ classes, location }) => {
   );
 };
 
-LocationComponent.propTypes = propTypes;
+LocationIconComponent.propTypes = propTypes;
 
 export default withStyles(() => ({
   badge: {
@@ -119,4 +119,4 @@ export default withStyles(() => ({
     height: '100%',
     width: '100%',
   },
-}))(LocationComponent);
+}))(LocationIconComponent);

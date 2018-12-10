@@ -26,7 +26,7 @@ exports[`LocationComponent should render 1`] = `
     <div
       className="div"
     >
-      <WithStyles(LocationComponent)
+      <WithStyles(LocationIconComponent)
         location="location"
       />
     </div>
