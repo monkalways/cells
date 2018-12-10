@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterComponent should render 1`] = `
+<div
+  className="root"
+>
+  <WithStyles(AppBar)
+    className="appBar"
+    position="static"
+  >
+    <WithStyles(Grid)
+      alignItems="center"
+      container={true}
+    >
+      <WithStyles(BottomNavigation)
+        className="navigation"
+        showLabels={true}
+        value={-1}
+      >
+        <WithStyles(BottomNavigationAction)
+          icon={
+            <pure(ArrowBackIcon)
+              className="icon"
+            />
+          }
+          id="backButton"
+          label={
+            <WithStyles(Typography)
+              variant="body1"
+            >
+              Back
+            </WithStyles(Typography)>
+          }
+          onClick={[Function]}
+        />
+      </WithStyles(BottomNavigation)>
+    </WithStyles(Grid)>
+  </WithStyles(AppBar)>
+</div>
+`;
