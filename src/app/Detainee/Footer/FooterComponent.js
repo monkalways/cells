@@ -15,11 +15,11 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
+    goBack: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-const FooterComponent = ({ classes, history }) => {
+export const FooterComponent = ({ classes, history }) => {
   const handleBackButtonClick = () => {
     history.goBack();
   };
@@ -34,6 +34,7 @@ const FooterComponent = ({ classes, history }) => {
             className={classes.navigation}
           >
             <BottomNavigationAction
+              id="backButton"
               label={<Typography variant="body1">Back</Typography>}
               onClick={handleBackButtonClick}
               icon={<ArrowBackIcon className={classes.icon} />}
