@@ -1,0 +1,263 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetaineeActionComponent should render 1`] = `
+<WithStyles(Card)>
+  <WithStyles(CardHeader)
+    component={[Function]}
+  />
+  <WithStyles(CardContent)
+    className="cardContent"
+  >
+    <WithStyles(Grid)
+      container={true}
+      spacing={16}
+    >
+      <WithStyles(Grid)
+        container={true}
+        item={true}
+        xs={12}
+      >
+        <WithStyles(Grid)
+          className="imgContainer"
+          item={true}
+          xs={2}
+        >
+          <WithStyles(IconButton)
+            className="button"
+            disabled={true}
+            id="medical"
+            onClick={[Function]}
+          >
+            <WithStyles(Avatar)
+              className="avatar disabled"
+              src="MedicalVisit.png"
+            />
+          </WithStyles(IconButton)>
+        </WithStyles(Grid)>
+        <WithStyles(Grid)
+          className="imgContainer"
+          item={true}
+          xs={2}
+        >
+          <WithStyles(IconButton)
+            className="button"
+            disabled={true}
+            id="phoneAccept"
+            onClick={[Function]}
+          >
+            <WithStyles(Avatar)
+              className="avatar disabled"
+              src="PhoneAccept.png"
+            />
+          </WithStyles(IconButton)>
+        </WithStyles(Grid)>
+        <WithStyles(Grid)
+          className="imgContainer"
+          item={true}
+          xs={2}
+        >
+          <WithStyles(IconButton)
+            className="button"
+            disabled={true}
+            id="phoneDecline"
+            onClick={[Function]}
+          >
+            <WithStyles(Avatar)
+              className="avatar disabled"
+              src="PhoneDecline.png"
+            />
+          </WithStyles(IconButton)>
+        </WithStyles(Grid)>
+        <WithStyles(Grid)
+          className="imgContainer"
+          item={true}
+          xs={2}
+        >
+          <WithStyles(IconButton)
+            className="button"
+            disabled={true}
+            id="fingerprinting"
+            onClick={[Function]}
+          >
+            <WithStyles(Avatar)
+              className="avatar disabled"
+              src="Fingerprinting.png"
+            />
+          </WithStyles(IconButton)>
+        </WithStyles(Grid)>
+        <WithStyles(Grid)
+          className="imgContainer"
+          item={true}
+          xs={2}
+        >
+          <WithStyles(IconButton)
+            className="button"
+            disabled={true}
+            id="breathTest"
+            onClick={[Function]}
+          >
+            <WithStyles(Avatar)
+              className="avatar disabled"
+              src="Breathalyzer.png"
+            />
+          </WithStyles(IconButton)>
+        </WithStyles(Grid)>
+        <WithStyles(Grid)
+          className="imgContainer"
+          item={true}
+          xs={2}
+        >
+          <WithStyles(IconButton)
+            className="button"
+            disabled={true}
+            id="interview"
+            onClick={[Function]}
+          >
+            <WithStyles(Avatar)
+              className="avatar disabled"
+              src="Interview.png"
+            />
+          </WithStyles(IconButton)>
+        </WithStyles(Grid)>
+      </WithStyles(Grid)>
+      <WithStyles(Grid)
+        container={true}
+        item={true}
+        xs={12}
+      >
+        <WithStyles(Grid)
+          className="imgContainer"
+          item={true}
+          xs={2}
+        >
+          <WithStyles(IconButton)
+            className="button"
+            disabled={true}
+            id="bailHearing1"
+            onClick={[Function]}
+          >
+            <WithStyles(Avatar)
+              className="avatar disabled"
+              src="BailHearing1.png"
+            />
+          </WithStyles(IconButton)>
+        </WithStyles(Grid)>
+        <WithStyles(Grid)
+          className="imgContainer"
+          item={true}
+          xs={2}
+        >
+          <WithStyles(IconButton)
+            className="button"
+            disabled={true}
+            id="bailHearing2"
+            onClick={[Function]}
+          >
+            <WithStyles(Avatar)
+              className="avatar disabled"
+              src="BailHearing2.png"
+            />
+          </WithStyles(IconButton)>
+        </WithStyles(Grid)>
+        <WithStyles(Grid)
+          className="imgContainer"
+          item={true}
+          xs={2}
+        >
+          <WithStyles(IconButton)
+            className="button"
+            disabled={true}
+            id="remandHolding"
+            onClick={[Function]}
+          >
+            <WithStyles(Avatar)
+              className="avatar disabled"
+              src="RemandHolding.png"
+            />
+          </WithStyles(IconButton)>
+        </WithStyles(Grid)>
+        <WithStyles(Grid)
+          className="imgContainer"
+          item={true}
+          xs={2}
+        >
+          <WithStyles(IconButton)
+            className="button"
+            disabled={true}
+            id="releaseHolding"
+            onClick={[Function]}
+          >
+            <WithStyles(Avatar)
+              className="avatar disabled"
+              src="ReleaseHolding.png"
+            />
+          </WithStyles(IconButton)>
+        </WithStyles(Grid)>
+        <WithStyles(Grid)
+          className="imgContainer"
+          item={true}
+          xs={2}
+        >
+          <WithStyles(IconButton)
+            className="button"
+            disabled={true}
+            id="cell"
+            onClick={[Function]}
+          >
+            <WithStyles(Avatar)
+              className="avatar disabled"
+              src="InCell.png"
+            />
+          </WithStyles(IconButton)>
+        </WithStyles(Grid)>
+      </WithStyles(Grid)>
+    </WithStyles(Grid)>
+  </WithStyles(CardContent)>
+  <Connect(ActivityRoomDialogComponent)
+    detainee={
+      Object {
+        "firstName": "Bob",
+        "id": "123",
+        "lastName": "Saget",
+      }
+    }
+    isDialogOpen={false}
+    onClose={[Function]}
+    usage=""
+  />
+  <Connect(CellDialogComponent)
+    detainee={
+      Object {
+        "firstName": "Bob",
+        "id": "123",
+        "lastName": "Saget",
+      }
+    }
+    isDialogOpen={false}
+    onClose={[Function]}
+  />
+  <Connect(PhoneDeclineComponent)
+    detainee={
+      Object {
+        "firstName": "Bob",
+        "id": "123",
+        "lastName": "Saget",
+      }
+    }
+    isDialogOpen={false}
+    onClose={[Function]}
+  />
+  <Connect(WithStyles(RoomSelectionDialogComponent))
+    detainee={
+      Object {
+        "firstName": "Bob",
+        "id": "123",
+        "lastName": "Saget",
+      }
+    }
+    isDialogOpen={false}
+    onClose={[Function]}
+    usage=""
+  />
+</WithStyles(Card)>
+`;
