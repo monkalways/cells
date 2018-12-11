@@ -15,7 +15,7 @@ import HeaderContent from './HeaderContent';
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   detainee: PropTypes.shape({
-    assignedCellName: PropTypes.string.isRequired,
+    assignedCellName: PropTypes.string,
   }),
   isDetaineeProfileLoaded: PropTypes.bool.isRequired,
   onLogout: PropTypes.func.isRequired,
