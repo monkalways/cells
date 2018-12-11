@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 import queryString from 'query-string';
 import constants from '../constants';
+import commonConstants from '../../constants';
 
 // Basic selectors
 const areActivityRoomsRefreshing = (state) => state.detainee.activityRooms.isRefreshing;
@@ -34,7 +35,7 @@ const isActivityRoomOptionAvailable = (state, usage, inProgress, inTransit) => {
   return (
     !(
       first === constants.CELLS_QUERYSTRING
-      && location.toLowerCase().includes(constants.IN_PROGRESS.toLowerCase())
+      && location.toLowerCase().includes(commonConstants.IN_PROGRESS.toLowerCase())
     )
     && location.toLowerCase() !== inProgress.toLowerCase()
     && location.toLowerCase() !== inTransit.toLowerCase()
@@ -52,7 +53,7 @@ const isInCellOptionAvailable = (state) => {
   // and the detainee location is 'In Progress' in an activity room, this button is disabled.
   if (
     first === constants.CELLS_QUERYSTRING
-    && location.toLowerCase().includes(constants.IN_PROGRESS.toLowerCase())
+    && location.toLowerCase().includes(commonConstants.IN_PROGRESS.toLowerCase())
   ) return false;
 
   // Case 1: User came from activity room screen.
@@ -60,14 +61,14 @@ const isInCellOptionAvailable = (state) => {
   // and is now going back to their cell.
   if (
     first === constants.ACTIVITY_ROOMS_QUERYSTRING
-    && location.toLowerCase() !== constants.CELL_IN_TRANSIT.toLowerCase()
+    && location.toLowerCase() !== commonConstants.CELL_IN_TRANSIT.toLowerCase()
   ) return true;
 
   // Case 2: User came from cell management screen.
   // Detainee is currently in transit back to their cell and is being checked in.
   if (
     first === constants.CELLS_QUERYSTRING
-    && location.toLowerCase() === constants.CELL_IN_TRANSIT.toLowerCase()
+    && location.toLowerCase() === commonConstants.CELL_IN_TRANSIT.toLowerCase()
   ) return true;
 
   return false;
@@ -81,7 +82,7 @@ const isPhoneDeclineOptionAvailable = (state) => {
   const { location } = state.detainee.detaineeProfile.data;
   if (
     first === constants.CELLS_QUERYSTRING
-    && location.toLowerCase().includes(constants.IN_PROGRESS.toLowerCase())
+    && location.toLowerCase().includes(commonConstants.IN_PROGRESS.toLowerCase())
   ) return false;
 
   return first === constants.CELLS_QUERYSTRING;
