@@ -51,7 +51,7 @@ const propTypes = {
   isRemandHoldingRoomOptionAvailable: PropTypes.bool.isRequired,
 };
 
-class DetaineeActionComponent extends Component {
+export class DetaineeActionComponent extends Component {
   state = {
     isActivityRoomDialogOpen: false,
     isCellDialogOpen: false,
@@ -149,12 +149,12 @@ class DetaineeActionComponent extends Component {
             <Grid container item xs={12}>
               <Grid item xs={2} className={classes.imgContainer}>
                 <IconButton
+                  id="medical"
                   className={classes.button}
                   disabled={!isMedicalRoomOptionAvailable}
                   onClick={() => {
                     this.handleActivityRoomButtonClick(constants.MEDICAL_ROOM);
                   }}
-                  onClose={this.handleClose}
                 >
                   <Avatar
                     className={classNames(classes.avatar, {
@@ -166,12 +166,12 @@ class DetaineeActionComponent extends Component {
               </Grid>
               <Grid item xs={2} className={classes.imgContainer}>
                 <IconButton
+                  id="phoneAccept"
                   className={classes.button}
                   disabled={!isPhoneRoomOptionAvailable}
                   onClick={() => {
                     this.handleActivityRoomButtonClick(constants.PHONE_ROOM);
                   }}
-                  onClose={this.handleClose}
                 >
                   <Avatar
                     className={classNames(classes.avatar, {
@@ -183,12 +183,12 @@ class DetaineeActionComponent extends Component {
               </Grid>
               <Grid item xs={2} className={classes.imgContainer}>
                 <IconButton
+                  id="phoneDecline"
                   className={classes.button}
                   disabled={!isPhoneDeclineOptionAvailable}
                   onClick={() => {
                     this.handlePhoneDeclineButtonClick();
                   }}
-                  onClose={this.handleClose}
                 >
                   <Avatar
                     className={classNames(classes.avatar, {
@@ -200,12 +200,12 @@ class DetaineeActionComponent extends Component {
               </Grid>
               <Grid item xs={2} className={classes.imgContainer}>
                 <IconButton
+                  id="fingerprinting"
                   className={classes.button}
                   disabled={!isFingerprintingRoomOptionAvailable}
                   onClick={() => {
                     this.handleRoomSelectionDialogButtonClick(constants.FINGERPRINTING_ROOM);
                   }}
-                  onClose={this.handleClose}
                 >
                   <Avatar
                     className={classNames(classes.avatar, {
@@ -217,12 +217,12 @@ class DetaineeActionComponent extends Component {
               </Grid>
               <Grid item xs={2} className={classes.imgContainer}>
                 <IconButton
+                  id="breathTest"
                   className={classes.button}
                   disabled={!isBreathTestRoomOptionAvailable}
                   onClick={() => {
                     this.handleActivityRoomButtonClick(constants.BREATH_TEST_ROOM);
                   }}
-                  onClose={this.handleClose}
                 >
                   <Avatar
                     className={classNames(classes.avatar, {
@@ -234,12 +234,12 @@ class DetaineeActionComponent extends Component {
               </Grid>
               <Grid item xs={2} className={classes.imgContainer}>
                 <IconButton
+                  id="interview"
                   className={classes.button}
                   disabled={!isInterviewRoomOptionAvailable}
                   onClick={() => {
                     this.handleRoomSelectionDialogButtonClick(constants.INTERVIEW_ROOM);
                   }}
-                  onClose={this.handleClose}
                 >
                   <Avatar
                     className={classNames(classes.avatar, {
@@ -254,12 +254,12 @@ class DetaineeActionComponent extends Component {
             <Grid container item xs={12}>
               <Grid item xs={2} className={classes.imgContainer}>
                 <IconButton
+                  id="bailHearing1"
                   className={classes.button}
                   disabled={!isBailHearingRoom1OptionAvailable}
                   onClick={() => {
                     this.handleActivityRoomButtonClick(constants.BAIL_HEARING_ROOM_1);
                   }}
-                  onClose={this.handleClose}
                 >
                   <Avatar
                     className={classNames(classes.avatar, {
@@ -271,12 +271,12 @@ class DetaineeActionComponent extends Component {
               </Grid>
               <Grid item xs={2} className={classes.imgContainer}>
                 <IconButton
+                  id="bailHearing2"
                   className={classes.button}
                   disabled={!isBailHearingRoom2OptionAvailable}
                   onClick={() => {
                     this.handleActivityRoomButtonClick(constants.BAIL_HEARING_ROOM_2);
                   }}
-                  onClose={this.handleClose}
                 >
                   <Avatar
                     className={classNames(classes.avatar, {
@@ -288,13 +288,13 @@ class DetaineeActionComponent extends Component {
               </Grid>
               <Grid item xs={2} className={classes.imgContainer}>
                 <IconButton
+                  id="remandHolding"
                   className={classes.button}
                   disabled={!isRemandHoldingRoomOptionAvailable}
                   onClick={() => {
                     // eslint-disable-next-line no-alert
                     alert('Function not available');
                   }}
-                  onClose={this.handleClose}
                 >
                   <Avatar
                     className={classNames(classes.avatar, {
@@ -306,13 +306,13 @@ class DetaineeActionComponent extends Component {
               </Grid>
               <Grid item xs={2} className={classes.imgContainer}>
                 <IconButton
+                  id="releaseHolding"
                   className={classes.button}
                   disabled={!isReleaseRoomOptionAvailable}
                   onClick={() => {
                     // eslint-disable-next-line no-alert
                     alert('Function not available');
                   }}
-                  onClose={this.handleClose}
                 >
                   <Avatar
                     className={classNames(classes.avatar, {
@@ -324,12 +324,12 @@ class DetaineeActionComponent extends Component {
               </Grid>
               <Grid item xs={2} className={classes.imgContainer}>
                 <IconButton
+                  id="cell"
                   className={classes.button}
                   disabled={!isInCellOptionAvailable}
                   onClick={() => {
                     this.handleCellButtonClick();
                   }}
-                  onClose={this.handleClose}
                 >
                   <Avatar
                     className={classNames(classes.avatar, {
