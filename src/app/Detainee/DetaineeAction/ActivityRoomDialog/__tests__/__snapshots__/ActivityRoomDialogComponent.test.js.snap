@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetaineeDetailsComponent should render Loading component if activity rooms are refreshing 1`] = `
+<WithStyles(Dialog)
+  disableBackdropClick={false}
+  disableEscapeKeyDown={false}
+  onClose={[MockFunction]}
+  onRendered={[Function]}
+  open={false}
+>
+  <WithStyles(DialogTitle)>
+    Searching for available usage room...
+  </WithStyles(DialogTitle)>
+  <WithStyles(DialogContent)>
+    <WithStyles(LoadingComponent)
+      size={50}
+    />
+  </WithStyles(DialogContent)>
+</WithStyles(Dialog)>
+`;
+
+exports[`DetaineeDetailsComponent should show a close button when the room is no longer available 1`] = `
+<WithStyles(Dialog)
+  disableBackdropClick={false}
+  disableEscapeKeyDown={false}
+  onClose={[MockFunction]}
+  onRendered={[Function]}
+  open={false}
+>
+  <WithStyles(DialogTitle)>
+    Sorry, the usage room T4 is no longer available.
+  </WithStyles(DialogTitle)>
+  <WithStyles(DialogActions)>
+    <WithStyles(Button)
+      color="primary"
+      id="closeButton"
+      onClick={[MockFunction]}
+    >
+      Close
+    </WithStyles(Button)>
+  </WithStyles(DialogActions)>
+</WithStyles(Dialog)>
+`;
+
+exports[`DetaineeDetailsComponent should show a loading component when it is assigning the detainee to a room 1`] = `
+<WithStyles(Dialog)
+  disableBackdropClick={true}
+  disableEscapeKeyDown={true}
+  onClose={[MockFunction]}
+  onRendered={[Function]}
+  open={false}
+>
+  <WithStyles(DialogTitle)>
+    Moving Saget, Bob to usage room T4?
+  </WithStyles(DialogTitle)>
+  <WithStyles(DialogContent)>
+    <WithStyles(LoadingComponent)
+      size={50}
+    />
+  </WithStyles(DialogContent)>
+  <WithStyles(DialogActions)>
+    <WithStyles(Button)
+      color="primary"
+      disabled={true}
+      id="cancelButton"
+      onClick={[MockFunction]}
+    >
+      Cancel
+    </WithStyles(Button)>
+    <WithStyles(Button)
+      autoFocus={true}
+      color="primary"
+      disabled={true}
+      id="confirmButton"
+      onClick={[Function]}
+      variant="contained"
+    >
+      Confirm
+    </WithStyles(Button)>
+  </WithStyles(DialogActions)>
+</WithStyles(Dialog)>
+`;
+
+exports[`DetaineeDetailsComponent should show confirm and cancel buttons when moving a detainee 1`] = `
+<WithStyles(Dialog)
+  disableBackdropClick={false}
+  disableEscapeKeyDown={false}
+  onClose={[MockFunction]}
+  onRendered={[Function]}
+  open={false}
+>
+  <WithStyles(DialogTitle)>
+    Moving Saget, Bob to usage room T4?
+  </WithStyles(DialogTitle)>
+  <WithStyles(DialogActions)>
+    <WithStyles(Button)
+      color="primary"
+      disabled={false}
+      id="cancelButton"
+      onClick={[MockFunction]}
+    >
+      Cancel
+    </WithStyles(Button)>
+    <WithStyles(Button)
+      autoFocus={true}
+      color="primary"
+      disabled={false}
+      id="confirmButton"
+      onClick={[Function]}
+      variant="contained"
+    >
+      Confirm
+    </WithStyles(Button)>
+  </WithStyles(DialogActions)>
+</WithStyles(Dialog)>
+`;
