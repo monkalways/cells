@@ -13,6 +13,7 @@ import Loading from '../../../common/Loading';
 const propTypes = {
   areActivityRoomsRefreshing: PropTypes.bool.isRequired,
   currentRoom: PropTypes.string,
+  destinationRoom: PropTypes.string,
   detainee: PropTypes.shape({
     firstName: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
@@ -25,7 +26,6 @@ const propTypes = {
   isAssigningToRoom: PropTypes.bool.isRequired,
   moveDetaineeToActivityRoom: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
-  destinationRoom: PropTypes.string,
   usage: PropTypes.string.isRequired,
 };
 
@@ -37,6 +37,7 @@ const defaultProps = {
 const ActivityRoomDialogComponent = ({
   areActivityRoomsRefreshing,
   currentRoom,
+  destinationRoom,
   detainee,
   getAvailableActivityRoomsRefresh,
   isAnyRoomForGivenActivityAvailable,
@@ -44,7 +45,6 @@ const ActivityRoomDialogComponent = ({
   isDialogOpen,
   moveDetaineeToActivityRoom,
   onClose,
-  destinationRoom,
   usage,
 }) => {
   const handleClick = () => {
@@ -85,6 +85,7 @@ const ActivityRoomDialogComponent = ({
           )}
           <DialogActions>
             <Button
+              id="cancelButton"
               onClick={onClose}
               color="primary"
               disabled={isAssigningToRoom}
@@ -92,6 +93,7 @@ const ActivityRoomDialogComponent = ({
               Cancel
             </Button>
             <Button
+              id="confirmButton"
               onClick={handleClick}
               color="primary"
               variant="contained"
@@ -106,7 +108,7 @@ const ActivityRoomDialogComponent = ({
         <React.Fragment>
           <DialogTitle>{`Sorry, the ${usage} room ${destinationRoom} is no longer available.`}</DialogTitle>
           <DialogActions>
-            <Button onClick={onClose} color="primary">
+            <Button id="closeButton" onClick={onClose} color="primary">
               Close
             </Button>
           </DialogActions>
