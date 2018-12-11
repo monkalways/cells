@@ -11,7 +11,7 @@ import Activities from '../../Activities';
 import DetaineeAction from '../../DetaineeAction';
 import Loading from '../../../common/Loading';
 
-describe('CellComponent', () => {
+describe('DetaineeDetailsComponent', () => {
   let detainee;
   let isDetaineeProfileLoaded;
 

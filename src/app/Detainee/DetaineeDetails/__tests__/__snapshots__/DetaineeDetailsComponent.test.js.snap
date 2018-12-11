@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CellComponent should render Loading component if detainee profile is not loaded 1`] = `
+exports[`DetaineeDetailsComponent should render Loading component if detainee profile is not loaded 1`] = `
 <Fragment>
   <WithStyles(DetaineeGridComponent)>
     <WithStyles(LoadingComponent) />
@@ -8,7 +8,7 @@ exports[`CellComponent should render Loading component if detainee profile is no
 </Fragment>
 `;
 
-exports[`CellComponent should render if detainee profile is loaded 1`] = `
+exports[`DetaineeDetailsComponent should render if detainee profile is loaded 1`] = `
 <Fragment>
   <WithStyles(DetaineeGridComponent)>
     <WithStyles(Grid)
