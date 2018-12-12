@@ -5,7 +5,7 @@ import { Dialog } from '@material-ui/core';
 import ActivityRoomDialogComponent from '../ActivityRoomDialogComponent';
 import Loading from '../../../../common/Loading';
 
-describe('DetaineeDetailsComponent', () => {
+describe('ActivityRoomDialogComponent', () => {
   let areActivityRoomsRefreshing;
   let currentRoom;
   let destinationRoom;

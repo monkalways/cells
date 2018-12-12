@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DetaineeDetailsComponent should render Loading component if activity rooms are refreshing 1`] = `
+exports[`ActivityRoomDialogComponent should render Loading component if activity rooms are refreshing 1`] = `
 <WithStyles(Dialog)
   disableBackdropClick={false}
   disableEscapeKeyDown={false}
@@ -19,7 +19,7 @@ exports[`DetaineeDetailsComponent should render Loading component if activity ro
 </WithStyles(Dialog)>
 `;
 
-exports[`DetaineeDetailsComponent should show a close button when the room is no longer available 1`] = `
+exports[`ActivityRoomDialogComponent should show a close button when the room is no longer available 1`] = `
 <WithStyles(Dialog)
   disableBackdropClick={false}
   disableEscapeKeyDown={false}
@@ -42,7 +42,7 @@ exports[`DetaineeDetailsComponent should show a close button when the room is no
 </WithStyles(Dialog)>
 `;
 
-exports[`DetaineeDetailsComponent should show a loading component when it is assigning the detainee to a room 1`] = `
+exports[`ActivityRoomDialogComponent should show a loading component when it is assigning the detainee to a room 1`] = `
 <WithStyles(Dialog)
   disableBackdropClick={true}
   disableEscapeKeyDown={true}
@@ -81,7 +81,7 @@ exports[`DetaineeDetailsComponent should show a loading component when it is ass
 </WithStyles(Dialog)>
 `;
 
-exports[`DetaineeDetailsComponent should show confirm and cancel buttons when moving a detainee 1`] = `
+exports[`ActivityRoomDialogComponent should show confirm and cancel buttons when moving a detainee 1`] = `
 <WithStyles(Dialog)
   disableBackdropClick={false}
   disableEscapeKeyDown={false}
