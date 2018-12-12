@@ -63,6 +63,7 @@ const PhoneDeclineComponent = ({
         )}
         <DialogActions>
           <Button
+            id="cancelButton"
             onClick={onClose}
             color="primary"
             disabled={isUpdatingDetentionLog}
@@ -70,6 +71,7 @@ const PhoneDeclineComponent = ({
             Cancel
           </Button>
           <Button
+            id="confirmButton"
             onClick={handleClick}
             color="primary"
             variant="contained"
