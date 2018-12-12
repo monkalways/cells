@@ -19,7 +19,11 @@ export const mapDispatchToProps = (dispatch) => ({
     moveDetaineeToCell = operations.moveDetaineeToRoom,
   ) => dispatch(moveDetaineeToCell(detaineeId, originRoom, destinationRoom)),
   // eslint-disable-next-line max-len
-  checkDetaineeInToCell: (detaineeId, cellName) => dispatch(operations.checkDetaineeInToCell(detaineeId, cellName)),
+  checkDetaineeInToCell: (
+    detaineeId,
+    cellName,
+    checkDetaineeInToCell = operations.checkDetaineeInToCell,
+  ) => dispatch(checkDetaineeInToCell(detaineeId, cellName)),
 });
 
 export default connect(
