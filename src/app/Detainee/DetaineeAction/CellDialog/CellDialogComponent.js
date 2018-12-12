@@ -66,11 +66,6 @@ const CellDialogComponent = ({
             </Typography>
           </DialogTitle>
         ) : (
-          // <DialogTitle>
-          //   {`Placing ${detainee.lastName}, ${detainee.firstName} in Cell ${
-          //     detainee.assignedCellName
-          //   }. Proceed with action?`}
-          // </DialogTitle>
           <DialogTitle>
             {`Moving ${detainee.lastName}, ${detainee.firstName} to Cell ${
               detainee.assignedCellName
@@ -84,6 +79,7 @@ const CellDialogComponent = ({
         )}
         <DialogActions>
           <Button
+            id="cancelButton"
             onClick={onClose}
             color="primary"
             disabled={isAssigningToRoom}
@@ -91,6 +87,7 @@ const CellDialogComponent = ({
             Cancel
           </Button>
           <Button
+            id="confirmButton"
             onClick={handleClick}
             color="primary"
             variant="contained"
