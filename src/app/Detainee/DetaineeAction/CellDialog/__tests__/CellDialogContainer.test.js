@@ -1,6 +1,6 @@
 import { mapStateToProps, mapDispatchToProps } from '../CellDialogContainer';
 
-describe('CellDialogComponent', () => {
+describe('CellDialogContainer', () => {
   it('should mapStateToProps', () => {
     const state = {};
     const currentActivity = 'activity';
