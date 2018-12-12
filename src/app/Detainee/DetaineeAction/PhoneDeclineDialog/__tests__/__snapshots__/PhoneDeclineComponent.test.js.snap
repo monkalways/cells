@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PhoneDeclineComponent should render Loading component when detention log is being updated 1`] = `
+<WithStyles(Dialog)
+  disableBackdropClick={true}
+  disableEscapeKeyDown={true}
+  onClose={[MockFunction]}
+  open={false}
+>
+  <WithStyles(DialogTitle)>
+    Record that Saget, Bob declined a phone call?
+  </WithStyles(DialogTitle)>
+  <WithStyles(DialogContent)>
+    <WithStyles(LoadingComponent)
+      size={50}
+    />
+  </WithStyles(DialogContent)>
+  <WithStyles(DialogActions)>
+    <WithStyles(Button)
+      color="primary"
+      disabled={true}
+      id="cancelButton"
+      onClick={[MockFunction]}
+    >
+      Cancel
+    </WithStyles(Button)>
+    <WithStyles(Button)
+      autoFocus={true}
+      color="primary"
+      disabled={true}
+      id="confirmButton"
+      onClick={[Function]}
+      variant="contained"
+    >
+      Confirm
+    </WithStyles(Button)>
+  </WithStyles(DialogActions)>
+</WithStyles(Dialog)>
+`;
+
+exports[`PhoneDeclineComponent should render content when detention log is not being updated 1`] = `
+<WithStyles(Dialog)
+  disableBackdropClick={false}
+  disableEscapeKeyDown={false}
+  onClose={[MockFunction]}
+  open={false}
+>
+  <WithStyles(DialogTitle)>
+    Record that Saget, Bob declined a phone call?
+  </WithStyles(DialogTitle)>
+  <WithStyles(DialogActions)>
+    <WithStyles(Button)
+      color="primary"
+      disabled={false}
+      id="cancelButton"
+      onClick={[MockFunction]}
+    >
+      Cancel
+    </WithStyles(Button)>
+    <WithStyles(Button)
+      autoFocus={true}
+      color="primary"
+      disabled={false}
+      id="confirmButton"
+      onClick={[Function]}
+      variant="contained"
+    >
+      Confirm
+    </WithStyles(Button)>
+  </WithStyles(DialogActions)>
+</WithStyles(Dialog)>
+`;
