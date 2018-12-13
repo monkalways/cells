@@ -1,5 +1,94 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`RoomSelectionDialogComponent should map available rooms to selectable radio buttons 1`] = `
+<WithStyles(Dialog)
+  disableBackdropClick={false}
+  disableEscapeKeyDown={false}
+  onClose={[MockFunction]}
+  onRendered={[Function]}
+  open={false}
+>
+  <WithStyles(DialogTitle)>
+    Please select usage room for Saget, Bob:
+  </WithStyles(DialogTitle)>
+  <WithStyles(DialogContent)>
+    <WithStyles(Grid)
+      alignItems="center"
+      container={true}
+      justify="center"
+    >
+      <WithStyles(FormControl)
+        component="fieldset"
+        required={true}
+      >
+        <WithStyles(FormGroup)>
+          <RadioGroup
+            name="availableRooms"
+            onChange={[Function]}
+            value={null}
+          >
+            <WithStyles(FormControlLabel)
+              control={
+                <WithStyles(Radio)
+                  className="radioButton"
+                />
+              }
+              disabled={false}
+              key="T1"
+              label={
+                <WithStyles(Typography)
+                  variant="h6"
+                >
+                  T1
+                </WithStyles(Typography)>
+              }
+              value="T1"
+            />
+            <WithStyles(FormControlLabel)
+              control={
+                <WithStyles(Radio)
+                  className="radioButton"
+                />
+              }
+              disabled={false}
+              key="T2"
+              label={
+                <WithStyles(Typography)
+                  variant="h6"
+                >
+                  T2
+                </WithStyles(Typography)>
+              }
+              value="T2"
+            />
+          </RadioGroup>
+        </WithStyles(FormGroup)>
+      </WithStyles(FormControl)>
+    </WithStyles(Grid)>
+  </WithStyles(DialogContent)>
+  <WithStyles(DialogActions)>
+    <WithStyles(Button)
+      color="primary"
+      disabled={false}
+      id="cancelButton"
+      onClick={[MockFunction]}
+    >
+      Cancel
+    </WithStyles(Button)>
+    <WithStyles(Button)
+      autoFocus={true}
+      color="primary"
+      disabled={false}
+      id="confirmButton"
+      onClick={[Function]}
+      variant="contained"
+    >
+      Confirm
+    </WithStyles(Button)>
+  </WithStyles(DialogActions)>
+</WithStyles(Dialog)>
+`;
+
 exports[`RoomSelectionDialogComponent should render Loading component if activity rooms are refreshing 1`] = `
 <WithStyles(Dialog)
   disableBackdropClick={false}

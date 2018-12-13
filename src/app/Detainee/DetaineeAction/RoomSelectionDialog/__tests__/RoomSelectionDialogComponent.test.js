@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Dialog, RadioGroup } from '@material-ui/core';
+import { Dialog, FormControlLabel, RadioGroup } from '@material-ui/core';
 
 import { RoomSelectionDialogComponent } from '../RoomSelectionDialogComponent';
 import Loading from '../../../../common/Loading';
@@ -97,6 +97,18 @@ describe('RoomSelectionDialogComponent', () => {
     expect(wrapper.find('#cancelButton')).toExist();
     expect(wrapper.find('#confirmButton')).toExist();
     expect(wrapper.find(Loading)).toExist();
+  });
+
+  it('should map available rooms to selectable radio buttons', () => {
+    areActivityRoomsRefreshing = false;
+    isAnyRoomForGivenActivityAvailable = true;
+    isAssigningToRoom = false;
+    availableRooms = ['T1', 'T2'];
+
+    const wrapper = setup();
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(FormControlLabel).at(0)).toHaveProp('value', 'T1');
+    expect(wrapper.find(FormControlLabel).at(1)).toHaveProp('value', 'T2');
   });
 
   it('should handle the dialog closing', () => {
