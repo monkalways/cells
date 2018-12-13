@@ -7,7 +7,7 @@ const defaultDetaineeProfileState = {
   loaded: false,
 };
 
-const detaineeProfileReducer = (
+export const detaineeProfileReducer = (
   state = defaultDetaineeProfileState,
   action,
 ) => {
@@ -37,7 +37,10 @@ const defaultActivityRoomsState = {
   updatingDetentionLog: false,
 };
 
-const activityRoomsReducer = (state = defaultActivityRoomsState, action) => {
+export const activityRoomsReducer = (
+  state = defaultActivityRoomsState,
+  action,
+) => {
   switch (action.type) {
     case types.GET_AVAILABLE_ACTIVITY_ROOMS:
       return {
