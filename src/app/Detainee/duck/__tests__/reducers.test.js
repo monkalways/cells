@@ -112,14 +112,17 @@ describe('Detainee reducers', () => {
       });
       expect(result.updatingDetentionLog).toBe(false);
     });
-  });
-  it('should update state by authentication action type LOG_OUT', () => {
-    const result = detaineeProfileReducer(undefined, {
-      type: authenticationTypes.LOG_OUT,
-    });
-    expect(result).toEqual({
-      data: {},
-      loaded: false,
+    it('should update state by authentication action type LOG_OUT', () => {
+      const result = activityRoomsReducer(undefined, {
+        type: authenticationTypes.LOG_OUT,
+      });
+      expect(result).toEqual({
+        availableActivityRooms: [],
+        assigningToRoom: false,
+        loaded: false,
+        isRefreshing: false,
+        updatingDetentionLog: false,
+      });
     });
   });
 });
