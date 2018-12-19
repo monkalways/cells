@@ -1,19 +1,8 @@
-import { actions as toastrActions } from 'react-redux-toastr';
 import { push } from 'connected-react-router';
 
 import actions from './actions';
 import services from './services';
 import commonUtils from '../../utils';
-
-const notify = (dispatch, errorMessage) => {
-  dispatch(toastrActions.add({
-    type: 'error',
-    title: 'Cannot move detainee',
-    attention: true,
-    message: errorMessage,
-    timeOut: 10000,
-  }));
-};
 
 const getAvailableActivityRooms = (
   getAvailableActivityRoomsService = services.getAvailableActivityRooms,
@@ -70,26 +59,12 @@ const checkDetaineeInToCell = (
   getAvailableActivityRoomsOperation = getAvailableActivityRooms,
   getDetaineeOperation = getDetainee,
   checkDetaineeInToCellService = services.checkInToCell,
-  notifyOperation = notify,
   sendErrorMessage = commonUtils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
     dispatch(assignToRoomAction());
-
-    // Attempt to check the detainee in to their cell
-    const { error } = await checkDetaineeInToCellService({
-      detaineeId,
-      cellName,
-    });
-
-    if (error) {
-      notifyOperation(dispatch, error);
-      dispatch(assignToRoomFailureAction());
-    } else {
-      dispatch(assignToRoomSuccessAction());
-    }
-
-    // Reload detainee profile
+    await checkDetaineeInToCellService(detaineeId, cellName);
+    dispatch(assignToRoomSuccessAction());
     dispatch(getDetaineeOperation(detaineeId));
     dispatch(getAvailableActivityRoomsOperation());
   } catch (error) {
@@ -108,27 +83,12 @@ const moveDetaineeToRoom = (
   getAvailableActivityRoomsOperation = getAvailableActivityRooms,
   getDetaineeOperation = getDetainee,
   moveDetaineeToRoomService = services.moveDetaineeToRoom,
-  notifyOperation = notify,
   sendErrorMessage = commonUtils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
     dispatch(assignToRoomAction());
-
-    // Attempt to move the detainee to a new room
-    const { error } = await moveDetaineeToRoomService({
-      detaineeId,
-      originRoom,
-      destinationRoom,
-    });
-
-    if (error) {
-      notifyOperation(dispatch, error);
-      dispatch(assignToRoomFailureAction());
-    } else {
-      dispatch(assignToRoomSuccessAction());
-    }
-
-    // Reload detainee profile
+    await moveDetaineeToRoomService(detaineeId, originRoom, destinationRoom);
+    dispatch(assignToRoomSuccessAction());
     dispatch(getDetaineeOperation(detaineeId));
     dispatch(getAvailableActivityRoomsOperation());
   } catch (error) {
