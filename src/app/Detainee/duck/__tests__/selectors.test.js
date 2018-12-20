@@ -1,4 +1,3 @@
-import { common } from '@material-ui/core/colors';
 import selectors from '../selectors';
 import constants from '../../constants';
 import commonConstants from '../../../constants';
@@ -18,28 +17,29 @@ describe('Detainee selectors', () => {
     expect(result).toEqual(isRefreshing);
   });
 
-  it('should select getAllAvailableActivityRoomsState', () => {
-    const usage = 'phone';
-    const state = {
-      detainee: {
-        activityRooms: {
-          availableActivityRooms: [
-            {
-              usage: 'Medical',
-              availableRooms: ['MD'],
-            },
-            {
-              usage: 'Phone',
-              availableRooms: ['T2', 'T4', 'T5'],
-            },
-          ],
+  it.each([
+    ['Phone', ['T1', 'T2'], ['T1', 'T2']],
+    ['Phone', [], []],
+    [null, ['T1', 'T2'], null],
+  ])(
+    'should select getAllAvailableActivityRoomsState',
+    (usage, availableRooms, expectedResult) => {
+      const state = {
+        detainee: {
+          activityRooms: {
+            availableActivityRooms: [
+              {
+                usage: 'Phone',
+                availableRooms,
+              },
+            ],
+          },
         },
-      },
-    };
-
-    const result = selectors.getAllAvailableActivityRoomsState(state, usage);
-    expect(result).toEqual(['T2', 'T4', 'T5']);
-  });
+      };
+      const result = selectors.getAllAvailableActivityRoomsState(state, usage);
+      expect(result).toEqual(expectedResult);
+    },
+  );
 
   it.each([
     ['?first=cells&second=B4', constants.CELL],
@@ -241,7 +241,7 @@ describe('Detainee selectors', () => {
     },
   );
 
-  it.each([['Phone', true], ['Medical', false]])(
+  it.each([['Phone', true], ['Medical', false], [null, false]])(
     'should select isAnyRoomForGivenActivityAvailableState',
     (usage, isAnyRoomAvailable) => {
       const state = {
