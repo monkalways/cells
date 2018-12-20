@@ -10,10 +10,12 @@ export const mapStateToProps = (
   isSignInDialogOpen = authenticationSelectors.isSignInDialogOpenState(state),
   isAuthenticating = authenticationSelectors.isAuthenticatingState(state),
   isAuthenticationFailed = authenticationSelectors.isAuthenticationFailedState(state),
+  errorMessage = authenticationSelectors.getErrorMessageState(state),
 ) => ({
   isSignInDialogOpen,
   isAuthenticating,
   isAuthenticationFailed,
+  errorMessage,
 });
 
 export const mapDispatchToProps = (dispatch) => ({

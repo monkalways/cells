@@ -9,18 +9,21 @@ describe('ScanCardDialogContainer', () => {
     const isSignInDialogOpen = false;
     const isAuthenticating = false;
     const isAuthenticationFailed = false;
+    const errorMessage = null;
 
     const result = mapStateToProps(
       state,
       isSignInDialogOpen,
       isAuthenticating,
       isAuthenticationFailed,
+      errorMessage,
     );
 
     expect(result).toEqual({
       isSignInDialogOpen,
       isAuthenticating,
       isAuthenticationFailed,
+      errorMessage,
     });
   });
 
