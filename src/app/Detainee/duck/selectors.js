@@ -49,26 +49,19 @@ const isInCellOptionAvailable = (state) => {
   const { first } = queryString.parse(state.router.location.search);
   const { location } = state.detainee.detaineeProfile.data;
 
-  // Case 3: If the user came from the cell management screen
-  // and the detainee location is 'In Progress' in an activity room, this button is disabled.
-  if (
-    first === constants.CELLS_QUERYSTRING
-    && location.toLowerCase().includes(commonConstants.IN_PROGRESS.toLowerCase())
-  ) return false;
-
-  // Case 1: User came from activity room screen.
-  // Detainee is leaving activity room or in transit to activity room
-  // and is now going back to their cell.
-  if (
-    first === constants.ACTIVITY_ROOMS_QUERYSTRING
-    && location.toLowerCase() !== commonConstants.CELL_IN_TRANSIT.toLowerCase()
-  ) return true;
-
-  // Case 2: User came from cell management screen.
-  // Detainee is currently in transit back to their cell and is being checked in.
+  // Case 1: If the user came from the cell management screen and the detainee location
+  // is "Cell - In Transit" this button is enabled so they can be checked in.
   if (
     first === constants.CELLS_QUERYSTRING
     && location.toLowerCase() === commonConstants.CELL_IN_TRANSIT.toLowerCase()
+  ) return true;
+
+  // Case 2: If the user came from the activity room screen and the detainee location
+  // is not already "Cell - In Transit", the button is enabled
+  // so they can be send back to their cell.
+  if (
+    first === constants.ACTIVITY_ROOMS_QUERYSTRING
+    && location.toLowerCase() !== commonConstants.CELL_IN_TRANSIT.toLowerCase()
   ) return true;
 
   return false;
@@ -80,12 +73,12 @@ const isDetaineeProfileLoaded = (state) => state.detainee.detaineeProfile.loaded
 const isPhoneDeclineOptionAvailable = (state) => {
   const { first } = queryString.parse(state.router.location.search);
   const { location } = state.detainee.detaineeProfile.data;
-  if (
-    first === constants.CELLS_QUERYSTRING
-    && location.toLowerCase().includes(commonConstants.IN_PROGRESS.toLowerCase())
-  ) return false;
 
-  return first === constants.CELLS_QUERYSTRING;
+  // Allow the phone decline option if navigating from the cell screen and
+  // detainee location is the cell ('').
+  if (first === constants.CELLS_QUERYSTRING && location === '') return true;
+
+  return false;
 };
 
 const isUpdatingDetentionLog = (state) => state.detainee.activityRooms.updatingDetentionLog;
