@@ -11,6 +11,7 @@ describe('authenticationReducer', () => {
       authenticationFailed: false,
       cardId: null,
       userName: null,
+      errorMessage: null,
     });
   });
 
@@ -39,14 +40,17 @@ describe('authenticationReducer', () => {
     expect(result.authenticated).toBe(true);
     expect(result.signInDialogOpen).toBe(false);
     expect(result.userName).toEqual('john');
+    expect(result.errorMessage).toBeNull();
   });
 
   it('should update state by AUTHENTICATE_FAIL', () => {
     const result = authenticationReducer(undefined, {
       type: types.AUTHENTICATE_FAIL,
+      errorMessage: 'Scan Card Problem',
     });
     expect(result.authenticating).toBe(false);
     expect(result.authenticated).toBe(false);
+    expect(result.errorMessage).toBe('Scan Card Problem');
   });
 
   it('should update state by CANCEL_AUTHENTICATE', () => {
@@ -60,6 +64,7 @@ describe('authenticationReducer', () => {
       authenticationFailed: false,
       cardId: null,
       userName: null,
+      errorMessage: null,
     });
   });
 
@@ -74,6 +79,7 @@ describe('authenticationReducer', () => {
       authenticationFailed: false,
       cardId: null,
       userName: null,
+      errorMessage: null,
     });
   });
 });

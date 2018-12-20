@@ -2,7 +2,6 @@ import { push } from 'connected-react-router';
 
 import actions from './actions';
 import services from './services';
-import utils from '../../utils';
 import commonConstants from '../../constants';
 
 const { startSignIn, startAuthenticate, cancelAuthenticate } = actions;
@@ -13,7 +12,6 @@ const authenticate = (
   startAuthenticateAction = actions.startAuthenticate,
   authenticateSuccessAction = actions.authenticateSuccess,
   authenticateFailAction = actions.authenticateFail,
-  sendErrorMessage = utils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
     dispatch(startAuthenticateAction(cardId));
@@ -21,11 +19,10 @@ const authenticate = (
     sessionStorage.setItem(commonConstants.SCAN_CARD_ID_KEY, cardId);
     dispatch(authenticateSuccessAction(userName));
   } catch (error) {
-    if (error.response.status === 401) {
-      dispatch(authenticateFailAction());
-    } else {
-      sendErrorMessage({ dispatch, error });
-    }
+    const errorMessage = error.response.data
+      ? error.response.data.Message
+      : null;
+    dispatch(authenticateFailAction(errorMessage));
   }
 };
 

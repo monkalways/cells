@@ -19,9 +19,14 @@ const propTypes = {
   isSignInDialogOpen: PropTypes.bool.isRequired,
   isAuthenticating: PropTypes.bool.isRequired,
   isAuthenticationFailed: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.string,
   onClose: PropTypes.func.isRequired,
   authenticate: PropTypes.func.isRequired,
   handleSignIn: PropTypes.func.isRequired,
+};
+
+const defaultProps = {
+  errorMessage: null,
 };
 
 export class ScanCardDialogComponent extends Component {
@@ -69,6 +74,7 @@ export class ScanCardDialogComponent extends Component {
       isSignInDialogOpen,
       isAuthenticating,
       isAuthenticationFailed,
+      errorMessage,
       onClose,
     } = this.props;
     return (
@@ -84,7 +90,7 @@ export class ScanCardDialogComponent extends Component {
             <Loading size={50} />
           ) : isAuthenticationFailed ? (
             <DialogContentText id="alert-dialog-description" variant="body1">
-              Authentication Failed
+              {errorMessage || 'Authentication Failed'}
             </DialogContentText>
           ) : (
             <DialogContentText id="alert-dialog-description" variant="body1">
@@ -113,6 +119,7 @@ export class ScanCardDialogComponent extends Component {
 }
 
 ScanCardDialogComponent.propTypes = propTypes;
+ScanCardDialogComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   dialog: {

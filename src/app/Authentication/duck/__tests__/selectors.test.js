@@ -50,4 +50,14 @@ describe('Authentication selectors', () => {
     const result = selectors.getUserNameState(state);
     expect(result).toBe(state.authentication.userName);
   });
+
+  it('should select errorMessage', () => {
+    const state = {
+      authentication: {
+        errorMessage: 'Scan Card Problem',
+      },
+    };
+    const result = selectors.getErrorMessageState(state);
+    expect(result).toBe(state.authentication.errorMessage);
+  });
 });
