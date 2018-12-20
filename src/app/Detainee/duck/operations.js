@@ -5,8 +5,8 @@ import services from './services';
 import commonUtils from '../../utils';
 
 const getAvailableActivityRooms = (
-  getAvailableActivityRoomsService = services.getAvailableActivityRooms,
   getAvailableActivityRoomsAction = actions.getAvailableActivityRooms,
+  getAvailableActivityRoomsService = services.getAvailableActivityRooms,
   getAvailableActivityRoomsSuccessAction = actions.getAvailableActivityRoomsSuccess,
   sendErrorMessage = commonUtils.sendErrorMessage,
 ) => async (dispatch) => {
@@ -20,8 +20,8 @@ const getAvailableActivityRooms = (
 };
 
 const getAvailableActivityRoomsRefresh = (
-  getAvailableActivityRoomsService = services.getAvailableActivityRooms,
   getAvailableActivityRoomsRefreshAction = actions.getAvailableActivityRoomsRefresh,
+  getAvailableActivityRoomsService = services.getAvailableActivityRooms,
   getAvailableActivityRoomsSuccessAction = actions.getAvailableActivityRoomsSuccess,
   sendErrorMessage = commonUtils.sendErrorMessage,
 ) => async (dispatch) => {
@@ -36,13 +36,13 @@ const getAvailableActivityRoomsRefresh = (
 
 const getDetainee = (
   id,
+  getDetaineeAction = actions.getDetainee,
   getDetaineeService = services.getDetainee,
-  getDetaineAction = actions.getDetainee,
   getDetaineeSuccessAction = actions.getDetaineeSuccess,
   sendErrorMessage = commonUtils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
-    await dispatch(getDetaineAction());
+    await dispatch(getDetaineeAction());
     const payload = await getDetaineeService(id);
     await dispatch(getDetaineeSuccessAction(payload));
   } catch (error) {
@@ -101,17 +101,17 @@ const savePhoneCallDecline = (
   arrestId,
   cellName,
   userName,
-  savePhoneCallDeclineService = services.savePhoneCallDecline,
   phoneCallDeclineAction = actions.declinePhoneCall,
   phoneCallDeclineFailureAction = actions.declinePhoneCallFailure,
   phoneCallDeclineSuccessAction = actions.declinePhoneCallSuccess,
   pushAction = push,
+  savePhoneCallDeclineService = services.savePhoneCallDecline,
   sendSuccessMessage = commonUtils.sendSuccessMessage,
   sendErrorMessage = commonUtils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
     dispatch(phoneCallDeclineAction());
-    await savePhoneCallDeclineService({ arrestId, userName });
+    await savePhoneCallDeclineService(arrestId, userName);
     dispatch(phoneCallDeclineSuccessAction());
     dispatch(pushAction(`/cells/${cellName}/home/`));
     sendSuccessMessage({ dispatch, message: 'Phone decline saved.' });
