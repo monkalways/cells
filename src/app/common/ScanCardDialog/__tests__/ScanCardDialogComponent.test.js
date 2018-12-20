@@ -11,6 +11,7 @@ describe('ScanCardDialogComponent', () => {
   let isSignInDialogOpen;
   let isAuthenticating;
   let isAuthenticationFailed;
+  let errorMessage;
   let onClose;
   let authenticate;
   let handleSignIn;
@@ -22,6 +23,7 @@ describe('ScanCardDialogComponent', () => {
     isSignInDialogOpen = false;
     isAuthenticating = false;
     isAuthenticationFailed = false;
+    errorMessage = null;
     onClose = jest.fn();
     authenticate = jest.fn();
     handleSignIn = jest.fn();
@@ -32,6 +34,7 @@ describe('ScanCardDialogComponent', () => {
     isSignInDialogOpen={isSignInDialogOpen}
     isAuthenticating={isAuthenticating}
     isAuthenticationFailed={isAuthenticationFailed}
+    errorMessage={errorMessage}
     onClose={onClose}
     authenticate={authenticate}
     handleSignIn={handleSignIn}
@@ -50,6 +53,14 @@ describe('ScanCardDialogComponent', () => {
     expect(wrapper).toMatchSnapshot();
 
     expect(wrapper.find(DialogContentText).html()).toContain('Authentication Failed');
+  });
+
+  it('should render error message if not authenticating but authentication failed', () => {
+    isAuthenticationFailed = true;
+    errorMessage = 'Scan Card Problem';
+    const wrapper = setup();
+
+    expect(wrapper.find(DialogContentText).html()).toContain('Scan Card Problem');
   });
 
   it('should render loading component if authenticating', () => {

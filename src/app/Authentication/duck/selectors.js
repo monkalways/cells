@@ -6,6 +6,7 @@ const isSignInDialogOpen = (state) => state.authentication.signInDialogOpen;
 const isAuthenticating = (state) => state.authentication.authenticating;
 const isAuthenticationFailed = (state) => state.authentication.authenticationFailed;
 const getUserName = (state) => state.authentication.userName;
+const getErrorMessage = (state) => state.authentication.errorMessage;
 
 // Reselect selectors
 const isAuthenticatedState = createSelector(
@@ -28,9 +29,11 @@ const isAuthenticationFailedState = createSelector(
   (authenticationFailed) => authenticationFailed,
 );
 
-const getUserNameState = createSelector(
-  [getUserName],
-  (userName) => userName,
+const getUserNameState = createSelector([getUserName], (userName) => userName);
+
+const getErrorMessageState = createSelector(
+  [getErrorMessage],
+  (errorMessage) => errorMessage,
 );
 
 export default {
@@ -39,4 +42,5 @@ export default {
   isAuthenticatingState,
   isAuthenticationFailedState,
   getUserNameState,
+  getErrorMessageState,
 };

@@ -14,8 +14,9 @@ const authenticateSuccess = (userName) => ({
   userName,
 });
 
-const authenticateFail = () => ({
+const authenticateFail = (errorMessage) => ({
   type: types.AUTHENTICATE_FAIL,
+  errorMessage,
 });
 
 const cancelAuthenticate = () => ({

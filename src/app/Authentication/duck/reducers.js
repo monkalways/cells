@@ -7,6 +7,7 @@ const defaultAuthenticationState = {
   authenticationFailed: false,
   cardId: null,
   userName: null,
+  errorMessage: null,
 };
 
 const authenticationReducer = (state = defaultAuthenticationState, action) => {
@@ -29,12 +30,14 @@ const authenticationReducer = (state = defaultAuthenticationState, action) => {
         authenticated: true,
         signInDialogOpen: false,
         userName: action.userName,
+        errorMessage: null,
       };
     case types.AUTHENTICATE_FAIL:
       return {
         ...state,
         authenticating: false,
         authenticationFailed: true,
+        errorMessage: action.errorMessage,
       };
     case types.CANCEL_AUTHENTICATE:
     case types.LOG_OUT:
