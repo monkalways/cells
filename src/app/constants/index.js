@@ -9,7 +9,7 @@ const SCAN_CARD_ID_KEY = 'x-swipe-card-serial-number';
 const HEADERS = () => ({
   headers: {
     'x-swipe-card-serial-number':
-        sessionStorage.getItem(SCAN_CARD_ID_KEY) || '',
+      sessionStorage.getItem(SCAN_CARD_ID_KEY) || '',
   },
 });
 
@@ -31,7 +31,9 @@ const MEDICAL_IN_PROGRESS = 'Medical - In Progress';
 const MEDICAL_IN_TRANSIT = 'Medical - In Transit';
 const PHONE_IN_PROGRESS = 'Phone - In Progress';
 const PHONE_IN_TRANSIT = 'Phone - In Transit';
+const RELEASE_HOLDING_IN_PROGRESS = 'Release Holding - In Progress';
 const RELEASE_HOLDING_IN_TRANSIT = 'Release Holding - In Transit';
+const REMAND_HOLDING_IN_PROGRESS = 'Remand Holding - In Progress';
 const REMAND_HOLDING_IN_TRANSIT = 'Remand Holding - In Transit';
 
 // Locations
@@ -58,7 +60,9 @@ export default {
   PHONE_IN_TRANSIT,
   SCAN_CARD_ID_KEY,
   SCAN_CARD_ID_LENGTH,
+  RELEASE_HOLDING_IN_PROGRESS,
   RELEASE_HOLDING_IN_TRANSIT,
+  REMAND_HOLDING_IN_PROGRESS,
   REMAND_HOLDING_IN_TRANSIT,
   UNAUTHENTICATED_TIMEOUT_SECONDS,
   VERSION_URL,

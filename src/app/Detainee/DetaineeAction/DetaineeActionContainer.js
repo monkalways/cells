@@ -53,14 +53,14 @@ export const mapStateToProps = (
   isReleaseRoomOptionAvailable = selectors.isActivityRoomOptionAvailableState(
     state,
     constants.RELEASE_ROOM,
-    '',
+    commonConstants.RELEASE_HOLDING_IN_PROGRESS,
     commonConstants.RELEASE_HOLDING_IN_TRANSIT,
   ),
   isRemandHoldingRoomOptionAvailable = selectors.isActivityRoomOptionAvailableState(
     state,
     constants.REMAND_HOLDING_ROOM,
-    '',
-    commonConstants.RELEASE_HOLDING_IN_TRANSIT,
+    commonConstants.REMAND_HOLDING_IN_PROGRESS,
+    commonConstants.REMAND_HOLDING_IN_TRANSIT,
   ),
 ) => ({
   isBailHearingRoom1OptionAvailable,
