@@ -292,8 +292,7 @@ export class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isRemandHoldingRoomOptionAvailable}
                   onClick={() => {
-                    // eslint-disable-next-line no-alert
-                    alert('Function not available');
+                    this.handleActivityRoomButtonClick(constants.REMAND_HOLDING_ROOM);
                   }}
                 >
                   <Avatar
@@ -310,8 +309,7 @@ export class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isReleaseRoomOptionAvailable}
                   onClick={() => {
-                    // eslint-disable-next-line no-alert
-                    alert('Function not available');
+                    this.handleActivityRoomButtonClick(constants.RELEASE_ROOM);
                   }}
                 >
                   <Avatar

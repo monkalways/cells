@@ -95,6 +95,8 @@ describe('DetaineeActionComponent', () => {
     ['#breathTest', constants.BREATH_TEST_ROOM],
     ['#bailHearing1', constants.BAIL_HEARING_ROOM_1],
     ['#bailHearing2', constants.BAIL_HEARING_ROOM_2],
+    ['#remandHolding', constants.REMAND_HOLDING_ROOM],
+    ['#releaseHolding', constants.RELEASE_ROOM],
   ])(
     'should update state when activity room button is clicked',
     (id, activityRoomUsage) => {
