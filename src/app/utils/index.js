@@ -9,8 +9,8 @@ const sendSuccessMessage = ({ dispatch, message }) => dispatch(toastrActions.add
 const sendErrorMessage = ({ dispatch, error }) => {
   const { message, response } = error;
   let errorMessage = message;
-  if (response && response.data && response.data.Message) {
-    errorMessage = response.data.Message;
+  if (response && response.data && response.data.message) {
+    errorMessage = response.data.message;
   }
   dispatch(toastrActions.add({
     type: 'error',
