@@ -2,33 +2,6 @@ import { combineReducers } from 'redux';
 import types from './types';
 import { types as authenticationTypes } from '../../Authentication/duck';
 
-const defaultDetaineeProfileState = {
-  data: {},
-  loaded: false,
-};
-
-export const detaineeProfileReducer = (
-  state = defaultDetaineeProfileState,
-  action,
-) => {
-  switch (action.type) {
-    case types.GET_DETAINEE:
-      return {
-        ...state,
-        loaded: false,
-      };
-    case types.GET_DETAINEE_SUCCESS:
-      return {
-        data: action.payload,
-        loaded: true,
-      };
-    case authenticationTypes.LOG_OUT:
-      return defaultDetaineeProfileState;
-    default:
-      return state;
-  }
-};
-
 const defaultActivityRoomsState = {
   availableActivityRooms: [],
   assigningToRoom: false,
@@ -96,9 +69,102 @@ export const activityRoomsReducer = (
   }
 };
 
+const defaultDetaineeProfileState = {
+  data: {},
+  loaded: false,
+};
+
+export const detaineeProfileReducer = (
+  state = defaultDetaineeProfileState,
+  action,
+) => {
+  switch (action.type) {
+    case types.GET_DETAINEE:
+      return {
+        ...state,
+        loaded: false,
+      };
+    case types.GET_DETAINEE_SUCCESS:
+      return {
+        data: action.payload,
+        loaded: true,
+      };
+    case authenticationTypes.LOG_OUT:
+      return defaultDetaineeProfileState;
+    default:
+      return state;
+  }
+};
+
+const defaultReleaseRoomsReducerState = {
+  data: {},
+  loaded: false,
+  refreshing: false,
+};
+
+export const releaseRoomsReducer = (
+  state = defaultReleaseRoomsReducerState,
+  action,
+) => {
+  switch (action.type) {
+    case types.GET_AVAILABLE_RELEASE_ROOMS:
+      return {
+        ...state,
+        loaded: false,
+      };
+    case types.GET_AVAILABLE_RELEASE_ROOMS_REFRESH:
+      return {
+        ...state,
+        refreshing: true,
+      };
+    case types.GET_AVAILABLE_RELEASE_ROOMS_SUCCESS:
+      return {
+        data: action.payload,
+        loaded: true,
+        refreshing: false,
+      };
+    default:
+      return state;
+  }
+};
+
+const defaultRemandRoomsReducerState = {
+  data: {},
+  loaded: false,
+  refreshing: false,
+};
+
+export const remandRoomsReducer = (
+  state = defaultRemandRoomsReducerState,
+  action,
+) => {
+  switch (action.type) {
+    case types.GET_AVAILABLE_REMAND_ROOMS:
+      return {
+        ...state,
+        loaded: false,
+      };
+    case types.GET_AVAILABLE_RELEASE_ROOMS_FAILURE:
+      return {
+        ...state,
+        refreshing: true,
+      };
+    case types.GET_AVAILABLE_REMAND_ROOMS_SUCCESS:
+      return {
+        data: action.payload,
+        loaded: true,
+        refreshing: false,
+      };
+    default:
+      return state;
+  }
+};
+
 const detaineeReducer = combineReducers({
-  detaineeProfile: detaineeProfileReducer,
   activityRooms: activityRoomsReducer,
+  detaineeProfile: detaineeProfileReducer,
+  releaseRooms: releaseRoomsReducer,
+  remandRooms: remandRoomsReducer,
 });
 
 export default detaineeReducer;
