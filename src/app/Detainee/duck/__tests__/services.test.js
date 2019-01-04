@@ -5,6 +5,16 @@ import services from '../services';
 import constants from '../../constants';
 
 describe('ActivityRoom services', () => {
+  it('should checkInToCell', async () => {
+    const detaineeId = '123';
+    const cellName = 'C1';
+    const mock = new MockAdapter(axios);
+    mock.onPost(constants.CHECK_IN_TO_CELL_URL(cellName)).reply(204);
+
+    const result = await services.checkInToCell(detaineeId, cellName);
+    expect(result).toBe(true);
+  });
+
   it('should getAvailableActivityRooms', async () => {
     const availableRooms = [
       {
@@ -24,6 +34,64 @@ describe('ActivityRoom services', () => {
       {
         usage: 'usage',
         availableRooms: ['T1', 'T2'],
+      },
+    ]);
+  });
+
+  it('should getAvailableReleaseRooms', async () => {
+    const availableRooms = [
+      {
+        designation: 'designation',
+        gender: 'gender',
+        id: 'id',
+        name: 'name',
+        usage: 'usage',
+        extraField: 'should not be mapped',
+      },
+    ];
+
+    const mock = new MockAdapter(axios);
+    mock
+      .onGet(constants.GET_AVAILABLE_RELEASE_ROOMS_URL)
+      .reply(200, availableRooms);
+
+    const result = await services.getAvailableReleaseRooms();
+    expect(result).toEqual([
+      {
+        designation: 'designation',
+        gender: 'gender',
+        id: 'id',
+        name: 'name',
+        usage: 'usage',
+      },
+    ]);
+  });
+
+  it('should getAvailableRemandRooms', async () => {
+    const availableRooms = [
+      {
+        designation: 'designation',
+        gender: 'gender',
+        id: 'id',
+        name: 'name',
+        usage: 'usage',
+        extraField: 'should not be mapped',
+      },
+    ];
+
+    const mock = new MockAdapter(axios);
+    mock
+      .onGet(constants.GET_AVAILABLE_REMAND_ROOMS_URL)
+      .reply(200, availableRooms);
+
+    const result = await services.getAvailableRemandRooms();
+    expect(result).toEqual([
+      {
+        designation: 'designation',
+        gender: 'gender',
+        id: 'id',
+        name: 'name',
+        usage: 'usage',
       },
     ]);
   });
@@ -109,16 +177,6 @@ describe('ActivityRoom services', () => {
       visualCellCheckCount: 13,
       withCaution: false,
     });
-  });
-
-  it('should checkInToCell', async () => {
-    const detaineeId = '123';
-    const cellName = 'C1';
-    const mock = new MockAdapter(axios);
-    mock.onPost(constants.CHECK_IN_TO_CELL_URL(cellName)).reply(204);
-
-    const result = await services.checkInToCell(detaineeId, cellName);
-    expect(result).toBe(true);
   });
 
   it('should moveDetaineeToRoom', async () => {
