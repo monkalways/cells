@@ -36,6 +36,32 @@ const getAvailableActivityRoomsSuccess = (payload) => ({
   payload,
 });
 
+const getAvailableReleaseRooms = () => ({
+  type: types.GET_AVAILABLE_RELEASE_ROOMS,
+});
+
+const getAvailableReleaseRoomsRefresh = () => ({
+  type: types.GET_AVAILABLE_RELEASE_ROOMS_REFRESH,
+});
+
+const getAvailableReleaseRoomsSuccess = (payload) => ({
+  type: types.GET_AVAILABLE_RELEASE_ROOMS_SUCCESS,
+  payload,
+});
+
+const getAvailableRemandRooms = () => ({
+  type: types.GET_AVAILABLE_REMAND_ROOMS,
+});
+
+const getAvailableRemandRoomsRefresh = () => ({
+  type: types.GET_AVAILABLE_REMAND_ROOMS_REFRESH,
+});
+
+const getAvailableRemandRoomsSuccess = (payload) => ({
+  type: types.GET_AVAILABLE_REMAND_ROOMS_SUCCESS,
+  payload,
+});
+
 const getDetainee = () => ({
   type: types.GET_DETAINEE,
 });
@@ -55,6 +81,12 @@ export default {
   getAvailableActivityRooms,
   getAvailableActivityRoomsRefresh,
   getAvailableActivityRoomsSuccess,
+  getAvailableReleaseRooms,
+  getAvailableReleaseRoomsRefresh,
+  getAvailableReleaseRoomsSuccess,
+  getAvailableRemandRooms,
+  getAvailableRemandRoomsRefresh,
+  getAvailableRemandRoomsSuccess,
   getDetainee,
   getDetaineeSuccess,
 };

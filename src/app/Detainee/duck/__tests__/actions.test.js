@@ -53,6 +53,48 @@ describe('Detainee actions', () => {
     });
   });
 
+  it('should create getAvailableReleaseRooms action object', () => {
+    const result = actions.getAvailableReleaseRooms();
+    expect(result).toEqual({ type: types.GET_AVAILABLE_RELEASE_ROOMS });
+  });
+
+  it('should create getAvailableReleaseRoomsRefresh action object', () => {
+    const result = actions.getAvailableReleaseRoomsRefresh();
+    expect(result).toEqual({
+      type: types.GET_AVAILABLE_RELEASE_ROOMS_REFRESH,
+    });
+  });
+
+  it('should create getAvailableReleaseRoomsSuccess action object', () => {
+    const payload = {};
+    const result = actions.getAvailableReleaseRoomsSuccess(payload);
+    expect(result).toEqual({
+      type: types.GET_AVAILABLE_RELEASE_ROOMS_SUCCESS,
+      payload,
+    });
+  });
+
+  it('should create getAvailableRemandRooms action object', () => {
+    const result = actions.getAvailableRemandRooms();
+    expect(result).toEqual({ type: types.GET_AVAILABLE_Remand_ROOMS });
+  });
+
+  it('should create getAvailableRemandRoomsRefresh action object', () => {
+    const result = actions.getAvailableRemandRoomsRefresh();
+    expect(result).toEqual({
+      type: types.GET_AVAILABLE_Remand_ROOMS_REFRESH,
+    });
+  });
+
+  it('should create getAvailableRemandRoomsSuccess action object', () => {
+    const payload = {};
+    const result = actions.getAvailableRemandRoomsSuccess(payload);
+    expect(result).toEqual({
+      type: types.GET_AVAILABLE_Remand_ROOMS_SUCCESS,
+      payload,
+    });
+  });
+
   it('should create getDetainee action object', () => {
     const result = actions.getDetainee();
     expect(result).toEqual({
