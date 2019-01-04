@@ -144,7 +144,7 @@ export const remandRoomsReducer = (
         ...state,
         loaded: false,
       };
-    case types.GET_AVAILABLE_RELEASE_ROOMS_FAILURE:
+    case types.GET_AVAILABLE_REMAND_ROOMS_REFRESH:
       return {
         ...state,
         refreshing: true,
