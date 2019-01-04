@@ -2,6 +2,17 @@ import axios from 'axios';
 import constants from '../constants';
 import commonConstants from '../../constants';
 
+const checkInToCell = async (detaineeId, cellName) => {
+  await axios.post(
+    constants.CHECK_IN_TO_CELL_URL(cellName),
+    {
+      custodyEventId: detaineeId,
+    },
+    commonConstants.HEADERS(),
+  );
+  return true;
+};
+
 const getAvailableActivityRooms = async () => {
   const response = await axios.get(
     constants.GET_AVAILABLE_ACTIVITY_ROOMS_URL,
@@ -11,6 +22,36 @@ const getAvailableActivityRooms = async () => {
   return response.data.map((activity) => ({
     usage: activity.usage,
     availableRooms: activity.availableRooms,
+  }));
+};
+
+const getAvailableReleaseRooms = async () => {
+  const response = await axios.get(
+    constants.GET_AVAILABLE_RELEASE_ROOMS_URL,
+    commonConstants.HEADERS(),
+  );
+
+  return response.data.map((room) => ({
+    designation: room.designation,
+    gender: room.gender,
+    id: room.id,
+    name: room.name,
+    usage: room.usage,
+  }));
+};
+
+const getAvailableRemandRooms = async () => {
+  const response = await axios.get(
+    constants.GET_AVAILABLE_REMAND_ROOMS_URL,
+    commonConstants.HEADERS(),
+  );
+
+  return response.data.map((room) => ({
+    designation: room.designation,
+    gender: room.gender,
+    id: room.id,
+    name: room.name,
+    usage: room.usage,
   }));
 };
 
@@ -97,17 +138,6 @@ const getDetainee = async (custodyEventId) => {
   };
 };
 
-const checkInToCell = async (detaineeId, cellName) => {
-  await axios.post(
-    constants.CHECK_IN_TO_CELL_URL(cellName),
-    {
-      custodyEventId: detaineeId,
-    },
-    commonConstants.HEADERS(),
-  );
-  return true;
-};
-
 const moveDetaineeToRoom = async (detaineeId, originRoom, destinationRoom) => {
   await axios.post(
     constants.MOVE_DETAINEE_TO_ROOM_URL(originRoom, destinationRoom),
@@ -138,6 +168,8 @@ const savePhoneCallDecline = async (arrestId, userName) => {
 export default {
   checkInToCell,
   getAvailableActivityRooms,
+  getAvailableReleaseRooms,
+  getAvailableRemandRooms,
   getDetainee,
   moveDetaineeToRoom,
   savePhoneCallDecline,

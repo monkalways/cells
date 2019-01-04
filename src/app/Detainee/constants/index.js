@@ -6,6 +6,12 @@ const CHECK_IN_TO_CELL_URL = (cellName) => `${process.env.REACT_APP_CELL_SERVICE
 const GET_AVAILABLE_ACTIVITY_ROOMS_URL = `${
   process.env.REACT_APP_CELL_SERVICE_URL
 }api/cells/rooms-availability`;
+const GET_AVAILABLE_RELEASE_ROOMS_URL = `${
+  process.env.REACT_APP_CELL_SERVICE_URL
+}api/cells/rooms-availability/release`;
+const GET_AVAILABLE_REMAND_ROOMS_URL = `${
+  process.env.REACT_APP_CELL_SERVICE_URL
+}api/cells/rooms-availability/remand`;
 const GET_DETAINEE_URL = (custodyEventId) => `${
   process.env.REACT_APP_CELL_SERVICE_URL
 }api/detainees/${custodyEventId}/profile`;
@@ -54,6 +60,8 @@ export default {
   DETENTION_LOG_DATA_TYPE_DETAINEE_ACTION,
   FINGERPRINTING_ROOM,
   GET_AVAILABLE_ACTIVITY_ROOMS_URL,
+  GET_AVAILABLE_RELEASE_ROOMS_URL,
+  GET_AVAILABLE_REMAND_ROOMS_URL,
   GET_DETAINEE_URL,
   INTERVIEW_ROOM,
   MEDICAL_ROOM,
