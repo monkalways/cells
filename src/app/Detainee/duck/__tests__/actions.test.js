@@ -76,13 +76,13 @@ describe('Detainee actions', () => {
 
   it('should create getAvailableRemandRooms action object', () => {
     const result = actions.getAvailableRemandRooms();
-    expect(result).toEqual({ type: types.GET_AVAILABLE_Remand_ROOMS });
+    expect(result).toEqual({ type: types.GET_AVAILABLE_REMAND_ROOMS });
   });
 
   it('should create getAvailableRemandRoomsRefresh action object', () => {
     const result = actions.getAvailableRemandRoomsRefresh();
     expect(result).toEqual({
-      type: types.GET_AVAILABLE_Remand_ROOMS_REFRESH,
+      type: types.GET_AVAILABLE_REMAND_ROOMS_REFRESH,
     });
   });
 
@@ -90,7 +90,7 @@ describe('Detainee actions', () => {
     const payload = {};
     const result = actions.getAvailableRemandRoomsSuccess(payload);
     expect(result).toEqual({
-      type: types.GET_AVAILABLE_Remand_ROOMS_SUCCESS,
+      type: types.GET_AVAILABLE_REMAND_ROOMS_SUCCESS,
       payload,
     });
   });
