@@ -16,7 +16,7 @@ describe('DetaineeActionContainer', () => {
     const isPhoneDeclineOptionAvailable = false;
     const isPhoneRoomOptionAvailable = false;
     const isReleaseRoomOptionAvailable = false;
-    const isRemandHoldingRoomOptionAvailable = false;
+    const isRemandRoomOptionAvailable = false;
 
     const result = mapStateToProps(
       state,
@@ -30,8 +30,7 @@ describe('DetaineeActionContainer', () => {
       isPhoneDeclineOptionAvailable,
       isPhoneRoomOptionAvailable,
       isReleaseRoomOptionAvailable,
-      isBailHearingRoom1OptionAvailable,
-      isRemandHoldingRoomOptionAvailable,
+      isRemandRoomOptionAvailable,
     );
 
     expect(result).toEqual({
@@ -45,7 +44,7 @@ describe('DetaineeActionContainer', () => {
       isPhoneDeclineOptionAvailable,
       isPhoneRoomOptionAvailable,
       isReleaseRoomOptionAvailable,
-      isRemandHoldingRoomOptionAvailable,
+      isRemandRoomOptionAvailable,
     });
   });
 
@@ -64,6 +63,26 @@ describe('DetaineeActionContainer', () => {
 
       expect(dispatch).toBeCalled();
       expect(getAvailableActivityRoomsMock).toBeCalled();
+    });
+
+    it('should getAvailableReleaseRooms', () => {
+      const { getAvailableReleaseRooms } = mapDispatchToProps(dispatch);
+      const getAvailableReleaseRoomsMock = jest.fn();
+
+      getAvailableReleaseRooms(getAvailableReleaseRoomsMock);
+
+      expect(dispatch).toBeCalled();
+      expect(getAvailableReleaseRoomsMock).toBeCalled();
+    });
+
+    it('should getAvailableRemandRooms', () => {
+      const { getAvailableRemandRooms } = mapDispatchToProps(dispatch);
+      const getAvailableRemandRoomsMock = jest.fn();
+
+      getAvailableRemandRooms(getAvailableRemandRoomsMock);
+
+      expect(dispatch).toBeCalled();
+      expect(getAvailableRemandRoomsMock).toBeCalled();
     });
 
     it('should getDetainee', () => {

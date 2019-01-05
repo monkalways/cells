@@ -11,6 +11,8 @@ import RoomSelectionDialog from '../RoomSelectionDialog';
 describe('DetaineeActionComponent', () => {
   let detainee;
   let getAvailableActivityRooms;
+  let getAvailableReleaseRooms;
+  let getAvailableRemandRooms;
   let getDetainee;
   let isBailHearingRoom1OptionAvailable;
   let isBailHearingRoom2OptionAvailable;
@@ -31,6 +33,8 @@ describe('DetaineeActionComponent', () => {
       lastName: 'Saget',
     };
     getAvailableActivityRooms = jest.fn();
+    getAvailableReleaseRooms = jest.fn();
+    getAvailableRemandRooms = jest.fn();
     getDetainee = jest.fn();
     isBailHearingRoom1OptionAvailable = false;
     isBailHearingRoom2OptionAvailable = false;
@@ -58,6 +62,8 @@ describe('DetaineeActionComponent', () => {
       classes={classes}
       detainee={detainee}
       getAvailableActivityRooms={getAvailableActivityRooms}
+      getAvailableReleaseRooms={getAvailableReleaseRooms}
+      getAvailableRemandRooms={getAvailableRemandRooms}
       getDetainee={getDetainee}
       isBailHearingRoom1OptionAvailable={isBailHearingRoom1OptionAvailable}
       isBailHearingRoom2OptionAvailable={isBailHearingRoom2OptionAvailable}

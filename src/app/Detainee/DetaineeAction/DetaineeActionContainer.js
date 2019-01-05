@@ -50,18 +50,8 @@ export const mapStateToProps = (
     commonConstants.PHONE_IN_PROGRESS,
     commonConstants.PHONE_IN_TRANSIT,
   ),
-  isReleaseRoomOptionAvailable = selectors.isActivityRoomOptionAvailableState(
-    state,
-    constants.RELEASE_ROOM,
-    commonConstants.RELEASE_HOLDING_IN_PROGRESS,
-    commonConstants.RELEASE_HOLDING_IN_TRANSIT,
-  ),
-  isRemandHoldingRoomOptionAvailable = selectors.isActivityRoomOptionAvailableState(
-    state,
-    constants.REMAND_HOLDING_ROOM,
-    commonConstants.REMAND_HOLDING_IN_PROGRESS,
-    commonConstants.REMAND_HOLDING_IN_TRANSIT,
-  ),
+  isReleaseRoomOptionAvailable = selectors.isReleaseRoomOptionAvailableState(state),
+  isRemandRoomOptionAvailable = selectors.isRemandRoomOptionAvailableState(state),
 ) => ({
   isBailHearingRoom1OptionAvailable,
   isBailHearingRoom2OptionAvailable,
@@ -73,12 +63,19 @@ export const mapStateToProps = (
   isPhoneDeclineOptionAvailable,
   isPhoneRoomOptionAvailable,
   isReleaseRoomOptionAvailable,
-  isRemandHoldingRoomOptionAvailable,
+  isRemandRoomOptionAvailable,
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  // eslint-disable-next-line max-len
-  getAvailableActivityRooms: (getAvailableActivityRooms = operations.getAvailableActivityRooms) => dispatch(getAvailableActivityRooms()),
+  getAvailableActivityRooms: (getAvailableActivityRooms = operations.getAvailableActivityRooms) => {
+    dispatch(getAvailableActivityRooms());
+  },
+  getAvailableReleaseRooms: (getAvailableReleaseRooms = operations.getAvailableReleaseRooms) => {
+    dispatch(getAvailableReleaseRooms());
+  },
+  getAvailableRemandRooms: (getAvailableRemandRooms = operations.getAvailableRemandRooms) => {
+    dispatch(getAvailableRemandRooms());
+  },
   getDetainee: (id, getDetainee = operations.getDetainee) => dispatch(getDetainee(id)),
 });
 

@@ -37,6 +37,8 @@ const propTypes = {
     lastName: PropTypes.string.isRequired,
   }).isRequired,
   getAvailableActivityRooms: PropTypes.func.isRequired,
+  getAvailableReleaseRooms: PropTypes.func.isRequired,
+  getAvailableRemandRooms: PropTypes.func.isRequired,
   getDetainee: PropTypes.func.isRequired,
   isBailHearingRoom1OptionAvailable: PropTypes.bool.isRequired,
   isBailHearingRoom2OptionAvailable: PropTypes.bool.isRequired,
@@ -48,7 +50,7 @@ const propTypes = {
   isPhoneDeclineOptionAvailable: PropTypes.bool.isRequired,
   isPhoneRoomOptionAvailable: PropTypes.bool.isRequired,
   isReleaseRoomOptionAvailable: PropTypes.bool.isRequired,
-  isRemandHoldingRoomOptionAvailable: PropTypes.bool.isRequired,
+  isRemandRoomOptionAvailable: PropTypes.bool.isRequired,
 };
 
 export class DetaineeActionComponent extends Component {
@@ -105,8 +107,16 @@ export class DetaineeActionComponent extends Component {
       isRoomSelectionDialogOpen: false,
       isPhoneDialogOpen: false,
     });
-    const { getAvailableActivityRooms, getDetainee, detainee } = this.props;
+    const {
+      getAvailableActivityRooms,
+      getAvailableReleaseRooms,
+      getAvailableRemandRooms,
+      getDetainee,
+      detainee,
+    } = this.props;
     getAvailableActivityRooms();
+    getAvailableReleaseRooms();
+    getAvailableRemandRooms();
     getDetainee(detainee.id);
   };
 
@@ -124,7 +134,7 @@ export class DetaineeActionComponent extends Component {
       isPhoneDeclineOptionAvailable,
       isPhoneRoomOptionAvailable,
       isReleaseRoomOptionAvailable,
-      isRemandHoldingRoomOptionAvailable,
+      isRemandRoomOptionAvailable,
     } = this.props;
 
     const {
@@ -290,14 +300,14 @@ export class DetaineeActionComponent extends Component {
                 <IconButton
                   id="remandHolding"
                   className={classes.button}
-                  disabled={!isRemandHoldingRoomOptionAvailable}
+                  disabled={!isRemandRoomOptionAvailable}
                   onClick={() => {
                     this.handleActivityRoomButtonClick(constants.REMAND_HOLDING_ROOM);
                   }}
                 >
                   <Avatar
                     className={classNames(classes.avatar, {
-                      [classes.disabled]: !isRemandHoldingRoomOptionAvailable,
+                      [classes.disabled]: !isRemandRoomOptionAvailable,
                     })}
                     src={RemandHoldingIcon}
                   />
