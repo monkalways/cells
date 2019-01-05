@@ -34,6 +34,66 @@ const getAvailableActivityRoomsRefresh = (
   }
 };
 
+const getAvailableReleaseRooms = (
+  getAvailableReleaseRoomsAction = actions.getAvailableReleaseRooms,
+  getAvailableReleaseRoomsService = services.getAvailableReleaseRooms,
+  getAvailableReleaseRoomsSuccessAction = actions.getAvailableReleaseRoomsSuccess,
+  sendErrorMessage = commonUtils.sendErrorMessage,
+) => async (dispatch) => {
+  try {
+    await dispatch(getAvailableReleaseRoomsAction());
+    const payload = await getAvailableReleaseRoomsService();
+    await dispatch(getAvailableReleaseRoomsSuccessAction(payload));
+  } catch (error) {
+    sendErrorMessage({ dispatch, error });
+  }
+};
+
+const getAvailableReleaseRoomsRefresh = (
+  getAvailableReleaseRoomsRefreshAction = actions.getAvailableReleaseRoomsRefresh,
+  getAvailableReleaseRoomsService = services.getAvailableReleaseRooms,
+  getAvailableReleaseRoomsSuccessAction = actions.getAvailableReleaseRoomsSuccess,
+  sendErrorMessage = commonUtils.sendErrorMessage,
+) => async (dispatch) => {
+  try {
+    await dispatch(getAvailableReleaseRoomsRefreshAction());
+    const payload = await getAvailableReleaseRoomsService();
+    await dispatch(getAvailableReleaseRoomsSuccessAction(payload));
+  } catch (error) {
+    sendErrorMessage({ dispatch, error });
+  }
+};
+
+const getAvailableRemandRooms = (
+  getAvailableRemandRoomsAction = actions.getAvailableRemandRooms,
+  getAvailableRemandRoomsService = services.getAvailableRemandRooms,
+  getAvailableRemandRoomsSuccessAction = actions.getAvailableRemandRoomsSuccess,
+  sendErrorMessage = commonUtils.sendErrorMessage,
+) => async (dispatch) => {
+  try {
+    await dispatch(getAvailableRemandRoomsAction());
+    const payload = await getAvailableRemandRoomsService();
+    await dispatch(getAvailableRemandRoomsSuccessAction(payload));
+  } catch (error) {
+    sendErrorMessage({ dispatch, error });
+  }
+};
+
+const getAvailableRemandRoomsRefresh = (
+  getAvailableRemandRoomsRefreshAction = actions.getAvailableRemandRoomsRefresh,
+  getAvailableRemandRoomsService = services.getAvailableRemandRooms,
+  getAvailableRemandRoomsSuccessAction = actions.getAvailableRemandRoomsSuccess,
+  sendErrorMessage = commonUtils.sendErrorMessage,
+) => async (dispatch) => {
+  try {
+    await dispatch(getAvailableRemandRoomsRefreshAction());
+    const payload = await getAvailableRemandRoomsService();
+    await dispatch(getAvailableRemandRoomsSuccessAction(payload));
+  } catch (error) {
+    sendErrorMessage({ dispatch, error });
+  }
+};
+
 const getDetainee = (
   id,
   getDetaineeAction = actions.getDetainee,
@@ -123,9 +183,13 @@ const savePhoneCallDecline = (
 
 export default {
   checkDetaineeInToCell,
-  getAvailableActivityRoomsRefresh,
-  moveDetaineeToRoom,
   getAvailableActivityRooms,
+  getAvailableActivityRoomsRefresh,
+  getAvailableReleaseRooms,
+  getAvailableReleaseRoomsRefresh,
+  getAvailableRemandRooms,
+  getAvailableRemandRoomsRefresh,
   getDetainee,
+  moveDetaineeToRoom,
   savePhoneCallDecline,
 };

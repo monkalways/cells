@@ -96,6 +96,196 @@ describe('Detainee operations', () => {
     });
   });
 
+  describe('getAvailableReleaseRooms', () => {
+    it('should return successfully when getAvailableReleaseRoomsService returns valid rooms', async () => {
+      const availableRooms = [];
+
+      const getAvailableReleaseRoomsAction = jest.fn();
+      const getAvailableReleaseRoomsService = jest.fn();
+      getAvailableReleaseRoomsService.mockReturnValue(availableRooms);
+      const getAvailableReleaseRoomsSuccessAction = jest.fn();
+      const dispatch = jest.fn();
+
+      await operations.getAvailableReleaseRooms(
+        getAvailableReleaseRoomsAction,
+        getAvailableReleaseRoomsService,
+        getAvailableReleaseRoomsSuccessAction,
+      )(dispatch);
+
+      expect(getAvailableReleaseRoomsAction).toBeCalled();
+      expect(getAvailableReleaseRoomsService).toBeCalled();
+      expect(getAvailableReleaseRoomsSuccessAction).toBeCalledWith(availableRooms);
+      expect(dispatch).toBeCalledTimes(2);
+    });
+
+    it('should send an error message when an error occurs', async () => {
+      const error = new Error('Network error');
+
+      const getAvailableReleaseRoomsAction = jest.fn();
+      const getAvailableReleaseRoomsService = jest.fn();
+      getAvailableReleaseRoomsService.mockImplementation(() => {
+        throw error;
+      });
+      const getAvailableReleaseRoomsSuccessAction = jest.fn();
+      const sendErrorMessage = jest.fn();
+      const dispatch = jest.fn();
+
+      await operations.getAvailableReleaseRooms(
+        getAvailableReleaseRoomsAction,
+        getAvailableReleaseRoomsService,
+        getAvailableReleaseRoomsSuccessAction,
+        sendErrorMessage,
+      )(dispatch);
+
+      expect(getAvailableReleaseRoomsAction).toBeCalled();
+      expect(getAvailableReleaseRoomsService).toBeCalled();
+      expect(sendErrorMessage).toBeCalledWith({ dispatch, error });
+      expect(dispatch).toBeCalledTimes(1);
+    });
+  });
+
+  describe('getAvailableReleaseRoomsRefresh', () => {
+    it('should return successfully when getAvailableReleaseRoomsService returns valid rooms', async () => {
+      const availableRooms = [];
+
+      const getAvailableReleaseRoomsRefreshAction = jest.fn();
+      const getAvailableReleaseRoomsService = jest.fn();
+      getAvailableReleaseRoomsService.mockReturnValue(availableRooms);
+      const getAvailableReleaseRoomsSuccessAction = jest.fn();
+      const dispatch = jest.fn();
+
+      await operations.getAvailableReleaseRoomsRefresh(
+        getAvailableReleaseRoomsRefreshAction,
+        getAvailableReleaseRoomsService,
+        getAvailableReleaseRoomsSuccessAction,
+      )(dispatch);
+
+      expect(getAvailableReleaseRoomsRefreshAction).toBeCalled();
+      expect(getAvailableReleaseRoomsSuccessAction).toBeCalledWith(availableRooms);
+      expect(dispatch).toBeCalledTimes(2);
+    });
+
+    it('should send an error message when an error occurs', async () => {
+      const error = new Error('Network error');
+
+      const getAvailableReleaseRoomsRefreshAction = jest.fn();
+      const getAvailableReleaseRoomsService = jest.fn();
+      getAvailableReleaseRoomsService.mockImplementation(() => {
+        throw error;
+      });
+      const getAvailableReleaseRoomsSuccessAction = jest.fn();
+      const sendErrorMessage = jest.fn();
+      const dispatch = jest.fn();
+
+      await operations.getAvailableReleaseRoomsRefresh(
+        getAvailableReleaseRoomsRefreshAction,
+        getAvailableReleaseRoomsService,
+        getAvailableReleaseRoomsSuccessAction,
+        sendErrorMessage,
+      )(dispatch);
+
+      expect(getAvailableReleaseRoomsRefreshAction).toBeCalled();
+      expect(getAvailableReleaseRoomsService).toBeCalled();
+      expect(sendErrorMessage).toBeCalledWith({ dispatch, error });
+      expect(dispatch).toBeCalledTimes(1);
+    });
+  });
+
+  describe('getAvailableRemandRooms', () => {
+    it('should return successfully when getAvailableRemandRoomsService returns valid rooms', async () => {
+      const availableRooms = [];
+
+      const getAvailableRemandRoomsAction = jest.fn();
+      const getAvailableRemandRoomsService = jest.fn();
+      getAvailableRemandRoomsService.mockReturnValue(availableRooms);
+      const getAvailableRemandRoomsSuccessAction = jest.fn();
+      const dispatch = jest.fn();
+
+      await operations.getAvailableRemandRooms(
+        getAvailableRemandRoomsAction,
+        getAvailableRemandRoomsService,
+        getAvailableRemandRoomsSuccessAction,
+      )(dispatch);
+
+      expect(getAvailableRemandRoomsAction).toBeCalled();
+      expect(getAvailableRemandRoomsService).toBeCalled();
+      expect(getAvailableRemandRoomsSuccessAction).toBeCalledWith(availableRooms);
+      expect(dispatch).toBeCalledTimes(2);
+    });
+
+    it('should send an error message when an error occurs', async () => {
+      const error = new Error('Network error');
+
+      const getAvailableRemandRoomsAction = jest.fn();
+      const getAvailableRemandRoomsService = jest.fn();
+      getAvailableRemandRoomsService.mockImplementation(() => {
+        throw error;
+      });
+      const getAvailableRemandRoomsSuccessAction = jest.fn();
+      const sendErrorMessage = jest.fn();
+      const dispatch = jest.fn();
+
+      await operations.getAvailableRemandRooms(
+        getAvailableRemandRoomsAction,
+        getAvailableRemandRoomsService,
+        getAvailableRemandRoomsSuccessAction,
+        sendErrorMessage,
+      )(dispatch);
+
+      expect(getAvailableRemandRoomsAction).toBeCalled();
+      expect(getAvailableRemandRoomsService).toBeCalled();
+      expect(sendErrorMessage).toBeCalledWith({ dispatch, error });
+      expect(dispatch).toBeCalledTimes(1);
+    });
+  });
+
+  describe('getAvailableRemandRoomsRefresh', () => {
+    it('should return successfully when getAvailableRemandRoomsService returns valid rooms', async () => {
+      const availableRooms = [];
+
+      const getAvailableRemandRoomsRefreshAction = jest.fn();
+      const getAvailableRemandRoomsService = jest.fn();
+      getAvailableRemandRoomsService.mockReturnValue(availableRooms);
+      const getAvailableRemandRoomsSuccessAction = jest.fn();
+      const dispatch = jest.fn();
+
+      await operations.getAvailableRemandRoomsRefresh(
+        getAvailableRemandRoomsRefreshAction,
+        getAvailableRemandRoomsService,
+        getAvailableRemandRoomsSuccessAction,
+      )(dispatch);
+
+      expect(getAvailableRemandRoomsRefreshAction).toBeCalled();
+      expect(getAvailableRemandRoomsSuccessAction).toBeCalledWith(availableRooms);
+      expect(dispatch).toBeCalledTimes(2);
+    });
+
+    it('should send an error message when an error occurs', async () => {
+      const error = new Error('Network error');
+
+      const getAvailableRemandRoomsRefreshAction = jest.fn();
+      const getAvailableRemandRoomsService = jest.fn();
+      getAvailableRemandRoomsService.mockImplementation(() => {
+        throw error;
+      });
+      const getAvailableRemandRoomsSuccessAction = jest.fn();
+      const sendErrorMessage = jest.fn();
+      const dispatch = jest.fn();
+
+      await operations.getAvailableRemandRoomsRefresh(
+        getAvailableRemandRoomsRefreshAction,
+        getAvailableRemandRoomsService,
+        getAvailableRemandRoomsSuccessAction,
+        sendErrorMessage,
+      )(dispatch);
+
+      expect(getAvailableRemandRoomsRefreshAction).toBeCalled();
+      expect(getAvailableRemandRoomsService).toBeCalled();
+      expect(sendErrorMessage).toBeCalledWith({ dispatch, error });
+      expect(dispatch).toBeCalledTimes(1);
+    });
+  });
+
   describe('getDetainee', () => {
     it('should return successfully when getDetaineeService returns a valid detainee', async () => {
       const id = 'id';
