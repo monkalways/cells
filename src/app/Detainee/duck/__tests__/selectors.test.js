@@ -17,6 +17,34 @@ describe('Detainee selectors', () => {
     expect(result).toEqual(isRefreshing);
   });
 
+  it('should select areReleaseRoomsRefreshingState', () => {
+    const refreshing = true;
+    const state = {
+      detainee: {
+        releaseRooms: {
+          refreshing,
+        },
+      },
+    };
+
+    const result = selectors.areReleaseRoomsRefreshingState(state);
+    expect(result).toEqual(refreshing);
+  });
+
+  it('should select areRemandRoomsRefreshingState', () => {
+    const refreshing = true;
+    const state = {
+      detainee: {
+        remandRooms: {
+          refreshing,
+        },
+      },
+    };
+
+    const result = selectors.areRemandRoomsRefreshingState(state);
+    expect(result).toEqual(refreshing);
+  });
+
   it.each([
     ['Phone', ['T1', 'T2'], ['T1', 'T2']],
     ['Phone', [], []],
@@ -194,7 +222,7 @@ describe('Detainee selectors', () => {
       true,
     ],
   ])(
-    'should select getCurrentRoomState',
+    'should select isActivityRoomOptionAvailableState',
     (
       usage,
       usageInProgress,
@@ -284,19 +312,32 @@ describe('Detainee selectors', () => {
   });
 
   it.each([
-    [true, true, true],
-    [true, false, false],
-    [false, true, false],
-    [false, false, false],
+    [true, true, true, true, true],
+    [false, true, true, true, false],
+    [true, false, true, true, false],
+    [true, true, false, true, false],
+    [true, true, true, false, false],
   ])(
-    'should select isAnyRoomForGivenActivityAvailableState',
-    (activityRoomLoaded, detaineeProfileLoaded, isDetaineeProfileLoaded) => {
+    'should select isDetaineeProfileLoadedState',
+    (
+      activityRoomLoaded,
+      detaineeProfileLoaded,
+      releaseRoomsLoaded,
+      remandRoomsLoaded,
+      isDetaineeProfileLoaded,
+    ) => {
       const state = {
         detainee: {
           activityRooms: {
             loaded: activityRoomLoaded,
           },
           detaineeProfile: { loaded: detaineeProfileLoaded },
+          releaseRooms: {
+            loaded: releaseRoomsLoaded,
+          },
+          remandRooms: {
+            loaded: remandRoomsLoaded,
+          },
         },
       };
 
@@ -315,7 +356,7 @@ describe('Detainee selectors', () => {
     ],
     [
       // User came from activity room screen and detainee is not "Cell - In Transit"
-      // Enable button so detainee can be send back to cell.
+      // Enable button so detainee can be sent back to cell.
       '?first=activity-rooms&second=phone',
       commonConstants.PHONE_IN_PROGRESS,
       true,
@@ -378,6 +419,236 @@ describe('Detainee selectors', () => {
 
       const result = selectors.isPhoneDeclineOptionAvailableState(state);
       expect(result).toEqual(isDeclinePhoneOptionAvailable);
+    },
+  );
+
+  it.each([
+    [
+      // User came from cell management screen and detainee is in progress for an activity.
+      // Disable button as the request should be coming from the detainee's activity room.
+      '?first=cells&second=B4',
+      commonConstants.PHONE_IN_PROGRESS,
+      [
+        {
+          designation: 'DETAINEE MANAGEMENT UNIT',
+          gender: 'Male',
+        },
+      ],
+      false,
+    ],
+    [
+      // User came from cell management screen and detainee is already in transit to Release Room.
+      // Disable button.
+      '?first=cells&second=B4',
+      commonConstants.RELEASE_HOLDING_IN_TRANSIT,
+      [
+        {
+          designation: 'DETAINEE MANAGEMENT UNIT',
+          gender: 'Male',
+        },
+      ],
+      false,
+    ],
+    [
+      // Detainee is cell and user came from cell management screen.
+      // Enable button.
+      '?first=cells&second=B4',
+      '',
+      [
+        {
+          designation: 'DETAINEE MANAGEMENT UNIT',
+          gender: 'Male',
+        },
+      ],
+      true,
+    ],
+    [
+      // Detainee is in transit for a different activity and user came from cell management screen.
+      // Enable button.
+      '?first=cells&second=B4',
+      commonConstants.PHONE_IN_TRANSIT,
+      [
+        {
+          designation: 'DETAINEE MANAGEMENT UNIT',
+          gender: 'Male',
+        },
+      ],
+      true,
+    ],
+    [
+      // Release room designation doesn't match detainee's designation.
+      // Disable button.
+      '?first=cells&second=B4',
+      commonConstants.PHONE_IN_TRANSIT,
+      [
+        {
+          designation: 'NORTHWEST',
+          gender: 'Male',
+        },
+      ],
+      false,
+    ],
+    [
+      // Release room gender doesn't match detainee's gender.
+      // Disable button.
+      '?first=cells&second=B4',
+      commonConstants.PHONE_IN_TRANSIT,
+      [
+        {
+          designation: 'DETAINEE MANAGEMENT UNIT',
+          gender: 'Other',
+        },
+      ],
+      false,
+    ],
+    [
+      // No release rooms returned by the service.
+      // Disable button.
+      '?first=cells&second=B4',
+      commonConstants.PHONE_IN_TRANSIT,
+      [],
+      false,
+    ],
+  ])(
+    'should select isReleaseRoomOptionAvailableState',
+    (search, location, data, isReleaseRoomOptionAvailable) => {
+      const state = {
+        router: {
+          location: {
+            search,
+          },
+        },
+        detainee: {
+          detaineeProfile: {
+            data: {
+              detentionUnitName: 'DETAINEE MANAGEMENT UNIT',
+              gender: 'Male',
+              location,
+            },
+          },
+          releaseRooms: {
+            data,
+          },
+        },
+      };
+
+      const result = selectors.isReleaseRoomOptionAvailableState(state);
+      expect(result).toEqual(isReleaseRoomOptionAvailable);
+    },
+  );
+
+  it.each([
+    [
+      // User came from cell management screen and detainee is in progress for an activity.
+      // Disable button as the request should be coming from the detainee's activity room.
+      '?first=cells&second=B4',
+      commonConstants.PHONE_IN_PROGRESS,
+      [
+        {
+          designation: 'DETAINEE MANAGEMENT UNIT',
+          gender: 'Male',
+        },
+      ],
+      false,
+    ],
+    [
+      // User came from cell management screen and detainee is already in transit to Remand Room.
+      // Disable button.
+      '?first=cells&second=B4',
+      commonConstants.REMAND_HOLDING_IN_TRANSIT,
+      [
+        {
+          designation: 'DETAINEE MANAGEMENT UNIT',
+          gender: 'Male',
+        },
+      ],
+      false,
+    ],
+    [
+      // Detainee is cell and user came from cell management screen.
+      // Enable button.
+      '?first=cells&second=B4',
+      '',
+      [
+        {
+          designation: 'DETAINEE MANAGEMENT UNIT',
+          gender: 'Male',
+        },
+      ],
+      true,
+    ],
+    [
+      // Detainee is in transit for a different activity and user came from cell management screen.
+      // Enable button.
+      '?first=cells&second=B4',
+      commonConstants.PHONE_IN_TRANSIT,
+      [
+        {
+          designation: 'DETAINEE MANAGEMENT UNIT',
+          gender: 'Male',
+        },
+      ],
+      true,
+    ],
+    [
+      // Remand room designation doesn't match detainee's designation.
+      // Disable button.
+      '?first=cells&second=B4',
+      commonConstants.PHONE_IN_TRANSIT,
+      [
+        {
+          designation: 'NORTHWEST',
+          gender: 'Male',
+        },
+      ],
+      false,
+    ],
+    [
+      // Remand room gender doesn't match detainee's gender.
+      // Disable button.
+      '?first=cells&second=B4',
+      commonConstants.PHONE_IN_TRANSIT,
+      [
+        {
+          designation: 'DETAINEE MANAGEMENT UNIT',
+          gender: 'Other',
+        },
+      ],
+      false,
+    ],
+    [
+      // No remand rooms returned by the service.
+      // Disable button.
+      '?first=cells&second=B4',
+      commonConstants.PHONE_IN_TRANSIT,
+      [],
+      false,
+    ],
+  ])(
+    'should select isRemandRoomOptionAvailable',
+    (search, location, data, isRemandRoomOptionAvailable) => {
+      const state = {
+        router: {
+          location: {
+            search,
+          },
+        },
+        detainee: {
+          detaineeProfile: {
+            data: {
+              detentionUnitName: 'DETAINEE MANAGEMENT UNIT',
+              gender: 'Male',
+              location,
+            },
+          },
+          remandRooms: {
+            data,
+          },
+        },
+      };
+
+      const result = selectors.isRemandRoomOptionAvailableState(state);
+      expect(result).toEqual(isRemandRoomOptionAvailable);
     },
   );
 

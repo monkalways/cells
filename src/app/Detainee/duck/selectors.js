@@ -5,6 +5,8 @@ import commonConstants from '../../constants';
 
 // Basic selectors
 const areActivityRoomsRefreshing = (state) => state.detainee.activityRooms.isRefreshing;
+const areReleaseRoomsRefreshing = (state) => state.detainee.releaseRooms.refreshing;
+const areRemandRoomsRefreshing = (state) => state.detainee.remandRooms.refreshing;
 const getAvailableActivityRooms = (state) => state.detainee.activityRooms.availableActivityRooms;
 const getCurrentActivityRoom = (state) => {
   const { first, second } = queryString.parse(state.router.location.search);
@@ -33,10 +35,12 @@ const isActivityRoomOptionAvailable = (state, usage, inProgress, inTransit) => {
     // eslint-disable-next-line max-len
   } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === usage.toLowerCase());
   return (
+    // Can't move from cell screen if detainee is "In Progress" for an activity.
     !(
       first === constants.CELLS_QUERYSTRING
       && location.toLowerCase().includes(commonConstants.IN_PROGRESS.toLowerCase())
     )
+    // Can't move to activity room if detainee is already there or on en route.
     && location.toLowerCase() !== inProgress.toLowerCase()
     && location.toLowerCase() !== inTransit.toLowerCase()
     && availableRooms.length > 0
@@ -44,6 +48,11 @@ const isActivityRoomOptionAvailable = (state, usage, inProgress, inTransit) => {
 };
 
 const isAssigningToRoom = (state) => state.detainee.activityRooms.assigningToRoom;
+
+const isDetaineeProfileLoaded = (state) => state.detainee.activityRooms.loaded
+  && state.detainee.detaineeProfile.loaded
+  && state.detainee.releaseRooms.loaded
+  && state.detainee.remandRooms.loaded;
 
 const isInCellOptionAvailable = (state) => {
   const { first } = queryString.parse(state.router.location.search);
@@ -67,9 +76,6 @@ const isInCellOptionAvailable = (state) => {
   return false;
 };
 
-// eslint-disable-next-line max-len
-const isDetaineeProfileLoaded = (state) => state.detainee.detaineeProfile.loaded && state.detainee.activityRooms.loaded;
-
 const isPhoneDeclineOptionAvailable = (state) => {
   const { first } = queryString.parse(state.router.location.search);
   const { location } = state.detainee.detaineeProfile.data;
@@ -81,11 +87,59 @@ const isPhoneDeclineOptionAvailable = (state) => {
   return false;
 };
 
+const isReleaseRoomOptionAvailable = (state) => {
+  const { first } = queryString.parse(state.router.location.search);
+  const { location } = state.detainee.detaineeProfile.data;
+  const { gender, detentionUnitName } = getDetainee(state);
+  // eslint-disable-next-line max-len
+  const availableRooms = state.detainee.releaseRooms.data.filter((room) => room.gender === gender && room.designation === detentionUnitName);
+  return (
+    // Can't move from cell screen if detainee is "In Progress" for an activity.
+    !(
+      first === constants.CELLS_QUERYSTRING
+      && location.toLowerCase().includes(commonConstants.IN_PROGRESS.toLowerCase())
+    )
+    // Can't move to room if detainee is already in transit there.
+    && location.toLowerCase()
+      !== commonConstants.RELEASE_HOLDING_IN_TRANSIT.toLowerCase()
+    && availableRooms.length > 0
+  );
+};
+
+const isRemandRoomOptionAvailable = (state) => {
+  const { first } = queryString.parse(state.router.location.search);
+  const { location } = state.detainee.detaineeProfile.data;
+  const { gender, detentionUnitName } = getDetainee(state);
+  // eslint-disable-next-line max-len
+  const availableRooms = state.detainee.remandRooms.data.filter((room) => room.gender === gender && room.designation === detentionUnitName);
+  return (
+    // Can't move from cell screen if detainee is "In Progress" for an activity.
+    !(
+      first === constants.CELLS_QUERYSTRING
+      && location.toLowerCase().includes(commonConstants.IN_PROGRESS.toLowerCase())
+    )
+    // Can't move to room if detainee is already in transit there.
+    && location.toLowerCase()
+      !== commonConstants.REMAND_HOLDING_IN_TRANSIT.toLowerCase()
+    && availableRooms.length > 0
+  );
+};
+
 const isUpdatingDetentionLog = (state) => state.detainee.activityRooms.updatingDetentionLog;
 
 // Reselect selectors
 const areActivityRoomsRefreshingState = createSelector(
   [areActivityRoomsRefreshing],
+  (refreshing) => refreshing,
+);
+
+const areReleaseRoomsRefreshingState = createSelector(
+  [areReleaseRoomsRefreshing],
+  (refreshing) => refreshing,
+);
+
+const areRemandRoomsRefreshingState = createSelector(
+  [areRemandRoomsRefreshing],
   (refreshing) => refreshing,
 );
 
@@ -124,6 +178,16 @@ const getFirstAvailableActivityRoomState = createSelector(
 
 const isActivityRoomOptionAvailableState = createSelector(
   [isActivityRoomOptionAvailable],
+  (available) => available,
+);
+
+const isReleaseRoomOptionAvailableState = createSelector(
+  [isReleaseRoomOptionAvailable],
+  (available) => available,
+);
+
+const isRemandRoomOptionAvailableState = createSelector(
+  [isRemandRoomOptionAvailable],
   (available) => available,
 );
 
@@ -166,6 +230,8 @@ const isUpdatingDetentionLogState = createSelector(
 
 export default {
   areActivityRoomsRefreshingState,
+  areReleaseRoomsRefreshingState,
+  areRemandRoomsRefreshingState,
   getAllAvailableActivityRoomsState,
   getCurrentActivityRoomState,
   getCurrentRoomState,
@@ -177,5 +243,7 @@ export default {
   isDetaineeProfileLoadedState,
   isInCellOptionAvailableState,
   isPhoneDeclineOptionAvailableState,
+  isReleaseRoomOptionAvailableState,
+  isRemandRoomOptionAvailableState,
   isUpdatingDetentionLogState,
 };
