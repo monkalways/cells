@@ -4,8 +4,11 @@ import { shallow } from 'enzyme';
 import { DetaineeComponent } from '../DetaineeComponent';
 
 describe('DetaineeComponent', () => {
-  let getAvailableActivityRooms;
-  let getDetainee;
+  // let getAvailableActivityRooms;
+  // let getAvailableReleaseRooms;
+  // let getAvailableRemandRooms;
+  // let getDetainee;
+  let initialize;
   let push; // history
   let search; // location
   let id; // match
@@ -15,8 +18,7 @@ describe('DetaineeComponent', () => {
   const second = 'B4';
 
   beforeEach(() => {
-    getAvailableActivityRooms = jest.fn();
-    getDetainee = jest.fn();
+    initialize = jest.fn();
     push = jest.fn();
     search = `first=${first}&second=${second}`;
     id = '1';
@@ -30,8 +32,7 @@ describe('DetaineeComponent', () => {
 
     return shallow(<DetaineeComponent
       classes={classes}
-      getAvailableActivityRooms={getAvailableActivityRooms}
-      getDetainee={getDetainee}
+      initialize={initialize}
       history={{ push }}
       location={{ search }}
       logOut={logOut}
@@ -48,13 +49,12 @@ describe('DetaineeComponent', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should call getDetainee and getAvailableActivityRooms when componentDidMount is called', () => {
+  it('should call initialize when componentDidMount is called', () => {
     const wrapper = setup();
 
     wrapper.instance().componentDidMount();
 
-    expect(getDetainee).toBeCalledWith(id);
-    expect(getAvailableActivityRooms).toBeCalled();
+    expect(initialize).toBeCalledWith(id);
   });
 
   it('should call logOut when handleLogout is called', () => {

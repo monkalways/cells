@@ -9,11 +9,10 @@ import DetaineeDetails from './DetaineeDetails';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
-  getAvailableActivityRooms: PropTypes.func.isRequired,
-  getDetainee: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  initialize: PropTypes.func.isRequired,
   location: PropTypes.shape({
     search: PropTypes.string.isRequired,
   }).isRequired,
@@ -29,9 +28,8 @@ export class DetaineeComponent extends Component {
   componentDidMount() {
     const { match } = this.props;
     const { id } = match.params;
-    const { getDetainee, getAvailableActivityRooms } = this.props;
-    getDetainee(id);
-    getAvailableActivityRooms();
+    const { initialize } = this.props;
+    initialize(id);
   }
 
   handleLogout = () => {
