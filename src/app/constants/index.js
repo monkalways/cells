@@ -15,7 +15,9 @@ const HEADERS = () => ({
 
 const UNAUTHENTICATED_TIMEOUT_SECONDS = 10;
 
-const VERSION_URL = `${process.env.REACT_APP_CELL_SERVICE_URL}api/version`;
+const VERSION_URL = `${
+  process.env.REACT_APP_CELL_SERVICE_URL
+}api/public/version`;
 
 // Temporary Absence Reasons
 const BAIL_HEARING_IN_PROGRESS = 'Bail Hearing - In Progress';
