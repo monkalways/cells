@@ -33,16 +33,16 @@ const isActivityRoomOptionAvailable = (state, usage, inProgress, inTransit) => {
   const {
     availableRooms,
     // eslint-disable-next-line max-len
-  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage.toLowerCase() === usage.toLowerCase());
+  } = state.detainee.activityRooms.availableActivityRooms.find((room) => room.usage === usage);
   return (
     // Can't move from cell screen if detainee is "In Progress" for an activity.
     !(
       first === constants.CELLS_QUERYSTRING
-      && location.toLowerCase().includes(commonConstants.IN_PROGRESS.toLowerCase())
+      && location.includes(commonConstants.IN_PROGRESS)
     )
     // Can't move to activity room if detainee is already there or on en route.
-    && location.toLowerCase() !== inProgress.toLowerCase()
-    && location.toLowerCase() !== inTransit.toLowerCase()
+    && location !== inProgress
+    && location !== inTransit
     && availableRooms.length > 0
   );
 };
@@ -62,7 +62,7 @@ const isInCellOptionAvailable = (state) => {
   // is "Cell - In Transit" this button is enabled so they can be checked in.
   if (
     first === constants.CELLS_QUERYSTRING
-    && location.toLowerCase() === commonConstants.CELL_IN_TRANSIT.toLowerCase()
+    && location === commonConstants.CELL_IN_TRANSIT
   ) return true;
 
   // Case 2: If the user came from the activity room screen and the detainee location
@@ -70,7 +70,7 @@ const isInCellOptionAvailable = (state) => {
   // so they can be send back to their cell.
   if (
     first === constants.ACTIVITY_ROOMS_QUERYSTRING
-    && location.toLowerCase() !== commonConstants.CELL_IN_TRANSIT.toLowerCase()
+    && location !== commonConstants.CELL_IN_TRANSIT
   ) return true;
 
   return false;
@@ -97,11 +97,11 @@ const isReleaseRoomOptionAvailable = (state) => {
     // Can't move from cell screen if detainee is "In Progress" for an activity.
     !(
       first === constants.CELLS_QUERYSTRING
-      && location.toLowerCase().includes(commonConstants.IN_PROGRESS.toLowerCase())
+      && location.includes(commonConstants.IN_PROGRESS)
     )
     // Can't move to room if detainee is already in transit there.
-    && location.toLowerCase()
-      !== commonConstants.RELEASE_HOLDING_IN_TRANSIT.toLowerCase()
+    && location
+      !== commonConstants.RELEASE_HOLDING_IN_TRANSIT
     && availableRooms.length > 0
   );
 };
@@ -116,11 +116,11 @@ const isRemandRoomOptionAvailable = (state) => {
     // Can't move from cell screen if detainee is "In Progress" for an activity.
     !(
       first === constants.CELLS_QUERYSTRING
-      && location.toLowerCase().includes(commonConstants.IN_PROGRESS.toLowerCase())
+      && location.includes(commonConstants.IN_PROGRESS)
     )
     // Can't move to room if detainee is already in transit there.
-    && location.toLowerCase()
-      !== commonConstants.REMAND_HOLDING_IN_TRANSIT.toLowerCase()
+    && location
+      !== commonConstants.REMAND_HOLDING_IN_TRANSIT
     && availableRooms.length > 0
   );
 };
@@ -147,8 +147,7 @@ const getAllAvailableActivityRoomsState = createSelector(
   [getAvailableActivityRooms, getSecondProp],
   (rooms, usage) => {
     if (usage) {
-      // eslint-disable-next-line max-len
-      const { availableRooms } = rooms.find((room) => room.usage.toLowerCase() === usage.toLowerCase());
+      const { availableRooms } = rooms.find((room) => room.usage === usage);
       return availableRooms;
     }
     return null;
@@ -168,8 +167,7 @@ const getFirstAvailableActivityRoomState = createSelector(
   [getAvailableActivityRooms, getSecondProp],
   (rooms, usage) => {
     if (usage) {
-      // eslint-disable-next-line max-len
-      const { availableRooms } = rooms.find((room) => room.usage.toLowerCase() === usage.toLowerCase());
+      const { availableRooms } = rooms.find((room) => room.usage === usage);
       if (availableRooms.length > 0) return availableRooms[0];
     }
     return null;
@@ -196,7 +194,7 @@ const isAnyRoomForGivenActivityAvailableState = createSelector(
   (rooms, usage) => {
     if (usage) {
       // eslint-disable-next-line max-len
-      const { availableRooms } = rooms.find((room) => room.usage.toLowerCase() === usage.toLowerCase());
+      const { availableRooms } = rooms.find((room) => room.usage === usage);
       return availableRooms.length > 0;
     }
     return false;
