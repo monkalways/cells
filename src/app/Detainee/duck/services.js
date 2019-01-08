@@ -32,11 +32,8 @@ const getAvailableReleaseRooms = async () => {
   );
 
   return response.data.map((room) => ({
-    designation: room.designation,
-    gender: room.gender,
-    id: room.id,
     name: room.name,
-    usage: room.usage,
+    typeCode: room.typeCode,
   }));
 };
 
@@ -47,11 +44,8 @@ const getAvailableRemandRooms = async () => {
   );
 
   return response.data.map((room) => ({
-    designation: room.designation,
-    gender: room.gender,
-    id: room.id,
     name: room.name,
-    usage: room.usage,
+    typeCode: room.typeCode,
   }));
 };
 
@@ -74,7 +68,9 @@ const getDetainee = async (custodyEventId) => {
     dob,
     fingerPrintCount,
     firstName,
+    fullDob,
     gender,
+    genderTypeCode,
     hasWarning,
     id,
     intakePhotoResourceUri,
@@ -112,7 +108,9 @@ const getDetainee = async (custodyEventId) => {
     dob,
     fingerPrintCount,
     firstName,
+    fullDob,
     gender,
+    genderTypeCode,
     hasWarning,
     id,
     intakePhotoResourceUri,

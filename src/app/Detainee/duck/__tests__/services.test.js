@@ -41,11 +41,8 @@ describe('ActivityRoom services', () => {
   it('should getAvailableReleaseRooms', async () => {
     const availableRooms = [
       {
-        designation: 'designation',
-        gender: 'gender',
-        id: 'id',
         name: 'name',
-        usage: 'usage',
+        typeCode: 'typeCode',
         extraField: 'should not be mapped',
       },
     ];
@@ -58,11 +55,8 @@ describe('ActivityRoom services', () => {
     const result = await services.getAvailableReleaseRooms();
     expect(result).toEqual([
       {
-        designation: 'designation',
-        gender: 'gender',
-        id: 'id',
         name: 'name',
-        usage: 'usage',
+        typeCode: 'typeCode',
       },
     ]);
   });
@@ -70,11 +64,8 @@ describe('ActivityRoom services', () => {
   it('should getAvailableRemandRooms', async () => {
     const availableRooms = [
       {
-        designation: 'designation',
-        gender: 'gender',
-        id: 'id',
         name: 'name',
-        usage: 'usage',
+        typeCode: 'typeCode',
         extraField: 'should not be mapped',
       },
     ];
@@ -87,11 +78,8 @@ describe('ActivityRoom services', () => {
     const result = await services.getAvailableRemandRooms();
     expect(result).toEqual([
       {
-        designation: 'designation',
-        gender: 'gender',
-        id: 'id',
         name: 'name',
-        usage: 'usage',
+        typeCode: 'typeCode',
       },
     ]);
   });
