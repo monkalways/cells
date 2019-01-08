@@ -90,9 +90,9 @@ const isPhoneDeclineOptionAvailable = (state) => {
 const isReleaseRoomOptionAvailable = (state) => {
   const { first } = queryString.parse(state.router.location.search);
   const { location } = state.detainee.detaineeProfile.data;
-  const { gender, detentionUnitName } = getDetainee(state);
+  const { genderTypeCode } = getDetainee(state);
   // eslint-disable-next-line max-len
-  const availableRooms = state.detainee.releaseRooms.data.filter((room) => room.gender === gender && room.designation === detentionUnitName);
+  const availableRooms = state.detainee.releaseRooms.data.filter((room) => room.typeCode === genderTypeCode);
   return (
     // Can't move from cell screen if detainee is "In Progress" for an activity.
     !(
@@ -109,9 +109,9 @@ const isReleaseRoomOptionAvailable = (state) => {
 const isRemandRoomOptionAvailable = (state) => {
   const { first } = queryString.parse(state.router.location.search);
   const { location } = state.detainee.detaineeProfile.data;
-  const { gender, detentionUnitName } = getDetainee(state);
+  const { genderTypeCode } = getDetainee(state);
   // eslint-disable-next-line max-len
-  const availableRooms = state.detainee.remandRooms.data.filter((room) => room.gender === gender && room.designation === detentionUnitName);
+  const availableRooms = state.detainee.remandRooms.data.filter((room) => room.typeCode === genderTypeCode);
   return (
     // Can't move from cell screen if detainee is "In Progress" for an activity.
     !(
@@ -181,16 +181,6 @@ const isActivityRoomOptionAvailableState = createSelector(
   (available) => available,
 );
 
-const isReleaseRoomOptionAvailableState = createSelector(
-  [isReleaseRoomOptionAvailable],
-  (available) => available,
-);
-
-const isRemandRoomOptionAvailableState = createSelector(
-  [isRemandRoomOptionAvailable],
-  (available) => available,
-);
-
 const isAssigningToRoomState = createSelector(
   [isAssigningToRoom],
   (isAssigning) => isAssigning,
@@ -220,6 +210,16 @@ const isInCellOptionAvailableState = createSelector(
 
 const isPhoneDeclineOptionAvailableState = createSelector(
   [isPhoneDeclineOptionAvailable],
+  (available) => available,
+);
+
+const isReleaseRoomOptionAvailableState = createSelector(
+  [isReleaseRoomOptionAvailable],
+  (available) => available,
+);
+
+const isRemandRoomOptionAvailableState = createSelector(
+  [isRemandRoomOptionAvailable],
   (available) => available,
 );
 

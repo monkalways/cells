@@ -424,81 +424,51 @@ describe('Detainee selectors', () => {
 
   it.each([
     [
+      // Detainee is cell and user came from cell management screen.
+      // Enable button.
+      '?first=cells&second=B4',
+      '',
+      [{ name: 'REL1', typeCode: 'MA' }],
+      true,
+    ],
+    [
       // User came from cell management screen and detainee is in progress for an activity.
       // Disable button as the request should be coming from the detainee's activity room.
       '?first=cells&second=B4',
       commonConstants.PHONE_IN_PROGRESS,
-      [
-        {
-          designation: 'DETAINEE MANAGEMENT UNIT',
-          gender: 'Male',
-        },
-      ],
+      [{ name: 'REL1', typeCode: 'MA' }],
       false,
+    ],
+    [
+      // User came from activity screen and detainee is in progress for that activity.
+      // Enable button.
+      '?first=activity-rooms&second=phone',
+      commonConstants.PHONE_IN_PROGRESS,
+      [{ name: 'REL1', typeCode: 'MA' }],
+      true,
     ],
     [
       // User came from cell management screen and detainee is already in transit to Release Room.
       // Disable button.
       '?first=cells&second=B4',
       commonConstants.RELEASE_HOLDING_IN_TRANSIT,
-      [
-        {
-          designation: 'DETAINEE MANAGEMENT UNIT',
-          gender: 'Male',
-        },
-      ],
+      [{ name: 'REL1', typeCode: 'MA' }],
       false,
-    ],
-    [
-      // Detainee is cell and user came from cell management screen.
-      // Enable button.
-      '?first=cells&second=B4',
-      '',
-      [
-        {
-          designation: 'DETAINEE MANAGEMENT UNIT',
-          gender: 'Male',
-        },
-      ],
-      true,
     ],
     [
       // Detainee is in transit for a different activity and user came from cell management screen.
       // Enable button.
       '?first=cells&second=B4',
       commonConstants.PHONE_IN_TRANSIT,
-      [
-        {
-          designation: 'DETAINEE MANAGEMENT UNIT',
-          gender: 'Male',
-        },
-      ],
+      [{ name: 'REL1', typeCode: 'MA' }],
       true,
     ],
     [
-      // Release room designation doesn't match detainee's designation.
+      // Release room gender doesn't match detainee's genderTypeCode.
       // Disable button.
       '?first=cells&second=B4',
       commonConstants.PHONE_IN_TRANSIT,
-      [
-        {
-          designation: 'NORTHWEST',
-          gender: 'Male',
-        },
-      ],
-      false,
-    ],
-    [
-      // Release room gender doesn't match detainee's gender.
-      // Disable button.
-      '?first=cells&second=B4',
-      commonConstants.PHONE_IN_TRANSIT,
-      [
-        {
-          designation: 'DETAINEE MANAGEMENT UNIT',
-          gender: 'Other',
-        },
-      ],
+      [{ name: 'REL1', typeCode: 'OA' }],
       false,
     ],
     [
@@ -521,8 +491,7 @@ describe('Detainee selectors', () => {
         detainee: {
           detaineeProfile: {
             data: {
-              detentionUnitName: 'DETAINEE MANAGEMENT UNIT',
-              gender: 'Male',
+              genderTypeCode: 'MA',
               location,
             },
           },
@@ -539,81 +508,51 @@ describe('Detainee selectors', () => {
 
   it.each([
     [
-      // User came from cell management screen and detainee is in progress for an activity.
-      // Disable button as the request should be coming from the detainee's activity room.
-      '?first=cells&second=B4',
-      commonConstants.PHONE_IN_PROGRESS,
-      [
-        {
-          designation: 'DETAINEE MANAGEMENT UNIT',
-          gender: 'Male',
-        },
-      ],
-      false,
-    ],
-    [
-      // User came from cell management screen and detainee is already in transit to Remand Room.
-      // Disable button.
-      '?first=cells&second=B4',
-      commonConstants.REMAND_HOLDING_IN_TRANSIT,
-      [
-        {
-          designation: 'DETAINEE MANAGEMENT UNIT',
-          gender: 'Male',
-        },
-      ],
-      false,
-    ],
-    [
       // Detainee is cell and user came from cell management screen.
       // Enable button.
       '?first=cells&second=B4',
       '',
-      [
-        {
-          designation: 'DETAINEE MANAGEMENT UNIT',
-          gender: 'Male',
-        },
-      ],
+      [{ name: 'H1', typeCode: 'MA' }],
       true,
+    ],
+    [
+      // User came from cell management screen and detainee is in progress for an activity.
+      // Disable button as the request should be coming from the detainee's activity room.
+      '?first=cells&second=B4',
+      commonConstants.PHONE_IN_PROGRESS,
+      [{ name: 'H1', typeCode: 'MA' }],
+      false,
+    ],
+    [
+      // User came from activity screen and detainee is in progress for that activity.
+      // Enable button.
+      '?first=activity-rooms&second=phone',
+      commonConstants.PHONE_IN_PROGRESS,
+      [{ name: 'H1', typeCode: 'MA' }],
+      true,
+    ],
+    [
+      // User came from cell management screen and detainee is already in transit to Remand Holding Room.
+      // Disable button.
+      '?first=cells&second=B4',
+      commonConstants.REMAND_HOLDING_IN_TRANSIT,
+      [{ name: 'H1', typeCode: 'MA' }],
+      false,
     ],
     [
       // Detainee is in transit for a different activity and user came from cell management screen.
       // Enable button.
       '?first=cells&second=B4',
       commonConstants.PHONE_IN_TRANSIT,
-      [
-        {
-          designation: 'DETAINEE MANAGEMENT UNIT',
-          gender: 'Male',
-        },
-      ],
+      [{ name: 'H1', typeCode: 'MA' }],
       true,
     ],
     [
-      // Remand room designation doesn't match detainee's designation.
+      // Release room gender doesn't match detainee's genderTypeCode.
       // Disable button.
       '?first=cells&second=B4',
       commonConstants.PHONE_IN_TRANSIT,
-      [
-        {
-          designation: 'NORTHWEST',
-          gender: 'Male',
-        },
-      ],
-      false,
-    ],
-    [
-      // Remand room gender doesn't match detainee's gender.
-      // Disable button.
-      '?first=cells&second=B4',
-      commonConstants.PHONE_IN_TRANSIT,
-      [
-        {
-          designation: 'DETAINEE MANAGEMENT UNIT',
-          gender: 'Other',
-        },
-      ],
+      [{ name: 'H1', typeCode: 'OA' }],
       false,
     ],
     [
@@ -625,7 +564,7 @@ describe('Detainee selectors', () => {
       false,
     ],
   ])(
-    'should select isRemandRoomOptionAvailable',
+    'should select isRemandRoomOptionAvailableState',
     (search, location, data, isRemandRoomOptionAvailable) => {
       const state = {
         router: {
@@ -636,8 +575,7 @@ describe('Detainee selectors', () => {
         detainee: {
           detaineeProfile: {
             data: {
-              detentionUnitName: 'DETAINEE MANAGEMENT UNIT',
-              gender: 'Male',
+              genderTypeCode: 'MA',
               location,
             },
           },
