@@ -2,24 +2,24 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Dialog } from '@material-ui/core';
 
-import ActivityRoomDialogComponent from '../ActivityRoomDialogComponent';
+import AutomaticRoomSelectionDialogComponent from '../AutomaticRoomSelectionDialogComponent';
 import Loading from '../../../../common/Loading';
 
 describe('ActivityRoomDialogComponent', () => {
-  let areActivityRoomsRefreshing;
+  let areRoomsRefreshing;
   let currentRoom;
   let destinationRoom;
   let detainee;
-  let getAvailableActivityRoomsRefresh;
-  let isAnyRoomForGivenActivityAvailable;
+  let getAvailableRoomsRefresh;
+  let isAnyRoomAvailable;
   let isDialogOpen;
   let isAssigningToRoom;
-  let moveDetaineeToActivityRoom;
+  let moveDetaineeToRoom;
   let onClose;
   let usage;
 
   beforeEach(() => {
-    areActivityRoomsRefreshing = false;
+    areRoomsRefreshing = false;
     currentRoom = 'C1';
     destinationRoom = 'T4';
     detainee = {
@@ -28,31 +28,31 @@ describe('ActivityRoomDialogComponent', () => {
       lastName: 'Saget',
       location: 'location',
     };
-    getAvailableActivityRoomsRefresh = jest.fn();
-    isAnyRoomForGivenActivityAvailable = false;
+    getAvailableRoomsRefresh = jest.fn();
+    isAnyRoomAvailable = false;
     isDialogOpen = false;
     isAssigningToRoom = false;
-    moveDetaineeToActivityRoom = jest.fn();
+    moveDetaineeToRoom = jest.fn();
     onClose = jest.fn();
     usage = 'usage';
   });
 
-  const setup = () => shallow(<ActivityRoomDialogComponent
-    areActivityRoomsRefreshing={areActivityRoomsRefreshing}
+  const setup = () => shallow(<AutomaticRoomSelectionDialogComponent
+    areRoomsRefreshing={areRoomsRefreshing}
     currentRoom={currentRoom}
     destinationRoom={destinationRoom}
     detainee={detainee}
-    getAvailableActivityRoomsRefresh={getAvailableActivityRoomsRefresh}
-    isAnyRoomForGivenActivityAvailable={isAnyRoomForGivenActivityAvailable}
+    getAvailableRoomsRefresh={getAvailableRoomsRefresh}
+    isAnyRoomAvailable={isAnyRoomAvailable}
     isDialogOpen={isDialogOpen}
     isAssigningToRoom={isAssigningToRoom}
-    moveDetaineeToActivityRoom={moveDetaineeToActivityRoom}
+    moveDetaineeToRoom={moveDetaineeToRoom}
     onClose={onClose}
     usage={usage}
   />);
 
   it('should render Loading component if activity rooms are refreshing', () => {
-    areActivityRoomsRefreshing = true;
+    areRoomsRefreshing = true;
 
     const wrapper = setup();
     expect(wrapper).toMatchSnapshot();
@@ -60,8 +60,8 @@ describe('ActivityRoomDialogComponent', () => {
   });
 
   it('should show a close button when the room is no longer available', () => {
-    areActivityRoomsRefreshing = false;
-    isAnyRoomForGivenActivityAvailable = false;
+    areRoomsRefreshing = false;
+    isAnyRoomAvailable = false;
 
     const wrapper = setup();
     expect(wrapper).toMatchSnapshot();
@@ -69,8 +69,8 @@ describe('ActivityRoomDialogComponent', () => {
   });
 
   it('should show confirm and cancel buttons when moving a detainee', () => {
-    areActivityRoomsRefreshing = false;
-    isAnyRoomForGivenActivityAvailable = true;
+    areRoomsRefreshing = false;
+    isAnyRoomAvailable = true;
     isAssigningToRoom = false;
 
     const wrapper = setup();
@@ -81,8 +81,8 @@ describe('ActivityRoomDialogComponent', () => {
   });
 
   it('should show a loading component when it is assigning the detainee to a room', () => {
-    areActivityRoomsRefreshing = false;
-    isAnyRoomForGivenActivityAvailable = true;
+    areRoomsRefreshing = false;
+    isAnyRoomAvailable = true;
     isAssigningToRoom = true;
 
     const wrapper = setup();
@@ -99,8 +99,8 @@ describe('ActivityRoomDialogComponent', () => {
   });
 
   it('should handle close button click', () => {
-    areActivityRoomsRefreshing = false;
-    isAnyRoomForGivenActivityAvailable = false;
+    areRoomsRefreshing = false;
+    isAnyRoomAvailable = false;
 
     const wrapper = setup();
     wrapper.find('#closeButton').simulate('click');
@@ -108,12 +108,12 @@ describe('ActivityRoomDialogComponent', () => {
   });
 
   it('should handle confirm button click', () => {
-    areActivityRoomsRefreshing = false;
-    isAnyRoomForGivenActivityAvailable = true;
+    areRoomsRefreshing = false;
+    isAnyRoomAvailable = true;
 
     const wrapper = setup();
     wrapper.find('#confirmButton').simulate('click');
-    expect(moveDetaineeToActivityRoom).toBeCalledWith(
+    expect(moveDetaineeToRoom).toBeCalledWith(
       detainee.id,
       currentRoom,
       destinationRoom,
@@ -121,8 +121,8 @@ describe('ActivityRoomDialogComponent', () => {
   });
 
   it('should handle cancel button click', () => {
-    areActivityRoomsRefreshing = false;
-    isAnyRoomForGivenActivityAvailable = true;
+    areRoomsRefreshing = false;
+    isAnyRoomAvailable = true;
 
     const wrapper = setup();
     wrapper.find('#cancelButton').simulate('click');

@@ -11,7 +11,7 @@ import {
 import Loading from '../../../common/Loading';
 
 const propTypes = {
-  areActivityRoomsRefreshing: PropTypes.bool.isRequired,
+  areRoomsRefreshing: PropTypes.bool.isRequired,
   currentRoom: PropTypes.string,
   destinationRoom: PropTypes.string,
   detainee: PropTypes.shape({
@@ -20,11 +20,11 @@ const propTypes = {
     lastName: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
   }).isRequired,
-  getAvailableActivityRoomsRefresh: PropTypes.func.isRequired,
-  isAnyRoomForGivenActivityAvailable: PropTypes.bool.isRequired,
+  getAvailableRoomsRefresh: PropTypes.func.isRequired,
+  isAnyRoomAvailable: PropTypes.bool.isRequired,
   isDialogOpen: PropTypes.bool.isRequired,
   isAssigningToRoom: PropTypes.bool.isRequired,
-  moveDetaineeToActivityRoom: PropTypes.func.isRequired,
+  moveDetaineeToRoom: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   usage: PropTypes.string.isRequired,
 };
@@ -35,24 +35,24 @@ const defaultProps = {
 };
 
 const ActivityRoomDialogComponent = ({
-  areActivityRoomsRefreshing,
+  areRoomsRefreshing,
   currentRoom,
   destinationRoom,
   detainee,
-  getAvailableActivityRoomsRefresh,
-  isAnyRoomForGivenActivityAvailable,
+  getAvailableRoomsRefresh,
+  isAnyRoomAvailable,
   isAssigningToRoom,
   isDialogOpen,
-  moveDetaineeToActivityRoom,
+  moveDetaineeToRoom,
   onClose,
   usage,
 }) => {
   const handleClick = () => {
-    moveDetaineeToActivityRoom(detainee.id, currentRoom, destinationRoom);
+    moveDetaineeToRoom(detainee.id, currentRoom, destinationRoom);
   };
 
   const handleOpen = () => {
-    getAvailableActivityRoomsRefresh();
+    getAvailableRoomsRefresh();
   };
 
   return (
@@ -63,15 +63,14 @@ const ActivityRoomDialogComponent = ({
       onClose={onClose}
       onRendered={handleOpen}
     >
-      {/** * Medical, Fingerprinting, Telephone, Bail Hearing 1 and 2, Breath Test ** */}
-      {areActivityRoomsRefreshing ? (
+      {areRoomsRefreshing ? (
         <React.Fragment>
           <DialogTitle>{`Searching for available ${usage} room...`}</DialogTitle>
           <DialogContent>
             <Loading size={50} />
           </DialogContent>
         </React.Fragment>
-      ) : isAnyRoomForGivenActivityAvailable ? (
+      ) : isAnyRoomAvailable ? (
         <React.Fragment>
           <DialogTitle>
             {`Moving ${detainee.lastName}, ${

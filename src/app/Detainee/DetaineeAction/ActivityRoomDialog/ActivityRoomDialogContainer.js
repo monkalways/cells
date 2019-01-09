@@ -1,30 +1,30 @@
 import { connect } from 'react-redux';
 import { operations, selectors } from '../../duck';
-import ActivityRoomDialogComponent from './ActivityRoomDialogComponent';
+import AutomaticRoomSelectionDialog from '../AutomaticRoomSelectionDialog';
 
 export const mapStateToProps = (
   state,
   { usage },
-  areActivityRoomsRefreshing = selectors.areActivityRoomsRefreshingState(state),
+  areRoomsRefreshing = selectors.areActivityRoomsRefreshingState(state),
   currentRoom = selectors.getCurrentRoomState(state),
   destinationRoom = selectors.getFirstAvailableActivityRoomState(state, usage),
-  isAnyRoomForGivenActivityAvailable = selectors.isAnyRoomForGivenActivityAvailableState(
+  isAnyRoomAvailable = selectors.isAnyRoomForGivenActivityAvailableState(
     state,
     usage,
   ),
   isAssigningToRoom = selectors.isAssigningToRoomState(state),
 ) => ({
-  areActivityRoomsRefreshing,
+  areRoomsRefreshing,
   currentRoom,
   destinationRoom,
-  isAnyRoomForGivenActivityAvailable,
+  isAnyRoomAvailable,
   isAssigningToRoom,
 });
 
 export const mapDispatchToProps = (dispatch) => ({
   // eslint-disable-next-line max-len
-  getAvailableActivityRoomsRefresh: (getAvailableActivityRoomsRefresh = operations.getAvailableActivityRoomsRefresh) => dispatch(getAvailableActivityRoomsRefresh()),
-  moveDetaineeToActivityRoom: (
+  getAvailableRoomsRefresh: (getAvailableActivityRoomsRefresh = operations.getAvailableActivityRoomsRefresh) => dispatch(getAvailableActivityRoomsRefresh()),
+  moveDetaineeToRoom: (
     detaineeId,
     originRoom,
     destinationRoom,
@@ -35,4 +35,4 @@ export const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(ActivityRoomDialogComponent);
+)(AutomaticRoomSelectionDialog);

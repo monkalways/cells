@@ -7,27 +7,27 @@ describe('ActivityRoomDialogContainer', () => {
   it('should mapStateToProps', () => {
     const state = {};
     const props = { usage: 'usage' };
-    const areActivityRoomsRefreshing = false;
+    const areRoomsRefreshing = false;
     const currentRoom = 'C1';
     const destinationRoom = 'T2';
-    const isAnyRoomForGivenActivityAvailable = false;
+    const isAnyRoomAvailable = false;
     const isAssigningToRoom = false;
 
     const result = mapStateToProps(
       state,
       props,
-      areActivityRoomsRefreshing,
+      areRoomsRefreshing,
       currentRoom,
       destinationRoom,
-      isAnyRoomForGivenActivityAvailable,
+      isAnyRoomAvailable,
       isAssigningToRoom,
     );
 
     expect(result).toEqual({
-      areActivityRoomsRefreshing,
+      areRoomsRefreshing,
       currentRoom,
       destinationRoom,
-      isAnyRoomForGivenActivityAvailable,
+      isAnyRoomAvailable,
       isAssigningToRoom,
     });
   });
@@ -40,23 +40,23 @@ describe('ActivityRoomDialogContainer', () => {
     });
 
     it('should getAvailableActivityRooms', () => {
-      const { getAvailableActivityRoomsRefresh } = mapDispatchToProps(dispatch);
+      const { getAvailableRoomsRefresh } = mapDispatchToProps(dispatch);
       const getAvailableActivityRoomsRefreshMock = jest.fn();
 
-      getAvailableActivityRoomsRefresh(getAvailableActivityRoomsRefreshMock);
+      getAvailableRoomsRefresh(getAvailableActivityRoomsRefreshMock);
 
       expect(dispatch).toBeCalled();
       expect(getAvailableActivityRoomsRefreshMock).toBeCalled();
     });
 
     it('should moveDetaineeToActivityRoom', () => {
-      const { moveDetaineeToActivityRoom } = mapDispatchToProps(dispatch);
+      const { moveDetaineeToRoom } = mapDispatchToProps(dispatch);
       const detaineeId = '123';
       const originRoom = 'C1';
       const destinationRoom = 'T4';
       const moveDetaineeToActivityRoomMock = jest.fn();
 
-      moveDetaineeToActivityRoom(
+      moveDetaineeToRoom(
         detaineeId,
         originRoom,
         destinationRoom,
