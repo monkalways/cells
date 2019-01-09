@@ -75,11 +75,13 @@ export class DetaineeActionComponent extends Component {
   handleClose = () => {
     this.setState({
       openDialog: null,
+      usage: null,
     });
     const {
+      detainee,
       handleClose,
     } = this.props;
-    handleClose();
+    handleClose(detainee.id);
   };
 
   handleCellButtonClick = () => {

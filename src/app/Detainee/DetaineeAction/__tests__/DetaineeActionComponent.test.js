@@ -1,12 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { exec } from 'child_process';
 import constants from '../../constants';
 import { DetaineeActionComponent } from '../DetaineeActionComponent';
 import ActivityRoomDialog from '../ActivityRoomDialog';
 import CellDialog from '../CellDialog';
 import PhoneDeclineDialog from '../PhoneDeclineDialog';
+import ReleaseRoomDialog from '../ReleaseRoomDialog'
+import RemandRoomDialog from '../RemandRoomDialog'
 import RoomSelectionDialog from '../RoomSelectionDialog';
 
 describe('DetaineeActionComponent', () => {
@@ -153,11 +154,15 @@ describe('DetaineeActionComponent', () => {
     [ActivityRoomDialog],
     [CellDialog],
     [PhoneDeclineDialog],
+    [ReleaseRoomDialog],
+    [RemandRoomDialog],
     [RoomSelectionDialog],
   ])('should update state when modal is closed', (dialog) => {
     const wrapper = setup();
 
     wrapper.find(dialog).simulate('close');
     expect(wrapper.state().openDialog).toBeNull();
+    expect(wrapper.state().usage).toBeNull();
+    expect(handleClose).toBeCalledWith(detainee.id)
   });
 });
