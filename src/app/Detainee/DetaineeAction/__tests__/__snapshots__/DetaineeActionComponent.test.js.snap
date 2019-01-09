@@ -247,6 +247,28 @@ exports[`DetaineeActionComponent should render 1`] = `
     isDialogOpen={false}
     onClose={[Function]}
   />
+  <Connect(ActivityRoomDialogComponent)
+    detainee={
+      Object {
+        "firstName": "Bob",
+        "id": "123",
+        "lastName": "Saget",
+      }
+    }
+    isDialogOpen={false}
+    onClose={[Function]}
+  />
+  <Connect(ActivityRoomDialogComponent)
+    detainee={
+      Object {
+        "firstName": "Bob",
+        "id": "123",
+        "lastName": "Saget",
+      }
+    }
+    isDialogOpen={false}
+    onClose={[Function]}
+  />
   <Connect(WithStyles(RoomSelectionDialogComponent))
     detainee={
       Object {

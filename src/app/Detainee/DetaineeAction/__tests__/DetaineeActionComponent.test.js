@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import { exec } from 'child_process';
 import constants from '../../constants';
 import { DetaineeActionComponent } from '../DetaineeActionComponent';
 import ActivityRoomDialog from '../ActivityRoomDialog';
@@ -10,10 +11,7 @@ import RoomSelectionDialog from '../RoomSelectionDialog';
 
 describe('DetaineeActionComponent', () => {
   let detainee;
-  let getAvailableActivityRooms;
-  let getAvailableReleaseRooms;
-  let getAvailableRemandRooms;
-  let getDetainee;
+  let handleClose;
   let isBailHearingRoom1OptionAvailable;
   let isBailHearingRoom2OptionAvailable;
   let isBreathTestRoomOptionAvailable;
@@ -32,10 +30,7 @@ describe('DetaineeActionComponent', () => {
       id: '123',
       lastName: 'Saget',
     };
-    getAvailableActivityRooms = jest.fn();
-    getAvailableReleaseRooms = jest.fn();
-    getAvailableRemandRooms = jest.fn();
-    getDetainee = jest.fn();
+    handleClose = jest.fn();
     isBailHearingRoom1OptionAvailable = false;
     isBailHearingRoom2OptionAvailable = false;
     isBreathTestRoomOptionAvailable = false;
@@ -61,10 +56,7 @@ describe('DetaineeActionComponent', () => {
     return shallow(<DetaineeActionComponent
       classes={classes}
       detainee={detainee}
-      getAvailableActivityRooms={getAvailableActivityRooms}
-      getAvailableReleaseRooms={getAvailableReleaseRooms}
-      getAvailableRemandRooms={getAvailableRemandRooms}
-      getDetainee={getDetainee}
+      handleClose={handleClose}
       isBailHearingRoom1OptionAvailable={isBailHearingRoom1OptionAvailable}
       isBailHearingRoom2OptionAvailable={isBailHearingRoom2OptionAvailable}
       isBreathTestRoomOptionAvailable={isBreathTestRoomOptionAvailable}
@@ -88,10 +80,7 @@ describe('DetaineeActionComponent', () => {
 
   it('should set initial state', () => {
     const wrapper = setup();
-    expect(wrapper.state().isActivityRoomDialogOpen).toBe(false);
-    expect(wrapper.state().isCellDialogOpen).toBe(false);
-    expect(wrapper.state().isRoomSelectionDialogOpen).toBe(false);
-    expect(wrapper.state().isPhoneDialogOpen).toBe(false);
+    expect(wrapper.state().openDialog).toBeNull();
     expect(wrapper.state().usage).toEqual('');
   });
 
@@ -101,30 +90,48 @@ describe('DetaineeActionComponent', () => {
     ['#breathTest', constants.BREATH_TEST_ROOM],
     ['#bailHearing1', constants.BAIL_HEARING_ROOM_1],
     ['#bailHearing2', constants.BAIL_HEARING_ROOM_2],
-    ['#remandHolding', constants.REMAND_HOLDING_ROOM],
-    ['#releaseHolding', constants.RELEASE_ROOM],
   ])(
     'should update state when activity room button is clicked',
     (id, activityRoomUsage) => {
       const wrapper = setup();
+      const activityRoomDialog = 'activityRoomDialog';
 
       wrapper.find(id).simulate('click');
-      expect(wrapper.state().isActivityRoomDialogOpen).toBe(true);
-      expect(wrapper.state().isCellDialogOpen).toBe(false);
-      expect(wrapper.state().isRoomSelectionDialogOpen).toBe(false);
-      expect(wrapper.state().isPhoneDialogOpen).toBe(false);
+      expect(wrapper.state().openDialog).toEqual(activityRoomDialog);
       expect(wrapper.state().usage).toEqual(activityRoomUsage);
     },
   );
 
   it('should update state when cell button is clicked', () => {
     const wrapper = setup();
+    const cellDialog = 'cellDialog';
 
     wrapper.find('#cell').simulate('click');
-    expect(wrapper.state().isActivityRoomDialogOpen).toBe(false);
-    expect(wrapper.state().isCellDialogOpen).toBe(true);
-    expect(wrapper.state().isRoomSelectionDialogOpen).toBe(false);
-    expect(wrapper.state().isPhoneDialogOpen).toBe(false);
+    expect(wrapper.state().openDialog).toBe(cellDialog);
+  });
+
+  it('should update state when phone decline button is clicked', () => {
+    const wrapper = setup();
+    const phoneDeclineDialog = 'phoneDeclineDialog';
+
+    wrapper.find('#phoneDecline').simulate('click');
+    expect(wrapper.state().openDialog).toBe(phoneDeclineDialog);
+  });
+
+  it('should update state when release room button is clicked', () => {
+    const wrapper = setup();
+    const releaseRoomDialog = 'releaseRoomDialog';
+
+    wrapper.find('#releaseHolding').simulate('click');
+    expect(wrapper.state().openDialog).toBe(releaseRoomDialog);
+  });
+
+  it('should update state when remand room button is clicked', () => {
+    const wrapper = setup();
+    const remandRoomDialog = 'remandRoomDialog';
+
+    wrapper.find('#remandHolding').simulate('click');
+    expect(wrapper.state().openDialog).toBe(remandRoomDialog);
   });
 
   it.each([
@@ -134,25 +141,13 @@ describe('DetaineeActionComponent', () => {
     'should update state when room selection button is clicked',
     (id, activityRoomUsage) => {
       const wrapper = setup();
+      const roomSelectionDialog = 'roomSelectionDialog';
 
       wrapper.find(id).simulate('click');
-      expect(wrapper.state().isActivityRoomDialogOpen).toBe(false);
-      expect(wrapper.state().isCellDialogOpen).toBe(false);
-      expect(wrapper.state().isRoomSelectionDialogOpen).toBe(true);
-      expect(wrapper.state().isPhoneDialogOpen).toBe(false);
+      expect(wrapper.state().openDialog).toBe(roomSelectionDialog);
       expect(wrapper.state().usage).toEqual(activityRoomUsage);
     },
   );
-
-  it('should update state when phone decline button is clicked', () => {
-    const wrapper = setup();
-
-    wrapper.find('#phoneDecline').simulate('click');
-    expect(wrapper.state().isActivityRoomDialogOpen).toBe(false);
-    expect(wrapper.state().isCellDialogOpen).toBe(false);
-    expect(wrapper.state().isRoomSelectionDialogOpen).toBe(false);
-    expect(wrapper.state().isPhoneDialogOpen).toBe(true);
-  });
 
   it.each([
     [ActivityRoomDialog],
@@ -163,9 +158,6 @@ describe('DetaineeActionComponent', () => {
     const wrapper = setup();
 
     wrapper.find(dialog).simulate('close');
-    expect(wrapper.state().isActivityRoomDialogOpen).toBe(false);
-    expect(wrapper.state().isCellDialogOpen).toBe(false);
-    expect(wrapper.state().isRoomSelectionDialogOpen).toBe(false);
-    expect(wrapper.state().isPhoneDialogOpen).toBe(false);
+    expect(wrapper.state().openDialog).toBeNull();
   });
 });

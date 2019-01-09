@@ -67,16 +67,18 @@ export const mapStateToProps = (
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  getAvailableActivityRooms: (getAvailableActivityRooms = operations.getAvailableActivityRooms) => {
+  handleClose: (
+    id,
+    getAvailableActivityRooms = operations.getAvailableActivityRooms,
+    getAvailableReleaseRooms = operations.getAvailableReleaseRooms,
+    getAvailableRemandRooms = operations.getAvailableRemandRooms,
+    getDetainee = operations.getDetainee,
+  ) => {
     dispatch(getAvailableActivityRooms());
-  },
-  getAvailableReleaseRooms: (getAvailableReleaseRooms = operations.getAvailableReleaseRooms) => {
     dispatch(getAvailableReleaseRooms());
-  },
-  getAvailableRemandRooms: (getAvailableRemandRooms = operations.getAvailableRemandRooms) => {
     dispatch(getAvailableRemandRooms());
+    dispatch(getDetainee(id));
   },
-  getDetainee: (id, getDetainee = operations.getDetainee) => dispatch(getDetainee(id)),
 });
 
 export default connect(

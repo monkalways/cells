@@ -14,6 +14,8 @@ import IconButton from '@material-ui/core/IconButton';
 import ActivityRoomDialog from './ActivityRoomDialog';
 import CellDialog from './CellDialog';
 import PhoneDeclineDialog from './PhoneDeclineDialog';
+import ReleaseRoomDialog from './ReleaseRoomDialog';
+import RemandRoomDialog from './RemandRoomDialog';
 import RoomSelectionDialog from './RoomSelectionDialog';
 
 import MedicalVisitIcon from '../../images/MedicalVisit.png';
@@ -36,10 +38,7 @@ const propTypes = {
     id: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
   }).isRequired,
-  getAvailableActivityRooms: PropTypes.func.isRequired,
-  getAvailableReleaseRooms: PropTypes.func.isRequired,
-  getAvailableRemandRooms: PropTypes.func.isRequired,
-  getDetainee: PropTypes.func.isRequired,
+  handleClose: PropTypes.func.isRequired,
   isBailHearingRoom1OptionAvailable: PropTypes.bool.isRequired,
   isBailHearingRoom2OptionAvailable: PropTypes.bool.isRequired,
   isBreathTestRoomOptionAvailable: PropTypes.bool.isRequired,
@@ -53,72 +52,96 @@ const propTypes = {
   isRemandRoomOptionAvailable: PropTypes.bool.isRequired,
 };
 
+const activityRoomDialog = 'activityRoomDialog';
+const cellDialog = 'cellDialog';
+const phoneDeclineDialog = 'phoneDeclineDialog';
+const releaseRoomDialog = 'releaseRoomDialog';
+const remandRoomDialog = 'remandRoomDialog';
+const roomSelectionDialog = 'roomSelectionDialog';
+
 export class DetaineeActionComponent extends Component {
   state = {
-    isActivityRoomDialogOpen: false,
-    isCellDialogOpen: false,
-    isRoomSelectionDialogOpen: false,
-    isPhoneDialogOpen: false,
+    openDialog: null,
     usage: '',
   };
 
   handleActivityRoomButtonClick = (usage) => {
     this.setState({
-      isActivityRoomDialogOpen: true,
-      isCellDialogOpen: false,
-      isRoomSelectionDialogOpen: false,
-      isPhoneDialogOpen: false,
+      openDialog: activityRoomDialog,
       usage,
-    });
-  };
-
-  handleCellButtonClick = () => {
-    this.setState({
-      isActivityRoomDialogOpen: false,
-      isCellDialogOpen: true,
-      isRoomSelectionDialogOpen: false,
-      isPhoneDialogOpen: false,
-    });
-  };
-
-  handleRoomSelectionDialogButtonClick = (usage) => {
-    this.setState({
-      isActivityRoomDialogOpen: false,
-      isCellDialogOpen: false,
-      isRoomSelectionDialogOpen: true,
-      isPhoneDialogOpen: false,
-      usage,
-    });
-  };
-
-  handlePhoneDeclineButtonClick = () => {
-    this.setState({
-      isActivityRoomDialogOpen: false,
-      isCellDialogOpen: false,
-      isRoomSelectionDialogOpen: false,
-      isPhoneDialogOpen: true,
     });
   };
 
   handleClose = () => {
     this.setState({
-      isActivityRoomDialogOpen: false,
-      isCellDialogOpen: false,
-      isRoomSelectionDialogOpen: false,
-      isPhoneDialogOpen: false,
+      openDialog: null,
     });
     const {
-      getAvailableActivityRooms,
-      getAvailableReleaseRooms,
-      getAvailableRemandRooms,
-      getDetainee,
-      detainee,
+      handleClose,
     } = this.props;
-    getAvailableActivityRooms();
-    getAvailableReleaseRooms();
-    getAvailableRemandRooms();
-    getDetainee(detainee.id);
+    handleClose();
   };
+
+  handleCellButtonClick = () => {
+    this.setState({
+      openDialog: cellDialog,
+    });
+  };
+
+  handlePhoneDeclineButtonClick = () => {
+    this.setState({
+      openDialog: phoneDeclineDialog,
+    });
+  };
+
+  handleReleaseRoomButtonClick = () => {
+    this.setState({
+      openDialog: releaseRoomDialog,
+    });
+  }
+
+  handleRemandRoomButtonClick = () => {
+    this.setState({
+      openDialog: remandRoomDialog,
+    });
+  }
+
+  handleRoomSelectionDialogButtonClick = (usage) => {
+    this.setState({
+      openDialog: roomSelectionDialog,
+      usage,
+    });
+  };
+
+  isActivityRoomDialogOpen = () => {
+    const { openDialog } = this.state;
+    return openDialog === activityRoomDialog;
+  }
+
+  isCellDialogOpen = () => {
+    const { openDialog } = this.state;
+    return openDialog === cellDialog;
+  }
+
+  isPhoneDeclineDialogOpen = () => {
+    const { openDialog } = this.state;
+    return openDialog === phoneDeclineDialog;
+  }
+
+  isReleaseRoomDialogOpen = () => {
+    const { openDialog } = this.state;
+    return openDialog === releaseRoomDialog;
+  }
+
+  isRemandRoomDialogOpen = () => {
+    const { openDialog } = this.state;
+    return openDialog === remandRoomDialog;
+  }
+
+  isRoomSelectionDialogOpen = () => {
+    const { openDialog } = this.state;
+    return openDialog === roomSelectionDialog;
+  }
 
   render() {
     const {
@@ -138,10 +161,6 @@ export class DetaineeActionComponent extends Component {
     } = this.props;
 
     const {
-      isActivityRoomDialogOpen,
-      isCellDialogOpen,
-      isRoomSelectionDialogOpen,
-      isPhoneDialogOpen,
       usage,
     } = this.state;
 
@@ -302,7 +321,7 @@ export class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isRemandRoomOptionAvailable}
                   onClick={() => {
-                    this.handleActivityRoomButtonClick(constants.REMAND_HOLDING_ROOM);
+                    this.handleRemandRoomButtonClick();
                   }}
                 >
                   <Avatar
@@ -319,7 +338,7 @@ export class DetaineeActionComponent extends Component {
                   className={classes.button}
                   disabled={!isReleaseRoomOptionAvailable}
                   onClick={() => {
-                    this.handleActivityRoomButtonClick(constants.RELEASE_ROOM);
+                    this.handleReleaseRoomButtonClick();
                   }}
                 >
                   <Avatar
@@ -352,23 +371,33 @@ export class DetaineeActionComponent extends Component {
         </CardContent>
         <ActivityRoomDialog
           detainee={detainee}
-          isDialogOpen={isActivityRoomDialogOpen}
+          isDialogOpen={this.isActivityRoomDialogOpen()}
           onClose={this.handleClose}
           usage={usage}
         />
         <CellDialog
           detainee={detainee}
-          isDialogOpen={isCellDialogOpen}
+          isDialogOpen={this.isCellDialogOpen()}
           onClose={this.handleClose}
         />
         <PhoneDeclineDialog
           detainee={detainee}
-          isDialogOpen={isPhoneDialogOpen}
+          isDialogOpen={this.isPhoneDeclineDialogOpen()}
+          onClose={this.handleClose}
+        />
+        <ReleaseRoomDialog
+          detainee={detainee}
+          isDialogOpen={this.isReleaseRoomDialogOpen()}
+          onClose={this.handleClose}
+        />
+        <RemandRoomDialog
+          detainee={detainee}
+          isDialogOpen={this.isRemandRoomDialogOpen()}
           onClose={this.handleClose}
         />
         <RoomSelectionDialog
           detainee={detainee}
-          isDialogOpen={isRoomSelectionDialogOpen}
+          isDialogOpen={this.isRoomSelectionDialogOpen()}
           onClose={this.handleClose}
           usage={usage}
         />

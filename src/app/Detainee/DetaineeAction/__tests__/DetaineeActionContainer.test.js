@@ -55,44 +55,26 @@ describe('DetaineeActionContainer', () => {
       dispatch = jest.fn();
     });
 
-    it('should getAvailableActivityRooms', () => {
-      const { getAvailableActivityRooms } = mapDispatchToProps(dispatch);
+    it('should handleClose', () => {
+      const { handleClose } = mapDispatchToProps(dispatch);
+      const id = 'id';
       const getAvailableActivityRoomsMock = jest.fn();
+      const getAvailableReleaseRoomsMock = jest.fn();
+      const getAvailableRemandRoomsMock = jest.fn();
+      const getDetaineeMock = jest.fn();
 
-      getAvailableActivityRooms(getAvailableActivityRoomsMock);
+      handleClose(
+        id,
+        getAvailableActivityRoomsMock,
+        getAvailableReleaseRoomsMock,
+        getAvailableRemandRoomsMock,
+        getDetaineeMock,
+      );
 
       expect(dispatch).toBeCalled();
       expect(getAvailableActivityRoomsMock).toBeCalled();
-    });
-
-    it('should getAvailableReleaseRooms', () => {
-      const { getAvailableReleaseRooms } = mapDispatchToProps(dispatch);
-      const getAvailableReleaseRoomsMock = jest.fn();
-
-      getAvailableReleaseRooms(getAvailableReleaseRoomsMock);
-
-      expect(dispatch).toBeCalled();
       expect(getAvailableReleaseRoomsMock).toBeCalled();
-    });
-
-    it('should getAvailableRemandRooms', () => {
-      const { getAvailableRemandRooms } = mapDispatchToProps(dispatch);
-      const getAvailableRemandRoomsMock = jest.fn();
-
-      getAvailableRemandRooms(getAvailableRemandRoomsMock);
-
-      expect(dispatch).toBeCalled();
       expect(getAvailableRemandRoomsMock).toBeCalled();
-    });
-
-    it('should getDetainee', () => {
-      const { getDetainee } = mapDispatchToProps(dispatch);
-      const id = '123';
-      const getDetaineeMock = jest.fn();
-
-      getDetainee(id, getDetaineeMock);
-
-      expect(dispatch).toBeCalled();
       expect(getDetaineeMock).toBeCalledWith(id);
     });
   });
