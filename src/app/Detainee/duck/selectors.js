@@ -8,6 +8,7 @@ const areActivityRoomsRefreshing = (state) => state.detainee.activityRooms.isRef
 const areReleaseRoomsRefreshing = (state) => state.detainee.releaseRooms.refreshing;
 const areRemandRoomsRefreshing = (state) => state.detainee.remandRooms.refreshing;
 const getAvailableActivityRooms = (state) => state.detainee.activityRooms.availableActivityRooms;
+
 const getCurrentActivityRoom = (state) => {
   const { first, second } = queryString.parse(state.router.location.search);
   if (first === constants.CELLS_QUERYSTRING) {
@@ -25,6 +26,29 @@ const getCurrentRoom = (state) => {
 };
 
 const getDetainee = (state) => state.detainee.detaineeProfile.data;
+
+const getFirstAvailableReleaseRoom = (state) => {
+  const { genderTypeCode } = getDetainee(state);
+  // eslint-disable-next-line max-len
+  const availableRooms = state.detainee.releaseRooms.data.filter((room) => room.typeCode === genderTypeCode);
+
+  if (availableRooms.length > 0) {
+    return availableRooms[0].name;
+  }
+  return null;
+};
+
+const getFirstAvailableRemandRoom = (state) => {
+  const { genderTypeCode } = getDetainee(state);
+  // eslint-disable-next-line max-len
+  const availableRooms = state.detainee.remandRooms.data.filter((room) => room.typeCode === genderTypeCode);
+
+  if (availableRooms.length > 0) {
+    return availableRooms[0].name;
+  }
+  return null;
+};
+
 const getSecondProp = (_state, prop) => prop;
 
 const isActivityRoomOptionAvailable = (state, usage, inProgress, inTransit) => {
@@ -100,8 +124,7 @@ const isReleaseRoomOptionAvailable = (state) => {
       && location.includes(commonConstants.IN_PROGRESS)
     )
     // Can't move to room if detainee is already in transit there.
-    && location
-      !== commonConstants.RELEASE_HOLDING_IN_TRANSIT
+    && location !== commonConstants.RELEASE_HOLDING_IN_TRANSIT
     && availableRooms.length > 0
   );
 };
@@ -119,8 +142,7 @@ const isRemandRoomOptionAvailable = (state) => {
       && location.includes(commonConstants.IN_PROGRESS)
     )
     // Can't move to room if detainee is already in transit there.
-    && location
-      !== commonConstants.REMAND_HOLDING_IN_TRANSIT
+    && location !== commonConstants.REMAND_HOLDING_IN_TRANSIT
     && availableRooms.length > 0
   );
 };
@@ -172,6 +194,16 @@ const getFirstAvailableActivityRoomState = createSelector(
     }
     return null;
   },
+);
+
+const getFirstAvailableReleaseRoomState = createSelector(
+  [getFirstAvailableReleaseRoom],
+  (room) => room,
+);
+
+const getFirstAvailableRemandRoomState = createSelector(
+  [getFirstAvailableRemandRoom],
+  (room) => room,
 );
 
 const isActivityRoomOptionAvailableState = createSelector(
@@ -235,6 +267,8 @@ export default {
   getCurrentRoomState,
   getDetaineeState,
   getFirstAvailableActivityRoomState,
+  getFirstAvailableReleaseRoomState,
+  getFirstAvailableRemandRoomState,
   isActivityRoomOptionAvailableState,
   isAnyRoomForGivenActivityAvailableState,
   isAssigningToRoomState,
