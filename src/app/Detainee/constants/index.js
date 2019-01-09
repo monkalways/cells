@@ -34,8 +34,8 @@ const INTERVIEW_ROOM = 'Interview';
 const MEDICAL_ROOM = 'Medical';
 const PHONE_DECLINE = 'Phone Decline';
 const PHONE_ROOM = 'Phone';
-const RELEASE_ROOM = 'Release Room';
-const REMAND_HOLDING_ROOM = 'Remand Holding Room';
+const RELEASE_ROOM = 'Release';
+const REMAND_HOLDING_ROOM = 'Remand Holding';
 
 // Room state
 const ROOM_STATE_ALLOCATED = 'ALC';
