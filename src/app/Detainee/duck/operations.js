@@ -177,6 +177,18 @@ const savePhoneCallDecline = (
   }
 };
 
+// For testing only. Delete afterwards. 
+const getUsers = (
+  getUsersSerivce = services.getUsers,
+  sendErrorMessage = commonUtils.sendErrorMessage,
+) => async (dispatch) => {
+  try {
+    await getUsersSerivce();
+  } catch (error) {
+    sendErrorMessage({ dispatch, error });
+  }
+};
+
 export default {
   checkDetaineeInToCell,
   getAvailableActivityRooms,
@@ -188,4 +200,5 @@ export default {
   getDetainee,
   moveDetaineeToRoom,
   savePhoneCallDecline,
+  getUsers,
 };
