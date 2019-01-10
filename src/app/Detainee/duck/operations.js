@@ -177,7 +177,7 @@ const savePhoneCallDecline = (
   }
 };
 
-// For testing only. Delete afterwards. 
+// For testing only. Delete afterwards.
 const getUsers = (
   getUsersSerivce = services.getUsers,
   sendErrorMessage = commonUtils.sendErrorMessage,
