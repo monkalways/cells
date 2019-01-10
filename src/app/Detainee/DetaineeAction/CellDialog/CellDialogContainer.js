@@ -16,14 +16,15 @@ export const mapDispatchToProps = (dispatch) => ({
     detaineeId,
     originRoom,
     destinationRoom,
+    goBack,
     moveDetaineeToCell = operations.moveDetaineeToRoom,
-  ) => dispatch(moveDetaineeToCell(detaineeId, originRoom, destinationRoom)),
-  // eslint-disable-next-line max-len
+  ) => dispatch(moveDetaineeToCell(detaineeId, originRoom, destinationRoom, goBack)),
   checkDetaineeInToCell: (
     detaineeId,
     cellName,
+    goBack,
     checkDetaineeInToCell = operations.checkDetaineeInToCell,
-  ) => dispatch(checkDetaineeInToCell(detaineeId, cellName)),
+  ) => dispatch(checkDetaineeInToCell(detaineeId, cellName, goBack)),
 });
 
 export default connect(

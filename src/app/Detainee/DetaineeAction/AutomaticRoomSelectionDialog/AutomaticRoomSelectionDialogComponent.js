@@ -21,6 +21,7 @@ const propTypes = {
     location: PropTypes.string.isRequired,
   }).isRequired,
   getAvailableRoomsRefresh: PropTypes.func.isRequired,
+  goBack: PropTypes.func.isRequired,
   isAnyRoomAvailable: PropTypes.bool.isRequired,
   isDialogOpen: PropTypes.bool.isRequired,
   isAssigningToRoom: PropTypes.bool.isRequired,
@@ -40,6 +41,7 @@ const ActivityRoomDialogComponent = ({
   destinationRoom,
   detainee,
   getAvailableRoomsRefresh,
+  goBack,
   isAnyRoomAvailable,
   isAssigningToRoom,
   isDialogOpen,
@@ -48,7 +50,7 @@ const ActivityRoomDialogComponent = ({
   usage,
 }) => {
   const handleClick = () => {
-    moveDetaineeToRoom(detainee.id, currentRoom, destinationRoom);
+    moveDetaineeToRoom(detainee.id, currentRoom, destinationRoom, goBack);
   };
 
   const handleOpen = () => {

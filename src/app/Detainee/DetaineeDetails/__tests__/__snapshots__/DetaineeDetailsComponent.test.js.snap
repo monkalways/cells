@@ -198,7 +198,7 @@ exports[`DetaineeDetailsComponent should render if detainee profile is loaded 1`
         item={true}
         sm={12}
       >
-        <Connect(WithStyles(DetaineeActionComponent))
+        <Connect(WithStyles(withRouter(DetaineeActionComponent)))
           detainee={
             Object {
               "bailHearingCount": 0,

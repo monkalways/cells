@@ -342,45 +342,41 @@ describe('Detainee operations', () => {
     it('should return successfully when checkDetaineeInToCellService returns true', async () => {
       const detaineeId = 'id';
       const cellName = 'C1';
+      const goBack = jest.fn()
 
       const assignToRoomAction = jest.fn();
       const assignToRoomFailureAction = jest.fn();
       const assignToRoomSuccessAction = jest.fn();
-      const getAvailableActivityRoomsOperation = jest.fn();
-      const getDetaineeOperation = jest.fn();
       const checkDetaineeInToCellService = jest.fn();
       const dispatch = jest.fn();
 
       await operations.checkDetaineeInToCell(
         detaineeId,
         cellName,
+        goBack,
         assignToRoomAction,
         assignToRoomFailureAction,
         assignToRoomSuccessAction,
-        getAvailableActivityRoomsOperation,
-        getDetaineeOperation,
         checkDetaineeInToCellService,
       )(dispatch);
 
+      expect(goBack).toBeCalled()
       expect(assignToRoomAction).toBeCalled();
       expect(checkDetaineeInToCellService).toBeCalledWith(detaineeId, cellName);
       expect(assignToRoomSuccessAction).toBeCalled();
-      expect(getAvailableActivityRoomsOperation).toBeCalled();
-      expect(getDetaineeOperation).toBeCalledWith(detaineeId);
-      expect(dispatch).toBeCalledTimes(4);
+      expect(dispatch).toBeCalledTimes(2);
       expect(assignToRoomFailureAction).not.toBeCalled();
     });
 
     it('should send an error message when an error occurs', async () => {
       const detaineeId = 'id';
       const cellName = 'C1';
+      const goBack = jest.fn()
       const error = new Error('Network error');
 
       const assignToRoomAction = jest.fn();
       const assignToRoomFailureAction = jest.fn();
       const assignToRoomSuccessAction = jest.fn();
-      const getAvailableActivityRoomsOperation = jest.fn();
-      const getDetaineeOperation = jest.fn();
       const checkDetaineeInToCellService = jest.fn();
       checkDetaineeInToCellService.mockImplementation(() => {
         throw error;
@@ -391,20 +387,18 @@ describe('Detainee operations', () => {
       await operations.checkDetaineeInToCell(
         detaineeId,
         cellName,
+        goBack,
         assignToRoomAction,
         assignToRoomFailureAction,
         assignToRoomSuccessAction,
-        getAvailableActivityRoomsOperation,
-        getDetaineeOperation,
         checkDetaineeInToCellService,
         sendErrorMessage,
       )(dispatch);
 
       expect(assignToRoomAction).toBeCalled();
       expect(checkDetaineeInToCellService).toBeCalledWith(detaineeId, cellName);
+      expect(goBack).not.toBeCalled()
       expect(assignToRoomSuccessAction).not.toBeCalled();
-      expect(getAvailableActivityRoomsOperation).not.toBeCalled();
-      expect(getDetaineeOperation).not.toBeCalledWith(detaineeId);
       expect(dispatch).toBeCalledTimes(2);
       expect(sendErrorMessage).toBeCalledWith({ dispatch, error });
       expect(assignToRoomFailureAction).toBeCalled();
@@ -416,12 +410,11 @@ describe('Detainee operations', () => {
       const detaineeId = 'id';
       const originRoom = 'origin';
       const destinationRoom = 'destination';
+      const goBack = jest.fn()
 
       const assignToRoomAction = jest.fn();
       const assignToRoomFailureAction = jest.fn();
       const assignToRoomSuccessAction = jest.fn();
-      const getAvailableActivityRoomsOperation = jest.fn();
-      const getDetaineeOperation = jest.fn();
       const moveDetaineeToRoomService = jest.fn();
       const dispatch = jest.fn();
 
@@ -429,11 +422,10 @@ describe('Detainee operations', () => {
         detaineeId,
         originRoom,
         destinationRoom,
+        goBack,
         assignToRoomAction,
         assignToRoomFailureAction,
         assignToRoomSuccessAction,
-        getAvailableActivityRoomsOperation,
-        getDetaineeOperation,
         moveDetaineeToRoomService,
       )(dispatch);
 
@@ -444,9 +436,8 @@ describe('Detainee operations', () => {
         destinationRoom,
       );
       expect(assignToRoomSuccessAction).toBeCalled();
-      expect(getAvailableActivityRoomsOperation).toBeCalled();
-      expect(getDetaineeOperation).toBeCalledWith(detaineeId);
-      expect(dispatch).toBeCalledTimes(4);
+      expect(goBack).toBeCalled()
+      expect(dispatch).toBeCalledTimes(2);
       expect(assignToRoomFailureAction).not.toBeCalled();
     });
 
@@ -454,13 +445,12 @@ describe('Detainee operations', () => {
       const detaineeId = 'id';
       const originRoom = 'origin';
       const destinationRoom = 'destination';
+      const goBack = jest.fn()
       const error = new Error('Network error');
 
       const assignToRoomAction = jest.fn();
       const assignToRoomFailureAction = jest.fn();
       const assignToRoomSuccessAction = jest.fn();
-      const getAvailableActivityRoomsOperation = jest.fn();
-      const getDetaineeOperation = jest.fn();
       const moveDetaineeToRoomService = jest.fn();
       moveDetaineeToRoomService.mockImplementation(() => {
         throw error;
@@ -472,11 +462,10 @@ describe('Detainee operations', () => {
         detaineeId,
         originRoom,
         destinationRoom,
+        goBack,
         assignToRoomAction,
         assignToRoomFailureAction,
         assignToRoomSuccessAction,
-        getAvailableActivityRoomsOperation,
-        getDetaineeOperation,
         moveDetaineeToRoomService,
         sendErrorMessage,
       )(dispatch);
@@ -486,10 +475,9 @@ describe('Detainee operations', () => {
         detaineeId,
         originRoom,
         destinationRoom,
-      );
-      expect(assignToRoomSuccessAction).not.toBeCalled();
-      expect(getAvailableActivityRoomsOperation).not.toBeCalled();
-      expect(getDetaineeOperation).not.toBeCalled();
+        );
+        expect(assignToRoomSuccessAction).not.toBeCalled();
+        expect(goBack).not.toBeCalled()
       expect(dispatch).toBeCalledTimes(2);
       expect(sendErrorMessage).toBeCalledWith({ dispatch, error });
       expect(assignToRoomFailureAction).toBeCalled();

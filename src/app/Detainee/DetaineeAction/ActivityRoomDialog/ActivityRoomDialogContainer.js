@@ -23,13 +23,21 @@ export const mapStateToProps = (
 
 export const mapDispatchToProps = (dispatch) => ({
   // eslint-disable-next-line max-len
-  getAvailableRoomsRefresh: (getAvailableActivityRoomsRefresh = operations.getAvailableActivityRoomsRefresh) => dispatch(getAvailableActivityRoomsRefresh()),
+  getAvailableRoomsRefresh: (getAvailableActivityRoomsRefresh = operations.getAvailableActivityRoomsRefresh) => {
+    dispatch(getAvailableActivityRoomsRefresh());
+  },
   moveDetaineeToRoom: (
     detaineeId,
     originRoom,
     destinationRoom,
+    goBack,
     moveDetaineeToActivityRoom = operations.moveDetaineeToRoom,
-  ) => dispatch(moveDetaineeToActivityRoom(detaineeId, originRoom, destinationRoom)),
+  ) => dispatch(moveDetaineeToActivityRoom(
+    detaineeId,
+    originRoom,
+    destinationRoom,
+    goBack,
+  )),
 });
 
 export default connect(

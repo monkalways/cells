@@ -221,6 +221,7 @@ exports[`DetaineeActionComponent should render 1`] = `
         "lastName": "Saget",
       }
     }
+    goBack={[Function]}
     isDialogOpen={false}
     onClose={[Function]}
     usage=""
@@ -233,6 +234,7 @@ exports[`DetaineeActionComponent should render 1`] = `
         "lastName": "Saget",
       }
     }
+    goBack={[Function]}
     isDialogOpen={false}
     onClose={[Function]}
   />
@@ -244,6 +246,7 @@ exports[`DetaineeActionComponent should render 1`] = `
         "lastName": "Saget",
       }
     }
+    goBack={[Function]}
     isDialogOpen={false}
     onClose={[Function]}
   />
@@ -255,6 +258,7 @@ exports[`DetaineeActionComponent should render 1`] = `
         "lastName": "Saget",
       }
     }
+    goBack={[Function]}
     isDialogOpen={false}
     onClose={[Function]}
   />
@@ -266,6 +270,7 @@ exports[`DetaineeActionComponent should render 1`] = `
         "lastName": "Saget",
       }
     }
+    goBack={[Function]}
     isDialogOpen={false}
     onClose={[Function]}
   />
@@ -277,6 +282,7 @@ exports[`DetaineeActionComponent should render 1`] = `
         "lastName": "Saget",
       }
     }
+    goBack={[Function]}
     isDialogOpen={false}
     onClose={[Function]}
     usage=""

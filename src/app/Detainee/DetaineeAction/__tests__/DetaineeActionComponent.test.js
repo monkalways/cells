@@ -13,6 +13,7 @@ import RoomSelectionDialog from '../RoomSelectionDialog';
 describe('DetaineeActionComponent', () => {
   let detainee;
   let handleClose;
+  let goBack;
   let isBailHearingRoom1OptionAvailable;
   let isBailHearingRoom2OptionAvailable;
   let isBreathTestRoomOptionAvailable;
@@ -23,7 +24,7 @@ describe('DetaineeActionComponent', () => {
   let isPhoneDeclineOptionAvailable;
   let isPhoneRoomOptionAvailable;
   let isReleaseRoomOptionAvailable;
-  let isRemandHoldingRoomOptionAvailable;
+  let isRemandRoomOptionAvailable;
 
   beforeEach(() => {
     detainee = {
@@ -32,6 +33,7 @@ describe('DetaineeActionComponent', () => {
       lastName: 'Saget',
     };
     handleClose = jest.fn();
+    goBack=jest.fn()
     isBailHearingRoom1OptionAvailable = false;
     isBailHearingRoom2OptionAvailable = false;
     isBreathTestRoomOptionAvailable = false;
@@ -42,7 +44,7 @@ describe('DetaineeActionComponent', () => {
     isPhoneDeclineOptionAvailable = false;
     isPhoneRoomOptionAvailable = false;
     isReleaseRoomOptionAvailable = false;
-    isRemandHoldingRoomOptionAvailable = false;
+    isRemandRoomOptionAvailable = false;
   });
 
   const setup = () => {
@@ -58,6 +60,7 @@ describe('DetaineeActionComponent', () => {
       classes={classes}
       detainee={detainee}
       handleClose={handleClose}
+      history={{goBack}}
       isBailHearingRoom1OptionAvailable={isBailHearingRoom1OptionAvailable}
       isBailHearingRoom2OptionAvailable={isBailHearingRoom2OptionAvailable}
       isBreathTestRoomOptionAvailable={isBreathTestRoomOptionAvailable}
@@ -70,7 +73,7 @@ describe('DetaineeActionComponent', () => {
       isPhoneDeclineOptionAvailable={isPhoneDeclineOptionAvailable}
       isPhoneRoomOptionAvailable={isPhoneRoomOptionAvailable}
       isReleaseRoomOptionAvailable={isReleaseRoomOptionAvailable}
-      isRemandHoldingRoomOptionAvailable={isRemandHoldingRoomOptionAvailable}
+      isRemandRoomOptionAvailable={isRemandRoomOptionAvailable}
     />);
   };
 

@@ -10,6 +10,7 @@ describe('CellDialogComponent', () => {
   let checkDetaineeInToCell;
   let currentActivity;
   let detainee;
+  let goBack;
   let isDialogOpen;
   let isAssigningToRoom;
   let moveDetaineeToCell;
@@ -26,6 +27,7 @@ describe('CellDialogComponent', () => {
       lastName: 'Saget',
       location: 'location',
     };
+    goBack = jest.fn();
     isDialogOpen = false;
     isAssigningToRoom = false;
     moveDetaineeToCell = jest.fn();
@@ -36,6 +38,7 @@ describe('CellDialogComponent', () => {
     checkDetaineeInToCell={checkDetaineeInToCell}
     currentActivity={currentActivity}
     detainee={detainee}
+    goBack={goBack}
     isAssigningToRoom={isAssigningToRoom}
     isDialogOpen={isDialogOpen}
     moveDetaineeToCell={moveDetaineeToCell}
@@ -78,7 +81,7 @@ describe('CellDialogComponent', () => {
 
     const wrapper = setup();
     wrapper.find('#confirmButton').simulate('click');
-    expect(checkDetaineeInToCell).toBeCalledWith(id, assignedCellName);
+    expect(checkDetaineeInToCell).toBeCalledWith(id, assignedCellName, goBack);
   });
 
   it('should handle confirm button click when activity is not Cell', () => {
@@ -91,6 +94,7 @@ describe('CellDialogComponent', () => {
       id,
       currentActivityRoom,
       assignedCellName,
+      goBack,
     );
   });
 

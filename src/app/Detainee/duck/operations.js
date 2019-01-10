@@ -113,11 +113,10 @@ const getDetainee = (
 const checkDetaineeInToCell = (
   detaineeId,
   cellName,
+  goBack = () => {},
   assignToRoomAction = actions.assignToRoom,
   assignToRoomFailureAction = actions.assignToRoomFailure,
   assignToRoomSuccessAction = actions.assignToRoomSuccess,
-  getAvailableActivityRoomsOperation = getAvailableActivityRooms,
-  getDetaineeOperation = getDetainee,
   checkDetaineeInToCellService = services.checkInToCell,
   sendErrorMessage = commonUtils.sendErrorMessage,
 ) => async (dispatch) => {
@@ -125,8 +124,7 @@ const checkDetaineeInToCell = (
     dispatch(assignToRoomAction());
     await checkDetaineeInToCellService(detaineeId, cellName);
     dispatch(assignToRoomSuccessAction());
-    dispatch(getDetaineeOperation(detaineeId));
-    dispatch(getAvailableActivityRoomsOperation());
+    goBack();
   } catch (error) {
     sendErrorMessage({ dispatch, error });
     dispatch(assignToRoomFailureAction());
@@ -137,11 +135,10 @@ const moveDetaineeToRoom = (
   detaineeId,
   originRoom,
   destinationRoom,
+  goBack = () => {},
   assignToRoomAction = actions.assignToRoom,
   assignToRoomFailureAction = actions.assignToRoomFailure,
   assignToRoomSuccessAction = actions.assignToRoomSuccess,
-  getAvailableActivityRoomsOperation = getAvailableActivityRooms,
-  getDetaineeOperation = getDetainee,
   moveDetaineeToRoomService = services.moveDetaineeToRoom,
   sendErrorMessage = commonUtils.sendErrorMessage,
 ) => async (dispatch) => {
@@ -149,8 +146,7 @@ const moveDetaineeToRoom = (
     dispatch(assignToRoomAction());
     await moveDetaineeToRoomService(detaineeId, originRoom, destinationRoom);
     dispatch(assignToRoomSuccessAction());
-    dispatch(getDetaineeOperation(detaineeId));
-    dispatch(getAvailableActivityRoomsOperation());
+    goBack();
   } catch (error) {
     sendErrorMessage({ dispatch, error });
     dispatch(assignToRoomFailureAction());

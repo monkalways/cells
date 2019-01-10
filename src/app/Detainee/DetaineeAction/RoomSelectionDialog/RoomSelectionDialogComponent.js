@@ -29,6 +29,7 @@ const propTypes = {
     lastName: PropTypes.string.isRequired,
   }).isRequired,
   getAvailableActivityRoomsRefresh: PropTypes.func.isRequired,
+  goBack: PropTypes.func.isRequired,
   isAnyRoomForGivenActivityAvailable: PropTypes.bool.isRequired,
   isDialogOpen: PropTypes.bool.isRequired,
   isAssigningToRoom: PropTypes.bool.isRequired,
@@ -59,10 +60,15 @@ export class RoomSelectionDialogComponent extends Component {
   }
 
   handleConfirmClick = () => {
-    const { detainee, currentRoom, moveDetaineeToActivityRoom } = this.props;
+    const {
+      detainee,
+      currentRoom,
+      goBack,
+      moveDetaineeToActivityRoom,
+    } = this.props;
     const { value } = this.state;
 
-    moveDetaineeToActivityRoom(detainee.id, currentRoom, value);
+    moveDetaineeToActivityRoom(detainee.id, currentRoom, value, goBack);
   };
 
   handleOpen = () => {

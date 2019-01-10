@@ -55,12 +55,14 @@ describe('ReleaseRoomDialogContainer', () => {
       const detaineeId = '123';
       const originRoom = 'C1';
       const destinationRoom = 'T4';
+      const goBack = jest.fn();
       const moveDetaineeToActivityRoomMock = jest.fn();
 
       moveDetaineeToRoom(
         detaineeId,
         originRoom,
         destinationRoom,
+        goBack,
         moveDetaineeToActivityRoomMock,
       );
 
@@ -69,6 +71,7 @@ describe('ReleaseRoomDialogContainer', () => {
         detaineeId,
         originRoom,
         destinationRoom,
+        goBack,
       );
     });
   });

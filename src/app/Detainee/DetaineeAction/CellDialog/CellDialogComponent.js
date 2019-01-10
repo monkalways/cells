@@ -23,6 +23,7 @@ const propTypes = {
     lastName: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
   }).isRequired,
+  goBack: PropTypes.func.isRequired,
   isDialogOpen: PropTypes.bool.isRequired,
   isAssigningToRoom: PropTypes.bool.isRequired,
   moveDetaineeToCell: PropTypes.func.isRequired,
@@ -35,6 +36,7 @@ const CellDialogComponent = ({
   checkDetaineeInToCell,
   currentActivity,
   detainee,
+  goBack,
   isAssigningToRoom,
   isDialogOpen,
   moveDetaineeToCell,
@@ -42,8 +44,8 @@ const CellDialogComponent = ({
 }) => {
   const handleClick = () => {
     const { id, currentActivityRoom, assignedCellName } = detainee;
-    if (currentActivity === constants.CELL) checkDetaineeInToCell(id, assignedCellName);
-    else moveDetaineeToCell(id, currentActivityRoom, assignedCellName);
+    if (currentActivity === constants.CELL) checkDetaineeInToCell(id, assignedCellName, goBack);
+    else moveDetaineeToCell(id, currentActivityRoom, assignedCellName, goBack);
   };
 
   return (

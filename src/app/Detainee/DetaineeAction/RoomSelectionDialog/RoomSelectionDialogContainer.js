@@ -28,8 +28,14 @@ export const mapDispatchToProps = (dispatch) => ({
     detaineeId,
     originRoom,
     destinationRoom,
+    goBack,
     moveDetaineeToActivityRoom = operations.moveDetaineeToRoom,
-  ) => dispatch(moveDetaineeToActivityRoom(detaineeId, originRoom, destinationRoom)),
+  ) => dispatch(moveDetaineeToActivityRoom(
+    detaineeId,
+    originRoom,
+    destinationRoom,
+    goBack,
+  )),
 });
 
 export default connect(

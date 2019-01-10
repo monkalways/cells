@@ -10,6 +10,9 @@ import {
   Typography,
   withStyles,
 } from '@material-ui/core';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
+
 import IconButton from '@material-ui/core/IconButton';
 import ActivityRoomDialog from './ActivityRoomDialog';
 import CellDialog from './CellDialog';
@@ -39,6 +42,9 @@ const propTypes = {
     lastName: PropTypes.string.isRequired,
   }).isRequired,
   handleClose: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    goBack: PropTypes.func.isRequired,
+  }).isRequired,
   isBailHearingRoom1OptionAvailable: PropTypes.bool.isRequired,
   isBailHearingRoom2OptionAvailable: PropTypes.bool.isRequired,
   isBreathTestRoomOptionAvailable: PropTypes.bool.isRequired,
@@ -149,6 +155,7 @@ export class DetaineeActionComponent extends Component {
     const {
       classes,
       detainee,
+      history,
       isBailHearingRoom1OptionAvailable,
       isBailHearingRoom2OptionAvailable,
       isBreathTestRoomOptionAvailable,
@@ -373,32 +380,38 @@ export class DetaineeActionComponent extends Component {
         </CardContent>
         <ActivityRoomDialog
           detainee={detainee}
+          goBack={() => history.goBack()}
           isDialogOpen={this.isActivityRoomDialogOpen()}
           onClose={this.handleClose}
           usage={usage}
         />
         <CellDialog
           detainee={detainee}
+          goBack={() => history.goBack()}
           isDialogOpen={this.isCellDialogOpen()}
           onClose={this.handleClose}
         />
         <PhoneDeclineDialog
           detainee={detainee}
+          goBack={() => history.goBack()}
           isDialogOpen={this.isPhoneDeclineDialogOpen()}
           onClose={this.handleClose}
         />
         <ReleaseRoomDialog
           detainee={detainee}
+          goBack={() => history.goBack()}
           isDialogOpen={this.isReleaseRoomDialogOpen()}
           onClose={this.handleClose}
         />
         <RemandRoomDialog
           detainee={detainee}
+          goBack={() => history.goBack()}
           isDialogOpen={this.isRemandRoomDialogOpen()}
           onClose={this.handleClose}
         />
         <RoomSelectionDialog
           detainee={detainee}
+          goBack={() => history.goBack()}
           isDialogOpen={this.isRoomSelectionDialogOpen()}
           onClose={this.handleClose}
           usage={usage}
@@ -410,29 +423,32 @@ export class DetaineeActionComponent extends Component {
 
 DetaineeActionComponent.propTypes = propTypes;
 
-export default withStyles((theme) => ({
-  avatar: {
-    height: theme.spacing.unit * 8,
-    width: theme.spacing.unit * 8,
-  },
-  button: {
-    padding: theme.spacing.unit,
-  },
-  cardContent: {
-    backgroundColor: '#d4e2fc',
-    paddingBottom: [16, '!important'],
-  },
-  cardHeader: {
-    backgroundColor: '#3d89f7',
-    paddingLeft: theme.spacing.unit,
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-  },
-  disabled: {
-    opacity: '0.2',
-  },
-  imgContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-}))(DetaineeActionComponent);
+export default compose(
+  withStyles((theme) => ({
+    avatar: {
+      height: theme.spacing.unit * 8,
+      width: theme.spacing.unit * 8,
+    },
+    button: {
+      padding: theme.spacing.unit,
+    },
+    cardContent: {
+      backgroundColor: '#d4e2fc',
+      paddingBottom: [16, '!important'],
+    },
+    cardHeader: {
+      backgroundColor: '#3d89f7',
+      paddingLeft: theme.spacing.unit,
+      paddingTop: theme.spacing.unit,
+      paddingBottom: theme.spacing.unit,
+    },
+    disabled: {
+      opacity: '0.2',
+    },
+    imgContainer: {
+      display: 'flex',
+      justifyContent: 'center',
+    },
+  })),
+  withRouter,
+)(DetaineeActionComponent);

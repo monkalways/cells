@@ -11,6 +11,7 @@ describe('ActivityRoomDialogComponent', () => {
   let destinationRoom;
   let detainee;
   let getAvailableRoomsRefresh;
+  let goBack;
   let isAnyRoomAvailable;
   let isDialogOpen;
   let isAssigningToRoom;
@@ -29,6 +30,7 @@ describe('ActivityRoomDialogComponent', () => {
       location: 'location',
     };
     getAvailableRoomsRefresh = jest.fn();
+    goBack= jest.fn()
     isAnyRoomAvailable = false;
     isDialogOpen = false;
     isAssigningToRoom = false;
@@ -43,6 +45,7 @@ describe('ActivityRoomDialogComponent', () => {
     destinationRoom={destinationRoom}
     detainee={detainee}
     getAvailableRoomsRefresh={getAvailableRoomsRefresh}
+    goBack={goBack}
     isAnyRoomAvailable={isAnyRoomAvailable}
     isDialogOpen={isDialogOpen}
     isAssigningToRoom={isAssigningToRoom}
@@ -117,6 +120,7 @@ describe('ActivityRoomDialogComponent', () => {
       detainee.id,
       currentRoom,
       destinationRoom,
+      goBack,
     );
   });
 
