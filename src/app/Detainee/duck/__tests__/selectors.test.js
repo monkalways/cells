@@ -150,6 +150,54 @@ describe('Detainee selectors', () => {
     },
   );
 
+  it.each([['FA', 'REL1'], ['MA', 'REL2'], ['OJ', null]])(
+    'should select getFirstAvailableReleaseRoomState',
+    (genderTypeCode, roomName) => {
+      const state = {
+        detainee: {
+          detaineeProfile: {
+            data: {
+              genderTypeCode,
+            },
+          },
+          releaseRooms: {
+            data: [
+              { name: 'REL1', typeCode: 'FA' },
+              { name: 'REL2', typeCode: 'MA' },
+            ],
+          },
+        },
+      };
+
+      const result = selectors.getFirstAvailableReleaseRoomState(state);
+      expect(result).toEqual(roomName);
+    },
+  );
+
+  it.each([['FA', 'H1'], ['MA', 'H2'], ['OJ', null]])(
+    'should select getFirstAvailableRemandRoomState',
+    (genderTypeCode, roomName) => {
+      const state = {
+        detainee: {
+          detaineeProfile: {
+            data: {
+              genderTypeCode,
+            },
+          },
+          remandRooms: {
+            data: [
+              { name: 'H1', typeCode: 'FA' },
+              { name: 'H2', typeCode: 'MA' },
+            ],
+          },
+        },
+      };
+
+      const result = selectors.getFirstAvailableRemandRoomState(state);
+      expect(result).toEqual(roomName);
+    },
+  );
+
   it.each([
     [
       // Move to phone room from cell screen, rooms available
