@@ -165,10 +165,10 @@ const savePhoneCallDecline = async (arrestId, userName) => {
 
 // We need to see what account is used when calling the EPROS service directly.
 // This call is for testing purposes only. Remove it after the test is complete.
-const EPROS_URL = 'http://x42eprosservicez/';
+const EPROS_URL = 'http://x42deveprosservicez/';
 
 const GET_USERS_URL = `${EPROS_URL}api/users`;
-// const VERSION_URL = `${EPROS_URL}api/version`;
+const VERSION_URL = `${EPROS_URL}api/version`;
 
 const SCAN_CARD_ID_KEY = 'x-swipe-card-serial-number';
 
@@ -192,6 +192,11 @@ const getUsers = async () => {
   return true;
 };
 
+const getVersion = async () => {
+  await axios.get(VERSION_URL, EPROS_HEADERS());
+  return true;
+};
+
 export default {
   checkInToCell,
   getAvailableActivityRooms,
@@ -201,4 +206,5 @@ export default {
   moveDetaineeToRoom,
   savePhoneCallDecline,
   getUsers,
+  getVersion,
 };

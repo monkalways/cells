@@ -12,12 +12,14 @@ export const mapDispatchToProps = (dispatch) => ({
     getDetainee = operations.getDetainee,
     // Remove this later as it is only for testing purposes.
     getUsers = operations.getUsers,
+    getVersion = operations.getVersion,
   ) => {
     dispatch(getAvailableActivityRooms());
     dispatch(getAvailableReleaseRooms());
     dispatch(getAvailableRemandRooms());
     dispatch(getDetainee(id));
     dispatch(getUsers());
+    dispatch(getVersion());
   },
   logOut: (first, second, logOut = authenticationOperations.logOut) => {
     dispatch(logOut(first, second));

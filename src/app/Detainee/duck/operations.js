@@ -179,11 +179,23 @@ const savePhoneCallDecline = (
 
 // For testing only. Delete afterwards.
 const getUsers = (
-  getUsersSerivce = services.getUsers,
+  getUsersService = services.getUsers,
   sendErrorMessage = commonUtils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
-    await getUsersSerivce();
+    await getUsersService();
+  } catch (error) {
+    sendErrorMessage({ dispatch, error });
+  }
+};
+
+// For testing only. Delete afterwards.
+const getVersion = (
+  getVersionService = services.getVersion,
+  sendErrorMessage = commonUtils.sendErrorMessage,
+) => async (dispatch) => {
+  try {
+    await getVersionService();
   } catch (error) {
     sendErrorMessage({ dispatch, error });
   }
@@ -201,4 +213,5 @@ export default {
   moveDetaineeToRoom,
   savePhoneCallDecline,
   getUsers,
+  getVersion,
 };
