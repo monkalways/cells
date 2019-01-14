@@ -403,6 +403,20 @@ describe('Detainee selectors', () => {
       true,
     ],
     [
+      // User came from cell management screen and detainee is "Release Holding - In Transit".
+      // Enable button so detainee can be checked in.
+      '?first=cells&second=REL1',
+      commonConstants.RELEASE_HOLDING_IN_TRANSIT,
+      true,
+    ],
+    [
+      // User came from cell management screen and detainee is "Remand Holding - In Transit".
+      // Enable button so detainee can be checked in.
+      '?first=cells&second=H1',
+      commonConstants.REMAND_HOLDING_IN_TRANSIT,
+      true,
+    ],
+    [
       // User came from activity room screen and detainee is not "Cell - In Transit"
       // Enable button so detainee can be sent back to cell.
       '?first=activity-rooms&second=phone',

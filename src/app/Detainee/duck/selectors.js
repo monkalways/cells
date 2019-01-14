@@ -83,10 +83,13 @@ const isInCellOptionAvailable = (state) => {
   const { location } = state.detainee.detaineeProfile.data;
 
   // Case 1: If the user came from the cell management screen and the detainee location
-  // is "Cell - In Transit" this button is enabled so they can be checked in.
+  // is in transit to their assigned cell, release, or remand room
+  // this button is enabled so they can be checked in.
   if (
     first === constants.CELLS_QUERYSTRING
-    && location === commonConstants.CELL_IN_TRANSIT
+    && (location === commonConstants.CELL_IN_TRANSIT
+      || location === commonConstants.RELEASE_HOLDING_IN_TRANSIT
+      || location === commonConstants.REMAND_HOLDING_IN_TRANSIT)
   ) return true;
 
   // Case 2: If the user came from the activity room screen and the detainee location
