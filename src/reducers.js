@@ -5,7 +5,7 @@ import cellsReducer from './app/Cell/duck';
 import detaineeReducer from './app/Detainee/duck';
 import activityRoomReducer from './app/ActivityRoom/duck/reducers';
 import authenticationReducer from './app/Authentication/duck';
-import versionsReducer from './app/common/duck';
+import commonReducer from './app/common/duck';
 
 export default (history) => combineReducers({
   router: connectRouter(history),
@@ -13,6 +13,6 @@ export default (history) => combineReducers({
   authentication: authenticationReducer,
   detainee: detaineeReducer,
   activityRoom: activityRoomReducer,
-  versions: versionsReducer,
+  common: commonReducer,
   toastr: toastrReducer,
 });

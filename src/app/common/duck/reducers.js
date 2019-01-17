@@ -1,14 +1,26 @@
+import { combineReducers } from 'redux';
 import types from './types';
 
-const defaultState = [];
+const defaultVersionsReducerState = {
+  data: [],
+};
 
-const versionsReducer = (state = defaultState, action) => {
+export const versionsReducer = (
+  state = defaultVersionsReducerState,
+  action,
+) => {
   switch (action.type) {
     case types.GET_VERSIONS_SUCCESS:
-      return [...action.versions];
+      return {
+        data: action.payload,
+      };
     default:
       return state;
   }
 };
 
-export default versionsReducer;
+const commonReducer = combineReducers({
+  versions: versionsReducer,
+});
+
+export default commonReducer;
