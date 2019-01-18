@@ -14,11 +14,29 @@ describe('Common reudcers', () => {
     });
   });
 
-  it('should refresh authentication timeout', () => {
-    const result = authenticationTimeoutReducer(undefined, {
+  it('should refresh authentication timeout if timeout is not null', () => {
+    const defaultState = {
+      timeout: setTimeout(
+        () => {},
+        process.env.REACT_APP_AUTHENTICATION_TIMEOUT_SEC * 1000,
+      ),
+    };
+
+    const result = authenticationTimeoutReducer(defaultState, {
       type: types.REFRESH_AUTHENTICATION_TIMEOUT,
     });
     expect(result.timeout).not.toBeNull();
+  });
+
+  it('should not refresh authentication timeout if timeout is null', () => {
+    const defaultState = {
+      timeout: null,
+    };
+
+    const result = authenticationTimeoutReducer(defaultState, {
+      type: types.REFRESH_AUTHENTICATION_TIMEOUT,
+    });
+    expect(result.timeout).toBeNull();
   });
 
   it('should start authentication timeout', () => {

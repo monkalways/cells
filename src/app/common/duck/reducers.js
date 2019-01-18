@@ -11,7 +11,12 @@ export const authenticationTimeoutReducer = (
 ) => {
   switch (action.type) {
     case types.REFRESH_AUTHENTICATION_TIMEOUT:
-      // console.log('Refreshing timeout');
+      // If timer is null we received this refresh event after logout already happened.
+      // Timer must not be refreshed in this case.
+      if (!state.timeout) {
+        return defaultAuthenticationTimeoutReducerState;
+      }
+
       clearTimeout(state.timeout);
       return {
         timeout: setTimeout(() => {
@@ -21,7 +26,6 @@ export const authenticationTimeoutReducer = (
         }, process.env.REACT_APP_AUTHENTICATION_TIMEOUT_SEC * 1000),
       };
     case types.START_AUTHENTICATION_TIMEOUT:
-      // console.log('Starting timeout');
       return {
         timeout: setTimeout(() => {
           // Logout action goes here
@@ -31,11 +35,8 @@ export const authenticationTimeoutReducer = (
         }, process.env.REACT_APP_AUTHENTICATION_TIMEOUT_SEC * 1000),
       };
     case types.STOP_AUTHENTICATION_TIMEOUT:
-      // console.log('Stopping timeout');
       clearTimeout(state.timeout);
-      return {
-        timeout: null,
-      };
+      return defaultAuthenticationTimeoutReducerState;
     default:
       return state;
   }
