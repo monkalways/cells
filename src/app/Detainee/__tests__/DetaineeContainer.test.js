@@ -33,13 +33,15 @@ describe('DetaineeContainer', () => {
 
     it('should logOut', () => {
       const { logOut } = mapDispatchToProps(dispatch);
-      const logOutMock = jest.fn();
       const first = 'cells';
       const second = 'c1';
+      const stopAuthenticationTimeoutMock = jest.fn();
+      const logOutMock = jest.fn();
 
       logOut(first, second, logOutMock);
 
       expect(dispatch).toBeCalled();
+      expect(stopAuthenticationTimeoutMock).toBeCalled();
       expect(logOutMock).toBeCalled();
     });
   });
