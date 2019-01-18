@@ -4,10 +4,6 @@ import { shallow } from 'enzyme';
 import { DetaineeComponent } from '../DetaineeComponent';
 
 describe('DetaineeComponent', () => {
-  // let getAvailableActivityRooms;
-  // let getAvailableReleaseRooms;
-  // let getAvailableRemandRooms;
-  // let getDetainee;
   let initialize;
   let push; // history
   let search; // location
