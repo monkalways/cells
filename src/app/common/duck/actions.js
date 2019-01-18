@@ -1,10 +1,25 @@
 import types from './types';
 
-const getVersionsSuccess = (versions) => ({
+const getVersionsSuccess = (payload) => ({
   type: types.GET_VERSIONS_SUCCESS,
-  versions,
+  payload,
+});
+
+const refreshAuthenticationTimeout = () => ({
+  type: types.REFRESH_AUTHENTICATION_TIMEOUT,
+});
+
+const startAuthenticationTimeout = () => ({
+  type: types.START_AUTHENTICATION_TIMEOUT,
+});
+
+const stopAuthenticationTimeout = () => ({
+  type: types.STOP_AUTHENTICATION_TIMEOUT,
 });
 
 export default {
   getVersionsSuccess,
+  refreshAuthenticationTimeout,
+  startAuthenticationTimeout,
+  stopAuthenticationTimeout,
 };

@@ -22,6 +22,15 @@ const getVersions = (
   }
 };
 
+const {
+  refreshAuthenticationTimeout,
+  startAuthenticationTimeout,
+  stopAuthenticationTimeout,
+} = actions;
+
 export default {
   getVersions,
+  refreshAuthenticationTimeout,
+  startAuthenticationTimeout,
+  stopAuthenticationTimeout,
 };
