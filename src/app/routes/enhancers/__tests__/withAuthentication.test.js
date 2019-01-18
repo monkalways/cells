@@ -21,7 +21,7 @@ describe('withAuthenticationComponent', () => {
                  </BrowserRouter>);
   };
 
-  it('should redirect to "/" if not authentcated and no cell name in state or querystring', () => {
+  it('should redirect to "/" if not authenticated and no cell name in state or querystring', () => {
     location = {
       search: null,
     };
@@ -38,7 +38,7 @@ describe('withAuthenticationComponent', () => {
     expect(wrapper.find(Redirect)).toHaveProp('to', '/');
   });
 
-  it('should redirect to cell home page if not authentcated but cell name is in state', () => {
+  it('should redirect to cell home page if not authenticated but cell name is in state', () => {
     location = {
       search: null,
     };
@@ -57,7 +57,7 @@ describe('withAuthenticationComponent', () => {
     expect(wrapper.find(Redirect)).toHaveProp('to', '/cells/c1/home');
   });
 
-  it('should redirect to cell home page if not authentcated but cell name is in query string', () => {
+  it('should redirect to cell home page if not authenticated but cell name is in query string', () => {
     location = {
       search: '?first=cells&second=c2',
     };
@@ -91,5 +91,53 @@ describe('withAuthenticationComponent', () => {
     const wrapper = setup();
     expect(wrapper.find(Redirect)).not.toExist();
     expect(wrapper.find(TestComponent)).toExist();
+  });
+
+  it('should call startAuthenticationTimeout if authenticated', () => {
+    location = {
+      search: '?first=cells&second=c2',
+    };
+    initialState = {
+      cell: {
+        details: {
+          name: 'c1',
+        },
+      },
+      authentication: {
+        authenticated: true,
+      },
+    };
+
+    const storeActions = [{
+      type: 'app/common/START_AUTHENTICATION_TIMEOUT'
+    }]
+
+    setup();
+    expect(store.getActions()).toEqual(storeActions);
+  });
+
+  it('should call refreshAuthenticationTimeout when handleClick is clicked', () => {
+    location = {
+      search: '?first=cells&second=c2',
+    };
+    initialState = {
+      cell: {
+        details: {
+          name: 'c1',
+        },
+      },
+      authentication: {
+        authenticated: true,
+      },
+    };
+
+    const storeActions =  [
+      {type: 'app/common/START_AUTHENTICATION_TIMEOUT'},
+      {type: 'app/common/REFRESH_AUTHENTICATION_TIMEOUT'}, 
+    ]
+
+    const wrapper = setup();
+    wrapper.find('#refreshAuthenticationTimeoutHandler').simulate('click')
+    expect(store.getActions()).toEqual(storeActions);
   });
 });

@@ -6,10 +6,17 @@ import queryString from 'query-string';
 
 import { selectors as authenticationSelectors } from '../../Authentication/duck';
 import { selectors as cellSelectors } from '../../Cell/duck';
+import { operations as commonOperations } from '../../common/duck';
 
 export default function withAuthentication(WrappedComponent) {
   const WithAuthentication = (props) => {
-    const { isAuthenticated, cellName, location } = props;
+    const {
+      isAuthenticated,
+      cellName,
+      handleClick,
+      location,
+      startAuthenticationTimeout,
+    } = props;
     if (!isAuthenticated) {
       const cellNameInPath = cellName || queryString.parse(location.search).second;
       if (cellNameInPath) {
@@ -19,11 +26,21 @@ export default function withAuthentication(WrappedComponent) {
       return <Redirect to="/" />;
     }
 
-    return <WrappedComponent {...props} />;
+    startAuthenticationTimeout();
+    return (
+      <div
+        onClick={() => handleClick()}
+        role="presentation"
+        id="refreshAuthenticationTimeoutHandler"
+      >
+        <WrappedComponent {...props} />
+      </div>
+    );
   };
 
   WithAuthentication.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
+    startAuthenticationTimeout: PropTypes.func.isRequired,
   };
 
   const mapStateToProps = (
@@ -35,5 +52,17 @@ export default function withAuthentication(WrappedComponent) {
     cellName,
   });
 
-  return connect(mapStateToProps)(WithAuthentication);
+  const mapDispatchToProps = (dispatch) => ({
+    startAuthenticationTimeout: () => {
+      dispatch(commonOperations.startAuthenticationTimeout());
+    },
+    handleClick: (refreshAuthenticationTimeout = commonOperations.refreshAuthenticationTimeout) => {
+      dispatch(refreshAuthenticationTimeout());
+    },
+  });
+
+  return connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(WithAuthentication);
 }
