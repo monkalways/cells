@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import types from './types';
 
 const defaultAuthenticationTimeoutReducerState = {
+  logout: null,
   timeout: null,
 };
 
@@ -11,32 +12,31 @@ export const authenticationTimeoutReducer = (
 ) => {
   switch (action.type) {
     case types.REFRESH_AUTHENTICATION_TIMEOUT:
-      // If timer is null we received this refresh event after logout already happened.
-      // Timer must not be refreshed in this case.
+      // Don't refresh timer if STOP_AUTHENTICATION_TIMEOUT has cleared the timer already.
       if (!state.timeout) {
         return defaultAuthenticationTimeoutReducerState;
       }
 
       clearTimeout(state.timeout);
       return {
+        ...state,
         timeout: setTimeout(() => {
-          // console.log(`Timeout expired after ${
-          //   process.env.REACT_APP_AUTHENTICATION_TIMEOUT_SEC
-          // } seconds. Logging out happens now. This came from a refresh.`);
+          state.logout();
         }, process.env.REACT_APP_AUTHENTICATION_TIMEOUT_SEC * 1000),
       };
+
     case types.START_AUTHENTICATION_TIMEOUT:
       return {
+        logout: action.payload,
         timeout: setTimeout(() => {
-          // Logout action goes here
-          // console.log(`Timeout expired after ${
-          //   process.env.REACT_APP_AUTHENTICATION_TIMEOUT_SEC
-          // } seconds. Logging out happens now.`);
+          action.payload();
         }, process.env.REACT_APP_AUTHENTICATION_TIMEOUT_SEC * 1000),
       };
+
     case types.STOP_AUTHENTICATION_TIMEOUT:
       clearTimeout(state.timeout);
       return defaultAuthenticationTimeoutReducerState;
+
     default:
       return state;
   }

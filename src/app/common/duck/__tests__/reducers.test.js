@@ -1,10 +1,11 @@
 import types from '../types';
 import { authenticationTimeoutReducer, versionsReducer } from '../reducers';
 
-describe('Common reudcers', () => {
+describe('Common reducers', () => {
   describe('authenticationTimeoutReducer', () => {
     it('should set up default state', () => {
       const defaultState = {
+        logout: null,
         timeout: null,
       };
       const result = authenticationTimeoutReducer(undefined, {
@@ -30,6 +31,7 @@ describe('Common reudcers', () => {
 
   it('should not refresh authentication timeout if timeout is null', () => {
     const defaultState = {
+      logout: null,
       timeout: null,
     };
 

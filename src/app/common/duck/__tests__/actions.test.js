@@ -19,9 +19,11 @@ describe('Common actions', () => {
   });
 
   it('should create startAuthenticationTimeout action object', () => {
-    const result = actions.startAuthenticationTimeout();
+    const payload = jest.fn();
+    const result = actions.startAuthenticationTimeout(payload);
     expect(result).toEqual({
       type: types.START_AUTHENTICATION_TIMEOUT,
+      payload,
     });
   });
 
