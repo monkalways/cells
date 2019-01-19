@@ -26,7 +26,11 @@ export default function withAuthentication(WrappedComponent) {
       return <Redirect to="/" />;
     }
 
-    startAuthenticationTimeout();
+    const logout = () => {
+      // console.log('Logout callback called');
+    };
+
+    startAuthenticationTimeout(logout);
     return (
       <div
         onClick={() => handleClick()}
@@ -53,8 +57,8 @@ export default function withAuthentication(WrappedComponent) {
   });
 
   const mapDispatchToProps = (dispatch) => ({
-    startAuthenticationTimeout: () => {
-      dispatch(commonOperations.startAuthenticationTimeout());
+    startAuthenticationTimeout: (logout) => {
+      dispatch(commonOperations.startAuthenticationTimeout(logout));
     },
     handleClick: (refreshAuthenticationTimeout = commonOperations.refreshAuthenticationTimeout) => {
       dispatch(refreshAuthenticationTimeout());
