@@ -38,7 +38,7 @@ describe('DetaineeContainer', () => {
       const stopAuthenticationTimeoutMock = jest.fn();
       const logOutMock = jest.fn();
 
-      logOut(first, second, logOutMock);
+      logOut(first, second, stopAuthenticationTimeoutMock, logOutMock);
 
       expect(dispatch).toBeCalled();
       expect(stopAuthenticationTimeoutMock).toBeCalled();
