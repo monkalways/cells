@@ -12,7 +12,6 @@ export const authenticationTimeoutReducer = (
 ) => {
   switch (action.type) {
     case types.REFRESH_AUTHENTICATION_TIMEOUT:
-      // Don't refresh timer if STOP_AUTHENTICATION_TIMEOUT has cleared the timer already.
       if (!state.timeout) {
         return defaultAuthenticationTimeoutReducerState;
       }
