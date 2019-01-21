@@ -16,26 +16,26 @@ describe('Common reducers', () => {
   });
 
   it('should refresh authentication timeout if timeout is not null', () => {
-    const defaultState = {
+    const previousState = {
       timeout: setTimeout(
         () => {},
         process.env.REACT_APP_AUTHENTICATION_TIMEOUT_SEC * 1000,
       ),
     };
 
-    const result = authenticationTimeoutReducer(defaultState, {
+    const result = authenticationTimeoutReducer(previousState, {
       type: types.REFRESH_AUTHENTICATION_TIMEOUT,
     });
     expect(result.timeout).not.toBeNull();
   });
 
   it('should not refresh authentication timeout if timeout is null', () => {
-    const defaultState = {
+    const previousState = {
       logout: null,
       timeout: null,
     };
 
-    const result = authenticationTimeoutReducer(defaultState, {
+    const result = authenticationTimeoutReducer(previousState, {
       type: types.REFRESH_AUTHENTICATION_TIMEOUT,
     });
     expect(result.timeout).toBeNull();
