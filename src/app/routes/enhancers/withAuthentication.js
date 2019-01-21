@@ -16,6 +16,7 @@ export default function withAuthentication(WrappedComponent) {
       handleClick,
       location,
       startAuthenticationTimeout,
+      stopAuthenticationTimeout,
     } = props;
     if (!isAuthenticated) {
       const cellNameInPath = cellName || queryString.parse(location.search).second;
@@ -27,6 +28,7 @@ export default function withAuthentication(WrappedComponent) {
     }
 
     const logout = () => {
+      stopAuthenticationTimeout();
       // console.log('Logout callback called');
     };
 
@@ -60,8 +62,11 @@ export default function withAuthentication(WrappedComponent) {
     startAuthenticationTimeout: (logout) => {
       dispatch(commonOperations.startAuthenticationTimeout(logout));
     },
-    handleClick: (refreshAuthenticationTimeout = commonOperations.refreshAuthenticationTimeout) => {
-      dispatch(refreshAuthenticationTimeout());
+    stopAuthenticationTimeout: () => {
+      dispatch(commonOperations.stopAuthenticationTimeout());
+    },
+    handleClick: () => {
+      dispatch(commonOperations.refreshAuthenticationTimeout());
     },
   });
 
