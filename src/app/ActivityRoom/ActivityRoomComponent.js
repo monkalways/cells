@@ -33,6 +33,9 @@ const propTypes = {
   handleCheckIn: PropTypes.func.isRequired,
   handleSignIn: PropTypes.func.isRequired,
   logOut: PropTypes.func.isRequired,
+  refreshAuthenticationTimeout: PropTypes.func.isRequired,
+  startAuthenticationTimeout: PropTypes.func.isRequired,
+  stopAuthenticationTimeout: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
@@ -49,10 +52,20 @@ export class ActivityRoomComponent extends Component {
   }
 
   componentDidUpdate() {
-    const { isAuthenticated } = this.props;
-
+    const {
+      isAuthenticated,
+      logOut,
+      match,
+      startAuthenticationTimeout,
+      stopAuthenticationTimeout,
+    } = this.props;
+    const { name } = match.params;
     if (isAuthenticated) {
       this.cancelUnauthenticatedTimeout();
+      startAuthenticationTimeout(() => {
+        stopAuthenticationTimeout();
+        logOut('cells', name);
+      });
     }
   }
 
@@ -82,6 +95,13 @@ export class ActivityRoomComponent extends Component {
     logOut('activity-rooms', usage);
   };
 
+  handleClick = () => {
+    const { isAuthenticated, refreshAuthenticationTimeout } = this.props;
+    if (isAuthenticated) {
+      refreshAuthenticationTimeout();
+    }
+  };
+
   render() {
     const {
       match,
@@ -96,44 +116,53 @@ export class ActivityRoomComponent extends Component {
     } = this.props;
     const { usage } = match.params;
     return (
-      <React.Fragment>
-        <Layout>
-          <Header
-            usage={usage}
-            onLogout={this.handleLogout}
-            isAuthenticated={isAuthenticated}
-          />
-          <div className={classes.body}>
-            <CellDetaineeGrid>
-              {isActivityRoomDetaineesLoaded ? (
-                detainees.length > 0 ? (
-                  <React.Fragment>
-                    {detainees.map((detainee) => (
-                      <Grid key={detainee.id} item sm={4}>
-                        <ActivityRoomDetaineeCard
-                          detainee={detainee}
-                          usage={usage}
-                          isAuthenticated={isAuthenticated}
-                          isCheckingIn={isCheckingIn}
-                          isCheckingInSuccess={isCheckingInSuccess}
-                          onCheckIn={handleCheckIn}
-                        />
-                      </Grid>
-                    ))}
-                  </React.Fragment>
+      <div
+        onClick={() => this.handleClick()}
+        role="presentation"
+        id="refreshAuthenticationTimeoutHandler"
+      >
+        <React.Fragment>
+          <Layout>
+            <Header
+              usage={usage}
+              onLogout={this.handleLogout}
+              isAuthenticated={isAuthenticated}
+            />
+            <div className={classes.body}>
+              <CellDetaineeGrid>
+                {isActivityRoomDetaineesLoaded ? (
+                  detainees.length > 0 ? (
+                    <React.Fragment>
+                      {detainees.map((detainee) => (
+                        <Grid key={detainee.id} item sm={4}>
+                          <ActivityRoomDetaineeCard
+                            detainee={detainee}
+                            usage={usage}
+                            isAuthenticated={isAuthenticated}
+                            isCheckingIn={isCheckingIn}
+                            isCheckingInSuccess={isCheckingInSuccess}
+                            onCheckIn={handleCheckIn}
+                          />
+                        </Grid>
+                      ))}
+                    </React.Fragment>
+                  ) : (
+                    <Typography variant="h6" className={classes.heading}>
+                      No detainees.
+                    </Typography>
+                  )
                 ) : (
-                  <Typography variant="h6" className={classes.heading}>
-                    No detainees.
-                  </Typography>
-                )
-              ) : (
-                <Loading />
-              )}
-            </CellDetaineeGrid>
-            <Footer isAuthenticated={isAuthenticated} onSignIn={handleSignIn} />
-          </div>
-        </Layout>
-      </React.Fragment>
+                  <Loading />
+                )}
+              </CellDetaineeGrid>
+              <Footer
+                isAuthenticated={isAuthenticated}
+                onSignIn={handleSignIn}
+              />
+            </div>
+          </Layout>
+        </React.Fragment>
+      </div>
     );
   }
 }

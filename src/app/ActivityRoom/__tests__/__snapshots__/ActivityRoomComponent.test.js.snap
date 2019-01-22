@@ -1,7 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ActivityRoomComponent should render "no detainees" when detainees are loaded but there are none 1`] = `
-<Fragment>
+<div
+  id="refreshAuthenticationTimeoutHandler"
+  onClick={[Function]}
+  role="presentation"
+>
   <WithStyles(LayoutComponent)>
     <WithStyles(HeaderComponent)
       isAuthenticated={false}
@@ -25,11 +29,15 @@ exports[`ActivityRoomComponent should render "no detainees" when detainees are l
       />
     </div>
   </WithStyles(LayoutComponent)>
-</Fragment>
+</div>
 `;
 
 exports[`ActivityRoomComponent should render Loading when detainees are not yet loaded 1`] = `
-<Fragment>
+<div
+  id="refreshAuthenticationTimeoutHandler"
+  onClick={[Function]}
+  role="presentation"
+>
   <WithStyles(LayoutComponent)>
     <WithStyles(HeaderComponent)
       isAuthenticated={false}
@@ -48,11 +56,15 @@ exports[`ActivityRoomComponent should render Loading when detainees are not yet 
       />
     </div>
   </WithStyles(LayoutComponent)>
-</Fragment>
+</div>
 `;
 
 exports[`ActivityRoomComponent should render detainee cards when one or more detainees are loaded 1`] = `
-<Fragment>
+<div
+  id="refreshAuthenticationTimeoutHandler"
+  onClick={[Function]}
+  role="presentation"
+>
   <WithStyles(LayoutComponent)>
     <WithStyles(HeaderComponent)
       isAuthenticated={false}
@@ -106,5 +118,5 @@ exports[`ActivityRoomComponent should render detainee cards when one or more det
       />
     </div>
   </WithStyles(LayoutComponent)>
-</Fragment>
+</div>
 `;

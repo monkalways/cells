@@ -19,6 +19,9 @@ describe('ActivityRoomComponent', () => {
   let handleCheckIn;
   let handleSignIn;
   let logOut;
+  let refreshAuthenticationTimeout;
+  let startAuthenticationTimeout;
+  let stopAuthenticationTimeout;
 
   beforeEach(() => {
     push = jest.fn();
@@ -32,6 +35,9 @@ describe('ActivityRoomComponent', () => {
     handleCheckIn = jest.fn();
     handleSignIn = jest.fn();
     logOut = jest.fn();
+    refreshAuthenticationTimeout = jest.fn();
+    startAuthenticationTimeout = jest.fn();
+    stopAuthenticationTimeout = jest.fn();
 
     jest.useFakeTimers();
   });
@@ -58,6 +64,9 @@ describe('ActivityRoomComponent', () => {
       handleCheckIn={handleCheckIn}
       handleSignIn={handleSignIn}
       logOut={logOut}
+      refreshAuthenticationTimeout={refreshAuthenticationTimeout}
+    startAuthenticationTimeout={startAuthenticationTimeout}
+    stopAuthenticationTimeout={stopAuthenticationTimeout}
     />);
   };
 
@@ -137,5 +146,37 @@ describe('ActivityRoomComponent', () => {
 
     wrapper.setProps({ isAuthenticated: true });
     expect(clearTimeout).toBeCalled();
+  });
+
+  it('should start authentication timeout if componentDidUpdate is called and page is authenticated', () => {
+    isAuthenticated = true;
+    const wrapper = setup();
+
+    wrapper.instance().componentDidUpdate();
+    expect(startAuthenticationTimeout).toBeCalled();
+  });
+
+  it('should not start authentication timeout if componentDidUpdate is called and page is not authenticated', () => {
+    isAuthenticated = false;
+    const wrapper = setup();
+
+    wrapper.instance().componentDidUpdate();
+    expect(startAuthenticationTimeout).not.toBeCalled();
+  });
+
+  it('should refresh authentication timeout on handleClick if page is authenticated', () => {
+    isAuthenticated = true;
+    const wrapper = setup();
+
+    wrapper.find('#refreshAuthenticationTimeoutHandler').simulate('click');
+    expect(refreshAuthenticationTimeout).toBeCalled();
+  });
+
+  it('should not refresh authentication timeout on handleClick if page is not authenticated', () => {
+    isAuthenticated = false;
+    const wrapper = setup();
+
+    wrapper.find('#refreshAuthenticationTimeoutHandler').simulate('click');
+    expect(refreshAuthenticationTimeout).not.toBeCalled();
   });
 });
