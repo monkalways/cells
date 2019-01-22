@@ -59,12 +59,12 @@ export class ActivityRoomComponent extends Component {
       startAuthenticationTimeout,
       stopAuthenticationTimeout,
     } = this.props;
-    const { name } = match.params;
+    const { usage } = match.params;
     if (isAuthenticated) {
       this.cancelUnauthenticatedTimeout();
       startAuthenticationTimeout(() => {
         stopAuthenticationTimeout();
-        logOut('cells', name);
+        logOut('activity-rooms', usage);
       });
     }
   }
