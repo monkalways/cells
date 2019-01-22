@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import queryString from 'query-string';
 
-import { selectors as authenticationSelectors } from '../../Authentication/duck';
+import {
+  selectors as authenticationSelectors,
+  operations as authenticationOperations,
+} from '../../Authentication/duck';
 import { selectors as cellSelectors } from '../../Cell/duck';
 import { operations as commonOperations } from '../../common/duck';
 
@@ -15,8 +18,8 @@ export default function withAuthentication(WrappedComponent) {
       cellName,
       handleClick,
       location,
+      logout,
       startAuthenticationTimeout,
-      stopAuthenticationTimeout,
     } = props;
     if (!isAuthenticated) {
       const cellNameInPath = cellName || queryString.parse(location.search).second;
@@ -27,12 +30,9 @@ export default function withAuthentication(WrappedComponent) {
       return <Redirect to="/" />;
     }
 
-    const logout = () => {
-      stopAuthenticationTimeout();
-      // console.log('Logout callback called');
-    };
+    const { first, second } = queryString.parse(location.search);
+    startAuthenticationTimeout(() => logout(first, second));
 
-    startAuthenticationTimeout(logout);
     return (
       <div
         onClick={() => handleClick()}
@@ -59,14 +59,15 @@ export default function withAuthentication(WrappedComponent) {
   });
 
   const mapDispatchToProps = (dispatch) => ({
-    startAuthenticationTimeout: (logout) => {
-      dispatch(commonOperations.startAuthenticationTimeout(logout));
-    },
-    stopAuthenticationTimeout: () => {
-      dispatch(commonOperations.stopAuthenticationTimeout());
-    },
     handleClick: () => {
       dispatch(commonOperations.refreshAuthenticationTimeout());
+    },
+    logout: (first, second) => {
+      dispatch(commonOperations.stopAuthenticationTimeout());
+      dispatch(authenticationOperations.logOut(first, second));
+    },
+    startAuthenticationTimeout: (logout) => {
+      dispatch(commonOperations.startAuthenticationTimeout(logout));
     },
   });
 

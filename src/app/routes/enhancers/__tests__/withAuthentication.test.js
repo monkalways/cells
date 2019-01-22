@@ -110,12 +110,7 @@ describe('withAuthenticationComponent', () => {
     };
 
     setup();
-    // Add the logout function to the test once it is finalized.
-    // Expected array:
-    //   [{"payload": [Function logout], "type": "app/common/START_AUTHENTICATION_TIMEOUT"}, {"type": "app/common/REFRESH_AUTHENTICATION_TIMEOUT"}]
-    // To contain value:
-    //   "app/common/START_AUTHENTICATION_TIMEOUT"
-    // expect(store.getActions()).toContain(types.START_AUTHENTICATION_TIMEOUT)
+    expect(store.getActions()[0].type).toEqual(types.START_AUTHENTICATION_TIMEOUT)
   });
 
   it('should call refreshAuthenticationTimeout when handleClick is clicked', () => {
@@ -136,14 +131,8 @@ describe('withAuthenticationComponent', () => {
     const refreshAction = {"type": "app/common/REFRESH_AUTHENTICATION_TIMEOUT"}
 
     const wrapper = setup();
-    wrapper.find('#refreshAuthenticationTimeoutHandler').simulate('click')
-    // Add the logout function to the test once it is finalized.
-    // Expected array:
-    //   [{"payload": [Function logout], "type": "app/common/START_AUTHENTICATION_TIMEOUT"}, {"type": "app/common/REFRESH_AUTHENTICATION_TIMEOUT"}]
-    // To contain value:
-    //   "app/common/START_AUTHENTICATION_TIMEOUT"
-    // expect(store.getActions()).toContain(types.START_AUTHENTICATION_TIMEOUT)
-    
+    wrapper.find('#refreshAuthenticationTimeoutHandler').simulate('click')    
     expect(store.getActions()).toContainEqual(refreshAction)
+    expect(store.getActions()[0].type).toEqual(types.START_AUTHENTICATION_TIMEOUT)
   });
 });
