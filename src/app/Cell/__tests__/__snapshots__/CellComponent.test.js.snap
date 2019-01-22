@@ -1,15 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CellComponent should render Loading component if cell details is null 1`] = `
-<Fragment>
+<div
+  id="refreshAuthenticationTimeoutHandler"
+  onClick={[Function]}
+  role="presentation"
+>
   <WithStyles(LayoutComponent)>
     <WithStyles(LoadingComponent) />
   </WithStyles(LayoutComponent)>
-</Fragment>
+</div>
 `;
 
 exports[`CellComponent should render if cell details is not null 1`] = `
-<Fragment>
+<div
+  id="refreshAuthenticationTimeoutHandler"
+  onClick={[Function]}
+  role="presentation"
+>
   <WithStyles(LayoutComponent)>
     <WithStyles(HeaderComponent)
       cellDetails={Object {}}
@@ -42,5 +50,5 @@ exports[`CellComponent should render if cell details is not null 1`] = `
       </Switch>
     </div>
   </WithStyles(LayoutComponent)>
-</Fragment>
+</div>
 `;

@@ -28,6 +28,9 @@ const propTypes = {
   getCellDetails: PropTypes.func.isRequired,
   logOut: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
+  refreshAuthenticationTimeout: PropTypes.func.isRequired,
+  startAuthenticationTimeout: PropTypes.func.isRequired,
+  stopAuthenticationTimeout: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
@@ -39,14 +42,24 @@ export class CellComponent extends Component {
     const { match, getCellDetails } = this.props;
     const { name } = match.params;
     getCellDetails(name);
-
     this.setUnauthenticatedTimeout();
   }
 
   componentDidUpdate() {
-    const { isAuthenticated } = this.props;
+    const {
+      isAuthenticated,
+      logOut,
+      match,
+      startAuthenticationTimeout,
+      stopAuthenticationTimeout,
+    } = this.props;
+    const { name } = match.params;
     if (isAuthenticated) {
       this.cancelUnauthenticatedTimeout();
+      startAuthenticationTimeout(() => {
+        stopAuthenticationTimeout();
+        logOut('cells', name);
+      });
     }
   }
 
@@ -76,46 +89,59 @@ export class CellComponent extends Component {
     logOut('cells', name);
   };
 
+  handleClick = () => {
+    const { isAuthenticated, refreshAuthenticationTimeout } = this.props;
+    if (isAuthenticated) {
+      refreshAuthenticationTimeout();
+    }
+  };
+
   render() {
     const {
       cellDetails, match, classes, isAuthenticated,
     } = this.props;
     return (
-      <React.Fragment>
-        <Layout>
-          {cellDetails ? (
-            <React.Fragment>
-              <Header
-                cellDetails={cellDetails}
-                onLogout={this.handleLogout}
-                isAuthenticated={isAuthenticated}
-              />
-              <div className={classes.body}>
-                <Switch>
-                  <Route path={match.url} component={Overview} exact />
-                  <Route
-                    path={`${match.url}/cell-check`}
-                    component={withAuthentication(CellCheck)}
-                    exact
-                  />
-                  <Route
-                    path={`${match.url}/meal`}
-                    component={withAuthentication(Meal)}
-                    exact
-                  />
-                  <Route
-                    path={`${match.url}/Medication`}
-                    component={withAuthentication(Medication)}
-                    exact
-                  />
-                </Switch>
-              </div>
-            </React.Fragment>
-          ) : (
-            <Loading />
-          )}
-        </Layout>
-      </React.Fragment>
+      <div
+        onClick={() => this.handleClick()}
+        role="presentation"
+        id="refreshAuthenticationTimeoutHandler"
+      >
+        <React.Fragment>
+          <Layout>
+            {cellDetails ? (
+              <React.Fragment>
+                <Header
+                  cellDetails={cellDetails}
+                  onLogout={this.handleLogout}
+                  isAuthenticated={isAuthenticated}
+                />
+                <div className={classes.body}>
+                  <Switch>
+                    <Route path={match.url} component={Overview} exact />
+                    <Route
+                      path={`${match.url}/cell-check`}
+                      component={withAuthentication(CellCheck)}
+                      exact
+                    />
+                    <Route
+                      path={`${match.url}/meal`}
+                      component={withAuthentication(Meal)}
+                      exact
+                    />
+                    <Route
+                      path={`${match.url}/Medication`}
+                      component={withAuthentication(Medication)}
+                      exact
+                    />
+                  </Switch>
+                </div>
+              </React.Fragment>
+            ) : (
+              <Loading />
+            )}
+          </Layout>
+        </React.Fragment>
+      </div>
     );
   }
 }
