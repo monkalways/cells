@@ -56,6 +56,8 @@ export class CellComponent extends Component {
     const { name } = match.params;
     if (isAuthenticated) {
       this.cancelUnauthenticatedTimeout();
+      // Note that componentDidUpdate is called after withAuthentication(Component) renders below
+      // and will replace that withAuthentication timer with this one.
       startAuthenticationTimeout(() => {
         stopAuthenticationTimeout();
         logOut('cells', name);
