@@ -22,7 +22,7 @@ describe('withAuthenticationComponent', () => {
                  </BrowserRouter>);
   };
 
-  it('should redirect to "/" if not authenticated and no cell name in state or querystring', () => {
+  it('should redirect to "/" if not authenticated', () => {
     location = {
       search: null,
     };
@@ -37,42 +37,6 @@ describe('withAuthenticationComponent', () => {
     const wrapper = setup();
     expect(wrapper.find(Redirect)).toExist();
     expect(wrapper.find(Redirect)).toHaveProp('to', '/');
-  });
-
-  it('should redirect to cell home page if not authenticated but cell name is in state', () => {
-    location = {
-      search: null,
-    };
-    initialState = {
-      cell: {
-        details: {
-          name: 'c1',
-        },
-      },
-      authentication: {
-        authenticated: false,
-      },
-    };
-    const wrapper = setup();
-    expect(wrapper.find(Redirect)).toExist();
-    expect(wrapper.find(Redirect)).toHaveProp('to', '/cells/c1/home');
-  });
-
-  it('should redirect to cell home page if not authenticated but cell name is in query string', () => {
-    location = {
-      search: '?first=cells&second=c2',
-    };
-    initialState = {
-      cell: {
-        details: null,
-      },
-      authentication: {
-        authenticated: false,
-      },
-    };
-    const wrapper = setup();
-    expect(wrapper.find(Redirect)).toExist();
-    expect(wrapper.find(Redirect)).toHaveProp('to', '/cells/c2/home');
   });
 
   it('should not redirect if authenticated', () => {

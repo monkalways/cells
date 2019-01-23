@@ -21,17 +21,23 @@ export default function withAuthentication(WrappedComponent) {
       logout,
       startAuthenticationTimeout,
     } = props;
-    if (!isAuthenticated) {
-      const cellNameInPath = cellName || queryString.parse(location.search).second;
-      if (cellNameInPath) {
-        return <Redirect to={`/cells/${cellNameInPath}/home`} />;
-      }
 
+    if (!isAuthenticated) {
       return <Redirect to="/" />;
     }
 
-    const { first, second } = queryString.parse(location.search);
-    startAuthenticationTimeout(() => logout(first, second));
+    // Detainee profile from Cell Overview or Activity Room will use this for their callback
+    let { first, second } = queryString.parse(location.search);
+
+    // Cell check, meal, and medication pages will use this for their callback
+    if (!location.search) {
+      first = 'cells';
+      second = cellName || queryString.parse(location.search).second;
+    }
+
+    startAuthenticationTimeout(() => {
+      logout(first, second);
+    });
 
     return (
       <div
