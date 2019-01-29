@@ -45,7 +45,7 @@ export class CellComponent extends Component {
     this.setUnauthenticatedTimeout();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const {
       isAuthenticated,
       handleLogOut,
@@ -54,10 +54,8 @@ export class CellComponent extends Component {
       stopAuthenticationTimeout,
     } = this.props;
     const { name } = match.params;
-    if (isAuthenticated) {
+    if (isAuthenticated !== prevProps.isAuthenticated) {
       this.cancelUnauthenticatedTimeout();
-      // Note that componentDidUpdate is called after withAuthentication(Component) renders below
-      // and will replace that withAuthentication timer with this one.
       startAuthenticationTimeout(() => {
         stopAuthenticationTimeout();
         handleLogOut('cells', name);

@@ -148,11 +148,11 @@ describe('ActivityRoomComponent', () => {
     expect(clearTimeout).toBeCalled();
   });
 
-  it('should start authentication timeout if componentDidUpdate is called and page is authenticated', () => {
-    isAuthenticated = true;
+  it('should start authentication timeout if componentDidUpdate is called and page is newly authenticated', () => {
+    isAuthenticated = false;
     const wrapper = setup();
 
-    wrapper.instance().componentDidUpdate();
+    wrapper.setProps({ isAuthenticated: true });
     expect(startAuthenticationTimeout).toBeCalled();
   });
 
@@ -160,8 +160,17 @@ describe('ActivityRoomComponent', () => {
     isAuthenticated = false;
     const wrapper = setup();
 
-    wrapper.instance().componentDidUpdate();
+    wrapper.setProps({ isAuthenticated: false });
     expect(startAuthenticationTimeout).not.toBeCalled();
+  });
+
+  it('should not start authentication timeout if componentDidUpdate is called and page was already authenticated', () => {
+    isAuthenticated = false;
+    const wrapper = setup();
+
+    wrapper.setProps({ isAuthenticated: true });
+    wrapper.setProps({ isAuthenticated: true });
+    expect(startAuthenticationTimeout).toBeCalledTimes(1);
   });
 
   it('should refresh authentication timeout on handleClick if page is authenticated', () => {

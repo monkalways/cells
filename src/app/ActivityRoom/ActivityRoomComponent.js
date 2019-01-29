@@ -51,7 +51,7 @@ export class ActivityRoomComponent extends Component {
     this.setUnauthenticatedTimeout();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const {
       isAuthenticated,
       handleLogOut,
@@ -60,7 +60,7 @@ export class ActivityRoomComponent extends Component {
       stopAuthenticationTimeout,
     } = this.props;
     const { usage } = match.params;
-    if (isAuthenticated) {
+    if (isAuthenticated !== prevProps.isAuthenticated) {
       this.cancelUnauthenticatedTimeout();
       startAuthenticationTimeout(() => {
         stopAuthenticationTimeout();
