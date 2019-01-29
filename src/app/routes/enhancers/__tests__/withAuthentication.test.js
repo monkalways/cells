@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import { BrowserRouter } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 
-import types from '../../../common/duck/types'
+import types from '../../../common/duck/types';
 import withAuthentication from '../withAuthentication';
 
 describe('withAuthenticationComponent', () => {
@@ -58,25 +58,6 @@ describe('withAuthenticationComponent', () => {
     expect(wrapper.find(TestComponent)).toExist();
   });
 
-  it('should call startAuthenticationTimeout if authenticated', () => {
-    location = {
-      search: '?first=cells&second=c2',
-    };
-    initialState = {
-      cell: {
-        details: {
-          name: 'c1',
-        },
-      },
-      authentication: {
-        authenticated: true,
-      },
-    };
-
-    setup();
-    expect(store.getActions()[0].type).toEqual(types.START_AUTHENTICATION_TIMEOUT)
-  });
-
   it('should call refreshAuthenticationTimeout when handleClick is clicked', () => {
     location = {
       search: '?first=cells&second=c2',
@@ -92,11 +73,10 @@ describe('withAuthenticationComponent', () => {
       },
     };
 
-    const refreshAction = {"type": "app/common/REFRESH_AUTHENTICATION_TIMEOUT"}
+    const refreshAction = { type: 'app/common/REFRESH_AUTHENTICATION_TIMEOUT' };
 
     const wrapper = setup();
-    wrapper.find('#refreshAuthenticationTimeoutHandler').simulate('click')    
-    expect(store.getActions()).toContainEqual(refreshAction)
-    expect(store.getActions()[0].type).toEqual(types.START_AUTHENTICATION_TIMEOUT)
+    wrapper.find('#authenticatedRoot').simulate('click');
+    expect(store.getActions()).toContainEqual(refreshAction);
   });
 });
