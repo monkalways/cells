@@ -18,7 +18,7 @@ describe('ActivityRoomComponent', () => {
   let getActivityRoomDetainees;
   let handleCheckIn;
   let handleSignIn;
-  let logOut;
+  let handleLogOut;
   let refreshAuthenticationTimeout;
   let startAuthenticationTimeout;
   let stopAuthenticationTimeout;
@@ -34,7 +34,7 @@ describe('ActivityRoomComponent', () => {
     getActivityRoomDetainees = jest.fn();
     handleCheckIn = jest.fn();
     handleSignIn = jest.fn();
-    logOut = jest.fn();
+    handleLogOut = jest.fn();
     refreshAuthenticationTimeout = jest.fn();
     startAuthenticationTimeout = jest.fn();
     stopAuthenticationTimeout = jest.fn();
@@ -63,10 +63,10 @@ describe('ActivityRoomComponent', () => {
       getActivityRoomDetainees={getActivityRoomDetainees}
       handleCheckIn={handleCheckIn}
       handleSignIn={handleSignIn}
-      logOut={logOut}
+      handleLogOut={handleLogOut}
       refreshAuthenticationTimeout={refreshAuthenticationTimeout}
-    startAuthenticationTimeout={startAuthenticationTimeout}
-    stopAuthenticationTimeout={stopAuthenticationTimeout}
+      startAuthenticationTimeout={startAuthenticationTimeout}
+      stopAuthenticationTimeout={stopAuthenticationTimeout}
     />);
   };
 
@@ -131,7 +131,7 @@ describe('ActivityRoomComponent', () => {
     expect(setTimeout).toBeCalled();
 
     jest.advanceTimersByTime(commonConstants.UNAUTHENTICATED_TIMEOUT_SECONDS * 1000);
-    expect(logOut).toBeCalledWith('activity-rooms', usage);
+    expect(handleLogOut).toBeCalledWith('activity-rooms', usage);
 
     wrapper.instance().componentWillUnmount();
     expect(clearTimeout).toBeCalled();
@@ -168,7 +168,7 @@ describe('ActivityRoomComponent', () => {
     isAuthenticated = true;
     const wrapper = setup();
 
-    wrapper.find('#refreshAuthenticationTimeoutHandler').simulate('click');
+    wrapper.find('#authenticatedActivityRoomRoot').simulate('click');
     expect(refreshAuthenticationTimeout).toBeCalled();
   });
 
@@ -176,7 +176,7 @@ describe('ActivityRoomComponent', () => {
     isAuthenticated = false;
     const wrapper = setup();
 
-    wrapper.find('#refreshAuthenticationTimeoutHandler').simulate('click');
+    wrapper.find('#authenticatedActivityRoomRoot').simulate('click');
     expect(refreshAuthenticationTimeout).not.toBeCalled();
   });
 });

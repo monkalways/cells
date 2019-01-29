@@ -20,7 +20,7 @@ export const mapDispatchToProps = (dispatch) => ({
   getCellDetails: (name, getCellDetails = operations.getCellDetails) => {
     dispatch(getCellDetails(name));
   },
-  logOut: (first, second, logOut = authenticationOperations.logOut) => {
+  handleLogOut: (first, second, logOut = authenticationOperations.logOut) => {
     dispatch(logOut(first, second));
   },
   // eslint-disable-next-line max-len

@@ -32,13 +32,13 @@ describe('CellContainer', () => {
       expect(getCellDetailsMock).toBeCalledWith(name);
     });
 
-    it('should logOut', () => {
-      const { logOut } = mapDispatchToProps(dispatch);
+    it('should handle logOut', () => {
+      const { handleLogOut } = mapDispatchToProps(dispatch);
       const logOutMock = jest.fn();
       const first = 'cells';
       const second = 'c1';
 
-      logOut(first, second, logOutMock);
+      handleLogOut(first, second, logOutMock);
 
       expect(dispatch).toBeCalled();
       expect(logOutMock).toBeCalled();

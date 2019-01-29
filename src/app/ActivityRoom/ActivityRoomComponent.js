@@ -32,7 +32,7 @@ const propTypes = {
   getActivityRoomDetainees: PropTypes.func.isRequired,
   handleCheckIn: PropTypes.func.isRequired,
   handleSignIn: PropTypes.func.isRequired,
-  logOut: PropTypes.func.isRequired,
+  handleLogOut: PropTypes.func.isRequired,
   refreshAuthenticationTimeout: PropTypes.func.isRequired,
   startAuthenticationTimeout: PropTypes.func.isRequired,
   stopAuthenticationTimeout: PropTypes.func.isRequired,
@@ -54,7 +54,7 @@ export class ActivityRoomComponent extends Component {
   componentDidUpdate() {
     const {
       isAuthenticated,
-      logOut,
+      handleLogOut,
       match,
       startAuthenticationTimeout,
       stopAuthenticationTimeout,
@@ -64,7 +64,7 @@ export class ActivityRoomComponent extends Component {
       this.cancelUnauthenticatedTimeout();
       startAuthenticationTimeout(() => {
         stopAuthenticationTimeout();
-        logOut('activity-rooms', usage);
+        handleLogOut('activity-rooms', usage);
       });
     }
   }
@@ -90,9 +90,9 @@ export class ActivityRoomComponent extends Component {
   };
 
   handleLogout = () => {
-    const { logOut, match } = this.props;
+    const { handleLogOut, match } = this.props;
     const { usage } = match.params;
-    logOut('activity-rooms', usage);
+    handleLogOut('activity-rooms', usage);
   };
 
   handleClick = () => {
@@ -119,7 +119,7 @@ export class ActivityRoomComponent extends Component {
       <div
         onClick={() => this.handleClick()}
         role="presentation"
-        id="refreshAuthenticationTimeoutHandler"
+        id="authenticatedActivityRoomRoot"
       >
         <React.Fragment>
           <Layout>

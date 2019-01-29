@@ -37,7 +37,7 @@ export const mapDispatchToProps = (dispatch) => ({
   handleSignIn: (startSignIn = authenticationOperations.startSignIn) => {
     dispatch(startSignIn());
   },
-  logOut: (first, second, logOut = authenticationOperations.logOut) => {
+  handleLogOut: (first, second, logOut = authenticationOperations.logOut) => {
     dispatch(logOut(first, second));
   },
   // eslint-disable-next-line max-len

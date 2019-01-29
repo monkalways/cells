@@ -2,7 +2,7 @@
 
 exports[`ActivityRoomComponent should render "no detainees" when detainees are loaded but there are none 1`] = `
 <div
-  id="refreshAuthenticationTimeoutHandler"
+  id="authenticatedActivityRoomRoot"
   onClick={[Function]}
   role="presentation"
 >
@@ -34,7 +34,7 @@ exports[`ActivityRoomComponent should render "no detainees" when detainees are l
 
 exports[`ActivityRoomComponent should render Loading when detainees are not yet loaded 1`] = `
 <div
-  id="refreshAuthenticationTimeoutHandler"
+  id="authenticatedActivityRoomRoot"
   onClick={[Function]}
   role="presentation"
 >
@@ -61,7 +61,7 @@ exports[`ActivityRoomComponent should render Loading when detainees are not yet 
 
 exports[`ActivityRoomComponent should render detainee cards when one or more detainees are loaded 1`] = `
 <div
-  id="refreshAuthenticationTimeoutHandler"
+  id="authenticatedActivityRoomRoot"
   onClick={[Function]}
   role="presentation"
 >

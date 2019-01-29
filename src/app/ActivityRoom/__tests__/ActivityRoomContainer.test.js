@@ -70,13 +70,13 @@ describe('ActivityRoomContainer', () => {
       expect(handleSignInMock).toBeCalled();
     });
 
-    it('should logOut', () => {
-      const { logOut } = mapDispatchToProps(dispatch);
+    it('should handleLogOut', () => {
+      const { handleLogOut } = mapDispatchToProps(dispatch);
       const first = 'activity-rooms';
       const second = 'phone';
       const logOutMock = jest.fn();
 
-      logOut(first, second, logOutMock);
+      handleLogOut(first, second, logOutMock);
 
       expect(dispatch).toBeCalled();
       expect(logOutMock).toBeCalledWith(first, second);

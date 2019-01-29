@@ -26,7 +26,7 @@ const propTypes = {
   }).isRequired,
   cellDetails: PropTypes.shape({}),
   getCellDetails: PropTypes.func.isRequired,
-  logOut: PropTypes.func.isRequired,
+  handleLogOut: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   refreshAuthenticationTimeout: PropTypes.func.isRequired,
   startAuthenticationTimeout: PropTypes.func.isRequired,
@@ -48,7 +48,7 @@ export class CellComponent extends Component {
   componentDidUpdate() {
     const {
       isAuthenticated,
-      logOut,
+      handleLogOut,
       match,
       startAuthenticationTimeout,
       stopAuthenticationTimeout,
@@ -60,7 +60,7 @@ export class CellComponent extends Component {
       // and will replace that withAuthentication timer with this one.
       startAuthenticationTimeout(() => {
         stopAuthenticationTimeout();
-        logOut('cells', name);
+        handleLogOut('cells', name);
       });
     }
   }
@@ -86,9 +86,9 @@ export class CellComponent extends Component {
   };
 
   handleLogout = () => {
-    const { logOut, match } = this.props;
+    const { handleLogOut, match } = this.props;
     const { name } = match.params;
-    logOut('cells', name);
+    handleLogOut('cells', name);
   };
 
   handleClick = () => {
@@ -106,7 +106,7 @@ export class CellComponent extends Component {
       <div
         onClick={() => this.handleClick()}
         role="presentation"
-        id="refreshAuthenticationTimeoutHandler"
+        id="authenticatedCellComponentRoot"
       >
         <React.Fragment>
           <Layout>

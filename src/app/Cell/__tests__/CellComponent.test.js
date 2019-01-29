@@ -13,7 +13,7 @@ describe('CellComponent', () => {
   let isAuthenticated;
   let cellName;
   let getCellDetails;
-  let logOut;
+  let handleLogOut;
   let push;
   let refreshAuthenticationTimeout;
   let startAuthenticationTimeout;
@@ -27,7 +27,7 @@ describe('CellComponent', () => {
     isAuthenticated = false;
     cellName = 'c1';
     getCellDetails = jest.fn();
-    logOut = jest.fn();
+    handleLogOut = jest.fn();
     push = jest.fn();
     refreshAuthenticationTimeout = jest.fn();
     startAuthenticationTimeout = jest.fn();
@@ -51,7 +51,7 @@ describe('CellComponent', () => {
     cellDetails={cellDetails}
     isCellDetaineesLoaded={isCellDetaineesLoaded}
     isAuthenticated={isAuthenticated}
-    logOut={logOut}
+    handleLogOut={handleLogOut}
     getCellDetails={getCellDetails}
     refreshAuthenticationTimeout={refreshAuthenticationTimeout}
     startAuthenticationTimeout={startAuthenticationTimeout}
@@ -91,7 +91,7 @@ describe('CellComponent', () => {
     expect(setTimeout).not.toBeCalled();
   });
 
-  it(`should set unauthenticated timer to call logout in ${
+  it(`should set unauthenticated timer to call handle logout in ${
     commonConstants.UNAUTHENTICATED_TIMEOUT_SECONDS
   } seconds when not authenticated and clear timeout after unmount`, () => {
     isAuthenticated = false;
@@ -101,7 +101,7 @@ describe('CellComponent', () => {
     expect(setTimeout).toBeCalled();
 
     jest.advanceTimersByTime(commonConstants.UNAUTHENTICATED_TIMEOUT_SECONDS * 1000);
-    expect(logOut).toBeCalledWith('cells', cellName);
+    expect(handleLogOut).toBeCalledWith('cells', cellName);
 
     wrapper.instance().componentWillUnmount();
     expect(clearTimeout).toBeCalled();
@@ -138,7 +138,7 @@ describe('CellComponent', () => {
     isAuthenticated = true;
     const wrapper = setup();
 
-    wrapper.find('#refreshAuthenticationTimeoutHandler').simulate('click');
+    wrapper.find('#authenticatedCellComponentRoot').simulate('click');
     expect(refreshAuthenticationTimeout).toBeCalled();
   });
 
@@ -146,7 +146,7 @@ describe('CellComponent', () => {
     isAuthenticated = false;
     const wrapper = setup();
 
-    wrapper.find('#refreshAuthenticationTimeoutHandler').simulate('click');
+    wrapper.find('#authenticatedCellComponentRoot').simulate('click');
     expect(refreshAuthenticationTimeout).not.toBeCalled();
   });
 });

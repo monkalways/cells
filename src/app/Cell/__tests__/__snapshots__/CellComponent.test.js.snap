@@ -2,7 +2,7 @@
 
 exports[`CellComponent should render Loading component if cell details is null 1`] = `
 <div
-  id="refreshAuthenticationTimeoutHandler"
+  id="authenticatedCellComponentRoot"
   onClick={[Function]}
   role="presentation"
 >
@@ -14,7 +14,7 @@ exports[`CellComponent should render Loading component if cell details is null 1
 
 exports[`CellComponent should render if cell details is not null 1`] = `
 <div
-  id="refreshAuthenticationTimeoutHandler"
+  id="authenticatedCellComponentRoot"
   onClick={[Function]}
   role="presentation"
 >
