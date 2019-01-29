@@ -27,9 +27,9 @@ export const authenticationTimeoutReducer = (
     case types.START_AUTHENTICATION_TIMEOUT:
       clearTimeout(state.timeout);
       return {
-        logout: action.payload,
+        logout: action.logout,
         timeout: setTimeout(() => {
-          action.payload();
+          action.logout();
         }, process.env.REACT_APP_AUTHENTICATION_TIMEOUT_SEC * 1000),
       };
 

@@ -9,9 +9,9 @@ const refreshAuthenticationTimeout = () => ({
   type: types.REFRESH_AUTHENTICATION_TIMEOUT,
 });
 
-const startAuthenticationTimeout = (payload) => ({
+const startAuthenticationTimeout = (logout) => ({
   type: types.START_AUTHENTICATION_TIMEOUT,
-  payload,
+  logout,
 });
 
 const stopAuthenticationTimeout = () => ({
