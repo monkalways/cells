@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FingerprintingWarningDialogComponent should render correctly 1`] = `
+<WithStyles(Dialog)
+  onClose={[MockFunction]}
+  open={true}
+>
+  <WithStyles(DialogTitle)>
+    Warning: Fingerprinting has not been completed.
+  </WithStyles(DialogTitle)>
+  <WithStyles(DialogActions)>
+    <WithStyles(Button)
+      color="primary"
+      id="cancelButton"
+      onClick={[MockFunction]}
+    >
+      Cancel
+    </WithStyles(Button)>
+    <WithStyles(Button)
+      autoFocus={true}
+      color="primary"
+      id="ignoreButton"
+      onClick={[MockFunction]}
+      variant="contained"
+    >
+      Ignore
+    </WithStyles(Button)>
+  </WithStyles(DialogActions)>
+</WithStyles(Dialog)>
+`;
