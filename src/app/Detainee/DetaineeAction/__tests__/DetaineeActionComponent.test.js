@@ -28,9 +28,12 @@ describe('DetaineeActionComponent', () => {
 
   beforeEach(() => {
     detainee = {
+      fingerPrintCount: 0,
       firstName: 'Bob',
       id: '123',
       lastName: 'Saget',
+      overrideFingerprintingWarning: false,
+      telephoneAcceptedCount: 0,
     };
     handleClose = jest.fn();
     goBack=jest.fn()
@@ -84,25 +87,115 @@ describe('DetaineeActionComponent', () => {
 
   it('should set initial state', () => {
     const wrapper = setup();
-    expect(wrapper.state().openDialog).toBeNull();
-    expect(wrapper.state().usage).toEqual('');
+    expect(wrapper.state().fingerprintingWarningDialogOpen).toBe(false);
+    expect(wrapper.state().phonecallWarningDialogOpen).toBe(false);
+    expect(wrapper.state().mainDialogOpen).toBeNull();
+    expect(wrapper.state().usage).toBeNull()
   });
 
   it.each([
+    ['#bailHearing1', constants.BAIL_HEARING_ROOM_1],
+    ['#bailHearing2', constants.BAIL_HEARING_ROOM_2],
+    ['#breathTest', constants.BREATH_TEST_ROOM],
     ['#medical', constants.MEDICAL_ROOM],
     ['#phoneAccept', constants.PHONE_ROOM],
-    ['#breathTest', constants.BREATH_TEST_ROOM],
+  ])(
+    'should open activity room dialog when activity room button is clicked',
+    (id, activityRoomUsage) => {
+      const activityRoomDialog = 'activityRoomDialog';
+      const wrapper = setup();
+
+      wrapper.find(id).simulate('click');
+      expect(wrapper.state().mainDialogOpen).toEqual(activityRoomDialog);
+      expect(wrapper.state().usage).toEqual(activityRoomUsage);
+    },
+  );
+
+  it.each([
     ['#bailHearing1', constants.BAIL_HEARING_ROOM_1],
     ['#bailHearing2', constants.BAIL_HEARING_ROOM_2],
   ])(
-    'should update state when activity room button is clicked',
+    'should open fingerprinting warning dialog if detainee has not been fingerprinted yet',
     (id, activityRoomUsage) => {
-      const wrapper = setup();
+      detainee.fingerPrintCount = 0;
+      detainee.overrideFingerprintingWarning = false;
       const activityRoomDialog = 'activityRoomDialog';
+      const wrapper = setup();
 
       wrapper.find(id).simulate('click');
-      expect(wrapper.state().openDialog).toEqual(activityRoomDialog);
+      expect(wrapper.state().mainDialogOpen).toEqual(activityRoomDialog);
       expect(wrapper.state().usage).toEqual(activityRoomUsage);
+      expect(wrapper.state().fingerprintingWarningDialogOpen).toBe(true);
+    },
+  );
+
+  it.each([
+    ['#bailHearing1', constants.BAIL_HEARING_ROOM_1],
+    ['#bailHearing2', constants.BAIL_HEARING_ROOM_2],
+  ])(
+    'should not open fingerprinting warning dialog if fingerprinting override is enabled',
+    (id, activityRoomUsage) => {
+      detainee.fingerPrintCount = 0;
+      detainee.overrideFingerprintingWarning = true;
+      const activityRoomDialog = 'activityRoomDialog';
+      const wrapper = setup();
+
+      wrapper.find(id).simulate('click');
+      expect(wrapper.state().mainDialogOpen).toEqual(activityRoomDialog);
+      expect(wrapper.state().usage).toEqual(activityRoomUsage);
+      expect(wrapper.state().fingerprintingWarningDialogOpen).toBe(false);
+    },
+  );
+
+  it.each([
+    ['#bailHearing1', constants.BAIL_HEARING_ROOM_1],
+    ['#bailHearing2', constants.BAIL_HEARING_ROOM_2],
+  ])(
+    'should not open fingerprinting warning dialog if fingerprinting count is greater than 0',
+    (id, activityRoomUsage) => {
+      detainee.fingerPrintCount = 1;
+      detainee.overrideFingerprintingWarning = false;
+      const activityRoomDialog = 'activityRoomDialog';
+      const wrapper = setup();
+
+      wrapper.find(id).simulate('click');
+      expect(wrapper.state().mainDialogOpen).toEqual(activityRoomDialog);
+      expect(wrapper.state().usage).toEqual(activityRoomUsage);
+      expect(wrapper.state().fingerprintingWarningDialogOpen).toBe(false);
+    },
+  );
+
+  it.each([
+    ['#bailHearing1', constants.BAIL_HEARING_ROOM_1],
+    ['#bailHearing2', constants.BAIL_HEARING_ROOM_2],
+  ])(
+    'should open phonecall warning dialog if phone accepted count is 0',
+    (id, activityRoomUsage) => {
+      detainee.telephoneAcceptedCount = 0;
+      const activityRoomDialog = 'activityRoomDialog';
+      const wrapper = setup();
+
+      wrapper.find(id).simulate('click');
+      expect(wrapper.state().mainDialogOpen).toEqual(activityRoomDialog);
+      expect(wrapper.state().usage).toEqual(activityRoomUsage);
+      expect(wrapper.state().phonecallWarningDialogOpen).toBe(true);
+    },
+  );
+
+  it.each([
+    ['#bailHearing1', constants.BAIL_HEARING_ROOM_1],
+    ['#bailHearing2', constants.BAIL_HEARING_ROOM_2],
+  ])(
+    'should not open phonecall warning dialog if phone accepted count is greater than 0',
+    (id, activityRoomUsage) => {
+      detainee.telephoneAcceptedCount = 1;
+      const activityRoomDialog = 'activityRoomDialog';
+      const wrapper = setup();
+
+      wrapper.find(id).simulate('click');
+      expect(wrapper.state().mainDialogOpen).toEqual(activityRoomDialog);
+      expect(wrapper.state().usage).toEqual(activityRoomUsage);
+      expect(wrapper.state().phonecallWarningDialogOpen).toBe(false);
     },
   );
 
@@ -111,7 +204,7 @@ describe('DetaineeActionComponent', () => {
     const cellDialog = 'cellDialog';
 
     wrapper.find('#cell').simulate('click');
-    expect(wrapper.state().openDialog).toBe(cellDialog);
+    expect(wrapper.state().mainDialogOpen).toBe(cellDialog);
   });
 
   it('should update state when phone decline button is clicked', () => {
@@ -119,7 +212,7 @@ describe('DetaineeActionComponent', () => {
     const phoneDeclineDialog = 'phoneDeclineDialog';
 
     wrapper.find('#phoneDecline').simulate('click');
-    expect(wrapper.state().openDialog).toBe(phoneDeclineDialog);
+    expect(wrapper.state().mainDialogOpen).toBe(phoneDeclineDialog);
   });
 
   it('should update state when release room button is clicked', () => {
@@ -127,7 +220,7 @@ describe('DetaineeActionComponent', () => {
     const releaseRoomDialog = 'releaseRoomDialog';
 
     wrapper.find('#releaseHolding').simulate('click');
-    expect(wrapper.state().openDialog).toBe(releaseRoomDialog);
+    expect(wrapper.state().mainDialogOpen).toBe(releaseRoomDialog);
   });
 
   it('should update state when remand room button is clicked', () => {
@@ -135,7 +228,7 @@ describe('DetaineeActionComponent', () => {
     const remandRoomDialog = 'remandRoomDialog';
 
     wrapper.find('#remandHolding').simulate('click');
-    expect(wrapper.state().openDialog).toBe(remandRoomDialog);
+    expect(wrapper.state().mainDialogOpen).toBe(remandRoomDialog);
   });
 
   it.each([
@@ -148,7 +241,7 @@ describe('DetaineeActionComponent', () => {
       const roomSelectionDialog = 'roomSelectionDialog';
 
       wrapper.find(id).simulate('click');
-      expect(wrapper.state().openDialog).toBe(roomSelectionDialog);
+      expect(wrapper.state().mainDialogOpen).toBe(roomSelectionDialog);
       expect(wrapper.state().usage).toEqual(activityRoomUsage);
     },
   );
@@ -164,7 +257,9 @@ describe('DetaineeActionComponent', () => {
     const wrapper = setup();
 
     wrapper.find(dialog).simulate('close');
-    expect(wrapper.state().openDialog).toBeNull();
+    expect(wrapper.state().fingerprintingWarningDialogOpen).toBe(false);
+    expect(wrapper.state().phonecallWarningDialogOpen).toBe(false);
+    expect(wrapper.state().mainDialogOpen).toBeNull();
     expect(wrapper.state().usage).toBeNull();
     expect(handleClose).toBeCalledWith(detainee.id)
   });

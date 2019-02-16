@@ -16,6 +16,8 @@ import { compose } from 'recompose';
 import IconButton from '@material-ui/core/IconButton';
 import ActivityRoomDialog from './ActivityRoomDialog';
 import CellDialog from './CellDialog';
+import FingerprintingWarningDialog from './FingerprintingWarningDialog';
+import PhoneCallWarningDialog from './PhoneCallWarningDialog';
 import PhoneDeclineDialog from './PhoneDeclineDialog';
 import ReleaseRoomDialog from './ReleaseRoomDialog';
 import RemandRoomDialog from './RemandRoomDialog';
@@ -37,9 +39,12 @@ import constants from '../constants';
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   detainee: PropTypes.shape({
+    fingerPrintCount: PropTypes.number,
     firstName: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
+    overrideFingerprintingWarning: PropTypes.bool.isRequired,
+    telephoneAcceptedCount: PropTypes.number,
   }).isRequired,
   handleClose: PropTypes.func.isRequired,
   history: PropTypes.shape({
@@ -67,89 +72,124 @@ const roomSelectionDialog = 'roomSelectionDialog';
 
 export class DetaineeActionComponent extends Component {
   state = {
-    openDialog: null,
-    usage: '',
+    fingerprintingWarningDialogOpen: false,
+    phonecallWarningDialogOpen: false,
+    mainDialogOpen: null,
+    usage: null,
   };
 
   handleActivityRoomButtonClick = (usage) => {
     this.setState({
-      openDialog: activityRoomDialog,
+      mainDialogOpen: activityRoomDialog,
       usage,
     });
+    const { detainee } = this.props;
+    const {
+      fingerPrintCount,
+      overrideFingerprintingWarning,
+      telephoneAcceptedCount,
+    } = detainee;
+
+    if (
+      usage === constants.BAIL_HEARING_ROOM_1
+      || usage === constants.BAIL_HEARING_ROOM_2
+    ) {
+      if (fingerPrintCount === 0 && !overrideFingerprintingWarning) {
+        this.setState({
+          fingerprintingWarningDialogOpen: true,
+        });
+      }
+      if (telephoneAcceptedCount === 0) {
+        this.setState({
+          phonecallWarningDialogOpen: true,
+        });
+      }
+    }
   };
 
-  handleClose = () => {
+  handleFlowStop = () => {
     this.setState({
-      openDialog: null,
+      fingerprintingWarningDialogOpen: false,
+      phonecallWarningDialogOpen: false,
+      mainDialogOpen: null,
       usage: null,
     });
-    const {
-      detainee,
-      handleClose,
-    } = this.props;
+    const { detainee, handleClose } = this.props;
     handleClose(detainee.id);
   };
 
   handleCellButtonClick = () => {
     this.setState({
-      openDialog: cellDialog,
+      mainDialogOpen: cellDialog,
+    });
+  };
+
+  handleFingerprintingWarningIgnore = () => {
+    this.setState({
+      fingerprintingWarningDialogOpen: false,
+    });
+  };
+
+  handlePhonecallWarningIgnore = () => {
+    this.setState({
+      phonecallWarningDialogOpen: false,
     });
   };
 
   handlePhoneDeclineButtonClick = () => {
     this.setState({
-      openDialog: phoneDeclineDialog,
+      mainDialogOpen: phoneDeclineDialog,
     });
   };
 
   handleReleaseRoomButtonClick = () => {
     this.setState({
-      openDialog: releaseRoomDialog,
+      mainDialogOpen: releaseRoomDialog,
     });
-  }
+  };
 
   handleRemandRoomButtonClick = () => {
     this.setState({
-      openDialog: remandRoomDialog,
+      mainDialogOpen: remandRoomDialog,
     });
-  }
+  };
 
   handleRoomSelectionDialogButtonClick = (usage) => {
     this.setState({
-      openDialog: roomSelectionDialog,
+      mainDialogOpen: roomSelectionDialog,
       usage,
     });
   };
 
   isActivityRoomDialogOpen = () => {
-    const { openDialog } = this.state;
-    return openDialog === activityRoomDialog;
-  }
+    const { mainDialogOpen } = this.state;
+    return mainDialogOpen === activityRoomDialog;
+  };
 
   isCellDialogOpen = () => {
-    const { openDialog } = this.state;
-    return openDialog === cellDialog;
-  }
+    const { mainDialogOpen } = this.state;
+    return mainDialogOpen === cellDialog;
+  };
 
   isPhoneDeclineDialogOpen = () => {
-    const { openDialog } = this.state;
-    return openDialog === phoneDeclineDialog;
-  }
+    const { mainDialogOpen } = this.state;
+    return mainDialogOpen === phoneDeclineDialog;
+  };
 
   isReleaseRoomDialogOpen = () => {
-    const { openDialog } = this.state;
-    return openDialog === releaseRoomDialog;
-  }
+    const { mainDialogOpen } = this.state;
+    return mainDialogOpen === releaseRoomDialog;
+  };
 
   isRemandRoomDialogOpen = () => {
-    const { openDialog } = this.state;
-    return openDialog === remandRoomDialog;
-  }
+    const { mainDialogOpen } = this.state;
+    return mainDialogOpen === remandRoomDialog;
+  };
 
   isRoomSelectionDialogOpen = () => {
-    const { openDialog } = this.state;
-    return openDialog === roomSelectionDialog;
-  }
+    const { mainDialogOpen } = this.state;
+    return mainDialogOpen === roomSelectionDialog;
+  };
 
   render() {
     const {
@@ -170,6 +210,8 @@ export class DetaineeActionComponent extends Component {
     } = this.props;
 
     const {
+      fingerprintingWarningDialogOpen,
+      phonecallWarningDialogOpen,
       usage,
     } = this.state;
 
@@ -382,38 +424,50 @@ export class DetaineeActionComponent extends Component {
           detainee={detainee}
           goBack={() => history.goBack()}
           isDialogOpen={this.isActivityRoomDialogOpen()}
-          onClose={this.handleClose}
+          onClose={this.handleFlowStop}
           usage={usage}
         />
         <CellDialog
           detainee={detainee}
           goBack={() => history.goBack()}
           isDialogOpen={this.isCellDialogOpen()}
-          onClose={this.handleClose}
+          onClose={this.handleFlowStop}
+        />
+        <FingerprintingWarningDialog
+          handleCancel={this.handleFlowStop}
+          handleClose={this.handleFlowStop}
+          handleIgnore={this.handleFingerprintingWarningIgnore}
+          isDialogOpen={fingerprintingWarningDialogOpen}
+        />
+        <PhoneCallWarningDialog
+          handleCancel={this.handleFlowStop}
+          handleClose={this.handleFlowStop}
+          handleIgnore={this.handlePhonecallWarningIgnore}
+          isDialogOpen={phonecallWarningDialogOpen}
         />
         <PhoneDeclineDialog
           detainee={detainee}
           goBack={() => history.goBack()}
           isDialogOpen={this.isPhoneDeclineDialogOpen()}
-          onClose={this.handleClose}
+          onClose={this.handleFlowStop}
         />
         <ReleaseRoomDialog
           detainee={detainee}
           goBack={() => history.goBack()}
           isDialogOpen={this.isReleaseRoomDialogOpen()}
-          onClose={this.handleClose}
+          onClose={this.handleFlowStop}
         />
         <RemandRoomDialog
           detainee={detainee}
           goBack={() => history.goBack()}
           isDialogOpen={this.isRemandRoomDialogOpen()}
-          onClose={this.handleClose}
+          onClose={this.handleFlowStop}
         />
         <RoomSelectionDialog
           detainee={detainee}
           goBack={() => history.goBack()}
           isDialogOpen={this.isRoomSelectionDialogOpen()}
-          onClose={this.handleClose}
+          onClose={this.handleFlowStop}
           usage={usage}
         />
       </Card>

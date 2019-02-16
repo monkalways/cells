@@ -216,34 +216,55 @@ exports[`DetaineeActionComponent should render 1`] = `
   <Connect(ActivityRoomDialogComponent)
     detainee={
       Object {
+        "fingerPrintCount": 0,
         "firstName": "Bob",
         "id": "123",
         "lastName": "Saget",
+        "overrideFingerprintingWarning": false,
+        "telephoneAcceptedCount": 0,
       }
     }
     goBack={[Function]}
     isDialogOpen={false}
     onClose={[Function]}
-    usage=""
+    usage={null}
   />
   <Connect(CellDialogComponent)
     detainee={
       Object {
+        "fingerPrintCount": 0,
         "firstName": "Bob",
         "id": "123",
         "lastName": "Saget",
+        "overrideFingerprintingWarning": false,
+        "telephoneAcceptedCount": 0,
       }
     }
     goBack={[Function]}
     isDialogOpen={false}
     onClose={[Function]}
+  />
+  <FingerprintingWarningDialogComponent
+    handleCancel={[Function]}
+    handleClose={[Function]}
+    handleIgnore={[Function]}
+    isDialogOpen={false}
+  />
+  <PhoneCallWarningDialogComponent
+    handleCancel={[Function]}
+    handleClose={[Function]}
+    handleIgnore={[Function]}
+    isDialogOpen={false}
   />
   <Connect(PhoneDeclineComponent)
     detainee={
       Object {
+        "fingerPrintCount": 0,
         "firstName": "Bob",
         "id": "123",
         "lastName": "Saget",
+        "overrideFingerprintingWarning": false,
+        "telephoneAcceptedCount": 0,
       }
     }
     goBack={[Function]}
@@ -253,9 +274,12 @@ exports[`DetaineeActionComponent should render 1`] = `
   <Connect(ActivityRoomDialogComponent)
     detainee={
       Object {
+        "fingerPrintCount": 0,
         "firstName": "Bob",
         "id": "123",
         "lastName": "Saget",
+        "overrideFingerprintingWarning": false,
+        "telephoneAcceptedCount": 0,
       }
     }
     goBack={[Function]}
@@ -265,9 +289,12 @@ exports[`DetaineeActionComponent should render 1`] = `
   <Connect(ActivityRoomDialogComponent)
     detainee={
       Object {
+        "fingerPrintCount": 0,
         "firstName": "Bob",
         "id": "123",
         "lastName": "Saget",
+        "overrideFingerprintingWarning": false,
+        "telephoneAcceptedCount": 0,
       }
     }
     goBack={[Function]}
@@ -277,15 +304,18 @@ exports[`DetaineeActionComponent should render 1`] = `
   <Connect(WithStyles(RoomSelectionDialogComponent))
     detainee={
       Object {
+        "fingerPrintCount": 0,
         "firstName": "Bob",
         "id": "123",
         "lastName": "Saget",
+        "overrideFingerprintingWarning": false,
+        "telephoneAcceptedCount": 0,
       }
     }
     goBack={[Function]}
     isDialogOpen={false}
     onClose={[Function]}
-    usage=""
+    usage={null}
   />
 </WithStyles(Card)>
 `;
