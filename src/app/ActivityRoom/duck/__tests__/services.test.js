@@ -32,7 +32,7 @@ describe('ActivityRoom services', () => {
     const result = await services.getActivityRoomDetainees(usage);
     expect(result).toEqual([
       {
-        custodyEventId: '123',
+        id: '123',
         arrestId: '456',
         personId: '789',
         assignedCellName: 'C1',
