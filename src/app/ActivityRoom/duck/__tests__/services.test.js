@@ -9,7 +9,7 @@ describe('ActivityRoom services', () => {
     const usage = 'phone';
     const detainees = [
       {
-        id: '123',
+        custodyEventId: '123',
         arrestId: '456',
         personId: '789',
         assignedCellName: 'C1',
@@ -32,7 +32,7 @@ describe('ActivityRoom services', () => {
     const result = await services.getActivityRoomDetainees(usage);
     expect(result).toEqual([
       {
-        id: '123',
+        custodyEventId: '123',
         arrestId: '456',
         personId: '789',
         assignedCellName: 'C1',

@@ -9,7 +9,7 @@ const getActivityRoomDetainees = async (usage) => {
   );
 
   return response.data.map((detainee) => ({
-    id: detainee.id,
+    id: detainee.custodyEventId,
     arrestId: detainee.arrestId,
     personId: detainee.personId,
     assignedCellName: detainee.assignedCellName,
