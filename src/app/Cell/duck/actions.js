@@ -78,6 +78,15 @@ const saveMedicationSuccess = () => ({
   type: types.SAVE_MEDICATION_SUCCESS,
 });
 
+const toggleMenuOpen = (menuButtonTargetElement) => ({
+  type: types.TOGGLE_MENU_OPEN,
+  payload: menuButtonTargetElement,
+});
+
+const toggleMenuClose = () => ({
+  type: types.TOGGLE_MENU_CLOSE,
+});
+
 export default {
   getCellDetailsSuccess,
   getCellDetaineesSuccess,
@@ -96,4 +105,6 @@ export default {
   notApplicableMedication,
   saveMedication,
   saveMedicationSuccess,
+  toggleMenuOpen,
+  toggleMenuClose,
 };

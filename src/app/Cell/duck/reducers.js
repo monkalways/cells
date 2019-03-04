@@ -168,12 +168,34 @@ export const medicationReducer = (
   }
 };
 
+const defaultMenuReducerState = {
+  anchorElement: null,
+};
+
+const menuReducer = (state = defaultMenuReducerState, action) => {
+  switch (action.type) {
+    case types.TOGGLE_MENU_OPEN:
+      return {
+        ...state,
+        anchorElement: action.payload,
+      };
+    case types.TOGGLE_MENU_CLOSE:
+      return {
+        ...state,
+        anchorElement: null,
+      };
+    default:
+      return state;
+  }
+};
+
 const cellReducer = combineReducers({
   details: detailsReducer,
   detainees: detaineesReducer,
   cellCheck: cellCheckReducer,
   meal: mealReducer,
   medication: medicationReducer,
+  menu: menuReducer,
 });
 
 export default cellReducer;

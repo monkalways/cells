@@ -192,6 +192,17 @@ const saveMedication = (
   }
 };
 
+/* Menu */
+
+const { toggleMenuClose } = actions;
+
+const toggleMenuOpen = (
+  menuButtonTargetElement,
+  toggleMenuOpenAction = actions.toggleMenuOpen,
+) => (dispatch) => {
+  dispatch(toggleMenuOpenAction(menuButtonTargetElement));
+};
+
 export default {
   getCellDetails,
   getCellDetaineesForOverview,
@@ -209,4 +220,6 @@ export default {
   notApplicableMedication,
   getCellDetaineesForMedication,
   saveMedication,
+  toggleMenuOpen,
+  toggleMenuClose,
 };

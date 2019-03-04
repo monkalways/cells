@@ -10,6 +10,8 @@ const getMeal = (state) => state.cell.meal.data;
 const isSavingMeal = (state) => state.cell.meal.saving;
 const getMedication = (state) => state.cell.medication.data;
 const isSavingMedication = (state) => state.cell.medication.saving;
+const getMenuAnchorElement = (state) => state.cell.menu.anchorElement;
+const isMenuOpen = (state) => Boolean(state.cell.menu.anchorElement);
 
 // Reselect selectors
 const getCellDetailsState = createSelector(
@@ -67,4 +69,6 @@ export default {
   isSavingMealState,
   getMedicationState,
   isSavingMedicationState,
+  getMenuAnchorElement,
+  isMenuOpen,
 };
