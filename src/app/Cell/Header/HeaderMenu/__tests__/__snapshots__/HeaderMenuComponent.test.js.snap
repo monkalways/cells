@@ -1,18 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Common components HeaderMenuComponent should render correctly 1`] = `
-"<div>
-  <WithStyles(Button) onClick={[Function: onClick]} className=\\"HeaderMenu-icon-1\\">
-    <pure(MoreVertIcon) />
-  </WithStyles(Button)>
-  <WithStyles(Menu) anchorEl={{...}} open={true} onClose={[Function: onClose]}>
-    <WithStyles(MenuItem) onClick={[Function: onClick]}>
-      Toggle Legend
-    </WithStyles(MenuItem)>
-  </WithStyles(Menu)>
-</div>"
-`;
-
 exports[`HeaderMenuComponent should render 1`] = `
 <withRouter(HeaderMenu)
   cellDetails={
