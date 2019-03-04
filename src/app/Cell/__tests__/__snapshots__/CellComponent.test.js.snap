@@ -45,7 +45,12 @@ exports[`CellComponent should render if cell details is not null 1`] = `
         <Route
           component={[Function]}
           exact={true}
-          path="undefined/Medication"
+          path="undefined/medication"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="undefined/cell-history-report"
         />
       </Switch>
     </div>

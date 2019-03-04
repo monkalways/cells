@@ -45,6 +45,17 @@ exports[`HeaderComponent should render logout button and handle logout if authen
     position="static"
   >
     <WithStyles(Toolbar)>
+      <Connect(WithStyles(withRouter(HeaderMenu)))
+        cellDetails={
+          Object {
+            "cellStatus": "Allocated",
+            "designation": "Male Adult",
+            "name": "c1",
+            "occupancy": 2,
+            "occupancyCount": 2,
+          }
+        }
+      />
       <WithStyles(IconButton)
         aria-label="Menu"
         className="menuButton"

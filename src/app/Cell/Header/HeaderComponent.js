@@ -7,6 +7,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import logoIcon from '../../images/eps-logo-icon.png';
 import HeaderContent from './HeaderContent';
+import HeaderMenu from './HeaderMenu';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -24,6 +25,7 @@ export const HeaderComponent = ({
   <div className={classes.root}>
     <AppBar position="static" className={classes.appBar}>
       <Toolbar>
+        {isAuthenticated && <HeaderMenu cellDetails={cellDetails} />}
         <IconButton
           className={classes.menuButton}
           color="inherit"

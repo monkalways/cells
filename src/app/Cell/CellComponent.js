@@ -13,6 +13,7 @@ import Medication from './Medication';
 import commonConstants from '../constants';
 import withAuthentication from '../routes/enhancers/withAuthentication';
 import Loading from '../common/Loading';
+import CellHistoryReport from './CellHistoryReport';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -129,8 +130,13 @@ export class CellComponent extends Component {
                       exact
                     />
                     <Route
-                      path={`${match.url}/Medication`}
+                      path={`${match.url}/medication`}
                       component={withAuthentication(Medication)}
+                      exact
+                    />
+                    <Route
+                      path={`${match.url}/cell-history-report`}
+                      component={withAuthentication(CellHistoryReport)}
                       exact
                     />
                   </Switch>
