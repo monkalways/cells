@@ -65,7 +65,7 @@ export class ScanCardDialogComponent extends Component {
 
   handleFakeUserClick = () => {
     const { authenticate } = this.props;
-    authenticate('b5a3d600f8ff12e0');
+    authenticate('935ba901f8ff12e0');
   };
 
   render() {
