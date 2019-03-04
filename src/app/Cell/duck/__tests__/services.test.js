@@ -65,7 +65,7 @@ describe('Cell services', () => {
     const name = 'g1';
     const detainees = [
       {
-        id: '123',
+        custodyEventId: '123',
         arrestId: '456',
         personId: '789',
         assignedCellId: '321',
@@ -134,7 +134,7 @@ describe('Cell services', () => {
     const name = 'g1';
     const detainees = [
       {
-        id: '123',
+        custodyEventId: '123',
         arrestId: '456',
         personId: '789',
         assignedCellId: '321',
