@@ -174,7 +174,7 @@ describe('ScanCardDialogComponent', () => {
     const wrapper = setup();
     wrapper.find('#fakeUserLoginButton').simulate('click');
 
-    expect(authenticate).toBeCalledWith('b5a3d600f8ff12e0');
+    expect(authenticate).toBeCalledWith('935ba901f8ff12e0');
   });
 
   it('should handle dialog close', () => {
