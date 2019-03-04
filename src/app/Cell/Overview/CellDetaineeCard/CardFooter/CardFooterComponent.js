@@ -16,13 +16,13 @@ const CAUTION_PRESENT = 'CautionPresent';
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
   cellDetainee: PropTypes.shape({
-    withCaution: PropTypes.bool.isRequired,
-    mustBeKeptAlone: PropTypes.bool.isRequired,
-    isSuicidal: PropTypes.bool.isRequired,
-    isContagious: PropTypes.bool.isRequired,
-    hasWarning: PropTypes.bool.isRequired,
-    isUnderMedication: PropTypes.bool.isRequired,
-    cautionsArray: PropTypes.arrayOf(PropTypes.string).isRequired,
+    withCaution: PropTypes.bool,
+    mustBeKeptAlone: PropTypes.bool,
+    isSuicidal: PropTypes.bool,
+    isContagious: PropTypes.bool,
+    hasWarning: PropTypes.bool,
+    isUnderMedication: PropTypes.bool,
+    cautionsArray: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
 };
