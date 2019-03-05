@@ -72,7 +72,7 @@ const getDetainee = async (custodyEventId) => {
     gender,
     genderTypeCode,
     hasWarning,
-    id,
+    custodyEventId: id,
     intakePhotoResourceUri,
     interviewCount,
     isContagious,
