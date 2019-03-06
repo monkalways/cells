@@ -189,6 +189,28 @@ const menuReducer = (state = defaultMenuReducerState, action) => {
   }
 };
 
+const defaultModalReducerState = {
+  open: false,
+  isLoadingReport: false,
+};
+
+const modalReducer = (state = defaultModalReducerState, action) => {
+  switch (action.type) {
+    case types.TOGGLE_MODAL_OPEN:
+      return {
+        ...state,
+        open: true,
+      };
+    case types.TOGGLE_MODAL_CLOSE:
+      return {
+        ...state,
+        open: false,
+      };
+    default:
+      return state;
+  }
+};
+
 const cellReducer = combineReducers({
   details: detailsReducer,
   detainees: detaineesReducer,
@@ -196,6 +218,7 @@ const cellReducer = combineReducers({
   meal: mealReducer,
   medication: medicationReducer,
   menu: menuReducer,
+  modal: modalReducer,
 });
 
 export default cellReducer;

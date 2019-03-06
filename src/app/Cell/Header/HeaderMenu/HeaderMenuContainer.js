@@ -4,8 +4,8 @@ import HeaderMenuComponent from './HeaderMenuComponent';
 
 export const mapStateToProps = (
   state,
-  menuAnchorElement = selectors.getMenuAnchorElement(state),
-  open = selectors.isMenuOpen(state),
+  menuAnchorElement = selectors.getMenuAnchorElementState(state),
+  open = selectors.isMenuOpenState(state),
 ) => ({
   menuAnchorElement,
   open,
@@ -17,6 +17,9 @@ export const mapDispatchToProps = (dispatch) => ({
   },
   handleMenuClose: (toggleMenuClose = operations.toggleMenuClose) => {
     dispatch(toggleMenuClose());
+  },
+  handleModalOpen: (event, toggleModalOpen = operations.toggleModalOpen) => {
+    dispatch(toggleModalOpen());
   },
 });
 

@@ -203,6 +203,10 @@ const toggleMenuOpen = (
   dispatch(toggleMenuOpenAction(menuButtonTargetElement));
 };
 
+/* Modal */
+
+const { toggleModalOpen, toggleModalClose } = actions;
+
 export default {
   getCellDetails,
   getCellDetaineesForOverview,
@@ -222,4 +226,6 @@ export default {
   saveMedication,
   toggleMenuOpen,
   toggleMenuClose,
+  toggleModalOpen,
+  toggleModalClose,
 };

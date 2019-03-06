@@ -14,6 +14,7 @@ import commonConstants from '../constants';
 import withAuthentication from '../routes/enhancers/withAuthentication';
 import Loading from '../common/Loading';
 import CellHistoryReport from './CellHistoryReport';
+import CellHistoryReportDialog from './CellHistoryReportDialog';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -141,6 +142,7 @@ export class CellComponent extends Component {
                     />
                   </Switch>
                 </div>
+                <CellHistoryReportDialog cellDetails={cellDetails} />
               </React.Fragment>
             ) : (
               <Loading />

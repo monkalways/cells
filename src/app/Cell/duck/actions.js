@@ -87,6 +87,14 @@ const toggleMenuClose = () => ({
   type: types.TOGGLE_MENU_CLOSE,
 });
 
+const toggleModalOpen = () => ({
+  type: types.TOGGLE_MODAL_OPEN,
+});
+
+const toggleModalClose = () => ({
+  type: types.TOGGLE_MODAL_CLOSE,
+});
+
 export default {
   getCellDetailsSuccess,
   getCellDetaineesSuccess,
@@ -107,4 +115,6 @@ export default {
   saveMedicationSuccess,
   toggleMenuOpen,
   toggleMenuClose,
+  toggleModalOpen,
+  toggleModalClose,
 };

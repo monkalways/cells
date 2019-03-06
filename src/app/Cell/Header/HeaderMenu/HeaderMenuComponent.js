@@ -14,12 +14,10 @@ const propTypes = {
   open: PropTypes.bool.isRequired,
   handleMenuOpen: PropTypes.func.isRequired,
   handleMenuClose: PropTypes.func.isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
-  cellDetails: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-  }).isRequired,
+  // cellDetails: PropTypes.shape({
+  //   name: PropTypes.string.isRequired,
+  // }).isRequired,
+  handleModalOpen: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
@@ -32,12 +30,12 @@ const HeaderMenu = ({
   open,
   handleMenuOpen,
   handleMenuClose,
-  history,
-  cellDetails,
+  handleModalOpen,
 }) => {
   const handleCellHistoryReportClick = () => {
     handleMenuClose();
-    history.push(`/cells/${cellDetails.name}/home/cell-history-report`);
+    // history.push(`/cells/${cellDetails.name}/home/cell-history-report`);
+    handleModalOpen();
   };
   return (
     <div>

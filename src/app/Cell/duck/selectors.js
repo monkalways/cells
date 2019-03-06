@@ -12,6 +12,8 @@ const getMedication = (state) => state.cell.medication.data;
 const isSavingMedication = (state) => state.cell.medication.saving;
 const getMenuAnchorElement = (state) => state.cell.menu.anchorElement;
 const isMenuOpen = (state) => Boolean(state.cell.menu.anchorElement);
+const isModalOpen = (state) => state.cell.modal.open;
+const isLoadingReport = (state) => state.cell.modal.isLoadingReport;
 
 // Reselect selectors
 const getCellDetailsState = createSelector(
@@ -58,6 +60,20 @@ const isSavingMedicationState = createSelector(
   (saving) => saving,
 );
 
+const getMenuAnchorElementState = createSelector(
+  [getMenuAnchorElement],
+  (menuAnchorElement) => menuAnchorElement,
+);
+
+const isMenuOpenState = createSelector([isMenuOpen], (open) => open);
+
+const isModalOpenState = createSelector([isModalOpen], (open) => open);
+
+const isLoadingReportState = createSelector(
+  [isLoadingReport],
+  (loading) => loading,
+);
+
 export default {
   getCellDetailsState,
   getCellNameState,
@@ -69,6 +85,8 @@ export default {
   isSavingMealState,
   getMedicationState,
   isSavingMedicationState,
-  getMenuAnchorElement,
-  isMenuOpen,
+  getMenuAnchorElementState,
+  isMenuOpenState,
+  isModalOpenState,
+  isLoadingReportState,
 };
