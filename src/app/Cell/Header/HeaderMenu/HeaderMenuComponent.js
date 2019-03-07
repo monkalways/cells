@@ -1,7 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -39,14 +39,16 @@ const HeaderMenu = ({
   };
   return (
     <div>
-      <Button
+      <Fab
         onClick={(event) => {
           handleMenuOpen(event);
         }}
         className={classes.icon}
+        size="small"
+        variant="text"
       >
         <MoreVertIcon />
-      </Button>
+      </Fab>
       <Menu
         anchorEl={menuAnchorElement}
         open={open}
@@ -67,6 +69,8 @@ export default compose(
   withStyles((theme) => ({
     icon: {
       color: theme.palette.common.white,
+      padding: 0,
+      marginLeft: -theme.spacing.unit * 3,
     },
   })),
   withRouter,

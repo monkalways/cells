@@ -30,6 +30,7 @@ export const HeaderComponent = ({
           className={classes.menuButton}
           color="inherit"
           aria-label="Menu"
+          disabled
         >
           <img src={logoIcon} alt="EPS Logo" width={70} />
         </IconButton>
@@ -60,8 +61,8 @@ export default withStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
   },
   menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
+    marginLeft: -theme.spacing.unit * 2.5,
+    marginRight: theme.spacing.unit * 0.8,
   },
   logoutButton: {
     margin: theme.spacing.unit,
