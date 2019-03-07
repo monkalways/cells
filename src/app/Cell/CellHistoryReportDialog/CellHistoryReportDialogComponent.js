@@ -19,10 +19,10 @@ import {
   DatePicker,
 } from 'material-ui-pickers';
 
-import { red } from '@material-ui/core/colors';
 import Loading from '../../common/Loading';
 
 const propTypes = {
+  classes: PropTypes.shape({}).isRequired,
   cellDetails: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }).isRequired,
