@@ -54,7 +54,7 @@ exports[`CellComponent should render if cell details is not null 1`] = `
         />
       </Switch>
     </div>
-    <Connect(CellHistoryReportModalComponent)
+    <Connect(WithStyles(CellHistoryReportDialogComponent))
       cellDetails={Object {}}
     />
   </WithStyles(LayoutComponent)>

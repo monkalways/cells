@@ -13,6 +13,7 @@ exports[`HeaderComponent should render 1`] = `
         aria-label="Menu"
         className="menuButton"
         color="inherit"
+        disabled={true}
       >
         <img
           alt="EPS Logo"
@@ -60,6 +61,7 @@ exports[`HeaderComponent should render logout button and handle logout if authen
         aria-label="Menu"
         className="menuButton"
         color="inherit"
+        disabled={true}
       >
         <img
           alt="EPS Logo"
