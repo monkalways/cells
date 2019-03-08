@@ -197,7 +197,13 @@ const getCellHistoryReport = async (name, startTime, endTime) => {
 
   const { userLabel, lastOccupantName, movementHistories } = response.data;
 
-  if (movementHistories) movementHistories.forEach((entry) => (entry.time = new Date(entry.time)));
+  // convert dates
+  if (movementHistories) {
+    movementHistories.forEach((entry) => {
+      // eslint-disable-next-line no-param-reassign
+      entry.time = new Date(entry.time);
+    });
+  }
 
   return {
     userLabel,

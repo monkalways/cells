@@ -46,6 +46,10 @@ const propTypes = {
   })),
 };
 
+const defaultProps = {
+  movementHistories: [],
+};
+
 const MovementHistoriesComponent = ({ classes, movementHistories }) => (
   <Grid item className={classes.container} xs={12}>
     {movementHistories && movementHistories.length > 0 ? (
@@ -86,6 +90,7 @@ const MovementHistoriesComponent = ({ classes, movementHistories }) => (
 );
 
 MovementHistoriesComponent.propTypes = propTypes;
+MovementHistoriesComponent.defaultProps = defaultProps;
 
 export default withStyles(() => ({
   container: {
