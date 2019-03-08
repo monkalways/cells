@@ -184,10 +184,33 @@ const saveMedication = async (medication, userName) => {
   return savedAny;
 };
 
+const getCellHistoryReport = async (name, startTime, endTime) => {
+  const options = commonConstants.HEADERS();
+  options.params = {
+    startTime,
+    endTime,
+  };
+  const response = await axios.get(
+    constants.GET_CELL_HISTORY_REPORT_URL(name),
+    options,
+  );
+
+  const { userLabel, lastOccupantName, movementHistories } = response.data;
+
+  if (movementHistories) movementHistories.forEach((entry) => (entry.time = new Date(entry.time)));
+
+  return {
+    userLabel,
+    lastOccupantName,
+    movementHistories,
+  };
+};
+
 export default {
   getCellDetails,
   getCellDetainees,
   saveCellCheck,
   saveMeal,
   saveMedication,
+  getCellHistoryReport,
 };

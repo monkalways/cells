@@ -19,7 +19,7 @@ const propTypes = {
       time: PropTypes.instanceOf(Date).isRequired,
       detaineeName: PropTypes.string.isRequired,
       sourceCellName: PropTypes.string,
-      destinationCellName: PropTypes.string.isRequired,
+      destinationCellName: PropTypes.string,
     })),
   }),
   isLoadingReport: PropTypes.bool.isRequired,
@@ -36,6 +36,7 @@ const CellHistoryReportComponent = ({ classes, report, isLoadingReport }) => (
       className={classes.container}
       spacing={8}
       alignContent="flex-start"
+      justify="center"
     >
       {!isLoadingReport ? (
         <React.Fragment>
@@ -45,10 +46,7 @@ const CellHistoryReportComponent = ({ classes, report, isLoadingReport }) => (
             </Typography>
           </Grid>
           <ReportBody report={report} />
-          {report.movementHistories
-            && report.movementHistories.length > 0 && (
-              <MovementHistories movementHistories={report.movementHistories} />
-          )}
+          <MovementHistories movementHistories={report.movementHistories} />
         </React.Fragment>
       ) : (
         <Loading />
@@ -62,7 +60,7 @@ CellHistoryReportComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   container: {
-    minHeight: theme.spacing.unit * 113,
+    height: theme.spacing.unit * 113,
     overflowY: 'auto',
     msOverflowStyle: '-ms-autohiding-scrollbar',
     marginLeft: 0,

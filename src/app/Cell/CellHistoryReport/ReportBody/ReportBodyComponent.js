@@ -39,7 +39,7 @@ const ReportBodyComponent = ({ classes, report }) => (
     </Typography>
     <Typography variant="body1" className={classes.row}>
       <span className={classes.boldText}>Last Occupant during period:</span>
-      <span>{report.lastOccupantName}</span>
+      <span>{report.lastOccupantName || 'N/A'}</span>
     </Typography>
   </Grid>
 );

@@ -8,6 +8,7 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  Typography,
 } from '@material-ui/core';
 import { format } from 'date-fns';
 
@@ -41,34 +42,46 @@ const propTypes = {
     time: PropTypes.instanceOf(Date).isRequired,
     detaineeName: PropTypes.string.isRequired,
     sourceCellName: PropTypes.string,
-    destinationCellName: PropTypes.string.isRequired,
-  })).isRequired,
+    destinationCellName: PropTypes.string,
+  })),
 };
 
 const MovementHistoriesComponent = ({ classes, movementHistories }) => (
   <Grid item className={classes.container} xs={12}>
-    <Table className={classes.table}>
-      <TableHead>
-        <TableRow>
-          <CustomTableCell>Time</CustomTableCell>
-          <CustomTableCell>Detainee</CustomTableCell>
-          <CustomTableCell>Source Cell</CustomTableCell>
-          <CustomTableCell>Destination Cell</CustomTableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {movementHistories.map((row) => (
-          <CustomTableRow className={classes.row} key={row.time}>
-            <CustomTableCell component="th" scope="row">
-              {format(row.time, dateTimeFormat)}
-            </CustomTableCell>
-            <CustomTableCell>{row.detaineeName}</CustomTableCell>
-            <CustomTableCell>{row.sourceCellName}</CustomTableCell>
-            <CustomTableCell>{row.destinationCellName}</CustomTableCell>
-          </CustomTableRow>
-        ))}
-      </TableBody>
-    </Table>
+    {movementHistories && movementHistories.length > 0 ? (
+      <Table className={classes.table}>
+        <TableHead>
+          <TableRow>
+            <CustomTableCell>Time</CustomTableCell>
+            <CustomTableCell>Detainee</CustomTableCell>
+            <CustomTableCell>Source Cell</CustomTableCell>
+            <CustomTableCell>Destination Cell</CustomTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {movementHistories.map((row) => (
+            <CustomTableRow className={classes.row} key={row.time}>
+              <CustomTableCell component="th" scope="row" padding="dense">
+                {format(row.time, dateTimeFormat)}
+              </CustomTableCell>
+              <CustomTableCell padding="dense">
+                {row.detaineeName}
+              </CustomTableCell>
+              <CustomTableCell padding="dense">
+                {row.sourceCellName}
+              </CustomTableCell>
+              <CustomTableCell padding="dense">
+                {row.destinationCellName}
+              </CustomTableCell>
+            </CustomTableRow>
+          ))}
+        </TableBody>
+      </Table>
+    ) : (
+      <Typography variant="body1">
+        No detainee movements in given period.
+      </Typography>
+    )}
   </Grid>
 );
 

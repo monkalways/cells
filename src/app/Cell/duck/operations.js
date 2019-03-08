@@ -189,6 +189,7 @@ const saveMedication = (
     }
   } catch (error) {
     sendErrorMessage({ dispatch, error });
+    dispatch(saveMedicationSuccessAction());
   }
 };
 
@@ -209,48 +210,55 @@ const { toggleModalOpen, toggleModalClose } = actions;
 
 /* Cell History Report */
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+// const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const getCellHistoryReport = (
   cellName,
   startTime,
   endTime,
-  // getCellHistoryReportService = services.getCellHistoryReport,
+  getCellHistoryReportService = services.getCellHistoryReport,
   getCellHistoryReportAction = actions.getCellHistoryReport,
   getCellHistoryReportSuccessAction = actions.getCellHistoryReportSuccess,
   sendErrorMessage = utils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
     dispatch(getCellHistoryReportAction());
-    // const report = await getCellHistoryReportService(name, startTime, endTime);
-    await sleep(2000);
-    const report = {
-      userLabel: '#6701 PANAS, J',
+    const report = await getCellHistoryReportService(
       cellName,
-      lastOccupantName: 'JONES, Billy',
       startTime,
       endTime,
-      movementHistories: [
-        {
-          time: new Date('2018-03-22 15:32'),
-          detaineeName: 'JONES, Billy',
-          sourceCellName: 'C1',
-          destinationCellName: cellName,
-        },
-        {
-          time: new Date('2018-03-22 09:18'),
-          detaineeName: 'MARLEY, Bob',
-          sourceCellName: '',
-          destinationCellName: cellName,
-        },
-        {
-          time: new Date('2018-03-22 05:15'),
-          detaineeName: 'JONES, Billy',
-          sourceCellName: cellName,
-          destinationCellName: 'REL1',
-        },
-      ],
-    };
+    );
+    // await sleep(2000);
+    // const report = {
+    //   userLabel: '#6701 PANAS, J',
+    //   cellName,
+    //   lastOccupantName: 'JONES, Billy',
+    //   startTime,
+    //   endTime,
+    //   movementHistories: [
+    //     {
+    //       time: new Date('2018-03-22 15:32'),
+    //       detaineeName: 'JONES, Billy',
+    //       sourceCellName: 'C1',
+    //       destinationCellName: cellName,
+    //     },
+    //     {
+    //       time: new Date('2018-03-22 09:18'),
+    //       detaineeName: 'MARLEY, Bob',
+    //       sourceCellName: '',
+    //       destinationCellName: cellName,
+    //     },
+    //     {
+    //       time: new Date('2018-03-22 05:15'),
+    //       detaineeName: 'JONES, Billy',
+    //       sourceCellName: cellName,
+    //       destinationCellName: 'REL1',
+    //     },
+    //   ],
+    // };
+    report.cellName = cellName;
+    report.startTime = startTime;
+    report.endTime = endTime;
     dispatch(getCellHistoryReportSuccessAction(report));
   } catch (error) {
     sendErrorMessage({ dispatch, error });
