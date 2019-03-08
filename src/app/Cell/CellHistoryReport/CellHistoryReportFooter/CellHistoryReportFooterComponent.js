@@ -16,7 +16,7 @@ import { compose } from 'recompose';
 const CustomBottomNavigationAction = withStyles((theme) => ({
   root: {
     flex: 0,
-    marginLeft: theme.spacing.unit * 4,
+    marginLeft: theme.spacing.unit * 3,
   },
 }))(BottomNavigationAction);
 
@@ -28,7 +28,7 @@ const propTypes = {
   }).isRequired,
 };
 
-export const OverviewFooterComponent = ({
+export const CellHistoryReportFooterComponent = ({
   classes,
   isLoadingReport,
   history,
@@ -70,7 +70,7 @@ export const OverviewFooterComponent = ({
   );
 };
 
-OverviewFooterComponent.propTypes = propTypes;
+CellHistoryReportFooterComponent.propTypes = propTypes;
 
 export default compose(
   withStyles((theme) => ({
@@ -99,9 +99,9 @@ export default compose(
       fontSize: theme.typography.h3.fontSize,
     },
     backButton: {
-      marginRight: theme.spacing.unit * 14,
+      marginRight: theme.spacing.unit * 21,
       paddingLeft: 0,
     },
   })),
   withRouter,
-)(OverviewFooterComponent);
+)(CellHistoryReportFooterComponent);

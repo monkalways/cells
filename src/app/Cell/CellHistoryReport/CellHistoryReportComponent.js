@@ -6,7 +6,7 @@ import { Grid, Typography } from '@material-ui/core';
 import Loading from '../../common/Loading';
 import ReportBody from './ReportBody';
 import MovementHistories from './MovementHistories';
-import CellHistoryFooter from './CellHistoryFooter';
+import CellHistoryReportFooter from './CellHistoryReportFooter';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -53,7 +53,7 @@ const CellHistoryReportComponent = ({ classes, report, isLoadingReport }) => (
         <Loading />
       )}
     </Grid>
-    <CellHistoryFooter isLoadingReport={isLoadingReport} />
+    <CellHistoryReportFooter isLoadingReport={isLoadingReport} />
   </React.Fragment>
 );
 
