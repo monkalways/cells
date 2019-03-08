@@ -15,7 +15,14 @@ export const mapDispatchToProps = (dispatch) => ({
   handleCloseModal: (toggleModalClose = operations.toggleModalClose) => {
     dispatch(toggleModalClose());
   },
-  handleLoadReport: () => {},
+  handleLoadReport: (
+    cellName,
+    startTime,
+    endTime,
+    getCellHistoryReport = operations.getCellHistoryReport,
+  ) => {
+    dispatch(getCellHistoryReport(cellName, startTime, endTime));
+  },
 });
 
 export default connect(

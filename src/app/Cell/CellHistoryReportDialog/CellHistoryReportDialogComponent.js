@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { compose } from 'recompose';
+import { withRouter } from 'react-router-dom';
 import {
   Button,
   Dialog,
@@ -30,13 +32,15 @@ const propTypes = {
   isLoadingReport: PropTypes.bool.isRequired,
   handleLoadReport: PropTypes.func.isRequired,
   handleCloseModal: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 class CellHistoryReportDialogComponent extends Component {
   state = {
-    // The first commit of Material-UI
-    startDate: subDays(new Date(), 1),
-    endDate: new Date(),
+    startTime: subDays(new Date(), 1),
+    endTime: new Date(),
     error: null,
   };
 
@@ -45,36 +49,44 @@ class CellHistoryReportDialogComponent extends Component {
     handleCloseModal();
   };
 
-  handleStartDateChange = (startDate) => {
-    const { endDate } = this.state;
-    if (startDate >= endDate) {
+  handleStartTimeChange = (startTime) => {
+    const { endTime } = this.state;
+    if (startTime >= endTime) {
       this.setState({
         error: 'Start Date/Time must be before End Date/Time.',
       });
       return;
     }
-    this.setState({ startDate, error: null });
+    this.setState({ startTime, error: null });
   };
 
-  handleEndDateChange = (endDate) => {
-    const { startDate } = this.state;
-    if (startDate >= endDate) {
+  handleEndTimeChange = (endTime) => {
+    const { startTime } = this.state;
+    if (startTime >= endTime) {
       this.setState({
         error: 'End Date/Time must be after Start Date/Time.',
       });
       return;
     }
-    this.setState({ endDate, error: null });
+    this.setState({ endTime, error: null });
   };
 
   handleConfirm = () => {
-    const { handleLoadReport } = this.props;
-    handleLoadReport();
+    const {
+      handleLoadReport,
+      history,
+      cellDetails,
+      handleCloseModal,
+    } = this.props;
+    const { startTime, endTime } = this.state;
+    handleLoadReport(cellDetails.name, startTime, endTime);
+    handleCloseModal();
+    history.push(`/cells/${cellDetails.name}/home/cell-history-report`);
   };
 
   render() {
     const { isModalOpen, isLoadingReport, classes } = this.props;
-    const { startDate, endDate, error } = this.state;
+    const { startTime, endTime, error } = this.state;
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Dialog
@@ -102,8 +114,8 @@ class CellHistoryReportDialogComponent extends Component {
                       label="Start Date"
                       format="MMM dd, yyyy"
                       variant="outlined"
-                      value={startDate}
-                      onChange={this.handleStartDateChange}
+                      value={startTime}
+                      onChange={this.handleStartTimeChange}
                     />
                   </FormControl>
                   <FormControl className={classes.formControl}>
@@ -112,8 +124,8 @@ class CellHistoryReportDialogComponent extends Component {
                       margin="normal"
                       label="Start Time"
                       variant="outlined"
-                      value={startDate}
-                      onChange={this.handleStartDateChange}
+                      value={startTime}
+                      onChange={this.handleStartTimeChange}
                     />
                   </FormControl>
                 </Grid>
@@ -126,8 +138,8 @@ class CellHistoryReportDialogComponent extends Component {
                       format="MMM dd, yyyy"
                       label="End Date"
                       variant="outlined"
-                      value={endDate}
-                      onChange={this.handleEndDateChange}
+                      value={endTime}
+                      onChange={this.handleEndTimeChange}
                     />
                   </FormControl>
                   <FormControl className={classes.formControl}>
@@ -136,8 +148,8 @@ class CellHistoryReportDialogComponent extends Component {
                       margin="normal"
                       label="End Time"
                       variant="outlined"
-                      value={endDate}
-                      onChange={this.handleEndDateChange}
+                      value={endTime}
+                      onChange={this.handleEndTimeChange}
                     />
                   </FormControl>
                 </Grid>
@@ -179,11 +191,14 @@ class CellHistoryReportDialogComponent extends Component {
 
 CellHistoryReportDialogComponent.propTypes = propTypes;
 
-export default withStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing.unit,
-  },
-  errorText: {
-    fontSize: theme.typography.fontSize * 1.2,
-  },
-}))(CellHistoryReportDialogComponent);
+export default compose(
+  withStyles((theme) => ({
+    formControl: {
+      margin: theme.spacing.unit,
+    },
+    errorText: {
+      fontSize: theme.typography.fontSize * 1.2,
+    },
+  })),
+  withRouter,
+)(CellHistoryReportDialogComponent);

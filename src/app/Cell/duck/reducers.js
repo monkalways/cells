@@ -191,7 +191,6 @@ const menuReducer = (state = defaultMenuReducerState, action) => {
 
 const defaultModalReducerState = {
   open: false,
-  isLoadingReport: false,
 };
 
 const modalReducer = (state = defaultModalReducerState, action) => {
@@ -211,6 +210,32 @@ const modalReducer = (state = defaultModalReducerState, action) => {
   }
 };
 
+const defaultCellHistoryReportReducerState = {
+  report: null,
+  isLoadingReport: false,
+};
+
+const cellHistoryReportReducer = (
+  state = defaultCellHistoryReportReducerState,
+  action,
+) => {
+  switch (action.type) {
+    case types.GET_CELL_HISTORY_REPORT:
+      return {
+        ...state,
+        isLoadingReport: true,
+      };
+    case types.GET_CELL_HISTORY_REPORT_SUCCESS:
+      return {
+        ...state,
+        report: action.report,
+        isLoadingReport: false,
+      };
+    default:
+      return state;
+  }
+};
+
 const cellReducer = combineReducers({
   details: detailsReducer,
   detainees: detaineesReducer,
@@ -219,6 +244,7 @@ const cellReducer = combineReducers({
   medication: medicationReducer,
   menu: menuReducer,
   modal: modalReducer,
+  cellHistoryReport: cellHistoryReportReducer,
 });
 
 export default cellReducer;

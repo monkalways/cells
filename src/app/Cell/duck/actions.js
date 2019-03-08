@@ -95,6 +95,15 @@ const toggleModalClose = () => ({
   type: types.TOGGLE_MODAL_CLOSE,
 });
 
+const getCellHistoryReport = () => ({
+  type: types.GET_CELL_HISTORY_REPORT,
+});
+
+const getCellHistoryReportSuccess = (report) => ({
+  type: types.GET_CELL_HISTORY_REPORT_SUCCESS,
+  report,
+});
+
 export default {
   getCellDetailsSuccess,
   getCellDetaineesSuccess,
@@ -117,4 +126,6 @@ export default {
   toggleMenuClose,
   toggleModalOpen,
   toggleModalClose,
+  getCellHistoryReport,
+  getCellHistoryReportSuccess,
 };

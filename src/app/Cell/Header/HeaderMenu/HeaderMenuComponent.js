@@ -14,9 +14,6 @@ const propTypes = {
   open: PropTypes.bool.isRequired,
   handleMenuOpen: PropTypes.func.isRequired,
   handleMenuClose: PropTypes.func.isRequired,
-  // cellDetails: PropTypes.shape({
-  //   name: PropTypes.string.isRequired,
-  // }).isRequired,
   handleModalOpen: PropTypes.func.isRequired,
 };
 
@@ -34,7 +31,6 @@ const HeaderMenu = ({
 }) => {
   const handleCellHistoryReportClick = () => {
     handleMenuClose();
-    // history.push(`/cells/${cellDetails.name}/home/cell-history-report`);
     handleModalOpen();
   };
   return (

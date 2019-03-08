@@ -1,1 +1,1 @@
-export { default } from './CellHistoryReportComponent';
+export { default } from './CellHistoryReportContainer';

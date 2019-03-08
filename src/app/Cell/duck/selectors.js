@@ -13,7 +13,8 @@ const isSavingMedication = (state) => state.cell.medication.saving;
 const getMenuAnchorElement = (state) => state.cell.menu.anchorElement;
 const isMenuOpen = (state) => Boolean(state.cell.menu.anchorElement);
 const isModalOpen = (state) => state.cell.modal.open;
-const isLoadingReport = (state) => state.cell.modal.isLoadingReport;
+const isLoadingReport = (state) => state.cell.cellHistoryReport.isLoadingReport;
+const getCellHistoryReport = (state) => state.cell.cellHistoryReport.report;
 
 // Reselect selectors
 const getCellDetailsState = createSelector(
@@ -74,6 +75,11 @@ const isLoadingReportState = createSelector(
   (loading) => loading,
 );
 
+const getCellHistoryReportState = createSelector(
+  [getCellHistoryReport],
+  (report) => report,
+);
+
 export default {
   getCellDetailsState,
   getCellNameState,
@@ -89,4 +95,5 @@ export default {
   isMenuOpenState,
   isModalOpenState,
   isLoadingReportState,
+  getCellHistoryReportState,
 };
