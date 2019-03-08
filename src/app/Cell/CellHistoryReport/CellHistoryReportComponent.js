@@ -1,12 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography } from '@material-ui/core';
+import {
+  AppBar,
+  BottomNavigation,
+  BottomNavigationAction,
+  Grid,
+  Typography,
+} from '@material-ui/core';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import PrintIcon from '@material-ui/icons/Print';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
+import ReactToPrint from 'react-to-print';
 
-import Loading from '../../common/Loading';
 import ReportBody from './ReportBody';
-import MovementHistories from './MovementHistories';
-import CellHistoryReportFooter from './CellHistoryReportFooter';
+
+const CustomBottomNavigationAction = withStyles((theme) => ({
+  root: {
+    flex: 0,
+    marginLeft: theme.spacing.unit * 3,
+  },
+}))(BottomNavigationAction);
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
@@ -24,61 +39,102 @@ const propTypes = {
     })),
   }),
   isLoadingReport: PropTypes.bool.isRequired,
+  history: PropTypes.shape({
+    goBack: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 const defaultProps = {
   report: null,
 };
 
-const CellHistoryReportComponent = ({ classes, report, isLoadingReport }) => (
-  <React.Fragment>
-    <Grid
-      container
-      className={classes.container}
-      spacing={8}
-      alignContent="flex-start"
-      justify="center"
-    >
-      {!isLoadingReport ? (
-        <React.Fragment>
-          <Grid item sm={12} className={classes.titleContainer}>
-            <Typography variant="h5" className={classes.title}>
-              {`Cell History Report - ${report.cellName}`}
-            </Typography>
-          </Grid>
-          <ReportBody report={report} />
-          <MovementHistories movementHistories={report.movementHistories} />
-        </React.Fragment>
-      ) : (
-        <Loading />
-      )}
-    </Grid>
-    <CellHistoryReportFooter isLoadingReport={isLoadingReport} />
-  </React.Fragment>
-);
+class CellHistoryReportComponent extends React.Component {
+  handleBackClick = () => {
+    const { history } = this.props;
+    history.goBack();
+  };
+
+  render() {
+    const { classes, report, isLoadingReport } = this.props;
+    return (
+      <React.Fragment>
+        <ReportBody
+          isLoadingReport={isLoadingReport}
+          report={report}
+          ref={(el) => {
+            this.componentRef = el;
+          }}
+        />
+        <div className={classes.footer}>
+          <AppBar position="static" className={classes.appBar}>
+            <Grid container alignItems="center">
+              <BottomNavigation
+                value={-1}
+                showLabels
+                className={classes.navigation}
+              >
+                <CustomBottomNavigationAction
+                  id="backButton"
+                  label={<Typography variant="body1">Back</Typography>}
+                  onClick={this.handleBackClick}
+                  icon={<ArrowBackIcon className={classes.icon} />}
+                  disabled={isLoadingReport}
+                  className={classes.backButton}
+                />
+                <ReactToPrint
+                  trigger={() => (
+                    <BottomNavigationAction
+                      id="mealButton"
+                      label={<Typography variant="body1">Print</Typography>}
+                      icon={<PrintIcon className={classes.icon} />}
+                      disabled={isLoadingReport}
+                      showLabel
+                    />
+                  )}
+                  content={() => this.componentRef}
+                />
+              </BottomNavigation>
+            </Grid>
+          </AppBar>
+        </div>
+      </React.Fragment>
+    );
+  }
+}
 
 CellHistoryReportComponent.propTypes = propTypes;
 CellHistoryReportComponent.defaultProps = defaultProps;
 
-export default withStyles((theme) => ({
-  container: {
-    height: theme.spacing.unit * 113,
-    overflowY: 'auto',
-    msOverflowStyle: '-ms-autohiding-scrollbar',
-    marginLeft: 0,
-    marginRight: 0,
-    marginBottom: theme.spacing.unit * 0.4,
-    backgroundColor: '#FFFFFF',
-    width: '100%',
-  },
-  titleContainer: {
-    height: theme.spacing.unit * 7,
-  },
-  title: {
-    fontWeight: 500,
-    textAlign: 'center',
-    backgroundColor: '#BEBFBF',
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-  },
-}))(CellHistoryReportComponent);
+export default compose(
+  withStyles((theme) => ({
+    footer: {
+      flexGrow: 1,
+    },
+    appBar: {
+      backgroundColor: theme.palette.background.default,
+    },
+    navigation: {
+      height: '100%',
+      width: '69%',
+      backgroundColor: theme.palette.background.default,
+      justifyContent: 'start',
+    },
+    button: {
+      height: theme.spacing.unit * 7,
+      width: theme.spacing.unit * 40,
+      margin: theme.spacing.unit * 2,
+    },
+    navigationImage: {
+      width: theme.spacing.unit * 6,
+      height: theme.spacing.unit * 6,
+    },
+    icon: {
+      fontSize: theme.typography.h3.fontSize,
+    },
+    backButton: {
+      marginRight: theme.spacing.unit * 21,
+      paddingLeft: 0,
+    },
+  })),
+  withRouter,
+)(CellHistoryReportComponent);
