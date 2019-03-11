@@ -18,7 +18,7 @@ export const mapDispatchToProps = (dispatch) => ({
   handleMenuClose: (toggleMenuClose = operations.toggleMenuClose) => {
     dispatch(toggleMenuClose());
   },
-  handleModalOpen: (event, toggleModalOpen = operations.toggleModalOpen) => {
+  handleModalOpen: (toggleModalOpen = operations.toggleModalOpen) => {
     dispatch(toggleModalOpen());
   },
 });
