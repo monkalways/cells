@@ -82,7 +82,7 @@ const MovementHistoriesComponent = ({ classes, movementHistories }) => (
         </TableBody>
       </Table>
     ) : (
-      <Typography variant="body1">
+      <Typography variant="body1" className={classes.text}>
         No detainee movements in given period.
       </Typography>
     )}
@@ -92,9 +92,12 @@ const MovementHistoriesComponent = ({ classes, movementHistories }) => (
 MovementHistoriesComponent.propTypes = propTypes;
 MovementHistoriesComponent.defaultProps = defaultProps;
 
-export default withStyles(() => ({
+export default withStyles((theme) => ({
   container: {
     width: '100%',
     overflowX: 'auto',
+  },
+  text: {
+    marginLeft: theme.spacing.unit,
   },
 }))(MovementHistoriesComponent);
