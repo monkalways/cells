@@ -21,7 +21,7 @@ const defaultProps = {
   menuAnchorElement: null,
 };
 
-const HeaderMenu = ({
+export const HeaderMenuComponent = ({
   classes,
   menuAnchorElement,
   open,
@@ -58,8 +58,8 @@ const HeaderMenu = ({
   );
 };
 
-HeaderMenu.propTypes = propTypes;
-HeaderMenu.defaultProps = defaultProps;
+HeaderMenuComponent.propTypes = propTypes;
+HeaderMenuComponent.defaultProps = defaultProps;
 
 export default compose(
   withStyles((theme) => ({
@@ -70,4 +70,4 @@ export default compose(
     },
   })),
   withRouter,
-)(HeaderMenu);
+)(HeaderMenuComponent);

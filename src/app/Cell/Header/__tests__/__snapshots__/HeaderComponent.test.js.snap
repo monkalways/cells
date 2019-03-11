@@ -46,7 +46,7 @@ exports[`HeaderComponent should render logout button and handle logout if authen
     position="static"
   >
     <WithStyles(Toolbar)>
-      <Connect(WithStyles(withRouter(HeaderMenu)))
+      <Connect(WithStyles(withRouter(HeaderMenuComponent)))
         cellDetails={
           Object {
             "cellStatus": "Allocated",
