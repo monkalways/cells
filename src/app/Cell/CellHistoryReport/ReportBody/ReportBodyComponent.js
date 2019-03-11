@@ -107,9 +107,9 @@ export default withStyles((theme) => ({
     paddingBottom: theme.spacing.unit,
   },
   bodyContainer: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing.unit * 1.5,
     height: theme.spacing.unit * 26,
-    boxShadow: '2px 2px 2px 2px rgba(0, 0, 0, 0.2)',
+    boxShadow: '1px 1px 1px 1px rgba(0, 0, 0, 0.2)',
   },
   boldText: {
     fontWeight: 500,
