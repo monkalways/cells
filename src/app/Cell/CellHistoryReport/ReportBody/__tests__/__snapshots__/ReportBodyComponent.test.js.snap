@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReportBodyComponent should render Loading component if isLoadingReport is true 1`] = `
+<WithStyles(Grid)
+  alignContent="flex-start"
+  container={true}
+  justify="center"
+  spacing={8}
+>
+  <WithStyles(LoadingComponent) />
+</WithStyles(Grid)>
+`;
+
+exports[`ReportBodyComponent should render cell history report if isLoadingReport is false 1`] = `
+<WithStyles(Grid)
+  alignContent="flex-start"
+  container={true}
+  justify="center"
+  spacing={8}
+>
+  <WithStyles(Grid)
+    item={true}
+    sm={12}
+  >
+    <WithStyles(Typography)
+      variant="h5"
+    >
+      Cell History Report - c1
+    </WithStyles(Typography)>
+  </WithStyles(Grid)>
+  <WithStyles(Grid)
+    item={true}
+    xs={12}
+  >
+    <WithStyles(Typography)
+      variant="body1"
+    >
+      Edmonton Police Service
+    </WithStyles(Typography)>
+    <WithStyles(Typography)
+      variant="body1"
+    >
+      <span>
+        Printed: 
+      </span>
+      2019/03/12 12:52
+       by 
+      Doe. J
+    </WithStyles(Typography)>
+    <WithStyles(Typography)
+      variant="body1"
+    >
+      <span>
+        Cell ID:
+      </span>
+      <span>
+        c1
+      </span>
+    </WithStyles(Typography)>
+    <WithStyles(Typography)
+      variant="body1"
+    >
+      <span>
+        Reporting Period:
+      </span>
+      <span>
+        2019/03/10 18:00
+         to
+         
+        2019/03/11 18:00
+      </span>
+    </WithStyles(Typography)>
+    <WithStyles(Typography)
+      variant="body1"
+    >
+      <span>
+        Last Occupant during period:
+      </span>
+      <span>
+        Test User 1
+      </span>
+    </WithStyles(Typography)>
+  </WithStyles(Grid)>
+  <WithStyles(MovementHistoriesComponent)
+    movementHistories={
+      Array [
+        Object {
+          "detaineeName": "Test User 2",
+          "detinationCellName": "c2",
+          "sourceCellName": "c1",
+          "time": 2019-03-11T00:00:00.000Z,
+        },
+      ]
+    }
+  />
+</WithStyles(Grid)>
+`;

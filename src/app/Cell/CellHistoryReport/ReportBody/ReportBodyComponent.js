@@ -31,7 +31,7 @@ const defaultProps = {
 
 const dateTimeFormat = 'yyyy/MM/dd HH:mm';
 
-const ReportBodyComponent = ({ classes, report, isLoadingReport }) => (
+export const ReportBodyComponent = ({ classes, report, isLoadingReport }) => (
   <Grid
     container
     className={classes.container}
