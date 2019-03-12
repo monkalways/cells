@@ -40,7 +40,7 @@ const propTypes = {
 export class CellHistoryReportDialogComponent extends Component {
   state = {
     startTime: subDays(Date.now(), 1),
-    endTime: Date.now(),
+    endTime: new Date(Date.now()),
     error: null,
   };
 
