@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovementHistoriesComponent should render error message if movementHistories is empty 1`] = `
+<WithStyles(Grid)
+  item={true}
+  xs={12}
+>
+  <WithStyles(Typography)
+    variant="body1"
+  >
+    No detainee movements in given period.
+  </WithStyles(Typography)>
+</WithStyles(Grid)>
+`;
+
+exports[`MovementHistoriesComponent should render movement histories if movementHistories is not empty 1`] = `
+<WithStyles(Grid)
+  item={true}
+  xs={12}
+>
+  <WithStyles(Table)>
+    <WithStyles(TableHead)>
+      <WithStyles(TableRow)>
+        <WithStyles(WithStyles(TableCell))>
+          Time
+        </WithStyles(WithStyles(TableCell))>
+        <WithStyles(WithStyles(TableCell))>
+          Detainee
+        </WithStyles(WithStyles(TableCell))>
+        <WithStyles(WithStyles(TableCell))>
+          Source Cell
+        </WithStyles(WithStyles(TableCell))>
+        <WithStyles(WithStyles(TableCell))>
+          Destination Cell
+        </WithStyles(WithStyles(TableCell))>
+      </WithStyles(TableRow)>
+    </WithStyles(TableHead)>
+    <WithStyles(TableBody)>
+      <WithStyles(WithStyles(TableRow))
+        key="Sun Mar 10 2019 18:00:00 GMT-0600 (Mountain Daylight Time)"
+      >
+        <WithStyles(WithStyles(TableCell))
+          component="th"
+          padding="dense"
+          scope="row"
+        >
+          2019/03/10 18:00
+        </WithStyles(WithStyles(TableCell))>
+        <WithStyles(WithStyles(TableCell))
+          padding="dense"
+        >
+          Test User 2
+        </WithStyles(WithStyles(TableCell))>
+        <WithStyles(WithStyles(TableCell))
+          padding="dense"
+        >
+          c1
+        </WithStyles(WithStyles(TableCell))>
+        <WithStyles(WithStyles(TableCell))
+          padding="dense"
+        />
+      </WithStyles(WithStyles(TableRow))>
+    </WithStyles(TableBody)>
+  </WithStyles(Table)>
+</WithStyles(Grid)>
+`;

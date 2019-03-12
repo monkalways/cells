@@ -1,11 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import HeaderMenuComponent from '../HeaderMenuComponent';
+import Fab from '@material-ui/core/Button';
+import MenuItem from '@material-ui/core/MenuItem';
+import { HeaderMenuComponent } from '../HeaderMenuComponent';
 
 describe('HeaderMenuComponent', () => {
   let name;
   let handleMenuOpen;
   let handleMenuClose;
+  let handleModalOpen;
   let open;
   let menuAnchorElement;
   let push;
@@ -14,6 +17,7 @@ describe('HeaderMenuComponent', () => {
     name = 'c1';
     handleMenuOpen = jest.fn();
     handleMenuClose = jest.fn();
+    handleModalOpen = jest.fn();
     open = false;
     menuAnchorElement = {};
     push = jest.fn();
@@ -27,6 +31,7 @@ describe('HeaderMenuComponent', () => {
       open={open}
       handleMenuOpen={handleMenuOpen}
       handleMenuClose={handleMenuClose}
+      handleModalOpen={handleModalOpen}
       history={{ push }}
       cellDetails={{ name }}
     />);
@@ -38,24 +43,18 @@ describe('HeaderMenuComponent', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  // it('should handleCellCheckClick if authenticated', () => {
-  //   const wrapper = setup();
+  it('should handleCellHistoryReportClick', () => {
+    const wrapper = setup();
 
-  //   wrapper.find('#cellCheckButton').simulate('click');
-  //   expect(push).toBeCalledWith('/cells/c1/home/cell-check');
-  // });
+    wrapper.find(MenuItem).simulate('click');
+    expect(handleMenuClose).toBeCalled();
+    expect(handleModalOpen).toBeCalled();
+  });
 
-  // it('should handleMealClick if authenticated', () => {
-  //   const wrapper = setup();
+  it('should handleMenuOpen', () => {
+    const wrapper = setup();
 
-  //   wrapper.find('#mealButton').simulate('click');
-  //   expect(push).toBeCalledWith('/cells/c1/home/meal');
-  // });
-
-  // it('should handleMedicationClick if authenticated', () => {
-  //   const wrapper = setup();
-
-  //   wrapper.find('#medicationButton').simulate('click');
-  //   expect(push).toBeCalledWith('/cells/c1/home/medication');
-  // });
+    wrapper.find(Fab).simulate('click');
+    expect(handleMenuOpen).toBeCalled();
+  });
 });

@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CellHistoryReportComponent should render 1`] = `
+<Fragment>
+  <WithStyles(ReportBodyComponent)
+    isLoadingReport={false}
+    report={
+      Object {
+        "cellName": "c1",
+        "endTime": 2019-03-12T00:00:00.000Z,
+        "lastOccupantName": "Test User 1",
+        "movementHistories": Array [
+          Object {
+            "detaineeName": "Test User 2",
+            "detinationCellName": "c2",
+            "sourceCellName": "c1",
+            "time": 2019-03-11T00:00:00.000Z,
+          },
+        ],
+        "startTime": 2019-03-11T00:00:00.000Z,
+        "userLabel": "Doe. J",
+      }
+    }
+  />
+  <div>
+    <WithStyles(AppBar)
+      position="static"
+    >
+      <WithStyles(Grid)
+        alignItems="center"
+        container={true}
+      >
+        <WithStyles(BottomNavigation)
+          showLabels={true}
+          value={-1}
+        >
+          <WithStyles(WithStyles(BottomNavigationAction))
+            disabled={false}
+            icon={<pure(ArrowBackIcon) />}
+            id="backButton"
+            label={
+              <WithStyles(Typography)
+                variant="body1"
+              >
+                Back
+              </WithStyles(Typography)>
+            }
+            onClick={[Function]}
+          />
+          <t
+            bodyClass=""
+            content={[Function]}
+            copyStyles={true}
+            trigger={[Function]}
+          />
+        </WithStyles(BottomNavigation)>
+      </WithStyles(Grid)>
+    </WithStyles(AppBar)>
+  </div>
+</Fragment>
+`;

@@ -1,25 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HeaderMenuComponent should render 1`] = `
-<withRouter(HeaderMenu)
-  cellDetails={
-    Object {
-      "name": "c1",
-    }
-  }
-  classes={
-    Object {
-      "icon": "withRouter-HeaderMenu--icon-1",
-    }
-  }
-  handleMenuClose={[MockFunction]}
-  handleMenuOpen={[MockFunction]}
-  history={
-    Object {
-      "push": [MockFunction],
-    }
-  }
-  menuAnchorElement={Object {}}
-  open={false}
-/>
+<div>
+  <WithStyles(Button)
+    onClick={[Function]}
+    size="small"
+    variant="text"
+  >
+    <pure(MoreVertIcon) />
+  </WithStyles(Button)>
+  <WithStyles(Menu)
+    anchorEl={Object {}}
+    onClose={[Function]}
+    open={false}
+  >
+    <WithStyles(MenuItem)
+      onClick={[Function]}
+    >
+      Cell History Report
+    </WithStyles(MenuItem)>
+  </WithStyles(Menu)>
+</div>
 `;

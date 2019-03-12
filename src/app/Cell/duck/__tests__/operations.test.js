@@ -603,4 +603,111 @@ describe('Cell operations', () => {
       expect(dispatch).toBeCalledTimes(1);
     });
   });
+
+  describe('toggleMenuOpen', () => {
+    it('should toggleMenuOpen', () => {
+      const menuButtonTargetElement = {};
+      const toggleMenuOpenAction = jest.fn();
+      const dispatch = jest.fn();
+
+      operations.toggleMenuOpen(
+        menuButtonTargetElement,
+        toggleMenuOpenAction,
+      )(dispatch);
+
+      expect(toggleMenuOpenAction).toBeCalledWith(menuButtonTargetElement);
+      expect(dispatch).toBeCalledTimes(1);
+    });
+  });
+
+  describe('getCellHistoryReport', () => {
+    it('should getCellHistoryReport successfully when there is no error', async () => {
+      const cellName = 'c1';
+      const startTime = new Date();
+      const endTime = new Date();
+      const report = {
+        userLabel: 'Doe. J',
+        lastOccupantName: 'Test User 1',
+        movementHistories: [
+          {
+            time: new Date(Date.UTC(2019, 2, 11, 0)),
+            detaineeName: 'Test User 2',
+            sourceCellName: 'c1',
+            detinationCellName: 'c2',
+          },
+        ],
+      }
+
+      const getCellHistoryReportService = jest.fn();
+      getCellHistoryReportService.mockReturnValue(report);
+      const getCellHistoryReportAction = jest.fn();
+      const getCellHistoryReportSuccessAction = jest.fn();
+      const sendErrorMessage = jest.fn();
+      const dispatch = jest.fn();
+
+      await operations.getCellHistoryReport(
+        cellName,
+        startTime,
+        endTime,
+        getCellHistoryReportService,
+        getCellHistoryReportAction,
+        getCellHistoryReportSuccessAction,
+        sendErrorMessage,
+      )(dispatch);
+
+      expect(getCellHistoryReportAction).toBeCalled();
+      expect(getCellHistoryReportService).toBeCalledWith(cellName, startTime, endTime);
+      expect(getCellHistoryReportSuccessAction).toBeCalledWith({
+        ...report,
+        cellName,
+        startTime,
+        endTime,
+      });
+      expect(dispatch).toBeCalledTimes(2);
+    });
+
+    it('should notify error when service returns errors', async () => {
+      const cellName = 'c1';
+      const startTime = new Date();
+      const endTime = new Date();
+      const report = {
+        userLabel: 'Doe. J',
+        lastOccupantName: 'Test User 1',
+        movementHistories: [
+          {
+            time: new Date(Date.UTC(2019, 2, 11, 0)),
+            detaineeName: 'Test User 2',
+            sourceCellName: 'c1',
+            detinationCellName: 'c2',
+          },
+        ],
+      }
+
+      const getCellHistoryReportService = jest.fn();
+      getCellHistoryReportService.mockImplementation(() => {
+        const error = new Error('500');
+        error.response = { status: 500 };
+        throw error;
+      });
+      const getCellHistoryReportAction = jest.fn();
+      const getCellHistoryReportSuccessAction = jest.fn();
+      const sendErrorMessage = jest.fn();
+      const dispatch = jest.fn();
+
+      await operations.getCellHistoryReport(
+        cellName,
+        startTime,
+        endTime,
+        getCellHistoryReportService,
+        getCellHistoryReportAction,
+        getCellHistoryReportSuccessAction,
+        sendErrorMessage,
+      )(dispatch);
+
+      expect(getCellHistoryReportAction).toBeCalled();
+      expect(getCellHistoryReportService).toBeCalledWith(cellName, startTime, endTime);
+      expect(sendErrorMessage).toBeCalled();
+      expect(dispatch).toBeCalledTimes(1);
+    });
+  });
 });

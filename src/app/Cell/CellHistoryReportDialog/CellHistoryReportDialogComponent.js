@@ -37,10 +37,10 @@ const propTypes = {
   }).isRequired,
 };
 
-class CellHistoryReportDialogComponent extends Component {
+export class CellHistoryReportDialogComponent extends Component {
   state = {
-    startTime: subDays(new Date(), 1),
-    endTime: new Date(),
+    startTime: subDays(Date.now(), 1),
+    endTime: new Date(Date.now()),
     error: null,
   };
 

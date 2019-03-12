@@ -140,4 +140,43 @@ describe('Cell actions', () => {
       type: types.SAVE_MEDICATION_SUCCESS,
     });
   });
+
+  it('should create toggleMenuOpen action object', () => {
+    const menuButtonTargetElement = {};
+    const result = actions.toggleMenuOpen(menuButtonTargetElement);
+    expect(result).toEqual({
+      type: types.TOGGLE_MENU_OPEN,
+      payload: menuButtonTargetElement,
+    });
+  });
+
+  it('should create toggleMenuClose action object', () => {
+    const result = actions.toggleMenuClose();
+    expect(result).toEqual({
+      type: types.TOGGLE_MENU_CLOSE,
+    });
+  });
+
+  it('should create toggleModalClose action object', () => {
+    const result = actions.toggleModalClose();
+    expect(result).toEqual({
+      type: types.TOGGLE_MODAL_CLOSE,
+    });
+  });
+
+  it('should create getCellHistoryReport action object', () => {
+    const result = actions.getCellHistoryReport();
+    expect(result).toEqual({
+      type: types.GET_CELL_HISTORY_REPORT,
+    });
+  });
+
+  it('should create getCellHistoryReportSuccess action object', () => {
+    const report = {};
+    const result = actions.getCellHistoryReportSuccess(report);
+    expect(result).toEqual({
+      type: types.GET_CELL_HISTORY_REPORT_SUCCESS,
+      report,
+    });
+  });
 });

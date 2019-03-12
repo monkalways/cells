@@ -48,7 +48,7 @@ const defaultProps = {
   report: null,
 };
 
-class CellHistoryReportComponent extends React.Component {
+export class CellHistoryReportComponent extends React.Component {
   handleBackClick = () => {
     const { history } = this.props;
     history.goBack();

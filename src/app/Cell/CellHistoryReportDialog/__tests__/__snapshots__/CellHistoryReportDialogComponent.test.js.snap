@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CellHistoryReportDialogComponent should render 1`] = `
+<MuiPickersUtilsProvider
+  utils={[Function]}
+>
+  <WithStyles(Dialog)
+    disableBackdropClick={false}
+    disableEscapeKeyDown={false}
+    onClose={[Function]}
+    open={false}
+  >
+    <WithStyles(DialogTitle)>
+      Specify start and end times for the Cell History Report:
+    </WithStyles(DialogTitle)>
+    <WithStyles(DialogContent)>
+      <WithStyles(Grid)
+        container={true}
+        justify="space-around"
+      >
+        <WithStyles(Grid)
+          item={true}
+          xs={12}
+        >
+          <WithStyles(FormControl)>
+            <ForwardRef
+              autoOk={true}
+              disableFuture={true}
+              format="MMM dd, yyyy"
+              label="Start Date"
+              margin="normal"
+              onChange={[Function]}
+              value={2019-03-11T00:00:00.000Z}
+              variant="outlined"
+            />
+          </WithStyles(FormControl)>
+          <WithStyles(FormControl)>
+            <ForwardRef
+              autoOk={true}
+              label="Start Time"
+              margin="normal"
+              onChange={[Function]}
+              value={2019-03-11T00:00:00.000Z}
+              variant="outlined"
+            />
+          </WithStyles(FormControl)>
+        </WithStyles(Grid)>
+        <WithStyles(Grid)
+          item={true}
+          xs={12}
+        >
+          <WithStyles(FormControl)>
+            <ForwardRef
+              autoOk={true}
+              disableFuture={true}
+              format="MMM dd, yyyy"
+              label="End Date"
+              margin="normal"
+              onChange={[Function]}
+              value={2019-03-12T00:00:00.000Z}
+              variant="outlined"
+            />
+          </WithStyles(FormControl)>
+          <WithStyles(FormControl)>
+            <ForwardRef
+              autoOk={true}
+              label="End Time"
+              margin="normal"
+              onChange={[Function]}
+              value={2019-03-12T00:00:00.000Z}
+              variant="outlined"
+            />
+          </WithStyles(FormControl)>
+        </WithStyles(Grid)>
+      </WithStyles(Grid)>
+    </WithStyles(DialogContent)>
+    <WithStyles(DialogActions)>
+      <WithStyles(Button)
+        color="primary"
+        disabled={false}
+        id="cancelButton"
+        onClick={[Function]}
+      >
+        Cancel
+      </WithStyles(Button)>
+      <WithStyles(Button)
+        autoFocus={true}
+        color="primary"
+        disabled={false}
+        id="loadReportButton"
+        onClick={[Function]}
+        variant="contained"
+      >
+        Confirm
+      </WithStyles(Button)>
+    </WithStyles(DialogActions)>
+  </WithStyles(Dialog)>
+</MuiPickersUtilsProvider>
+`;
+
+exports[`CellHistoryReportDialogComponent should render Loading component if isLoadingReport 1`] = `
+<MuiPickersUtilsProvider
+  utils={[Function]}
+>
+  <WithStyles(Dialog)
+    disableBackdropClick={true}
+    disableEscapeKeyDown={true}
+    onClose={[Function]}
+    open={false}
+  >
+    <WithStyles(DialogTitle)>
+      Specify start and end times for the Cell History Report:
+    </WithStyles(DialogTitle)>
+    <WithStyles(DialogContent)>
+      <WithStyles(LoadingComponent)
+        size={50}
+      />
+    </WithStyles(DialogContent)>
+    <WithStyles(DialogActions)>
+      <WithStyles(Button)
+        color="primary"
+        disabled={true}
+        id="cancelButton"
+        onClick={[Function]}
+      >
+        Cancel
+      </WithStyles(Button)>
+      <WithStyles(Button)
+        autoFocus={true}
+        color="primary"
+        disabled={true}
+        id="loadReportButton"
+        onClick={[Function]}
+        variant="contained"
+      >
+        Confirm
+      </WithStyles(Button)>
+    </WithStyles(DialogActions)>
+  </WithStyles(Dialog)>
+</MuiPickersUtilsProvider>
+`;
