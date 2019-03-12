@@ -50,7 +50,7 @@ const defaultProps = {
   movementHistories: [],
 };
 
-const MovementHistoriesComponent = ({ classes, movementHistories }) => (
+export const MovementHistoriesComponent = ({ classes, movementHistories }) => (
   <Grid item className={classes.container} xs={12}>
     {movementHistories && movementHistories.length > 0 ? (
       <Table className={classes.table}>
