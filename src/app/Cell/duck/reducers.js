@@ -172,7 +172,7 @@ const defaultMenuReducerState = {
   anchorElement: null,
 };
 
-const menuReducer = (state = defaultMenuReducerState, action) => {
+export const menuReducer = (state = defaultMenuReducerState, action) => {
   switch (action.type) {
     case types.TOGGLE_MENU_OPEN:
       return {

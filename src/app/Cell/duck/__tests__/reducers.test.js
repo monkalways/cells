@@ -4,6 +4,7 @@ import {
   cellCheckReducer,
   mealReducer,
   medicationReducer,
+  menuReducer,
 } from '../reducers';
 import types from '../types';
 import { types as authenticationTypes } from '../../../Authentication/duck';
@@ -303,6 +304,36 @@ describe('Cell reducers', () => {
       expect(result).toEqual({
         saving: false,
         data: {},
+      });
+    });
+  });
+
+  describe('menuReducer', () => {
+    it('should setup default state', () => {
+      const defaultState = {
+        anchorElement: null,
+      };
+      const result = menuReducer(undefined, { type: '@@INIT' });
+      expect(result).toEqual(defaultState);
+    });
+
+    it('should update state by TOGGLE_MENU_OPEN', () => {
+      const anchorElement = {};
+      const result = menuReducer(undefined, {
+        type: types.TOGGLE_MENU_OPEN,
+        payload: anchorElement,
+      });
+      expect(result).toEqual({
+        anchorElement,
+      });
+    });
+
+    it('should update state by TOGGLE_MENU_CLOSE', () => {
+      const result = menuReducer(undefined, {
+        type: types.TOGGLE_MENU_CLOSE,
+      });
+      expect(result).toEqual({
+        anchorElement: null,
       });
     });
   });
