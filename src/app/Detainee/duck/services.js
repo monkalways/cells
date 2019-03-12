@@ -33,7 +33,7 @@ const getAvailableReleaseRooms = async () => {
 
   return response.data.map((room) => ({
     name: room.name,
-    typeCode: room.typeCode,
+    typeCodes: room.typeCodes,
   }));
 };
 
@@ -45,7 +45,7 @@ const getAvailableRemandRooms = async () => {
 
   return response.data.map((room) => ({
     name: room.name,
-    typeCode: room.typeCode,
+    typeCodes: room.typeCodes,
   }));
 };
 

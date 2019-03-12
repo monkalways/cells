@@ -42,7 +42,7 @@ describe('ActivityRoom services', () => {
     const availableRooms = [
       {
         name: 'name',
-        typeCode: 'typeCode',
+        typeCodes: ['MA', 'MJ'],
         extraField: 'should not be mapped',
       },
     ];
@@ -56,7 +56,7 @@ describe('ActivityRoom services', () => {
     expect(result).toEqual([
       {
         name: 'name',
-        typeCode: 'typeCode',
+        typeCodes: ['MA', 'MJ'],
       },
     ]);
   });
@@ -65,7 +65,7 @@ describe('ActivityRoom services', () => {
     const availableRooms = [
       {
         name: 'name',
-        typeCode: 'typeCode',
+        typeCodes: ['MA', 'MJ'],
         extraField: 'should not be mapped',
       },
     ];
@@ -79,7 +79,7 @@ describe('ActivityRoom services', () => {
     expect(result).toEqual([
       {
         name: 'name',
-        typeCode: 'typeCode',
+        typeCodes: ['MA', 'MJ'],
       },
     ]);
   });

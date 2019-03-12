@@ -30,7 +30,7 @@ const getDetainee = (state) => state.detainee.detaineeProfile.data;
 const getFirstAvailableReleaseRoom = (state) => {
   const { genderTypeCode } = getDetainee(state);
   // eslint-disable-next-line max-len
-  const availableRooms = state.detainee.releaseRooms.data.filter((room) => room.typeCode === genderTypeCode);
+  const availableRooms = state.detainee.releaseRooms.data.filter((room) => room.typeCodes.includes(genderTypeCode));
 
   if (availableRooms.length > 0) {
     return availableRooms[0].name;
@@ -41,7 +41,7 @@ const getFirstAvailableReleaseRoom = (state) => {
 const getFirstAvailableRemandRoom = (state) => {
   const { genderTypeCode } = getDetainee(state);
   // eslint-disable-next-line max-len
-  const availableRooms = state.detainee.remandRooms.data.filter((room) => room.typeCode === genderTypeCode);
+  const availableRooms = state.detainee.remandRooms.data.filter((room) => room.typeCodes.includes(genderTypeCode));
 
   if (availableRooms.length > 0) {
     return availableRooms[0].name;
@@ -119,7 +119,7 @@ const isReleaseRoomOptionAvailable = (state) => {
   const { location } = state.detainee.detaineeProfile.data;
   const { genderTypeCode } = getDetainee(state);
   // eslint-disable-next-line max-len
-  const availableRooms = state.detainee.releaseRooms.data.filter((room) => room.typeCode === genderTypeCode);
+  const availableRooms = state.detainee.releaseRooms.data.filter((room) => room.typeCodes.includes(genderTypeCode));
   return (
     // Can't move from cell screen if detainee is "In Progress" for an activity.
     !(
@@ -137,7 +137,7 @@ const isRemandRoomOptionAvailable = (state) => {
   const { location } = state.detainee.detaineeProfile.data;
   const { genderTypeCode } = getDetainee(state);
   // eslint-disable-next-line max-len
-  const availableRooms = state.detainee.remandRooms.data.filter((room) => room.typeCode === genderTypeCode);
+  const availableRooms = state.detainee.remandRooms.data.filter((room) => room.typeCodes.includes(genderTypeCode));
   return (
     // Can't move from cell screen if detainee is "In Progress" for an activity.
     !(

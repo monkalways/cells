@@ -162,8 +162,8 @@ describe('Detainee selectors', () => {
           },
           releaseRooms: {
             data: [
-              { name: 'REL1', typeCode: 'FA' },
-              { name: 'REL2', typeCode: 'MA' },
+              { name: 'REL1', typeCodes: ['FA', 'FJ'] },
+              { name: 'REL2', typeCodes: ['MA', 'MJ'] },
             ],
           },
         },
@@ -186,8 +186,8 @@ describe('Detainee selectors', () => {
           },
           remandRooms: {
             data: [
-              { name: 'H1', typeCode: 'FA' },
-              { name: 'H2', typeCode: 'MA' },
+              { name: 'H1', typeCodes: ['FA', 'FJ'] },
+              { name: 'H2', typeCodes: ['MA', 'MJ'] },
             ],
           },
         },
@@ -490,7 +490,7 @@ describe('Detainee selectors', () => {
       // Enable button.
       '?first=cells&second=B4',
       '',
-      [{ name: 'REL1', typeCode: 'MA' }],
+      [{ name: 'REL1', typeCodes: ['MA', 'MJ'] }],
       true,
     ],
     [
@@ -498,7 +498,7 @@ describe('Detainee selectors', () => {
       // Disable button as the request should be coming from the detainee's activity room.
       '?first=cells&second=B4',
       commonConstants.PHONE_IN_PROGRESS,
-      [{ name: 'REL1', typeCode: 'MA' }],
+      [{ name: 'REL1', typeCodes: ['MA', 'MJ'] }],
       false,
     ],
     [
@@ -506,7 +506,7 @@ describe('Detainee selectors', () => {
       // Enable button.
       '?first=activity-rooms&second=phone',
       commonConstants.PHONE_IN_PROGRESS,
-      [{ name: 'REL1', typeCode: 'MA' }],
+      [{ name: 'REL1', typeCodes: ['MA', 'MJ'] }],
       true,
     ],
     [
@@ -514,7 +514,7 @@ describe('Detainee selectors', () => {
       // Disable button.
       '?first=cells&second=B4',
       commonConstants.RELEASE_HOLDING_IN_TRANSIT,
-      [{ name: 'REL1', typeCode: 'MA' }],
+      [{ name: 'REL1', typeCodes: ['MA', 'MJ'] }],
       false,
     ],
     [
@@ -522,7 +522,7 @@ describe('Detainee selectors', () => {
       // Enable button.
       '?first=cells&second=B4',
       commonConstants.PHONE_IN_TRANSIT,
-      [{ name: 'REL1', typeCode: 'MA' }],
+      [{ name: 'REL1', typeCodes: ['MA', 'MJ'] }],
       true,
     ],
     [
@@ -530,7 +530,7 @@ describe('Detainee selectors', () => {
       // Disable button.
       '?first=cells&second=B4',
       commonConstants.PHONE_IN_TRANSIT,
-      [{ name: 'REL1', typeCode: 'OA' }],
+      [{ name: 'REL1', typeCodes: ['OA', 'OJ'] }],
       false,
     ],
     [
@@ -574,7 +574,7 @@ describe('Detainee selectors', () => {
       // Enable button.
       '?first=cells&second=B4',
       '',
-      [{ name: 'H1', typeCode: 'MA' }],
+      [{ name: 'H1', typeCodes: ['MA', 'MJ'] }],
       true,
     ],
     [
@@ -582,7 +582,7 @@ describe('Detainee selectors', () => {
       // Disable button as the request should be coming from the detainee's activity room.
       '?first=cells&second=B4',
       commonConstants.PHONE_IN_PROGRESS,
-      [{ name: 'H1', typeCode: 'MA' }],
+      [{ name: 'H1', typeCodes: ['MA', 'MJ'] }],
       false,
     ],
     [
@@ -590,7 +590,7 @@ describe('Detainee selectors', () => {
       // Enable button.
       '?first=activity-rooms&second=phone',
       commonConstants.PHONE_IN_PROGRESS,
-      [{ name: 'H1', typeCode: 'MA' }],
+      [{ name: 'H1', typeCodes: ['MA', 'MJ'] }],
       true,
     ],
     [
@@ -598,7 +598,7 @@ describe('Detainee selectors', () => {
       // Disable button.
       '?first=cells&second=B4',
       commonConstants.REMAND_HOLDING_IN_TRANSIT,
-      [{ name: 'H1', typeCode: 'MA' }],
+      [{ name: 'H1', typeCodes: ['MA', 'MJ'] }],
       false,
     ],
     [
@@ -606,7 +606,7 @@ describe('Detainee selectors', () => {
       // Enable button.
       '?first=cells&second=B4',
       commonConstants.PHONE_IN_TRANSIT,
-      [{ name: 'H1', typeCode: 'MA' }],
+      [{ name: 'H1', typeCodes: ['MA', 'MJ'] }],
       true,
     ],
     [
@@ -614,7 +614,7 @@ describe('Detainee selectors', () => {
       // Disable button.
       '?first=cells&second=B4',
       commonConstants.PHONE_IN_TRANSIT,
-      [{ name: 'H1', typeCode: 'OA' }],
+      [{ name: 'H1', typeCodes: ['OA', 'OJ'] }],
       false,
     ],
     [
