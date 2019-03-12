@@ -43,7 +43,7 @@ exports[`ReportBodyComponent should render cell history report if isLoadingRepor
       <span>
         Printed: 
       </span>
-      2019/03/12 12:52
+      2019/03/11 18:00
        by 
       Doe. J
     </WithStyles(Typography)>

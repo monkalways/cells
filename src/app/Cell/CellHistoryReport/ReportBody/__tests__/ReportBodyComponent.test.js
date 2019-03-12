@@ -8,6 +8,7 @@ describe('ReportBodyComponent', () => {
 
   beforeEach(() => {
     isLoadingReport = false;
+    Date.now = jest.fn(() => new Date(Date.UTC(2019, 2, 12, 0)));
   });
 
   const setup = () => {

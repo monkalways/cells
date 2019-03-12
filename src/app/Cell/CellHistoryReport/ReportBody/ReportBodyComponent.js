@@ -52,7 +52,7 @@ export const ReportBodyComponent = ({ classes, report, isLoadingReport }) => (
           </Typography>
           <Typography variant="body1" className={classes.row}>
             <span className={classes.italicText}>Printed: </span>
-            {format(new Date(), dateTimeFormat)} by {report.userLabel}
+            {format(new Date(Date.now()), dateTimeFormat)} by {report.userLabel}
           </Typography>
           <Typography variant="body1" className={classes.row}>
             <span className={classes.boldText}>Cell ID:</span>
