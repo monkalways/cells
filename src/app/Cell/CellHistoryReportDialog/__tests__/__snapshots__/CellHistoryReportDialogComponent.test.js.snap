@@ -97,3 +97,45 @@ exports[`CellHistoryReportDialogComponent should render 1`] = `
   </WithStyles(Dialog)>
 </MuiPickersUtilsProvider>
 `;
+
+exports[`CellHistoryReportDialogComponent should render Loading component if isLoadingReport 1`] = `
+<MuiPickersUtilsProvider
+  utils={[Function]}
+>
+  <WithStyles(Dialog)
+    disableBackdropClick={true}
+    disableEscapeKeyDown={true}
+    onClose={[Function]}
+    open={false}
+  >
+    <WithStyles(DialogTitle)>
+      Specify start and end times for the Cell History Report:
+    </WithStyles(DialogTitle)>
+    <WithStyles(DialogContent)>
+      <WithStyles(LoadingComponent)
+        size={50}
+      />
+    </WithStyles(DialogContent)>
+    <WithStyles(DialogActions)>
+      <WithStyles(Button)
+        color="primary"
+        disabled={true}
+        id="cancelButton"
+        onClick={[Function]}
+      >
+        Cancel
+      </WithStyles(Button)>
+      <WithStyles(Button)
+        autoFocus={true}
+        color="primary"
+        disabled={true}
+        id="loadReportButton"
+        onClick={[Function]}
+        variant="contained"
+      >
+        Confirm
+      </WithStyles(Button)>
+    </WithStyles(DialogActions)>
+  </WithStyles(Dialog)>
+</MuiPickersUtilsProvider>
+`;

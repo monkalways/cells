@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
 import { CellHistoryReportDialogComponent } from '../CellHistoryReportDialogComponent';
+import Loading from '../../../common/Loading';
 
 describe('CellHistoryReportDialogComponent', () => {
   let name;
@@ -40,6 +41,14 @@ describe('CellHistoryReportDialogComponent', () => {
     const wrapper = setup();
 
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should render Loading component if isLoadingReport', () => {
+    isLoadingReport = true;
+    const wrapper = setup();
+
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(Loading)).toExist();
   });
 
   it('should set initial state', () => {
