@@ -381,4 +381,41 @@ describe('Cell services', () => {
 
     expect(result).toBe(true);
   });
+
+  it('should getCellHistoryReport', async () => {
+    const startTime = new Date(Date.UTC(2019, 2, 11, 0));
+    const endTime = new Date(Date.UTC(2019, 2, 13, 0));
+    const cellName = 'c1';
+    const movementHistoryTime = new Date(Date.UTC(2019, 2, 12, 0));
+    const report = {
+      userLabel: 'Test User',
+      lastOccupantName: 'John Doe',
+      movementHistories: [
+        {
+          time: movementHistoryTime.toString(),
+        },
+      ],
+    };
+    const expectedReport = {
+      userLabel: 'Test User',
+      lastOccupantName: 'John Doe',
+      movementHistories: [
+        {
+          time: movementHistoryTime,
+        },
+      ],
+    };
+    const mock = new MockAdapter(axios);
+    mock
+      .onGet(constants.GET_CELL_HISTORY_REPORT_URL(cellName))
+      .reply(200, report);
+
+    const result = await services.getCellHistoryReport(
+      cellName,
+      startTime,
+      endTime,
+    );
+
+    expect(result).toEqual(expectedReport);
+  });
 });
