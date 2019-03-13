@@ -118,4 +118,52 @@ describe('Cell selectors', () => {
     const result = selectors.isSavingMedicationState(state);
     expect(result).toBe(state.cell.medication.saving);
   });
+
+  it('should select isMenuOpenState', () => {
+    const state = {
+      cell: {
+        menu: {
+          open: false,
+        },
+      },
+    };
+    const result = selectors.isMenuOpenState(state);
+    expect(result).toBe(state.cell.menu.open);
+  });
+
+  it('should select isModalOpenState', () => {
+    const state = {
+      cell: {
+        modal: {
+          open: false,
+        },
+      },
+    };
+    const result = selectors.isModalOpenState(state);
+    expect(result).toBe(state.cell.modal.open);
+  });
+
+  it('should select isLoadingReportState', () => {
+    const state = {
+      cell: {
+        cellHistoryReport: {
+          isLoadingReport: false,
+        },
+      },
+    };
+    const result = selectors.isLoadingReportState(state);
+    expect(result).toBe(state.cell.cellHistoryReport.isLoadingReport);
+  });
+
+  it('should select getCellHistoryReportState', () => {
+    const state = {
+      cell: {
+        cellHistoryReport: {
+          report: {},
+        },
+      },
+    };
+    const result = selectors.getCellHistoryReportState(state);
+    expect(result).toBe(state.cell.cellHistoryReport.report);
+  });
 });
