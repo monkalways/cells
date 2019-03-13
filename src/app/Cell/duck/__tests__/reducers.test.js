@@ -4,6 +4,9 @@ import {
   cellCheckReducer,
   mealReducer,
   medicationReducer,
+  menuReducer,
+  modalReducer,
+  cellHistoryReportReducer,
 } from '../reducers';
 import types from '../types';
 import { types as authenticationTypes } from '../../../Authentication/duck';
@@ -303,6 +306,97 @@ describe('Cell reducers', () => {
       expect(result).toEqual({
         saving: false,
         data: {},
+      });
+    });
+  });
+
+  describe('menuReducer', () => {
+    it('should setup default state', () => {
+      const defaultState = {
+        anchorElement: null,
+      };
+      const result = menuReducer(undefined, { type: '@@INIT' });
+      expect(result).toEqual(defaultState);
+    });
+
+    it('should update state by TOGGLE_MENU_OPEN', () => {
+      const anchorElement = {};
+      const result = menuReducer(undefined, {
+        type: types.TOGGLE_MENU_OPEN,
+        payload: anchorElement,
+      });
+      expect(result).toEqual({
+        anchorElement,
+      });
+    });
+
+    it('should update state by TOGGLE_MENU_CLOSE', () => {
+      const result = menuReducer(undefined, {
+        type: types.TOGGLE_MENU_CLOSE,
+      });
+      expect(result).toEqual({
+        anchorElement: null,
+      });
+    });
+  });
+
+  describe('modalReducer', () => {
+    it('should setup default state', () => {
+      const defaultState = {
+        open: false,
+      };
+      const result = modalReducer(undefined, { type: '@@INIT' });
+      expect(result).toEqual(defaultState);
+    });
+
+    it('should update state by TOGGLE_MODAL_OPEN', () => {
+      const result = modalReducer(undefined, {
+        type: types.TOGGLE_MODAL_OPEN,
+      });
+      expect(result).toEqual({
+        open: true,
+      });
+    });
+
+    it('should update state by TOGGLE_MODAL_CLOSE', () => {
+      const result = modalReducer(undefined, {
+        type: types.TOGGLE_MODAL_CLOSE,
+      });
+      expect(result).toEqual({
+        open: false,
+      });
+    });
+  });
+
+  describe('cellHistoryReportReducer', () => {
+    it('should setup default state', () => {
+      const defaultState = {
+        report: null,
+        isLoadingReport: false,
+      };
+      const result = cellHistoryReportReducer(undefined, { type: '@@INIT' });
+      expect(result).toEqual(defaultState);
+    });
+
+    it('should update state by GET_CELL_HISTORY_REPORT_SUCCESS', () => {
+      const report = {};
+      const result = cellHistoryReportReducer(undefined, {
+        type: types.GET_CELL_HISTORY_REPORT_SUCCESS,
+        report,
+      });
+      expect(result).toEqual({
+        isLoadingReport: false,
+        report,
+      });
+    });
+
+    it('should update state by GET_CELL_HISTORY_REPORT', () => {
+      const result = cellHistoryReportReducer(undefined, {
+        type: types.GET_CELL_HISTORY_REPORT,
+      });
+      expect(result).toEqual({
+        isLoadingReport: true,
+        report: null,
       });
     });
   });

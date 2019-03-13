@@ -172,7 +172,7 @@ const defaultMenuReducerState = {
   anchorElement: null,
 };
 
-const menuReducer = (state = defaultMenuReducerState, action) => {
+export const menuReducer = (state = defaultMenuReducerState, action) => {
   switch (action.type) {
     case types.TOGGLE_MENU_OPEN:
       return {
@@ -193,7 +193,7 @@ const defaultModalReducerState = {
   open: false,
 };
 
-const modalReducer = (state = defaultModalReducerState, action) => {
+export const modalReducer = (state = defaultModalReducerState, action) => {
   switch (action.type) {
     case types.TOGGLE_MODAL_OPEN:
       return {
@@ -215,7 +215,7 @@ const defaultCellHistoryReportReducerState = {
   isLoadingReport: false,
 };
 
-const cellHistoryReportReducer = (
+export const cellHistoryReportReducer = (
   state = defaultCellHistoryReportReducerState,
   action,
 ) => {
