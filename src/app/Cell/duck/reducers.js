@@ -193,7 +193,7 @@ const defaultModalReducerState = {
   open: false,
 };
 
-const modalReducer = (state = defaultModalReducerState, action) => {
+export const modalReducer = (state = defaultModalReducerState, action) => {
   switch (action.type) {
     case types.TOGGLE_MODAL_OPEN:
       return {
