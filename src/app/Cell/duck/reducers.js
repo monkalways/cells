@@ -215,7 +215,7 @@ const defaultCellHistoryReportReducerState = {
   isLoadingReport: false,
 };
 
-const cellHistoryReportReducer = (
+export const cellHistoryReportReducer = (
   state = defaultCellHistoryReportReducerState,
   action,
 ) => {

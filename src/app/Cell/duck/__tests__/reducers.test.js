@@ -6,6 +6,7 @@ import {
   medicationReducer,
   menuReducer,
   modalReducer,
+  cellHistoryReportReducer,
 } from '../reducers';
 import types from '../types';
 import { types as authenticationTypes } from '../../../Authentication/duck';
@@ -363,6 +364,39 @@ describe('Cell reducers', () => {
       });
       expect(result).toEqual({
         open: false,
+      });
+    });
+  });
+
+  describe('cellHistoryReportReducer', () => {
+    it('should setup default state', () => {
+      const defaultState = {
+        report: null,
+        isLoadingReport: false,
+      };
+      const result = cellHistoryReportReducer(undefined, { type: '@@INIT' });
+      expect(result).toEqual(defaultState);
+    });
+
+    it('should update state by GET_CELL_HISTORY_REPORT_SUCCESS', () => {
+      const report = {};
+      const result = cellHistoryReportReducer(undefined, {
+        type: types.GET_CELL_HISTORY_REPORT_SUCCESS,
+        report,
+      });
+      expect(result).toEqual({
+        isLoadingReport: false,
+        report,
+      });
+    });
+
+    it('should update state by GET_CELL_HISTORY_REPORT', () => {
+      const result = cellHistoryReportReducer(undefined, {
+        type: types.GET_CELL_HISTORY_REPORT,
+      });
+      expect(result).toEqual({
+        isLoadingReport: true,
+        report: null,
       });
     });
   });
