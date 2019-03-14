@@ -170,13 +170,6 @@ describe('ScanCardDialogComponent', () => {
     });
   });
 
-  it('should handle fake users click for now (TO BE REMOVED)', () => {
-    const wrapper = setup();
-    wrapper.find('#fakeUserLoginButton').simulate('click');
-
-    expect(authenticate).toBeCalledWith('935ba901f8ff12e0');
-  });
-
   it('should handle dialog close', () => {
     const wrapper = setup();
     wrapper.find(Dialog).simulate('close');

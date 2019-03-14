@@ -20,7 +20,7 @@ const authenticate = (
     dispatch(authenticateSuccessAction(userName));
   } catch (error) {
     const errorMessage = error.response.data
-      ? error.response.data.Message
+      ? error.response.data.message
       : null;
     dispatch(authenticateFailAction(errorMessage));
   }
