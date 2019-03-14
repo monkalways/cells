@@ -24,13 +24,6 @@ exports[`ScanCardDialogComponent should render "Authentication Failed" if not au
   </WithStyles(DialogContent)>
   <WithStyles(DialogActions)>
     <WithStyles(Button)
-      color="secondary"
-      id="fakeUserLoginButton"
-      onClick={[Function]}
-    >
-      Proceed with Test Account
-    </WithStyles(Button)>
-    <WithStyles(Button)
       color="primary"
       onClick={[MockFunction]}
     >
@@ -64,13 +57,6 @@ exports[`ScanCardDialogComponent should render "Please scan your ID card to proc
   </WithStyles(DialogContent)>
   <WithStyles(DialogActions)>
     <WithStyles(Button)
-      color="secondary"
-      id="fakeUserLoginButton"
-      onClick={[Function]}
-    >
-      Proceed with Test Account
-    </WithStyles(Button)>
-    <WithStyles(Button)
       color="primary"
       onClick={[MockFunction]}
     >
@@ -100,13 +86,6 @@ exports[`ScanCardDialogComponent should render loading component if authenticati
     />
   </WithStyles(DialogContent)>
   <WithStyles(DialogActions)>
-    <WithStyles(Button)
-      color="secondary"
-      id="fakeUserLoginButton"
-      onClick={[Function]}
-    >
-      Proceed with Test Account
-    </WithStyles(Button)>
     <WithStyles(Button)
       color="primary"
       onClick={[MockFunction]}
