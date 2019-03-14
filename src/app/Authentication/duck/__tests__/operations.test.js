@@ -37,7 +37,7 @@ describe('Authentication operations', () => {
         error.response = {
           status: 401,
           data: {
-            Message: errorMessage,
+            message: errorMessage,
           },
         };
         throw error;
