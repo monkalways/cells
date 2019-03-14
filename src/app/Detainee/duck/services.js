@@ -6,6 +6,7 @@ const checkInToCell = async (detaineeId, cellName) => {
   await axios.post(
     constants.CHECK_IN_TO_CELL_URL(cellName),
     {
+      cellName,
       custodyEventId: detaineeId,
     },
     commonConstants.HEADERS(),
