@@ -195,6 +195,7 @@ export default compose(
   withStyles((theme) => ({
     formControl: {
       margin: theme.spacing.unit,
+      width: theme.spacing.unit * 28,
     },
     errorText: {
       fontSize: theme.typography.fontSize * 1.2,
