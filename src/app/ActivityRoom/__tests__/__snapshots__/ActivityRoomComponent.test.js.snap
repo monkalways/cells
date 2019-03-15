@@ -81,6 +81,7 @@ exports[`ActivityRoomComponent should render detainee cards when one or more det
           sm={4}
         >
           <WithStyles(ActivityRoomDetaineeCardComponent)
+            checkingInDetaineeId={null}
             detainee={
               Object {
                 "id": "123",
@@ -99,6 +100,7 @@ exports[`ActivityRoomComponent should render detainee cards when one or more det
           sm={4}
         >
           <WithStyles(ActivityRoomDetaineeCardComponent)
+            checkingInDetaineeId={null}
             detainee={
               Object {
                 "id": "456",

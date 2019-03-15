@@ -10,6 +10,7 @@ describe('activityRoomReducer', () => {
       loaded: false,
       detainees: [],
       checkingIn: false,
+      checkingInDetaineeId: null,
       checkingInSuccess: true,
     });
   });
@@ -37,8 +38,10 @@ describe('activityRoomReducer', () => {
   it('should update state by CHECK_IN', () => {
     const result = activityRoomReducer(undefined, {
       type: types.CHECK_IN,
+      detaineeId: '123',
     });
     expect(result.checkingIn).toBe(true);
+    expect(result.checkingInDetaineeId).toBe('123');
     expect(result.checkingInSuccess).toBe(false);
   });
 
@@ -47,6 +50,7 @@ describe('activityRoomReducer', () => {
       type: types.CHECK_IN_SUCCESS,
     });
     expect(result.checkingIn).toBe(false);
+    expect(result.checkingInDetaineeId).toBeNull();
     expect(result.checkingInSuccess).toBe(true);
   });
 
@@ -55,6 +59,7 @@ describe('activityRoomReducer', () => {
       type: types.CHECK_IN_FAIL,
     });
     expect(result.checkingIn).toBe(false);
+    expect(result.checkingInDetaineeId).toBeNull();
     expect(result.checkingInSuccess).toBe(false);
   });
 
@@ -67,6 +72,7 @@ describe('activityRoomReducer', () => {
       loaded: false,
       detainees: [],
       checkingIn: false,
+      checkingInDetaineeId: null,
       checkingInSuccess: true,
     });
   });

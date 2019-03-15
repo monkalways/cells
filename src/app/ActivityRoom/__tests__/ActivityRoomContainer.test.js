@@ -9,6 +9,7 @@ describe('ActivityRoomContainer', () => {
     const isCheckingIn = false;
     const isCheckingInSuccess = false;
     const isAuthenticated = false;
+    const checkingInDetaineeId = null;
 
     const result = mapStateToProps(
       state,
@@ -18,6 +19,7 @@ describe('ActivityRoomContainer', () => {
       isCheckingIn,
       isCheckingInSuccess,
       isAuthenticated,
+      checkingInDetaineeId,
     );
 
     expect(result).toEqual({
@@ -27,6 +29,7 @@ describe('ActivityRoomContainer', () => {
       isCheckingIn,
       isCheckingInSuccess,
       isAuthenticated,
+      checkingInDetaineeId,
     });
   });
 

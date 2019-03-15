@@ -10,8 +10,9 @@ const getActivityRoomDetaineesSuccess = (detainees) => ({
   detainees,
 });
 
-const checkIn = () => ({
+const checkIn = (detaineeId) => ({
   type: types.CHECK_IN,
+  detaineeId,
 });
 
 const checkInSuccess = () => ({

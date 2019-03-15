@@ -36,10 +36,12 @@ const propTypes = {
   refreshAuthenticationTimeout: PropTypes.func.isRequired,
   startAuthenticationTimeout: PropTypes.func.isRequired,
   stopAuthenticationTimeout: PropTypes.func.isRequired,
+  checkingInDetaineeId: PropTypes.string,
 };
 
 const defaultProps = {
   detainees: [],
+  checkingInDetaineeId: null,
 };
 
 export class ActivityRoomComponent extends Component {
@@ -113,6 +115,7 @@ export class ActivityRoomComponent extends Component {
       isActivityRoomDetaineesLoaded,
       handleSignIn,
       handleCheckIn,
+      checkingInDetaineeId,
     } = this.props;
     const { usage } = match.params;
     return (
@@ -142,6 +145,7 @@ export class ActivityRoomComponent extends Component {
                             isCheckingIn={isCheckingIn}
                             isCheckingInSuccess={isCheckingInSuccess}
                             onCheckIn={handleCheckIn}
+                            checkingInDetaineeId={checkingInDetaineeId}
                           />
                         </Grid>
                       ))}

@@ -16,6 +16,11 @@ const propTypes = {
   isCheckingIn: PropTypes.bool.isRequired,
   isCheckingInSuccess: PropTypes.bool.isRequired,
   onCheckIn: PropTypes.func.isRequired,
+  checkingInDetaineeId: PropTypes.string,
+};
+
+const defaultProps = {
+  checkingInDetaineeId: null,
 };
 
 export const ActivityRoomDetaineeCardComponent = ({
@@ -26,6 +31,7 @@ export const ActivityRoomDetaineeCardComponent = ({
   isCheckingIn,
   isCheckingInSuccess,
   onCheckIn,
+  checkingInDetaineeId,
 }) => (
   <Card className={classes.card}>
     <CellDetaineeCardHeader cellDetainee={detainee} />
@@ -42,11 +48,13 @@ export const ActivityRoomDetaineeCardComponent = ({
       isCheckingIn={isCheckingIn}
       isCheckingInSuccess={isCheckingInSuccess}
       onCheckIn={onCheckIn}
+      checkingInDetaineeId={checkingInDetaineeId}
     />
   </Card>
 );
 
 ActivityRoomDetaineeCardComponent.propTypes = propTypes;
+ActivityRoomDetaineeCardComponent.defaultProps = defaultProps;
 
 export default withStyles((theme) => ({
   card: {
