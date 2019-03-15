@@ -35,12 +35,13 @@ const propTypes = {
   isAssigningToRoom: PropTypes.bool.isRequired,
   moveDetaineeToActivityRoom: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
-  usage: PropTypes.string.isRequired,
+  usage: PropTypes.string,
 };
 
 const defaultProps = {
   availableRooms: [],
   currentRoom: null,
+  usage: null,
 };
 
 export class RoomSelectionDialogComponent extends Component {
