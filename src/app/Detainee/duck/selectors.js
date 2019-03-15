@@ -51,7 +51,7 @@ const getFirstAvailableRemandRoom = (state) => {
 
 const getSecondProp = (_state, prop) => prop;
 
-const isActivityRoomOptionAvailable = (state, usage, inProgress, inTransit) => {
+const isActivityRoomOptionAvailable = (state, usage) => {
   const { first } = queryString.parse(state.router.location.search);
   const { location } = state.detainee.detaineeProfile.data;
   const {
@@ -63,11 +63,7 @@ const isActivityRoomOptionAvailable = (state, usage, inProgress, inTransit) => {
     !(
       first === constants.CELLS_QUERYSTRING
       && location.includes(commonConstants.IN_PROGRESS)
-    )
-    // Can't move to activity room if detainee is already there or on en route.
-    && location !== inProgress
-    && location !== inTransit
-    && availableRooms.length > 0
+    ) && availableRooms.length > 0
   );
 };
 
@@ -228,7 +224,6 @@ const isAnyRoomForGivenActivityAvailableState = createSelector(
   [getAvailableActivityRooms, getSecondProp],
   (rooms, usage) => {
     if (usage) {
-      // eslint-disable-next-line max-len
       const { availableRooms } = rooms.find((room) => room.usage === usage);
       return availableRooms.length > 0;
     }

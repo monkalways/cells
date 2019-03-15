@@ -202,8 +202,6 @@ describe('Detainee selectors', () => {
     [
       // Move to phone room from cell screen, rooms available
       'Phone',
-      commonConstants.PHONE_IN_PROGRESS,
-      commonConstants.PHONE_IN_TRANSIT,
       '?first=cells&second=B4',
       ['T1', 'T2'],
       '',
@@ -212,8 +210,6 @@ describe('Detainee selectors', () => {
     [
       // Move to phone room from cell screen, rooms not available
       'Phone',
-      commonConstants.PHONE_IN_PROGRESS,
-      commonConstants.PHONE_IN_TRANSIT,
       '?first=cells&second=B4',
       [],
       '',
@@ -222,8 +218,6 @@ describe('Detainee selectors', () => {
     [
       // Move to phone room from cell screen, detainee location is 'Phone - In Progress'
       'Phone',
-      commonConstants.PHONE_IN_PROGRESS,
-      commonConstants.PHONE_IN_TRANSIT,
       '?first=cells&second=B4',
       ['T1', 'T2'],
       commonConstants.PHONE_IN_PROGRESS,
@@ -232,28 +226,22 @@ describe('Detainee selectors', () => {
     [
       // Move to phone room from cell screen, detainee location is 'Phone - In Transit'
       'Phone',
-      commonConstants.PHONE_IN_PROGRESS,
-      commonConstants.PHONE_IN_TRANSIT,
       '?first=cells&second=B4',
       ['T1', 'T2'],
       commonConstants.PHONE_IN_TRANSIT,
-      false,
+      true,
     ],
     [
       // Move to phone room from activity room screen, detainee location is 'Phone - In Progress'
       'Phone',
-      commonConstants.PHONE_IN_PROGRESS,
-      commonConstants.PHONE_IN_TRANSIT,
       '?first=activity-rooms&second=phone',
       ['T1', 'T2'],
       commonConstants.PHONE_IN_PROGRESS,
-      false,
+      true,
     ],
     [
       // Move to medical room from activity room screen, detainee location is 'Phone - In Progress'
       'Medical',
-      commonConstants.MEDICAL_IN_PROGRESS,
-      commonConstants.MEDICAL_IN_TRANSIT,
       '?first=activity-rooms&second=phone',
       ['T1', 'T2'],
       commonConstants.PHONE_IN_PROGRESS,
@@ -262,8 +250,6 @@ describe('Detainee selectors', () => {
     [
       // Move to medical room from activity room screen, detainee location is 'Phone - In Transit'
       'Medical',
-      commonConstants.MEDICAL_IN_PROGRESS,
-      commonConstants.MEDICAL_IN_TRANSIT,
       '?first=activity-rooms&second=phone',
       ['T1', 'T2'],
       commonConstants.PHONE_IN_TRANSIT,
@@ -271,15 +257,7 @@ describe('Detainee selectors', () => {
     ],
   ])(
     'should select isActivityRoomOptionAvailableState',
-    (
-      usage,
-      usageInProgress,
-      usageInTransit,
-      search,
-      availableRooms,
-      location,
-      isActivityOptionAvailable,
-    ) => {
+    (usage, search, availableRooms, location, isActivityOptionAvailable) => {
       const state = {
         router: {
           location: {
@@ -307,12 +285,7 @@ describe('Detainee selectors', () => {
         },
       };
 
-      const result = selectors.isActivityRoomOptionAvailableState(
-        state,
-        usage,
-        usageInProgress,
-        usageInTransit,
-      );
+      const result = selectors.isActivityRoomOptionAvailableState(state, usage);
       expect(result).toEqual(isActivityOptionAvailable);
     },
   );
