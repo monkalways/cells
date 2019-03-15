@@ -27,15 +27,16 @@ const propTypes = {
   isAssigningToRoom: PropTypes.bool.isRequired,
   moveDetaineeToRoom: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
-  usage: PropTypes.string.isRequired,
+  usage: PropTypes.string,
 };
 
 const defaultProps = {
   currentRoom: null,
   destinationRoom: null,
+  usage: null,
 };
 
-const ActivityRoomDialogComponent = ({
+const AutomaticRoomSelectionDialogComponent = ({
   areRoomsRefreshing,
   currentRoom,
   destinationRoom,
@@ -119,7 +120,7 @@ const ActivityRoomDialogComponent = ({
   );
 };
 
-ActivityRoomDialogComponent.propTypes = propTypes;
-ActivityRoomDialogComponent.defaultProps = defaultProps;
+AutomaticRoomSelectionDialogComponent.propTypes = propTypes;
+AutomaticRoomSelectionDialogComponent.defaultProps = defaultProps;
 
-export default ActivityRoomDialogComponent;
+export default AutomaticRoomSelectionDialogComponent;
