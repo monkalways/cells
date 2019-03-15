@@ -213,7 +213,7 @@ exports[`DetaineeActionComponent should render 1`] = `
       </WithStyles(Grid)>
     </WithStyles(Grid)>
   </WithStyles(CardContent)>
-  <Connect(ActivityRoomDialogComponent)
+  <Connect(AutomaticRoomSelectionDialogComponent)
     detainee={
       Object {
         "fingerPrintCount": 0,
@@ -271,7 +271,7 @@ exports[`DetaineeActionComponent should render 1`] = `
     isDialogOpen={false}
     onClose={[Function]}
   />
-  <Connect(ActivityRoomDialogComponent)
+  <Connect(AutomaticRoomSelectionDialogComponent)
     detainee={
       Object {
         "fingerPrintCount": 0,
@@ -286,7 +286,7 @@ exports[`DetaineeActionComponent should render 1`] = `
     isDialogOpen={false}
     onClose={[Function]}
   />
-  <Connect(ActivityRoomDialogComponent)
+  <Connect(AutomaticRoomSelectionDialogComponent)
     detainee={
       Object {
         "fingerPrintCount": 0,
