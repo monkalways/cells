@@ -15,6 +15,7 @@ export const mapStateToProps = (
   isCheckingIn = selectors.isCheckingInState(state),
   isCheckingInSuccess = selectors.isCheckingInSuccessState(state),
   isAuthenticated = authenticationSelectors.isAuthenticatedState(state),
+  checkingInDetaineeId = selectors.getCheckingInDetaineeIdState(state),
 ) => ({
   isActivityRoomDetaineesLoaded,
   usage,
@@ -22,6 +23,7 @@ export const mapStateToProps = (
   isCheckingIn,
   isCheckingInSuccess,
   isAuthenticated,
+  checkingInDetaineeId,
 });
 
 export const mapDispatchToProps = (dispatch) => ({

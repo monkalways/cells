@@ -58,11 +58,31 @@ describe('CardFooterComponent', () => {
     const nextProps = {
       isCheckingIn: true,
       isCheckingInSuccess: false,
+      detainee: {
+        id: '123',
+      },
+      checkingInDetaineeId: '123',
     };
 
     wrapper.instance().componentWillReceiveProps(nextProps);
 
     expect(wrapper).toHaveState('isDialogOpen', true);
+  });
+
+  it('should set isDialogOpen to false when check-in is still in progress but checking-in detainee is not current detainee', () => {
+    const wrapper = setup();
+    const nextProps = {
+      isCheckingIn: true,
+      isCheckingInSuccess: false,
+      detainee: {
+        id: '123',
+      },
+      checkingInDetaineeId: '321',
+    };
+
+    wrapper.instance().componentWillReceiveProps(nextProps);
+
+    expect(wrapper).toHaveState('isDialogOpen', false);
   });
 
   it('should set isDialogOpen to false when check-in is complete', () => {

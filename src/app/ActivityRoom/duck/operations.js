@@ -29,7 +29,7 @@ const checkIn = (
   sendErrorMessage = utils.sendErrorMessage,
 ) => async (dispatch) => {
   try {
-    dispatch(checkInAction());
+    dispatch(checkInAction(detaineeId));
     await checkIntoActivityRoomService(detaineeId, usage);
     dispatch(checkInSuccessAction());
     dispatch(getActivityRoomDetaineesOperation(usage));

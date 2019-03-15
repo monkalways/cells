@@ -21,9 +21,11 @@ describe('ActivityRoom actions', () => {
   });
 
   it('should setup checkIn action object', () => {
-    const action = actions.checkIn();
+    const detaineeId = '123';
+    const action = actions.checkIn(detaineeId);
     expect(action).toEqual({
       type: types.CHECK_IN,
+      detaineeId,
     });
   });
 

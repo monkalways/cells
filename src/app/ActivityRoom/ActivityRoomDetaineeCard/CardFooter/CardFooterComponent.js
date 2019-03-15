@@ -25,6 +25,11 @@ const propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  checkingInDetaineeId: PropTypes.string,
+};
+
+const defaultProps = {
+  checkingInDetaineeId: null,
 };
 
 const LOCATION_IN_TRANSIT = 'in transit';
@@ -37,7 +42,10 @@ export class CardFooterComponent extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      isDialogOpen: nextProps.isCheckingIn && !nextProps.isCheckingInSuccess,
+      isDialogOpen:
+        nextProps.isCheckingIn
+        && !nextProps.isCheckingInSuccess
+        && nextProps.detainee.id === nextProps.checkingInDetaineeId,
     });
   }
 
@@ -131,6 +139,7 @@ export class CardFooterComponent extends Component {
 }
 
 CardFooterComponent.propTypes = propTypes;
+CardFooterComponent.defaultProps = defaultProps;
 
 export default compose(
   withStyles((theme) => ({

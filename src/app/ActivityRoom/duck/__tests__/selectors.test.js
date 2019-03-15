@@ -60,4 +60,16 @@ describe('ActivityRoom selectors', () => {
     const result = selectors.isCheckingInSuccessState(state);
     expect(result).toEqual(checkingInSuccess);
   });
+
+  it('should select getCheckingInDetaineeIdState', () => {
+    const checkingInDetaineeId = '123';
+    const state = {
+      activityRoom: {
+        checkingInDetaineeId,
+      },
+    };
+
+    const result = selectors.getCheckingInDetaineeIdState(state);
+    expect(result).toEqual(checkingInDetaineeId);
+  });
 });
