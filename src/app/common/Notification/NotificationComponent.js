@@ -3,7 +3,7 @@ import ReduxToastr from 'react-redux-toastr';
 
 const NotificationComponent = () => (
   <ReduxToastr
-    timeOut={5000}
+    timeOut={10000}
     newestOnTop
     preventDuplicates={false}
     position="top-right"

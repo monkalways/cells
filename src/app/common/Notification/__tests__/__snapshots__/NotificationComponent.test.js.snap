@@ -7,7 +7,7 @@ exports[`NotificationComponent should render 1`] = `
   position="top-right"
   preventDuplicates={false}
   progressBar={false}
-  timeOut={5000}
+  timeOut={10000}
   transitionIn="fadeIn"
   transitionOut="fadeOut"
 />
