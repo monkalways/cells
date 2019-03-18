@@ -43,13 +43,13 @@ export class MedicationComponent extends Component {
       return '';
     }
     const isAllAccept = cellDetainees
-      .filter((detainee) => !detainee.location)
+      .filter((detainee) => !detainee.location && detainee.isUnderMedication)
       .every((detainee) => medication[detainee.id].accept);
     const isAllReject = cellDetainees
-      .filter((detainee) => !detainee.location)
+      .filter((detainee) => !detainee.location && detainee.isUnderMedication)
       .every((detainee) => medication[detainee.id].reject);
     const isAllNotApplicable = cellDetainees
-      .filter((detainee) => !detainee.location)
+      .filter((detainee) => !detainee.location && detainee.isUnderMedication)
       .every((detainee) => medication[detainee.id].notApplicable);
 
     if (isAllAccept) return 'accept';
@@ -66,7 +66,7 @@ export class MedicationComponent extends Component {
     if (
       cellDetainees
       && cellDetainees.length > 0
-      && cellDetainees.some((detainee) => !detainee.location)
+      && cellDetainees.some((detainee) => !detainee.location && detainee.isUnderMedication)
     ) return false;
 
     return true;
@@ -80,9 +80,9 @@ export class MedicationComponent extends Component {
       cellDetainees,
     } = this.props;
     const { value } = event.target;
-    if (value === 'accept') acceptMedicationAll(cellDetainees.filter((detainee) => !detainee.location));
-    if (value === 'reject') rejectMedicationAll(cellDetainees.filter((detainee) => !detainee.location));
-    if (value === 'not-applicable') notApplicableMedicationAll(cellDetainees.filter((detainee) => !detainee.location));
+    if (value === 'accept') acceptMedicationAll(cellDetainees.filter((detainee) => !detainee.location && detainee.isUnderMedication));
+    if (value === 'reject') rejectMedicationAll(cellDetainees.filter((detainee) => !detainee.location && detainee.isUnderMedication));
+    if (value === 'not-applicable') notApplicableMedicationAll(cellDetainees.filter((detainee) => !detainee.location && detainee.isUnderMedication));
   };
 
   handleSave = () => {

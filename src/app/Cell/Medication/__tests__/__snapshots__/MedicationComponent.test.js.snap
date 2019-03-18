@@ -55,7 +55,7 @@ exports[`MedicationComponent should render cell detainee cards when cell detaine
     </WithStyles(Grid)>
   </WithStyles(CellDetaineeGridComponent)>
   <WithStyles(withRouter(MedicationFooterComponent))
-    isSaveDisabled={false}
+    isSaveDisabled={true}
     isSavingMedication={false}
     onRadioGroupChange={[Function]}
     onSave={[Function]}

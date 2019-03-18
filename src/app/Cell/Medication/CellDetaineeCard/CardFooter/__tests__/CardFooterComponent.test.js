@@ -8,12 +8,16 @@ describe('CardFooterComponent', () => {
   let onRejectClick;
   let onNotApplicableClick;
   let medication;
+  let location;
+  let isUnderMedication;
 
   beforeEach(() => {
     onAcceptClick = jest.fn();
     onRejectClick = jest.fn();
     onNotApplicableClick = jest.fn();
     medication = null;
+    location = null;
+    isUnderMedication = true;
   });
 
   const setup = () => {
@@ -24,6 +28,7 @@ describe('CardFooterComponent', () => {
       img: 'img',
     };
     return shallow(<CardFooterComponent
+      cellDetainee={{ location, isUnderMedication }}
       classes={classes}
       onAcceptClick={onAcceptClick}
       onRejectClick={onRejectClick}

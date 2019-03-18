@@ -253,6 +253,7 @@ describe('Cell operations', () => {
       const name = 'c1';
       const inCellDetainee = {
         location: '',
+        isUnderMedication: true,
       };
       const outOfCellDetainee = {
         location: 'Phone - In Transit',

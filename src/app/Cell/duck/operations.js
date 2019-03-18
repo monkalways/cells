@@ -154,7 +154,7 @@ const getCellDetaineesForMedication = (
     const cellDetainees = await getCellDetaineesService(name);
     if (cellDetainees) {
       cellDetainees
-        .filter((detainee) => !detainee.location)
+        .filter((detainee) => !detainee.location && detainee.isUnderMedication)
         .forEach((detainee) => {
           dispatch(acceptMedicationAction(detainee));
         });
