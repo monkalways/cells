@@ -24,6 +24,12 @@ exports[`CellDetaineeCardComponent should render 1`] = `
     second="c1"
   />
   <WithStyles(CardFooterComponent)
+    cellDetainee={
+      Object {
+        "firstName": "John",
+        "lastName": "Smith",
+      }
+    }
     medication={
       Object {
         "accept": true,

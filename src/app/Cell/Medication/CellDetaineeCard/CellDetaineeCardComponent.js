@@ -50,6 +50,7 @@ export const CellDetaineeCardComponent = ({
       isAuthenticated={isAuthenticated}
     />
     <CardFooter
+      cellDetainee={cellDetainee}
       medication={medication}
       onAcceptClick={onAcceptClick}
       onRejectClick={onRejectClick}

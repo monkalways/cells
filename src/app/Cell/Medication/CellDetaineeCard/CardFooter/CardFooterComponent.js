@@ -8,6 +8,7 @@ import NotApplicableIcon from '../../../../images/NotApplicable.png';
 
 const propTypes = {
   classes: PropTypes.shape({}).isRequired,
+  cellDetainee: PropTypes.shape({}).isRequired,
   medication: PropTypes.shape({
     accept: PropTypes.bool.isRequired,
     reject: PropTypes.bool.isRequired,
@@ -24,55 +25,58 @@ const defaultProps = {
 
 export const CardFooterComponent = ({
   classes,
+  cellDetainee,
   medication,
   onAcceptClick,
   onRejectClick,
   onNotApplicableClick,
 }) => (
   <CardActions className={classes.actions} disableActionSpacing>
-    {medication && (
-      <React.Fragment>
-        <IconButton
-          id="acceptButton"
-          className={
-            medication.accept ? classes.buttonSelected : classes.button
-          }
-          onClick={onAcceptClick}
-        >
-          <img
-            src={MedicineAcceptIcon}
-            alt="Medicine accept"
-            className={classes.img}
-          />
-        </IconButton>
-        <IconButton
-          id="rejectButton"
-          className={
-            medication.reject ? classes.buttonSelected : classes.button
-          }
-          onClick={onRejectClick}
-        >
-          <img
-            src={MedicineDeclineIcon}
-            alt="Medicine decline"
-            className={classes.img}
-          />
-        </IconButton>
-        <IconButton
-          id="notApplicableButton"
-          className={
-            medication.notApplicable ? classes.buttonSelected : classes.button
-          }
-          onClick={onNotApplicableClick}
-        >
-          <img
-            src={NotApplicableIcon}
-            alt="not applicable"
-            className={classes.img}
-            disabled
-          />
-        </IconButton>
-      </React.Fragment>
+    {!cellDetainee.location
+      && cellDetainee.isUnderMedication
+      && medication && (
+        <React.Fragment>
+          <IconButton
+            id="acceptButton"
+            className={
+              medication.accept ? classes.buttonSelected : classes.button
+            }
+            onClick={onAcceptClick}
+          >
+            <img
+              src={MedicineAcceptIcon}
+              alt="Medicine accept"
+              className={classes.img}
+            />
+          </IconButton>
+          <IconButton
+            id="rejectButton"
+            className={
+              medication.reject ? classes.buttonSelected : classes.button
+            }
+            onClick={onRejectClick}
+          >
+            <img
+              src={MedicineDeclineIcon}
+              alt="Medicine decline"
+              className={classes.img}
+            />
+          </IconButton>
+          <IconButton
+            id="notApplicableButton"
+            className={
+              medication.notApplicable ? classes.buttonSelected : classes.button
+            }
+            onClick={onNotApplicableClick}
+          >
+            <img
+              src={NotApplicableIcon}
+              alt="not applicable"
+              className={classes.img}
+              disabled
+            />
+          </IconButton>
+        </React.Fragment>
     )}
   </CardActions>
 );

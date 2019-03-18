@@ -131,14 +131,17 @@ describe('MedicationComponent', () => {
         {
           id: '123',
           location: null,
+          isUnderMedication: true,
         },
         {
           id: '456',
           location: null,
+          isUnderMedication: true,
         },
         {
           id: '789',
           location: 'Phone - In Transit',
+          isUnderMedication: false,
         },
       ];
       medication = {
@@ -170,10 +173,12 @@ describe('MedicationComponent', () => {
         {
           id: '123',
           location: null,
+          isUnderMedication: true,
         },
         {
           id: '456',
           location: null,
+          isUnderMedication: true,
         },
         {
           id: '789',
@@ -209,10 +214,12 @@ describe('MedicationComponent', () => {
         {
           id: '123',
           location: null,
+          isUnderMedication: true,
         },
         {
           id: '456',
           location: null,
+          isUnderMedication: true,
         },
         {
           id: '789',
@@ -248,10 +255,12 @@ describe('MedicationComponent', () => {
         {
           id: '123',
           location: null,
+          isUnderMedication: true,
         },
         {
           id: '456',
           location: null,
+          isUnderMedication: true,
         },
         {
           id: '789',
@@ -331,10 +340,12 @@ describe('MedicationComponent', () => {
         {
           id: '123',
           location: 'Phone - In Transit',
+          isUnderMedication: false,
         },
         {
           id: '456',
           location: 'Phone - In Transit',
+          isUnderMedication: false,
         },
       ];
       medication = {
@@ -362,10 +373,17 @@ describe('MedicationComponent', () => {
         {
           id: '123',
           location: 'Phone - In Transit',
+          isUnderMedication: false,
         },
         {
           id: '456',
           location: null,
+          isUnderMedication: true,
+        },
+        {
+          id: '789',
+          location: null,
+          isUnderMedication: false,
         },
       ];
       medication = {
@@ -375,6 +393,11 @@ describe('MedicationComponent', () => {
           notApplicable: false,
         },
         456: {
+          accept: true,
+          reject: false,
+          notApplicable: false,
+        },
+        789: {
           accept: true,
           reject: false,
           notApplicable: false,
@@ -394,10 +417,12 @@ describe('MedicationComponent', () => {
         {
           id: '123',
           location: 'Phone - In Transit',
+          isUnderMedication: false,
         },
         {
           id: '456',
           location: null,
+          isUnderMedication: true,
         },
       ];
       const event = {
@@ -412,6 +437,7 @@ describe('MedicationComponent', () => {
         {
           id: '456',
           location: null,
+          isUnderMedication: true,
         },
       ]);
       expect(rejectMedicationAll).not.toBeCalled();
@@ -423,10 +449,12 @@ describe('MedicationComponent', () => {
         {
           id: '123',
           location: 'Phone - In Transit',
+          isUnderMedication: false,
         },
         {
           id: '456',
           location: null,
+          isUnderMedication: true,
         },
       ];
       const event = {
@@ -441,6 +469,7 @@ describe('MedicationComponent', () => {
         {
           id: '456',
           location: null,
+          isUnderMedication: true,
         },
       ]);
       expect(acceptMedicationAll).not.toBeCalled();
@@ -452,10 +481,12 @@ describe('MedicationComponent', () => {
         {
           id: '123',
           location: 'Phone - In Transit',
+          isUnderMedication: false,
         },
         {
           id: '456',
           location: null,
+          isUnderMedication: true,
         },
       ];
       const event = {
@@ -470,6 +501,7 @@ describe('MedicationComponent', () => {
         {
           id: '456',
           location: null,
+          isUnderMedication: true,
         },
       ]);
       expect(acceptMedicationAll).not.toBeCalled();
@@ -481,10 +513,12 @@ describe('MedicationComponent', () => {
         {
           id: '123',
           location: 'Phone - In Transit',
+          isUnderMedication: false,
         },
         {
           id: '456',
           location: null,
+          isUnderMedication: true,
         },
       ];
       const event = {
