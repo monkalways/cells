@@ -92,8 +92,8 @@ export default withStyles((theme) => ({
     zIndex: 99,
   },
   avatar6: {
-    height: theme.spacing.unit * 4,
-    width: theme.spacing.unit * 4,
+    height: theme.spacing.unit * 3.5,
+    width: theme.spacing.unit * 3.5,
     marginRight: theme.spacing.unit,
     display: 'block',
   },
