@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
+import classNames from 'classnames';
 
 import ScanCardDialog from '../../../common/ScanCardDialog';
 
@@ -19,21 +20,23 @@ import MealAcceptIcon from '../../../images/MealAccept.png';
 import WellnessVisualIcon from '../../../images/WellnessVisual.png';
 
 const propTypes = {
+  cellName: PropTypes.string.isRequired,
   classes: PropTypes.shape({}).isRequired,
+  isAnyDetaineeUnderMedication: PropTypes.bool.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
-  onSignIn: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
-  cellName: PropTypes.string.isRequired,
+  onSignIn: PropTypes.func.isRequired,
 };
 
 export const OverviewFooterComponent = ({
+  cellName,
   classes,
+  history,
+  isAnyDetaineeUnderMedication,
   isAuthenticated,
   onSignIn,
-  history,
-  cellName,
 }) => {
   const handleCellCheckClick = () => {
     history.push(`/cells/${cellName}/home/cell-check`);
@@ -79,6 +82,10 @@ export const OverviewFooterComponent = ({
 )}
               />
               <BottomNavigationAction
+                className={classNames({
+                  [classes.disabled]: !isAnyDetaineeUnderMedication,
+                })}
+                disabled={!isAnyDetaineeUnderMedication}
                 id="medicationButton"
                 label={<Typography variant="body1">Medication</Typography>}
                 onClick={handleMedicationClick}
@@ -115,15 +122,7 @@ OverviewFooterComponent.propTypes = propTypes;
 
 export default compose(
   withStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-    },
     appBar: {
-      backgroundColor: theme.palette.background.default,
-    },
-    navigation: {
-      height: '100%',
-      width: '69%',
       backgroundColor: theme.palette.background.default,
     },
     button: {
@@ -131,9 +130,20 @@ export default compose(
       width: theme.spacing.unit * 40,
       margin: theme.spacing.unit * 2,
     },
+    disabled: {
+      opacity: '0.2',
+    },
+    navigation: {
+      height: '100%',
+      width: '69%',
+      backgroundColor: theme.palette.background.default,
+    },
     navigationImage: {
       width: theme.spacing.unit * 6,
       height: theme.spacing.unit * 6,
+    },
+    root: {
+      flexGrow: 1,
     },
   })),
   withRouter,

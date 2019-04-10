@@ -9,11 +9,12 @@ import Loading from '../../common/Loading';
 
 const propTypes = {
   cellDetainees: PropTypes.arrayOf(PropTypes.shape({})),
-  isCellDetaineesLoaded: PropTypes.bool.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
+  cellName: PropTypes.string.isRequired,
   getCellDetainees: PropTypes.func.isRequired,
   handleSignIn: PropTypes.func.isRequired,
-  cellName: PropTypes.string.isRequired,
+  isAnyDetaineeUnderMedication: PropTypes.bool.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  isCellDetaineesLoaded: PropTypes.bool.isRequired,
 };
 
 const defaultProps = {
@@ -39,10 +40,11 @@ export class OverviewComponent extends Component {
   render() {
     const {
       cellDetainees,
-      isCellDetaineesLoaded,
-      isAuthenticated,
-      handleSignIn,
       cellName,
+      handleSignIn,
+      isAnyDetaineeUnderMedication,
+      isAuthenticated,
+      isCellDetaineesLoaded,
     } = this.props;
     return (
       <React.Fragment>
@@ -65,6 +67,7 @@ export class OverviewComponent extends Component {
         </CellDetaineeGrid>
         <OverviewFooter
           isAuthenticated={isAuthenticated}
+          isAnyDetaineeUnderMedication={isAnyDetaineeUnderMedication}
           onSignIn={handleSignIn}
           cellName={cellName}
         />

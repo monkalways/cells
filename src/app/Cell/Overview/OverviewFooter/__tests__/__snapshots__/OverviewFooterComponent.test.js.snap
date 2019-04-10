@@ -2,10 +2,10 @@
 
 exports[`OverviewFooterComponent should render bottom navigation actions if authenticated 1`] = `
 <div
-  className=""
+  className="root"
 >
   <WithStyles(AppBar)
-    className=""
+    className="appBar"
     position="static"
   >
     <WithStyles(Grid)
@@ -14,7 +14,7 @@ exports[`OverviewFooterComponent should render bottom navigation actions if auth
       justify="center"
     >
       <WithStyles(BottomNavigation)
-        className=""
+        className="navigation"
         showLabels={true}
         value={-1}
       >
@@ -22,6 +22,7 @@ exports[`OverviewFooterComponent should render bottom navigation actions if auth
           icon={
             <img
               alt="wellness visual"
+              className="navigationImage"
               src="WellnessVisual.png"
             />
           }
@@ -39,6 +40,7 @@ exports[`OverviewFooterComponent should render bottom navigation actions if auth
           icon={
             <img
               alt="meal accept"
+              className="navigationImage"
               src="MealAccept.png"
             />
           }
@@ -53,9 +55,12 @@ exports[`OverviewFooterComponent should render bottom navigation actions if auth
           onClick={[Function]}
         />
         <WithStyles(BottomNavigationAction)
+          className="disabled"
+          disabled={true}
           icon={
             <img
               alt="Medication accept"
+              className="navigationImage"
               src="MedicineAccept.png"
             />
           }
@@ -77,10 +82,10 @@ exports[`OverviewFooterComponent should render bottom navigation actions if auth
 
 exports[`OverviewFooterComponent should render sign in button if not authenticated 1`] = `
 <div
-  className=""
+  className="root"
 >
   <WithStyles(AppBar)
-    className=""
+    className="appBar"
     position="static"
   >
     <WithStyles(Grid)
@@ -89,6 +94,7 @@ exports[`OverviewFooterComponent should render sign in button if not authenticat
       justify="center"
     >
       <WithStyles(Button)
+        className="button"
         color="secondary"
         id="signInButton"
         onClick={[Function]}

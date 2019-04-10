@@ -7,28 +7,31 @@ import CellDetaineeCard from '../CellDetaineeCard';
 
 describe('OverviewComponent', () => {
   let cellDetainees;
-  let isCellDetaineesLoaded;
-  let isAuthenticated;
   let cellName;
-  let getCellDetainees;
   let handleSignIn;
+  let getCellDetainees;
+  let isAuthenticated;
+  let isAnyDetaineeUnderMedication;
+  let isCellDetaineesLoaded;
 
   beforeEach(() => {
     cellDetainees = [];
-    isCellDetaineesLoaded = false;
-    isAuthenticated = false;
     cellName = 'c1';
     getCellDetainees = jest.fn();
     handleSignIn = jest.fn();
+    isAnyDetaineeUnderMedication = false;
+    isAuthenticated = false;
+    isCellDetaineesLoaded = false;
   });
 
   const setup = () => shallow(<OverviewComponent
     cellDetainees={cellDetainees}
-    isCellDetaineesLoaded={isCellDetaineesLoaded}
-    isAuthenticated={isAuthenticated}
     cellName={cellName}
     getCellDetainees={getCellDetainees}
     handleSignIn={handleSignIn}
+    isAuthenticated={isAuthenticated}
+    isAnyDetaineeUnderMedication={isAnyDetaineeUnderMedication}
+    isCellDetaineesLoaded={isCellDetaineesLoaded}
   />);
 
   it('should render cell detainee cards when cell detainees are loaded', () => {

@@ -3,24 +3,27 @@ import { mapStateToProps, mapDispatchToProps } from '../OverviewContainer';
 describe('OverviewContainer', () => {
   it('should mapStateToProps', () => {
     const state = {};
-    const isAuthenticated = false;
     const cellDetainees = [];
     const cellName = 'c1';
+    const isAnyDetaineeUnderMedication = false;
+    const isAuthenticated = false;
     const isCellDetaineesLoaded = false;
 
     const result = mapStateToProps(
       state,
       cellDetainees,
       cellName,
-      isCellDetaineesLoaded,
+      isAnyDetaineeUnderMedication,
       isAuthenticated,
+      isCellDetaineesLoaded,
     );
 
     expect(result).toEqual({
       cellDetainees,
       cellName,
-      isCellDetaineesLoaded,
+      isAnyDetaineeUnderMedication,
       isAuthenticated,
+      isCellDetaineesLoaded,
     });
   });
 
