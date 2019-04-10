@@ -2,7 +2,7 @@
 
 exports[`HeaderComponent should render 1`] = `
 <div
-  className="root"
+  className="root no-print"
 >
   <WithStyles(AppBar)
     className="appBar"
@@ -39,7 +39,7 @@ exports[`HeaderComponent should render 1`] = `
 
 exports[`HeaderComponent should render logout button and handle logout if authenticated 1`] = `
 <div
-  className="root"
+  className="root no-print"
 >
   <WithStyles(AppBar)
     className="appBar"

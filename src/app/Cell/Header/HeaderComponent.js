@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import {
   AppBar, IconButton, Toolbar, withStyles,
 } from '@material-ui/core';
@@ -22,7 +23,7 @@ export const HeaderComponent = ({
   onLogout,
   isAuthenticated,
 }) => (
-  <div className={classes.root}>
+  <div className={classNames(classes.root, 'no-print')}>
     <AppBar position="static" className={classes.appBar}>
       <Toolbar>
         {isAuthenticated && <HeaderMenu cellDetails={cellDetails} />}

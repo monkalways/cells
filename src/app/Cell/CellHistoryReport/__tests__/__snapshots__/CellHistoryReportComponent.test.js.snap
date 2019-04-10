@@ -22,7 +22,9 @@ exports[`CellHistoryReportComponent should render 1`] = `
       }
     }
   />
-  <div>
+  <div
+    className="no-print"
+  >
     <WithStyles(AppBar)
       position="static"
     >
@@ -47,11 +49,19 @@ exports[`CellHistoryReportComponent should render 1`] = `
             }
             onClick={[Function]}
           />
-          <t
-            bodyClass=""
-            content={[Function]}
-            copyStyles={true}
-            trigger={[Function]}
+          <WithStyles(BottomNavigationAction)
+            disabled={false}
+            icon={<pure(PrintIcon) />}
+            id="printButton"
+            label={
+              <WithStyles(Typography)
+                variant="body1"
+              >
+                Print
+              </WithStyles(Typography)>
+            }
+            onClick={[Function]}
+            showLabel={true}
           />
         </WithStyles(BottomNavigation)>
       </WithStyles(Grid)>

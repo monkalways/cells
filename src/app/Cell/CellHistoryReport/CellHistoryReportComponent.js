@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import {
   AppBar,
@@ -12,7 +13,6 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import PrintIcon from '@material-ui/icons/Print';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-import ReactToPrint from 'react-to-print';
 
 import ReportBody from './ReportBody';
 
@@ -54,6 +54,10 @@ export class CellHistoryReportComponent extends React.Component {
     history.goBack();
   };
 
+  handlePrintClick = () => {
+    window.print();
+  };
+
   render() {
     const { classes, report, isLoadingReport } = this.props;
     return (
@@ -65,7 +69,7 @@ export class CellHistoryReportComponent extends React.Component {
             this.componentRef = el;
           }}
         />
-        <div className={classes.footer}>
+        <div className={classNames(classes.footer, 'no-print')}>
           <AppBar position="static" className={classes.appBar}>
             <Grid container alignItems="center">
               <BottomNavigation
@@ -81,17 +85,13 @@ export class CellHistoryReportComponent extends React.Component {
                   disabled={isLoadingReport}
                   className={classes.backButton}
                 />
-                <ReactToPrint
-                  trigger={() => (
-                    <BottomNavigationAction
-                      id="mealButton"
-                      label={<Typography variant="body1">Print</Typography>}
-                      icon={<PrintIcon className={classes.icon} />}
-                      disabled={isLoadingReport}
-                      showLabel
-                    />
-                  )}
-                  content={() => this.componentRef}
+                <BottomNavigationAction
+                  id="printButton"
+                  label={<Typography variant="body1">Print</Typography>}
+                  icon={<PrintIcon className={classes.icon} />}
+                  disabled={isLoadingReport}
+                  onClick={this.handlePrintClick}
+                  showLabel
                 />
               </BottomNavigation>
             </Grid>
