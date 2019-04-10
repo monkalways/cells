@@ -80,6 +80,14 @@ const getCellHistoryReportState = createSelector(
   (report) => report,
 );
 
+const isAnyDetaineeUnderMedicationState = createSelector(
+  [getCellDetainees],
+  (cellDetainees) => {
+    const detaineesUnderMedication = cellDetainees.filter((d) => d.isUnderMedication === true);
+    return detaineesUnderMedication.length > 0;
+  },
+);
+
 export default {
   getCellDetailsState,
   getCellNameState,
@@ -96,4 +104,5 @@ export default {
   isModalOpenState,
   isLoadingReportState,
   getCellHistoryReportState,
+  isAnyDetaineeUnderMedicationState,
 };

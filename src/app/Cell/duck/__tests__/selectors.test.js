@@ -166,4 +166,24 @@ describe('Cell selectors', () => {
     const result = selectors.getCellHistoryReportState(state);
     expect(result).toBe(state.cell.cellHistoryReport.report);
   });
+
+  it.each([
+    [[{ isUnderMedication: true }, { isUnderMedication: false }], true],
+    [[{ isUnderMedication: false }, { isUnderMedication: false }], false],
+    [[], false],
+  ])(
+    'should select isAnyDetaineeUnderMedicationState',
+    (data, isAnyDetaineeUnderMedication) => {
+      const state = {
+        cell: {
+          detainees: {
+            data,
+          },
+        },
+      };
+
+      const result = selectors.isAnyDetaineeUnderMedicationState(state);
+      expect(result).toEqual(isAnyDetaineeUnderMedication);
+    },
+  );
 });
