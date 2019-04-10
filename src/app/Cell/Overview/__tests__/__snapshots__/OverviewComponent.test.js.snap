@@ -36,6 +36,7 @@ exports[`OverviewComponent should render cell detainee cards when cell detainees
   </WithStyles(CellDetaineeGridComponent)>
   <WithStyles(withRouter(OverviewFooterComponent))
     cellName="c1"
+    isAnyDetaineeUnderMedication={false}
     isAuthenticated={false}
     onSignIn={[MockFunction]}
   />

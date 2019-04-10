@@ -10,13 +10,15 @@ export const mapStateToProps = (
   state,
   cellDetainees = selectors.getCellDetaineesState(state),
   cellName = selectors.getCellNameState(state),
-  isCellDetaineesLoaded = selectors.isCellDetaineesLoadedState(state),
+  isAnyDetaineeUnderMedication = selectors.isAnyDetaineeUnderMedicationState(state),
   isAuthenticated = authenticationSelectors.isAuthenticatedState(state),
+  isCellDetaineesLoaded = selectors.isCellDetaineesLoadedState(state),
 ) => ({
   cellDetainees,
   cellName,
-  isCellDetaineesLoaded,
+  isAnyDetaineeUnderMedication,
   isAuthenticated,
+  isCellDetaineesLoaded,
 });
 
 export const mapDispatchToProps = (dispatch) => ({

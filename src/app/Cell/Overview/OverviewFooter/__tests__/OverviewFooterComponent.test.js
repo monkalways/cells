@@ -5,31 +5,36 @@ import { BottomNavigationAction } from '@material-ui/core';
 import { OverviewFooterComponent } from '../OverviewFooterComponent';
 
 describe('OverviewFooterComponent', () => {
-  let isAuthenticated;
   let cellName;
+  let isAnyDetaineeUnderMedication;
+  let isAuthenticated;
   let onSignIn;
   let push;
 
   beforeEach(() => {
-    isAuthenticated = true;
     cellName = 'c1';
+    isAnyDetaineeUnderMedication = false;
+    isAuthenticated = true;
     onSignIn = jest.fn();
     push = jest.fn();
   });
 
   const setup = () => {
     const classes = {
-      root: '',
-      appBar: '',
-      navigation: '',
-      icon: '',
+      appBar: 'appBar',
+      button: 'button',
+      disabled: 'disabled',
+      navigation: 'navigation',
+      navigationImage: 'navigationImage',
+      root: 'root',
     };
     return shallow(<OverviewFooterComponent
+      cellName={cellName}
       classes={classes}
       history={{ push }}
-      onSignIn={onSignIn}
-      cellName={cellName}
+      isAnyDetaineeUnderMedication={isAnyDetaineeUnderMedication}
       isAuthenticated={isAuthenticated}
+      onSignIn={onSignIn}
     />);
   };
 
