@@ -104,7 +104,7 @@ export class CellComponent extends Component {
     } = this.props;
     return (
       <div
-        onClick={() => this.handleClick()}
+        onClick={this.handleClick}
         role="presentation"
         id="authenticatedCellComponentRoot"
       >
